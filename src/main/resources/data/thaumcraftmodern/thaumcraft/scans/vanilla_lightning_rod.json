@@ -1,0 +1,12 @@
+{
+  "type": "block",
+  "target": "minecraft:lightning_rod",
+  "display": "block.minecraft.lightning_rod",
+  "aspects": [
+    {"id": "tempestas", "amount": 6},
+    {"id": "permutatio", "amount": 4},
+    {"id": "metallum", "amount": 4}
+  ],
+  "inactive": false,
+  "modern_rule": "One scan key for the lightning rod; block state/placement variations do not create additional research."
+}

@@ -1,0 +1,10 @@
+{
+  "type": "entity",
+  "target": "minecraft:polar_bear",
+  "display": "entity.minecraft.polar_bear",
+  "aspects": [
+    {"id": "bestia", "amount": 6},
+    {"id": "gelum", "amount": 4},
+    {"id": "perditio", "amount": 4}
+  ]
+}

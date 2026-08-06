@@ -1,0 +1,11 @@
+{
+  "type": "entity",
+  "target": "minecraft:shulker",
+  "display": "entity.minecraft.shulker",
+  "aspects": [
+    {"id": "vacuos", "amount": 5},
+    {"id": "praecantatio", "amount": 3},
+    {"id": "alienis", "amount": 3},
+    {"id": "tenebrae", "amount": 1}
+  ]
+}

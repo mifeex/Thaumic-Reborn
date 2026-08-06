@@ -1,0 +1,12 @@
+{
+  "type": "entity",
+  "target": "minecraft:endermite",
+  "display": "entity.minecraft.endermite",
+  "aspects": [
+    {"id": "bestia", "amount": 1},
+    {"id": "terra", "amount": 1},
+    {"id": "alienis", "amount": 4},
+    {"id": "iter", "amount": 2},
+    {"id": "aer", "amount": 2}
+  ]
+}

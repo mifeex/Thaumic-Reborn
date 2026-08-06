@@ -1,0 +1,1 @@
+{"type":"entity","target":"minecraft:bee","display":"entity.minecraft.bee","aspects":[{"id":"bestia","amount":2},{"id":"volatus","amount":3},{"id":"herba","amount":2},{"id":"venenum","amount":2}]}

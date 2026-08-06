@@ -3,6 +3,7 @@ package com.thaumcraftmodern.entity;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
 import com.thaumcraftmodern.item.EtherealEssenceItem;
+import com.thaumcraftmodern.item.ManaBeanItem;
 import com.thaumcraftmodern.knowledge.WarpType;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.network.packet.WispZapPacket;
@@ -2258,6 +2259,36 @@ public final class LegacyThaumcraftMob extends Monster
             );
             spawnAtLocation(essence);
         }
+        if (kind == LegacyMobKind.ELDRITCH_GUARDIAN) {
+            if (getRandom().nextBoolean()) {
+                spawnAtLocation(EtherealEssenceItem.create(
+                        ModItems.ETHEREAL_ESSENCE.get(), "exanimis", 2));
+            }
+            if (getRandom().nextBoolean()) {
+                spawnAtLocation(EtherealEssenceItem.create(
+                        ModItems.ETHEREAL_ESSENCE.get(), "alienis", 2));
+            }
+        }
+        if (kind == LegacyMobKind.THAUMIC_SLIME
+                && thaumicSlimeSize() < 3
+                && getRandom().nextInt(3) == 0) {
+            spawnAtLocation(ModItems.TAINTED_GOO.get(), 1.5F);
+        }
+        if (kind == LegacyMobKind.CRIMSON_KNIGHT
+                || kind == LegacyMobKind.CRIMSON_INQUISITOR
+                || kind == LegacyMobKind.CRIMSON_CLERIC) {
+            int roll = getRandom().nextInt(10);
+            if (roll == 0) {
+                spawnAtLocation(ModItems.KNOWLEDGE_FRAGMENT.get(), 1.5F);
+            } else if (roll == 1) {
+                spawnAtLocation(ModItems.VOID_SEED.get(), 1.5F);
+            } else if (roll <= 3 + looting) {
+                spawnAtLocation(ModItems.GOLD_COIN.get(), 1.5F);
+            }
+            if (recentlyHit && getRandom().nextInt(200) - looting < 5) {
+                spawnAtLocation(ModItems.CRIMSON_RITES.get(), 1.0F);
+            }
+        }
         if (kind == LegacyMobKind.PECH) {
             for (int slot = 0; slot < pechPack.getSlots(); slot++) {
                 ItemStack stack = pechPack.getStackInSlot(slot);
@@ -2265,28 +2296,55 @@ public final class LegacyThaumcraftMob extends Monster
                     spawnAtLocation(stack.copy(), 1.5F);
                 }
             }
+            PrimalAspect[] aspects = PrimalAspect.ordered()
+                    .toArray(PrimalAspect[]::new);
+            for (int roll = 0; roll < 1 + looting; roll++) {
+                if (aspects.length > 0 && getRandom().nextBoolean()) {
+                    ItemStack bean = ModItems.MANA_BEAN.get()
+                            .getDefaultInstance();
+                    ManaBeanItem.setAspect(bean, aspects[
+                            getRandom().nextInt(aspects.length)
+                    ].id());
+                    spawnAtLocation(bean, 1.5F);
+                }
+            }
+        }
+        if (kind == LegacyMobKind.GIANT_TAINTACLE
+                && level().getEntitiesOfClass(
+                        LegacyThaumcraftMob.class,
+                        getBoundingBox().inflate(48.0D, 24.0D, 48.0D),
+                        mob -> mob.kind == LegacyMobKind.GIANT_TAINTACLE
+                ).size() <= 1) {
+            spawnAtLocation(ModItems.PRIMORDIAL_PEARL.get(), 1.5F);
         }
     }
 
     @Override
     protected ResourceLocation getDefaultLootTable() {
         String table = switch (kind) {
-            case ANGRY_ZOMBIE, FURIOUS_ZOMBIE -> "brainy_zombie";
+            case ANGRY_ZOMBIE -> "brainy_zombie";
+            case FURIOUS_ZOMBIE -> "furious_zombie";
             case WISP, CONVERTED_VILLAGER -> "empty";
             case FIREBAT -> "firebat";
             case PECH -> "pech";
-            case THAUMIC_SLIME, TAINTED_CRAWLER, TAINTACLE,
-                    TAINT_TENDRIL, TAINT_SPORE, TAINT_SPORE_SWARMER,
-                    TAINT_SWARM, TAINTED_CHICKEN, TAINTED_COW,
-                    TAINTED_CREEPER, TAINTED_PIG, TAINTED_SHEEP,
-                    TAINTED_VILLAGER -> "taint";
-            case GIANT_TAINTACLE -> "giant_taintacle";
+            case THAUMIC_SLIME -> "empty";
+            case TAINTED_CRAWLER -> "tainted_crawler";
+            case TAINTACLE -> "taintacle";
+            case TAINT_TENDRIL -> "empty";
+            case TAINT_SPORE -> "taint_spore";
+            case TAINT_SPORE_SWARMER -> "taint_spore_swarmer";
+            case TAINT_SWARM -> "taint_swarm";
+            case TAINTED_CHICKEN -> "tainted_chicken";
+            case TAINTED_COW, TAINTED_CREEPER -> "tainted_even";
+            case TAINTED_PIG -> "tainted_pig";
+            case TAINTED_SHEEP -> "tainted_sheep";
+            case TAINTED_VILLAGER -> "tainted_villager";
+            case GIANT_TAINTACLE -> "empty";
             case ELDRITCH_GUARDIAN -> "eldritch_guardian";
-            case CRIMSON_KNIGHT, CRIMSON_INQUISITOR, CRIMSON_CLERIC -> "crimson_cultist";
+            case CRIMSON_KNIGHT, CRIMSON_INQUISITOR, CRIMSON_CLERIC -> "empty";
             case CRIMSON_PRAETOR -> "crimson_boss";
             case ELDRITCH_WARDEN, ELDRITCH_CONSTRUCT -> "eldritch_boss";
-            case ELDRITCH_CRAB -> "eldritch";
-            case INHABITED_ZOMBIE -> "inhabited_zombie";
+            case ELDRITCH_CRAB, INHABITED_ZOMBIE -> "empty";
             case MIND_SPIDER -> "mind_spider";
         };
         return new ResourceLocation(

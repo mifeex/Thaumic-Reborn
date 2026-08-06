@@ -1,0 +1,11 @@
+{
+  "type": "entity",
+  "target": "minecraft:tropical_fish",
+  "knowledgeKey": "minecraft:fish",
+  "display": "entity.minecraft.tropical_fish",
+  "aspects": [
+    {"id": "corpus", "amount": 3},
+    {"id": "victus", "amount": 1},
+    {"id": "aqua", "amount": 1}
+  ]
+}

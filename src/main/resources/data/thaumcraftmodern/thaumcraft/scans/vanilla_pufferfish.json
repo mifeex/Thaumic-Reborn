@@ -1,0 +1,11 @@
+{
+  "type": "entity",
+  "target": "minecraft:pufferfish",
+  "display": "entity.minecraft.pufferfish",
+  "aspects": [
+    {"id": "corpus", "amount": 3},
+    {"id": "victus", "amount": 1},
+    {"id": "aqua", "amount": 1},
+    {"id": "venenum", "amount": 4}
+  ]
+}

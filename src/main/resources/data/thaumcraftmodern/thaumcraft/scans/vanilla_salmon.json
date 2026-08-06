@@ -1,0 +1,11 @@
+{
+  "type": "entity",
+  "target": "minecraft:salmon",
+  "knowledgeKey": "minecraft:fish",
+  "display": "entity.minecraft.salmon",
+  "aspects": [
+    {"id": "corpus", "amount": 3},
+    {"id": "victus", "amount": 1},
+    {"id": "aqua", "amount": 1}
+  ]
+}

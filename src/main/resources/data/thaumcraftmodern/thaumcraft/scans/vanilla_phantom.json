@@ -1,0 +1,11 @@
+{
+  "type": "entity",
+  "target": "minecraft:phantom",
+  "display": "entity.minecraft.phantom",
+  "aspects": [
+    {"id": "volatus", "amount": 6},
+    {"id": "tenebrae", "amount": 4},
+    {"id": "mortuus", "amount": 4},
+    {"id": "alienis", "amount": 2}
+  ]
+}

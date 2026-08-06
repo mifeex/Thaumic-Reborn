@@ -1,0 +1,10 @@
+{
+  "type": "entity",
+  "target": "minecraft:parrot",
+  "display": "entity.minecraft.parrot",
+  "aspects": [
+    {"id": "motus", "amount": 2},
+    {"id": "bestia", "amount": 2},
+    {"id": "volatus", "amount": 4}
+  ]
+}
