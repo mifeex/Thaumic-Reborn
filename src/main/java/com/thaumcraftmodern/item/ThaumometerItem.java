@@ -204,7 +204,7 @@ public final class ThaumometerItem extends Item {
     ) {
         return KnowledgeAccess.get(player)
                 .map(knowledge -> knowledge.hasScan(
-                        ScanRegistry.scanKey(type, targetId)
+                        ScanRegistry.knowledgeKey(type, targetId)
                 ))
                 .orElse(false);
     }

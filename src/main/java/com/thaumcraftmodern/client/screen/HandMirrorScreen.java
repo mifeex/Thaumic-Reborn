@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 /** Pixel-exact 176x166 TC4 GuiHandMirror shell. */
 public final class HandMirrorScreen extends AbstractContainerScreen<HandMirrorMenu> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/gui/guihandmirror.png");
 
     public HandMirrorScreen(HandMirrorMenu menu, Inventory inventory, Component title) {

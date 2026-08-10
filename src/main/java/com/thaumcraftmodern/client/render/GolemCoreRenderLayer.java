@@ -40,7 +40,7 @@ public final class GolemCoreRenderLayer<T extends ClassicGolemEntity>
             GolemUpgradeType upgrade = golem.upgrade(slot);
             ItemStack icon = upgrade == null ? ItemStack.EMPTY
                     : net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(
-                            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(
+                            new net.minecraft.resources.ResourceLocation(
                                     com.thaumcraftmodern.ThaumcraftModern.MOD_ID, "golem_upgrade_" + upgrade.id())).getDefaultInstance();
             if (!icon.isEmpty()) {
                 float x = .08F * (slot - (slots - 1) / 2F) / .025F;

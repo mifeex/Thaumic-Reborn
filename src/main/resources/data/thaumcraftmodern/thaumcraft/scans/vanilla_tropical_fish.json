@@ -1,7 +1,7 @@
 {
   "type": "entity",
   "target": "minecraft:tropical_fish",
-  "knowledgeKey": "minecraft:fish",
+  "knowledge_key": "entity:minecraft:fish",
   "display": "entity.minecraft.tropical_fish",
   "aspects": [
     {"id": "corpus", "amount": 3},

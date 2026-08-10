@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public final class HungryChestBlockEntityRenderer implements BlockEntityRenderer<HungryChestBlockEntity> {
-    private static final ResourceLocation TEXTURE=ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE=new ResourceLocation(
             ThaumcraftModern.MOD_ID,"textures/entity/models/chesthungry.png");
     private final HungryChestModel model;
     public HungryChestBlockEntityRenderer(BlockEntityRendererProvider.Context context){model=new HungryChestModel(context.bakeLayer(HungryChestModel.LAYER));}

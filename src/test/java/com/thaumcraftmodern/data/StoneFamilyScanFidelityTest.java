@@ -23,7 +23,33 @@ final class StoneFamilyScanFidelityTest {
             "src/main/resources/data/thaumcraftmodern/tags/blocks");
 
     @Test
-    void andesiteDioriteAndGraniteShapesShareTheCobblestoneScan() throws IOException {
+    void modernStoneFamiliesDeclareTheirDistinctAspectProfiles() throws IOException {
+        assertScan("vanilla_granite_family.json", "thaumcraftmodern:granite_family",
+                Map.of("terra", 2, "ignis", 2));
+        assertScan("vanilla_diorite_family.json", "thaumcraftmodern:diorite_family",
+                Map.of("terra", 2, "ordo", 2));
+        assertScan("vanilla_andesite_family.json", "thaumcraftmodern:andesite_family",
+                Map.of("terra", 2, "aer", 2));
+
+        assertTag(TC_TAGS.resolve("granite_family.json"),
+                Set.of("minecraft:granite", "minecraft:polished_granite",
+                        "minecraft:granite_slab", "minecraft:granite_stairs",
+                        "minecraft:granite_wall", "minecraft:polished_granite_slab",
+                        "minecraft:polished_granite_stairs"));
+        assertTag(TC_TAGS.resolve("diorite_family.json"),
+                Set.of("minecraft:diorite", "minecraft:polished_diorite",
+                        "minecraft:diorite_slab", "minecraft:diorite_stairs",
+                        "minecraft:diorite_wall", "minecraft:polished_diorite_slab",
+                        "minecraft:polished_diorite_stairs"));
+        assertTag(TC_TAGS.resolve("andesite_family.json"),
+                Set.of("minecraft:andesite", "minecraft:polished_andesite",
+                        "minecraft:andesite_slab", "minecraft:andesite_stairs",
+                        "minecraft:andesite_wall", "minecraft:polished_andesite_slab",
+                        "minecraft:polished_andesite_stairs"));
+    }
+
+    @Test
+    void legacyCobblestoneCompatibilityStillIncludesStoneShapes() throws IOException {
         assertScan("legacy/object_001_cobblestone.json", "forge:cobblestone",
                 Map.of("terra", 1, "perditio", 1));
         assertTag(ROOT.resolve("src/main/resources/data/forge/tags/blocks/cobblestone.json"),

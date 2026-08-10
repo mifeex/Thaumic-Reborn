@@ -125,7 +125,7 @@ public final class ClientModEvents {
             MenuScreens.register(ModMenus.GOLEM.get(), GolemScreen::new);
             ItemProperties.register(
                     ModItems.ESSENTIA_PHIAL.get(),
-                    ResourceLocation.fromNamespaceAndPath(
+                    new ResourceLocation(
                             ThaumcraftModern.MOD_ID,
                             "filled"
                     ),
@@ -134,7 +134,7 @@ public final class ClientModEvents {
                                     ? 1.0F : 0.0F
             );
             ItemProperties.register(ModItems.SINISTER_LODESTONE.get(),
-                    ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID, "active"),
+                    new ResourceLocation(ThaumcraftModern.MOD_ID, "active"),
                     (stack, level, entity, seed) -> level != null && entity != null
                             && ClientSinisterNodeTracker.pointsAt(level,entity) ? 1.0F : 0.0F);
         });

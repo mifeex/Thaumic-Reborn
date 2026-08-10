@@ -17,7 +17,7 @@ final class VisExhaustClientExtensionsTest {
     @Test
     void inventoryIconHasAnIndependentVerticalTuningConstant()
             throws Exception {
-        assertEquals(4, VisExhaustClientExtensions.INVENTORY_ICON_Y_OFFSET);
+        assertEquals(14, VisExhaustClientExtensions.INVENTORY_ICON_Y_OFFSET);
         String source = Files.readString(SOURCE);
         assertTrue(source.contains(
                 "y + INVENTORY_ICON_Y_OFFSET"

@@ -19,7 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 public final class EssentiaCrystallizerBlockEntityRenderer
         implements BlockEntityRenderer<EssentiaCrystallizerBlockEntity> {
     public static final ResourceLocation CRYSTAL_MODEL =
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     ThaumcraftModern.MOD_ID,
                     "block/crystallizer_crystal"
             );

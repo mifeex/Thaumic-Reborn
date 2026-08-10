@@ -37,14 +37,96 @@ class ScanRegistryTest {
                 "thaumcraftmodern:thaumcraft_banners",
                 "",
                 List.of(new AspectReward("pannus", 3)),
-                "block_tag:minecraft:banners"
+                "thaumcraftmodern:vanilla_banners"
         );
         ScanRegistry.replace(List.of(pennant));
 
         ScanDefinition restored = ScanRegistry.deserialize(ScanRegistry.serialize()).get(0);
 
         assertEquals("item_tag:thaumcraftmodern:thaumcraft_banners", restored.scanKey());
-        assertEquals("block_tag:minecraft:banners", restored.knowledgeKey());
+        assertEquals("thaumcraftmodern:vanilla_banners", restored.knowledgeKey());
+    }
+
+    @Test
+    void targetLookupReturnsSharedKnowledgeKey() {
+        ScanDefinition familyMember = new ScanDefinition(
+                ScanTargetType.BLOCK,
+                "minecraft:andesite_slab",
+                "",
+                List.of(new AspectReward("terra", 2)),
+                "block_tag:thaumcraftmodern:andesite_family"
+        );
+        ScanRegistry.replace(List.of(familyMember));
+
+        assertEquals(
+                "block_tag:thaumcraftmodern:andesite_family",
+                ScanRegistry.knowledgeKey(
+                        ScanTargetType.BLOCK,
+                        "minecraft:andesite_slab"
+                )
+        );
+    }
+
+    @Test
+    void implicitAspectTagKeepsEachResolvedBlockIndividuallyScannable() {
+        ScanDefinition cobblestone = new ScanDefinition(
+                ScanTargetType.BLOCK_TAG,
+                "forge:cobblestone",
+                "",
+                List.of(new AspectReward("terra", 1))
+        );
+
+        assertEquals(
+                "block:minecraft:cobblestone_stairs",
+                ScanRegistry.resolvedKnowledgeKey(
+                        cobblestone,
+                        ScanTargetType.BLOCK,
+                        "minecraft:cobblestone_stairs"
+                )
+        );
+    }
+
+    @Test
+    void narrowerAspectTagWinsOverBroadForgeStoneTag() {
+        ScanDefinition forgeStone = new ScanDefinition(
+                ScanTargetType.BLOCK_TAG,
+                "forge:stone",
+                "",
+                List.of(new AspectReward("terra", 2))
+        );
+        ScanDefinition graniteFamily = new ScanDefinition(
+                ScanTargetType.BLOCK_TAG,
+                "thaumcraftmodern:granite_family",
+                "",
+                List.of(new AspectReward("terra", 2), new AspectReward("ignis", 2))
+        );
+
+        ScanDefinition selected = List.of(forgeStone, graniteFamily).stream()
+                .min(ScanRegistry.tagDefinitionComparator(definition ->
+                        definition == graniteFamily ? 7 : 128))
+                .orElseThrow();
+
+        assertEquals(graniteFamily, selected);
+    }
+
+    @Test
+    void explicitTagKnowledgeKeyStillSharesProgress() {
+        ScanDefinition beds = new ScanDefinition(
+                ScanTargetType.BLOCK_TAG,
+                "minecraft:beds",
+                "",
+                List.of(new AspectReward("pannus", 9)),
+                "thaumcraftmodern:vanilla_beds"
+        );
+
+        assertEquals(
+                "thaumcraftmodern:vanilla_beds",
+                ScanRegistry.resolvedKnowledgeKey(
+                        beds,
+                        ScanTargetType.BLOCK,
+                        "minecraft:red_bed"
+                )
+        );
     }
 
     @Test

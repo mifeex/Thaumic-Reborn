@@ -1,1 +1,1 @@
-{"type":"block_tag","target":"thaumcraftmodern:candles_and_cakes","display":"","aspects":[{"id":"sensus","amount":1},{"id":"lux","amount":2}],"inactive":false,"modern_rule":"All candle colours and candle cakes share one scan key."}
+{"type":"block_tag","target":"thaumcraftmodern:candles_and_cakes","knowledge_key":"thaumcraftmodern:candles_and_cakes","display":"","aspects":[{"id":"sensus","amount":1},{"id":"lux","amount":2}],"inactive":false,"modern_rule":"All candle colours and candle cakes share one scan key."}

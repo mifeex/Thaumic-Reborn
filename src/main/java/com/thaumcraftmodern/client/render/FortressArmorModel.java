@@ -24,7 +24,7 @@ import java.util.Map;
 /** Exact 66-cuboid conversion of TC4 ModelFortressArmor. */
 public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,
+            new ResourceLocation(ThaumcraftModern.MOD_ID,
                     "fortress_armor"), "main");
     private static final String DATA =
             "/assets/thaumcraftmodern/models/entity/fortress_armor.csv";

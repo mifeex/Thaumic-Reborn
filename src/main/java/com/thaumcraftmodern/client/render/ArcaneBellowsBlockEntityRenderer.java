@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Modern TESR counterpart of TC4 {@code TileBellowsRenderer}. */
 public final class ArcaneBellowsBlockEntityRenderer
         implements BlockEntityRenderer<ArcaneBellowsBlockEntity> {
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    public static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/bellows.png");
     private final ArcaneBellowsModel model;
 

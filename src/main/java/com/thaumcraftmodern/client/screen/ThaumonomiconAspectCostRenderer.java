@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 /**
  * One shared aspect icon + amount pattern for crafting, infusion/matrix and
@@ -105,14 +106,20 @@ final class ThaumonomiconAspectCostRenderer {
             Font font,
             List<AspectCost> costs,
             Predicate<String> knowsAspect,
+            ToIntFunction<String> availableAmount,
             int left,
-            int top
+            int top,
+            long timeMillis
     ) {
         for (int index = 0; index < costs.size(); index++) {
             AspectCost cost = costs.get(index);
             int x = left + index * ThaumonomiconAspectCostLayout.ICON_SIZE;
             if (knowsAspect.test(cost.aspectId())) {
-                renderCost(graphics, font, cost, x, top);
+                float alpha = availableAmount.applyAsInt(cost.aspectId())
+                        < cost.amount()
+                        ? missingAspectAlpha(timeMillis)
+                        : 1.0F;
+                renderCost(graphics, font, cost, x, top, alpha);
             } else {
                 ClassicUiRender.drawAspect(
                         graphics,
@@ -124,6 +131,12 @@ final class ThaumonomiconAspectCostRenderer {
                 );
             }
         }
+    }
+
+    /** Exact TC4 research-browser pulse: one 600 ms sine cycle, alpha 0.5..1.0. */
+    static float missingAspectAlpha(long timeMillis) {
+        double phase = Math.floorMod(timeMillis, 600L) / 600.0D;
+        return (float) (Math.sin(phase * Math.PI * 2.0D) * 0.25D + 0.75D);
     }
 
     static String renderCrucibleGrid(
@@ -194,6 +207,17 @@ final class ThaumonomiconAspectCostRenderer {
             int x,
             int y
     ) {
+        renderCost(graphics, font, cost, x, y, 1.0F);
+    }
+
+    private static void renderCost(
+            GuiGraphics graphics,
+            Font font,
+            AspectCost cost,
+            int x,
+            int y,
+            float alpha
+    ) {
         AspectDefinition definition = AspectRegistryRuntime.find(
                 cost.aspectId()
         ).orElse(null);
@@ -212,7 +236,9 @@ final class ThaumonomiconAspectCostRenderer {
                 y,
                 ThaumonomiconAspectCostLayout.ICON_SIZE,
                 definition.color(),
-                cost.amount()
+                Integer.toString(cost.amount()),
+                alpha,
+                0.5F
         );
     }
 

@@ -17,7 +17,7 @@ public final class ThaumaturgeRobeArmorModel
         extends HumanoidModel<LivingEntity> {
     public static final ModelLayerLocation OUTER_LAYER =
             new ModelLayerLocation(
-                    ResourceLocation.fromNamespaceAndPath(
+                    new ResourceLocation(
                             ThaumcraftModern.MOD_ID,
                             "thaumaturge_robe_outer"
                     ),

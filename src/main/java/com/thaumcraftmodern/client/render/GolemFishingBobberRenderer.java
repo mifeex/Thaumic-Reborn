@@ -17,8 +17,8 @@ import org.joml.Matrix4f;
 
 /** Billboard float plus the original curved black tether to the golem's right hand. */
 public final class GolemFishingBobberRenderer extends EntityRenderer<GolemFishingBobberEntity> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace(
-            "textures/entity/fishing_hook.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
+            "minecraft", "textures/entity/fishing_hook.png");
 
     public GolemFishingBobberRenderer(EntityRendererProvider.Context context) {
         super(context);

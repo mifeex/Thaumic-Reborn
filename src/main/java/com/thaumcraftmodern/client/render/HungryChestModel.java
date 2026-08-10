@@ -18,7 +18,7 @@ import org.joml.Matrix4f;
  */
 public final class HungryChestModel {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,"hungry_chest"),"main");
+            new ResourceLocation(ThaumcraftModern.MOD_ID,"hungry_chest"),"main");
     private static final float PIXEL=1F/16F;
     public HungryChestModel(ModelPart ignored){}
     public static LayerDefinition createBodyLayer(){

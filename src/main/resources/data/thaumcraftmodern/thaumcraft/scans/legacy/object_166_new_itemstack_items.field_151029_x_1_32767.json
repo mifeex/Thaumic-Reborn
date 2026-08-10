@@ -6,6 +6,10 @@
     {
       "id": "metallum",
       "amount": 7
+    },
+    {
+      "id": "tutamen",
+      "amount": 1
     }
   ],
   "inactive": false,

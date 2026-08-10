@@ -111,7 +111,7 @@ final class ClientThaumometerTarget {
         String targetId = BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString();
         boolean studied = KnowledgeAccess.get(minecraft.player)
                 .map(knowledge -> knowledge.hasScan(
-                        ScanRegistry.scanKey(ScanTargetType.BLOCK, targetId)
+                        ScanRegistry.knowledgeKey(ScanTargetType.BLOCK, targetId)
                 ))
                 .orElse(false);
         Optional<ScanDefinition> definition = studied
@@ -178,11 +178,25 @@ final class ClientThaumometerTarget {
 
     private static TargetedReadout readoutForItem(Minecraft minecraft, ItemStack stack) {
         ScanRegistry.ItemScanIdentity identity = ScanRegistry.identityForItem(stack);
-        return readout(
-                minecraft,
-                stack.getHoverName(),
+        String scanKey = ScanRegistry.knowledgeKey(
                 identity.type(),
                 identity.targetId()
+        );
+        boolean studied = KnowledgeAccess.get(minecraft.player)
+                .map(knowledge -> knowledge.hasScan(scanKey))
+                .orElse(false);
+        Optional<ScanDefinition> definition = ScanRegistry.findForItem(stack);
+        Component displayName = definition
+                .filter(value -> !value.displayKey().isBlank())
+                .map(value -> (Component) Component.translatable(value.displayKey()))
+                .orElse(stack.getHoverName());
+        return new TargetedReadout(
+                displayName,
+                studied,
+                studied
+                        ? definition.map(ScanDefinition::aspects).orElseGet(List::of)
+                        : List.of(),
+                Component.empty()
         );
     }
 
@@ -192,7 +206,7 @@ final class ClientThaumometerTarget {
             ScanTargetType type,
             String targetId
     ) {
-        String scanKey = ScanRegistry.scanKey(type, targetId);
+        String scanKey = ScanRegistry.knowledgeKey(type, targetId);
         boolean studied = KnowledgeAccess.get(minecraft.player)
                 .map(knowledge -> knowledge.hasScan(scanKey))
                 .orElse(false);

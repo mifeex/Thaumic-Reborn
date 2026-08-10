@@ -1,6 +1,7 @@
 {
   "type": "block_tag",
   "target": "thaumcraftmodern:wither_skeleton_head_blocks",
+  "knowledge_key": "thaumcraftmodern:wither_skeleton_heads",
   "display": "",
   "aspects": [
     {

@@ -1,6 +1,7 @@
 {
   "type": "block_tag",
   "target": "thaumcraftmodern:creeper_head_blocks",
+  "knowledge_key": "thaumcraftmodern:creeper_heads",
   "display": "",
   "aspects": [
     {

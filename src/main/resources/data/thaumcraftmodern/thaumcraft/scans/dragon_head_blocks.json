@@ -1,6 +1,7 @@
 {
   "type":"block_tag",
   "target":"thaumcraftmodern:dragon_head_blocks",
+  "knowledge_key":"thaumcraftmodern:dragon_heads",
   "display":"",
   "aspects":[
     {"id":"alienis","amount":20},

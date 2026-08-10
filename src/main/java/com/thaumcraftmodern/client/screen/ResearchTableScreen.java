@@ -1,5 +1,11 @@
 package com.thaumcraftmodern.client.screen;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.aspect.AspectDefinition;
@@ -18,6 +24,7 @@ import com.thaumcraftmodern.research.ResearchDuplicationService;
 import com.thaumcraftmodern.research.ResearchRegistry;
 import com.thaumcraftmodern.world.menu.ResearchTableMenu;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.ChatFormatting;
@@ -345,15 +352,52 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                 int startY = cellY(cell) + PUZZLE_HEX_SIZE / 2;
                 int endX = cellX(neighbor) + PUZZLE_HEX_SIZE / 2;
                 int endY = cellY(neighbor) + PUZZLE_HEX_SIZE / 2;
-                int steps = Math.max(Math.abs(endX - startX), Math.abs(endY - startY));
-                for (int step = 0; step <= steps; step++) {
-                    float progress = steps == 0 ? 0.0F : step / (float) steps;
-                    int x = Math.round(startX + (endX - startX) * progress);
-                    int y = Math.round(startY + (endY - startY) * progress);
-                    graphics.fill(x, y, x + 1, y + 1, 0x804C9CB3);
-                }
+                drawClassicConnection(
+                        graphics,
+                        startX,
+                        startY,
+                        endX,
+                        endY
+                );
             }
         }
+    }
+
+    /** TC4 GuiResearchTable.drawLine: a 3 px additive GPU line. */
+    private void drawClassicConnection(
+            GuiGraphics graphics,
+            float startX,
+            float startY,
+            float endX,
+            float endY
+    ) {
+        int ticks = minecraft == null || minecraft.player == null
+                ? 0
+                : minecraft.player.tickCount;
+        float alpha = 0.6F + (float) Math.sin(ticks + startX) * 0.3F;
+
+        graphics.flush();
+        RenderSystem.enableBlend();
+        RenderSystem.blendFunc(
+                GlStateManager.SourceFactor.SRC_ALPHA,
+                GlStateManager.DestFactor.ONE
+        );
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        RenderSystem.lineWidth(3.0F);
+        BufferBuilder buffer = Tesselator.getInstance().getBuilder();
+        buffer.begin(
+                VertexFormat.Mode.DEBUG_LINE_STRIP,
+                DefaultVertexFormat.POSITION_COLOR
+        );
+        buffer.vertex(graphics.pose().last().pose(), startX, startY, 0.0F)
+                .color(0, 153, 204, Math.round(alpha * 255.0F))
+                .endVertex();
+        buffer.vertex(graphics.pose().last().pose(), endX, endY, 0.0F)
+                .color(0, 153, 204, Math.round(alpha * 255.0F))
+                .endVertex();
+        Tesselator.getInstance().end();
+        RenderSystem.lineWidth(1.0F);
+        RenderSystem.defaultBlendFunc();
     }
 
     private void renderHoveredEmptyCellOutline(

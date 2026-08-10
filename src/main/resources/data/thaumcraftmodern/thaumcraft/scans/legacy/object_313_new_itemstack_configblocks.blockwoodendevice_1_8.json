@@ -1,7 +1,7 @@
 {
   "type": "item_tag",
   "target": "thaumcraftmodern:thaumcraft_banners",
-  "knowledge_key": "block_tag:minecraft:banners",
+  "knowledge_key": "thaumcraftmodern:vanilla_banners",
   "display": "",
   "aspects": [
     {

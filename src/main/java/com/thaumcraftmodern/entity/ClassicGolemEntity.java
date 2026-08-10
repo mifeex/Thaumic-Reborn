@@ -763,7 +763,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     private static net.minecraft.world.item.Item upgradeItem(GolemUpgradeType type) {
         String id = "golem_upgrade_" + type.id();
         return net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(
-                net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(
+                new net.minecraft.resources.ResourceLocation(
                         com.thaumcraftmodern.ThaumcraftModern.MOD_ID, id));
     }
 }

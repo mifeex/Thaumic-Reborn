@@ -31,13 +31,13 @@ import org.joml.Matrix4f;
 /** TC4 bell UI: animated home/marker glyphs attached to exact block faces and golem links. */
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID, value = Dist.CLIENT)
 public final class GolemBellMarkerRenderer {
-    private static final ResourceLocation MARK = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation MARK = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/misc/mark.png");
-    private static final ResourceLocation HOME = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation HOME = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/misc/home.png");
-    private static final ResourceLocation EMPTY = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation EMPTY = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/block/empty.png");
-    private static final ResourceLocation SCRIPT = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation SCRIPT = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/misc/script.png");
     private static final double RANGE_SQUARED = 4096D;
     /** TC4's default golem_link_quality. Values below four disabled the link. */

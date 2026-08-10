@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 /** Exact TC4 guigolem.png layout with material-colored filters and server toggles. */
 public final class GolemScreen extends AbstractContainerScreen<GolemMenu> {
     private static final float TEXT_SCALE = .5F;
-    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation BACKGROUND = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/gui/guigolem.png");
 
     public GolemScreen(GolemMenu menu, Inventory inventory, Component title) {

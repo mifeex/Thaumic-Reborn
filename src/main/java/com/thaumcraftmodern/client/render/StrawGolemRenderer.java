@@ -25,7 +25,7 @@ public final class StrawGolemRenderer<T extends ClassicGolemEntity>
         }
     }
     @Override public ResourceLocation getTextureLocation(T entity) {
-        return ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,
+        return new ResourceLocation(ThaumcraftModern.MOD_ID,
                 "textures/entity/models/golem_" + entity.material().id() + ".png");
     }
 }

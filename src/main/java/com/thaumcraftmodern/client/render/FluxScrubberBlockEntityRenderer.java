@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public final class FluxScrubberBlockEntityRenderer implements BlockEntityRenderer<FluxScrubberBlockEntity> {
-    public static final ResourceLocation TEXTURE=ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,"textures/block/fluxscrubber.png");
+    public static final ResourceLocation TEXTURE=new ResourceLocation(ThaumcraftModern.MOD_ID,"textures/block/fluxscrubber.png");
     private final ClassicFluxScrubberModel model=new ClassicFluxScrubberModel();
     public FluxScrubberBlockEntityRenderer(BlockEntityRendererProvider.Context ignored){}
     @Override public void render(FluxScrubberBlockEntity tile,float partial,PoseStack poses,MultiBufferSource buffers,int light,int overlay){

@@ -9,12 +9,18 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 
-public final class ArcaneShapedRecipe implements ArcaneRecipe {
+/**
+ * Arcane shaped crafting with vanilla shaped-recipe identity. Extending
+ * ShapedRecipe is important: recipe-book and third-party transfer handlers
+ * use that contract to preserve rows, columns and empty pattern cells.
+ */
+public final class ArcaneShapedRecipe extends ShapedRecipe implements ArcaneRecipe {
     private final ResourceLocation id;
     private final String researchId;
     private final int width;
@@ -32,6 +38,15 @@ public final class ArcaneShapedRecipe implements ArcaneRecipe {
             ItemStack result,
             ArcaneVisCost visCost
     ) {
+        super(
+                id,
+                "",
+                CraftingBookCategory.MISC,
+                width,
+                height,
+                ingredients,
+                result
+        );
         this.id = id;
         this.researchId = researchId;
         this.width = width;

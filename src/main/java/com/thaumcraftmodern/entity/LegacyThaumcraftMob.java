@@ -2272,21 +2272,21 @@ public final class LegacyThaumcraftMob extends Monster
         if (kind == LegacyMobKind.THAUMIC_SLIME
                 && thaumicSlimeSize() < 3
                 && getRandom().nextInt(3) == 0) {
-            spawnAtLocation(ModItems.TAINTED_GOO.get(), 1.5F);
+            spawnAtLocation(new ItemStack(ModItems.TAINTED_GOO.get()), 1.5F);
         }
         if (kind == LegacyMobKind.CRIMSON_KNIGHT
                 || kind == LegacyMobKind.CRIMSON_INQUISITOR
                 || kind == LegacyMobKind.CRIMSON_CLERIC) {
             int roll = getRandom().nextInt(10);
             if (roll == 0) {
-                spawnAtLocation(ModItems.KNOWLEDGE_FRAGMENT.get(), 1.5F);
+                spawnAtLocation(new ItemStack(ModItems.KNOWLEDGE_FRAGMENT.get()), 1.5F);
             } else if (roll == 1) {
-                spawnAtLocation(ModItems.VOID_SEED.get(), 1.5F);
+                spawnAtLocation(new ItemStack(ModItems.VOID_SEED.get()), 1.5F);
             } else if (roll <= 3 + looting) {
-                spawnAtLocation(ModItems.GOLD_COIN.get(), 1.5F);
+                spawnAtLocation(new ItemStack(ModItems.GOLD_COIN.get()), 1.5F);
             }
             if (recentlyHit && getRandom().nextInt(200) - looting < 5) {
-                spawnAtLocation(ModItems.CRIMSON_RITES.get(), 1.0F);
+                spawnAtLocation(new ItemStack(ModItems.CRIMSON_RITES.get()), 1.0F);
             }
         }
         if (kind == LegacyMobKind.PECH) {
@@ -2315,7 +2315,7 @@ public final class LegacyThaumcraftMob extends Monster
                         getBoundingBox().inflate(48.0D, 24.0D, 48.0D),
                         mob -> mob.kind == LegacyMobKind.GIANT_TAINTACLE
                 ).size() <= 1) {
-            spawnAtLocation(ModItems.PRIMORDIAL_PEARL.get(), 1.5F);
+            spawnAtLocation(new ItemStack(ModItems.PRIMORDIAL_PEARL.get()), 1.5F);
         }
     }
 

@@ -1,1 +1,1 @@
-{"type":"block_tag","target":"minecraft:cauldrons","display":"","aspects":[{"id":"metallum","amount":21}],"inactive":false,"modern_rule":"Every cauldron content state shares the base cauldron aspects and one scan key."}
+{"type":"block_tag","target":"minecraft:cauldrons","knowledge_key":"thaumcraftmodern:vanilla_cauldrons","display":"","aspects":[{"id":"metallum","amount":21}],"inactive":false,"modern_rule":"Every cauldron content state shares the base cauldron aspects and one scan key."}

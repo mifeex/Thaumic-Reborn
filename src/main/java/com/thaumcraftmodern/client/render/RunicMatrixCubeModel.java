@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Direct modern equivalent of TC4's two {@code ModelCube(int)} instances. */
 public final class RunicMatrixCubeModel {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     ThaumcraftModern.MOD_ID, "runic_matrix_cube"), "main");
 
     private final ModelPart solid;

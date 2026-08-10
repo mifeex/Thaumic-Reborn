@@ -1006,8 +1006,12 @@ public final class ThaumonomiconScreen extends Screen {
                     aspectId -> currentKnowledge()
                             .map(knowledge -> knowledge.knowsAspect(aspectId))
                             .orElse(false),
+                    aspectId -> currentKnowledge()
+                            .map(knowledge -> knowledge.aspectAmount(aspectId))
+                            .orElse(0),
                     tooltipX,
-                    tooltipY + contentHeight + 8
+                    tooltipY + contentHeight + 8,
+                    Util.getMillis()
             );
             drawHalfScaleResearchText(
                     graphics,
@@ -1457,7 +1461,6 @@ public final class ThaumonomiconScreen extends Screen {
             output.getOrCreateTag().putByte("RS.HARDEN",
                     (byte) runicPreview.outputHardening());
         }
-        output = durabilityPreview(output);
         ThaumonomiconRecipeOutputRenderer.render(
                 graphics,
                 font,
@@ -1729,8 +1732,7 @@ public final class ThaumonomiconScreen extends Screen {
             renderLinkedItem(graphics, displayed, itemX, itemY);
         }
 
-        ItemStack result = durabilityPreview(
-                recipe.getResultItem(minecraft.level.registryAccess()));
+        ItemStack result = recipe.getResultItem(minecraft.level.registryAccess());
         ThaumonomiconRecipeOutputRenderer.render(
                 graphics,
                 font,
@@ -1893,7 +1895,7 @@ public final class ThaumonomiconScreen extends Screen {
         int contentY = y
                 + ThaumonomiconCrucibleRecipeLayout.CONTENT_OFFSET_Y;
 
-        ItemStack output = durabilityPreview(recipe.output());
+        ItemStack output = recipe.output();
         ThaumonomiconRecipeOutputRenderer.render(
                 graphics,
                 font,

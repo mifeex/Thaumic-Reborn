@@ -43,7 +43,7 @@
     {
       "type": "recipe",
       "title": "",
-      "recipe": "thaumcraftmodern:scribing_tools"
+      "recipe": "thaumcraftmodern:scribing_tools_from_phial"
     },
     {
       "type": "recipe",
@@ -53,7 +53,7 @@
     {
       "type": "recipe",
       "title": "",
-      "recipe": "thaumcraftmodern:scribing_tools"
+      "recipe": "thaumcraftmodern:scribing_tools_refill"
     },
     {
       "type": "text",

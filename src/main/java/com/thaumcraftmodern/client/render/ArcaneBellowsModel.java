@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Pixel-for-pixel port of TC4 {@code ModelBellows}: three planks, bag and nozzle. */
 public final class ArcaneBellowsModel {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID, "arcane_bellows"),
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "arcane_bellows"),
             "main");
     private final ModelPart bottomPlank;
     private final ModelPart middlePlank;

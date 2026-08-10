@@ -24,7 +24,7 @@ import org.joml.Matrix4f;
 public final class CrucibleBlockEntityRenderer
         implements BlockEntityRenderer<CrucibleBlockEntity> {
     private static final ResourceLocation WATER_STILL =
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     "minecraft",
                     "block/water_still"
             );

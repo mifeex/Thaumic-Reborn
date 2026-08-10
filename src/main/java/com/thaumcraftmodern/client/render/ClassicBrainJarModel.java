@@ -15,7 +15,7 @@ import org.joml.Matrix4f;
 /** TC4 ModelJar/ModelBrain rendered with the Minecraft 1.7 ModelBox UV contract. */
 public final class ClassicBrainJarModel {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID, "brain_jar"), "main");
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "brain_jar"), "main");
     private static final float PIXEL = 1F / 16F;
 
     public ClassicBrainJarModel(ModelPart ignored) {}

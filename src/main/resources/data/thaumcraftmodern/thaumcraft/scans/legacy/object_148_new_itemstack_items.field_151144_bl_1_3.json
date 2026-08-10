@@ -1,6 +1,7 @@
 {
   "type": "block_tag",
   "target": "thaumcraftmodern:player_head_blocks",
+  "knowledge_key": "thaumcraftmodern:player_heads",
   "display": "",
   "aspects": [
     {

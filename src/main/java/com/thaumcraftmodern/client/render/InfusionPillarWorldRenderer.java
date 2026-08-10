@@ -33,9 +33,9 @@ import java.util.List;
         value = Dist.CLIENT
 )
 public final class InfusionPillarWorldRenderer {
-    private static final ResourceLocation MODEL = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation MODEL = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/pillar.obj");
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/pillar.png");
     private static final RenderType RENDER_TYPE = RenderType.entityCutoutNoCull(TEXTURE);
     private static final List<BlockPos> PILLARS = new ArrayList<>();

@@ -233,7 +233,7 @@ public final class MagicMirrorBlockEntityRenderer<T extends LinkedMirrorBlockEnt
     }
 
     private static ResourceLocation texture(String path) {
-        return ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,
+        return new ResourceLocation(ThaumcraftModern.MOD_ID,
                 "textures/" + path);
     }
 }

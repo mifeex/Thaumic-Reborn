@@ -12,6 +12,7 @@ import com.thaumcraftmodern.world.block.entity.ResearchTableBlockEntity;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +38,11 @@ public final class ResearchTableBlockEntityRenderer
             new ResourceLocation(
                     ThaumcraftModern.MOD_ID,
                     "textures/misc/parchment.png"
+            );
+    private static final ResourceLocation NOTES_TEXTURE =
+            new ResourceLocation(
+                    ThaumcraftModern.MOD_ID,
+                    "textures/models/restable2.png"
             );
     private static final ResourceLocation QUILL_TEXTURE =
             new ResourceLocation(
@@ -110,34 +116,38 @@ public final class ResearchTableBlockEntityRenderer
         renderParchmentStack(
                 poseStack,
                 buffers,
-                notes.isEmpty() ? 1 : 5,
-                notes.getItem() instanceof ResearchNotesItem
-                        ? ResearchNotesItem.color(notes)
-                        : notes.getItem() instanceof DiscoveryItem
-                        ? DiscoveryItem.color(notes)
-                        : ResearchColorResolver.UNKNOWN_COLOR,
-                packedLight,
                 packedOverlay
         );
+        if (!notes.isEmpty()) {
+            int notesColor = notes.getItem() instanceof ResearchNotesItem
+                    ? ResearchNotesItem.color(notes)
+                    : notes.getItem() instanceof DiscoveryItem
+                    ? DiscoveryItem.color(notes)
+                    : ResearchColorResolver.UNKNOWN_COLOR;
+            model.renderScroll(
+                    poseStack,
+                    buffers.getBuffer(RenderType.entityCutoutNoCull(NOTES_TEXTURE)),
+                    notesColor,
+                    packedLight,
+                    packedOverlay
+            );
+        }
         poseStack.popPose();
     }
 
     /**
-     * A bare table shows one parchment sheet. Inserting research notes changes
-     * it to a five-sheet stack without drawing the item texture on top.
+     * TC4 always draws six unlit white parchment sheets. Research-note color
+     * belongs to the separate scroll model, never to this paper stack.
      */
     private static void renderParchmentStack(
             PoseStack poseStack,
             MultiBufferSource buffers,
-            int layerCount,
-            int color,
-            int packedLight,
             int packedOverlay
     ) {
         VertexConsumer vertices = buffers.getBuffer(
                 RenderType.entityCutoutNoCull(PARCHMENT_TEXTURE)
         );
-        for (int layer = 0; layer < layerCount; layer++) {
+        for (int layer = 0; layer < 6; layer++) {
             poseStack.pushPose();
             poseStack.translate(
                     PARCHMENT_CENTER_X,
@@ -151,8 +161,8 @@ public final class ResearchTableBlockEntityRenderer
             renderHorizontalQuad(
                     poseStack,
                     vertices,
-                    color,
-                    packedLight,
+                    0xFFFFFF,
+                    LightTexture.FULL_BRIGHT,
                     packedOverlay
             );
             poseStack.popPose();

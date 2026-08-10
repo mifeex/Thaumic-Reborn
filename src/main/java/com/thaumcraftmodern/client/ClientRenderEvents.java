@@ -142,8 +142,10 @@ public final class ClientRenderEvents {
          * size and position, but all of its fragments occupy the nearest 5%
          * of the depth buffer and therefore cover the already-rendered arms.
          *
-         * Do not clear or disable the shared depth buffer. OptiFine shader
-         * passes reuse it for translucent world geometry such as water.
+         * Do not clear or disable the shared depth buffer. The renderer writes
+         * depth for the solid frame, then suppresses depth writes only for the
+         * transparent lens. That keeps deferred water/cloud passes behind the
+         * body while allowing them to remain visible through the glass.
          */
         GL11.glDepthRange(
                 THAUMOMETER_DEPTH_NEAR,

@@ -3,7 +3,7 @@
   "target": "minecraft:enchanted_book",
   "display": "",
   "aspects": [],
-  "inactive": false,
+  "inactive": true,
   "legacy": {
     "registration_mode": "recipe_derived_modifier",
     "target_kind": "item_stack",

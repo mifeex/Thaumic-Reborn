@@ -18,7 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Exact TC4 ModelGolem box dimensions; the original renders the whole rig at 0.4 scale. */
 public final class StrawGolemModel<T extends ClassicGolemEntity> extends EntityModel<T> {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID, "straw_golem"), "main");
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "straw_golem"), "main");
     private final ModelPart root, head, body, rightArm, leftArm, rightLeg, leftLeg;
 
     public StrawGolemModel(ModelPart root) {

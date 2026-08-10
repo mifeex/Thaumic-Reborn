@@ -20,6 +20,10 @@ class ClassicHarvestLevelFidelityTest {
     void stonePickaxeTierMatchesClassicMetalDevices() throws IOException {
         assertEquals(Set.of(
                 id("crucible"),
+                id("arcane_lamp"),
+                id("lamp_growth"),
+                id("lamp_fertility"),
+                id("item_grate"),
                 id("arcane_alembic"),
                 id("mnemonic_matrix"),
                 id("alchemical_construct"),
@@ -71,6 +75,8 @@ class ClassicHarvestLevelFidelityTest {
                 id("silverwood_stairs"),
                 id("greatwood_slab"),
                 id("silverwood_slab")
+                , id("arcane_bellows")
+                , id("arcane_ear")
         ), values("mineable/axe.json"));
     }
 

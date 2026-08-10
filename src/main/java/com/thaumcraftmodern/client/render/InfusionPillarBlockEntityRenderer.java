@@ -15,9 +15,9 @@ import net.minecraft.resources.ResourceLocation;
 /** Direct TESR equivalent of TC4's TileInfusionPillarRenderer. */
 public final class InfusionPillarBlockEntityRenderer
         implements BlockEntityRenderer<InfusionPillarBlockEntity> {
-    private static final ResourceLocation MODEL = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation MODEL = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/pillar.obj");
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/pillar.png");
     private final LegacyObjMesh mesh;
 

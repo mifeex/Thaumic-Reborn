@@ -149,6 +149,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
     public static List<String> palette() {
         return AspectRegistryRuntime.catalog().definitions().stream()
                 .map(com.thaumcraftmodern.aspect.AspectDefinition::id)
+                .sorted()
                 .toList();
     }
 
@@ -543,12 +544,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
     }
 
     private static void consumeInk(ItemStack tools) {
-        int damage = tools.getDamageValue() + 1;
-        if (damage >= tools.getMaxDamage()) {
-            tools.shrink(1);
-        } else {
-            tools.setDamageValue(damage);
-        }
+        com.thaumcraftmodern.item.ScribingToolsItem.consumeInk(tools);
     }
 
     private static void sendPuzzleResult(ServerPlayer player, String resultName) {

@@ -10,9 +10,7 @@ import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.network.packet.WarpFeedbackPacket;
 import com.thaumcraftmodern.registry.ModEffects;
 import com.thaumcraftmodern.registry.ModEntities;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
@@ -330,9 +328,11 @@ public final class WarpEvents {
     }
 
     private static void message(ServerPlayer player, String key) {
-        player.sendSystemMessage(
-                Component.translatable(key)
-                        .withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC)
-        );
+        ModNetwork.sendTo(player, new WarpFeedbackPacket(
+                WarpFeedbackPacket.TEMPORARY,
+                0,
+                WarpFeedbackPacket.VISUAL_NONE,
+                key
+        ));
     }
 }

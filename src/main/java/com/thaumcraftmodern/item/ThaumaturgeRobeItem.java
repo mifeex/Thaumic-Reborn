@@ -29,7 +29,7 @@ public final class ThaumaturgeRobeItem extends ArmorItem
     public static final int DEFAULT_COLOR = 0x6A3880;
 
     private static final ResourceLocation ENCHANTED_FABRIC =
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     ThaumcraftModern.MOD_ID,
                     "enchanted_fabric"
             );

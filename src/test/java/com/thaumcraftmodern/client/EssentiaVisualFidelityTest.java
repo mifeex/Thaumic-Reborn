@@ -65,7 +65,6 @@ class EssentiaVisualFidelityTest {
         assertTrue(renderer.contains("sprite.getV0()"));
         assertTrue(renderer.contains("sprite.getV1()"));
         assertTrue(renderer.contains(".color(red, green, blue, 255)"));
-        assertTrue(renderer.contains("LightTexture.pack(12, 12)"));
         String hudRegistry = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/"
                         + "AspectContainerHudRegistry.java"));

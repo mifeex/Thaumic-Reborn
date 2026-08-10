@@ -11,9 +11,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public final class BrainJarBlockEntityRenderer implements BlockEntityRenderer<BrainJarBlockEntity>{
-    static final ResourceLocation JAR=ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,"textures/block/jar.png");
-    static final ResourceLocation BRAIN=ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,"textures/block/brain2.png");
-    static final ResourceLocation BRINE=ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,"textures/block/jarbrine.png");
+    static final ResourceLocation JAR=new ResourceLocation(ThaumcraftModern.MOD_ID,"textures/block/jar.png");
+    static final ResourceLocation BRAIN=new ResourceLocation(ThaumcraftModern.MOD_ID,"textures/block/brain2.png");
+    static final ResourceLocation BRINE=new ResourceLocation(ThaumcraftModern.MOD_ID,"textures/block/jarbrine.png");
     private final ClassicBrainJarModel model;
     public BrainJarBlockEntityRenderer(BlockEntityRendererProvider.Context context){model=new ClassicBrainJarModel(context.bakeLayer(ClassicBrainJarModel.LAYER));}
     @Override public void render(BrainJarBlockEntity jar,float partial,PoseStack poses,MultiBufferSource buffers,int light,int overlay){renderAll(model,jar.rotation(partial),jar.bob(partial),poses,buffers,light,overlay);}

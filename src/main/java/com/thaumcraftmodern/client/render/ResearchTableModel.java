@@ -16,13 +16,19 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 public final class ResearchTableModel {
     private static final String TABLE = "table";
     private static final String INKWELL = "inkwell";
+    private static final String SCROLL_TUBE = "scroll_tube";
+    private static final String SCROLL_RIBBON = "scroll_ribbon";
 
     private final ModelPart table;
     private final ModelPart inkwell;
+    private final ModelPart scrollTube;
+    private final ModelPart scrollRibbon;
 
     ResearchTableModel(ModelPart root) {
         table = root.getChild(TABLE);
         inkwell = root.getChild(INKWELL);
+        scrollTube = root.getChild(SCROLL_TUBE);
+        scrollRibbon = root.getChild(SCROLL_RIBBON);
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -51,6 +57,20 @@ public final class ResearchTableModel {
                         .addBox(-6.0F, -2.0F, 3.0F, 3.0F, 2.0F, 3.0F),
                 PartPose.ZERO
         );
+        root.addOrReplaceChild(
+                SCROLL_TUBE,
+                CubeListBuilder.create()
+                        .texOffs(0, 0).mirror()
+                        .addBox(-21.0F, -0.5F, -8.0F, 8.0F, 2.0F, 2.0F),
+                PartPose.offsetAndRotation(-2.0F, -2.0F, 2.0F, 0.0F, 10.0F, 0.0F)
+        );
+        root.addOrReplaceChild(
+                SCROLL_RIBBON,
+                CubeListBuilder.create()
+                        .texOffs(0, 4).mirror()
+                        .addBox(-15.1F, -0.275F, -6.75F, 1.0F, 2.0F, 2.0F),
+                PartPose.offsetAndRotation(-2.0F, -2.0F, 2.0F, 0.0F, 10.0F, 0.0F)
+        );
         return LayerDefinition.create(mesh, 128, 64);
     }
 
@@ -70,5 +90,28 @@ public final class ResearchTableModel {
             int packedOverlay
     ) {
         inkwell.render(poseStack, vertices, packedLight, packedOverlay);
+    }
+
+    void renderScroll(
+            PoseStack poseStack,
+            VertexConsumer vertices,
+            int color,
+            int packedLight,
+            int packedOverlay
+    ) {
+        scrollTube.render(poseStack, vertices, packedLight, packedOverlay);
+        poseStack.pushPose();
+        poseStack.scale(1.2F, 1.2F, 1.2F);
+        scrollRibbon.render(
+                poseStack,
+                vertices,
+                packedLight,
+                packedOverlay,
+                (color >> 16 & 0xFF) / 255.0F,
+                (color >> 8 & 0xFF) / 255.0F,
+                (color & 0xFF) / 255.0F,
+                1.0F
+        );
+        poseStack.popPose();
     }
 }

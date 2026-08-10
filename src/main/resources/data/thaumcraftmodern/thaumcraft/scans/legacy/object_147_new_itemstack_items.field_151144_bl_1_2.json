@@ -1,6 +1,7 @@
 {
   "type": "block_tag",
   "target": "thaumcraftmodern:zombie_head_blocks",
+  "knowledge_key": "thaumcraftmodern:zombie_heads",
   "display": "",
   "aspects": [
     {

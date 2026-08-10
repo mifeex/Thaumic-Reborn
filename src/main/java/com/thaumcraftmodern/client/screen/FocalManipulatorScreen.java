@@ -20,7 +20,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 /** TC4 gui_wandtable presentation with five ranks and mouse-bound choices. */
 public final class FocalManipulatorScreen extends AbstractContainerScreen<FocalManipulatorMenu> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/gui/gui_wandtable.png");
     private static final int START_X = 48;
     private static final int START_Y = 88;
@@ -152,7 +152,7 @@ public final class FocalManipulatorScreen extends AbstractContainerScreen<FocalM
     }
 
     private void drawUpgrade(GuiGraphics graphics, FocusUpgradeType type, int x, int y, int size) {
-        graphics.blit(ResourceLocation.parse(type.icon()), x, y, 0, 0, size, size, size, size);
+        graphics.blit(new ResourceLocation(type.icon()), x, y, 0, 0, size, size, size, size);
     }
 
     @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {

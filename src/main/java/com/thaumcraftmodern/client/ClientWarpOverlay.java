@@ -34,6 +34,9 @@ public final class ClientWarpOverlay {
         if (minecraft.player == null) {
             return;
         }
+        if (!packet.messageKey().isBlank()) {
+            ClientScanOverlay.showWarp(packet.messageKey());
+        }
         if (packet.change() != 0) {
             String key = switch (packet.type()) {
                 case WarpFeedbackPacket.PERMANENT -> "tc.addwarp";

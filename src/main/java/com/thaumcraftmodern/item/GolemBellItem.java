@@ -80,7 +80,7 @@ public final class GolemBellItem extends Item {
                     var upgrade = golem.upgrade(slot);
                     if (upgrade != null && golem.getRandom().nextBoolean()) {
                         net.minecraft.world.item.Item upgradeItem = net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(
-                                net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,
+                                new net.minecraft.resources.ResourceLocation(ThaumcraftModern.MOD_ID,
                                         "golem_upgrade_" + upgrade.id()));
                         if (upgradeItem != null) golem.spawnAtLocation(upgradeItem);
                     }

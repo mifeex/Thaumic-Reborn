@@ -20,7 +20,7 @@ import java.util.Random;
 /** TC4 eight-cube matrix, glow mask, startup shake and crafting halo. */
 public final class RunicMatrixBlockEntityRenderer
         implements BlockEntityRenderer<RunicMatrixBlockEntity> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/block/infuser.png");
     private static final Random HALO_RANDOM = new Random(245L);
     private final RunicMatrixCubeModel model;

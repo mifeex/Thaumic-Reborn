@@ -17,7 +17,7 @@ public final class ClassicJarLabelRenderer {
     private static final ResourceLocation PAPER = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/label.png");
     private static final float CENTER_Y = 0.41F;
-    private static final float SURFACE_OFFSET = 0.285F;
+    private static final float SURFACE_OFFSET = 0.315F;
     private static final float ASPECT_HALF_SIZE = 8.0F * 0.021F;
     private static final int ASPECT_GRAY = 0x808080;
 

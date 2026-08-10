@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
+import java.util.function.ToIntFunction;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -21,6 +22,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
+import com.thaumcraftmodern.item.EtherealEssenceItem;
 
 public final class ScanRegistry {
     private static volatile Map<String, ScanDefinition> definitions = Map.of();
@@ -160,7 +162,8 @@ public final class ScanRegistry {
 
     public static Optional<ScanDefinition> findForItem(ItemStack stack) {
         ItemScanIdentity identity = identityForItem(stack);
-        return find(identity.type(), identity.targetId());
+        return find(identity.type(), identity.targetId())
+                .map(definition -> withStoredEssence(definition, stack));
     }
 
     /**
@@ -177,7 +180,49 @@ public final class ScanRegistry {
                 .or(() -> findTagDefinition(
                         identity.type(),
                         identity.targetId()
-                ));
+                ))
+                .map(definition -> withStoredEssence(definition, stack));
+    }
+
+    /**
+     * TC4 adds IEssentiaContainerItem contents as bonus object tags. Ethereal
+     * essence therefore exposes both its registered Auram and its NBT aspect.
+     */
+    static ScanDefinition withStoredEssence(
+            ScanDefinition definition,
+            ItemStack stack
+    ) {
+        if (!(stack.getItem() instanceof EtherealEssenceItem)) {
+            return definition;
+        }
+        Optional<String> storedAspect = EtherealEssenceItem.aspectId(stack);
+        int storedAmount = EtherealEssenceItem.amount(stack);
+        return withStoredAspect(definition, storedAspect, storedAmount);
+    }
+
+    static ScanDefinition withStoredAspect(
+            ScanDefinition definition,
+            Optional<String> storedAspect,
+            int storedAmount
+    ) {
+        if (storedAspect.isEmpty() || storedAmount <= 0) {
+            return definition;
+        }
+        LinkedHashMap<String, Integer> merged = new LinkedHashMap<>();
+        for (AspectReward reward : definition.aspects()) {
+            merged.merge(reward.aspectId(), reward.amount(), Math::addExact);
+        }
+        merged.merge(storedAspect.get(), storedAmount, Math::addExact);
+        List<AspectReward> aspects = merged.entrySet().stream()
+                .map(entry -> new AspectReward(entry.getKey(), entry.getValue()))
+                .toList();
+        return new ScanDefinition(
+                definition.type(),
+                definition.targetId(),
+                definition.displayKey(),
+                aspects,
+                definition.knowledgeKey()
+        );
     }
 
     public static List<ScanDefinition> all() {
@@ -221,7 +266,12 @@ public final class ScanRegistry {
                                             )
                                     )
                             ))
-                            .min(Comparator.comparing(ScanDefinition::scanKey))
+                            .min(tagDefinitionComparator(definition ->
+                                    BuiltInRegistries.ITEM.getTag(TagKey.create(
+                                            Registries.ITEM,
+                                            new ResourceLocation(definition.targetId())
+                                    )).map(tag -> tag.size()).orElse(Integer.MAX_VALUE)
+                            ))
             );
         }
         if (requestedType == ScanTargetType.BLOCK) {
@@ -237,10 +287,22 @@ public final class ScanRegistry {
                                             )
                                     )
                             ))
-                            .min(Comparator.comparing(ScanDefinition::scanKey))
+                            .min(tagDefinitionComparator(definition ->
+                                    BuiltInRegistries.BLOCK.getTag(TagKey.create(
+                                            Registries.BLOCK,
+                                            new ResourceLocation(definition.targetId())
+                                    )).map(tag -> tag.size()).orElse(Integer.MAX_VALUE)
+                            ))
             );
         }
         return Optional.empty();
+    }
+
+    static Comparator<ScanDefinition> tagDefinitionComparator(
+            ToIntFunction<ScanDefinition> tagSize
+    ) {
+        return Comparator.comparingInt(tagSize)
+                .thenComparing(ScanDefinition::scanKey);
     }
 
     public static String scanKey(ScanTargetType type, String targetId) {
@@ -250,8 +312,29 @@ public final class ScanRegistry {
     /** Returns the shared player-knowledge key selected by a direct or tag scan. */
     public static String knowledgeKey(ScanTargetType type, String targetId) {
         return find(type, targetId)
-                .map(ScanDefinition::knowledgeKey)
+                .map(definition -> resolvedKnowledgeKey(definition, type, targetId))
                 .orElseGet(() -> scanKey(type, targetId));
+    }
+
+    static String resolvedKnowledgeKey(
+            ScanDefinition definition,
+            ScanTargetType resolvedType,
+            String resolvedTargetId
+    ) {
+        return usesImplicitTagKnowledgeKey(definition)
+                ? scanKey(resolvedType, resolvedTargetId)
+                : definition.knowledgeKey();
+    }
+
+    /**
+     * Tags share aspect definitions, not discovery progress, unless the JSON
+     * explicitly provides a knowledge_key. This preserves TC4's behaviour for
+     * OreDictionary-style material families.
+     */
+    private static boolean usesImplicitTagKnowledgeKey(ScanDefinition definition) {
+        return (definition.type() == ScanTargetType.BLOCK_TAG
+                || definition.type() == ScanTargetType.ITEM_TAG)
+                && definition.knowledgeKey().equals(definition.scanKey());
     }
 
     /**

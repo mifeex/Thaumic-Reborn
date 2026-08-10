@@ -9,7 +9,7 @@
       "item": "minecraft:feather"
     },
     {
-      "item": "minecraft:black_dye"
+      "tag": "forge:dyes/black"
     }
   ],
   "result": {

@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import org.lwjgl.opengl.GL11;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -72,24 +73,50 @@ public final class ClassicThaumometerItemRenderer
         boolean legacyBlockCentered =
                 displayContext == ItemDisplayContext.NONE;
 
+        RenderType frameRenderType = RenderType.entityCutoutNoCull(
+                FRAME_TEXTURE
+        );
         renderMaterial(
                 current,
                 "scanner",
-                buffers.getBuffer(RenderType.entityCutoutNoCull(FRAME_TEXTURE)),
+                buffers.getBuffer(frameRenderType),
                 poseStack.last(),
                 packedLight,
                 packedOverlay,
                 legacyBlockCentered
         );
-        renderMaterial(
-                current,
-                "scanscreen",
-                buffers.getBuffer(RenderType.entityTranslucent(SCREEN_TEXTURE)),
-                poseStack.last(),
-                packedLight,
-                packedOverlay,
-                legacyBlockCentered
+        flush(buffers, frameRenderType);
+
+        RenderType screenRenderType = RenderType.entityTranslucent(
+                SCREEN_TEXTURE
         );
+        boolean previousDepthMask = GL11.glGetBoolean(
+                GL11.GL_DEPTH_WRITEMASK
+        );
+        GL11.glDepthMask(false);
+        try {
+            renderMaterial(
+                    current,
+                    "scanscreen",
+                    buffers.getBuffer(screenRenderType),
+                    poseStack.last(),
+                    packedLight,
+                    packedOverlay,
+                    legacyBlockCentered
+            );
+            flush(buffers, screenRenderType);
+        } finally {
+            GL11.glDepthMask(previousDepthMask);
+        }
+    }
+
+    private static void flush(
+            MultiBufferSource buffers,
+            RenderType renderType
+    ) {
+        if (buffers instanceof MultiBufferSource.BufferSource bufferSource) {
+            bufferSource.endBatch(renderType);
+        }
     }
 
     private Mesh mesh() {

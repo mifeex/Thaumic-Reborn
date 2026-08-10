@@ -27,9 +27,7 @@ final class ArcanePedestalRendererFidelityTest {
         assertTrue(renderer.contains("1.15D + bob"));
         assertTrue(renderer.contains("/ 16.0F) * 0.05F"));
         assertTrue(renderer.contains("ticks % 360.0F"));
-        assertTrue(renderer.contains(
-                "getItem() instanceof BlockItem ? 2.0F : 1.0F"
-        ));
+        assertTrue(renderer.contains("float scale = 1.0F"));
         assertTrue(renderer.contains("ItemDisplayContext.GROUND"));
     }
 

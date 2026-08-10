@@ -6,6 +6,7 @@ import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.network.packet.ScanFeedbackPacket;
 import com.thaumcraftmodern.scan.AspectReward;
 import net.minecraft.Util;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -65,6 +66,11 @@ public final class ClientScanOverlay {
                 : FAILURE_DISPLAY_MILLIS);
     }
 
+    /** Uses the same bottom-right notification lane as Thaumometer feedback. */
+    public static void showWarp(String messageKey) {
+        show(new ScanFeedbackPacket(false, messageKey, "", List.of()));
+    }
+
     /**
      * TC4-style scan feedback has no panel behind it. Text notifications sit
      * at the bottom-right and are revealed by the classic travelling glow,
@@ -94,7 +100,8 @@ public final class ClientScanOverlay {
                     screenWidth,
                     screenHeight
             );
-        } else if (isStudyFailure(notification.messageKey())) {
+        } else if (isStudyFailure(notification.messageKey())
+                || isWarpMessage(notification.messageKey())) {
             renderFailureNotification(
                     graphics,
                     minecraft,
@@ -120,7 +127,8 @@ public final class ClientScanOverlay {
         if (notification.success()) {
             renderSuccessNotification(graphics, minecraft, notification,
                     screenWidth, screenHeight);
-        } else if (isStudyFailure(notification.messageKey())) {
+        } else if (isStudyFailure(notification.messageKey())
+                || isWarpMessage(notification.messageKey())) {
             renderFailureNotification(graphics, minecraft, notification,
                     screenWidth, screenHeight);
         }
@@ -159,7 +167,8 @@ public final class ClientScanOverlay {
         float visibility = visibility(now);
         float easedSlide = 1.0F - (1.0F - fadeIn) * (1.0F - fadeIn);
         int alpha = Mth.clamp(Math.round(255.0F * visibility), 4, 255);
-        int color = (alpha << 24) | TEXT_COLOR;
+        boolean warpMessage = isWarpMessage(notification.messageKey());
+        int color = (alpha << 24) | (warpMessage ? 0xAA00AA : TEXT_COLOR);
 
         Component message = notification.displayKey().isBlank()
                 ? Component.translatable(notification.messageKey())
@@ -167,6 +176,12 @@ public final class ClientScanOverlay {
                         notification.messageKey(),
                         Component.translatable(notification.displayKey())
                 );
+        if (warpMessage) {
+            message = message.copy().withStyle(
+                    ChatFormatting.DARK_PURPLE,
+                    ChatFormatting.ITALIC
+            );
+        }
         int maxRenderedWidth = Math.max(100, Math.min(220, screenWidth / 2));
         int maxTextWidth = Math.round(maxRenderedWidth / FAILURE_TEXT_SCALE);
         List<FormattedCharSequence> lines = minecraft.font.split(message, maxTextWidth);
@@ -918,5 +933,9 @@ public final class ClientScanOverlay {
                 || messageKey.equals(
                         "message.thaumcraftmodern.scan.error.missing_parent"
                 );
+    }
+
+    private static boolean isWarpMessage(String messageKey) {
+        return messageKey.startsWith("warp.text.");
     }
 }

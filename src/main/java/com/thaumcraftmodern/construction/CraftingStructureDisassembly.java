@@ -88,7 +88,7 @@ public final class CraftingStructureDisassembly {
                 BlockPos pos = anchor.offset(x, y, z);
                 BlockState current = level.getBlockState(pos);
                 BlockState source;
-                if (x != 1 && z != 1) source = Blocks.NETHER_BRICKS.defaultBlockState();
+                if (x != 1 && z != 1) source = Blocks.NETHERRACK.defaultBlockState();
                 else if (x == 1 && y == 1 && z == 1) source = Blocks.LAVA.defaultBlockState();
                 else if (current.is(ModBlocks.INFERNAL_FURNACE.get())
                         && current.getValue(InfernalFurnaceBlock.PART) == 10) source = Blocks.IRON_BARS.defaultBlockState();

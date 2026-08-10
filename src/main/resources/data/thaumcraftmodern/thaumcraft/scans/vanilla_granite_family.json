@@ -1,0 +1,10 @@
+{
+  "type": "block_tag",
+  "target": "thaumcraftmodern:granite_family",
+  "display": "",
+  "aspects": [
+    {"id": "terra", "amount": 2},
+    {"id": "ignis", "amount": 2}
+  ],
+  "modern_rule": "Granite forms share aspects but retain separate research keys."
+}

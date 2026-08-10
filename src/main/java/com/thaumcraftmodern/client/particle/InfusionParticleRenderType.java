@@ -17,7 +17,7 @@ final class InfusionParticleRenderType implements ParticleRenderType {
     static final InfusionParticleRenderType INSTANCE =
             new InfusionParticleRenderType();
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(ThaumcraftModern.MOD_ID,
+            new ResourceLocation(ThaumcraftModern.MOD_ID,
                     "textures/misc/particles.png");
 
     private InfusionParticleRenderType() {

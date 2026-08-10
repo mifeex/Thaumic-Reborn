@@ -44,12 +44,10 @@ public final class ScribingToolsItem extends Item {
         if (!hasInk(stack)) {
             return;
         }
-        int damage = stack.getDamageValue() + 1;
-        if (damage >= stack.getMaxDamage()) {
-            stack.shrink(1);
-        } else {
-            stack.setDamageValue(damage);
-        }
+        stack.setDamageValue(ScribingToolsInk.nextDamage(
+                stack.getDamageValue(),
+                stack.getMaxDamage()
+        ));
     }
 
     /**

@@ -48,7 +48,11 @@ class SharedVanillaScanFamilyFidelityTest {
     void thaumcraftPennantsShareVanillaBannerKnowledgeKey() throws IOException {
         JsonObject pennants = json(SCANS.resolve(
                 "legacy/object_313_new_itemstack_configblocks.blockwoodendevice_1_8.json"));
-        assertEquals("block_tag:minecraft:banners", pennants.get("knowledge_key").getAsString());
+        assertEquals("thaumcraftmodern:vanilla_banners",
+                pennants.get("knowledge_key").getAsString());
+        assertEquals("thaumcraftmodern:vanilla_banners",
+                json(SCANS.resolve("vanilla_banner_family.json"))
+                        .get("knowledge_key").getAsString());
         assertTrue(json(Path.of("src/main/resources/data/thaumcraftmodern/tags/items/thaumcraft_banners.json"))
                 .getAsJsonArray("values").toString().contains("#minecraft:banners"));
     }

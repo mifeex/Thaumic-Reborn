@@ -23,7 +23,7 @@ import java.util.Map;
 public final class ThaumatoriumScreen
         extends AbstractContainerScreen<ThaumatoriumMenu> {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     ThaumcraftModern.MOD_ID,
                     "textures/gui/gui_thaumatorium.png"
     );

@@ -20,7 +20,7 @@ final class ThaumonomiconRecipeOutputRenderer {
     static final int ITEM_OFFSET_Y = 8;
 
     private static final ResourceLocation BOOK_OVERLAY =
-            ResourceLocation.fromNamespaceAndPath(
+            new ResourceLocation(
                     ThaumcraftModern.MOD_ID,
                     "textures/gui/gui_researchbook_overlay.png"
             );

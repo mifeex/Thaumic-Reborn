@@ -83,7 +83,11 @@ final class ClassicMagicalWoodCraftingFidelityTest {
             JsonArray values = json(Path.of(
                     "src/main/resources/data/minecraft/tags/" + tag + ".json"))
                     .getAsJsonArray("values");
-            assertEquals(2, values.size());
+            String shape = tag.endsWith("stairs") ? "stairs" : "slab";
+            assertTrue(values.asList().stream().anyMatch(value -> value.getAsString()
+                    .equals("thaumcraftmodern:greatwood_" + shape)));
+            assertTrue(values.asList().stream().anyMatch(value -> value.getAsString()
+                    .equals("thaumcraftmodern:silverwood_" + shape)));
         }
     }
 
