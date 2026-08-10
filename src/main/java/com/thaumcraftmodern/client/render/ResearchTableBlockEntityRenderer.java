@@ -5,8 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.item.DiscoveryItem;
-import com.thaumcraftmodern.item.ResearchNotesItem;
-import com.thaumcraftmodern.research.ResearchColorResolver;
 import com.thaumcraftmodern.world.block.ResearchTableBlock;
 import com.thaumcraftmodern.world.block.entity.ResearchTableBlockEntity;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -113,17 +111,8 @@ public final class ResearchTableBlockEntityRenderer
         ItemStack notes = table.items().getStackInSlot(
                 ResearchTableBlockEntity.NOTES_SLOT
         );
-        renderParchmentStack(
-                poseStack,
-                buffers,
-                packedOverlay
-        );
-        if (!notes.isEmpty()) {
-            int notesColor = notes.getItem() instanceof ResearchNotesItem
-                    ? ResearchNotesItem.color(notes)
-                    : notes.getItem() instanceof DiscoveryItem
-                    ? DiscoveryItem.color(notes)
-                    : ResearchColorResolver.UNKNOWN_COLOR;
+        if (notes.getItem() instanceof DiscoveryItem) {
+            int notesColor = DiscoveryItem.color(notes);
             model.renderScroll(
                     poseStack,
                     buffers.getBuffer(RenderType.entityCutoutNoCull(NOTES_TEXTURE)),
@@ -131,14 +120,17 @@ public final class ResearchTableBlockEntityRenderer
                     packedLight,
                     packedOverlay
             );
+        } else {
+            renderParchmentStack(
+                    poseStack,
+                    buffers,
+                    packedOverlay
+            );
         }
         poseStack.popPose();
     }
 
-    /**
-     * TC4 always draws six unlit white parchment sheets. Research-note color
-     * belongs to the separate scroll model, never to this paper stack.
-     */
+    /** Draws the ordinary six-sheet state used until research is completed. */
     private static void renderParchmentStack(
             PoseStack poseStack,
             MultiBufferSource buffers,

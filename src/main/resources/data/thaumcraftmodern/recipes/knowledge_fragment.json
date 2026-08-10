@@ -1,19 +1,4 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "minecraft:paper"
-    },
-    {
-      "item": "minecraft:amethyst_shard"
-    },
-    {
-      "tag": "thaumcraftmodern:elemental_shards"
-    }
-  ],
-  "result": {
-    "item": "thaumcraftmodern:knowledge_fragment",
-    "count": 1
-  }
+  "type": "thaumcraftmodern:knowledge_fragment_research",
+  "category": "misc"
 }

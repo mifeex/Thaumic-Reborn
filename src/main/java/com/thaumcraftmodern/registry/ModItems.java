@@ -25,6 +25,7 @@ import com.thaumcraftmodern.item.JarredAuraNodeItem;
 import com.thaumcraftmodern.item.JarLabelItem;
 import com.thaumcraftmodern.item.LootBagItem;
 import com.thaumcraftmodern.item.ResearchNotesItem;
+import com.thaumcraftmodern.item.KnowledgeFragmentItem;
 import com.thaumcraftmodern.item.ScribingToolsItem;
 import com.thaumcraftmodern.item.SanityCheckerItem;
 import com.thaumcraftmodern.item.SanitySoapItem;
@@ -138,7 +139,10 @@ public final class ModItems {
     public static final RegistryObject<Item> DISCOVERY =
             ITEMS.register("discovery", () -> new DiscoveryItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> KNOWLEDGE_FRAGMENT =
-            ITEMS.register("knowledge_fragment", () -> new Item(new Item.Properties()));
+            ITEMS.register(
+                    "knowledge_fragment",
+                    () -> new KnowledgeFragmentItem(new Item.Properties())
+            );
     public static final RegistryObject<Item> ETHEREAL_ESSENCE =
             ITEMS.register(
                     "ethereal_essence",

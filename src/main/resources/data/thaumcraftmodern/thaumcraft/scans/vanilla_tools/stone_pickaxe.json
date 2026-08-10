@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:stone_pickaxe","display":"item.minecraft.stone_pickaxe","aspects":[{"id":"instrumentum","amount":2},{"id":"terra","amount":3}]}
+{"type":"item","target":"minecraft:stone_pickaxe","display":"item.minecraft.stone_pickaxe","aspects":[{"id":"terra","amount":2},{"id":"perditio","amount":2},{"id":"arbor","amount":1},{"id":"perfodio","amount":2}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

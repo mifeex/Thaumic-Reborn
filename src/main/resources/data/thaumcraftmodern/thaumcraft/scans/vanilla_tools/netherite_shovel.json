@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:netherite_shovel","display":"item.minecraft.netherite_shovel","aspects":[{"id":"instrumentum","amount":4},{"id":"vitreus","amount":4}]}
+{"type":"item","target":"minecraft:netherite_shovel","display":"item.minecraft.netherite_shovel","aspects":[{"id":"vitreus","amount":4},{"id":"lucrum","amount":4},{"id":"arbor","amount":2},{"id":"instrumentum","amount":5}],"modern_rule":"Corrected TC4 diamond tool aspects plus one each."}

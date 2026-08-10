@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:diamond_hoe","display":"item.minecraft.diamond_hoe","aspects":[{"id":"instrumentum","amount":3},{"id":"vitreus","amount":3},{"id":"meto","amount":2}]}
+{"type":"item","target":"minecraft:diamond_hoe","display":"item.minecraft.diamond_hoe","aspects":[{"id":"vitreus","amount":6},{"id":"lucrum","amount":6},{"id":"arbor","amount":1},{"id":"meto","amount":2}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

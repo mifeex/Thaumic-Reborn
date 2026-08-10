@@ -6,6 +6,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import com.thaumcraftmodern.alchemy.DoubleSmeltingRecipe;
 import com.thaumcraftmodern.alchemy.DoubleBlastingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -53,6 +54,11 @@ public final class ModArcaneRecipes {
             DOUBLE_BLASTING_SERIALIZER = RECIPE_SERIALIZERS.register(
                     "double_blasting",
                     DoubleBlastingRecipe.Serializer::new
+            );
+    public static final RegistryObject<RecipeSerializer<KnowledgeFragmentRecipe>>
+            KNOWLEDGE_FRAGMENT_SERIALIZER = RECIPE_SERIALIZERS.register(
+                    "knowledge_fragment_research",
+                    () -> new SimpleCraftingRecipeSerializer<>(KnowledgeFragmentRecipe::new)
             );
 
     private ModArcaneRecipes() {

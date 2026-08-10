@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:iron_hoe","display":"item.minecraft.iron_hoe","aspects":[{"id":"instrumentum","amount":2},{"id":"metallum","amount":2},{"id":"meto","amount":1}]}
+{"type":"item","target":"minecraft:iron_hoe","display":"item.minecraft.iron_hoe","aspects":[{"id":"metallum","amount":6},{"id":"arbor","amount":1},{"id":"meto","amount":2}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

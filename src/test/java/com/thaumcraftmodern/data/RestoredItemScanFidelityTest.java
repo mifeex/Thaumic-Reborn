@@ -69,23 +69,29 @@ final class RestoredItemScanFidelityTest {
     }
 
     @Test
-    void vanillaToolScansMatchTheTwentyFiveDirectTc4Registrations()
+    void vanillaToolScansMatchTc4RecipeAndItemClassBonuses()
             throws IOException {
-        assertToolSet("iron", "metallum", 3, 3, 2, 2,
-                Map.of("pickaxe", 3, "axe", 3, "shovel", 2, "sword", 3,
-                        "hoe", 2));
-        assertToolSet("diamond", "vitreus", 5, 4, 3, 3,
-                Map.of("pickaxe", 4, "axe", 4, "shovel", 3, "sword", 4,
-                        "hoe", 3));
-        assertToolSet("golden", "metallum", 4, 4, 4, 4,
-                Map.of("pickaxe", 2, "axe", 2, "shovel", 1, "sword", 2,
-                        "hoe", 1));
-        assertToolSet("stone", "terra", 3, 3, 2, 2,
-                Map.of("pickaxe", 2, "axe", 2, "shovel", 1, "sword", 2,
-                        "hoe", 1));
-        assertToolSet("wooden", "arbor", 3, 3, 2, 2,
-                Map.of("pickaxe", 1, "axe", 1, "shovel", 1, "sword", 1,
-                        "hoe", 1));
+        assertScan("vanilla_tools/iron_sword.json", "item",
+                "minecraft:iron_sword", Map.of("metallum", 6, "telum", 7));
+        assertScan("vanilla_tools/diamond_pickaxe.json", "item",
+                "minecraft:diamond_pickaxe", Map.of("vitreus", 9,
+                        "lucrum", 9, "arbor", 1, "perfodio", 4));
+        assertScan("vanilla_tools/stone_pickaxe.json", "item",
+                "minecraft:stone_pickaxe", Map.of("terra", 2,
+                        "perditio", 2, "arbor", 1, "perfodio", 2));
+        assertScan("vanilla_tools/golden_axe.json", "item",
+                "minecraft:golden_axe", Map.of("metallum", 6,
+                        "lucrum", 4, "arbor", 1, "instrumentum", 1));
+
+        for (String material : List.of("wooden", "stone", "iron", "golden",
+                "diamond")) {
+            for (String tool : List.of("pickaxe", "axe", "shovel", "hoe", "sword")) {
+                JsonObject scan = json(SCANS.resolve(
+                        "vanilla_tools/" + material + "_" + tool + ".json"));
+                assertEquals("ThaumcraftCraftingManager.generateTags + getBonusTags",
+                        scan.getAsJsonObject("legacy").get("source").getAsString());
+            }
+        }
     }
 
     @Test

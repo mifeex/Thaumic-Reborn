@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:diamond_shovel","display":"item.minecraft.diamond_shovel","aspects":[{"id":"instrumentum","amount":3},{"id":"vitreus","amount":3}]}
+{"type":"item","target":"minecraft:diamond_shovel","display":"item.minecraft.diamond_shovel","aspects":[{"id":"vitreus","amount":3},{"id":"lucrum","amount":3},{"id":"arbor","amount":1},{"id":"instrumentum","amount":4}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

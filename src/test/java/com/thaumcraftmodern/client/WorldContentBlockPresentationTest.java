@@ -86,6 +86,10 @@ final class WorldContentBlockPresentationTest {
             ).getAsJsonObject();
 
             assertEquals(
+                    "minecraft:cutout_mipped",
+                    model.get("render_type").getAsString()
+            );
+            assertEquals(
                     "minecraft:block/stone",
                     model.getAsJsonObject("textures")
                             .get("backing")

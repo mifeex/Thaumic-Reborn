@@ -107,6 +107,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerScreens(net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
+            ClientSinisterNodeTracker.installLifecycleListener();
             MenuScreens.register(ModMenus.RESEARCH_TABLE.get(), ResearchTableScreen::new);
             MenuScreens.register(ModMenus.ARCANE_WORKBENCH.get(), ArcaneWorkbenchScreen::new);
             MenuScreens.register(

@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:iron_sword","display":"item.minecraft.iron_sword","aspects":[{"id":"instrumentum","amount":3},{"id":"telum","amount":3},{"id":"metallum","amount":3}]}
+{"type":"item","target":"minecraft:iron_sword","display":"item.minecraft.iron_sword","aspects":[{"id":"metallum","amount":6},{"id":"telum","amount":7}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

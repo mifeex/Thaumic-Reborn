@@ -148,8 +148,10 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
 
     public static List<String> palette() {
         return AspectRegistryRuntime.catalog().definitions().stream()
+                .sorted(java.util.Comparator
+                        .comparingInt(com.thaumcraftmodern.aspect.AspectDefinition::order)
+                        .thenComparing(com.thaumcraftmodern.aspect.AspectDefinition::id))
                 .map(com.thaumcraftmodern.aspect.AspectDefinition::id)
-                .sorted()
                 .toList();
     }
 

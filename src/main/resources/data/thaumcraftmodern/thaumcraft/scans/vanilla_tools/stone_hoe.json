@@ -1,1 +1,1 @@
-{"type":"item","target":"minecraft:stone_hoe","display":"item.minecraft.stone_hoe","aspects":[{"id":"instrumentum","amount":1},{"id":"terra","amount":2},{"id":"meto","amount":1}]}
+{"type":"item","target":"minecraft:stone_hoe","display":"item.minecraft.stone_hoe","aspects":[{"id":"terra","amount":1},{"id":"perditio","amount":1},{"id":"arbor","amount":1},{"id":"meto","amount":3}],"legacy":{"source":"ThaumcraftCraftingManager.generateTags + getBonusTags","version":"Thaumcraft 4.2.3.5 / Minecraft 1.7.10"}}

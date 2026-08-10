@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ResearchTableParchmentFidelityTest {
     @Test
-    void parchmentStaysWhiteAndResearchColorBelongsToSeparateScroll()
+    void completedDiscoveryReplacesWhiteParchmentWithColoredScroll()
             throws Exception {
         String renderer = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/render/"
@@ -21,6 +21,12 @@ final class ResearchTableParchmentFidelityTest {
         assertTrue(renderer.contains("0xFFFFFF"));
         assertTrue(renderer.contains("textures/models/restable2.png"));
         assertTrue(renderer.contains("model.renderScroll("));
+        assertTrue(renderer.contains(
+                "if (notes.getItem() instanceof DiscoveryItem)"
+        ));
+        assertTrue(renderer.contains("} else {\n            renderParchmentStack("));
+        assertTrue(renderer.contains("DiscoveryItem.color(notes)"));
+        assertFalse(renderer.contains("ResearchNotesItem.color(notes)"));
         assertFalse(renderer.contains("notes.isEmpty() ? 1 : 5"));
 
         String model = Files.readString(Path.of(

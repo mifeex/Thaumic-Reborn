@@ -347,6 +347,21 @@ public final class AuraNodeBlockEntity extends BlockEntity {
                     recoveryDiagnostic
             );
         }
+        notifyClientIndexChanged();
+    }
+
+    @Override
+    public synchronized void onLoad() {
+        super.onLoad();
+        notifyClientIndexChanged();
+    }
+
+    @Override
+    public synchronized void setRemoved() {
+        if (level != null && level.isClientSide) {
+            AuraNodeClientLifecycle.removed(this);
+        }
+        super.setRemoved();
     }
 
     @Override
@@ -392,6 +407,12 @@ public final class AuraNodeBlockEntity extends BlockEntity {
                         )
                 );
             }
+        }
+    }
+
+    private void notifyClientIndexChanged() {
+        if (level != null && level.isClientSide) {
+            AuraNodeClientLifecycle.changed(this);
         }
     }
 }
