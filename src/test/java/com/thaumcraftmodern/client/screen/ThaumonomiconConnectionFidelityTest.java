@@ -12,10 +12,14 @@ final class ThaumonomiconConnectionFidelityTest {
     private static final Path SCREEN = Path.of(
             "src/main/java/com/thaumcraftmodern/client/screen/"
                     + "ThaumonomiconScreen.java");
+    private static final Path BROWSER_MODEL = Path.of(
+            "src/main/java/com/thaumcraftmodern/client/screen/"
+                    + "ThaumonomiconBrowserModel.java");
 
     @Test
     void researchLinksUseExactTunableTc4LineStrip() throws Exception {
         String source = Files.readString(SCREEN);
+        String modelSource = Files.readString(BROWSER_MODEL);
         for (String control : new String[]{
                 "public static final float RESEARCH_CONNECTION_WIDTH",
                 "public static final float RESEARCH_CONNECTION_ALPHA",
@@ -54,7 +58,13 @@ final class ThaumonomiconConnectionFidelityTest {
         assertTrue(source.contains("alpha *= phase"));
         assertTrue(source.contains("Math.sin("));
         assertTrue(source.contains("graphics.flush()"));
-        assertTrue(source.contains("for (String siblingId : research.siblings())"));
+        assertTrue(modelSource.contains(
+                "for (String siblingId : definition.siblings())"
+        ));
+        assertTrue(modelSource.contains(
+                "sibling.parents().contains(definition.id())"
+        ));
+        assertTrue(modelSource.contains("if (drawn.add(edge))"));
         assertFalse(source.contains("RESEARCH_CONNECTION_SHADOW"));
         assertFalse(source.contains("VertexFormat.Mode.TRIANGLE_STRIP"));
         assertFalse(source.contains("VertexFormat.Mode.LINE_STRIP"));

@@ -2,10 +2,13 @@ package com.thaumcraftmodern.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -15,12 +18,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /** Runtime group renderer for the original TC4 Wavefront meshes. */
-final class LegacyObjMesh {
+public final class LegacyObjMesh {
+    private static final List<ResourceLocation> RUNTIME_MESHES = List.of(
+            mesh("vis_relay.obj"),
+            mesh("node_stabilizer.obj"),
+            mesh("pillar.obj"),
+            mesh("adv_alch_furnace.obj")
+    );
+    private static volatile Map<ResourceLocation, LegacyObjMesh> loadedMeshes =
+            Map.of();
+
     private final List<Vector3f> positions;
     private final List<Uv> uvs;
     private final List<Vector3f> normals;
@@ -38,8 +51,58 @@ final class LegacyObjMesh {
         this.groups = groups;
     }
 
-    static LegacyObjMesh load(ResourceLocation location) {
-        Resource resource = Minecraft.getInstance().getResourceManager()
+    public static void registerReloadListener(
+            RegisterClientReloadListenersEvent event
+    ) {
+        event.registerReloadListener(
+                new SimplePreparableReloadListener<
+                        Map<ResourceLocation, LegacyObjMesh>>() {
+                    @Override
+                    protected Map<ResourceLocation, LegacyObjMesh> prepare(
+                            ResourceManager resourceManager,
+                            ProfilerFiller profiler
+                    ) {
+                        Map<ResourceLocation, LegacyObjMesh> prepared =
+                                new LinkedHashMap<>();
+                        for (ResourceLocation location : RUNTIME_MESHES) {
+                            prepared.put(location, parse(
+                                    resourceManager,
+                                    location
+                            ));
+                        }
+                        return Map.copyOf(prepared);
+                    }
+
+                    @Override
+                    protected void apply(
+                            Map<ResourceLocation, LegacyObjMesh> prepared,
+                            ResourceManager resourceManager,
+                            ProfilerFiller profiler
+                    ) {
+                        // One publication replaces the complete CPU snapshot;
+                        // renderers can never observe a partially reloaded set.
+                        loadedMeshes = prepared;
+                    }
+                }
+        );
+    }
+
+    static LegacyObjMesh get(ResourceLocation location) {
+        LegacyObjMesh mesh = loadedMeshes.get(location);
+        if (mesh == null) {
+            throw new IllegalStateException(
+                    "Classic OBJ was not prepared during resource reload: "
+                            + location
+            );
+        }
+        return mesh;
+    }
+
+    private static LegacyObjMesh parse(
+            ResourceManager resourceManager,
+            ResourceLocation location
+    ) {
+        Resource resource = resourceManager
                 .getResource(location)
                 .orElseThrow(() -> new IllegalStateException(
                         "Missing classic OBJ " + location));
@@ -80,11 +143,23 @@ final class LegacyObjMesh {
         } catch (IOException exception) {
             throw new IllegalStateException("Could not load " + location, exception);
         }
+        Map<String, List<Face>> immutableGroups = new HashMap<>();
+        groups.forEach((name, faces) -> immutableGroups.put(
+                name,
+                List.copyOf(faces)
+        ));
         return new LegacyObjMesh(
                 List.copyOf(positions),
                 List.copyOf(uvs),
                 List.copyOf(normals),
-                Map.copyOf(groups)
+                Map.copyOf(immutableGroups)
+        );
+    }
+
+    private static ResourceLocation mesh(String fileName) {
+        return new ResourceLocation(
+                "thaumcraftmodern",
+                "textures/models/" + fileName
         );
     }
 

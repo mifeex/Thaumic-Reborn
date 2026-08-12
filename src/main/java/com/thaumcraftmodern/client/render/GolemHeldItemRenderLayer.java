@@ -16,6 +16,7 @@ import net.minecraft.world.item.Items;
 /** Original TC4 carried-stack layer: cargo between both hands, tools in the right hand. */
 public final class GolemHeldItemRenderLayer<T extends ClassicGolemEntity>
         extends RenderLayer<T, StrawGolemModel<T>> {
+    private static final float HELD_ITEM_SCALE = 1.3F;
     private final ItemRenderer items;
 
     public GolemHeldItemRenderLayer(RenderLayerParent<T, StrawGolemModel<T>> parent, ItemRenderer items) {
@@ -53,6 +54,7 @@ public final class GolemHeldItemRenderLayer<T extends ClassicGolemEntity>
         poses.scale(.72F, .72F, .72F);
         poses.mulPose(Axis.XP.rotationDegrees(180F));
         poses.mulPose(Axis.YP.rotationDegrees(180F));
+        poses.scale(HELD_ITEM_SCALE, HELD_ITEM_SCALE, HELD_ITEM_SCALE);
         items.renderStatic(golem, stack, ItemDisplayContext.FIXED, false,
                 poses, buffers, golem.level(), light, OverlayTexture.NO_OVERLAY, golem.getId());
         poses.popPose();

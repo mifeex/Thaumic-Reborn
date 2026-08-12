@@ -15,7 +15,11 @@ import java.util.Map;
 import java.util.Optional;
 
 public final class ResearchRegistry {
-    private static volatile Map<String, ResearchDefinition> definitions = Map.of();
+    private static volatile Snapshot snapshot = new Snapshot(
+            Map.of(),
+            List.of(),
+            0L
+    );
 
     private ResearchRegistry() {
     }
@@ -29,15 +33,24 @@ public final class ResearchRegistry {
                         throw new IllegalArgumentException("Duplicate research definition: " + definition.id());
                     }
                 });
-        definitions = Map.copyOf(next);
+        Snapshot previous = snapshot;
+        snapshot = new Snapshot(
+                Map.copyOf(next),
+                List.copyOf(next.values()),
+                previous.revision() + 1L
+        );
     }
 
     public static Optional<ResearchDefinition> find(String id) {
-        return Optional.ofNullable(definitions.get(id));
+        return Optional.ofNullable(snapshot.definitions().get(id));
     }
 
     public static List<ResearchDefinition> all() {
-        return List.copyOf(definitions.values());
+        return snapshot.orderedDefinitions();
+    }
+
+    public static long revision() {
+        return snapshot.revision();
     }
 
     public static CompoundTag serialize() {
@@ -286,5 +299,12 @@ public final class ResearchRegistry {
             ));
         }
         return List.copyOf(result);
+    }
+
+    private record Snapshot(
+            Map<String, ResearchDefinition> definitions,
+            List<ResearchDefinition> orderedDefinitions,
+            long revision
+    ) {
     }
 }

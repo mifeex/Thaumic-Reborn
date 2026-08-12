@@ -103,6 +103,7 @@ import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import com.thaumcraftmodern.client.render.InfernalFurnaceBakedModel;
+import com.thaumcraftmodern.client.render.LegacyObjMesh;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -619,5 +620,6 @@ public final class ClientModEvents {
     ) {
         ThaumometerHudLayout.registerReloadListener(event);
         ClassicWandRenderCalibration.registerReloadListener(event);
+        LegacyObjMesh.registerReloadListener(event);
     }
 }

@@ -12,6 +12,10 @@ final class ThaumonomiconWarpPresentationFidelityTest {
             "src/main/java/com/thaumcraftmodern/client/screen/"
                     + "ThaumonomiconScreen.java"
     );
+    private static final Path TOOLTIP_RENDERER = Path.of(
+            "src/main/java/com/thaumcraftmodern/client/screen/"
+                    + "ThaumonomiconResearchTooltipRenderer.java"
+    );
     private static final Path LOADER = Path.of(
             "src/main/java/com/thaumcraftmodern/data/"
                     + "ResearchReloadListener.java"
@@ -23,7 +27,8 @@ final class ThaumonomiconWarpPresentationFidelityTest {
     @Test
     void warpedResearchUsesClassicForbiddenAuraAndExactTooltipAmount()
             throws Exception {
-        String source = Files.readString(SCREEN);
+        String source = Files.readString(SCREEN)
+                + Files.readString(TOOLTIP_RENDERER);
 
         assertTrue(source.contains("textures/misc/nodes.png"));
         assertTrue(source.contains("RESEARCH_WARP_AURA_SIZE = 80"));
@@ -103,8 +108,8 @@ final class ThaumonomiconWarpPresentationFidelityTest {
     @Test
     void researchTooltipIsFlushedAboveDeferredNodeItemIcons()
             throws Exception {
-        String source = Files.readString(SCREEN);
-        int begin = source.indexOf("private void renderResearchTooltip(");
+        String source = Files.readString(TOOLTIP_RENDERER);
+        int begin = source.indexOf("void render(");
         int end = source.indexOf("private void renderLockedResearchTooltip(");
         String method = source.substring(begin, end);
 

@@ -28,32 +28,32 @@ public final class AdvancedAlchemicalFurnaceBlockEntityRenderer
     private static final ResourceLocation FLUX = sprite("block/flux_goo");
     private static final ResourceLocation METAL = texture("block/metalbase.png");
     private static final ResourceLocation FIRE = sprite("block/fire_0");
-    private LegacyObjMesh model;
-
     public AdvancedAlchemicalFurnaceBlockEntityRenderer(BlockEntityRendererProvider.Context context) { }
 
     @Override public void render(AdvancedAlchemicalFurnaceBlockEntity furnace, float partialTick,
             PoseStack poses, MultiBufferSource buffers, int packedLight, int packedOverlay) {
         if (furnace.isNozzle()) return;
-        if (model == null) model = LegacyObjMesh.load(MODEL);
+        LegacyObjMesh model = LegacyObjMesh.get(MODEL);
+        boolean working = furnace.isProcessing();
+        boolean containsEssentia = furnace.essentiaAmount() > 0;
         poses.pushPose();
         poses.translate(0.5, 0, 0.5);
         poses.mulPose(Axis.XP.rotationDegrees(-90));
         model.render("Base", poses,
                 buffers.getBuffer(RenderType.entityCutoutNoCull(
-                        furnace.isProcessing() ? BASE_ON : BASE)),
+                        working ? BASE_ON : BASE)),
                 packedLight, 1, 1, 1, 1);
         VertexConsumer tank = buffers.getBuffer(RenderType.entityCutoutNoCull(
-                        furnace.isProcessing() ? TANK_ON : TANK));
+                        containsEssentia ? TANK_ON : TANK));
         for (int side = 0; side < 4; side++) {
             poses.pushPose();
             poses.mulPose(Axis.ZP.rotationDegrees(90 * side));
             model.render("Tank", poses, tank, packedLight, 1, 1, 1, 1);
             poses.popPose();
         }
-        if (furnace.isProcessing())
+        if (containsEssentia)
             renderVis(poses, buffers, furnace.essentiaAmount());
-        if (furnace.isProcessing())
+        if (working)
             renderHeat(poses, buffers, furnace.heat());
         poses.popPose();
     }

@@ -19,11 +19,8 @@ public final class InfusionPillarBlockEntityRenderer
             ThaumcraftModern.MOD_ID, "textures/models/pillar.obj");
     private static final ResourceLocation TEXTURE = new ResourceLocation(
             ThaumcraftModern.MOD_ID, "textures/models/pillar.png");
-    private final LegacyObjMesh mesh;
-
     public InfusionPillarBlockEntityRenderer(
             BlockEntityRendererProvider.Context context) {
-        mesh = LegacyObjMesh.load(MODEL);
     }
 
     @Override
@@ -31,6 +28,7 @@ public final class InfusionPillarBlockEntityRenderer
             PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
         if (pillar.getBlockState().getValue(InfusionPillarBlock.CAP)) return;
         Direction facing = pillar.getBlockState().getValue(InfusionPillarBlock.FACING);
+        LegacyObjMesh mesh = LegacyObjMesh.get(MODEL);
         pose.pushPose();
         pose.translate(0.5D, 0.0D, 0.5D);
         pose.mulPose(Axis.XN.rotationDegrees(90.0F));

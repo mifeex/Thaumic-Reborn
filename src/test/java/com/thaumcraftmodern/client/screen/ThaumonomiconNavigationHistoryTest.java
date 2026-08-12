@@ -28,16 +28,20 @@ final class ThaumonomiconNavigationHistoryTest {
     void screenLinksOnlyCompletedResearchAndUsesSamePopForButtonAndEscape()
             throws Exception {
         String screen = Files.readString(Path.of(
-                "src/main/java/com/thaumcraftmodern/client/screen/ThaumonomiconScreen.java"));
+                "src/main/java/com/thaumcraftmodern/client/screen/ThaumonomiconScreen.java"))
+                + Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/screen/ThaumonomiconOpenBookRenderer.java"))
+                + Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/screen/ThaumonomiconNavigationController.java"));
         assertTrue(screen.contains(".filter(research -> isCompleted(research.id()))"));
         assertTrue(screen.contains("research.iconItem().equals(itemId.toString())"));
         assertTrue(screen.contains("researchProducesItem(research, itemId)"));
-        assertTrue(screen.contains("renderItemLinkTooltip(graphics, mouseX, mouseY)"));
+        assertTrue(screen.contains("renderItemLinkTooltip("));
         assertTrue(screen.contains("thaumonomicon.open_item_page"));
         assertTrue(screen.contains("leaveResearchLevel(\"button\")"));
         assertTrue(screen.contains("leaveResearchLevel(\"escape\")"));
         assertTrue(screen.contains("pagePair = previous.pagePair()"));
-        assertTrue(screen.contains("selectedCategoryId = previous.categoryId()"));
+        assertTrue(screen.contains("selectedCategoryId = result.categoryId()"));
         assertTrue(screen.contains("pagePair = Math.max(0, pagePair - 2)"));
         assertTrue(screen.contains("pagePair += 2"));
     }

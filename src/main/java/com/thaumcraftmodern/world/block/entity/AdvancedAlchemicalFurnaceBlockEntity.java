@@ -16,6 +16,7 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -38,6 +39,7 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
     private int waterPower;
     private int processed;
     private int count;
+    private boolean working;
 
     public AdvancedAlchemicalFurnaceBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ADVANCED_ALCHEMICAL_FURNACE.get(), pos, state);
@@ -48,6 +50,11 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
         if (!(rawLevel instanceof ServerLevel level) || furnace.isNozzle()) return;
         furnace.count++;
         if (furnace.processed > 0) furnace.processed--;
+        boolean working = furnace.processed > 0 || furnace.hasProcessableInput(level);
+        if (working != furnace.working) {
+            furnace.working = working;
+            furnace.sync(false);
+        }
         if (furnace.count % 5 != 0) return;
         int oldLight = heatLight(furnace.heat);
         int oldHeat = furnace.heat;
@@ -80,6 +87,7 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
         entropyPower -= amount;
         waterPower -= amount;
         processed = processingDelayForHeat(heat, attachedBellows());
+        working = true;
         aspects.forEach(essentia::add);
         if (level instanceof ServerLevel server) server.setBlock(worldPosition,
                 getBlockState().setValue(AdvancedAlchemicalFurnaceBlock.LIGHT,
@@ -124,10 +132,17 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
     public int heat() { return heat; }
     public int entropyPower() { return entropyPower; }
     public int waterPower() { return waterPower; }
-    /** Animated fire and flux are transient processing effects, not tank gauges. */
+    /** Remains true across a complete queued stack instead of blinking per item. */
     public boolean isProcessing() {
         AdvancedAlchemicalFurnaceBlockEntity source = source();
-        return source != null && source.processed > 0;
+        return source != null && source.working;
+    }
+
+    private boolean hasProcessableInput(ServerLevel level) {
+        AABB intake = new AABB(worldPosition).expandTowards(0, 0.35D, 0);
+        return !level.getEntitiesOfClass(ItemEntity.class, intake, item ->
+                ItemAspectRegistry.aspects(item.getItem())
+                        .filter(aspects -> !aspects.isEmpty()).isPresent()).isEmpty();
     }
 
     /** Finds bellows attached to any outside face of the 3x2x3 multiblock. */
@@ -247,6 +262,7 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
         tag.putInt("EntropyPower", entropyPower);
         tag.putInt("WaterPower", waterPower);
         tag.putInt("Processed", processed);
+        tag.putBoolean("Working", working);
     }
 
     @Override public void load(CompoundTag tag) {
@@ -256,6 +272,7 @@ public final class AdvancedAlchemicalFurnaceBlockEntity extends BlockEntity
         entropyPower = Math.max(0, tag.getInt("EntropyPower"));
         waterPower = Math.max(0, tag.getInt("WaterPower"));
         processed = Math.max(0, tag.getInt("Processed"));
+        working = tag.getBoolean("Working") || processed > 0;
     }
 
     @Override public CompoundTag getUpdateTag() { return saveWithoutMetadata(); }

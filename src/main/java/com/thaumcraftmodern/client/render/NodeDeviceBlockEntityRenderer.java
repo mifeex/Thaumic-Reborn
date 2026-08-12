@@ -56,8 +56,6 @@ public final class NodeDeviceBlockEntityRenderer<T extends BlockEntity>
             ThaumcraftModern.MOD_ID,
             "textures/misc/p_small.png"
     );
-    private LegacyObjMesh mesh;
-
     public NodeDeviceBlockEntityRenderer(
             BlockEntityRendererProvider.Context context
     ) {
@@ -72,9 +70,6 @@ public final class NodeDeviceBlockEntityRenderer<T extends BlockEntity>
             int packedLight,
             int packedOverlay
     ) {
-        if (mesh == null) {
-            mesh = LegacyObjMesh.load(MESH);
-        }
         if (tile instanceof NodeStabilizerBlockEntity stabilizer) {
             renderStabilizer(stabilizer, partialTick, pose, buffers, packedLight);
         } else if (tile instanceof NodeTransducerBlockEntity transducer) {
@@ -427,7 +422,16 @@ public final class NodeDeviceBlockEntityRenderer<T extends BlockEntity>
     ) {
         VertexConsumer consumer = buffers.getBuffer(
                 RenderType.entityCutoutNoCull(texture));
-        mesh.render(group, pose, consumer, light, red, green, blue, 1.0F);
+        LegacyObjMesh.get(MESH).render(
+                group,
+                pose,
+                consumer,
+                light,
+                red,
+                green,
+                blue,
+                1.0F
+        );
     }
 
     @Override

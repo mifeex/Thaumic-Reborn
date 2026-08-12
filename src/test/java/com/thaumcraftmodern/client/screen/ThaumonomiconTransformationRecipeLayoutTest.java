@@ -59,6 +59,9 @@ final class ThaumonomiconTransformationRecipeLayoutTest {
         String source = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/screen/"
                         + "ThaumonomiconScreen.java"
+        )) + Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/screen/"
+                        + "ThaumonomiconPageRenderer.java"
         ));
         assertTrue(source.contains(
                 "if (!(recipe instanceof ArcaneRecipe)\n"

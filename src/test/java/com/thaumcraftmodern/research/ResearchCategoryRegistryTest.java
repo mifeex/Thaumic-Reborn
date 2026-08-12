@@ -5,9 +5,28 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResearchCategoryRegistryTest {
+
+    @Test
+    void allReusesImmutableSnapshotUntilRegistryReplacement() {
+        ResearchCategoryRegistry.replace(List.of(definition("cached", 0)));
+
+        List<ResearchCategoryDefinition> first =
+                ResearchCategoryRegistry.all();
+        long firstRevision = ResearchCategoryRegistry.revision();
+
+        assertSame(first, ResearchCategoryRegistry.all());
+
+        ResearchCategoryRegistry.replace(List.of(definition("replacement", 0)));
+
+        assertEquals(firstRevision + 1L, ResearchCategoryRegistry.revision());
+        assertFalse(first == ResearchCategoryRegistry.all());
+    }
+
     @Test
     void categoriesKeepDataDrivenOrderThroughNetworkSerialization() {
         ResearchCategoryDefinition later = new ResearchCategoryDefinition(
@@ -51,5 +70,18 @@ class ResearchCategoryRegistryTest {
 
         assertEquals(original, restored);
         assertTrue(restored.iconItem().isBlank());
+    }
+
+    private static ResearchCategoryDefinition definition(
+            String id,
+            int order
+    ) {
+        return new ResearchCategoryDefinition(
+                id,
+                "category." + id,
+                "minecraft:book",
+                "minecraft:textures/gui/options_background.png",
+                order
+        );
     }
 }

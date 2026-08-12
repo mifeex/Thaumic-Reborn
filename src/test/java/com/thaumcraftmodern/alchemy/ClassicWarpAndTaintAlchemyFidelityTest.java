@@ -67,7 +67,7 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
                 .findFirst().orElseThrow();
         try (ZipFile zip = new ZipFile(jar.toFile())) {
             assertTrue(zip.getEntry(
-                    "com/thaumcraftmodern/client/screen/ThaumonomiconScreen$ItemLinkRegion.class")
+                    "com/thaumcraftmodern/client/screen/ThaumonomiconItemLinkRegion.class")
                     != null);
         }
     }

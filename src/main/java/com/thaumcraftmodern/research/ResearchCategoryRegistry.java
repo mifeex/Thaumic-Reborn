@@ -13,7 +13,11 @@ import java.util.Map;
 import java.util.Optional;
 
 public final class ResearchCategoryRegistry {
-    private static volatile Map<String, ResearchCategoryDefinition> definitions = Map.of();
+    private static volatile Snapshot snapshot = new Snapshot(
+            Map.of(),
+            List.of(),
+            0L
+    );
 
     private ResearchCategoryRegistry() {
     }
@@ -31,15 +35,24 @@ public final class ResearchCategoryRegistry {
                         );
                     }
                 });
-        definitions = java.util.Collections.unmodifiableMap(next);
+        Snapshot previous = snapshot;
+        snapshot = new Snapshot(
+                java.util.Collections.unmodifiableMap(next),
+                List.copyOf(next.values()),
+                previous.revision() + 1L
+        );
     }
 
     public static Optional<ResearchCategoryDefinition> find(String id) {
-        return Optional.ofNullable(definitions.get(id));
+        return Optional.ofNullable(snapshot.definitions().get(id));
     }
 
     public static List<ResearchCategoryDefinition> all() {
-        return List.copyOf(definitions.values());
+        return snapshot.orderedDefinitions();
+    }
+
+    public static long revision() {
+        return snapshot.revision();
     }
 
     public static CompoundTag serialize() {
@@ -73,5 +86,12 @@ public final class ResearchCategoryRegistry {
             ));
         }
         return result;
+    }
+
+    private record Snapshot(
+            Map<String, ResearchCategoryDefinition> definitions,
+            List<ResearchCategoryDefinition> orderedDefinitions,
+            long revision
+    ) {
     }
 }

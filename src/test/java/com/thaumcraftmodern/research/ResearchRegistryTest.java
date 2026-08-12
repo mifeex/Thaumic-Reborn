@@ -10,12 +10,28 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResearchRegistryTest {
     @AfterEach
     void clearRegistry() {
         ResearchRegistry.replace(List.of());
+    }
+
+    @Test
+    void allReusesImmutableSnapshotUntilRegistryReplacement() {
+        ResearchRegistry.replace(List.of(definition("cached", false)));
+
+        List<ResearchDefinition> first = ResearchRegistry.all();
+        long firstRevision = ResearchRegistry.revision();
+
+        assertSame(first, ResearchRegistry.all());
+
+        ResearchRegistry.replace(List.of(definition("replacement", false)));
+
+        assertEquals(firstRevision + 1L, ResearchRegistry.revision());
+        assertFalse(first == ResearchRegistry.all());
     }
 
     @Test

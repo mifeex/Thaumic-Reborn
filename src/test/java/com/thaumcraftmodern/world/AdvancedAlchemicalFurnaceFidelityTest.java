@@ -47,15 +47,39 @@ final class AdvancedAlchemicalFurnaceFidelityTest {
         assertTrue(furnace.contains("found.size() == Direction.values().length"));
     }
 
-    @Test void rendererUsesAnimatedBlockAtlasOnlyWhileProcessing() throws Exception {
+    @Test void rendererSeparatesContinuousWorkFromStoredEssentiaPresentation()
+            throws Exception {
         String renderer = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/render/AdvancedAlchemicalFurnaceBlockEntityRenderer.java"));
+        String furnace = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/world/block/entity/AdvancedAlchemicalFurnaceBlockEntity.java"));
         assertTrue(renderer.contains("getTextureAtlas(\n                TextureAtlas.LOCATION_BLOCKS)"));
         assertTrue(renderer.contains("TextureAtlasSprite flux = atlasSprite(FLUX)"));
         assertTrue(renderer.contains("TextureAtlasSprite fire = atlasSprite(FIRE)"));
         assertFalse(renderer.contains("textures/block/flux_goo.png"));
         assertFalse(renderer.contains("textures/block/fire_0.png"));
-        assertEquals(2, renderer.split("if \\(furnace\\.isProcessing\\(\\)\\)", -1).length - 1);
+        assertTrue(renderer.contains("boolean working = furnace.isProcessing()"));
+        assertTrue(renderer.contains(
+                "boolean containsEssentia = furnace.essentiaAmount() > 0"));
+        assertTrue(renderer.contains("working ? BASE_ON : BASE"));
+        assertTrue(renderer.contains("containsEssentia ? TANK_ON : TANK"));
+        assertTrue(renderer.contains("if (containsEssentia)\n            renderVis"));
+        assertTrue(renderer.contains("if (working)\n            renderHeat"));
+        assertTrue(furnace.contains("processed > 0 || furnace.hasProcessableInput(level)"));
+        assertTrue(furnace.contains("return source != null && source.working"));
+    }
+
+    @Test void arcaneBellowsUseTheOriginalAsymmetricClientPumpCycle()
+            throws Exception {
+        String bellows = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/world/block/entity/ArcaneBellowsBlockEntity.java"));
+        String block = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/world/block/ArcaneBellowsBlock.java"));
+        assertTrue(bellows.contains("inflation -= 0.075F"));
+        assertTrue(bellows.contains("inflation += 0.025F"));
+        assertTrue(bellows.contains("level.hasNeighborSignal(position)"));
+        assertTrue(bellows.contains("SoundEvents.GHAST_SHOOT"));
+        assertTrue(block.contains("ArcaneBellowsBlockEntity::clientTick"));
     }
 
     @Test void packagedObjAndFourStateTexturesAreUnmodifiedTc4Assets() throws Exception {

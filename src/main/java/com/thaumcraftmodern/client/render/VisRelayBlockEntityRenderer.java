@@ -42,8 +42,6 @@ public final class VisRelayBlockEntityRenderer<T extends VisRelayBlockEntity>
     private static final float BEAM_HALF_WIDTH = 0.045F;
     private static final float IMPACT_SIZE = 1.15F;
     private static final float BEAM_ROTATION_DEGREES_PER_TICK = 5.0F;
-    private LegacyObjMesh mesh;
-
     public VisRelayBlockEntityRenderer(
             BlockEntityRendererProvider.Context context
     ) {
@@ -58,9 +56,6 @@ public final class VisRelayBlockEntityRenderer<T extends VisRelayBlockEntity>
             int packedLight,
             int packedOverlay
     ) {
-        if (mesh == null) {
-            mesh = LegacyObjMesh.load(MESH);
-        }
         float ticks = Minecraft.getInstance().player == null
                 ? partialTick
                 : Minecraft.getInstance().player.tickCount + partialTick;
@@ -413,7 +408,7 @@ public final class VisRelayBlockEntityRenderer<T extends VisRelayBlockEntity>
             float green,
             float blue
     ) {
-        mesh.render(group, pose,
+        LegacyObjMesh.get(MESH).render(group, pose,
                 buffers.getBuffer(RenderType.entityCutoutNoCull(TEXTURE)),
                 light, red, green, blue, 1.0F);
     }

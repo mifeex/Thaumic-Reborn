@@ -54,6 +54,9 @@ public final class ClientPacketHandlers {
         WandComponentRegistry.replace(
                 WandComponentRegistry.deserialize(packet.wands())
         );
+        if (minecraft.screen instanceof ThaumonomiconScreen thaumonomicon) {
+            thaumonomicon.refreshResearchData();
+        }
         if (minecraft.player != null) {
                     minecraft.player.getCapability(KnowledgeCapabilities.PLAYER)
                     .ifPresent(knowledge -> ResearchDiagnostics.log(

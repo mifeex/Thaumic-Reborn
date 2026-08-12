@@ -84,6 +84,13 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(entity.contains("EntityDataSerializers.ITEM_STACK")),
                 () -> assertTrue(entity.contains("carriedForDisplay()")),
                 () -> assertTrue(heldRenderer.contains("renderBetweenHands")),
+                () -> assertTrue(heldRenderer.contains(
+                        "private static final float HELD_ITEM_SCALE = 1.3F"
+                )),
+                () -> assertEquals(1, heldRenderer.split(
+                        "poses.scale\\(HELD_ITEM_SCALE, HELD_ITEM_SCALE, "
+                                + "HELD_ITEM_SCALE\\)", -1
+                ).length - 1),
                 () -> assertTrue(heldRenderer.contains("poses.translate(0F, 2.5F, -1.25F)")),
                 () -> assertFalse(heldRenderer.contains("poses.translate(-.5F, 2.5F, -1.25F)")),
                 () -> assertTrue(heldRenderer.contains("Items.FISHING_ROD")),

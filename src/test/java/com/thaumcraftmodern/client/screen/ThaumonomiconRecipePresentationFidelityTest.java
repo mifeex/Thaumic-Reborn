@@ -19,6 +19,14 @@ final class ThaumonomiconRecipePresentationFidelityTest {
             "src/main/java/com/thaumcraftmodern/client/screen/"
                     + "ThaumonomiconScreen.java"
     );
+    private static final Path PAGE_RENDERER = Path.of(
+            "src/main/java/com/thaumcraftmodern/client/screen/"
+                    + "ThaumonomiconPageRenderer.java"
+    );
+    private static final Path BOOK_RENDERER = Path.of(
+            "src/main/java/com/thaumcraftmodern/client/screen/"
+                    + "ThaumonomiconOpenBookRenderer.java"
+    );
     private static final Path OUTPUT_RENDERER = Path.of(
             "src/main/java/com/thaumcraftmodern/client/screen/"
                     + "ThaumonomiconRecipeOutputRenderer.java"
@@ -40,7 +48,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
 
     @Test
     void sharesOneOutputPresentationAcrossRecipeKinds() throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertEquals(
                 3,
                 occurrences(
@@ -58,7 +66,9 @@ final class ThaumonomiconRecipePresentationFidelityTest {
         assertFalse(renderer.contains("graphics.renderTooltip("));
         assertTrue(screen.contains("renderItemLinkTooltip("));
         assertTrue(screen.contains(
-                "getTooltipFromItem(minecraft, hovered.stack())"));
+                "stack -> getTooltipFromItem(minecraft, stack)"));
+        assertTrue(screen.contains(
+                "tooltipProvider.apply(hovered.stack())"));
         assertFalse(screen.contains(
                 "tooltip.add(hovered.stack().getHoverName())"));
         assertTrue(screen.contains("durabilityPreview(stack)"));
@@ -77,7 +87,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
     @Test
     void crucibleUsesOriginalCauldronAndArrowAtlasRegions()
             throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertTrue(screen.contains(
                 "ThaumonomiconCrucibleRecipeLayout.CAULDRON_TOP"
         ));
@@ -98,7 +108,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
     @Test
     void nonGridTransformationsUseOriginalSmeltingArrow()
             throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertTrue(screen.contains("renderTransformationRecipe("));
         assertTrue(screen.contains(
                 "ThaumonomiconTransformationRecipeLayout.OVERLAY_SOURCE_Y"
@@ -110,7 +120,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
 
     @Test
     void recipePagesCycleThroughEveryIngredientAlternative() throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertTrue(screen.contains("cyclingIngredient(ingredients.get(index), index)"));
         assertTrue(screen.contains("cyclingIngredient(recipe.catalyst(), 0)"));
         assertTrue(screen.contains("Util.getMillis() / 1_000L + slotIndex"));
@@ -149,7 +159,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
 
     @Test
     void shapedRecipesKeepTheirCompactPatternWidth() throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertTrue(screen.contains("int recipeWidth = craftingRecipeWidth(recipe)"));
         assertTrue(screen.contains("recipe instanceof ShapedRecipe shaped"));
         assertTrue(screen.contains("recipe instanceof ArcaneShapedRecipe shaped"));
@@ -159,7 +169,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
 
     @Test
     void infusionLayoutUsesTheRequestedCompactVerticalSpacing() throws Exception {
-        String screen = Files.readString(SCREEN);
+        String screen = sources();
         assertTrue(screen.contains("INFUSION_OUTPUT_Y_OFFSET = 10"));
         assertTrue(screen.contains("INFUSION_MATRIX_Y_OFFSET = 22"));
         assertTrue(screen.contains("INFUSION_RECIPE_CONTENT_BOTTOM = 156"));
@@ -194,5 +204,11 @@ final class ThaumonomiconRecipePresentationFidelityTest {
             offset += needle.length();
         }
         return count;
+    }
+
+    private static String sources() throws Exception {
+        return Files.readString(SCREEN)
+                + Files.readString(PAGE_RENDERER)
+                + Files.readString(BOOK_RENDERER);
     }
 }

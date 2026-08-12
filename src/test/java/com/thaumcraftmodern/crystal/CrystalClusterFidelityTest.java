@@ -142,7 +142,7 @@ final class CrystalClusterFidelityTest {
         ), recipeIds);
 
         String screen = source(
-                "java/com/thaumcraftmodern/client/screen/ThaumonomiconScreen.java"
+                "java/com/thaumcraftmodern/client/screen/ThaumonomiconPageRenderer.java"
         );
         assertTrue(screen.contains("System.currentTimeMillis() / 1000L"));
 
