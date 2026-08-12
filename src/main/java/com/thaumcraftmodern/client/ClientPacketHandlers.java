@@ -7,6 +7,7 @@ import com.thaumcraftmodern.knowledge.WarpType;
 import com.thaumcraftmodern.network.packet.KnowledgeSyncPacket;
 import com.thaumcraftmodern.network.packet.NodeZapPacket;
 import com.thaumcraftmodern.network.packet.ScanFeedbackPacket;
+import com.thaumcraftmodern.network.packet.ResearchTableFeedbackPacket;
 import com.thaumcraftmodern.network.packet.ThaumatoriumEssentiaSyncPacket;
 import com.thaumcraftmodern.network.packet.ThaumatoriumRecipeSyncPacket;
 import com.thaumcraftmodern.network.packet.GolemBellSyncPacket;
@@ -82,6 +83,12 @@ public final class ClientPacketHandlers {
         InventoryThaumometerEvents.onScanFeedback();
         ClientThaumometerResultState.accept(packet);
         ClientScanOverlay.show(packet);
+    }
+
+    public static void handleResearchTableFeedback(
+            ResearchTableFeedbackPacket packet
+    ) {
+        ClientResearchTableOverlay.show(packet);
     }
 
     public static void handleWarpFeedback(WarpFeedbackPacket packet) {

@@ -2,14 +2,11 @@ package com.thaumcraftmodern.item;
 
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.api.enchantment.ThaumcraftRepairable;
-import com.thaumcraftmodern.client.render.FortressArmorModel;
+import com.thaumcraftmodern.client.render.FortressArmorClientExtensions;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -96,44 +93,6 @@ public final class FortressArmorItem extends ArmorItem
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private FortressArmorModel model;
-
-            @Override
-            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entity,
-                    ItemStack stack, EquipmentSlot slot,
-                    HumanoidModel<?> defaultModel) {
-                if (model == null) model = new FortressArmorModel(
-                        Minecraft.getInstance().getEntityModels()
-                                .bakeLayer(FortressArmorModel.LAYER));
-                copyPose(defaultModel, model);
-                model.setAllVisible(false);
-                switch (slot) {
-                    case HEAD -> model.head.visible = true;
-                    case CHEST -> {
-                        model.body.visible = true;
-                        model.rightArm.visible = true;
-                        model.leftArm.visible = true;
-                    }
-                    case LEGS -> {
-                        model.body.visible = true;
-                        model.rightLeg.visible = true;
-                        model.leftLeg.visible = true;
-                    }
-                    case FEET -> {
-                        model.rightLeg.visible = true;
-                        model.leftLeg.visible = true;
-                    }
-                    default -> { }
-                }
-                model.prepare(entity, stack, slot);
-                return model;
-            }
-        });
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private static void copyPose(HumanoidModel<?> source, FortressArmorModel target) {
-        ((HumanoidModel) source).copyPropertiesTo(target);
+        consumer.accept(FortressArmorClientExtensions.create());
     }
 }

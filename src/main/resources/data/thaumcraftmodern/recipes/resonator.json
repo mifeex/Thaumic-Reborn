@@ -18,7 +18,7 @@
       "item": "minecraft:quartz"
     },
     "S": {
-      "tag": "minecraft:wooden_rods"
+      "tag": "forge:rods/wooden"
     }
   },
   "result": {

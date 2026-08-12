@@ -97,7 +97,12 @@ public final class NodeVisTransferService {
                     }
                     int missingStoreUnits = wandBefore.capacity().get(aspect)
                             - wandBefore.current().get(aspect);
-                    int missingWholeVis = missingStoreUnits / unitsPerNodeVis;
+                    // TC4's addVis accepts the fractional tail that still fits
+                    // and drains the corresponding whole node-vis point. For
+                    // example, 49.95/50 accepts 5 centivis from a one-vis tap.
+                    int missingWholeVis = missingStoreUnits <= 0
+                            ? 0
+                            : 1 + (missingStoreUnits - 1) / unitsPerNodeVis;
                     int availableNodeVis = nodeBefore.current().get(aspect)
                             - (preserveLastVis ? 1 : 0);
                     int amount = Math.min(
@@ -106,11 +111,15 @@ public final class NodeVisTransferService {
                     );
                     moved.put(aspect, amount);
                     nextNode.put(aspect, nodeBefore.current().get(aspect) - amount);
+                    int acceptedStoreUnits = Math.min(
+                            missingStoreUnits,
+                            Math.multiplyExact(amount, unitsPerNodeVis)
+                    );
                     nextWand.put(
                             aspect,
                             Math.addExact(
                                     wandBefore.current().get(aspect),
-                                    Math.multiplyExact(amount, unitsPerNodeVis)
+                                    acceptedStoreUnits
                             )
                     );
                 }

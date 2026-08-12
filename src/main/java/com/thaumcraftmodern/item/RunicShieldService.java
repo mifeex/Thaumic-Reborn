@@ -46,7 +46,8 @@ public final class RunicShieldService {
 
     public static int finalCharge(ItemStack stack) {
         if (stack.isEmpty()) return 0;
-        int base = stack.getItem() instanceof RunicArmor armor
+        int base = stack.getItem() instanceof
+                com.thaumicreborn.api.equipment.RunicArmor armor
                 ? armor.baseRunicCharge(stack) : 0;
         return combinedCharge(base, hardening(stack));
     }
@@ -56,7 +57,8 @@ public final class RunicShieldService {
     }
 
     public static boolean isAugmentable(ItemStack stack) {
-        return !stack.isEmpty() && (stack.getItem() instanceof RunicArmor
+        return !stack.isEmpty() && (stack.getItem() instanceof
+                com.thaumicreborn.api.equipment.RunicArmor
                 || stack.is(com.thaumcraftmodern.registry.ModTags.Items.RUNIC_AUGMENTABLE));
     }
 

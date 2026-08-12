@@ -15,7 +15,7 @@
       "item": "minecraft:lime_wool"
     },
     "S": {
-      "tag": "minecraft:wooden_rods"
+      "tag": "forge:rods/wooden"
     },
     "B": {
       "tag": "minecraft:wooden_slabs"

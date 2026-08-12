@@ -1,6 +1,6 @@
 package com.thaumcraftmodern.entity;
 
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModEntities;
 import java.util.EnumSet;
 import java.util.List;

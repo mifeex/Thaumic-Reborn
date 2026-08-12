@@ -3,7 +3,7 @@ package com.thaumcraftmodern.world.block.entity;
 import com.thaumcraftmodern.aspect.AspectDefinition;
 import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.essentia.EssentiaAirHandler;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.mirror.LinkedMirrorBlockEntity;
 import com.thaumcraftmodern.mirror.MirrorLink;
 import com.thaumcraftmodern.registry.ModBlockEntities;

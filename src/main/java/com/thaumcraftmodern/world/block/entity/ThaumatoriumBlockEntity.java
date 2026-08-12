@@ -5,7 +5,7 @@ import com.thaumcraftmodern.crucible.CrucibleRecipeRegistry;
 import com.thaumcraftmodern.crucible.EssentiaStore;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
 import com.thaumcraftmodern.essentia.EssentiaSync;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.essentia.tube.TubeFlowRules;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.network.ModNetwork;

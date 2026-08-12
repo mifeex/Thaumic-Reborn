@@ -2,6 +2,9 @@ package com.thaumcraftmodern.focus;
 
 import com.thaumcraftmodern.item.WandFocusItem;
 import com.thaumcraftmodern.item.WandItem;
+import com.thaumcraftmodern.integration.api.AddonFocusRegistry;
+import com.thaumicreborn.api.focus.FocusItem;
+import com.thaumicreborn.api.focus.FocusUseContext;
 import com.thaumcraftmodern.registry.ModEntities;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.entity.LegacyThaumcraftMob;
@@ -60,16 +63,28 @@ public final class WandFocusService {
         CompoundTag tag = wand.getTag();
         if (tag == null || !tag.contains(FOCUS_KEY, Tag.TAG_COMPOUND)) return Optional.empty();
         ItemStack focus = ItemStack.of(tag.getCompound(FOCUS_KEY));
-        return focus.getItem() instanceof WandFocusItem ? Optional.of(focus) : Optional.empty();
+        return focus.getItem() instanceof FocusItem ? Optional.of(focus) : Optional.empty();
     }
 
     public static Optional<WandFocusType> type(ItemStack wand) {
-        return focusStack(wand).map(stack -> ((WandFocusItem) stack.getItem()).type());
+        return focusStack(wand)
+                .filter(stack -> stack.getItem() instanceof WandFocusItem)
+                .map(stack -> ((WandFocusItem) stack.getItem()).type());
+    }
+
+    public static boolean hasFocus(ItemStack wand) {
+        return focusStack(wand).isPresent();
+    }
+
+    public static boolean continuous(ItemStack wand) {
+        WandFocusType builtIn = type(wand).orElse(null);
+        if (builtIn != null) return builtIn.continuous();
+        return addonEntry(wand).map(entry -> entry.definition().continuous()).orElse(false);
     }
 
     public static boolean setFocus(ItemStack wand, ItemStack focus) {
         if (!(wand.getItem() instanceof WandItem item) || !item.form().acceptsFocus()
-                || !(focus.getItem() instanceof WandFocusItem)) return false;
+                || !(focus.getItem() instanceof FocusItem)) return false;
         wand.getOrCreateTag().put(FOCUS_KEY, focus.copyWithCount(1).save(new CompoundTag()));
         return true;
     }
@@ -94,8 +109,13 @@ public final class WandFocusService {
         for (int slot = 0; slot < player.getInventory().items.size(); slot++) {
             ItemStack candidate = player.getInventory().items.get(slot);
             ResourceLocation key = ForgeRegistries.ITEMS.getKey(candidate.getItem());
-            if (candidate.getItem() instanceof WandFocusItem && key != null
-                    && key.getPath().equals(requestedId)) { selectedSlot = slot; break; }
+            if (candidate.getItem() instanceof FocusItem focusItem && key != null
+                    && (key.toString().equals(requestedId)
+                    || key.getPath().equals(requestedId)
+                    || focusItem.focusId().toString().equals(requestedId))) {
+                selectedSlot = slot;
+                break;
+            }
         }
         if (selectedSlot < 0) return;
         ItemStack selected = player.getInventory().items.get(selectedSlot).split(1);
@@ -109,6 +129,27 @@ public final class WandFocusService {
 
     public static InteractionResult cast(ItemStack wand, Level level, ServerPlayer player,
                                          InteractionHand hand, BlockHitResult blockHit) {
+        AddonFocusRegistry.Entry addon = addonEntry(wand).orElse(null);
+        if (addon != null) {
+            ItemStack focus = focusStack(wand).orElseThrow();
+            if (addon.definition().continuous()) {
+                player.startUsingItem(hand);
+                return InteractionResult.CONSUME;
+            }
+            if (player.getCooldowns().isOnCooldown(focus.getItem())) {
+                return InteractionResult.CONSUME;
+            }
+            if (!payAddon(player, wand, addon.definition().centivisCost())) {
+                return InteractionResult.CONSUME;
+            }
+            InteractionResult result = addon.behavior().cast(context(
+                    player, wand, focus, hand, blockHit));
+            if (result.consumesAction() && addon.definition().cooldownTicks() > 0) {
+                player.getCooldowns().addCooldown(
+                        focus.getItem(), addon.definition().cooldownTicks());
+            }
+            return result;
+        }
         WandFocusType type = type(wand).orElse(null);
         if (type == null) return InteractionResult.PASS;
         if (type == WandFocusType.TRADE) return blockHit != null
@@ -138,6 +179,17 @@ public final class WandFocusService {
 
     public static void tick(ItemStack wand, Level level, LivingEntity living) {
         if (!(living instanceof ServerPlayer player)) return;
+        AddonFocusRegistry.Entry addon = addonEntry(wand).orElse(null);
+        if (addon != null) {
+            if (!addon.definition().continuous()) return;
+            ItemStack focus = focusStack(wand).orElseThrow();
+            boolean paid = payAddon(player, wand, addon.definition().centivisCost());
+            if (!paid || !addon.behavior().tick(context(
+                    player, wand, focus, player.getUsedItemHand(), null))) {
+                player.stopUsingItem();
+            }
+            return;
+        }
         WandFocusType type = type(wand).orElse(null);
         if (type == null || !type.continuous()) return;
         if (type == WandFocusType.SHOCK && player.tickCount % 5 != 0) return;
@@ -150,8 +202,33 @@ public final class WandFocusService {
         if (!active) player.stopUsingItem();
     }
 
-    public static void stopped(LivingEntity living) {
+    public static void stopped(LivingEntity living, ItemStack wand) {
         EXCAVATION.remove(living.getUUID());
+        if (living instanceof ServerPlayer player) {
+            addonEntry(wand).ifPresent(entry -> focusStack(wand).ifPresent(focus ->
+                    entry.behavior().stopped(context(player, wand, focus,
+                            player.getUsedItemHand(), null))));
+        }
+    }
+
+    private static Optional<AddonFocusRegistry.Entry> addonEntry(ItemStack wand) {
+        return focusStack(wand)
+                .filter(stack -> !(stack.getItem() instanceof WandFocusItem))
+                .filter(stack -> stack.getItem() instanceof FocusItem)
+                .flatMap(stack -> AddonFocusRegistry.find(
+                        ((FocusItem) stack.getItem()).focusId()));
+    }
+
+    private static FocusUseContext context(ServerPlayer player, ItemStack wand,
+                                           ItemStack focus, InteractionHand hand,
+                                           BlockHitResult hit) {
+        return new FocusUseContext(player, wand, focus, hand, Optional.ofNullable(hit));
+    }
+
+    private static boolean payAddon(ServerPlayer player, ItemStack wand,
+                                    java.util.Map<String, Integer> centivisCost) {
+        return player.getAbilities().instabuild
+                || WandVisService.consumeCentivis(player, wand, centivisCost);
     }
 
     public static InteractionResult tradeLeftClick(ServerPlayer player, BlockPos position) {

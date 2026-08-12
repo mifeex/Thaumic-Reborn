@@ -1192,6 +1192,11 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
         renderDuplicationCost(graphics, mouseX, mouseY);
         renderDraggedAspect(graphics, mouseX, mouseY);
         renderTooltip(graphics, mouseX, mouseY);
+        com.thaumcraftmodern.client.ClientResearchTableOverlay.renderScreen(
+                graphics,
+                width,
+                height
+        );
     }
 
     private boolean canDuplicate() {

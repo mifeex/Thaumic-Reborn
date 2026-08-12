@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.focus.WandFocusService;
-import com.thaumcraftmodern.item.WandFocusItem;
+import com.thaumicreborn.api.focus.FocusItem;
 import com.thaumcraftmodern.item.WandItem;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.network.packet.ChangeWandFocusPacket;
@@ -54,7 +54,7 @@ public final class WandFocusRadialScreen extends Screen {
         currentFocus = WandFocusService.focusStack(held)
                 .map(stack -> stack.copyWithCount(1)).orElse(ItemStack.EMPTY);
         minecraft.player.getInventory().items.stream()
-                .filter(stack -> stack.getItem() instanceof WandFocusItem)
+                .filter(stack -> stack.getItem() instanceof FocusItem)
                 .sorted(Comparator.comparingInt(WandFocusRadialScreen::sortIndex))
                 .forEach(stack -> {
                     boolean duplicate = foci.stream().anyMatch(existing ->
@@ -200,7 +200,7 @@ public final class WandFocusRadialScreen extends Screen {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(
                 foci.get(hoveredIndex).getItem());
         if (id != null) {
-            ModNetwork.sendToServer(new ChangeWandFocusPacket(id.getPath()));
+            ModNetwork.sendToServer(new ChangeWandFocusPacket(id.toString()));
             sent = true;
         }
     }

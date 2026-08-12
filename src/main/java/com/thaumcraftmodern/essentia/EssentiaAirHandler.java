@@ -41,7 +41,8 @@ public final class EssentiaAirHandler {
                 }
                 continue;
             }
-            if (!(sourceEntity instanceof EssentiaTransport source)) {
+            if (!(sourceEntity instanceof
+                    com.thaumicreborn.api.essentia.EssentiaTransport source)) {
                 continue;
             }
             for (Direction side : Direction.values()) {

@@ -1,6 +1,6 @@
 package com.thaumcraftmodern.item;
 
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
 import com.thaumcraftmodern.world.block.entity.AdvancedEssentiaBufferBlockEntity;
 import net.minecraft.core.Direction;

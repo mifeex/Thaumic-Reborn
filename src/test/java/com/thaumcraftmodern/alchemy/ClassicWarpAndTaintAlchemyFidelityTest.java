@@ -61,8 +61,9 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
     @Test
     void packagedThaumonomiconContainsRecipeItemLinkClass() throws Exception {
         Path jar = Files.list(Path.of("build/libs"))
-                .filter(path -> path.getFileName().toString().matches(
-                        "thaumcraftmodern-[0-9.]+\\.jar"))
+                .filter(path -> path.getFileName().toString().endsWith(".jar"))
+                .filter(path -> !path.getFileName().toString().endsWith(
+                        "-sources.jar"))
                 .findFirst().orElseThrow();
         try (ZipFile zip = new ZipFile(jar.toFile())) {
             assertTrue(zip.getEntry(

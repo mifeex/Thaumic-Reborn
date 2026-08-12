@@ -11,13 +11,13 @@ public final class EssentiaConnections {
     private EssentiaConnections() {
     }
 
-    public static Optional<EssentiaTransport> neighbour(
+    public static Optional<com.thaumicreborn.api.essentia.EssentiaTransport> neighbour(
             Level level,
             BlockPos position,
             Direction side
     ) {
         BlockEntity entity = level.getBlockEntity(position.relative(side));
-        if (!(entity instanceof EssentiaTransport transport)
+        if (!(entity instanceof com.thaumicreborn.api.essentia.EssentiaTransport transport)
                 || !transport.isConnectable(side.getOpposite())) {
             return Optional.empty();
         }
@@ -28,7 +28,7 @@ public final class EssentiaConnections {
             Level level,
             BlockPos position,
             Direction side,
-            EssentiaTransport local
+            com.thaumicreborn.api.essentia.EssentiaTransport local
     ) {
         return local.isConnectable(side)
                 && neighbour(level, position, side).isPresent();

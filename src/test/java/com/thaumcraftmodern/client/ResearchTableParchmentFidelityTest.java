@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ResearchTableParchmentFidelityTest {
     @Test
-    void completedDiscoveryReplacesWhiteParchmentWithColoredScroll()
+    void tabletopPaperMatchesTheResearchNoteState()
             throws Exception {
         String renderer = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/render/"
                         + "ResearchTableBlockEntityRenderer.java"
         ));
-        assertTrue(renderer.contains("for (int layer = 0; layer < 6; layer++)"));
+        assertTrue(renderer.contains("for (int layer = 0; layer < layers; layer++)"));
         assertTrue(renderer.contains("LightTexture.FULL_BRIGHT"));
         assertTrue(renderer.contains("0xFFFFFF"));
         assertTrue(renderer.contains("textures/models/restable2.png"));
@@ -24,10 +24,13 @@ final class ResearchTableParchmentFidelityTest {
         assertTrue(renderer.contains(
                 "if (notes.getItem() instanceof DiscoveryItem)"
         ));
-        assertTrue(renderer.contains("} else {\n            renderParchmentStack("));
+        assertTrue(renderer.contains("} else {\n            renderParchment("));
+        assertTrue(renderer.contains(
+                "notes.getItem() instanceof ResearchNotesItem ? 6 : 1"
+        ));
         assertTrue(renderer.contains("DiscoveryItem.color(notes)"));
         assertFalse(renderer.contains("ResearchNotesItem.color(notes)"));
-        assertFalse(renderer.contains("notes.isEmpty() ? 1 : 5"));
+        assertFalse(renderer.contains("renderParchmentStack("));
 
         String model = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/render/"

@@ -6,6 +6,7 @@ import com.thaumcraftmodern.network.packet.NodeZapPacket;
 import com.thaumcraftmodern.network.packet.OpenThaumonomiconPacket;
 import com.thaumcraftmodern.network.packet.PurchaseResearchPacket;
 import com.thaumcraftmodern.network.packet.RequestResearchNotesPacket;
+import com.thaumcraftmodern.network.packet.ResearchTableFeedbackPacket;
 import com.thaumcraftmodern.network.packet.ScanFeedbackPacket;
 import com.thaumcraftmodern.network.packet.ThaumatoriumEssentiaSyncPacket;
 import com.thaumcraftmodern.network.packet.ThaumatoriumRecipeSyncPacket;
@@ -30,7 +31,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-    private static final String PROTOCOL = "21";
+    private static final String PROTOCOL = "22";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(ThaumcraftModern.MOD_ID, "main"),
             () -> PROTOCOL,
@@ -157,11 +158,16 @@ public final class ModNetwork {
                 .encoder(GolemBellSyncPacket::encode)
                 .decoder(GolemBellSyncPacket::decode)
                 .consumerMainThread(GolemBellSyncPacket::handle).add();
-        CHANNEL.messageBuilder(AuraNodeStateSyncPacket.class, id,
+        CHANNEL.messageBuilder(AuraNodeStateSyncPacket.class, id++,
                         NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(AuraNodeStateSyncPacket::encode)
                 .decoder(AuraNodeStateSyncPacket::decode)
                 .consumerMainThread(AuraNodeStateSyncPacket::handle).add();
+        CHANNEL.messageBuilder(ResearchTableFeedbackPacket.class, id,
+                        NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(ResearchTableFeedbackPacket::encode)
+                .decoder(ResearchTableFeedbackPacket::decode)
+                .consumerMainThread(ResearchTableFeedbackPacket::handle).add();
     }
 
     public static void sendTo(ServerPlayer player, Object packet) {

@@ -14,6 +14,8 @@ public final class RepairEnchantment extends Enchantment {
             EnchantmentCategory.create(
                     "thaumcraft_repairable",
                     item -> item instanceof ThaumcraftRepairable
+                            || item instanceof
+                            com.thaumicreborn.api.equipment.ThaumicRepairable
             );
 
     public RepairEnchantment() {
@@ -39,6 +41,8 @@ public final class RepairEnchantment extends Enchantment {
     public boolean canEnchant(ItemStack stack) {
         return stack.isDamageableItem()
                 && (stack.getItem() instanceof ThaumcraftRepairable
+                || stack.getItem() instanceof
+                        com.thaumicreborn.api.equipment.ThaumicRepairable
                 || stack.getItem() instanceof BookItem);
     }
 

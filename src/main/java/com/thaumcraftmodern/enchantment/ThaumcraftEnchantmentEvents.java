@@ -70,7 +70,8 @@ public final class ThaumcraftEnchantmentEvents {
 
     private static void repair(ItemStack stack, ServerPlayer player) {
         if (stack.isEmpty() || stack.getDamageValue() <= 0
-                || !(stack.getItem() instanceof ThaumcraftRepairable)) {
+                || !(stack.getItem() instanceof
+                        com.thaumicreborn.api.equipment.ThaumicRepairable)) {
             return;
         }
         int level = Math.min(2, EnchantmentHelper.getItemEnchantmentLevel(

@@ -1,9 +1,9 @@
 package com.thaumcraftmodern.world.block.entity;
 
 import com.thaumcraftmodern.essentia.EssentiaConnections;
-import com.thaumcraftmodern.essentia.EssentiaFlowMode;
+import com.thaumicreborn.api.essentia.EssentiaFlowMode;
 import com.thaumcraftmodern.essentia.EssentiaSync;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.essentia.tube.TubeFlowRules;
 import com.thaumcraftmodern.essentia.tube.TubeFacingRules;
 import com.thaumcraftmodern.essentia.tube.TubePolicy;

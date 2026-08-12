@@ -3,7 +3,6 @@ package com.thaumcraftmodern.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.world.block.entity.WandRechargePedestalBlockEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -35,11 +34,6 @@ public final class WandRechargePedestalBlockEntityRenderer
         pose.mulPose(Axis.YP.rotationDegrees(ticks % 360.0F));
         items.renderStatic(stack, ItemDisplayContext.GROUND, light, overlay,
                 pose, buffers, pedestal.getLevel(), 0);
-        if (!Minecraft.useFancyGraphics()) {
-            pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-            items.renderStatic(stack, ItemDisplayContext.GROUND, light, overlay,
-                    pose, buffers, pedestal.getLevel(), 1);
-        }
         pose.popPose();
 
         BlockPos node = pedestal.drainPosition();

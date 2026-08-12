@@ -115,7 +115,7 @@ public final class NodeChargingService {
             int available = nodeState.current(aspect) - (preserveLast ? 1 : 0);
             int room = wandState.capacity().get(aspect)
                     - wandState.current().get(aspect);
-            if (available > 0 && room >= WandVisService.CENTIVIS_PER_VIS) {
+            if (available > 0 && hasChargeRoom(room)) {
                 candidates.add(aspect);
             }
         }
@@ -232,6 +232,10 @@ public final class NodeChargingService {
             return 3;
         }
         return hasNodeTapper1 ? 2 : 1;
+    }
+
+    static boolean hasChargeRoom(int roomCentivis) {
+        return roomCentivis > 0;
     }
 
     private static Session readSession(ItemStack stack) {

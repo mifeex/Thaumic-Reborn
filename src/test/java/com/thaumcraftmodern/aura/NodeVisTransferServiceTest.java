@@ -144,6 +144,29 @@ class NodeVisTransferServiceTest {
     }
 
     @Test
+    void classicTapFillsTheLastFractionalCentivisLikeOriginalAddVis() {
+        AuraNodeState node = AuraNodeFactory.ordinary(UUID.randomUUID());
+        FakeWand wand = new FakeWand(4_995, 5_000, 100);
+        NodeVisTransferService service = new NodeVisTransferService(
+                new OperationNonceGuard()
+        );
+
+        NodeVisTransferService.Result result = service.transferAspect(
+                validRequest(node, UUID.randomUUID()),
+                node,
+                wand,
+                PrimalAspect.AER,
+                1,
+                false
+        );
+
+        assertEquals(NodeVisTransferService.Status.TRANSFERRED, result.status());
+        assertEquals(1, result.moved().get(PrimalAspect.AER));
+        assertEquals(99, node.current(PrimalAspect.AER));
+        assertEquals(5_000, wand.snapshot().current().get(PrimalAspect.AER));
+    }
+
+    @Test
     void sparseClassicNodeTransfersPrimalWithoutAddingMissingAspectKeys() {
         AuraNodeState node = AuraNodeState.withAspects(
                 UUID.randomUUID(),
@@ -205,11 +228,22 @@ class NodeVisTransferServiceTest {
     private static final class FakeWand implements WandVisStore {
         private final EnumMap<PrimalAspect, Integer> current;
         private final Map<PrimalAspect, Integer> capacity;
+        private final int unitsPerNodeVis;
         private long revision;
 
         private FakeWand(int current, int capacity) {
+            this(current, capacity, 1);
+        }
+
+        private FakeWand(int current, int capacity, int unitsPerNodeVis) {
             this.current = new EnumMap<>(PrimalVis.uniform(current));
             this.capacity = PrimalVis.uniform(capacity);
+            this.unitsPerNodeVis = unitsPerNodeVis;
+        }
+
+        @Override
+        public int unitsPerNodeVis() {
+            return unitsPerNodeVis;
         }
 
         @Override

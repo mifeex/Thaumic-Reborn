@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.item.DiscoveryItem;
+import com.thaumcraftmodern.item.ResearchNotesItem;
 import com.thaumcraftmodern.world.block.ResearchTableBlock;
 import com.thaumcraftmodern.world.block.entity.ResearchTableBlockEntity;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -121,25 +122,27 @@ public final class ResearchTableBlockEntityRenderer
                     packedOverlay
             );
         } else {
-            renderParchmentStack(
+            renderParchment(
                     poseStack,
                     buffers,
-                    packedOverlay
+                    packedOverlay,
+                    parchmentLayers(notes)
             );
         }
         poseStack.popPose();
     }
 
-    /** Draws the ordinary six-sheet state used until research is completed. */
-    private static void renderParchmentStack(
+    /** Empty tables keep one sheet; unfinished research notes form the stack. */
+    private static void renderParchment(
             PoseStack poseStack,
             MultiBufferSource buffers,
-            int packedOverlay
+            int packedOverlay,
+            int layers
     ) {
         VertexConsumer vertices = buffers.getBuffer(
                 RenderType.entityCutoutNoCull(PARCHMENT_TEXTURE)
         );
-        for (int layer = 0; layer < 6; layer++) {
+        for (int layer = 0; layer < layers; layer++) {
             poseStack.pushPose();
             poseStack.translate(
                     PARCHMENT_CENTER_X,
@@ -159,6 +162,10 @@ public final class ResearchTableBlockEntityRenderer
             );
             poseStack.popPose();
         }
+    }
+
+    static int parchmentLayers(ItemStack notes) {
+        return notes.getItem() instanceof ResearchNotesItem ? 6 : 1;
     }
 
     private static void renderQuill(

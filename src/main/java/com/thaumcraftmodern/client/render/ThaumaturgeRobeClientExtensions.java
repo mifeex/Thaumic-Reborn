@@ -17,6 +17,7 @@ public final class ThaumaturgeRobeClientExtensions {
 
     private static final class Extensions implements IClientItemExtensions {
         private ThaumaturgeRobeArmorModel model;
+        private ThaumaturgeRobeArmorModel boots;
 
         @Override
         public HumanoidModel<?> getHumanoidArmorModel(
@@ -25,6 +26,19 @@ public final class ThaumaturgeRobeClientExtensions {
                 EquipmentSlot slot,
                 HumanoidModel<?> defaultModel
         ) {
+            if (slot == EquipmentSlot.FEET) {
+                if (boots == null) {
+                    boots = new ThaumaturgeRobeArmorModel(
+                            Minecraft.getInstance().getEntityModels()
+                                    .bakeLayer(ThaumaturgeRobeArmorModel.BOOTS_LAYER)
+                    );
+                }
+                copyPose(defaultModel, boots);
+                boots.setAllVisible(false);
+                boots.rightLeg.visible = true;
+                boots.leftLeg.visible = true;
+                return boots;
+            }
             if (slot != EquipmentSlot.CHEST) {
                 return defaultModel;
             }

@@ -254,7 +254,7 @@ public final class WandItem extends Item {
                                 context.getClickLocation(), context.getClickedFace(), position,
                                 context.isInside()));
             }
-            return WandFocusService.type(context.getItemInHand()).isPresent()
+            return WandFocusService.hasFocus(context.getItemInHand())
                     ? InteractionResult.SUCCESS : InteractionResult.PASS;
         }
         if (level.isClientSide) {
@@ -295,9 +295,9 @@ public final class WandItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (WandFocusService.type(stack).isEmpty()) return InteractionResultHolder.pass(stack);
+        if (!WandFocusService.hasFocus(stack)) return InteractionResultHolder.pass(stack);
         if (level.isClientSide) {
-            if (WandFocusService.type(stack).orElseThrow().continuous()) player.startUsingItem(hand);
+            if (WandFocusService.continuous(stack)) player.startUsingItem(hand);
             return InteractionResultHolder.success(stack);
         }
         net.minecraft.world.phys.HitResult aimed = player.pick(20.0D, 1.0F, false);
@@ -355,7 +355,7 @@ public final class WandItem extends Item {
             int remainingUseDuration
     ) {
         NodeChargingService.clear(entity, stack);
-        WandFocusService.stopped(entity);
+        WandFocusService.stopped(entity, stack);
     }
 
     @Override

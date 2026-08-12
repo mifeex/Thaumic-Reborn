@@ -1,6 +1,6 @@
 package com.thaumcraftmodern.world.block;
 
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.world.block.entity.MnemonicMatrixBlockEntity;
 import net.minecraft.core.BlockPos;

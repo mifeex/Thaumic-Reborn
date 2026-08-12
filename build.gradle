@@ -207,10 +207,31 @@ repositories {
         url = 'https://maven.theillusivec4.top/'
     }
     mavenCentral()
+    ivy {
+        name = 'Thaumic Reborn API GitHub releases'
+        url = uri('https://github.com/mifeex/thaumic-reborn-api/releases/download')
+        patternLayout {
+            artifact 'v[revision]/[artifact]-[revision](-[classifier]).[ext]'
+        }
+        metadataSources {
+            artifact()
+        }
+        content {
+            includeModule('com.thaumicreborn', 'thaumic-reborn-api')
+        }
+    }
+}
+
+configurations {
+    thaumicRebornApi
+    implementation.extendsFrom thaumicRebornApi
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    thaumicRebornApi("com.thaumicreborn:thaumic-reborn-api:${thaumic_reborn_api_version}") {
+        transitive = false
+    }
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     testCompileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
@@ -263,7 +284,42 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+
+    // The published API is a compile-time library, not a third mod. Bundle
+    // only its public classes so players still install just this mod + addons.
+    from({ configurations.thaumicRebornApi.collect { zipTree(it) } }) {
+        include 'com/thaumicreborn/api/**'
+        duplicatesStrategy = DuplicatesStrategy.FAIL
+    }
     finalizedBy 'reobfJar'
+}
+
+tasks.register('verifyBundledThaumicRebornApi') {
+    dependsOn tasks.named('jar')
+    inputs.files(configurations.thaumicRebornApi)
+    inputs.file(tasks.named('jar').flatMap { it.archiveFile })
+    doLast {
+        def apiJar = configurations.thaumicRebornApi.singleFile
+        def modJar = tasks.named('jar').get().archiveFile.get().asFile
+        def entries = { File archive ->
+            zipTree(archive).matching {
+                include 'com/thaumicreborn/api/**'
+            }.files.collect { file ->
+                file.absolutePath.substring(
+                        file.absolutePath.indexOf('com/thaumicreborn/api/'))
+            }.toSet()
+        }
+        def expected = entries(apiJar)
+        def actual = entries(modJar)
+        if (expected.empty || actual != expected) {
+            throw new GradleException(
+                    "Bundled Thaumic Reborn API differs from ${apiJar.name}")
+        }
+    }
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('verifyBundledThaumicRebornApi')
 }
 
 publishing {

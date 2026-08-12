@@ -2,7 +2,7 @@ package com.thaumcraftmodern.world.block;
 
 import com.thaumcraftmodern.api.wand.WandApi;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.essentia.tube.TubePolicyRegistry;
 import com.thaumcraftmodern.essentia.tube.TubeEssentiaReleaseRules;
 import com.thaumcraftmodern.essentia.tube.TubeEssentiaReleaseRisk;

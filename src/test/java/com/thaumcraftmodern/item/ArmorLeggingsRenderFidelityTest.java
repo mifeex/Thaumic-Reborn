@@ -20,11 +20,15 @@ final class ArmorLeggingsRenderFidelityTest {
     @Test
     void everyCrimsonLeggingsSetSuppressesTheChestModelChildren() throws Exception {
         String model = source("client/render/CrimsonCultArmorModel.java");
-        String item = source("item/CultistArmorItem.java");
+        String extensions = source(
+                "client/render/CultistArmorClientExtensions.java"
+        );
 
         assertTrue(model.contains("slot == EquipmentSlot.LEGS"));
         assertTrue(model.contains("body.getAllParts().skip(1)"));
-        assertTrue(item.contains("model.suppressChestGeometryForLeggings(slot)"));
+        assertTrue(extensions.contains(
+                "model.suppressChestGeometryForLeggings(slot)"
+        ));
     }
 
     private static String source(String relativePath) throws Exception {

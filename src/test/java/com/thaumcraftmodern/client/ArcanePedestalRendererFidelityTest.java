@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 final class ArcanePedestalRendererFidelityTest {
     private static final Path JAVA = Path.of("src/main/java");
@@ -29,6 +31,15 @@ final class ArcanePedestalRendererFidelityTest {
         assertTrue(renderer.contains("ticks % 360.0F"));
         assertTrue(renderer.contains("float scale = 1.0F"));
         assertTrue(renderer.contains("ItemDisplayContext.GROUND"));
+        assertEquals(1, occurrences(renderer, "items.renderStatic("));
+        assertFalse(renderer.contains("Minecraft.useFancyGraphics()"));
+
+        String rechargeRenderer = source(
+                "com/thaumcraftmodern/client/render/"
+                        + "WandRechargePedestalBlockEntityRenderer.java"
+        );
+        assertEquals(1, occurrences(rechargeRenderer, "items.renderStatic("));
+        assertFalse(rechargeRenderer.contains("Minecraft.useFancyGraphics()"));
     }
 
     @Test
@@ -46,5 +57,9 @@ final class ArcanePedestalRendererFidelityTest {
 
     private static String source(String relative) throws Exception {
         return Files.readString(JAVA.resolve(relative));
+    }
+
+    private static int occurrences(String source, String needle) {
+        return source.split(java.util.regex.Pattern.quote(needle), -1).length - 1;
     }
 }

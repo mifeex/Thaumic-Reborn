@@ -3,14 +3,11 @@ package com.thaumcraftmodern.item;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.api.wand.VisDiscountGear;
 import com.thaumcraftmodern.aura.PrimalAspect;
-import com.thaumcraftmodern.client.render.CrimsonCultArmorModel;
+import com.thaumcraftmodern.client.render.CultistArmorClientExtensions;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -95,60 +92,7 @@ public final class CultistArmorItem extends ArmorItem
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private CrimsonCultArmorModel model;
-
-            @Override
-            public HumanoidModel<?> getHumanoidArmorModel(
-                    LivingEntity entity, ItemStack stack, EquipmentSlot slot,
-                    HumanoidModel<?> defaultModel) {
-                if (model == null) {
-                    // Forge invokes initializeClient from Item's base
-                    // constructor, before CultistArmorItem's `set` field is
-                    // assigned. Resolve it only when the completed item is
-                    // actually rendered; capturing it above permanently
-                    // stores null and crashes on the first equipped piece.
-                    Set armorSet = CultistArmorItem.this.set;
-                    if (armorSet == null) {
-                        return defaultModel;
-                    }
-                    model = new CrimsonCultArmorModel(
-                            Minecraft.getInstance().getEntityModels()
-                                    .bakeLayer(switch (armorSet) {
-                                        case KNIGHT -> CrimsonCultArmorModel.KNIGHT_LAYER;
-                                        case CLERIC -> CrimsonCultArmorModel.CLERIC_LAYER;
-                                        case PRAETOR -> CrimsonCultArmorModel.PRAETOR_LAYER;
-                                        case BOOTS -> CrimsonCultArmorModel.BOOTS_LAYER;
-                                    }));
-                }
-                copyPose(defaultModel, model);
-                model.setAllVisible(false);
-                switch (slot) {
-                    case HEAD -> model.head.visible = true;
-                    case CHEST -> {
-                        model.body.visible = true;
-                        model.rightArm.visible = true;
-                        model.leftArm.visible = true;
-                    }
-                    case LEGS -> {
-                        model.rightLeg.visible = true;
-                        model.leftLeg.visible = true;
-                    }
-                    case FEET -> {
-                        model.rightLeg.visible = true;
-                        model.leftLeg.visible = true;
-                    }
-                    default -> { }
-                }
-                model.suppressChestGeometryForLeggings(slot);
-                return model;
-            }
-        });
+        consumer.accept(CultistArmorClientExtensions.create(() -> set));
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private static void copyPose(HumanoidModel<?> source,
-                                 CrimsonCultArmorModel target) {
-        ((HumanoidModel) source).copyPropertiesTo(target);
-    }
 }

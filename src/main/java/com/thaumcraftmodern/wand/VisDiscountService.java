@@ -70,9 +70,14 @@ public final class VisDiscountService {
             PrimalAspect aspect
     ) {
         Objects.requireNonNull(stack, "stack");
-        return !stack.isEmpty()
-                && stack.getItem() instanceof VisDiscountGear gear
-                ? gear.visDiscountPercent(stack, player, aspect)
-                : 0;
+        if (stack.isEmpty()) return 0;
+        if (stack.getItem() instanceof VisDiscountGear gear) {
+            return gear.visDiscountPercent(stack, player, aspect);
+        }
+        if (stack.getItem() instanceof
+                com.thaumicreborn.api.equipment.VisDiscountGear gear) {
+            return gear.visDiscountPercent(stack, player, aspect.id());
+        }
+        return 0;
     }
 }

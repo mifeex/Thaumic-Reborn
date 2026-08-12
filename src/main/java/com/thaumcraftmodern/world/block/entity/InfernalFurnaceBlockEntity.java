@@ -4,7 +4,7 @@ import com.thaumcraftmodern.aura.AuraNodeBlockEntity;
 import com.thaumcraftmodern.aura.AuraNodeState;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.InfernalFurnaceBlock;

@@ -22,6 +22,8 @@ import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.registry.ModStructures;
 import com.thaumcraftmodern.registry.ModVillagers;
 import com.thaumcraftmodern.enchantment.ThaumcraftEnchantmentEvents;
+import com.thaumcraftmodern.integration.api.ThaumicRebornApiServices;
+import com.thaumicreborn.api.ThaumicRebornApi;
 import com.thaumcraftmodern.worldgen.LegacyVillagePoolInjector;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,6 +42,7 @@ public final class ThaumcraftModern {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ThaumcraftModern(FMLJavaModLoadingContext context) {
+        ThaumicRebornApi.install(new ThaumicRebornApiServices());
         IEventBus modBus = context.getModEventBus();
 
         context.registerConfig(

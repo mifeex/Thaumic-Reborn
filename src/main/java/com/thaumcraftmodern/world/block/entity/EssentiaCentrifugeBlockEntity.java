@@ -3,7 +3,7 @@ package com.thaumcraftmodern.world.block.entity;
 import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
 import com.thaumcraftmodern.essentia.EssentiaSync;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -2,6 +2,8 @@ package com.thaumcraftmodern.item;
 
 import com.thaumcraftmodern.focus.WandFocusType;
 import com.thaumcraftmodern.focus.FocusUpgradeType;
+import com.thaumcraftmodern.ThaumcraftModern;
+import com.thaumicreborn.api.focus.FocusItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -17,7 +19,7 @@ import java.util.List;
 import java.util.Locale;
 
 /** A TC4 focus item with the original five ordered upgrade ranks. */
-public final class WandFocusItem extends Item {
+public final class WandFocusItem extends Item implements FocusItem {
     private final WandFocusType type;
 
     public WandFocusItem(WandFocusType type, Properties properties) {
@@ -26,6 +28,12 @@ public final class WandFocusItem extends Item {
     }
 
     public WandFocusType type() { return type; }
+
+    @Override
+    public net.minecraft.resources.ResourceLocation focusId() {
+        return new net.minecraft.resources.ResourceLocation(
+                ThaumcraftModern.MOD_ID, type.itemId());
+    }
 
     public static short[] appliedUpgrades(ItemStack stack) {
         short[] result = {-1, -1, -1, -1, -1};

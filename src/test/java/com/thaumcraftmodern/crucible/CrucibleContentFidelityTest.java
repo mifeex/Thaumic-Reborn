@@ -44,7 +44,7 @@ class CrucibleContentFidelityTest {
             throws IOException {
         assertEquals(
                 "thaumcraftmodern:textures/misc/" + fileName,
-                research(researchId).get("icon").getAsString()
+                research(researchId).get("icon_resource").getAsString()
         );
         assertTrue(Files.isRegularFile(ROOT.resolve(
                 "assets/thaumcraftmodern/textures/misc/" + fileName

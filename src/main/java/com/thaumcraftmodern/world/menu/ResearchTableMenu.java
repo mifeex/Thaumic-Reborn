@@ -12,6 +12,8 @@ import com.thaumcraftmodern.knowledge.PlayerThaumKnowledge;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModMenus;
 import com.thaumcraftmodern.registry.ModSounds;
+import com.thaumcraftmodern.network.ModNetwork;
+import com.thaumcraftmodern.network.packet.ResearchTableFeedbackPacket;
 import com.thaumcraftmodern.research.HexResearchPuzzle;
 import com.thaumcraftmodern.research.ResearchDiagnostics;
 import com.thaumcraftmodern.research.ResearchCompletionService;
@@ -277,13 +279,12 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                     tools,
                     notes
             );
-            serverPlayer.displayClientMessage(
+            sendFeedback(serverPlayer,
                     Component.translatable(
                             tools.getItem() instanceof ScribingToolsItem
                                     ? "screen.thaumcraftmodern.research_table.no_notes"
                                     : "screen.thaumcraftmodern.research_table.no_ink"
-                    ),
-                    true
+                    ), false
             );
             return false;
         }
@@ -366,9 +367,12 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                             ResearchTableBlockEntity.NOTES_SLOT,
                             DiscoveryItem.create(completedResearchId)
                     );
-                    serverPlayer.displayClientMessage(
-                            Component.translatable("puzzle.thaumcraftmodern.first_discovery.complete"),
-                            false
+                    sendFeedback(
+                            serverPlayer,
+                            Component.translatable(
+                                    "puzzle.thaumcraftmodern.first_discovery.complete"
+                            ),
+                            true
                     );
                     serverPlayer.level().playSound(
                             null,
@@ -484,19 +488,18 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
         );
         if (!result.combined()) {
             playCombinationResultSound(player, false);
-            player.displayClientMessage(
+            sendFeedback(player,
                     Component.translatable(
                             "screen.thaumcraftmodern.research_table.combine."
                                     + result.status().name().toLowerCase(Locale.ROOT)
-                    ),
-                    true
+                    ), false
             );
             return true;
         }
 
         playCombinationResultSound(player, true);
         KnowledgeSync.send(player, syncReason);
-        player.displayClientMessage(
+        sendFeedback(player,
                 Component.translatable(
                         result.newlyDiscovered()
                                 ? "screen.thaumcraftmodern.research_table.combine.discovered"
@@ -506,8 +509,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                                         + result.resultAspectId()
                         ),
                         result.createdAmount()
-                ),
-                false
+                ), true
         );
         return true;
     }
@@ -542,12 +544,22 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
     }
 
     private static void sendPuzzleResult(ServerPlayer player, String resultName) {
-        player.displayClientMessage(
+        sendFeedback(player,
                 Component.translatable(
                         "puzzle.thaumcraftmodern.first_discovery.error."
                                 + resultName.toLowerCase(Locale.ROOT)
-                ),
-                true
+                ), false
+        );
+    }
+
+    private static void sendFeedback(
+            ServerPlayer player,
+            Component message,
+            boolean success
+    ) {
+        ModNetwork.sendTo(
+                player,
+                new ResearchTableFeedbackPacket(message, success)
         );
     }
 

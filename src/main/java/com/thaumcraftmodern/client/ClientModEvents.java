@@ -114,6 +114,10 @@ public final class ClientModEvents {
 
     @SubscribeEvent
     public static void registerScreens(net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent event) {
+        if (!com.thaumicreborn.api.client.ThaumicRebornClientApi.isAvailable()) {
+            com.thaumicreborn.api.client.ThaumicRebornClientApi.install(
+                    new com.thaumcraftmodern.integration.api.ThaumicRebornClientApiServices());
+        }
         event.enqueueWork(() -> {
             ClientSinisterNodeTracker.installLifecycleListener();
             MenuScreens.register(ModMenus.RESEARCH_TABLE.get(), ResearchTableScreen::new);
@@ -502,6 +506,10 @@ public final class ClientModEvents {
                 ThaumaturgeRobeArmorModel::createOuterLayer
         );
         event.registerLayerDefinition(
+                ThaumaturgeRobeArmorModel.BOOTS_LAYER,
+                ThaumaturgeRobeArmorModel::createBootsLayer
+        );
+        event.registerLayerDefinition(
                 VoidRobeArmorModel.OUTER_LAYER,
                 VoidRobeArmorModel::createOuterLayer
         );
@@ -533,6 +541,10 @@ public final class ClientModEvents {
         event.registerAboveAll(
                 "scan_notifications",
                 ClientScanOverlay::renderNotification
+        );
+        event.registerAboveAll(
+                "research_table_notifications",
+                ClientResearchTableOverlay::render
         );
         event.registerAboveAll("warp", ClientWarpOverlay::render);
         event.registerAboveAll("runic_shield", ClientRunicShieldOverlay::render);

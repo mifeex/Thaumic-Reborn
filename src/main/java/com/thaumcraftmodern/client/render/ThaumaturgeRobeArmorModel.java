@@ -23,6 +23,14 @@ public final class ThaumaturgeRobeArmorModel
                     ),
                     "main"
             );
+    public static final ModelLayerLocation BOOTS_LAYER =
+            new ModelLayerLocation(
+                    new ResourceLocation(
+                            ThaumcraftModern.MOD_ID,
+                            "thaumaturge_robe_boots"
+                    ),
+                    "main"
+            );
 
     public ThaumaturgeRobeArmorModel(
             net.minecraft.client.model.geom.ModelPart root
@@ -52,5 +60,16 @@ public final class ThaumaturgeRobeArmorModel
                 PartPose.offset(5.0F, 2.0F, 0.0F)
         );
         return LayerDefinition.create(mesh, 64, 32);
+    }
+
+    /**
+     * Modern outer armor expands every leg cube by a full pixel. With TC4's
+     * robe UVs that makes the two dark boots overlap into one wide cuboid.
+     * The half-pixel profile preserves the original texture while leaving a
+     * visible seam between the player's feet.
+     */
+    public static LayerDefinition createBootsLayer() {
+        return LayerDefinition.create(HumanoidModel.createMesh(
+                new CubeDeformation(0.5F), 0.0F), 64, 32);
     }
 }

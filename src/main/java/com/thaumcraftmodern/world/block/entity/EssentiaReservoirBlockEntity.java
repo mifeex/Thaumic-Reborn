@@ -5,7 +5,7 @@ import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.crucible.EssentiaStore;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
 import com.thaumcraftmodern.essentia.EssentiaSync;
-import com.thaumcraftmodern.essentia.EssentiaTransport;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.world.block.EssentiaReservoirBlock;

@@ -29,4 +29,11 @@ final class NodeChargingInteractionTest {
         assertEquals(3, NodeChargingService.drainRate(true, true));
         assertEquals(3, NodeChargingService.drainRate(false, true));
     }
+
+    @Test
+    void fractionalCentivisRoomStillAllowsNodeCharging() {
+        assertTrue(NodeChargingService.hasChargeRoom(5));
+        assertTrue(NodeChargingService.hasChargeRoom(1));
+        assertFalse(NodeChargingService.hasChargeRoom(0));
+    }
 }
