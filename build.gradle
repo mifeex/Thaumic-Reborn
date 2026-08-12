@@ -225,6 +225,10 @@ repositories {
 configurations {
     thaumicRebornApi
     implementation.extendsFrom thaumicRebornApi
+    // ForgeGradle launches Minecraft through an isolated classloader. Plain
+    // implementation dependencies are not exposed to that classloader, so
+    // mirror the bundled API onto the development Minecraft classpath.
+    minecraftLibrary.extendsFrom thaumicRebornApi
 }
 
 dependencies {

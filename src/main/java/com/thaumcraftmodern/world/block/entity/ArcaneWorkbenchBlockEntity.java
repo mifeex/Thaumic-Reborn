@@ -40,14 +40,14 @@ public final class ArcaneWorkbenchBlockEntity extends BlockEntity implements Men
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.put("Crafting", crafting.createTag());
+        tag.put("Crafting", crafting.createSlotTag());
         tag.put("Wand", wand.createTag());
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        crafting.fromTag(tag.getList("Crafting", Tag.TAG_COMPOUND));
+        crafting.fromSlotTag(tag.getList("Crafting", Tag.TAG_COMPOUND));
         wand.fromTag(tag.getList("Wand", Tag.TAG_COMPOUND));
         // The menu may be opened immediately after the block entity is loaded.
         // Mark both containers dirty so the restored slot state is propagated

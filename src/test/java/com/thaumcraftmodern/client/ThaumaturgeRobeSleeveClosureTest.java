@@ -29,7 +29,7 @@ class ThaumaturgeRobeSleeveClosureTest {
     }
 
     @Test
-    void bootsUseASeparateHalfPixelProfileInsteadOfMergedOuterLegs() throws Exception {
+    void bootsUseASeparateNarrowProfileInsteadOfMergedOuterLegs() throws Exception {
         String extensions = Files.readString(ROOT.resolve(
                 "java/com/thaumcraftmodern/client/render/ThaumaturgeRobeClientExtensions.java"
         ));
@@ -45,7 +45,9 @@ class ThaumaturgeRobeSleeveClosureTest {
         assertTrue(extensions.contains("boots.rightLeg.visible = true"));
         assertTrue(extensions.contains("boots.leftLeg.visible = true"));
         assertTrue(model.contains("createBootsLayer()"));
-        assertTrue(model.contains("new CubeDeformation(0.5F)"));
+        assertTrue(model.contains(
+                "new CubeDeformation(-0.1F, 0.5F, 0.5F)"
+        ));
         assertTrue(events.contains("ThaumaturgeRobeArmorModel.BOOTS_LAYER"));
     }
 }

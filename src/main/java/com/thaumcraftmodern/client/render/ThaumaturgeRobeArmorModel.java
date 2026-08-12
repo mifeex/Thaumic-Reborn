@@ -65,11 +65,12 @@ public final class ThaumaturgeRobeArmorModel
     /**
      * Modern outer armor expands every leg cube by a full pixel. With TC4's
      * robe UVs that makes the two dark boots overlap into one wide cuboid.
-     * The half-pixel profile preserves the original texture while leaving a
-     * visible seam between the player's feet.
+     * Keep the outer depth/height, but shrink X by one tenth of a pixel on
+     * either side. Vanilla's leg pivots are only 3.8 pixels apart, so any
+     * non-negative X deformation joins both boots across the centre.
      */
     public static LayerDefinition createBootsLayer() {
         return LayerDefinition.create(HumanoidModel.createMesh(
-                new CubeDeformation(0.5F), 0.0F), 64, 32);
+                new CubeDeformation(-0.1F, 0.5F, 0.5F), 0.0F), 64, 32);
     }
 }

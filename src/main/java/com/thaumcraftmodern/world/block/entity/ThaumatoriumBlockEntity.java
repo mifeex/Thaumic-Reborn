@@ -52,6 +52,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -69,6 +70,11 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
     private ItemStack formulaCatalyst = ItemStack.EMPTY;
     private @Nullable ResourceLocation selectedRecipe;
     private @Nullable ResourceLocation displayedRecipe;
+    /** Immutable client-render view; refreshed only when synchronized state changes. */
+    private List<ResourceLocation> renderFormulae = List.of();
+    private @Nullable ResourceLocation cachedRenderRecipeId;
+    private @Nullable CrucibleRecipeDefinition cachedRenderRecipe;
+    private long cachedRenderRecipeRevision = Long.MIN_VALUE;
     private @Nullable UUID recipeOwner;
     private @Nullable String currentSuction;
     private int counter;
@@ -285,6 +291,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
             recipeOwner = null;
             currentSuction = null;
             if (formulae.isEmpty()) formulaCatalyst = ItemStack.EMPTY;
+            refreshRenderFormulae();
             syncChanged();
             return true;
         }
@@ -294,6 +301,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         // TC4's aspect reservation without deleting or refunding valid work.
         if (!reservedFitsRecipe(reserved.view(), recipe.aspects())) return false;
 
+        boolean formulaeChanged = false;
         if (!formulae.contains(id)) {
             if (formulae.size() >= formulaCapacity()) {
                 ResourceLocation replaced = replaceableFormula();
@@ -303,6 +311,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
             }
             formulae.add(id);
             formulaOwners.put(id, player.getUUID());
+            formulaeChanged = true;
         }
         formulaCatalyst = catalyst.isEmpty()
                 ? ItemStack.EMPTY : catalyst.copyWithCount(1);
@@ -310,6 +319,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         displayedRecipe = id;
         recipeOwner = formulaOwners.getOrDefault(id, player.getUUID());
         currentSuction = null;
+        if (formulaeChanged) refreshRenderFormulae();
         syncChanged();
         return true;
     }
@@ -462,6 +472,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         displayedRecipe = null;
         recipeOwner = null;
         currentSuction = null;
+        refreshRenderFormulae();
     }
 
     static boolean sameFormulaCatalyst(ItemStack previous, ItemStack current) {
@@ -575,7 +586,10 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
             changed = true;
         }
         if (formulae.isEmpty()) formulaCatalyst = ItemStack.EMPTY;
-        if (changed) syncChanged();
+        if (changed) {
+            refreshRenderFormulae();
+            syncChanged();
+        }
     }
 
     public boolean hasFormula(ResourceLocation id) {
@@ -589,6 +603,35 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
     public List<ResourceLocation> formulae() {
         ThaumatoriumBlockEntity controller = controller();
         return controller == this ? List.copyOf(formulae) : controller.formulae();
+    }
+
+    /** Allocation-free formula snapshot for the decorative client renderer. */
+    public List<ResourceLocation> formulaeForRender() {
+        ThaumatoriumBlockEntity controller = controller();
+        return controller == this
+                ? renderFormulae
+                : controller.formulaeForRender();
+    }
+
+    /**
+     * Resolves only the formula currently shown by the classic 40-tick cycle.
+     * Server selection and displayedRecipe semantics deliberately stay separate.
+     */
+    public @Nullable CrucibleRecipeDefinition recipeForRender(
+            ResourceLocation id
+    ) {
+        ThaumatoriumBlockEntity controller = controller();
+        if (controller != this) {
+            return controller.recipeForRender(id);
+        }
+        long registryRevision = CrucibleRecipeRegistry.revision();
+        if (registryRevision != cachedRenderRecipeRevision
+                || !Objects.equals(id, cachedRenderRecipeId)) {
+            cachedRenderRecipeId = id;
+            cachedRenderRecipe = CrucibleRecipeRegistry.find(id).orElse(null);
+            cachedRenderRecipeRevision = registryRevision;
+        }
+        return cachedRenderRecipe;
     }
 
     private void fill(ServerLevel level) {
@@ -737,6 +780,16 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         }
     }
 
+    private void refreshRenderFormulae() {
+        renderFormulae = List.copyOf(formulae);
+        if (cachedRenderRecipeId != null
+                && !renderFormulae.contains(cachedRenderRecipeId)) {
+            cachedRenderRecipeId = null;
+            cachedRenderRecipe = null;
+            cachedRenderRecipeRevision = Long.MIN_VALUE;
+        }
+    }
+
     private void syncEssentiaTo(ServerPlayer player) {
         ModNetwork.sendTo(
                 player,
@@ -811,6 +864,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
                     ? selectedRecipe
                     : formulae.stream().findFirst().orElse(null);
         }
+        refreshRenderFormulae();
         String suction = tag.getString("Suction"); currentSuction = suction.isBlank() ? null : suction;
     }
 

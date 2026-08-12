@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 final class ClassicSceptreGuiOrientationTest {
     @Test
-    void sceptreUsesTheSameGuiRotationAsClassicWands() throws Exception {
+    void sceptreKeepsItsConfiguredGuiRotation() throws Exception {
         JsonObject model = JsonParser.parseString(Files.readString(Path.of(
                 "src/main/resources/assets/thaumcraftmodern/models/item/"
                         + "classic_sceptre_base.json"
@@ -22,6 +22,6 @@ final class ClassicSceptreGuiOrientationTest {
 
         assertEquals(0, rotation.get(0).getAsInt());
         assertEquals(0, rotation.get(1).getAsInt());
-        assertEquals(0, rotation.get(2).getAsInt());
+        assertEquals(7.5D, rotation.get(2).getAsDouble());
     }
 }

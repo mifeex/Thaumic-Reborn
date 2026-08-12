@@ -2,7 +2,6 @@ package com.thaumcraftmodern.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.thaumcraftmodern.crucible.CrucibleRecipeRegistry;
 import com.thaumcraftmodern.world.block.ThaumatoriumBlock;
 import com.thaumcraftmodern.world.block.entity.ThaumatoriumBlockEntity;
 import net.minecraft.client.Minecraft;
@@ -22,14 +21,12 @@ public final class ThaumatoriumBlockEntityRenderer
                 == DoubleBlockHalf.UPPER) return;
         if (machine.getLevel() == null) return;
         if (machine.catalyst().isEmpty()) return;
-        var formulae = machine.formulae();
+        var formulae = machine.formulaeForRender();
         if (formulae.isEmpty()) return;
         int recipeIndex = (int) (machine.getLevel().getGameTime()
                 / 40L % formulae.size());
         var displayedRecipe = formulae.get(recipeIndex);
-        var recipe = CrucibleRecipeRegistry.all().stream()
-                .filter(candidate -> candidate.id().equals(displayedRecipe))
-                .findFirst().orElse(null);
+        var recipe = machine.recipeForRender(displayedRecipe);
         if (recipe == null) return;
         Direction facing = machine.getBlockState().getValue(ThaumatoriumBlock.FACING);
         pose.pushPose();
@@ -47,5 +44,4 @@ public final class ThaumatoriumBlockEntityRenderer
                 machine.getLevel(), 0);
         pose.popPose();
     }
-    @Override public boolean shouldRenderOffScreen(ThaumatoriumBlockEntity machine) { return true; }
 }

@@ -25,11 +25,16 @@ final class ThaumatoriumOutputDisplayFidelityTest {
         assertFalse(source.contains("ItemDisplayContext.GUI"));
         assertFalse(source.contains("ItemDisplayContext.FIXED"));
         assertFalse(source.contains("getGameTime() + partialTick"));
-        assertTrue(source.contains("machine.formulae()"));
+        assertTrue(source.contains("machine.formulaeForRender()"));
         assertTrue(source.contains("machine.catalyst().isEmpty()"));
         assertTrue(source.contains("/ 40L % formulae.size()"));
         assertFalse(source.contains("machine.selectedRecipe()"));
         assertFalse(source.contains("machine.displayedRecipe()"));
+        assertTrue(source.contains("machine.recipeForRender(displayedRecipe)"));
+        assertFalse(source.contains("CrucibleRecipeRegistry.all().stream()"));
+        assertFalse(source.contains("shouldRenderOffScreen"));
+        assertFalse(source.contains("getViewDistance()"),
+                "Keep the original dispatcher distance while restoring frustum culling");
         assertTrue(original.contains("tile.recipeHash.isEmpty()"));
         assertTrue(original.contains(
                 "/ 40L % tile.recipeHash.size()"));

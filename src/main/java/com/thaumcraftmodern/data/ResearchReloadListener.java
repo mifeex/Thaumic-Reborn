@@ -146,9 +146,13 @@ public final class ResearchReloadListener extends SimpleJsonResourceReloadListen
                         "purchase_cost",
                         "research " + id + " purchase cost"
                 );
-                List<AspectCost> researchCost = legacy == null
-                        ? List.of()
-                        : readLegacyResearchCosts(
+                List<AspectCost> researchCost = json.has("research_cost")
+                        ? readAspectCosts(
+                                json,
+                                "research_cost",
+                                "research " + id + " aspect cost"
+                        )
+                        : legacy == null ? List.of() : readLegacyResearchCosts(
                                 legacy,
                                 "research_aspects",
                                 "research " + id + " aspect cost"
