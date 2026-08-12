@@ -2,6 +2,7 @@
   "id": "jarbrain",
   "legacy_id": "JARBRAIN",
   "category": "artifice",
+  "completion_warp": 3,
   "icon": "thaumcraftmodern:brain_jar",
   "title": "tc.research_name.JARBRAIN",
   "subtitle": "tc.research_text.JARBRAIN",

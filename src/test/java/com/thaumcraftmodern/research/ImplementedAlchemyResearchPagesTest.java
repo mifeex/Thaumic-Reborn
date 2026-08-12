@@ -19,6 +19,8 @@ class ImplementedAlchemyResearchPagesTest {
     @Test
     void implementedJarAndThaumatoriumPagesDoNotRenderAsInactive() throws Exception {
         JsonObject jarLabel = read("jarlabel");
+        assertTrue(jarLabel.get("auto_unlock").getAsBoolean(),
+                "TC4 JARLABEL is a stub and must complete without research notes");
         JsonObject thaumatorium = read("thaumatorium");
 
         assertFalse(jarLabel.get("inactive").getAsBoolean());

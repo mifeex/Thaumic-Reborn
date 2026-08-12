@@ -104,15 +104,16 @@ server-config параметры поверхностного overlay. Eerie о�
 | Структура | Частота TC4 | Текущая настройка |
 |---|---:|---:|
 | Mound / barrow | `1/150` | `1.15/150`, подземная камера, сундук, Eerie node |
-| Eldritch Ring | `1/66` | `1.15/66`, ancient/obsidian ring, dark node, Crimson Knight/Cleric |
+| Eldritch Ring | `1/66` | `1/66`, ancient/obsidian ring, dark node, Crimson Knight/Cleric |
 | Hilltop Stones | `1/40` | `1.15/40`, ancient pillars, node |
 | Obsidian Aura Totem | `1/360` | `1.15/360`, dark node |
 | Wizard tower | village weight `15` | jigsaw weight `17`, Thaumaturge и loot chest |
 | Banker house | village weight `25` | jigsaw weight `29`, Thaumic Banker |
 
 Первые четыре знаменателя и веса деревенских построек взяты из TC4.
-Structure-set даёт природным структурам увеличение средней плотности ровно
-на `15%`. Параметр `structureRarityScale` дополнительно умножает их
+Structure-set даёт Mound, Hilltop Stones и Aura Totem увеличение средней
+плотности на `15%`; Eldritch Ring использует исходную плотность `1/66`.
+Параметр `structureRarityScale` дополнительно умножает их
 знаменатели. Wizard/Banker встроены в vanilla village house pools; из-за
 целочисленных jigsaw-весов ближайшие к `+15%` значения составляют `17`
 (`+13.3%`) и `29` (`+16%`).

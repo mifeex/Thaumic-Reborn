@@ -2,7 +2,7 @@
   "id": "voidmetal",
   "legacy_id": "VOIDMETAL",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "icon": "thaumcraftmodern:void_metal_ingot",
   "title": "tc.research_name.VOIDMETAL",
   "subtitle": "tc.research_text.VOIDMETAL",
   "concealed": true,
@@ -24,9 +24,10 @@
       "body": "tc.research_page.VOIDMETAL.1"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:voidmetal",
       "legacy_type": "recipe",
       "legacy_content": "VoidMetal",
       "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"VoidMetal\"))"
@@ -37,80 +38,89 @@
       "body": "tc.research_page.VOIDMETAL.2"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_axe",
       "legacy_type": "recipe",
       "legacy_content": "VoidAxe",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidAxe\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_sword",
       "legacy_type": "recipe",
       "legacy_content": "VoidSword",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidSword\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_pickaxe",
       "legacy_type": "recipe",
       "legacy_content": "VoidPick",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidPick\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_shovel",
       "legacy_type": "recipe",
       "legacy_content": "VoidShovel",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidShovel\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_hoe",
       "legacy_type": "recipe",
       "legacy_content": "VoidHoe",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidHoe\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_helmet",
       "legacy_type": "recipe",
       "legacy_content": "VoidHelm",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidHelm\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_chestplate",
       "legacy_type": "recipe",
       "legacy_content": "VoidChest",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidChest\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_leggings",
       "legacy_type": "recipe",
       "legacy_content": "VoidLegs",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidLegs\"))"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:void_boots",
       "legacy_type": "recipe",
       "legacy_content": "VoidBoots",
       "source_expression": "new ResearchPage((IRecipe)recipes.get(\"VoidBoots\"))"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
+  "inactive_reason": null,
   "legacy": {
     "x": 2,
     "y": -2,

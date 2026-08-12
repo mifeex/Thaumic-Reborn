@@ -8,6 +8,7 @@ import com.thaumcraftmodern.infusion.InfusionRecipeDefinition;
 import com.thaumcraftmodern.infusion.InfusionRecipeRegistry;
 import com.thaumcraftmodern.infusion.InfusionInstability;
 import com.thaumcraftmodern.infusion.InfusionStability;
+import com.thaumcraftmodern.item.PrimordialPearlItem;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.knowledge.WarpType;
 import com.thaumcraftmodern.network.ModNetwork;
@@ -536,10 +537,16 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
     private void consumeOne(ArcanePedestalBlockEntity pedestal) {
         ItemStack stack = pedestal.item();
         if (stack.isEmpty()) return;
-        ItemStack remainder = stack.getCraftingRemainingItem();
+        ItemStack remainder = infusionRemainder(stack);
         pedestal.setInfusionItem(remainder);
         if (level != null) level.blockEvent(pedestal.getBlockPos(),
                 pedestal.getBlockState().getBlock(), 11, 0);
+    }
+
+    static ItemStack infusionRemainder(ItemStack stack) {
+        // A Primordial Pearl survives grid crafting, but infusion consumes it.
+        if (stack.getItem() instanceof PrimordialPearlItem) return ItemStack.EMPTY;
+        return stack.getCraftingRemainingItem();
     }
 
     private void finish(ServerLevel level, ArcanePedestalBlockEntity center,

@@ -252,8 +252,9 @@ class WandClassicContentTest {
                 wandModel.get("parent").getAsString());
         JsonObject gui = wandModel.getAsJsonObject("display")
                 .getAsJsonObject("gui");
-        assertEquals(3, gui.getAsJsonArray("rotation").size());
-        assertEquals(3, gui.getAsJsonArray("translation").size());
+        assertEquals("[0,0,0]", gui.getAsJsonArray("rotation").toString());
+        assertEquals("[0,0,0]", gui.getAsJsonArray("translation").toString());
+        assertEquals("[1,1,1]", gui.getAsJsonArray("scale").toString());
     }
 
     @Test

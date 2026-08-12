@@ -198,6 +198,7 @@ public final class LegacyThaumcraftMob extends Monster
     private boolean slimeWasOnGround;
     private LegacyThaumcraftMob slimeMergeTarget;
     private int wispAttackCounter;
+    private int wispAggroCooldown;
     private int wispCourseChangeCooldown;
     private Vec3 wispWaypoint = Vec3.ZERO;
     private int firebatAttackCooldown;
@@ -210,6 +211,9 @@ public final class LegacyThaumcraftMob extends Monster
     private int constructAngerTicks;
     private int constructArcTicks;
     private BlockPos constructArcTarget;
+    private int taintSporeSize;
+    private int taintSporeGrowth;
+    private int taintSwarmSpawnCounter = 500;
 
     public LegacyThaumcraftMob(
             EntityType<? extends Monster> entityType,
@@ -218,6 +222,7 @@ public final class LegacyThaumcraftMob extends Monster
     ) {
         super(entityType, level);
         this.kind = Objects.requireNonNull(kind, "kind");
+        taintSporeSize = kind == LegacyMobKind.TAINT_SPORE_SWARMER ? 10 : 2;
         constructBossEvent = kind == LegacyMobKind.ELDRITCH_CONSTRUCT
                 ? new ServerBossEvent(
                         getDisplayName(),
@@ -640,6 +645,12 @@ public final class LegacyThaumcraftMob extends Monster
      * assign kind. Install kind-dependent goals only after super returns.
      */
     private void registerKindGoals() {
+        if (kind == LegacyMobKind.TAINT_SPORE
+                || kind == LegacyMobKind.TAINT_SPORE_SWARMER) {
+            // TC4 spores are rooted entities: no navigation, melee or target
+            // selection is installed for either the growing spore or swarmer.
+            return;
+        }
         if (kind.flying()) {
             if (kind == LegacyMobKind.WISP) {
                 goalSelector.addGoal(1, new WispZapGoal(this));
@@ -756,6 +767,7 @@ public final class LegacyThaumcraftMob extends Monster
         tickMindSpider();
         tickEldritchConstruct();
         tickSwarmBuzz();
+        tickTaintEcologyMob();
         if (level().isClientSide
                 || tickCount
                         % CrimsonCultBehavior.RITUAL_CHECK_INTERVAL_TICKS != 0
@@ -1071,6 +1083,101 @@ public final class LegacyThaumcraftMob extends Monster
                     0.5F + getRandom().nextFloat() * 0.4F
             );
         }
+    }
+
+    private void tickTaintEcologyMob() {
+        if (level().isClientSide) {
+            return;
+        }
+        if (kind == LegacyMobKind.TAINT_SPORE_SWARMER) {
+            getNavigation().stop();
+            setDeltaMovement(0.0D, getDeltaMovement().y, 0.0D);
+            if (taintSwarmSpawnCounter > 0) {
+                taintSwarmSpawnCounter--;
+            }
+            if (taintSwarmSpawnCounter <= 0
+                    && level().getNearestPlayer(this, 16.0D) != null) {
+                taintSwarmSpawnCounter = 500;
+                spawnTaintSwarm();
+            }
+            return;
+        }
+        if (kind != LegacyMobKind.TAINT_SPORE) {
+            return;
+        }
+        getNavigation().stop();
+        setDeltaMovement(0.0D, getDeltaMovement().y, 0.0D);
+        if (tickCount % 20 == 0
+                && !level().getBiome(blockPosition()).is(
+                        ModWorldgenKeys.TAINTED_LANDS)) {
+            hurt(damageSources().drown(), 1.0F);
+            return;
+        }
+        if (taintSporeSize < 10 && ++taintSporeGrowth >= 1200) {
+            taintSporeSize++;
+            taintSporeGrowth = 0;
+        }
+        if (!level().getBlockState(blockPosition().below())
+                .is(com.thaumcraftmodern.registry.ModBlocks
+                        .MATURE_SPORE_STALK.get())) {
+            burstSporeIntoCrawlers();
+        }
+    }
+
+    private void spawnTaintSwarm() {
+        if (!(level() instanceof ServerLevel server)) {
+            return;
+        }
+        LegacyThaumcraftMob swarm = ModEntities.TAINT_SWARM.get()
+                .create(server);
+        if (swarm == null) {
+            return;
+        }
+        swarm.moveTo(getX(), getY() + 0.5D, getZ(),
+                getRandom().nextFloat() * 360.0F, 0.0F);
+        swarm.finalizeSpawn(server, server.getCurrentDifficultyAt(
+                blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+        server.addFreshEntity(swarm);
+        playSound(ModSounds.GORE.get(), 1.0F,
+                0.9F + getRandom().nextFloat() * 0.1F);
+    }
+
+    private void burstSporeIntoCrawlers() {
+        if (!(level() instanceof ServerLevel server) || isRemoved()) {
+            return;
+        }
+        int amount = taintSporeSize / 3
+                + getRandom().nextInt(taintSporeSize / 2 + 1);
+        for (int index = 0; index < amount; index++) {
+            LegacyThaumcraftMob crawler = ModEntities.TAINTED_CRAWLER.get()
+                    .create(server);
+            if (crawler == null) {
+                continue;
+            }
+            crawler.moveTo(
+                    getX() + getRandom().nextFloat()
+                            - getRandom().nextFloat(),
+                    getY() + getRandom().nextFloat(),
+                    getZ() + getRandom().nextFloat()
+                            - getRandom().nextFloat(),
+                    getRandom().nextFloat() * 360.0F,
+                    0.0F
+            );
+            crawler.finalizeSpawn(server, server.getCurrentDifficultyAt(
+                    blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+            server.addFreshEntity(crawler);
+        }
+        BlockPos below = blockPosition().below();
+        if (server.getBlockState(below).is(
+                com.thaumcraftmodern.registry.ModBlocks
+                        .MATURE_SPORE_STALK.get())) {
+            server.setBlock(below,
+                    com.thaumcraftmodern.registry.ModBlocks.SPORE_STALK.get()
+                            .defaultBlockState(), 3);
+        }
+        playSound(ModSounds.GORE.get(), 1.0F,
+                0.9F + getRandom().nextFloat() * 0.1F);
+        discard();
     }
 
     private void tickFuriousZombie() {
@@ -1993,6 +2100,14 @@ public final class LegacyThaumcraftMob extends Monster
             );
         }
         boolean hurt = super.hurt(source, appliedAmount);
+        if (hurt && !level().isClientSide
+                && kind == LegacyMobKind.TAINT_SPORE) {
+            burstSporeIntoCrawlers();
+        } else if (hurt && !level().isClientSide
+                && kind == LegacyMobKind.TAINT_SPORE_SWARMER) {
+            spawnTaintSwarm();
+            taintSwarmSpawnCounter = 500;
+        }
         if (hurt
                 && !level().isClientSide
                 && kind == LegacyMobKind.ELDRITCH_CRAB
@@ -2002,10 +2117,19 @@ public final class LegacyThaumcraftMob extends Monster
         }
         if (hurt
                 && !level().isClientSide
-                && kind == LegacyMobKind.WISP
-                && source.getEntity() instanceof LivingEntity attacker) {
-            setTarget(attacker);
-            wispAttackCounter = 0;
+                && kind == LegacyMobKind.WISP) {
+            Entity directAttacker = source.getDirectEntity();
+            Entity trueAttacker = source.getEntity();
+            LivingEntity attacker = trueAttacker instanceof LivingEntity living
+                    ? living
+                    : directAttacker instanceof LivingEntity living
+                            ? living
+                            : null;
+            if (attacker != null) {
+                setTarget(attacker);
+                wispAggroCooldown = 200;
+                wispAttackCounter = 0;
+            }
         }
         if (!hurt || level().isClientSide || !isCrimsonCultist()) {
             return hurt;
@@ -2403,6 +2527,13 @@ public final class LegacyThaumcraftMob extends Monster
         if (kind == LegacyMobKind.ELDRITCH_CRAB) {
             tag.putBoolean("CrabHelm", hasCrabHelm());
         }
+        if (kind == LegacyMobKind.TAINT_SPORE) {
+            tag.putInt("Size", Math.max(0, taintSporeSize - 1));
+            tag.putInt("Growth", taintSporeGrowth);
+        }
+        if (kind == LegacyMobKind.TAINT_SPORE_SWARMER) {
+            tag.putInt("SpawnCounter", taintSwarmSpawnCounter);
+        }
     }
 
     @Override
@@ -2535,6 +2666,16 @@ public final class LegacyThaumcraftMob extends Monster
         if (kind == LegacyMobKind.ELDRITCH_CRAB) {
             setCrabHelm(tag.getBoolean("CrabHelm"));
         }
+        if (kind == LegacyMobKind.TAINT_SPORE) {
+            taintSporeSize = tag.contains("Size")
+                    ? Mth.clamp(tag.getInt("Size") + 1, 1, 10) : 2;
+            taintSporeGrowth = Math.max(0, tag.getInt("Growth"));
+        }
+        if (kind == LegacyMobKind.TAINT_SPORE_SWARMER) {
+            taintSporeSize = 10;
+            taintSwarmSpawnCounter = tag.contains("SpawnCounter")
+                    ? Math.max(0, tag.getInt("SpawnCounter")) : 500;
+        }
     }
 
     private void restoreLegacyBaseAttribute(
@@ -2620,6 +2761,14 @@ public final class LegacyThaumcraftMob extends Monster
                 ModWorldgenKeys.TAINTED_LANDS
         );
         if (sample.kind.tainted() && taintedBiome) {
+            boolean sturdyGround = sample.kind == LegacyMobKind.TAINTACLE
+                    ? TaintedBiomeSpawnPolicy.validTaintacleGround(
+                            level.getBlockState(position),
+                            level.getBlockState(position.below()))
+                    : level.getBlockState(position.below()).isFaceSturdy(
+                            level,
+                            position.below(),
+                            net.minecraft.core.Direction.UP);
             return TaintedBiomeSpawnPolicy.allows(
                     sample.kind,
                     true,
@@ -2630,11 +2779,7 @@ public final class LegacyThaumcraftMob extends Monster
                             position,
                             random
                     ),
-                    level.getBlockState(position.below()).isFaceSturdy(
-                            level,
-                            position.below(),
-                            net.minecraft.core.Direction.UP
-                    )
+                    sturdyGround
             );
         }
         return Monster.checkMonsterSpawnRules(
@@ -2868,16 +3013,20 @@ public final class LegacyThaumcraftMob extends Monster
         }
 
         @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
+
+        @Override
         public void tick() {
             LivingEntity target = wisp.getTarget();
-            if (target != null
-                    && (!target.isAlive()
-                            || wisp.distanceToSqr(target)
-                                    > TARGET_RANGE * TARGET_RANGE)) {
+            if (target != null && !target.isAlive()) {
                 wisp.setTarget(null);
                 target = null;
             }
-            if (target == null && wisp.getRandom().nextInt(1000) == 0) {
+            wisp.wispAggroCooldown--;
+            if (wisp.getRandom().nextInt(1000) == 0
+                    && (target == null || wisp.wispAggroCooldown-- <= 0)) {
                 Player player = wisp.level().getNearestPlayer(
                         wisp,
                         TARGET_RANGE
@@ -2885,9 +3034,12 @@ public final class LegacyThaumcraftMob extends Monster
                 if (player != null && !player.getAbilities().invulnerable) {
                     wisp.setTarget(player);
                     target = player;
+                    wisp.wispAggroCooldown = 50;
                 }
             }
-            if (target == null) {
+            if (target == null
+                    || wisp.distanceToSqr(target)
+                            >= TARGET_RANGE * TARGET_RANGE) {
                 if (wisp.wispAttackCounter > 0) {
                     wisp.wispAttackCounter--;
                 }

@@ -78,6 +78,14 @@ public final class CultistArmorItem extends ArmorItem
         return set == Set.CLERIC || set == Set.BOOTS;
     }
 
+    /**
+     * TC4 ItemCultistRobeArmor and ItemCultistBoots both contribute one point
+     * of worn warp. Knight plate and Praetor armor contribute none.
+     */
+    public int classicWarp() {
+        return hasClassicVisDiscount() ? 1 : 0;
+    }
+
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity,
                                   EquipmentSlot slot, String type) {

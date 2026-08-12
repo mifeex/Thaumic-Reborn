@@ -186,6 +186,9 @@ final class EssentiaTubeModelFidelityTest {
                 "src/main/java/com/thaumcraftmodern/world/block/entity/"
                         + "EssentiaTubeBlockEntity.java"));
         assertTrue(block.contains("TubeWandTargetResolver.hitsCore(x, y, z)"));
+        assertTrue(block.contains("implements WandInteractable"));
+        assertTrue(block.contains("onWandRightClick("));
+        assertTrue(block.contains("TubeFacingRules.toggleFacing("));
         assertTrue(block.contains("tube.rotateFacing()"));
         assertTrue(block.contains("tube.toggleSide(resolveWandSide(hit, pos))"));
         assertTrue(block.contains("ModSounds.TOOL.get()"));

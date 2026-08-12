@@ -2,7 +2,7 @@
   "id": "alchemicalmanufacture",
   "legacy_id": "ALCHEMICALMANUFACTURE",
   "category": "alchemy",
-  "icon": "thaumcraftmodern:textures/misc/r_alchman.png",
+  "icon_resource": "thaumcraftmodern:textures/misc/r_alchman.png",
   "title": "tc.research_name.ALCHEMICALMANUFACTURE",
   "subtitle": "tc.research_text.ALCHEMICALMANUFACTURE",
   "concealed": true,

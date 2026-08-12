@@ -134,6 +134,8 @@ final class GolemCoreAndUpgradeFidelityTest {
         String entity = Files.readString(Path.of("src/main/java/com/thaumcraftmodern/entity/ClassicGolemEntity.java"));
         String renderer = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/GolemBellMarkerRenderer.java"));
+        String renderTypes = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/GolemBellRenderTypes.java"));
         String creative = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/registry/ModCreativeTabs.java"));
         JsonObject research = json("data/thaumcraftmodern/thaumcraft/research/legacy/golembell.json");
@@ -157,6 +159,26 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(bell.contains("writeMarkers(bell, selectedGolem.markers())")),
                 () -> assertTrue(renderer.contains("drawFace")),
                 () -> assertTrue(renderer.contains("drawLink")),
+                () -> assertTrue(renderTypes.contains("GL_TEXTURE_WRAP_S")),
+                () -> assertTrue(renderTypes.contains("GL_REPEAT")),
+                () -> assertTrue(renderTypes.contains("REPEATING_SCRIPT")),
+                () -> assertTrue(renderTypes.contains("POSITION_COLOR_TEX")),
+                () -> assertTrue(renderTypes.contains("POSITION_COLOR_TEX_SHADER")),
+                () -> assertTrue(renderTypes.contains(
+                        ".setTransparencyState(LIGHTNING_TRANSPARENCY)")),
+                () -> assertFalse(renderTypes.contains(
+                        ".setTransparencyState(ADDITIVE_TRANSPARENCY)")),
+                () -> assertTrue(renderTypes.contains(
+                        "new TextureStateShard(texture, true, false)")),
+                () -> assertTrue(renderer.contains(".uv2(200)")),
+                () -> assertFalse(renderer.contains("LightTexture.FULL_BRIGHT")),
+                () -> assertTrue(renderer.contains("MultiBufferSource.immediate(new BufferBuilder(4096))")),
+                () -> assertTrue(renderer.contains("linkBuffers.endBatch(LINK_TYPE)")),
+                () -> assertTrue(renderer.contains(
+                        "drawFace(poses.last(), buffers.getBuffer(MARK_TYPE)")),
+                () -> assertTrue(renderer.contains("buffers.endBatch(MARK_TYPE)")),
+                () -> assertFalse(renderer.contains(
+                        "VertexConsumer marks = buffers.getBuffer(MARK_TYPE)")),
                 () -> assertTrue(renderer.contains("renderBellStatus(RenderGuiEvent.Post event)")),
                 () -> assertTrue(creative.contains("get(\"golem_bell\").get()")),
                 () -> assertFalse(research.get("inactive").getAsBoolean()),

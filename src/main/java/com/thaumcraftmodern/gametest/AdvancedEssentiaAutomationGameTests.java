@@ -154,7 +154,7 @@ public final class AdvancedEssentiaAutomationGameTests {
     }
 
     @GameTest(template = "empty", batch = "advancedEssentia", timeoutTicks = 80)
-    public static void improvedBufferUsesMatchingNonFullMainJar(
+    public static void improvedBufferServesBothRequestingOutputs(
             GameTestHelper helper) {
         BufferRoutingRig rig = bufferRoutingRig(helper);
         helper.assertTrue(rig.mainJar().addEssentia(
@@ -168,10 +168,10 @@ public final class AdvancedEssentiaAutomationGameTests {
         tickRoutingRig(helper, rig, 160);
 
         helper.assertTrue(rig.mainJar().amount() == 2
-                        && rig.reserveJar().amount() == 0
-                        && rig.buffer().supplyContents()
-                                .getOrDefault("ignis", 0) == 1,
-                "Main output depended on aspect insertion order");
+                        && "ignis".equals(rig.reserveJar().aspect())
+                        && rig.reserveJar().amount() == 1
+                        && rig.buffer().totalAmount() == 0,
+                "Main and reserve outputs did not independently serve suction");
         helper.succeed();
     }
 
@@ -215,7 +215,7 @@ public final class AdvancedEssentiaAutomationGameTests {
     }
 
     @GameTest(template = "empty", batch = "advancedEssentia", timeoutTicks = 80)
-    public static void improvedBufferHoldsEssentiaWhenMainJarIsFull(
+    public static void reserveOutputWorksWhenMainJarIsFull(
             GameTestHelper helper) {
         BufferRoutingRig rig = bufferRoutingRig(helper);
         boolean filledBufferSlot = true;
@@ -237,17 +237,17 @@ public final class AdvancedEssentiaAutomationGameTests {
 
         helper.assertTrue(
                 rig.mainJar().amount() == EssentiaJarBlockEntity.CAPACITY
-                        && rig.reserveJar().amount() == 0
-                        && rig.buffer().supplyContents()
-                                .getOrDefault("aer", 0)
+                        && "aer".equals(rig.reserveJar().aspect())
+                        && rig.reserveJar().amount()
                                 == AdvancedEssentiaBufferBlockEntity
-                                        .CAPACITY_PER_ASPECT,
-                "Buffer rerouted essentia without a reversed main tube");
+                                        .CAPACITY_PER_ASPECT
+                        && rig.buffer().totalAmount() == 0,
+                "Reserve output ignored its requesting jar");
         helper.succeed();
     }
 
     @GameTest(template = "empty", batch = "advancedEssentia", timeoutTicks = 80)
-    public static void improvedBufferHoldsAnAspectMissingFromMainStorage(
+    public static void reserveOutputAcceptsAspectRejectedByMainJar(
             GameTestHelper helper) {
         BufferRoutingRig rig = bufferRoutingRig(helper);
         helper.assertTrue(rig.mainJar().addEssentia(
@@ -260,51 +260,32 @@ public final class AdvancedEssentiaAutomationGameTests {
 
         helper.assertTrue("ignis".equals(rig.mainJar().aspect())
                         && rig.mainJar().amount() == 1
-                        && rig.reserveJar().amount() == 0
-                        && rig.buffer().supplyContents()
-                                .getOrDefault("aer", 0) == 1,
-                "Buffer rerouted an unmatched aspect without tube reversal");
+                        && "aer".equals(rig.reserveJar().aspect())
+                        && rig.reserveJar().amount() == 1
+                        && rig.buffer().totalAmount() == 0,
+                "Reserve output did not serve its own suction path");
         helper.succeed();
     }
 
     @GameTest(template = "empty", batch = "advancedEssentia", timeoutTicks = 80)
-    public static void improvedBufferUsesReserveOnlyAfterTubeReversal(
+    public static void bothOutputsArePassiveSourcesWithZeroSuction(
             GameTestHelper helper) {
         BufferRoutingRig rig = bufferRoutingRig(helper);
-        helper.getLevel().setBlock(rig.mainTubePos(),
-                ModBlocks.REVERSIBLE_ESSENTIA_TUBE.get().defaultBlockState(), 3);
-        EssentiaTubeBlockEntity reversed = (EssentiaTubeBlockEntity)
-                helper.getLevel().getBlockEntity(rig.mainTubePos());
-        reversed.toggleManualReturnFromWand();
-        helper.assertTrue(rig.reserveJar().addEssentia(
-                        "aer", 1, Direction.UP) == 1
+        helper.assertTrue(rig.buffer().addEssentia(
+                        "ignis", 1, Direction.DOWN) == 1,
+                "Could not load the improved buffer");
+        helper.assertTrue(rig.buffer().suctionAmount(Direction.NORTH) == 0
+                        && rig.buffer().suctionAmount(Direction.SOUTH) == 0
+                        && rig.buffer().canOutputTo(Direction.NORTH)
+                        && rig.buffer().canOutputTo(Direction.SOUTH),
+                "An output created suction or was controller-blocked");
+        helper.assertTrue(rig.buffer().takeEssentia(
+                        "ignis", 1, Direction.NORTH) == 1
                         && rig.buffer().addEssentia(
                                 "ignis", 1, Direction.DOWN) == 1
-                        && rig.buffer().addEssentia(
-                                "aer", 1, Direction.DOWN) == 1,
-                "Could not prepare reversed-path routing case");
-
-        for (int tick = 0; tick < 200; tick++) {
-            EssentiaTubeBlockEntity.serverTick(helper.getLevel(),
-                    rig.mainTubePos(), helper.getLevel().getBlockState(
-                            rig.mainTubePos()), reversed);
-            EssentiaTubeBlockEntity.serverTick(helper.getLevel(),
-                    rig.reserveTubePos(), helper.getLevel().getBlockState(
-                            rig.reserveTubePos()), rig.reserveTube());
-            AdvancedEssentiaBufferBlockEntity.serverTick(helper.getLevel(),
-                    rig.bufferPos(), helper.getLevel().getBlockState(
-                            rig.bufferPos()), rig.buffer());
-            EssentiaJarBlockEntity.serverTick(helper.getLevel(),
-                    rig.reserveJarPos(), helper.getLevel().getBlockState(
-                            rig.reserveJarPos()), rig.reserveJar());
-        }
-
-        helper.assertTrue(reversed.returnEnabled()
-                        && "aer".equals(rig.reserveJar().aspect())
-                        && rig.reserveJar().amount() == 2
-                        && rig.buffer().returnedContents()
-                                .getOrDefault("ignis", 0) == 1,
-                "Reversed output depended on aspect insertion order");
+                        && rig.buffer().takeEssentia(
+                                "ignis", 1, Direction.SOUTH) == 1,
+                "Main and reserve outputs did not expose the same storage");
         helper.succeed();
     }
 

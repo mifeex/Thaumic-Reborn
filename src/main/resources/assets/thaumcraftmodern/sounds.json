@@ -28,6 +28,14 @@
       "thaumcraftmodern:page2"
     ]
   },
+  "key": {
+    "sounds": [
+      {
+        "name": "thaumcraftmodern:key",
+        "stream": false
+      }
+    ]
+  },
   "learn": {
     "sounds": [
       {

@@ -128,9 +128,13 @@ public final class MagicMirrorBlockEntityRenderer<T extends LinkedMirrorBlockEnt
             boolean rotate90) {
         // Transparent inner opening of mirrorpanetrans, expressed as half-open
         // 16px spans. The surrounding larger oval remains the blue mirror pane.
+        // One-texel dilation of the original opening in all four cardinal
+        // directions. This grows the animated void without touching either
+        // the pane sprite or the gold frame.
+        int firstRow = 3;
         int[][] spans = {
-                {7, 9}, {6, 10}, {5, 11}, {5, 11},
-                {5, 11}, {5, 11}, {6, 10}, {7, 9}
+                {7, 9}, {6, 10}, {5, 11}, {4, 12}, {4, 12},
+                {4, 12}, {4, 12}, {5, 11}, {6, 10}, {7, 9}
         };
         VertexConsumer vertices = buffers.getBuffer(RenderType.entityTranslucent(texture));
         Matrix4f matrix = pose.last().pose();
@@ -138,8 +142,8 @@ public final class MagicMirrorBlockEntityRenderer<T extends LinkedMirrorBlockEnt
         for (int row = 0; row < spans.length; row++) {
             float minA = spans[row][0] / 16.0F;
             float maxA = spans[row][1] / 16.0F;
-            float minB = (4 + row) / 16.0F;
-            float maxB = (5 + row) / 16.0F;
+            float minB = (firstRow + row) / 16.0F;
+            float maxB = (firstRow + row + 1) / 16.0F;
             if (rotate90) {
                 float oldMinA = minA;
                 float oldMaxA = maxA;

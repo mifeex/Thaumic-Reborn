@@ -2,6 +2,7 @@
   "id": "rod_bone",
   "legacy_id": "ROD_bone",
   "category": "thaumaturgy",
+  "completion_warp": 1,
   "icon": "thaumcraftmodern:bone_wand_rod",
   "title": "tc.research_name.ROD_bone",
   "subtitle": "tc.research_text.ROD_bone",

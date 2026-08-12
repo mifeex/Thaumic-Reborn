@@ -1,6 +1,6 @@
 # Magical Forest reference profile
 
-This file records the generation contract used by Thaumcraft Modern so later
+This file records the generation contract used by Thaumic Reborn so later
 biome work can be checked against the same source instead of approximated from
 memory.
 

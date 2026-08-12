@@ -2,6 +2,7 @@
   "id": "focushellbat",
   "legacy_id": "FOCUSHELLBAT",
   "category": "thaumaturgy",
+  "completion_warp": 2,
   "icon": "thaumcraftmodern:focus_hellbat",
   "title": "tc.research_name.FOCUSHELLBAT",
   "subtitle": "tc.research_text.FOCUSHELLBAT",
@@ -24,7 +25,28 @@
       "title": "",
       "body": "tc.research_page.FOCUSHELLBAT.1"
     },
-    {"type":"infusion","title":"","recipe":"thaumcraftmodern:focus_hellbat"}
+    {
+      "type": "infusion",
+      "title": "",
+      "recipe": "thaumcraftmodern:focus_hellbat",
+      "output": "thaumcraftmodern:focus_hellbat",
+      "central": "minecraft:magma_cream",
+      "components": [
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:fire_shard"},
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:air_shard"},
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:entropy_shard"}
+      ],
+      "aspect_costs": [
+        {"id": "ignis", "amount": 25},
+        {"id": "aer", "amount": 15},
+        {"id": "bestia", "amount": 15},
+        {"id": "perditio", "amount": 25}
+      ],
+      "instability": "minor"
+    }
   ],
   "inactive": false,
   "legacy": {

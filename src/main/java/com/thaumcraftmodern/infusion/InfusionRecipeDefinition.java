@@ -143,7 +143,7 @@ public record InfusionRecipeDefinition(
         }
     }
 
-    static int transferredDamage(int centralDamage, int resultMaxDamage) {
+    public static int transferredDamage(int centralDamage, int resultMaxDamage) {
         if (resultMaxDamage <= 0) return 0;
         return Math.min(Math.max(0, centralDamage), resultMaxDamage - 1);
     }

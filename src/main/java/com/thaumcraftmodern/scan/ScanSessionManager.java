@@ -89,7 +89,8 @@ public final class ScanSessionManager {
                         player.level().dimension(),
                         targetHand,
                         identity.type(),
-                        identity.targetId()
+                        identity.targetId(),
+                        identity.knowledgeKey()
                 )
         ));
     }
@@ -106,7 +107,8 @@ public final class ScanSessionManager {
                         player.level().dimension(),
                         target.getId(),
                         identity.type(),
-                        identity.targetId()
+                        identity.targetId(),
+                        identity.knowledgeKey()
                 )
         ));
     }
@@ -114,10 +116,7 @@ public final class ScanSessionManager {
     private static void start(ServerPlayer player, ScanSession session) {
         boolean alreadyStudied = KnowledgeAccess.get(player)
                 .map(knowledge -> knowledge.hasScan(
-                        session.target instanceof NodeTarget
-                                ? session.target.scanKey()
-                                : ScanRegistry.knowledgeKey(
-                                        session.target.type(), session.target.targetId())))
+                        session.target.knowledgeKey()))
                 .orElse(false);
         if (alreadyStudied) {
             SESSIONS.remove(player.getUUID());
@@ -281,7 +280,8 @@ public final class ScanSessionManager {
         ItemStack current = player.getItemInHand(target.targetHand());
         boolean stableTarget = sameDimension
                 && !current.isEmpty()
-                && itemIdentityMatches(current, target.type(), target.targetId());
+                && itemIdentityMatches(current, target.type(), target.targetId(),
+                target.knowledgeKey());
         return new TargetFacts(chunkLoaded, 0.0D, true, stableTarget);
     }
 
@@ -305,7 +305,8 @@ public final class ScanSessionManager {
                 && itemIdentityMatches(
                         itemEntity.getItem(),
                         target.type(),
-                        target.targetId()
+                        target.targetId(),
+                        target.knowledgeKey()
                 );
         boolean lineOfSight = false;
         if (stableTarget) {
@@ -322,10 +323,13 @@ public final class ScanSessionManager {
     private static boolean itemIdentityMatches(
             ItemStack stack,
             ScanTargetType type,
-            String targetId
+            String targetId,
+            String knowledgeKey
     ) {
         ScanRegistry.ItemScanIdentity identity = ScanRegistry.identityForItem(stack);
-        return identity.type() == type && identity.targetId().equals(targetId);
+        return identity.type() == type
+                && identity.targetId().equals(targetId)
+                && identity.knowledgeKey().equals(knowledgeKey);
     }
 
     private static final class ScanSession {
@@ -354,6 +358,12 @@ public final class ScanSessionManager {
 
         default String scanKey() {
             return ScanRegistry.scanKey(type(), targetId());
+        }
+
+        default String knowledgeKey() {
+            return this instanceof NodeTarget
+                    ? scanKey()
+                    : ScanRegistry.knowledgeKey(type(), targetId());
         }
 
         Vec3 effectPosition(ServerPlayer player);
@@ -447,7 +457,8 @@ public final class ScanSessionManager {
             ResourceKey<Level> dimension,
             InteractionHand targetHand,
             ScanTargetType type,
-            String targetId
+            String targetId,
+            String knowledgeKey
     )
             implements ScanTarget {
         @Override
@@ -460,7 +471,8 @@ public final class ScanSessionManager {
             ResourceKey<Level> dimension,
             int entityId,
             ScanTargetType type,
-            String targetId
+            String targetId,
+            String knowledgeKey
     ) implements ScanTarget {
         @Override
         public Vec3 effectPosition(ServerPlayer player) {
@@ -475,7 +487,8 @@ public final class ScanSessionManager {
     public record InventoryItemTarget(
             ResourceKey<Level> dimension,
             ScanTargetType type,
-            String targetId
+            String targetId,
+            String knowledgeKey
     ) implements ScanTarget {
         @Override
         public Vec3 effectPosition(ServerPlayer player) {

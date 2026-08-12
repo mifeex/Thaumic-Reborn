@@ -267,7 +267,7 @@ def paint_sleeve(image: Image.Image, face: tuple[int, int, int, int],
 
 
 def paint_belt_front(image: Image.Image, face: tuple[int, int, int, int]) -> None:
-    """Transfer belt, buckle and side stud together from the approved frame."""
+    """Legacy helper retained for old tooling; the shipped atlas is static."""
     x, y, w, h = face
     source = _approved_chest_arms_grid().crop((18, 43, 66, 58))
     image.alpha_composite(source.resize((w, h), Image.Resampling.NEAREST), (x, y))
@@ -286,6 +286,170 @@ def paint_chest_back(image: Image.Image, face: tuple[int, int, int, int]) -> Non
     draw.rectangle((cx - r, cy - r, cx + r, cy + r), fill=GOLD_LIGHT)
     draw.rectangle((cx - r // 2, cy - r + 1, cx + r // 2, cy + r - 1), fill=EMERALD)
     image.alpha_composite(patch, (x, y))
+
+
+def _original_box_face(source: Image.Image, u: int, v: int,
+                       width: float, height: float, depth: float,
+                       face_index: int) -> Image.Image:
+    """Extract one exact TC4 box face from its original 128x64-layout atlas."""
+    source_scale = source.width // 128
+    x, y, w, h = box_faces(u, v, width, height, depth)[face_index]
+    x = x // SCALE * source_scale
+    y = y // SCALE * source_scale
+    w = max(1, w // SCALE * source_scale)
+    h = max(1, h // SCALE * source_scale)
+    return source.crop((x, y, x + w, y + h))
+
+
+def _recolor_original_pixels(source: Image.Image, palette) -> Image.Image:
+    """Preserve every source pixel and alpha while replacing only its tone."""
+    target = source.copy().convert("RGBA")
+    pixels = target.load()
+    values = [
+        (red * 30 + green * 59 + blue * 11) // 100
+        for red, green, blue, alpha in target.get_flattened_data()
+        if alpha > 0
+    ]
+    if not values:
+        return target
+    low, high = min(values), max(values)
+    value_range = max(1, high - low)
+    for py in range(target.height):
+        for px in range(target.width):
+            red, green, blue, alpha = pixels[px, py]
+            if alpha == 0:
+                continue
+            value = (red * 30 + green * 59 + blue * 11) // 100
+            position = (value - low) * (len(palette) - 1) / value_range
+            start_index = min(len(palette) - 1, int(position))
+            end_index = min(len(palette) - 1, start_index + 1)
+            blend = position - start_index
+            start, end = palette[start_index], palette[end_index]
+            pixels[px, py] = tuple(
+                round(start[channel] + (end[channel] - start[channel]) * blend)
+                for channel in range(3)
+            ) + (alpha,)
+    return target
+
+
+def _recolor_void_robe_details(source: Image.Image) -> Image.Image:
+    """Recolor each original material group without flattening its contrast."""
+    target = source.copy().convert("RGBA")
+    pixels = target.load()
+    groups = {"violet": [], "warm": [], "neutral": []}
+
+    def group(red: int, green: int, blue: int) -> str:
+        if blue > red * 1.08 and blue > green * 1.08:
+            return "violet"
+        if red > green * 1.08 and green > blue * 1.08:
+            return "warm"
+        return "neutral"
+
+    for red, green, blue, alpha in target.get_flattened_data():
+        if alpha == 0:
+            continue
+        groups[group(red, green, blue)].append(
+            (red * 30 + green * 59 + blue * 11) // 100
+        )
+    palette = _fortress_fabric_palette()
+    for py in range(target.height):
+        for px in range(target.width):
+            red, green, blue, alpha = pixels[px, py]
+            if alpha == 0:
+                continue
+            values = groups[group(red, green, blue)]
+            value = (red * 30 + green * 59 + blue * 11) // 100
+            low, high = min(values), max(values)
+            position = (value - low) * (len(palette) - 1) / max(1, high - low)
+            start_index = min(len(palette) - 1, int(position))
+            end_index = min(len(palette) - 1, start_index + 1)
+            blend = position - start_index
+            start, end = palette[start_index], palette[end_index]
+            pixels[px, py] = tuple(
+                round(start[channel] + (end[channel] - start[channel]) * blend)
+                for channel in range(3)
+            ) + (alpha,)
+    return target
+
+
+def paint_original_robe_sleeve_tones(
+        image: Image.Image,
+        faces: tuple[tuple[int, int, int, int], ...]) -> None:
+    """Apply the original ModelRobe shoulder/arm value transitions bitwise."""
+    original = Image.open(
+        ASSETS / "entity/models/cultist_robe_armor.png"
+    ).convert("RGBA")
+    palette = (INK, EDGE, VIOLET, VIOLET, MID, LIGHT)
+    for face_index, (x, y, w, h) in enumerate(faces):
+        shoulder = _original_box_face(original, 16, 45, 5, 5, 5, face_index)
+        arm = _original_box_face(original, 88, 39, 5, 7, 5, face_index)
+        if face_index in (2, 3, 4, 5):
+            source_width = max(shoulder.width, arm.width)
+            source_height = shoulder.height + arm.height + max(1, original.width // 128)
+            source = Image.new("RGBA", (source_width, source_height), (0, 0, 0, 0))
+            source.alpha_composite(shoulder.resize(
+                (source_width, shoulder.height), Image.Resampling.NEAREST
+            ))
+            source.alpha_composite(arm.resize(
+                (source_width, arm.height), Image.Resampling.NEAREST
+            ), (0, shoulder.height))
+            last_row = arm.crop((0, arm.height - 1, arm.width, arm.height)).resize(
+                (source_width, source_height - shoulder.height - arm.height),
+                Image.Resampling.NEAREST,
+            )
+            source.alpha_composite(last_row, (0, shoulder.height + arm.height))
+        else:
+            source = shoulder if face_index == 0 else arm
+        toned = _recolor_original_pixels(source, palette)
+        toned = toned.resize((w, h), Image.Resampling.NEAREST)
+        existing = image.crop((x, y, x + w, y + h)).convert("RGBA")
+        existing_pixels = existing.load()
+        toned_pixels = toned.load()
+        for py in range(h):
+            for px in range(w):
+                red, green, blue, alpha = existing_pixels[px, py]
+                # Brown leather straps/bracers are authored details, not robe
+                # cloth: retain them exactly while applying the original robe
+                # value map only to violet fabric pixels.
+                warm_leather = red > green * 1.05 and green > blue * 1.05
+                if warm_leather or alpha == 0:
+                    continue
+                toned_red, toned_green, toned_blue, _ = toned_pixels[px, py]
+                existing_pixels[px, py] = (
+                    toned_red, toned_green, toned_blue, alpha
+                )
+        image.alpha_composite(existing, (x, y))
+
+
+def recolor_void_leggings_icon() -> Image.Image:
+    """Reuse the void-robe leggings silhouette with mantle-only colors."""
+    source = Image.open(ASSETS / "item/void_robe_leggings.png").convert("RGBA")
+    target = Image.new("RGBA", source.size, (0, 0, 0, 0))
+    src, dst = source.load(), target.load()
+    plates = _fortress_fabric_palette()
+    groups = {"plate": [], "cloth": []}
+    for red, green, blue, alpha in source.get_flattened_data():
+        if alpha == 0:
+            continue
+        group = "plate" if red > green * 1.12 and green > blue * 1.25 else "cloth"
+        groups[group].append((red * 30 + green * 59 + blue * 11) // 100)
+    for py in range(source.height):
+        for px in range(source.width):
+            red, green, blue, alpha = src[px, py]
+            if alpha == 0:
+                continue
+            value = (red * 30 + green * 59 + blue * 11) // 100
+            if red > green * 1.12 and green > blue * 1.25:
+                palette = plates[2:]
+                values = groups["plate"]
+            else:
+                palette = (EDGE, VIOLET, MID)
+                values = groups["cloth"]
+            low, high = min(values), max(values)
+            normalized = (value - low) / max(1, high - low)
+            index = min(len(palette) - 1, round(normalized * (len(palette) - 1)))
+            dst[px, py] = palette[index][:3] + (alpha,)
+    return target
 
 
 def paint_praetor_gorget(draw: ImageDraw.ImageDraw,
@@ -311,10 +475,21 @@ def paint_praetor_gorget(draw: ImageDraw.ImageDraw,
 
 def paint_raised_focus(image: Image.Image,
                        face: tuple[int, int, int, int]) -> None:
-    """Pixel-copy the approved focus into the original Praetor crest bounds."""
+    """Fit the complete approved focus inside the Praetor crest face."""
     x, y, w, h = face
-    source = _approved_chest_arms_grid().crop((23, 5, 53, 35))
-    image.alpha_composite(source.resize((w, h), Image.Resampling.NEAREST), (x, y))
+    source = _approved_chest_arms_grid().crop((17, 3, 60, 41))
+    focus_margin = round(w * 0.10)
+    available_width = w - focus_margin * 2
+    available_height = h - focus_margin * 2
+    scale = min(available_width / source.width, available_height / source.height) * 1.10
+    scale = min(scale, w / source.width, h / source.height)
+    focus_width = max(1, round(source.width * scale))
+    focus_height = max(1, round(source.height * scale))
+    fitted = source.resize((focus_width, focus_height), Image.Resampling.NEAREST)
+    image.alpha_composite(
+        fitted,
+        (x + (w - focus_width) // 2, y + (h - focus_height) // 2),
+    )
 
 
 def _palette_color(value: int, low, middle, high):
@@ -352,9 +527,49 @@ def paste_recolored_praetor_armor(atlas: Image.Image) -> None:
         recolored.resize((128 * SCALE, 64 * SCALE), Image.Resampling.NEAREST),
         (128 * SCALE, 128 * SCALE),
     )
-    focus_faces = box_faces(204, 181, 5.0, 5.0, 1.0)
+    focus_faces = box_faces(204, 181, 6.0, 6.0, 1.0)
     paint_raised_focus(atlas, focus_faces[3])
     paint_raised_focus(atlas, focus_faces[5])
+
+
+def _recolor_box_to_pauldron(atlas: Image.Image, u: int, v: int,
+                              width: float, height: float, depth: float) -> None:
+    """Shift one Praetor box onto the exact shipped Fortress-shoulder palette."""
+    faces = box_faces(u, v, width, height, depth)
+    pixels = atlas.load()
+    samples = []
+    for x, y, w, h in faces:
+        for py in range(y, y + h):
+            for px in range(x, x + w):
+                red, green, blue, alpha = pixels[px, py]
+                if alpha > 0:
+                    samples.append((red * 30 + green * 59 + blue * 11) // 100)
+    if not samples:
+        return
+
+    low, high = min(samples), max(samples)
+    palette = _fortress_fabric_palette()
+    value_range = max(1, high - low)
+    for x, y, w, h in faces:
+        for py in range(y, y + h):
+            for px in range(x, x + w):
+                red, green, blue, alpha = pixels[px, py]
+                if alpha == 0:
+                    continue
+                value = (red * 30 + green * 59 + blue * 11) // 100
+                palette_index = round((value - low) * (len(palette) - 1) / value_range)
+                pixels[px, py] = palette[palette_index][:3] + (alpha,)
+
+
+def recolor_praetor_trim_to_pauldron(atlas: Image.Image) -> None:
+    """Match the raised collar and focus-side strips to the pauldrons."""
+    for values in (
+        (145, 159, 9.0, 4.0, 1.0),  # front collar
+        (145, 154, 9.0, 4.0, 1.0),  # back collar
+        (145, 139, 1.0, 4.0, 11.0),  # left/right collar walls
+        (148, 175, 3.0, 9.0, 1.0),  # strips beside the raised focus
+    ):
+        _recolor_box_to_pauldron(atlas, *values)
 
 
 def generate_atlas() -> None:
@@ -378,9 +593,14 @@ def generate_atlas() -> None:
     paint_chest_front(image, chest_faces[3])
     paint_chest_back(image, chest_faces[5])
     paste_recolored_praetor_armor(image)
-    box(draw, 72, 34, 9.4, 2.0, 5.8, base=LEATHER,
+    recolor_praetor_trim_to_pauldron(image)
+    box(draw, 208, 224, 11.4, 2.0, 5.8, base=LEATHER,
         edge=LEATHER_DARK, highlight=(139, 79, 43, 255))
-    paint_belt_front(image, box_faces(72, 34, 9.4, 2.0, 5.8)[3])
+    paint_belt_front(image, box_faces(208, 224, 11.4, 2.0, 5.8)[3])
+
+    # Recolored copies of TC4 ModelRobe's RArm2/RArm3 forearm layers.
+    box(draw, 208, 240, 4.0, 4.0, 2.0)
+    box(draw, 224, 240, 3.0, 2.0, 1.0)
 
     def book_cover(target: ImageDraw.ImageDraw, face) -> None:
         x, y, w, h = face
@@ -407,6 +627,7 @@ def generate_atlas() -> None:
         sleeve_faces = box_faces(u, 192, 5.0, 13.0, 5.0)
         paint_sleeve(image, sleeve_faces[3], screen_left)
         paint_sleeve(image, sleeve_faces[5], screen_left)
+        paint_original_robe_sleeve_tones(image, sleeve_faces)
 
     for u in (128, 176):
         box(draw, u, 192, 4.7, 10.8, 4.7)
@@ -417,6 +638,26 @@ def generate_atlas() -> None:
     output = ASSETS / "entity/models/winged_mantle_armor.png"
     output.parent.mkdir(parents=True, exist_ok=True)
     image.save(output, optimize=False)
+
+
+def generate_leggings_texture() -> None:
+    """Merge and recolor both exact TC4 void-robe render passes."""
+    details = Image.open(ASSETS / "models/void_robe_armor.png").convert("RGBA")
+    cloth = Image.open(
+        ASSETS / "models/void_robe_armor_overlay.png"
+    ).convert("RGBA")
+    if details.size != (256, 128) or cloth.size != details.size:
+        raise ValueError(
+            f"void robe atlases must both remain 256x128, got {details.size}/{cloth.size}"
+        )
+    recolored = _recolor_original_pixels(
+        cloth,
+        (INK, EDGE, VIOLET, MID, LIGHT),
+    )
+    recolored.alpha_composite(_recolor_void_robe_details(details))
+    output = ASSETS / "entity/models/winged_mantle_leggings.png"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    recolored.save(output, optimize=False)
 
 
 def paste_recolored_cultist_hood(atlas: Image.Image) -> None:
@@ -451,63 +692,76 @@ def paste_recolored_cultist_hood(atlas: Image.Image) -> None:
             sw = max(1, sw // SCALE * source_scale)
             sh = max(1, sh // SCALE * source_scale)
             face = source.crop((sx, sy, sx + sw, sy + sh))
-            pixels = face.load()
-            for py in range(face.height):
-                for px in range(face.width):
-                    red, green, blue, alpha = pixels[px, py]
-                    if alpha == 0:
-                        continue
-                    value = (red * 30 + green * 59 + blue * 11) // 100
-                    normalized = value / 255.0
-                    if normalized < 0.5:
-                        blend = normalized * 2.0
-                        low, high = palette[0], palette[1]
-                    else:
-                        blend = (normalized - 0.5) * 2.0
-                        low, high = palette[1], palette[2]
-                    pixels[px, py] = tuple(
-                        round(low[channel] + (high[channel] - low[channel]) * blend)
-                        for channel in range(3)
-                    ) + (alpha,)
+            face = _recolor_original_pixels(face, palette)
             atlas.alpha_composite(
                 face.resize((tw, th), Image.Resampling.NEAREST), (tx, ty)
             )
 
 
+def _item_icon_material(red: int, green: int, blue: int) -> str:
+    if red > 90 and green > 50 and blue < min(red, green) * 0.5:
+        return "gold"
+    if red > green * 1.18 and red > blue * 1.35:
+        return "warm"
+    if blue > red * 1.08 and blue > green * 1.08:
+        return "violet"
+    return "neutral"
+
+
+def _recolor_original_item_icon(source_name: str,
+                                neutral_is_pauldron: bool) -> Image.Image:
+    """Keep an original TC4 icon silhouette and every authored value step."""
+    source = Image.open(ASSETS / f"item/{source_name}.png").convert("RGBA")
+    if source.size != (16, 16):
+        raise ValueError(f"item icon must remain 16x16, got {source.size}")
+    target = Image.new("RGBA", source.size, (0, 0, 0, 0))
+    values = {material: [] for material in ("warm", "violet", "neutral")}
+    pixels = (source.get_flattened_data()
+              if hasattr(source, "get_flattened_data") else source.getdata())
+    for red, green, blue, alpha in pixels:
+        material = _item_icon_material(red, green, blue)
+        if alpha > 0 and material != "gold":
+            values[material].append(red + green + blue)
+
+    for py in range(16):
+        for px in range(16):
+            red, green, blue, alpha = source.getpixel((px, py))
+            if alpha == 0:
+                continue
+            material = _item_icon_material(red, green, blue)
+            if material == "gold":
+                color = (red, green, blue)
+            else:
+                palette = ((INK, EDGE, VIOLET, MID, LIGHT, GLYPH)
+                           if material != "neutral" or not neutral_is_pauldron
+                           else (EDGE, (49, 32, 72, 255), (72, 50, 101, 255),
+                                 (93, 67, 126, 255), (116, 89, 148, 255),
+                                 (141, 113, 169, 255)))
+                low, high = min(values[material]), max(values[material])
+                index = round((red + green + blue - low)
+                              * (len(palette) - 1) / max(1, high - low))
+                color = palette[index][:3]
+            target.putpixel((px, py), color + (alpha,))
+    return target
+
+
 def icon(kind: str) -> Image.Image:
-    image = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    if kind == "hood":
-        draw.polygon(((3, 3), (5, 1), (11, 1), (13, 3), (13, 12),
-                      (10, 14), (6, 14), (3, 12)), fill=EDGE)
-        _rect(draw, (4, 4, 11, 11), VIOLET)
-        _rect(draw, (5, 5, 10, 10), INK)
-        draw.line((4, 4, 11, 4), fill=LIGHT)
-    elif kind == "chestplate":
-        draw.polygon(((2, 3), (5, 1), (11, 1), (14, 3), (13, 14),
-                      (9, 13), (8, 15), (7, 13), (3, 14)), fill=EDGE)
-        draw.polygon(((3, 4), (6, 2), (10, 2), (13, 4), (12, 12),
-                      (9, 11), (8, 13), (7, 11), (4, 12)), fill=VIOLET)
-        _rect(draw, (6, 3, 9, 7), GOLD_DARK)
-        _rect(draw, (7, 3, 8, 6), EMERALD)
-        draw.point((7, 3), fill=GOLD_LIGHT)
-        draw.point((2, 5), fill=GOLD_LIGHT)
-        draw.point((13, 5), fill=GOLD_LIGHT)
-    elif kind == "leggings":
-        draw.polygon(((3, 2), (13, 2), (12, 8), (10, 14), (7, 14),
-                      (7, 8), (6, 14), (3, 14), (4, 8)), fill=EDGE)
-        draw.polygon(((4, 3), (12, 3), (11, 8), (9, 13), (8, 13),
-                      (8, 7), (6, 13), (4, 13), (5, 8)), fill=VIOLET)
-        draw.line((4, 4, 11, 4), fill=LIGHT)
-    elif kind == "boots":
-        _rect(draw, (2, 3, 6, 12), EDGE)
-        _rect(draw, (9, 3, 13, 12), EDGE)
-        _rect(draw, (1, 11, 6, 14), INK)
-        _rect(draw, (9, 11, 14, 14), INK)
-        _rect(draw, (3, 4, 5, 10), VIOLET)
-        _rect(draw, (10, 4, 12, 10), VIOLET)
-        draw.line((2, 11, 6, 11), fill=GOLD)
-        draw.line((9, 11, 13, 11), fill=GOLD)
+    sources = {
+        "hood": ("void_robe_hood", True),
+        "chestplate": ("cultist_praetor_chestplate", True),
+        "leggings": ("cultist_praetor_leggings", False),
+        "boots": ("void_boots", False),
+    }
+    source_name, neutral_is_pauldron = sources[kind]
+    image = _recolor_original_item_icon(source_name, neutral_is_pauldron)
+    if kind == "chestplate":
+        # Retain the mantle's existing emerald focus and its gold frame, but
+        # place it on the original Praetor chest silhouette.
+        draw = ImageDraw.Draw(image)
+        _rect(draw, (6, 4, 9, 8), GOLD_DARK)
+        _rect(draw, (7, 5, 8, 7), EMERALD)
+        draw.point((7, 5), fill=(43, 190, 98, 255))
+        draw.point((7, 4), fill=GOLD_LIGHT)
     return image
 
 
@@ -519,6 +773,8 @@ def generate_icons() -> None:
 
 
 if __name__ == "__main__":
-    generate_atlas()
+    # winged_mantle_armor.png is a reviewed, hand-authored static atlas.
+    # Do not regenerate it: later maintenance may only edit/copy exact pixels.
+    generate_leggings_texture()
     generate_elytra_texture()
     generate_icons()

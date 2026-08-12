@@ -328,8 +328,7 @@ public final class ThaumatoriumScreen
             float partialTick
     ) {
         boolean disabled = !menu.selected(recipe)
-                && (!menu.craftable(recipe)
-                || menu.formulaCount() >= menu.formulaCapacity());
+                && !menu.canSelectOrSwitch(recipe);
         if (disabled) {
             float ticks = minecraft != null && minecraft.player != null
                     ? minecraft.player.tickCount + partialTick : 0.0F;
@@ -383,17 +382,13 @@ public final class ThaumatoriumScreen
             return super.mouseClicked(mouseX, mouseY, button);
         }
         CrucibleRecipeDefinition recipe = recipes.get(index);
-        if (inside(mouseX, mouseY, 112, 16, 16, 16)
-                && menu.craftable(recipe)
-                && (menu.selected(recipe)
-                || menu.formulaCount() < menu.formulaCapacity())) {
+        if (inside(mouseX, mouseY, 112, 16, 16, 16)) {
             if (minecraft != null && minecraft.gameMode != null) {
                 minecraft.gameMode.handleInventoryButtonClick(
                         menu.containerId,
                         index
                 );
             }
-            playSelectionSound();
             return true;
         }
         if (recipes.size() > 1) {
@@ -443,12 +438,6 @@ public final class ThaumatoriumScreen
     ) {
         return mouseX >= leftPos + x && mouseX < leftPos + x + width
                 && mouseY >= topPos + y && mouseY < topPos + y + height;
-    }
-
-    private void playSelectionSound() {
-        if (minecraft != null && minecraft.player != null) {
-            minecraft.player.playSound(ModSounds.HH_ON.get(), 0.3F, 1.0F);
-        }
     }
 
     private void playClickSound() {

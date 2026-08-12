@@ -3,8 +3,10 @@
   "target": "minecraft:wooden_doors",
   "display": "",
   "aspects": [
-    { "id": "arbor", "amount": 4 }
+    { "id": "arbor", "amount": 4 },
+    { "id": "machina", "amount": 1 },
+    { "id": "motus", "amount": 1 }
   ],
   "inactive": false,
-  "modern_rule": "Every modern wood-family door inherits the TC4 oak-door recipe aspects."
+  "modern_rule": "Every modern wood-family door inherits the TC4 oak-door recipe aspects plus its registered Machina 1 and Motus 1 complex-object modifier."
 }

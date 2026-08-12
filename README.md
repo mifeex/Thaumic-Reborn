@@ -1,6 +1,10 @@
-# Thaumcraft Modern
+# Thaumic Reborn
 
 An unofficial community port of Azanor's Thaumcraft 4.2.3.5 for Minecraft Forge 1.20.1 / Java 17.
+
+For compatibility with existing worlds, the technical mod ID and resource
+namespace remain `thaumcraftmodern`. Distribution artifacts use the
+`thaumic-reborn` name.
 
 Сейчас реализованы первая вертикаль, следующая gameplay-вертикаль и
 world-content foundation из

@@ -273,29 +273,65 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         CrucibleRecipeDefinition recipe = CrucibleRecipeRegistry.all().stream()
                 .filter(candidate -> candidate.id().equals(id)).findFirst().orElse(null);
         if (recipe == null || !canSelectRecipe(player, recipe)) return false;
-        if (formulae.remove(id)) {
+
+        // Clicking the active formula a second time removes it, but never
+        // strands essentia which has already been reserved for that craft.
+        if (id.equals(selectedRecipe)) {
+            if (!reserved.isEmpty()) return false;
+            formulae.remove(id);
             formulaOwners.remove(id);
             if (id.equals(displayedRecipe)) displayedRecipe = null;
-            if (id.equals(selectedRecipe)) {
-                selectedRecipe = null;
-                recipeOwner = null;
-                currentSuction = null;
-            }
+            selectedRecipe = null;
+            recipeOwner = null;
+            currentSuction = null;
             if (formulae.isEmpty()) formulaCatalyst = ItemStack.EMPTY;
             syncChanged();
             return true;
         }
-        if (formulae.size() >= formulaCapacity()) return false;
-        formulae.add(id);
-        formulaOwners.put(id, player.getUUID());
+
+        // A running craft can change output only when every already accepted
+        // point of essentia is also required by the new recipe. This preserves
+        // TC4's aspect reservation without deleting or refunding valid work.
+        if (!reservedFitsRecipe(reserved.view(), recipe.aspects())) return false;
+
+        if (!formulae.contains(id)) {
+            if (formulae.size() >= formulaCapacity()) {
+                ResourceLocation replaced = replaceableFormula();
+                if (replaced == null) return false;
+                formulae.remove(replaced);
+                formulaOwners.remove(replaced);
+            }
+            formulae.add(id);
+            formulaOwners.put(id, player.getUUID());
+        }
         formulaCatalyst = catalyst.isEmpty()
                 ? ItemStack.EMPTY : catalyst.copyWithCount(1);
         selectedRecipe = id;
         displayedRecipe = id;
-        recipeOwner = player.getUUID();
+        recipeOwner = formulaOwners.getOrDefault(id, player.getUUID());
         currentSuction = null;
         syncChanged();
         return true;
+    }
+
+    private @Nullable ResourceLocation replaceableFormula() {
+        if (selectedRecipe != null && formulae.contains(selectedRecipe)) {
+            return selectedRecipe;
+        }
+        if (displayedRecipe != null && formulae.contains(displayedRecipe)) {
+            return displayedRecipe;
+        }
+        return null;
+    }
+
+    static boolean reservedFitsRecipe(
+            Map<String, Integer> stored,
+            Map<String, Integer> required
+    ) {
+        return stored.entrySet().stream().allMatch(entry ->
+                entry.getValue() <= 0
+                        || entry.getValue() <= required.getOrDefault(
+                                entry.getKey(), 0));
     }
 
     public java.util.List<CrucibleRecipeDefinition> availableRecipes(Player player) {

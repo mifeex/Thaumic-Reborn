@@ -6,6 +6,9 @@ import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.wand.WandVisService;
 import com.thaumcraftmodern.world.block.ClassicPartBlock;
+import com.thaumcraftmodern.world.block.AdvancedAlchemicalFurnaceBlock;
+import com.thaumcraftmodern.world.block.entity.AlchemicalFurnaceBlockEntity;
+import com.thaumcraftmodern.world.block.entity.AdvancedAlchemicalFurnaceBlockEntity;
 import com.thaumcraftmodern.world.block.InfusionPillarBlock;
 import com.thaumcraftmodern.world.block.InfernalFurnaceBlock;
 import com.thaumcraftmodern.world.block.RunicMatrixBlock;
@@ -155,12 +158,21 @@ public final class ClassicStructureConstructionEvents {
 
         BlockPos advancedCenter = findAdvancedFurnaceCenter(level, clicked);
         if (advancedCenter != null) {
-            return construct(
+            Map<String, Integer> stored = level.getBlockEntity(advancedCenter)
+                    instanceof AlchemicalFurnaceBlockEntity furnace
+                    ? Map.copyOf(furnace.essentia()) : Map.of();
+            ConstructionResult result = construct(
                     ConstructionDefinition.Handler
                             .ADVANCED_ALCHEMICAL_FURNACE,
                     level, player, wand,
                     advancedFurnaceChanges(advancedCenter)
             );
+            if (result == ConstructionResult.CONSTRUCTED
+                    && level.getBlockEntity(advancedCenter)
+                    instanceof AdvancedAlchemicalFurnaceBlockEntity furnace) {
+                furnace.importEssentia(stored);
+            }
+            return result;
         }
         return ConstructionResult.NO_MATCH;
     }
@@ -456,8 +468,8 @@ public final class ClassicStructureConstructionEvents {
 
     private static List<Change> advancedFurnaceChanges(BlockPos center) {
         List<Change> changes = new ArrayList<>(17);
-        ClassicPartBlock output =
-                (ClassicPartBlock) ModBlocks.ADVANCED_ALCHEMICAL_FURNACE.get();
+        AdvancedAlchemicalFurnaceBlock output =
+                (AdvancedAlchemicalFurnaceBlock) ModBlocks.ADVANCED_ALCHEMICAL_FURNACE.get();
         for (int y = 0; y <= 1; y++) {
             for (int x = -1; x <= 1; x++) {
                 for (int z = -1; z <= 1; z++) {

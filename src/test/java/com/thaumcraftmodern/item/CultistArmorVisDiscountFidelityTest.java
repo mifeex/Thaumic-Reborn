@@ -21,5 +21,6 @@ final class CultistArmorVisDiscountFidelityTest {
         assertTrue(source.contains(
                 "set == Set.CLERIC || set == Set.BOOTS"));
         assertTrue(source.contains("Component.translatable(\"tc.visdiscount\")"));
+        assertTrue(source.contains("public int classicWarp()"));
     }
 }

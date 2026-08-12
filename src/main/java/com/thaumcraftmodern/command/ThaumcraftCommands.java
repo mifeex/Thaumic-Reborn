@@ -1,6 +1,7 @@
 package com.thaumcraftmodern.command;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.thaumcraftmodern.ThaumcraftModern;
@@ -8,6 +9,7 @@ import com.thaumcraftmodern.aspect.AspectDefinition;
 import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.knowledge.KnowledgeSync;
+import com.thaumcraftmodern.knowledge.WarpType;
 import com.thaumcraftmodern.research.ResearchCategoryRegistry;
 import com.thaumcraftmodern.research.ResearchDefinition;
 import com.thaumcraftmodern.research.ResearchRegistry;
@@ -15,6 +17,7 @@ import com.thaumcraftmodern.worldgen.LegacyStructureKind;
 import com.thaumcraftmodern.worldgen.LegacyStructureMarkerIndex;
 import com.thaumcraftmodern.worldgen.LegacyStructureMarkerSearch;
 import com.thaumcraftmodern.worldgen.LegacyVillageBuildingSearch;
+import com.thaumcraftmodern.warp.WarpGearService;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
@@ -47,7 +50,8 @@ public final class ThaumcraftCommands {
         dispatcher.register(Commands.literal("thaumcraft")
                 .requires(source -> source.hasPermission(REQUIRED_PERMISSION_LEVEL))
                 .then(researchCommands())
-                .then(aspectCommands()));
+                .then(aspectCommands())
+                .then(warpCommands()));
         registerMarkerLocateOverrides(dispatcher);
     }
 
@@ -210,6 +214,137 @@ public final class ThaumcraftCommands {
                                         context.getSource(),
                                         EntityArgument.getPlayer(context, "player")
                                 ))));
+    }
+
+    private static LiteralArgumentBuilder<CommandSourceStack> warpCommands() {
+        return Commands.literal("warp")
+                .executes(context -> showWarp(
+                        context.getSource(),
+                        context.getSource().getPlayerOrException()
+                ))
+                .then(Commands.argument("player", EntityArgument.player())
+                        .executes(context -> showWarp(
+                                context.getSource(),
+                                EntityArgument.getPlayer(context, "player")
+                        )))
+                .then(Commands.literal("add")
+                        .then(Commands.argument("type", StringArgumentType.word())
+                                .suggests((context, builder) ->
+                                        SharedSuggestionProvider.suggest(
+                                                new String[]{
+                                                        "permanent",
+                                                        "normal",
+                                                        "temporary"
+                                                },
+                                                builder
+                                        ))
+                                .then(Commands.argument(
+                                                "amount",
+                                                IntegerArgumentType.integer(-10000, 10000)
+                                        )
+                                        .executes(context -> changeWarp(
+                                                context.getSource(),
+                                                context.getSource().getPlayerOrException(),
+                                                StringArgumentType.getString(context, "type"),
+                                                IntegerArgumentType.getInteger(context, "amount")
+                                        ))
+                                        .then(Commands.argument(
+                                                        "player",
+                                                        EntityArgument.player()
+                                                )
+                                                .executes(context -> changeWarp(
+                                                        context.getSource(),
+                                                        EntityArgument.getPlayer(context, "player"),
+                                                        StringArgumentType.getString(context, "type"),
+                                                        IntegerArgumentType.getInteger(context, "amount")
+                                                ))))));
+    }
+
+    private static int changeWarp(
+            CommandSourceStack source,
+            ServerPlayer player,
+            String typeName,
+            int amount
+    ) {
+        WarpType type;
+        try {
+            type = WarpType.valueOf(typeName.toUpperCase(java.util.Locale.ROOT));
+        } catch (IllegalArgumentException exception) {
+            source.sendFailure(Component.literal(
+                    "Unknown warp type: " + typeName
+                            + " (expected permanent, normal, or temporary)"
+            ));
+            return 0;
+        }
+        if (amount == 0) {
+            source.sendFailure(Component.literal("Warp change cannot be zero"));
+            return 0;
+        }
+
+        return KnowledgeAccess.get(player).map(knowledge -> {
+            int before = knowledge.warp(type);
+            int after;
+            if (amount > 0) {
+                after = knowledge.addWarp(type, amount);
+            } else {
+                after = knowledge.setWarp(type, Math.max(0, before + amount));
+            }
+            knowledge.setWarpCounter(knowledge.totalWarp());
+            KnowledgeSync.send(player, "command:change_warp");
+            source.sendSuccess(
+                    () -> Component.literal(
+                            "Changed " + typeName.toLowerCase(java.util.Locale.ROOT)
+                                    + " warp for " + player.getGameProfile().getName()
+                                    + ": " + before + " -> " + after
+                                    + " (effective total="
+                                    + (knowledge.totalWarp()
+                                            + WarpGearService.equippedWarp(player))
+                                    + ")"
+                    ),
+                    true
+            );
+            return 1;
+        }).orElseGet(() -> {
+            source.sendFailure(Component.literal(
+                    "Thaumcraft knowledge is unavailable for "
+                            + player.getGameProfile().getName()
+            ));
+            return 0;
+        });
+    }
+
+    private static int showWarp(
+            CommandSourceStack source,
+            ServerPlayer player
+    ) {
+        return KnowledgeAccess.get(player).map(knowledge -> {
+            int permanent = knowledge.warp(WarpType.PERMANENT);
+            int normal = knowledge.warp(WarpType.NORMAL);
+            int temporary = knowledge.warp(WarpType.TEMPORARY);
+            int personal = knowledge.totalWarp();
+            int equipment = WarpGearService.equippedWarp(player);
+            int effective = personal + equipment;
+            source.sendSuccess(
+                    () -> Component.literal(
+                            "Warp for " + player.getGameProfile().getName()
+                                    + ": permanent=" + permanent
+                                    + ", normal=" + normal
+                                    + ", temporary=" + temporary
+                                    + ", non-temporary=" + knowledge.nonTemporaryWarp()
+                                    + ", personal total=" + personal
+                                    + ", equipment=" + equipment
+                                    + ", effective total=" + effective
+                    ),
+                    false
+            );
+            return 1;
+        }).orElseGet(() -> {
+            source.sendFailure(Component.literal(
+                    "Thaumcraft knowledge is unavailable for "
+                            + player.getGameProfile().getName()
+            ));
+            return 0;
+        });
     }
 
     private static int grantAllResearch(CommandSourceStack source, ServerPlayer player) {

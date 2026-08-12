@@ -247,7 +247,7 @@ public final class GolemCoreGoals {
                 case FISHING -> fish();
                 default -> { }
             }
-            if (golem.tickCount - lastWorkTick > 20 && golem.hasRestriction()) {
+            if (golem.tickCount - lastWorkTick > golem.workDelay() && golem.hasRestriction()) {
                 BlockPos home = golem.getRestrictCenter();
                 if (golem.distanceToSqr(home.getX() + .5D, home.getY() + .5D, home.getZ() + .5D) >= 3D) {
                     navigateNear(home, 3D, .9D, false);
@@ -268,11 +268,7 @@ public final class GolemCoreGoals {
             if (items.isEmpty()) return;
             markWork();
             ItemEntity closest = items.stream().min(java.util.Comparator.comparingDouble(golem::distanceToSqr)).orElseThrow();
-            if (golem.distanceToSqr(closest) > 2.25D || !golem.hasLineOfSight(closest)) {
-                navigateNear(closest.blockPosition(), 2.25D, 1D, true);
-                return;
-            }
-            routeWatchdog.arrived();
+            if (!moveNear(closest)) return;
             ItemStack existing = golem.inventory().getItem(0);
             ItemStack dropped = closest.getItem();
             if (!existing.isEmpty() && !ItemStack.isSameItemSameTags(existing, dropped)) return;
@@ -411,6 +407,29 @@ public final class GolemCoreGoals {
 
         private boolean moveNear(BlockPos pos) {
             return navigateNear(pos, 4D, 1D, true);
+        }
+
+        /** TC4's AIItemPickup follows the entity and picks it up at distance squared 2, without a LOS gate. */
+        private boolean moveNear(ItemEntity item) {
+            double distanceSqr = golem.distanceToSqr(item);
+            if (distanceSqr <= 2D) {
+                golem.getNavigation().stop();
+                routeWatchdog.arrived();
+                return true;
+            }
+            BlockPos pos = item.blockPosition();
+            if (!targetAvailable(pos)) return false;
+            if (routeWatchdog.shouldRebuild(pos.asLong(), golem.tickCount, golem.getX(), golem.getY(), golem.getZ(),
+                    distanceSqr, golem.getNavigation().isDone())) {
+                if (routeWatchdog.shouldReleaseTarget() || !golem.getNavigation().moveTo(item, 1D)) {
+                    unreachableUntil.put(pos.asLong(), golem.tickCount + 100);
+                    golem.getNavigation().stop();
+                    routeWatchdog.arrived();
+                    return false;
+                }
+            }
+            markWork();
+            return false;
         }
 
         private void animateContainer(BlockEntity entity, Container container) {
@@ -583,7 +602,7 @@ public final class GolemCoreGoals {
             breakingLogs = logs;
             breakTarget = target;
             breakTicks = Math.max(logs ? 5 : 10,
-                    (int) ((20 - golem.effectiveStrength() * (logs ? 3 : 2)) * hardness));
+                    (int) ((golem.workDelay() - golem.effectiveStrength() * (logs ? 3 : 2)) * hardness));
             maxBreakTicks = Math.max(1, breakTicks);
         }
 

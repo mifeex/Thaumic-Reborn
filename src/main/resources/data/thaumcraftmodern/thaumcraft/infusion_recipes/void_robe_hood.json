@@ -1,0 +1,12 @@
+{
+  "research":"armorvoidfortress","instability":6,
+  "central":{"item":"thaumcraftmodern:void_helmet"},
+  "components":[
+    {"item":"thaumcraftmodern:goggles_of_revealing"},
+    {"item":"thaumcraftmodern:enchanted_fabric"},{"item":"thaumcraftmodern:enchanted_fabric"},
+    {"item":"thaumcraftmodern:salis_mundus"},
+    {"item":"thaumcraftmodern:enchanted_fabric"},{"item":"thaumcraftmodern:enchanted_fabric"}
+  ],
+  "result":{"item":"thaumcraftmodern:void_robe_hood"},
+  "essentia":{"metallum":16,"sensus":16,"tutamen":16,"pannus":16,"praecantatio":16,"alienis":16,"vacuos":16}
+}

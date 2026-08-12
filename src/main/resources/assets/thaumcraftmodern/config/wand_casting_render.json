@@ -14,13 +14,7 @@
     "first_person_scale": [0.5, 0.55, 0.5],
     "third_person_scale": [0.5, 0.5, 0.5],
     "primary_cap_tip": [0.0, 0.13125, 0.0],
-    "casting_pivot": [0.0, 1.8, 0.0],
-    "gui": {
-      "override": true,
-      "translation_pixels": [4.0, 8.0, 0.0],
-      "rotation_degrees": [25.0, 0.0, 45.0],
-      "scale": [0.45, 0.45, 0.45]
-    }
+    "casting_pivot": [0.0, 1.8, 0.0]
   },
   "sceptre": {
     "hand_pre_offset": [0.0, 0.0, 0.0],

@@ -20,6 +20,10 @@ public final class WingedMantleArmorItem extends ArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity,
                                   EquipmentSlot slot, String type) {
+        if (slot == EquipmentSlot.LEGS) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/entity/models/winged_mantle_leggings.png";
+        }
         return ThaumcraftModern.MOD_ID
                 + ":textures/entity/models/winged_mantle_armor.png";
     }

@@ -2,6 +2,7 @@
   "id": "masksippingfiend",
   "legacy_id": "MASKSIPPINGFIEND",
   "category": "artifice",
+  "completion_warp": 1,
   "icon_resource": "thaumcraftmodern:textures/misc/r_mask2.png",
   "title": "tc.research_name.MASKSIPPINGFIEND",
   "subtitle": "tc.research_text.MASKSIPPINGFIEND",

@@ -230,7 +230,9 @@ public final class ClientScanOverlay {
         int color = (successTextAlpha(alpha) << 24) | TEXT_COLOR;
         List<SuccessAspectRow> aspectRows = successAspectRows(notification);
 
-        Component message = notification.displayKey().isBlank()
+        Component message = "tc.addaspectpool".equals(notification.messageKey())
+                ? Component.empty()
+                : notification.displayKey().isBlank()
                 ? Component.translatable(
                         "message.thaumcraftmodern.scan.success_generic"
                 )
@@ -442,6 +444,9 @@ public final class ClientScanOverlay {
     private static List<SuccessAspectRow> successAspectRows(
             ScanFeedbackPacket notification
     ) {
+        boolean classicAspectPool = "tc.addaspectpool".equals(
+                notification.messageKey()
+        );
         return notification.aspects().stream()
                 .filter(gain -> gain.amount() > 0)
                 .filter(gain -> AspectRegistryRuntime.find(
@@ -451,7 +456,13 @@ public final class ClientScanOverlay {
                     Component aspectName = Component.translatable(
                             "aspect.thaumcraftmodern." + gain.aspectId()
                     );
-                    Component text = gain.newlyDiscovered()
+                    Component text = classicAspectPool
+                            ? Component.translatable(
+                                    "message.thaumcraftmodern.knowledge_fragment.aspect_pool",
+                                    gain.amount(),
+                                    aspectName
+                            )
+                            : gain.newlyDiscovered()
                             ? Component.translatable(
                                     "message.thaumcraftmodern.scan.aspect_discovered_amount",
                                     aspectName,

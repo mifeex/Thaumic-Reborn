@@ -24,6 +24,7 @@ import com.thaumcraftmodern.world.block.entity.InfusionPillarBlockEntity;
 import com.thaumcraftmodern.world.block.entity.InfernalFurnaceBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneEarBlockEntity;
 import com.thaumcraftmodern.world.block.entity.AlchemicalFurnaceBlockEntity;
+import com.thaumcraftmodern.world.block.entity.AdvancedAlchemicalFurnaceBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneAlembicBlockEntity;
 import com.thaumcraftmodern.world.block.entity.CrucibleBlockEntity;
 import com.thaumcraftmodern.world.block.entity.CrystalClusterBlockEntity;
@@ -235,6 +236,14 @@ public final class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             AlchemicalFurnaceBlockEntity::new,
                             ModBlocks.ALCHEMICAL_FURNACE.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<BlockEntityType<AdvancedAlchemicalFurnaceBlockEntity>>
+            ADVANCED_ALCHEMICAL_FURNACE = BLOCK_ENTITIES.register(
+                    "advanced_alchemical_furnace",
+                    () -> BlockEntityType.Builder.of(
+                            AdvancedAlchemicalFurnaceBlockEntity::new,
+                            ModBlocks.ADVANCED_ALCHEMICAL_FURNACE.get()
                     ).build(null)
             );
     public static final RegistryObject<BlockEntityType<ArcaneAlembicBlockEntity>>

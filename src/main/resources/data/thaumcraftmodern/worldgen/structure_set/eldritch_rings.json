@@ -1,7 +1,7 @@
 {
   "placement": {
     "type": "minecraft:random_spread",
-    "frequency": 0.8537878788,
+    "frequency": 0.7424242424,
     "frequency_reduction_method": "default",
     "salt": 14298532,
     "separation": 2,

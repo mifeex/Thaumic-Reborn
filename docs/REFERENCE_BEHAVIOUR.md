@@ -1,7 +1,7 @@
 # Эталонное поведение первой вертикали
 
 Этот документ фиксирует проверяемую связь между Thaumcraft 4.2.3.5 для
-Minecraft 1.7.10 и первой вертикалью Thaumcraft Modern для Forge 1.20.1.
+Minecraft 1.7.10 и первой вертикалью Thaumic Reborn для Forge 1.20.1.
 Он не является общим описанием всего TC4: область ограничена аспектами,
 Thaumometer, Research Table, research notes, Thaumonomicon и стартовыми
 кристаллами.

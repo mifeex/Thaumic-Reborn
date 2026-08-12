@@ -2,7 +2,7 @@
   "id": "primalcrusher",
   "legacy_id": "PRIMALCRUSHER",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "icon": "thaumcraftmodern:primal_crusher",
   "title": "tc.research_name.PRIMALCRUSHER",
   "subtitle": "tc.research_text.PRIMALCRUSHER",
   "concealed": true,
@@ -27,9 +27,67 @@
       "body": "tc.research_page.PRIMALCRUSHER.1"
     },
     {
-      "type": "unavailable",
-      "title": "",
-      "body": "",
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumcraftmodern:primal_crusher",
+      "central": "thaumcraftmodern:primordial_pearl",
+      "components": [
+        {
+          "item": "thaumcraftmodern:primal_charm",
+          "count": 1
+        },
+        {
+          "item": "thaumcraftmodern:void_pickaxe",
+          "count": 1
+        },
+        {
+          "item": "thaumcraftmodern:void_shovel",
+          "count": 1
+        },
+        {
+          "item": "thaumcraftmodern:primal_charm",
+          "count": 1
+        },
+        {
+          "item": "thaumcraftmodern:pickaxe_of_the_core",
+          "count": 1
+        },
+        {
+          "item": "thaumcraftmodern:shovel_of_the_earthmover",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "perfodio",
+          "amount": 24
+        },
+        {
+          "id": "instrumentum",
+          "amount": 24
+        },
+        {
+          "id": "perditio",
+          "amount": 16
+        },
+        {
+          "id": "vacuos",
+          "amount": 16
+        },
+        {
+          "id": "telum",
+          "amount": 16
+        },
+        {
+          "id": "alienis",
+          "amount": 16
+        },
+        {
+          "id": "lucrum",
+          "amount": 16
+        }
+      ],
+      "instability": "dangerous",
       "legacy_type": "recipe",
       "legacy_content": "PrimalCrusher",
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"PrimalCrusher\"))"
@@ -40,8 +98,7 @@
       "body": "tc.research_page.PRIMALCRUSHER.2"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": 2,
     "y": 5,

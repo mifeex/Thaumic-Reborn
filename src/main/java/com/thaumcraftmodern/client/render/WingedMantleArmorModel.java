@@ -98,7 +98,7 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
         body.addOrReplaceChild("praetor_chestplate", cube(184, 173,
                 -4.0F, 1.0F, -3.8F, 8.0F, 7.0F, 2.0F), PartPose.ZERO);
         body.addOrReplaceChild("raised_chest_focus", cube(204, 181,
-                -2.5F, 3.0F, -4.8F, 5.0F, 5.0F, 1.0F), PartPose.ZERO);
+                -3.0F, 2.8125F, -4.8F, 6.0F, 6.0F, 1.0F), PartPose.ZERO);
         body.addOrReplaceChild("praetor_chestcloth_left", mirroredCube(148, 175, true,
                 1.5F, 1.2F, -4.5F, 3.0F, 9.0F, 1.0F),
                 PartPose.rotation(0.0663225F, 0.0F, 0.0F));
@@ -124,12 +124,14 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
         empty(body, "focus_stud_right", PartPose.ZERO);
         empty(body, "back_focus", PartPose.ZERO);
         empty(body, "back_focus_core", PartPose.ZERO);
-        body.addOrReplaceChild("belt", cube(72, 34, -4.7F, 8.6F, -2.9F, 9.4F, 2.0F, 5.8F), PartPose.ZERO);
+        body.addOrReplaceChild("belt", cube(208, 224, -5.7F, 8.6F, -2.9F, 11.4F, 2.0F, 5.8F), PartPose.ZERO);
         // The approved front UV already contains its buckle.
         empty(body, "buckle", PartPose.ZERO);
         body.addOrReplaceChild("left_tail", cube(0, 50, 0.15F, 9.7F, -2.55F, 4.25F, 13.5F, 1.2F), PartPose.rotation(0.03F, 0.0F, 0.025F));
         body.addOrReplaceChild("right_tail", cube(14, 50, -4.4F, 9.7F, -2.55F, 4.25F, 13.5F, 1.2F), PartPose.rotation(0.03F, 0.0F, -0.025F));
-        body.addOrReplaceChild("back_mantle", cube(28, 50, -4.4F, 5.0F, 2.15F, 8.8F, 13.5F, 1.1F), PartPose.rotation(-0.03F, 0.0F, 0.0F));
+        // No hanging rear panel: it protruded between the Elytra wings and
+        // overlapped the player's legs in third person.
+        empty(body, "back_mantle", PartPose.ZERO);
         body.addOrReplaceChild("elytra_bridge", cube(112, 80,
                 -4.2F, 0.5F, 2.4F, 8.4F, 3.5F, 1.6F), PartPose.ZERO);
         // Removed from the body pass: this diagonal block read as an
@@ -181,6 +183,15 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
         arm.addOrReplaceChild("sleeve", mirroredCube(u, 192, mirror,
                 mirror ? -1.5F : -3.5F, -2.5F, -2.5F,
                 5.0F, 13.0F, 5.0F), PartPose.ZERO);
+        // Exact TC4 ModelRobe forearm layers (RArm2/RArm3 and LArm2/LArm3).
+        // Together with the five-pixel sleeve they restore the cleric robe's
+        // widening and layered cloth detail around the forearm.
+        arm.addOrReplaceChild("cleric_forearm_fold", mirroredCube(208, 240, mirror,
+                mirror ? -1.0F : -3.0F, 5.5F, 2.5F,
+                4.0F, 4.0F, 2.0F), PartPose.ZERO);
+        arm.addOrReplaceChild("cleric_forearm_ridge", mirroredCube(224, 240, mirror,
+                mirror ? -0.5F : -2.5F, 3.5F, 2.5F,
+                3.0F, 2.0F, 1.0F), PartPose.ZERO);
         // Exact four-step Fortress shoulder construction from TC4
         // ModelFortressArmor, including its 25-degree outward cant. The UVs
         // address a lossless 16x copy of the original Fortress atlas.

@@ -22,6 +22,8 @@ import org.joml.Matrix4f;
  */
 final class ClassicWandModel {
     private static final int RUNE_COUNT = 16;
+    private static final int TEXTURE_WIDTH = 32;
+    private static final int TEXTURE_HEIGHT = 32;
     private static final String ROD = "rod";
     private static final String TOP_CAP = "top_cap";
     private static final String BOTTOM_CAP = "bottom_cap";
@@ -69,7 +71,10 @@ final class ClassicWandModel {
                 PartPose.ZERO
         );
 
-        return LayerDefinition.create(mesh, 64, 32);
+        // TC4 ModelWand declares textureWidth=32 and textureHeight=32.
+        // Using 64 here halves every U coordinate, reducing each material to
+        // a nearly flat-color fragment of its original cap texture.
+        return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 
     private static CubeListBuilder cap() {

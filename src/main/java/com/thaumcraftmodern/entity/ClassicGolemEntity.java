@@ -65,6 +65,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             ClassicGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<ItemStack> CARRIED_DISPLAY = SynchedEntityData.defineId(
             ClassicGolemEntity.class, EntityDataSerializers.ITEM_STACK);
+    private static final EntityDataAccessor<Boolean> ADVANCED = SynchedEntityData.defineId(
+            ClassicGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private final GolemMaterial material;
     private byte[] upgrades;
     private SimpleContainer inventory;
@@ -124,6 +126,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         entityData.define(TOGGLES, (byte) 0);
         entityData.define(CARRYING, false);
         entityData.define(CARRIED_DISPLAY, ItemStack.EMPTY);
+        entityData.define(ADVANCED, false);
     }
 
     @Override protected void registerGoals() { GolemCoreGoals.register(this); }
@@ -264,7 +267,19 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         essentiaCarried = amount > 0 ? aspect : null;
         essentiaAmount = Math.max(0, Math.min(carryLimit(), amount));
     }
-    public int upgradeSlots() { return material.upgradeSlots(); }
+    public int upgradeSlots() { return material.upgradeSlots() + (isAdvanced() ? 1 : 0); }
+    public boolean isAdvanced() { return entityData.get(ADVANCED); }
+    public void setAdvanced(boolean advanced) {
+        if (isAdvanced() == advanced && upgrades != null && upgrades.length == upgradeSlots()) return;
+        byte[] previous = upgrades == null ? new byte[0] : upgrades;
+        entityData.set(ADVANCED, advanced);
+        upgrades = new byte[upgradeSlots()];
+        Arrays.fill(upgrades, (byte) -1);
+        System.arraycopy(previous, 0, upgrades, 0, Math.min(previous.length, upgrades.length));
+        syncUpgrades();
+        applyUpgradeAttributes();
+        rebuildFilters(filters);
+    }
     public int strength() { return material.strength(); }
     public int effectiveStrength() { return material.strength() + upgradeAmount(GolemUpgradeType.TERRA); }
     public int visCost() { return material.visCost(); }
@@ -431,7 +446,11 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     public void startRightArmAnimation() {
         if (!level().isClientSide) level().broadcastEntityEvent(this, (byte) 8);
     }
-    public int workRange() { return 16 + upgradeAmount(GolemUpgradeType.AQUA) * 4; }
+    public int workRange() {
+        int range = 16 + upgradeAmount(GolemUpgradeType.AQUA) * 4;
+        return isAdvanced() ? range + Math.max((int) (range * .2F), 2) : range;
+    }
+    public int workDelay() { return 20 - (isAdvanced() ? 2 : 0); }
     @Nullable BlockPos lumberTreeBase() { return lumberTreeBase; }
     List<BlockPos> lumberTreeLogs() { return List.copyOf(lumberTreeLogs); }
     void rememberLumberTree(BlockPos base, List<BlockPos> logs) {
@@ -479,6 +498,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
 
     public CompoundTag savePortableData() {
         CompoundTag tag = new CompoundTag();
+        tag.putBoolean("advanced", isAdvanced());
         tag.putInt("Core", entityData.get(CORE));
         tag.putByte("Toggles", entityData.get(TOGGLES));
         tag.putByteArray("Upgrades", upgrades);
@@ -508,6 +528,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     }
 
     public void loadPortableData(CompoundTag tag) {
+        setAdvanced(tag.getBoolean("advanced") || tag.getBoolean("Advanced"));
         entityData.set(CORE, tag.getInt("Core"));
         entityData.set(TOGGLES, tag.getByte("Toggles"));
         byte[] restored = tag.getByteArray("Upgrades");
@@ -551,10 +572,10 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             rebuildInventory(inventory);
             rebuildFilters(filters);
         }
-        if (UPGRADES.equals(key) && material != null) {
+        if ((UPGRADES.equals(key) || ADVANCED.equals(key)) && material != null) {
             String encoded = entityData.get(UPGRADES);
-            if (upgrades == null || upgrades.length != material.upgradeSlots()) {
-                upgrades = new byte[material.upgradeSlots()];
+            if (upgrades == null || upgrades.length != upgradeSlots()) {
+                upgrades = new byte[upgradeSlots()];
             }
             Arrays.fill(upgrades, (byte) -1);
             for (int slot = 0; slot < Math.min(encoded.length(), upgrades.length); slot++) {
@@ -598,6 +619,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         owner().ifPresent(uuid -> tag.putUUID("Owner", uuid));
         tag.putInt("RegenTimer", regenerationTimer);
         tag.putInt("Core", entityData.get(CORE));
+        tag.putBoolean("advanced", isAdvanced());
         tag.putByte("Toggles", entityData.get(TOGGLES));
         tag.putByte("HomeFacing", (byte) homeFacing.get3DDataValue());
         if (persistentHome != null) {
@@ -639,8 +661,9 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         super.readAdditionalSaveData(tag);
         setOwner(tag.hasUUID("Owner") ? tag.getUUID("Owner") : null);
         regenerationTimer = Math.max(0, Math.min(material.regenerationDelay(), tag.getInt("RegenTimer")));
+        entityData.set(ADVANCED, tag.getBoolean("advanced") || tag.getBoolean("Advanced"));
         byte[] savedUpgrades = tag.getByteArray("Upgrades");
-        upgrades = new byte[material.upgradeSlots()];
+        upgrades = new byte[upgradeSlots()];
         Arrays.fill(upgrades, (byte) -1);
         System.arraycopy(savedUpgrades, 0, upgrades, 0, Math.min(savedUpgrades.length, upgrades.length));
         entityData.set(CORE, tag.contains("Core") ? tag.getInt("Core") : -1);
@@ -718,7 +741,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     private void applyUpgradeAttributes() {
         if (getAttribute(Attributes.MOVEMENT_SPEED) != null) {
             getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(
-                    material.speed() * (1D + upgradeAmount(GolemUpgradeType.AER) * .15D));
+                    material.speed() * (isAdvanced() ? 1.1D : 1D)
+                            * (1D + upgradeAmount(GolemUpgradeType.AER) * .15D));
         }
         if (getAttribute(Attributes.ATTACK_DAMAGE) != null) {
             int earth = upgradeAmount(GolemUpgradeType.TERRA);

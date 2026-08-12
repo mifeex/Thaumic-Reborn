@@ -2,6 +2,7 @@
   "id": "sinstone",
   "legacy_id": "SINSTONE",
   "category": "artifice",
+  "completion_warp": 2,
   "icon": "thaumcraftmodern:sinister_lodestone",
   "icon_resource": "thaumcraftmodern:textures/item/sinister_stone_active.png",
   "title": "tc.research_name.SINSTONE",

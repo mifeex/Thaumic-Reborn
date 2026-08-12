@@ -12,12 +12,27 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResearchPuzzleSourceCoverageTest {
     private static final Path RESEARCH = Path.of(
             "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
     );
+
+    @Test
+    void directAspectPurchaseExactlyMatchesOriginalSecondaryResearchFlag() throws IOException {
+        try (var stream = Files.list(RESEARCH)) {
+            for (Path file : stream.filter(path -> path.toString().endsWith(".json")).toList()) {
+                JsonObject json = JsonParser.parseString(Files.readString(file)).getAsJsonObject();
+                JsonObject flags = json.getAsJsonObject("legacy").getAsJsonObject("flags");
+                boolean originalSecondary = flags.get("secondary").getAsBoolean();
+                boolean directPurchase = json.has("purchase_cost")
+                        && !json.getAsJsonArray("purchase_cost").isEmpty();
+                assertEquals(originalSecondary, directPurchase, file.toString());
+            }
+        }
+    }
 
     @Test
     void everyResearchableLegacyEntryHasItsOwnOriginalAspectRecipe() throws IOException {
@@ -49,5 +64,24 @@ class ResearchPuzzleSourceCoverageTest {
                 "thaumatorium",
                 "wardedarcana"
         )), researchable.toString());
+    }
+
+    @Test
+    void parentGatedGolemancyStubsCompleteWithoutResearchNotes() throws IOException {
+        for (String id : List.of("golembell", "coregather")) {
+            JsonObject json = JsonParser.parseString(Files.readString(
+                    RESEARCH.resolve(id + ".json")
+            )).getAsJsonObject();
+            JsonObject flags = json.getAsJsonObject("legacy")
+                    .getAsJsonObject("flags");
+
+            assertTrue(flags.get("stub").getAsBoolean(), id);
+            assertTrue(json.get("auto_unlock").getAsBoolean(),
+                    id + " must auto-complete after golemstraw");
+            assertEquals(List.of("golemstraw"),
+                    json.getAsJsonArray("parents").asList().stream()
+                            .map(element -> element.getAsString())
+                            .toList(), id);
+        }
     }
 }

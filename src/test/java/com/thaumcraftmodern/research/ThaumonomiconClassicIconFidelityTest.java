@@ -13,6 +13,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ThaumonomiconClassicIconFidelityTest {
     private static final Path RESEARCH = Path.of(
@@ -27,6 +28,7 @@ class ThaumonomiconClassicIconFidelityTest {
             throws IOException {
         Map<String, String> expected = new LinkedHashMap<>();
         expected.put("aspects", "r_aspects.png");
+        expected.put("eldritchminor", "r_eldritchminor.png");
         expected.put("eldritchmajor", "r_eldritchmajor.png");
         expected.put("researcher1", "r_researcher1.png");
         expected.put("researcher2", "r_researcher2.png");
@@ -49,6 +51,13 @@ class ThaumonomiconClassicIconFidelityTest {
                     entry.getValue()
             );
         }
+        assertArrayEquals(
+                Files.readAllBytes(Path.of(
+                        "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/"
+                                + "assets/thaumcraft/textures/misc/r_eldritchminor.png"
+                )),
+                Files.readAllBytes(TEXTURES.resolve("r_eldritchminor.png"))
+        );
     }
 
     @Test

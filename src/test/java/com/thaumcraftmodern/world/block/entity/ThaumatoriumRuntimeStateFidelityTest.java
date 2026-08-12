@@ -46,6 +46,20 @@ final class ThaumatoriumRuntimeStateFidelityTest {
     }
 
     @Test
+    void recipeSwitchKeepsOnlyEssentiaAcceptedByTheNewRecipe() {
+        assertTrue(ThaumatoriumBlockEntity.reservedFitsRecipe(
+                Map.of(), Map.of("ignis", 4)));
+        assertTrue(ThaumatoriumBlockEntity.reservedFitsRecipe(
+                Map.of("ignis", 2), Map.of("ignis", 4, "ordo", 1)));
+        org.junit.jupiter.api.Assertions.assertFalse(
+                ThaumatoriumBlockEntity.reservedFitsRecipe(
+                        Map.of("aqua", 1), Map.of("ignis", 4)));
+        org.junit.jupiter.api.Assertions.assertFalse(
+                ThaumatoriumBlockEntity.reservedFitsRecipe(
+                        Map.of("ignis", 5), Map.of("ignis", 4)));
+    }
+
+    @Test
     void suctionIsReleasedWhileInactiveAndWhenNoSupplyIsAvailable()
             throws Exception {
         String source = Files.readString(Path.of(

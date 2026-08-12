@@ -43,23 +43,44 @@ public final class TaintedPlantBlock extends BushBlock {
             RandomSource random
     ) {
         TaintEcology.randomTick(level, position, state, random);
-        if (!state.is(ModBlocks.MATURE_SPORE_STALK.get())
-                || !ThaumcraftModernServerConfig.spawnTaintCreatures()
-                || random.nextInt(10) != 0
-                || !level.isEmptyBlock(position.above())
-                || !level.getEntitiesOfClass(
+        BlockState current = level.getBlockState(position);
+        if (current.is(ModBlocks.SPORE_STALK.get())
+                && ThaumcraftModernServerConfig.spawnTaintCreatures()
+                && random.nextInt(10) == 0
+                && level.isEmptyBlock(position.above())) {
+            growMatureSpore(level, position, random);
+            return;
+        }
+        if (current.is(ModBlocks.MATURE_SPORE_STALK.get())
+                && level.getEntitiesOfClass(
                         com.thaumcraftmodern.entity.LegacyThaumcraftMob.class,
-                        new AABB(position.above()).inflate(8.0D),
+                        new AABB(position.above()),
                         mob -> mob.kind()
                                 == com.thaumcraftmodern.entity.LegacyMobKind
                                         .TAINT_SPORE
                 ).isEmpty()) {
-            return;
+            level.setBlock(
+                    position,
+                    ModBlocks.SPORE_STALK.get().defaultBlockState(),
+                    3
+            );
         }
+    }
+
+    private static void growMatureSpore(
+            ServerLevel level,
+            BlockPos position,
+            RandomSource random
+    ) {
         var spore = ModEntities.TAINT_SPORE.get().create(level);
         if (spore == null) {
             return;
         }
+        level.setBlock(
+                position,
+                ModBlocks.MATURE_SPORE_STALK.get().defaultBlockState(),
+                3
+        );
         spore.moveTo(
                 position.getX() + 0.5D,
                 position.getY() + 1.0D,

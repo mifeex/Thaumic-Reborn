@@ -71,9 +71,7 @@ public final class ScanService {
                 return;
             }
 
-            String knowledgeKey = target instanceof ScanSessionManager.NodeTarget
-                    ? target.scanKey()
-                    : ScanRegistry.knowledgeKey(target.type(), target.targetId());
+            String knowledgeKey = target.knowledgeKey();
             if (knowledge.hasScan(knowledgeKey)) {
                 return;
             }

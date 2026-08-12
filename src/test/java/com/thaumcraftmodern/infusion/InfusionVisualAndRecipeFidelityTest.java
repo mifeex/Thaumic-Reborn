@@ -12,6 +12,7 @@ import java.util.HexFormat;
 import java.util.zip.ZipFile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InfusionVisualAndRecipeFidelityTest {
@@ -76,25 +77,27 @@ class InfusionVisualAndRecipeFidelityTest {
                         && pillarRenderer.contains("default -> 0.0F"),
                 "Infusion pillars must use the original two-block OBJ and orientation map");
 
-        String pillarMigration = Files.readString(Path.of(
-                "src/main/java/com/thaumcraftmodern/client/InfusionPillarClientMigration.java"));
-        assertTrue(pillarMigration.contains("position.immutable()")
-                        && pillarMigration.contains("getBlockEntity(pillarPosition"),
-                "Each migrated pillar must own an immutable BlockPos");
+        String clientEvents = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/ClientModEvents.java"));
+        assertTrue(clientEvents.contains("ModBlockEntities.INFUSION_PILLAR.get()")
+                        && clientEvents.contains(
+                        "InfusionPillarBlockEntityRenderer::new"),
+                "Pillars must use the normal BlockEntity renderer dispatcher");
 
-        String pillarWorldRenderer = Files.readString(Path.of(
-                "src/main/java/com/thaumcraftmodern/client/render/InfusionPillarWorldRenderer.java"));
-        assertTrue(pillarWorldRenderer.contains("AFTER_BLOCK_ENTITIES")
-                        && pillarWorldRenderer.contains("isRenderedBase")
-                        && pillarWorldRenderer.contains("position.above()")
-                        && pillarWorldRenderer.contains("PILLARS.removeIf")
-                        && pillarWorldRenderer.contains("64.0D * 64.0D")
-                        && pillarWorldRenderer.contains("if (!PILLARS.contains(pillar)) PILLARS.add(pillar)")
-                        && pillarWorldRenderer.contains("case EAST -> 90.0F")
-                        && pillarWorldRenderer.contains("case NORTH -> 180.0F")
-                        && pillarWorldRenderer.contains("case WEST -> 270.0F")
-                        && pillarWorldRenderer.contains("default -> 0.0F"),
-                "All four saved pillar block positions must render independently");
+        Path pollingRenderer = Path.of("src/main/java/com/thaumcraftmodern/"
+                + "client/render/InfusionPillarWorldRenderer.java");
+        Path pollingMigration = Path.of("src/main/java/com/thaumcraftmodern/"
+                + "client/InfusionPillarClientMigration.java");
+        assertFalse(Files.exists(pollingRenderer));
+        assertFalse(Files.exists(pollingMigration));
+
+        String migration = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/world/block/entity/"
+                        + "InfusionPillarMigrationEvents.java"));
+        assertTrue(migration.contains("onChunkLoad(ChunkEvent.Load event)")
+                        && migration.contains("EntityCreationType.IMMEDIATE")
+                        && migration.contains("markMigrated(chunk.getPos())"),
+                "Legacy BlockEntities must be restored once per loaded chunk");
     }
 
     @Test

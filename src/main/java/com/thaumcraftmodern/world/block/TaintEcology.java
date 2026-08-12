@@ -1,10 +1,12 @@
 package com.thaumcraftmodern.world.block;
 
 import com.thaumcraftmodern.registry.ModBlocks;
+import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.worldgen.ModWorldgenKeys;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.MultifaceBlock;
@@ -57,16 +59,17 @@ public final class TaintEcology {
                         )
                 );
             }
-            level.setBlock(target, taintedLeaves, 3);
+            setTaintBlock(level, target, taintedLeaves, random);
             return;
         }
         if ((targetState.is(BlockTags.LOGS)
                 || targetState.is(ModBlocks.TAINTED_LEAVES.get()))
                 && adjacent >= 2) {
-            level.setBlock(
+            setTaintBlock(
+                    level,
                     target,
                     ModBlocks.CRUSTED_TAINT.get().defaultBlockState(),
-                    3
+                    random
             );
             return;
         }
@@ -74,10 +77,11 @@ public final class TaintEcology {
                 || targetState.is(BlockTags.SAND)
                 || targetState.is(BlockTags.BASE_STONE_OVERWORLD))
                 && adjacent >= 3) {
-            level.setBlock(
+            setTaintBlock(
+                    level,
                     target,
                     ModBlocks.TAINTED_SOIL.get().defaultBlockState(),
-                    3
+                    random
             );
             return;
         }
@@ -105,7 +109,9 @@ public final class TaintEcology {
                 || adjacentTaint(level, source) < 2) {
             return;
         }
-        TaintBiomeService.taintColumn(level, target);
+        if (TaintBiomeService.taintColumn(level, target)) {
+            playRoots(level, source, random);
+        }
     }
 
     private static void decayOutsideTaint(
@@ -196,7 +202,7 @@ public final class TaintEcology {
                 plant = ModBlocks.SPORE_STALK.get().defaultBlockState();
             }
             if (plant.canSurvive(level, position)) {
-                level.setBlock(position, plant, 3);
+                setTaintBlock(level, position, plant, random);
                 return;
             }
         }
@@ -222,6 +228,32 @@ public final class TaintEcology {
         }
         if (state.is(fibres)) {
             level.setBlock(position, state, 3);
+            playRoots(level, position, level.random);
         }
+    }
+
+    private static void setTaintBlock(
+            ServerLevel level,
+            BlockPos position,
+            BlockState state,
+            RandomSource random
+    ) {
+        level.setBlock(position, state, 3);
+        playRoots(level, position, random);
+    }
+
+    private static void playRoots(
+            ServerLevel level,
+            BlockPos position,
+            RandomSource random
+    ) {
+        level.playSound(
+                null,
+                position,
+                ModSounds.ROOTS.get(),
+                SoundSource.BLOCKS,
+                0.1F,
+                0.9F + random.nextFloat() * 0.2F
+        );
     }
 }

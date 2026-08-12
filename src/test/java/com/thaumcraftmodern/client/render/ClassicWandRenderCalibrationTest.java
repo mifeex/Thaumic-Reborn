@@ -60,23 +60,23 @@ final class ClassicWandRenderCalibrationTest {
                     0.5F,
                     forms.get(WandForm.STAFF).handPreOffset().y()
             );
-            assertEquals(true, forms.get(WandForm.STAFF).gui().override());
+            assertEquals(false, forms.get(WandForm.STAFF).gui().override());
             assertEquals(
-                    8.0F,
+                    0.0F,
                     forms.get(WandForm.STAFF)
                             .gui()
                             .translationPixels()
                             .y()
             );
             assertEquals(
-                    45.0F,
+                    0.0F,
                     forms.get(WandForm.STAFF)
                             .gui()
                             .rotationDegrees()
                             .z()
             );
             assertEquals(
-                    0.45F,
+                    1.0F,
                     forms.get(WandForm.STAFF).gui().scale().x()
             );
         }

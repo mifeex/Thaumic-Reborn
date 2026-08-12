@@ -41,4 +41,14 @@ final class ClassicWandCapClosureTest {
                 "21.01F / 16.0F, 1.0F"));
         assertTrue(model.contains("renderCapClosure(poseStack.last()"));
     }
+
+    @Test
+    void modelPassesItsDeclaredTextureDimensionsToTheBakedLayer()
+            throws Exception {
+        String model = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/render/"
+                        + "ClassicWandModel.java"));
+        assertTrue(model.contains(
+                "LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT)"));
+    }
 }

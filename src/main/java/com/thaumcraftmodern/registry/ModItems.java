@@ -17,6 +17,7 @@ import com.thaumcraftmodern.item.HandMirrorItem;
 import com.thaumcraftmodern.item.FortressArmorItem;
 import com.thaumcraftmodern.item.EtherealEssenceItem;
 import com.thaumcraftmodern.item.EssentiaPhialItem;
+import com.thaumcraftmodern.item.EssentiaReservoirItem;
 import com.thaumcraftmodern.item.EssentiaResonatorItem;
 import com.thaumcraftmodern.item.EssentiaCrystalItem;
 import com.thaumcraftmodern.item.FluxGooBlockItem;
@@ -44,7 +45,16 @@ import com.thaumcraftmodern.item.ElementalHoeItem;
 import com.thaumcraftmodern.item.ElementalPickaxeItem;
 import com.thaumcraftmodern.item.ElementalShovelItem;
 import com.thaumcraftmodern.item.ElementalSwordItem;
+import com.thaumcraftmodern.item.PrimalCrusherItem;
+import com.thaumcraftmodern.item.PrimordialPearlItem;
 import com.thaumcraftmodern.item.TaintedMaterialItem;
+import com.thaumcraftmodern.item.VoidArmorItem;
+import com.thaumcraftmodern.item.VoidRobeArmorItem;
+import com.thaumcraftmodern.item.VoidSwordItem;
+import com.thaumcraftmodern.item.VoidPickaxeItem;
+import com.thaumcraftmodern.item.VoidAxeItem;
+import com.thaumcraftmodern.item.VoidShovelItem;
+import com.thaumcraftmodern.item.VoidHoeItem;
 import com.thaumcraftmodern.item.SinisterLodestoneItem;
 import com.thaumcraftmodern.item.FluxScrubberItem;
 import com.thaumcraftmodern.item.ArcaneDoorItem;
@@ -56,6 +66,7 @@ import com.thaumcraftmodern.item.ClassicGolemItem;
 import com.thaumcraftmodern.item.GolemCoreItem;
 import com.thaumcraftmodern.item.GolemUpgradeItem;
 import com.thaumcraftmodern.item.HungryChestItem;
+import com.thaumcraftmodern.item.TravelingTrunkItem;
 import com.thaumcraftmodern.item.CurioAccessoryItem;
 import com.thaumcraftmodern.item.VisStorageItem;
 import com.thaumcraftmodern.item.RunicAccessoryItem;
@@ -225,7 +236,9 @@ public final class ModItems {
     public static final RegistryObject<Item> PRIMORDIAL_PEARL =
             ITEMS.register(
                     "primordial_pearl",
-                    () -> new Item(new Item.Properties().rarity(Rarity.EPIC))
+                    () -> new PrimordialPearlItem(
+                            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+                    )
             );
     public static final RegistryObject<Item> MUNDANE_AMULET = ITEMS.register(
             "mundane_amulet", () -> new CurioAccessoryItem(
@@ -281,6 +294,36 @@ public final class ModItems {
             "thaumium_leggings", ArmorItem.Type.LEGGINGS);
     public static final RegistryObject<Item> THAUMIUM_BOOTS = thaumiumArmor(
             "thaumium_boots", ArmorItem.Type.BOOTS);
+    public static final RegistryObject<Item> VOID_SWORD = ITEMS.register(
+            "void_sword", () -> new VoidSwordItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_PICKAXE = ITEMS.register(
+            "void_pickaxe", () -> new VoidPickaxeItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_AXE = ITEMS.register(
+            "void_axe", () -> new VoidAxeItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_SHOVEL = ITEMS.register(
+            "void_shovel", () -> new VoidShovelItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_HOE = ITEMS.register(
+            "void_hoe", () -> new VoidHoeItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_HELMET = voidArmor(
+            "void_helmet", ArmorItem.Type.HELMET);
+    public static final RegistryObject<Item> VOID_CHESTPLATE = voidArmor(
+            "void_chestplate", ArmorItem.Type.CHESTPLATE);
+    public static final RegistryObject<Item> VOID_LEGGINGS = voidArmor(
+            "void_leggings", ArmorItem.Type.LEGGINGS);
+    public static final RegistryObject<Item> VOID_BOOTS = voidArmor(
+            "void_boots", ArmorItem.Type.BOOTS);
+    public static final RegistryObject<Item> PRIMAL_CRUSHER = ITEMS.register(
+            "primal_crusher",
+            () -> new PrimalCrusherItem(
+                    new Item.Properties().rarity(Rarity.EPIC)
+            )
+    );
+    public static final RegistryObject<Item> VOID_ROBE_HOOD = voidRobeArmor(
+            "void_robe_hood", ArmorItem.Type.HELMET);
+    public static final RegistryObject<Item> VOID_ROBE_CHESTPLATE = voidRobeArmor(
+            "void_robe_chestplate", ArmorItem.Type.CHESTPLATE);
+    public static final RegistryObject<Item> VOID_ROBE_LEGGINGS = voidRobeArmor(
+            "void_robe_leggings", ArmorItem.Type.LEGGINGS);
     public static final RegistryObject<Item> FORTRESS_HELMET = ITEMS.register(
             "fortress_helmet", () -> new FortressArmorItem(ArmorItem.Type.HELMET,
                     new Item.Properties().rarity(Rarity.RARE)));
@@ -807,6 +850,8 @@ public final class ModItems {
     public static final RegistryObject<Item> THAUMIUM_GOLEM = ITEMS.register(
             "thaumium_golem", () -> new ClassicGolemItem(new Item.Properties().stacksTo(1),
                     GolemMaterial.THAUMIUM, ModEntities.THAUMIUM_GOLEM));
+    public static final RegistryObject<Item> TRAVELING_TRUNK = ITEMS.register(
+            "traveling_trunk", () -> new TravelingTrunkItem(new Item.Properties().stacksTo(1)));
     public static final Map<GolemCoreType, RegistryObject<Item>> GOLEM_CORES = registerGolemCores();
     public static final RegistryObject<Item> TALLOW_BLOCK = blockItem("tallow_block", ModBlocks.TALLOW_BLOCK);
     public static final RegistryObject<Item> FLESH_BLOCK = blockItem("flesh_block", ModBlocks.FLESH_BLOCK);
@@ -915,6 +960,16 @@ public final class ModItems {
         ));
     }
 
+    private static RegistryObject<Item> voidArmor(String name, ArmorItem.Type type) {
+        return ITEMS.register(name, () -> new VoidArmorItem(type,
+                new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    }
+
+    private static RegistryObject<Item> voidRobeArmor(String name, ArmorItem.Type type) {
+        return ITEMS.register(name, () -> new VoidRobeArmorItem(type,
+                new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    }
+
     private static Map<String, RegistryObject<Item>> registerArcaneRecipeComponents() {
         List<String> names = List.of(
                 "aer_primal_arrow", "aqua_primal_arrow", "ignis_primal_arrow",
@@ -989,7 +1044,10 @@ public final class ModItems {
             case "essentia_buffer" -> blockItem(name, ModBlocks.ESSENTIA_BUFFER);
             case "essentia_centrifuge" -> blockItem(name, ModBlocks.ESSENTIA_CENTRIFUGE);
             case "essentia_crystallizer" -> blockItem(name, ModBlocks.ESSENTIA_CRYSTALLIZER);
-            case "essentia_reservoir" -> blockItem(name, ModBlocks.ESSENTIA_RESERVOIR);
+            case "essentia_reservoir" -> ITEMS.register(name,
+                    () -> new EssentiaReservoirItem(
+                            ModBlocks.ESSENTIA_RESERVOIR.get(),
+                            new Item.Properties()));
             case "essentia_resonator" -> ITEMS.register(name,
                     () -> new EssentiaResonatorItem(new Item.Properties()));
             case "focus_fire" -> focus(name, WandFocusType.FIRE);
@@ -1073,6 +1131,10 @@ public final class ModItems {
 
     public static RegistryObject<Item> golemCore(GolemCoreType type) {
         return GOLEM_CORES.get(type);
+    }
+
+    public static RegistryObject<Item> golemUpgrade(GolemUpgradeType type) {
+        return ARCANE_RECIPE_COMPONENTS.get("golem_upgrade_" + type.id());
     }
 
     private static Map<GolemCoreType, RegistryObject<Item>> registerGolemCores() {

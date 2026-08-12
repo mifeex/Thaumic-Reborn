@@ -16,11 +16,27 @@ public final class WingedMantleClientExtensions {
         return new IClientItemExtensions() {
             private final EnumMap<EquipmentSlot, WingedMantleArmorModel> models =
                     new EnumMap<>(EquipmentSlot.class);
+            private VoidRobeArmorModel leggings;
 
             @Override
             public HumanoidModel<?> getHumanoidArmorModel(
                     LivingEntity entity, ItemStack stack, EquipmentSlot slot,
                     HumanoidModel<?> defaultModel) {
+                if (slot == EquipmentSlot.LEGS) {
+                    if (leggings == null) {
+                        leggings = new VoidRobeArmorModel(
+                                Minecraft.getInstance().getEntityModels()
+                                        .bakeLayer(VoidRobeArmorModel.INNER_LAYER),
+                                true
+                        );
+                    }
+                    copyPose(defaultModel, leggings);
+                    leggings.setAllVisible(false);
+                    leggings.body.visible = true;
+                    leggings.rightLeg.visible = true;
+                    leggings.leftLeg.visible = true;
+                    return leggings;
+                }
                 WingedMantleArmorModel model = models.computeIfAbsent(slot,
                         ignored -> new WingedMantleArmorModel(
                             Minecraft.getInstance().getEntityModels()
@@ -34,7 +50,7 @@ public final class WingedMantleClientExtensions {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     private static void copyPose(HumanoidModel<?> source,
-                                 WingedMantleArmorModel target) {
+                                 HumanoidModel<?> target) {
         ((HumanoidModel) source).copyPropertiesTo(target);
     }
 }

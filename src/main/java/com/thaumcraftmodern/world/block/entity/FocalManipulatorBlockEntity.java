@@ -5,6 +5,7 @@ import com.thaumcraftmodern.focus.FocusUpgradeCost;
 import com.thaumcraftmodern.focus.FocusUpgradeType;
 import com.thaumcraftmodern.item.WandFocusItem;
 import com.thaumcraftmodern.registry.ModBlockEntities;
+import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.visnet.VisMachineAccess;
 import com.thaumcraftmodern.world.menu.FocalManipulatorMenu;
@@ -15,6 +16,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
@@ -95,6 +97,8 @@ public final class FocalManipulatorBlockEntity extends BlockEntity
         upgradeId = upgrade.id();
         rank = nextRank;
         sync();
+        player.level().playSound(null, worldPosition, ModSounds.CRAFT_SUCCESS.get(),
+                SoundSource.BLOCKS, 0.25F, 1.0F);
         return true;
     }
 
@@ -104,6 +108,8 @@ public final class FocalManipulatorBlockEntity extends BlockEntity
         ItemStack focus = table.items.get(0);
         if (!(focus.getItem() instanceof WandFocusItem) || WandFocusItem.nextRank(focus) != table.rank) {
             table.cancel();
+            level.playSound(null, pos, ModSounds.CRAFT_FAIL.get(),
+                    SoundSource.BLOCKS, 0.33F, 1.0F);
             return;
         }
         if (level.getGameTime() % 5L != 0L) return;
@@ -120,9 +126,13 @@ public final class FocalManipulatorBlockEntity extends BlockEntity
             }
         }
         if (table.remaining.values().stream().allMatch(value -> value <= 0)) {
-            WandFocusItem.applyUpgrade(focus, FocusUpgradeType.byId(table.upgradeId), table.rank);
+            boolean upgraded = WandFocusItem.applyUpgrade(focus,
+                    FocusUpgradeType.byId(table.upgradeId), table.rank);
             table.cancel();
-            level.levelEvent(2005, pos.above(), 0);
+            level.playSound(null, pos,
+                    upgraded ? ModSounds.WAND.get() : ModSounds.CRAFT_FAIL.get(),
+                    SoundSource.BLOCKS, upgraded ? 1.0F : 0.33F, 1.0F);
+            if (upgraded) level.levelEvent(2005, pos.above(), 0);
             return;
         }
         if (changed) table.sync();

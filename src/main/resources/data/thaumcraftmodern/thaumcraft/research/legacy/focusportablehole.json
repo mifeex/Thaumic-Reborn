@@ -23,7 +23,28 @@
       "title": "",
       "body": "tc.research_page.FOCUSPORTABLEHOLE.1"
     },
-    {"type":"infusion","title":"","recipe":"thaumcraftmodern:focus_portable_hole"}
+    {
+      "type": "infusion",
+      "title": "",
+      "recipe": "thaumcraftmodern:focus_portable_hole",
+      "output": "thaumcraftmodern:focus_portable_hole",
+      "central": "minecraft:ender_pearl",
+      "components": [
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:water_shard"},
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:air_shard"},
+        {"item": "minecraft:quartz"},
+        {"item": "thaumcraftmodern:entropy_shard"}
+      ],
+      "aspect_costs": [
+        {"id": "iter", "amount": 25},
+        {"id": "alienis", "amount": 10},
+        {"id": "permutatio", "amount": 10},
+        {"id": "perditio", "amount": 25}
+      ],
+      "instability": "minor"
+    }
   ],
   "inactive": false,
   "legacy": {

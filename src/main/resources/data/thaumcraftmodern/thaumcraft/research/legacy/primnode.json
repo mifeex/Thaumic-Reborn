@@ -2,7 +2,8 @@
   "id": "primnode",
   "legacy_id": "PRIMNODE",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "completion_warp": 1,
+  "icon_resource": "thaumcraftmodern:textures/misc/r_nodes_2.png",
   "title": "tc.research_name.PRIMNODE",
   "subtitle": "tc.research_text.PRIMNODE",
   "concealed": true,
@@ -41,8 +42,7 @@
       "amount": 1
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": 0,
     "y": 6,

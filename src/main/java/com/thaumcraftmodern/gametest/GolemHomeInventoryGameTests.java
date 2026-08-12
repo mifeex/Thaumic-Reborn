@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -59,6 +60,58 @@ public final class GolemHomeInventoryGameTests {
                     "Gather core did not deposit the collected item into its attached chest");
             helper.assertTrue(ChestBlockEntity.getOpenCount(helper.getLevel(), helper.absolutePos(CHEST)) > 0,
                     "Gather core moved the item without opening its chest");
+        });
+    }
+
+    @GameTest(template = "empty", batch = "golemHomeInventory", timeoutTicks = 200)
+    public static void filteredGatherSurvivesEntityNbtReload(GameTestHelper helper) {
+        helper.setBlock(CHEST, Blocks.CHEST);
+        helper.setBlock(GOLEM, Blocks.AIR);
+        helper.setBlock(DROP, Blocks.AIR);
+
+        StrawGolemEntity original = ModEntities.STRAW_GOLEM.get().create(helper.getLevel());
+        helper.assertTrue(original != null, "Could not create original straw golem");
+        BlockPos absoluteGolem = helper.absolutePos(GOLEM);
+        original.moveTo(absoluteGolem.getX() + .5D, absoluteGolem.getY(),
+                absoluteGolem.getZ() + .5D, 0F, 0F);
+        original.restrictTo(absoluteGolem, 32);
+        original.setHomeFacing(Direction.UP);
+        original.setCore(GolemCoreType.GATHER);
+        original.filters().setItem(1, new ItemStack(Items.GOLD_INGOT));
+
+        CompoundTag saved = new CompoundTag();
+        helper.assertTrue(original.save(saved), "Could not serialize configured gather golem");
+        StrawGolemEntity restored = ModEntities.STRAW_GOLEM.get().create(helper.getLevel());
+        helper.assertTrue(restored != null, "Could not create restored straw golem");
+        restored.load(saved);
+        helper.assertTrue(restored.core() == GolemCoreType.GATHER,
+                "Entity reload lost the gather core");
+        helper.assertTrue(restored.homePos().equals(absoluteGolem)
+                        && restored.attachedPos().equals(helper.absolutePos(CHEST)),
+                "Entity reload lost the attached home inventory");
+        helper.assertTrue(restored.filters().getItem(1).is(Items.GOLD_INGOT),
+                "Entity reload lost the configured gold-ingot filter");
+        helper.assertTrue(helper.getLevel().addFreshEntity(restored),
+                "Could not spawn restored gather golem");
+
+        BlockPos absoluteDrop = helper.absolutePos(DROP);
+        ItemEntity rejected = new ItemEntity(helper.getLevel(), absoluteDrop.getX() + .5D,
+                absoluteDrop.getY() + .2D, absoluteDrop.getZ() + .5D,
+                new ItemStack(Items.IRON_INGOT));
+        rejected.setPickUpDelay(0);
+        helper.getLevel().addFreshEntity(rejected);
+        ItemEntity accepted = new ItemEntity(helper.getLevel(), absoluteDrop.getX() + .25D,
+                absoluteDrop.getY() + .2D, absoluteDrop.getZ() + .25D,
+                new ItemStack(Items.GOLD_INGOT, 2));
+        accepted.setPickUpDelay(0);
+        helper.getLevel().addFreshEntity(accepted);
+
+        helper.succeedWhen(() -> {
+            Container chest = (Container) helper.getBlockEntity(CHEST);
+            helper.assertTrue(chest.countItem(Items.GOLD_INGOT) == 2,
+                    "Reloaded gather golem did not collect and deposit its filtered item");
+            helper.assertTrue(chest.countItem(Items.IRON_INGOT) == 0 && rejected.isAlive(),
+                    "Reloaded gather golem ignored its restored item filter");
         });
     }
 

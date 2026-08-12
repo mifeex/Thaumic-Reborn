@@ -2,7 +2,7 @@
   "id": "eldritchminor",
   "legacy_id": "ELDRITCHMINOR",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "icon_resource": "thaumcraftmodern:textures/misc/r_eldritchminor.png",
   "title": "tc.research_name.ELDRITCHMINOR",
   "subtitle": "tc.research_text.ELDRITCHMINOR",
   "concealed": true,
@@ -23,16 +23,17 @@
       "body": "tc.research_page.ELDRITCHMINOR.1"
     },
     {
-      "type": "unavailable",
+      "type": "recipe",
       "title": "",
       "body": "",
+      "recipe": "thaumcraftmodern:voidseed",
       "legacy_type": "recipe",
       "legacy_content": "VoidSeed",
       "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"VoidSeed\"))"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
+  "inactive_reason": null,
   "legacy": {
     "x": 1,
     "y": 0,

@@ -4,10 +4,12 @@ import com.thaumcraftmodern.focus.FocusUpgradeType;
 import com.thaumcraftmodern.item.WandFocusItem;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModMenus;
+import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.world.block.entity.FocalManipulatorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -64,8 +66,12 @@ public final class FocalManipulatorMenu extends AbstractContainerMenu {
     @Override public boolean clickMenuButton(Player player, int id) {
         if (!(player instanceof ServerPlayer server)
                 || !(table instanceof FocalManipulatorBlockEntity entity)) return false;
-        try { return entity.begin(server, FocusUpgradeType.byId(id)); }
-        catch (IllegalArgumentException ignored) { return false; }
+        boolean started;
+        try { started = entity.begin(server, FocusUpgradeType.byId(id)); }
+        catch (IllegalArgumentException ignored) { started = false; }
+        if (!started) server.level().playSound(null, entity.getBlockPos(),
+                ModSounds.CRAFT_FAIL.get(), SoundSource.BLOCKS, 0.33F, 1.0F);
+        return started;
     }
 
     @Override public ItemStack quickMoveStack(Player player, int index) {

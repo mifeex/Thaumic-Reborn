@@ -4,6 +4,7 @@ import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.client.render.ClassicWandRenderCalibration;
 import com.thaumcraftmodern.client.render.ArcaneWorkbenchBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.RunicMatrixBlockEntityRenderer;
+import com.thaumcraftmodern.client.render.InfusionPillarBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.RunicMatrixCubeModel;
 import com.thaumcraftmodern.client.render.ArcaneBellowsBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ArcaneBellowsModel;
@@ -15,6 +16,9 @@ import com.thaumcraftmodern.client.render.HungryChestModel;
 import com.thaumcraftmodern.client.render.StrawGolemModel;
 import com.thaumcraftmodern.client.render.StrawGolemRenderer;
 import com.thaumcraftmodern.client.render.GolemFishingBobberRenderer;
+import com.thaumcraftmodern.client.render.TravelingTrunkModel;
+import com.thaumcraftmodern.client.render.TravelingTrunkRenderer;
+import com.thaumcraftmodern.client.render.AdvancedGolemLayer;
 import com.thaumcraftmodern.client.render.ArcanePedestalBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.WandRechargePedestalBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ClientNodeRenderers;
@@ -40,6 +44,8 @@ import com.thaumcraftmodern.client.render.EssentiaReservoirBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ThaumatoriumBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ClassicManaPodModel;
 import com.thaumcraftmodern.client.render.ThaumaturgeRobeArmorModel;
+import com.thaumcraftmodern.client.render.VoidRobeArmorModel;
+import com.thaumcraftmodern.client.render.VoidArmorChestModel;
 import com.thaumcraftmodern.client.render.FortressArmorModel;
 import com.thaumcraftmodern.client.render.MagicMirrorBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ManaPodBlockEntityRenderer;
@@ -48,6 +54,7 @@ import com.thaumcraftmodern.client.render.NodeDeviceBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.VisRelayBlockEntityRenderer;
 import com.thaumcraftmodern.item.EssentiaCrystalItem;
 import com.thaumcraftmodern.client.render.ArcaneAlembicBlockEntityRenderer;
+import com.thaumcraftmodern.client.render.AdvancedAlchemicalFurnaceBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EtherealBloomCrystalModel;
 import com.thaumcraftmodern.client.screen.ArcaneWorkbenchScreen;
 import com.thaumcraftmodern.client.screen.AlchemicalFurnaceScreen;
@@ -57,6 +64,7 @@ import com.thaumcraftmodern.client.screen.PechScreen;
 import com.thaumcraftmodern.client.screen.ThaumatoriumScreen;
 import com.thaumcraftmodern.client.screen.HandMirrorScreen;
 import com.thaumcraftmodern.client.screen.GolemScreen;
+import com.thaumcraftmodern.client.screen.TravelingTrunkScreen;
 import com.thaumcraftmodern.item.AspectShardItem;
 import com.thaumcraftmodern.item.EtherealEssenceItem;
 import com.thaumcraftmodern.item.EssentiaPhialItem;
@@ -124,6 +132,7 @@ public final class ClientModEvents {
             MenuScreens.register(ModMenus.FOCAL_MANIPULATOR.get(),
                     com.thaumcraftmodern.client.screen.FocalManipulatorScreen::new);
             MenuScreens.register(ModMenus.GOLEM.get(), GolemScreen::new);
+            MenuScreens.register(ModMenus.TRAVELING_TRUNK.get(), TravelingTrunkScreen::new);
             ItemProperties.register(
                     ModItems.ESSENTIA_PHIAL.get(),
                     new ResourceLocation(
@@ -307,6 +316,7 @@ public final class ClientModEvents {
         event.registerEntityRenderer(ModEntities.STONE_GOLEM.get(), StrawGolemRenderer::new);
         event.registerEntityRenderer(ModEntities.IRON_GOLEM.get(), StrawGolemRenderer::new);
         event.registerEntityRenderer(ModEntities.THAUMIUM_GOLEM.get(), StrawGolemRenderer::new);
+        event.registerEntityRenderer(ModEntities.TRAVELING_TRUNK.get(), TravelingTrunkRenderer::new);
         ClientNodeRenderers.register(
                 event,
                 ModBlockEntities.AURA_NODE.get(),
@@ -349,6 +359,10 @@ public final class ClientModEvents {
         event.registerBlockEntityRenderer(
                 ModBlockEntities.RUNIC_MATRIX.get(),
                 RunicMatrixBlockEntityRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.INFUSION_PILLAR.get(),
+                InfusionPillarBlockEntityRenderer::new
         );
         event.registerBlockEntityRenderer(
                 ModBlockEntities.ARCANE_BELLOWS.get(),
@@ -417,6 +431,10 @@ public final class ClientModEvents {
                 ArcaneAlembicBlockEntityRenderer::new
         );
         event.registerBlockEntityRenderer(
+                ModBlockEntities.ADVANCED_ALCHEMICAL_FURNACE.get(),
+                AdvancedAlchemicalFurnaceBlockEntityRenderer::new
+        );
+        event.registerBlockEntityRenderer(
                 ModBlockEntities.ELDRITCH_ALTAR_PART.get(),
                 EldritchAltarPartRenderer::new
         );
@@ -453,6 +471,8 @@ public final class ClientModEvents {
         event.registerLayerDefinition(ClassicBrainJarModel.LAYER,ClassicBrainJarModel::createBodyLayer);
         event.registerLayerDefinition(HungryChestModel.LAYER,HungryChestModel::createBodyLayer);
         event.registerLayerDefinition(StrawGolemModel.LAYER,StrawGolemModel::createBodyLayer);
+        event.registerLayerDefinition(TravelingTrunkModel.LAYER, TravelingTrunkModel::createBodyLayer);
+        event.registerLayerDefinition(AdvancedGolemLayer.LAYER, AdvancedGolemLayer::createBodyLayer);
         event.registerLayerDefinition(
                 ClassicManaPodModel.LAYER,
                 ClassicManaPodModel::createBodyLayer
@@ -480,6 +500,18 @@ public final class ClientModEvents {
         event.registerLayerDefinition(
                 ThaumaturgeRobeArmorModel.OUTER_LAYER,
                 ThaumaturgeRobeArmorModel::createOuterLayer
+        );
+        event.registerLayerDefinition(
+                VoidRobeArmorModel.OUTER_LAYER,
+                VoidRobeArmorModel::createOuterLayer
+        );
+        event.registerLayerDefinition(
+                VoidRobeArmorModel.INNER_LAYER,
+                VoidRobeArmorModel::createInnerLayer
+        );
+        event.registerLayerDefinition(
+                VoidArmorChestModel.LAYER,
+                VoidArmorChestModel::createLayer
         );
         event.registerLayerDefinition(
                 FortressArmorModel.LAYER,

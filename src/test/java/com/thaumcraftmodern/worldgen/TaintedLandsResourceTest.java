@@ -49,46 +49,13 @@ class TaintedLandsResourceTest {
                         + "add_tainted_mobs.json"
         );
         JsonArray spawners = modifier.getAsJsonArray("spawners");
-        assertEquals(6, spawners.size());
+        // TC4 BiomeTaint registers only the taintacle directly. Spores,
+        // swarmers and swarms enter through the taint ecology lifecycle.
+        assertEquals(1, spawners.size());
         assertTrue(hasSpawn(
                 spawners,
                 "thaumcraftmodern:taintacle",
-                100,
                 1,
-                1
-        ));
-        assertTrue(hasSpawn(
-                spawners,
-                "thaumcraftmodern:taint_swarm",
-                100,
-                1,
-                2
-        ));
-        assertTrue(hasSpawn(
-                spawners,
-                "thaumcraftmodern:thaumic_slime",
-                100,
-                1,
-                2
-        ));
-        assertTrue(hasSpawn(
-                spawners,
-                "thaumcraftmodern:taint_spore_swarmer",
-                100,
-                1,
-                1
-        ));
-        assertTrue(hasSpawn(
-                spawners,
-                "thaumcraftmodern:tainted_crawler",
-                5,
-                1,
-                1
-        ));
-        assertTrue(hasSpawn(
-                spawners,
-                "thaumcraftmodern:taint_spore",
-                5,
                 1,
                 1
         ));

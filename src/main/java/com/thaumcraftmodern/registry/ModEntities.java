@@ -15,6 +15,7 @@ import com.thaumcraftmodern.entity.StrawGolemEntity;
 import com.thaumcraftmodern.entity.ClassicGolemEntity;
 import com.thaumcraftmodern.entity.GolemMaterial;
 import com.thaumcraftmodern.entity.GolemFishingBobberEntity;
+import com.thaumcraftmodern.entity.TravelingTrunkEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -137,6 +138,11 @@ public final class ModEntities {
     public static final RegistryObject<EntityType<ClassicGolemEntity>> STONE_GOLEM = golem(GolemMaterial.STONE);
     public static final RegistryObject<EntityType<ClassicGolemEntity>> IRON_GOLEM = golem(GolemMaterial.IRON);
     public static final RegistryObject<EntityType<ClassicGolemEntity>> THAUMIUM_GOLEM = golem(GolemMaterial.THAUMIUM);
+    public static final RegistryObject<EntityType<TravelingTrunkEntity>> TRAVELING_TRUNK =
+            ENTITY_TYPES.register("traveling_trunk", () -> EntityType.Builder
+                    .<TravelingTrunkEntity>of(TravelingTrunkEntity::new, MobCategory.MISC)
+                    .fireImmune().sized(.8F, .8F).clientTrackingRange(8).updateInterval(3)
+                    .build(ThaumcraftModern.MOD_ID + ":traveling_trunk"));
 
     public static final RegistryObject<EntityType<LegacyThaumcraftMob>>
             ANGRY_ZOMBIE = mob(LegacyMobKind.ANGRY_ZOMBIE);

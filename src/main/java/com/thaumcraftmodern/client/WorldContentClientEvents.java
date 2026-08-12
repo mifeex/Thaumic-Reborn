@@ -29,6 +29,7 @@ import com.thaumcraftmodern.client.render.TaintSporeSwarmerRenderer;
 import com.thaumcraftmodern.client.render.TaintedCrawlerRenderer;
 import com.thaumcraftmodern.client.render.TaintSwarmRenderer;
 import com.thaumcraftmodern.client.render.WispRenderer;
+import com.thaumcraftmodern.client.render.TemporaryHoleBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.FacelessWitnessModel;
 import com.thaumcraftmodern.client.render.FacelessWitnessRenderer;
 import com.thaumcraftmodern.client.render.WingedMantleArmorModel;
@@ -38,6 +39,7 @@ import com.thaumcraftmodern.client.render.ConvertedVillagerRenderer;
 import com.thaumcraftmodern.entity.LegacyMobKind;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModEntities;
+import com.thaumcraftmodern.registry.ModBlockEntities;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -67,6 +69,10 @@ public final class WorldContentClientEvents {
     public static void registerRenderers(
             EntityRenderersEvent.RegisterRenderers event
     ) {
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.TEMPORARY_HOLE.get(),
+                TemporaryHoleBlockEntityRenderer::new
+        );
         event.registerEntityRenderer(
                 ModEntities.ELDRITCH_ORB.get(),
                 EldritchOrbRenderer::new

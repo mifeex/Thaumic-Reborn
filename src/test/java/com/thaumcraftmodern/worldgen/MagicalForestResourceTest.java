@@ -62,7 +62,7 @@ class MagicalForestResourceTest {
         assertTrue(hasSpawn(creatures, "minecraft:wolf", 2, 1, 3));
         assertTrue(hasSpawn(creatures, "minecraft:horse", 2, 1, 3));
         assertTrue(hasSpawn(monsters, "minecraft:witch", 3, 1, 1));
-        assertTrue(hasSpawn(monsters, "minecraft:enderman", 3, 1, 1));
+        assertTrue(hasSpawn(monsters, "minecraft:enderman", 10, 1, 1));
     }
 
     private static boolean contains(JsonArray values, String expected) {

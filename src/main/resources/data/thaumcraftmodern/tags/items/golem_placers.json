@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraftmodern:straw_golem",
+    "thaumcraftmodern:wood_golem",
+    "thaumcraftmodern:tallow_golem",
+    "thaumcraftmodern:clay_golem",
+    "thaumcraftmodern:flesh_golem",
+    "thaumcraftmodern:stone_golem",
+    "thaumcraftmodern:iron_golem",
+    "thaumcraftmodern:thaumium_golem"
+  ]
+}

@@ -1,9 +1,11 @@
 package com.thaumcraftmodern.world.block;
 
 import com.thaumcraftmodern.api.wand.WandApi;
+import com.thaumcraftmodern.essentia.tube.TubeFacingRules;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.world.block.entity.EssentiaReservoirBlockEntity;
+import com.thaumcraftmodern.wand.WandInteractable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -24,11 +26,15 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 /** Full-block TC4 reservoir with one wand-selectable transport port. */
-public final class EssentiaReservoirBlock extends BaseEntityBlock {
+public final class EssentiaReservoirBlock extends BaseEntityBlock
+        implements WandInteractable {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
+    private static final VoxelShape FULL_CUBE = box(0, 0, 0, 16, 16, 16);
 
     public EssentiaReservoirBlock(Properties properties) {
         super(properties);
@@ -48,9 +54,26 @@ public final class EssentiaReservoirBlock extends BaseEntityBlock {
     @Override public InteractionResult use(BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hit) {
         if (WandApi.state(player.getItemInHand(hand)).isEmpty()) return InteractionResult.PASS;
+        return rotatePortTowardLook(state, level, pos, player, hand, hit);
+    }
+
+    @Override public InteractionResult onWandRightClick(BlockState state,
+            Level level, BlockPos pos, Player player, InteractionHand hand,
+            BlockHitResult hit) {
+        return rotatePortTowardLook(state, level, pos, player, hand, hit);
+    }
+
+    private static InteractionResult rotatePortTowardLook(BlockState state,
+            Level level, BlockPos pos, Player player, InteractionHand hand,
+            BlockHitResult hit) {
         if (!level.isClientSide) {
-            Direction facing = player.isShiftKeyDown()
+            // TC4 TileEssentiaReservoir.onWandRightClick uses the face reached
+            // by the player's view ray. Normal use points the port through
+            // that face; sneaking selects the near face itself.
+            Direction preferred = player.isShiftKeyDown()
                     ? hit.getDirection() : hit.getDirection().getOpposite();
+            Direction facing = TubeFacingRules.toggleFacing(
+                    state.getValue(FACING), preferred);
             level.setBlock(pos, state.setValue(FACING, facing), UPDATE_ALL);
         }
         player.swing(hand, true);
@@ -86,6 +109,12 @@ public final class EssentiaReservoirBlock extends BaseEntityBlock {
     }
 
     @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
+    @Override public VoxelShape getShape(BlockState state, BlockGetter level,
+            BlockPos pos, CollisionContext context) { return FULL_CUBE; }
+    @Override public VoxelShape getCollisionShape(BlockState state,
+            BlockGetter level, BlockPos pos, CollisionContext context) {
+        return FULL_CUBE;
+    }
     @Override public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new EssentiaReservoirBlockEntity(pos, state);
     }

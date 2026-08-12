@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Four-point, side-programmable buffer and local flow controller. It only
@@ -70,44 +69,24 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
         if (!(rawLevel instanceof ServerLevel level)) return;
         buffer.tickCount++;
 
-        boolean mainPathReversed = buffer.mainPathReversed(level);
-        if (mainPathReversed) {
-            buffer.queueSupplyForReserve();
-        } else {
-            buffer.restoreReserveQueue();
-        }
+        buffer.restoreReserveQueue();
         boolean activeConsumer = buffer.activeConsumer(level);
-        boolean reserveAccepts = buffer.reserveAccepts(level);
         AdvancedBufferFlowController.Signals signals =
                 new AdvancedBufferFlowController.Signals(
                         activeConsumer,
-                        mainPathReversed,
-                        !buffer.returned.isEmpty(),
-                        reserveAccepts
+                        false,
+                        false,
+                        true
                 );
         AdvancedBufferFlowController.Snapshot previous = buffer.controller;
         buffer.controller = AdvancedBufferFlowController.advance(
                 previous, signals, cooldownTicks(pos));
         if (!buffer.controller.equals(previous)) {
-            if (buffer.controller.state()
-                    == AdvancedBufferFlowController.State.BLOCKED) {
-                boolean reserveBlocked = !buffer.returned.isEmpty();
-                buffer.blockedReasonKey = reserveBlocked
-                        ? buffer.sideFor(AdvancedBufferSideRole.RESERVE_OUTPUT) == null
-                                ? "diagnostic.thaumcraftmodern.advanced_buffer.no_reserve"
-                                : "diagnostic.thaumcraftmodern.advanced_buffer.reserve_full"
-                        : "diagnostic.thaumcraftmodern.advanced_buffer.ok";
-            }
             EssentiaSync.changed(buffer);
         }
 
         if (buffer.tickCount % 5 != 0) return;
         buffer.fillFromInputs(level);
-        if (mainPathReversed) buffer.queueSupplyForReserve();
-        switch (buffer.controller.state()) {
-            case RESERVE -> buffer.sendToReserve(level);
-            default -> { }
-        }
     }
 
     public static int cooldownTicks(BlockPos pos) {
@@ -115,29 +94,26 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
     }
 
     private boolean activeConsumer(ServerLevel level) {
-        Direction main = sideFor(AdvancedBufferSideRole.MAIN_OUTPUT);
-        if (main == null || supply.isEmpty()) return false;
-        EssentiaTransport remote = EssentiaConnections.neighbour(
-                level, worldPosition, main).orElse(null);
-        if (remote == null || !remote.canInputFrom(main.getOpposite())) return false;
-        Direction remoteSide = main.getOpposite();
-        if (remote.suctionFlowMode(remoteSide) == EssentiaFlowMode.RETURN
-                || remote.suctionAmount(remoteSide) <= minimumSuction()) {
-            return false;
+        if (supply.isEmpty()) return false;
+        for (Direction side : Direction.values()) {
+            AdvancedBufferSideRole role = role(side);
+            if (role != AdvancedBufferSideRole.MAIN_OUTPUT
+                    && role != AdvancedBufferSideRole.RESERVE_OUTPUT) {
+                continue;
+            }
+            EssentiaTransport remote = EssentiaConnections.neighbour(
+                    level, worldPosition, side).orElse(null);
+            if (remote == null || !remote.canInputFrom(side.getOpposite())) {
+                continue;
+            }
+            Direction remoteSide = side.getOpposite();
+            if (remote.suctionAmount(remoteSide) <= minimumSuction()) continue;
+            String wanted = remote.suctionType(remoteSide);
+            if (wanted == null ? !supply.isEmpty() : supply.amount(wanted) > 0) {
+                return true;
+            }
         }
-        String wanted = remote.suctionType(remoteSide);
-        return wanted == null ? !supply.isEmpty() : supply.amount(wanted) > 0;
-    }
-
-    private void queueSupplyForReserve() {
-        if (supply.isEmpty()) return;
-        for (Map.Entry<String, Integer> entry
-                : new ArrayList<>(supply.view().entrySet())) {
-            int amount = entry.getValue();
-            if (amount <= 0 || !supply.remove(entry.getKey(), amount)) continue;
-            returned.add(entry.getKey(), amount);
-        }
-        EssentiaSync.changed(this);
+        return false;
     }
 
     private void restoreReserveQueue() {
@@ -170,55 +146,6 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
                 return;
             }
         }
-    }
-
-    private void sendToReserve(ServerLevel level) {
-        Direction reserve = sideFor(AdvancedBufferSideRole.RESERVE_OUTPUT);
-        String aspect = requestedAspect(returned, reserve);
-        if (reserve == null || aspect == null) return;
-        EssentiaTransport remote = EssentiaConnections.neighbour(
-                level, worldPosition, reserve).orElse(null);
-        Direction remoteSide = reserve.getOpposite();
-        if (remote == null || !remote.canInputFrom(remoteSide)
-                || !acceptsDemand(remote, remoteSide, aspect)) return;
-        int accepted = remote.addEssentia(aspect, 1, remoteSide);
-        if (accepted > 0 && returned.remove(aspect, 1)) {
-            EssentiaSync.changed(this);
-        }
-    }
-
-    private boolean reserveAccepts(ServerLevel level) {
-        Direction reserve = sideFor(AdvancedBufferSideRole.RESERVE_OUTPUT);
-        String aspect = requestedAspect(returned, reserve);
-        if (reserve == null || aspect == null) return returned.isEmpty();
-        EssentiaTransport remote = EssentiaConnections.neighbour(
-                level, worldPosition, reserve).orElse(null);
-        Direction remoteSide = reserve.getOpposite();
-        if (remote == null || !remote.canInputFrom(remoteSide)) return false;
-        return acceptsDemand(remote, remoteSide, aspect);
-    }
-
-    private boolean acceptsDemand(EssentiaTransport remote,
-            Direction remoteSide, String aspect) {
-        if (remote.suctionFlowMode(remoteSide) == EssentiaFlowMode.RETURN
-                || remote.suctionAmount(remoteSide) <= minimumSuction()) {
-            return false;
-        }
-        String wanted = remote.suctionType(remoteSide);
-        return wanted == null || Objects.equals(wanted, aspect);
-    }
-
-    private boolean mainPathReversed(ServerLevel level) {
-        Direction main = sideFor(AdvancedBufferSideRole.MAIN_OUTPUT);
-        if (main == null) return false;
-        EssentiaTransport remote = EssentiaConnections.neighbour(
-                level, worldPosition, main).orElse(null);
-        if (remote == null) return false;
-        Direction remoteSide = main.getOpposite();
-        return remote.suctionFlowMode(remoteSide) == EssentiaFlowMode.RETURN
-                || remote instanceof EssentiaTubeBlockEntity tube
-                        && tube.policy().reversibleController()
-                        && tube.returnEnabled();
     }
 
     private boolean hasRoom(@Nullable String aspect) {
@@ -315,16 +242,7 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
     @Override
     public boolean canOutputTo(Direction side) {
         if (side == null) return false;
-        if (controller.state() == AdvancedBufferFlowController.State.BLOCKED) {
-            return false;
-        }
-        if (role(side) == AdvancedBufferSideRole.MAIN_OUTPUT) {
-            return controller.state() != AdvancedBufferFlowController.State.RESERVE;
-        }
-        // The reserve face is also a normal supply outlet. Its special role is
-        // selecting the returned queue while the controller is in RESERVE;
-        // it must not leave a directly attached requesting jar permanently dry.
-        return role(side) == AdvancedBufferSideRole.RESERVE_OUTPUT;
+        return isOutputRole(role(side));
     }
 
     @Override
@@ -338,11 +256,16 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
 
     @Override
     public int suctionAmount(Direction side) {
-        if (side == null) return 0;
-        if (role(side) == AdvancedBufferSideRole.INPUT) {
-            return INPUT_SUCTION;
-        }
-        return 0;
+        return side == null ? 0 : suctionForRole(role(side));
+    }
+
+    public static boolean isOutputRole(AdvancedBufferSideRole role) {
+        return role == AdvancedBufferSideRole.MAIN_OUTPUT
+                || role == AdvancedBufferSideRole.RESERVE_OUTPUT;
+    }
+
+    public static int suctionForRole(AdvancedBufferSideRole role) {
+        return role == AdvancedBufferSideRole.INPUT ? INPUT_SUCTION : 0;
     }
 
     @Override
@@ -380,10 +303,7 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
     }
 
     private EssentiaStore outputStore(@Nullable Direction side) {
-        return side != null
-                && role(side) == AdvancedBufferSideRole.RESERVE_OUTPUT
-                && controller.state() == AdvancedBufferFlowController.State.RESERVE
-                ? returned : supply;
+        return supply;
     }
 
     private @Nullable String requestedAspect(EssentiaStore store,

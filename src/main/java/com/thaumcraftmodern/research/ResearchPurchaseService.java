@@ -5,6 +5,8 @@ import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.knowledge.KnowledgeSync;
 import com.thaumcraftmodern.knowledge.PlayerThaumKnowledge;
 import com.thaumcraftmodern.knowledge.WarpType;
+import com.thaumcraftmodern.network.ModNetwork;
+import com.thaumcraftmodern.network.packet.WarpFeedbackPacket;
 import com.thaumcraftmodern.registry.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,6 +34,10 @@ public final class ResearchPurchaseService {
                         return reject(player, result);
                     }
                     KnowledgeSync.send(player, "research_purchase:" + definition.id());
+                    sendCompletionWarpFeedback(
+                            player,
+                            definition.completionWarp()
+                    );
                     player.level().playSound(
                             null,
                             player.blockPosition(),
@@ -112,6 +118,31 @@ public final class ResearchPurchaseService {
         knowledge.addWarp(WarpType.PERMANENT, amount - normal);
         if (normal > 0) {
             knowledge.addWarp(WarpType.NORMAL, normal);
+        }
+    }
+
+    private static void sendCompletionWarpFeedback(
+            ServerPlayer player,
+            int amount
+    ) {
+        if (amount <= 0) {
+            return;
+        }
+        int normal = amount / 2;
+        int permanent = amount - normal;
+        if (permanent > 0) {
+            ModNetwork.sendTo(player, new WarpFeedbackPacket(
+                    WarpFeedbackPacket.PERMANENT,
+                    permanent,
+                    WarpFeedbackPacket.VISUAL_NONE
+            ));
+        }
+        if (normal > 0) {
+            ModNetwork.sendTo(player, new WarpFeedbackPacket(
+                    WarpFeedbackPacket.NORMAL,
+                    normal,
+                    WarpFeedbackPacket.VISUAL_NONE
+            ));
         }
     }
 

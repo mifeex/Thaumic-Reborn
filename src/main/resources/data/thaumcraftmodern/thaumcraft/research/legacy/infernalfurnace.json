@@ -2,6 +2,7 @@
   "id": "infernalfurnace",
   "legacy_id": "INFERNALFURNACE",
   "category": "artifice",
+  "completion_warp": 2,
   "icon_resource": "thaumcraftmodern:textures/misc/r_infernalfurnace.png",
   "title": "tc.research_name.INFERNALFURNACE",
   "subtitle": "tc.research_text.INFERNALFURNACE",

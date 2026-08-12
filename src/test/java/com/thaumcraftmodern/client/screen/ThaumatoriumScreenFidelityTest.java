@@ -69,9 +69,17 @@ class ThaumatoriumScreenFidelityTest {
         assertTrue(packet.contains("recipe.aspects().forEach"));
         assertFalse(machine.contains("hasRevealedResearch(recipe.research())"));
         assertTrue(machine.contains("hasCompletedResearch(recipe.research())"));
-        assertTrue(screen.contains("menu.craftable(recipe)"));
+        assertTrue(menu.contains("if (!craftable(recipe) || !reservedFits(recipe))"));
         assertTrue(screen.contains(
                 "lastRecipeRevision != menu.recipeRevision()"));
+        assertTrue(machine.contains(
+                "reservedFitsRecipe(reserved.view(), recipe.aspects())"));
+        assertTrue(machine.contains("ResourceLocation replaced = replaceableFormula()"));
+        assertTrue(menu.contains(
+                "successful ? ModSounds.HH_ON.get() : ModSounds.HH_OFF.get()"));
+        assertTrue(menu.contains("playSelectionResultSound(serverPlayer, successful)"));
+        assertTrue(menu.contains("public boolean canSelectOrSwitch("));
+        assertTrue(screen.contains("!menu.canSelectOrSwitch(recipe)"));
     }
 
     @Test

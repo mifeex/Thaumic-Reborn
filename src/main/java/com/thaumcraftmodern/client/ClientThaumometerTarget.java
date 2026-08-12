@@ -178,10 +178,7 @@ final class ClientThaumometerTarget {
 
     private static TargetedReadout readoutForItem(Minecraft minecraft, ItemStack stack) {
         ScanRegistry.ItemScanIdentity identity = ScanRegistry.identityForItem(stack);
-        String scanKey = ScanRegistry.knowledgeKey(
-                identity.type(),
-                identity.targetId()
-        );
+        String scanKey = identity.knowledgeKey();
         boolean studied = KnowledgeAccess.get(minecraft.player)
                 .map(knowledge -> knowledge.hasScan(scanKey))
                 .orElse(false);

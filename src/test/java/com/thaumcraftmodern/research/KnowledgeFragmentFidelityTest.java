@@ -20,6 +20,27 @@ final class KnowledgeFragmentFidelityTest {
         assertTrue(source.contains("serverPlayer.getRandom().nextInt(2) + 1"));
         assertTrue(source.contains("stack.shrink(1)"));
         assertTrue(source.contains("KnowledgeSync.send(serverPlayer"));
+        assertTrue(source.contains("new ScanFeedbackPacket.AspectGain("));
+        assertTrue(source.contains("\"tc.addaspectpool\""));
+
+        String overlay = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/ClientScanOverlay.java"
+        ));
+        assertTrue(overlay.contains(
+                "message.thaumcraftmodern.knowledge_fragment.aspect_pool"
+        ));
+
+        JsonObject english = JsonParser.parseString(Files.readString(Path.of(
+                "src/main/resources/assets/thaumcraftmodern/lang/en_us.json"
+        ))).getAsJsonObject();
+        JsonObject russian = JsonParser.parseString(Files.readString(Path.of(
+                "src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json"
+        ))).getAsJsonObject();
+        String key = "message.thaumcraftmodern.knowledge_fragment.aspect_pool";
+        assertEquals("Gained %s research point(s) for %s",
+                english.get(key).getAsString());
+        assertEquals("Получено %s очка(ов) исследования для %s",
+                russian.get(key).getAsString());
     }
 
     @Test

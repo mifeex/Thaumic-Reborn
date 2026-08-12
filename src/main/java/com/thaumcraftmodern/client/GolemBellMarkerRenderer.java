@@ -2,13 +2,14 @@ package com.thaumcraftmodern.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.entity.ClassicGolemEntity;
 import com.thaumcraftmodern.entity.GolemMarker;
 import com.thaumcraftmodern.item.GolemBellItem;
 import com.thaumcraftmodern.registry.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
@@ -112,10 +113,6 @@ public final class GolemBellMarkerRenderer {
         PoseStack poses = event.getPoseStack();
         Vec3 camera = event.getCamera().getPosition();
         var buffers = minecraft.renderBuffers().bufferSource();
-        VertexConsumer homes = buffers.getBuffer(HOME_TYPE);
-        VertexConsumer marks = buffers.getBuffer(MARK_TYPE);
-        VertexConsumer empties = buffers.getBuffer(EMPTY_TYPE);
-        VertexConsumer links = buffers.getBuffer(LINK_TYPE);
         float time = (System.nanoTime() / 30_000_000L) % 32767L;
 
         poses.pushPose();
@@ -123,26 +120,35 @@ public final class GolemBellMarkerRenderer {
         BlockPos home = GolemBellItem.home(bell);
         Direction homeFace = GolemBellItem.homeFace(bell);
         if (home != null && homeFace != null && minecraft.player.distanceToSqr(Vec3.atCenterOf(home)) < RANGE_SQUARED) {
-            drawFace(poses.last(), homes, home, homeFace, .325F,
+            drawFace(poses.last(), buffers.getBuffer(HOME_TYPE),
+                    home, homeFace, .325F,
                     markerColor((byte) -1, homeFace, time, 0));
+            buffers.endBatch(HOME_TYPE);
         }
         for (GolemMarker marker : GolemBellItem.markers(bell)) {
             Vec3 target = Vec3.atCenterOf(marker.pos()).add(Vec3.atLowerCornerOf(marker.side().getNormal()).scale(.5D));
             if (minecraft.player.distanceToSqr(target) >= RANGE_SQUARED) continue;
             int color = markerColor(marker.color(), marker.side(), time, 0);
-            drawFace(poses.last(), marks, marker.pos(), marker.side(), .2F, color);
+            // BufferSource reuses one BufferBuilder for these non-fixed render
+            // types. Finish each texture pass immediately; otherwise asking
+            // for EMPTY after MARK makes the round mark geometry sample the
+            // empty-block texture instead of TC4's mark.png.
+            drawFace(poses.last(), buffers.getBuffer(MARK_TYPE),
+                    marker.pos(), marker.side(), .2F, color);
+            buffers.endBatch(MARK_TYPE);
             if (minecraft.level.isEmptyBlock(marker.pos())) {
-                for (Direction side : Direction.values()) drawFace(poses.last(), empties, marker.pos(), side, .49F, color);
+                VertexConsumer empty = buffers.getBuffer(EMPTY_TYPE);
+                for (Direction side : Direction.values()) {
+                    drawFace(poses.last(), empty,
+                            marker.pos(), side, .49F, color);
+                }
+                buffers.endBatch(EMPTY_TYPE);
             }
             if (golem != null) {
-                drawLink(poses.last(), links, golem, marker, event.getPartialTick(), time);
+                drawLink(poses.last(), golem, marker, event.getPartialTick(), time);
             }
         }
         poses.popPose();
-        buffers.endBatch(HOME_TYPE);
-        buffers.endBatch(MARK_TYPE);
-        buffers.endBatch(EMPTY_TYPE);
-        buffers.endBatch(LINK_TYPE);
     }
 
     private static ClassicGolemEntity linkedGolem(Minecraft minecraft, ItemStack bell) {
@@ -166,7 +172,10 @@ public final class GolemBellMarkerRenderer {
     private static void drawFace(PoseStack.Pose pose, VertexConsumer out, BlockPos pos,
             Direction face, float radius, int rgb) {
         Vec3 normal = Vec3.atLowerCornerOf(face.getNormal());
-        Vec3 center = Vec3.atCenterOf(pos).add(normal.scale(.502D));
+        // TC4 aligns the quad to the face at 0.5 and then pulls it another
+        // 0.01 outward. Keep that separation so the block face does not show
+        // through the additive marker.
+        Vec3 center = Vec3.atCenterOf(pos).add(normal.scale(.51D));
         Vec3 u; Vec3 v;
         switch (face) {
             case UP -> { u = new Vec3(1, 0, 0); v = new Vec3(0, 0, 1); }
@@ -177,24 +186,32 @@ public final class GolemBellMarkerRenderer {
             case WEST -> { u = new Vec3(0, 0, -1); v = new Vec3(0, 1, 0); }
             default -> throw new IllegalStateException("Unexpected face " + face);
         }
-        vertex(pose, out, center.subtract(u.scale(radius)).subtract(v.scale(radius)), 1, 1, rgb, normal);
-        vertex(pose, out, center.subtract(u.scale(radius)).add(v.scale(radius)), 1, 0, rgb, normal);
-        vertex(pose, out, center.add(u.scale(radius)).add(v.scale(radius)), 0, 0, rgb, normal);
-        vertex(pose, out, center.add(u.scale(radius)).subtract(v.scale(radius)), 0, 1, rgb, normal);
+        // Exact drawTexturedQuad UV orientation from TC4. The previous port
+        // reversed U and rendered mark.png horizontally mirrored.
+        vertex(pose, out, center.subtract(u.scale(radius)).subtract(v.scale(radius)), 0, 1, rgb, normal);
+        vertex(pose, out, center.subtract(u.scale(radius)).add(v.scale(radius)), 0, 0, rgb, normal);
+        vertex(pose, out, center.add(u.scale(radius)).add(v.scale(radius)), 1, 0, rgb, normal);
+        vertex(pose, out, center.add(u.scale(radius)).subtract(v.scale(radius)), 1, 1, rgb, normal);
     }
 
     private static void vertex(PoseStack.Pose pose, VertexConsumer out, Vec3 point,
             float u, float v, int rgb, Vec3 normal) {
         Matrix4f matrix = pose.pose(); Matrix3f normals = pose.normal();
         out.vertex(matrix, (float) point.x, (float) point.y, (float) point.z)
-                .color(rgb >> 16 & 255, rgb >> 8 & 255, rgb & 255, 230).uv(u, v)
-                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT)
+                .color(rgb >> 16 & 255, rgb >> 8 & 255, rgb & 255, 255).uv(u, v)
+                // TC4 UtilsFX.renderQuadCenteredFromTexture receives packed
+                // light 200 here; FULL_BRIGHT washes the pale rune into a
+                // nearly solid mint disc on modern additive rendering.
+                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(200)
                 .normal(normals, (float) normal.x, (float) normal.y, (float) normal.z).endVertex();
     }
 
     /** Direct 1.20.1 port of TC4 RenderEventHandler#drawMarkerLine. */
-    private static void drawLink(PoseStack.Pose pose, VertexConsumer out, ClassicGolemEntity golem,
+    private static void drawLink(PoseStack.Pose pose, ClassicGolemEntity golem,
             GolemMarker marker, float partialTick, float time) {
+        // TC4 begins and draws a separate GL_TRIANGLE_STRIP for every marker.
+        // Sharing one strip across links lets the GPU connect unrelated
+        // vertices into the giant rune fans visible in the broken port.
         Vec3 source = new Vec3(
                 golem.xOld + (golem.getX() - golem.xOld) * partialTick,
                 golem.yOld + (golem.getY() - golem.yOld) * partialTick + golem.getBbHeight(),
@@ -207,9 +224,9 @@ public final class GolemBellMarkerRenderer {
         int length = Math.round(distance) * LINK_QUALITY;
         if (length <= 0) return;
 
+        var linkBuffers = MultiBufferSource.immediate(new BufferBuilder(4096));
+        VertexConsumer out = linkBuffers.getBuffer(LINK_TYPE);
         Matrix4f matrix = pose.pose();
-        Matrix3f normals = pose.normal();
-        Vec3 lastHigh = null;
         for (int segment = 0; segment <= length; segment++) {
             float progress = segment / (float) length;
             float alpha = Math.min(.75F, segment * 1.5F / length);
@@ -232,29 +249,12 @@ public final class GolemBellMarkerRenderer {
             Vec3 point = source.add(line.scale(progress));
             Vec3 low = point.add(0, -.05D, 0);
             Vec3 high = point.add(0, .05D, 0);
-            // Degenerate vertices keep separately rendered marker ribbons from
-            // being joined by the shared triangle-strip buffer.
-            if (segment == 0) {
-                linkVertex(out, matrix, normals, low, textureU, 1F, rgb, vertexAlpha);
-                linkVertex(out, matrix, normals, low, textureU, 1F, rgb, vertexAlpha);
-            }
-            linkVertex(out, matrix, normals, low, textureU, 1F, rgb, vertexAlpha);
-            linkVertex(out, matrix, normals, high, textureU, 0F, rgb, vertexAlpha);
-            lastHigh = high;
+            GolemBellVertexWriter.write(
+                    out, matrix, low, textureU, 1F, rgb, vertexAlpha);
+            GolemBellVertexWriter.write(
+                    out, matrix, high, textureU, 0F, rgb, vertexAlpha);
         }
-        if (lastHigh != null) {
-            int rgb = markerColor(marker.color(), marker.side(), time, length);
-            linkVertex(out, matrix, normals, lastHigh, -time * .005F, 0F, rgb, 0);
-            linkVertex(out, matrix, normals, lastHigh, -time * .005F, 0F, rgb, 0);
-        }
-    }
-
-    private static void linkVertex(VertexConsumer out, Matrix4f matrix, Matrix3f normals,
-            Vec3 point, float u, float v, int rgb, int alpha) {
-        out.vertex(matrix, (float) point.x, (float) point.y, (float) point.z)
-                .color(rgb >> 16 & 255, rgb >> 8 & 255, rgb & 255, alpha)
-                .uv(u, v).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT)
-                .normal(normals, 0F, 1F, 0F).endVertex();
+        linkBuffers.endBatch(LINK_TYPE);
     }
 
     private static int markerColor(byte color, Direction face, float time, int segment) {

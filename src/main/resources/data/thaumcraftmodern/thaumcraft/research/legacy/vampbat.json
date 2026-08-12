@@ -2,7 +2,7 @@
   "id": "vampbat",
   "legacy_id": "VAMPBAT",
   "category": "thaumaturgy",
-  "icon": "thaumcraftmodern:textures/foci/vampirebats.png",
+  "icon_resource": "thaumcraftmodern:textures/foci/vampirebats.png",
   "title": "tc.research_name.VAMPBAT",
   "subtitle": "tc.research_text.VAMPBAT",
   "concealed": true,

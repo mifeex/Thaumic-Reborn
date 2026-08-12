@@ -59,7 +59,9 @@ public final class ArcaneWorkbenchBlockEntity extends BlockEntity implements Men
 
     @Override
     public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+        CompoundTag tag = new CompoundTag();
+        tag.put("Wand", wand.createTag());
+        return tag;
     }
 
     @Override
@@ -74,8 +76,18 @@ public final class ArcaneWorkbenchBlockEntity extends BlockEntity implements Men
     ) {
         CompoundTag tag = packet.getTag();
         if (tag != null) {
-            load(tag);
+            handleUpdateTag(tag);
         }
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        // Crafting slots are synchronized by ArcaneWorkbenchMenu. Reloading
+        // them from a block-entity packet races the menu slot packets whenever
+        // the wand is inserted or removed and can restore an older grid layout.
+        // The block-entity renderer only needs the wand, so keep this update
+        // deliberately isolated from the persistent crafting inventory.
+        wand.fromTag(tag.getList("Wand", Tag.TAG_COMPOUND));
     }
 
     private void syncWand() {

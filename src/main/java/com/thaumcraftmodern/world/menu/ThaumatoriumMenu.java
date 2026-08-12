@@ -4,12 +4,14 @@ import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.crucible.CrucibleRecipeDefinition;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModMenus;
+import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.network.packet.ThaumatoriumRecipeSyncPacket;
 import com.thaumcraftmodern.world.block.entity.ThaumatoriumBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -119,6 +121,24 @@ public final class ThaumatoriumMenu extends AbstractContainerMenu {
                 : machine != null && machine.canSelectRecipe(inventory.player, recipe.id());
     }
 
+    public boolean canSelectOrSwitch(CrucibleRecipeDefinition recipe) {
+        if (!craftable(recipe) || !reservedFits(recipe)) return false;
+        if (selected(recipe)) return true;
+        if (formulaCount() < formulaCapacity()) return true;
+        ResourceLocation active = displayedRecipeId();
+        return active != null && (inventory.player.level().isClientSide
+                ? clientFormulae.contains(active)
+                : machine != null && machine.hasFormula(active));
+    }
+
+    private boolean reservedFits(CrucibleRecipeDefinition recipe) {
+        for (String aspect : aspectIds) {
+            int stored = reservedAmount(aspect);
+            if (stored > recipe.aspects().getOrDefault(aspect, 0)) return false;
+        }
+        return true;
+    }
+
     public ResourceLocation displayedRecipeId() {
         return inventory.player.level().isClientSide
                 ? clientDisplayedRecipe
@@ -201,11 +221,29 @@ public final class ThaumatoriumMenu extends AbstractContainerMenu {
 
     @Override public boolean clickMenuButton(Player player, int id) {
         List<CrucibleRecipeDefinition> recipes = recipes();
-        return machine != null && player instanceof net.minecraft.server.level.ServerPlayer serverPlayer
-                && id >= 0 && id < recipes.size()
-                && (machine.hasFormula(recipes.get(id).id())
-                        || machine.formulaCount() < machine.formulaCapacity())
-                && machine.selectRecipe(serverPlayer, recipes.get(id).id());
+        if (machine == null
+                || !(player instanceof net.minecraft.server.level.ServerPlayer serverPlayer)
+                || id < 0 || id >= recipes.size()) {
+            return false;
+        }
+        boolean successful = machine.selectRecipe(
+                serverPlayer, recipes.get(id).id());
+        playSelectionResultSound(serverPlayer, successful);
+        return successful;
+    }
+
+    private static void playSelectionResultSound(
+            net.minecraft.server.level.ServerPlayer player,
+            boolean successful
+    ) {
+        player.playNotifySound(
+                successful ? ModSounds.HH_ON.get() : ModSounds.HH_OFF.get(),
+                SoundSource.PLAYERS,
+                successful ? 0.3F : 0.2F,
+                successful
+                        ? 1.0F
+                        : 1.0F + player.getRandom().nextFloat() * 0.1F
+        );
     }
 
     @Override public ItemStack quickMoveStack(Player player, int index) {

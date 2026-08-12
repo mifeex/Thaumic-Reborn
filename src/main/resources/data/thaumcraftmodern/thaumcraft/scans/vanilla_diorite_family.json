@@ -4,7 +4,7 @@
   "display": "",
   "aspects": [
     {"id": "terra", "amount": 2},
-    {"id": "ordo", "amount": 2}
+    {"id": "ordo", "amount": 1}
   ],
   "modern_rule": "Diorite forms share aspects but retain separate research keys."
 }

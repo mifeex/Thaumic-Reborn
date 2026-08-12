@@ -25,11 +25,11 @@ final class StoneFamilyScanFidelityTest {
     @Test
     void modernStoneFamiliesDeclareTheirDistinctAspectProfiles() throws IOException {
         assertScan("vanilla_granite_family.json", "thaumcraftmodern:granite_family",
-                Map.of("terra", 2, "ignis", 2));
+                Map.of("terra", 2, "ignis", 1));
         assertScan("vanilla_diorite_family.json", "thaumcraftmodern:diorite_family",
-                Map.of("terra", 2, "ordo", 2));
+                Map.of("terra", 2, "ordo", 1));
         assertScan("vanilla_andesite_family.json", "thaumcraftmodern:andesite_family",
-                Map.of("terra", 2, "aer", 2));
+                Map.of("terra", 2, "aer", 1));
 
         assertTag(TC_TAGS.resolve("granite_family.json"),
                 Set.of("minecraft:granite", "minecraft:polished_granite",

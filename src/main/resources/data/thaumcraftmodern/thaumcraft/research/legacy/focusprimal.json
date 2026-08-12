@@ -2,6 +2,7 @@
   "id": "focusprimal",
   "legacy_id": "FOCUSPRIMAL",
   "category": "eldritch",
+  "completion_warp": 2,
   "icon": "thaumcraftmodern:focus_primal",
   "title": "tc.research_name.FOCUSPRIMAL",
   "subtitle": "tc.research_text.FOCUSPRIMAL",

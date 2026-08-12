@@ -2,7 +2,7 @@
   "id": "primpearl",
   "legacy_id": "PRIMPEARL",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "icon": "thaumcraftmodern:primordial_pearl",
   "title": "tc.research_name.PRIMPEARL",
   "subtitle": "tc.research_text.PRIMPEARL",
   "concealed": true,
@@ -55,8 +55,7 @@
       "amount": 8
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": 0,
     "y": 4,

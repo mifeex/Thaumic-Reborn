@@ -93,7 +93,7 @@ class LocateStructureResourceTest {
     }
 
     @Test
-    void standaloneStructureDensityIsClassicPlusFifteenPercent()
+    void standaloneStructureDensityUsesConfiguredClassicMultipliers()
             throws IOException {
         Map<LegacyStructureKind, PlacementExpectation> expected = Map.of(
                 LegacyStructureKind.ANCIENT_MOUND,
@@ -117,8 +117,10 @@ class LocateStructureResourceTest {
             int spacing = placement.get("spacing").getAsInt();
             double frequency = placement.get("frequency").getAsDouble();
             assertEquals(entry.getValue().spacing(), spacing);
+            double multiplier = entry.getKey()
+                    == LegacyStructureKind.ELDRITCH_RING ? 1.0D : 1.15D;
             assertEquals(
-                    1.15D / entry.getKey().rarity(),
+                    multiplier / entry.getKey().rarity(),
                     frequency / (spacing * spacing),
                     1.0E-12D,
                     entry.getKey().serializedName()

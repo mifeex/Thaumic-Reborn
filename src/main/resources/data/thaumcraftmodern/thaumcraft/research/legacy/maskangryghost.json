@@ -2,6 +2,7 @@
   "id": "maskangryghost",
   "legacy_id": "MASKANGRYGHOST",
   "category": "artifice",
+  "completion_warp": 1,
   "icon_resource": "thaumcraftmodern:textures/misc/r_mask1.png",
   "title": "tc.research_name.MASKANGRYGHOST",
   "subtitle": "tc.research_text.MASKANGRYGHOST",

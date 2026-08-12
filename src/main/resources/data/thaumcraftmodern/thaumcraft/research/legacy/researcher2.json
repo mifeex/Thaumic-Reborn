@@ -2,6 +2,7 @@
   "id": "researcher2",
   "legacy_id": "RESEARCHER2",
   "category": "basics",
+  "completion_warp": 1,
   "icon_resource": "thaumcraftmodern:textures/misc/r_researcher2.png",
   "title": "tc.research_name.RESEARCHER2",
   "subtitle": "tc.research_text.RESEARCHER2",

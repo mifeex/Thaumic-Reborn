@@ -75,6 +75,10 @@ public final class ClientPacketHandlers {
     }
 
     public static void handleScanFeedback(ScanFeedbackPacket packet) {
+        if ("tc.addaspectpool".equals(packet.messageKey())) {
+            ClientScanOverlay.show(packet);
+            return;
+        }
         InventoryThaumometerEvents.onScanFeedback();
         ClientThaumometerResultState.accept(packet);
         ClientScanOverlay.show(packet);

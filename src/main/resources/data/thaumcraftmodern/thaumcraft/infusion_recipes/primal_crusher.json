@@ -1,0 +1,40 @@
+{
+  "research": "primalcrusher",
+  "instability": 6,
+  "central": {
+    "item": "thaumcraftmodern:primordial_pearl"
+  },
+  "components": [
+    {
+      "item": "thaumcraftmodern:primal_charm"
+    },
+    {
+      "item": "thaumcraftmodern:void_pickaxe"
+    },
+    {
+      "item": "thaumcraftmodern:void_shovel"
+    },
+    {
+      "item": "thaumcraftmodern:primal_charm"
+    },
+    {
+      "item": "thaumcraftmodern:pickaxe_of_the_core"
+    },
+    {
+      "item": "thaumcraftmodern:shovel_of_the_earthmover"
+    }
+  ],
+  "essentia": {
+    "perfodio": 24,
+    "instrumentum": 24,
+    "perditio": 16,
+    "vacuos": 16,
+    "telum": 16,
+    "alienis": 16,
+    "lucrum": 16
+  },
+  "result": {
+    "item": "thaumcraftmodern:primal_crusher",
+    "count": 1
+  }
+}

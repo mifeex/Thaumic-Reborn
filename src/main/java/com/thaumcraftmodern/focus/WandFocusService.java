@@ -437,37 +437,69 @@ public final class WandFocusService {
 
     private static boolean castPortableHole(ItemStack wand, ServerPlayer player) {
         BlockHitResult hit = rayBlock(player, 32.0D);
-        if (hit.getType() != HitResult.Type.BLOCK) return false;
+        if (hit.getType() != HitResult.Type.BLOCK) {
+            playPortableHoleFailure(player, player.blockPosition());
+            return false;
+        }
         Direction direction = hit.getDirection().getOpposite();
         int maximum = 33 + upgradeLevel(wand, FocusUpgradeType.ENLARGE) * 8;
-        long restoreAt = player.level().getGameTime()
-                + 120L + upgradeLevel(wand, FocusUpgradeType.EXTEND) * 60L;
-        List<BlockPos> tunnel = new ArrayList<>();
-        for (int index = 0; index < maximum; index++) {
-            BlockPos pos = hit.getBlockPos().relative(direction, index);
-            BlockState old = player.level().getBlockState(pos);
-            if (old.isAir()) {
-                if (!tunnel.isEmpty()) break;
-                continue;
-            }
-            if (old.hasBlockEntity() || old.getDestroySpeed(player.level(), pos) < 0.0F
-                    || old.is(ModBlocks.TEMPORARY_HOLE.get()) || old.is(ModBlocks.WARDED_BLOCK.get())
-                    || !player.mayInteract(player.level(), pos)) break;
-            tunnel.add(pos.immutable());
+        int duration = 120 + upgradeLevel(wand, FocusUpgradeType.EXTEND) * 60;
+        int depth = 0;
+        for (; depth < maximum; depth++) {
+            BlockPos center = hit.getBlockPos().relative(direction, depth);
+            if (!canOpenPortableHole(player, center)) break;
         }
-        if (tunnel.isEmpty()) return false;
+        if (depth == 0) {
+            playPortableHoleFailure(player, hit.getBlockPos());
+            return false;
+        }
         java.util.Map<String, Integer> total = java.util.Map.of(
-                "perditio", 10 * tunnel.size(), "aer", 10 * tunnel.size());
-        if (!pay(player, wand, total)) return false;
-        for (BlockPos pos : tunnel) {
-            BlockState old = player.level().getBlockState(pos);
-            player.level().setBlock(pos, ModBlocks.TEMPORARY_HOLE.get().defaultBlockState(), 3);
-            if (player.level().getBlockEntity(pos) instanceof TemporaryHoleBlockEntity hole)
-                hole.configure(old, restoreAt);
+                "perditio", 10 * depth,
+                "aer", 10 * depth
+        );
+        if (!pay(player, wand, total)) {
+            playPortableHoleFailure(player, hit.getBlockPos());
+            return false;
+        }
+        if (!TemporaryHoleBlockEntity.createTunnelCell(
+                player.serverLevel(),
+                hit.getBlockPos(),
+                duration,
+                direction,
+                depth,
+                player.getUUID()
+        )) {
+            playPortableHoleFailure(player, hit.getBlockPos());
+            return false;
         }
         player.serverLevel().playSound(null, hit.getBlockPos(),
-                SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.5F, 0.65F);
+                SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
+    }
+
+    private static boolean canOpenPortableHole(
+            ServerPlayer player,
+            BlockPos position
+    ) {
+        return TemporaryHoleBlockEntity.canCreateTunnelCell(
+                player.level(),
+                position,
+                player
+        );
+    }
+
+    private static void playPortableHoleFailure(
+            ServerPlayer player,
+            BlockPos position
+    ) {
+        player.serverLevel().playSound(
+                null,
+                position,
+                com.thaumcraftmodern.registry.ModSounds.WAND_FAIL.get(),
+                SoundSource.PLAYERS,
+                0.2F,
+                1.0F
+        );
     }
 
     private static boolean castWarding(ItemStack wand, ServerPlayer player) {

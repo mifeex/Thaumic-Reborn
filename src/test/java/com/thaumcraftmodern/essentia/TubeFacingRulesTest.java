@@ -10,6 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class TubeFacingRulesTest {
     @Test
+    void repeatedClickOnSameFaceFlipsToExactOpposite() {
+        Direction first = TubeFacingRules.toggleFacing(
+                Direction.DOWN, Direction.UP);
+        Direction second = TubeFacingRules.toggleFacing(first, Direction.UP);
+
+        assertEquals(Direction.UP, first);
+        assertEquals(Direction.DOWN, second);
+    }
+
+    @Test
     void advancesToFirstFacingWhoseOppositeSideIsConnectedAndOpen() {
         EnumSet<Direction> connectedOpenSides = EnumSet.of(
                 Direction.EAST, Direction.UP);

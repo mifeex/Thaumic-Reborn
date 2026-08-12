@@ -31,7 +31,7 @@ public final class InventoryScanService {
             return;
         }
         ScanRegistry.ItemScanIdentity identity = ScanRegistry.identityForItem(target);
-        String scanKey = ScanRegistry.knowledgeKey(identity.type(), identity.targetId());
+        String scanKey = identity.knowledgeKey();
         if (KnowledgeAccess.get(player).map(knowledge -> knowledge.hasScan(scanKey))
                 .orElse(false)) {
             SESSIONS.remove(player.getUUID());
@@ -56,7 +56,8 @@ public final class InventoryScanService {
 
         SESSIONS.remove(player.getUUID());
         ScanService.complete(player, new ScanSessionManager.InventoryItemTarget(
-                player.level().dimension(), identity.type(), identity.targetId()));
+                player.level().dimension(), identity.type(), identity.targetId(),
+                identity.knowledgeKey()));
     }
 
     private record HoverSession(int containerId, int slotIndex, String scanKey,

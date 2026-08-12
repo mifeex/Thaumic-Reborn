@@ -14,6 +14,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ResearchTablePlacementPreviewTest {
     @Test
+    void draggedAspectRendersAbovePaletteAmounts() throws Exception {
+        String source = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/screen/ResearchTableScreen.java"
+        ));
+        assertTrue(source.contains("DRAGGED_ASPECT_Z = 20.0F"));
+        int start = source.indexOf("private void renderDraggedAspect(");
+        int end = source.indexOf("private int cellX(", start);
+        String method = source.substring(start, end);
+        assertTrue(method.contains(
+                "graphics.pose().translate(0.0F, 0.0F, DRAGGED_ASPECT_Z)"
+        ));
+        assertTrue(method.indexOf("pushPose()") < method.indexOf("drawAspect("));
+        assertTrue(method.indexOf("drawAspect(") < method.indexOf("popPose()"));
+    }
+
+    @Test
     void draggedAspectHasNoOrangeHexTargetFrame() throws Exception {
         String source = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/screen/ResearchTableScreen.java"

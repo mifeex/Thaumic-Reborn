@@ -2,7 +2,8 @@
   "id": "advancedgolem",
   "legacy_id": "ADVANCEDGOLEM",
   "category": "golemancy",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "completion_warp": 5,
+  "icon": "thaumcraftmodern:thaumium_golem",
   "title": "tc.research_name.ADVANCEDGOLEM",
   "subtitle": "tc.research_text.ADVANCEDGOLEM",
   "concealed": true,
@@ -29,16 +30,30 @@
       "body": "tc.research_page.ADVANCEDGOLEM.1"
     },
     {
-      "type": "unavailable",
-      "title": "",
-      "body": "",
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:advanced_golem",
+      "output": "thaumcraftmodern:thaumium_golem",
+      "central": "thaumcraftmodern:wood_golem",
+      "components": [
+        {"item":"minecraft:redstone"},
+        {"item":"minecraft:glowstone_dust"},
+        {"item":"minecraft:gunpowder"},
+        {"item":"thaumcraftmodern:warded_jar"},
+        {"item":"thaumcraftmodern:zombie_brain"}
+      ],
+      "aspect_costs": [
+        {"id":"cognitio","amount":8},
+        {"id":"sensus","amount":8},
+        {"id":"victus","amount":8}
+      ],
+      "instability": "high",
       "legacy_type": "recipe",
       "legacy_content": "AdvancedGolem",
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"AdvancedGolem\"))"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": 8,
     "y": 0,

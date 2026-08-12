@@ -9,6 +9,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class EtherealEssenceAspectFidelityTest {
     @Test
+    void eachStoredAspectHasIndependentScanKnowledge() {
+        assertEquals(
+                "item:thaumcraftmodern:ethereal_essence#aspect=ignis",
+                ScanRegistry.etherealEssenceKnowledgeKey(
+                        "item:thaumcraftmodern:ethereal_essence",
+                        Optional.of("ignis")
+                )
+        );
+        assertEquals(
+                "item:thaumcraftmodern:ethereal_essence#aspect=ordo",
+                ScanRegistry.etherealEssenceKnowledgeKey(
+                        "item:thaumcraftmodern:ethereal_essence",
+                        Optional.of("ordo")
+                )
+        );
+    }
+
+    @Test
     void storedAspectIsAddedToRegisteredObjectAspects() {
         ScanDefinition base = new ScanDefinition(
                 ScanTargetType.ITEM,

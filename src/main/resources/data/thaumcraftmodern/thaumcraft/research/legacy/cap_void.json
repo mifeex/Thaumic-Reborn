@@ -2,6 +2,7 @@
   "id": "cap_void",
   "legacy_id": "CAP_void",
   "category": "eldritch",
+  "completion_warp": 1,
   "icon": "thaumcraftmodern:void_wand_cap",
   "title": "tc.research_name.CAP_void",
   "subtitle": "tc.research_text.CAP_void",

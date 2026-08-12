@@ -1,6 +1,10 @@
 package com.thaumcraftmodern.visnet;
 
 import com.thaumcraftmodern.aura.PrimalAspect;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 
@@ -8,13 +12,23 @@ import net.minecraft.server.level.ServerLevel;
 public final class VisMachineAccess {
     private VisMachineAccess(){}
     public static int consumeNearest(ServerLevel level,BlockPos origin,PrimalAspect aspect,int amount){
-        VisNetworkNodeBlockEntity nearest=null; double distance=Double.MAX_VALUE;
+        if (amount <= 0) return 0;
+        List<VisNetworkNodeBlockEntity> nearby = new ArrayList<>();
         for(BlockPos cursor:BlockPos.betweenClosed(origin.offset(-VisNetworkNodeBlockEntity.RANGE,-VisNetworkNodeBlockEntity.RANGE,-VisNetworkNodeBlockEntity.RANGE),origin.offset(VisNetworkNodeBlockEntity.RANGE,VisNetworkNodeBlockEntity.RANGE,VisNetworkNodeBlockEntity.RANGE))){
             if(!(level.getBlockEntity(cursor) instanceof VisNetworkNodeBlockEntity node)
-                    || !node.hasRouteToSource(new java.util.HashSet<>())) continue;
+                    || !node.hasRouteToSource(new HashSet<>())) continue;
             double next=cursor.distSqr(origin);
-            if(next<=VisNetworkNodeBlockEntity.RANGE*VisNetworkNodeBlockEntity.RANGE && next<distance){nearest=node;distance=next;}
+            if(next<=VisNetworkNodeBlockEntity.RANGE*VisNetworkNodeBlockEntity.RANGE) nearby.add(node);
         }
-        return nearest==null?0:nearest.consumeVis(aspect,amount);
+        nearby.sort(Comparator
+                .comparingDouble((VisNetworkNodeBlockEntity node) ->
+                        node.getBlockPos().distSqr(origin))
+                .thenComparingLong(node -> node.getBlockPos().asLong()));
+        int consumed = 0;
+        for (VisNetworkNodeBlockEntity node : nearby) {
+            consumed += node.consumeVis(aspect, amount - consumed);
+            if (consumed >= amount) break;
+        }
+        return consumed;
     }
 }

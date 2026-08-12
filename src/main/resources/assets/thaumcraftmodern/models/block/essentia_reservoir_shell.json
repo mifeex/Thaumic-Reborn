@@ -5,7 +5,7 @@
   "transform": {"translation": [0.5, 0.5, 0]},
   "model": "thaumcraftmodern:textures/models/reservoir.obj",
   "textures": {
-    "texture0": "thaumcraftmodern:models/reservoir",
+    "texture0": "thaumcraftmodern:block/reservoir",
     "particle": "thaumcraftmodern:block/essentiareservoir"
   }
 }

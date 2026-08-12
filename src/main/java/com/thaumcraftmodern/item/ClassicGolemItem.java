@@ -47,6 +47,10 @@ public class ClassicGolemItem extends Item {
                 && context.getItemInHand().getTag().contains("GolemData", net.minecraft.nbt.Tag.TAG_COMPOUND)) {
             golem.loadPortableData(context.getItemInHand().getTag().getCompound("GolemData"));
         }
+        if (context.getItemInHand().hasTag()
+                && context.getItemInHand().getTag().getBoolean("Advanced")) {
+            golem.setAdvanced(true);
+        }
         if (context.getItemInHand().hasCustomHoverName()) golem.setCustomName(context.getItemInHand().getHoverName());
         if (!level.noCollision(golem) || !level.addFreshEntity(golem)) return InteractionResult.FAIL;
         if (!context.getPlayer().getAbilities().instabuild) context.getItemInHand().shrink(1);
@@ -55,8 +59,11 @@ public class ClassicGolemItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag flag) {
+        boolean advanced = stack.hasTag() && (stack.getTag().getBoolean("Advanced")
+                || stack.getTag().getCompound("GolemData").getBoolean("advanced"));
         lines.add(Component.translatable("tooltip.thaumcraftmodern.golem.stats", material.health(),
-                material.carry(), material.strength(), material.armor(), material.speed(), material.upgradeSlots())
+                material.carry(), material.strength(), material.armor(),
+                material.speed() * (advanced ? 1.1D : 1D), material.upgradeSlots() + (advanced ? 1 : 0))
                 .withStyle(ChatFormatting.DARK_PURPLE));
         GolemCoreType core = stack.hasTag()
                 ? PortableGolemCore.read(stack.getTag())

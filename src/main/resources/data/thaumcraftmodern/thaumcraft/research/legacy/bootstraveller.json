@@ -29,7 +29,6 @@
       "aspect_costs":[{"id":"volatus","amount":25},{"id":"iter","amount":25}],"instability":"minor","detail":"tc.research_text.BOOTSTRAVELLER"
     }
   ],
-  "purchase_cost":[{"id":"iter","amount":3},{"id":"terra","amount":3},{"id":"volatus","amount":3},{"id":"aqua","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -1,

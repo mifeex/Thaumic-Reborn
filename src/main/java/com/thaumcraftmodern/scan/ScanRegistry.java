@@ -23,6 +23,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
 import com.thaumcraftmodern.item.EtherealEssenceItem;
+import com.thaumcraftmodern.item.ManaBeanItem;
 
 public final class ScanRegistry {
     private static volatile Map<String, ScanDefinition> definitions = Map.of();
@@ -147,17 +148,39 @@ public final class ScanRegistry {
 
     public static ItemScanIdentity identityForItem(ItemStack stack) {
         String itemId = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        ScanTargetType type;
+        String targetId;
         if (findExplicit(ScanTargetType.ITEM, itemId).isPresent()
                 || findTagDefinition(ScanTargetType.ITEM, itemId).isPresent()) {
-            return new ItemScanIdentity(ScanTargetType.ITEM, itemId);
-        }
-        if (stack.getItem() instanceof BlockItem blockItem) {
-            String blockId = canonicalBlockId(
+            type = ScanTargetType.ITEM;
+            targetId = itemId;
+        } else if (stack.getItem() instanceof BlockItem blockItem) {
+            type = ScanTargetType.BLOCK;
+            targetId = canonicalBlockId(
                     BuiltInRegistries.BLOCK.getKey(blockItem.getBlock()).toString()
             );
-            return new ItemScanIdentity(ScanTargetType.BLOCK, blockId);
+        } else {
+            type = ScanTargetType.ITEM;
+            targetId = itemId;
         }
-        return new ItemScanIdentity(ScanTargetType.ITEM, itemId);
+        String baseKnowledgeKey = knowledgeKey(type, targetId);
+        String itemKnowledgeKey = baseKnowledgeKey;
+        if (stack.getItem() instanceof EtherealEssenceItem) {
+            itemKnowledgeKey = etherealEssenceKnowledgeKey(
+                    baseKnowledgeKey,
+                    EtherealEssenceItem.aspectId(stack)
+            );
+        }
+        return new ItemScanIdentity(type, targetId, itemKnowledgeKey);
+    }
+
+    static String etherealEssenceKnowledgeKey(
+            String baseKnowledgeKey,
+            Optional<String> aspectId
+    ) {
+        return aspectId
+                .map(aspect -> baseKnowledgeKey + "#aspect=" + aspect)
+                .orElse(baseKnowledgeKey);
     }
 
     public static Optional<ScanDefinition> findForItem(ItemStack stack) {
@@ -192,12 +215,28 @@ public final class ScanRegistry {
             ScanDefinition definition,
             ItemStack stack
     ) {
-        if (!(stack.getItem() instanceof EtherealEssenceItem)) {
-            return definition;
+        if (stack.getItem() instanceof EtherealEssenceItem) {
+            return withStoredAspect(
+                    definition,
+                    EtherealEssenceItem.aspectId(stack),
+                    EtherealEssenceItem.amount(stack)
+            );
         }
-        Optional<String> storedAspect = EtherealEssenceItem.aspectId(stack);
-        int storedAmount = EtherealEssenceItem.amount(stack);
-        return withStoredAspect(definition, storedAspect, storedAmount);
+        if (stack.getItem() instanceof ManaBeanItem) {
+            return withStoredManaBeanAspect(
+                    definition,
+                    ManaBeanItem.aspect(stack)
+            );
+        }
+        return definition;
+    }
+
+    /** TC4 mana beans are essentia containers holding one NBT-authored aspect. */
+    static ScanDefinition withStoredManaBeanAspect(
+            ScanDefinition definition,
+            Optional<String> storedAspect
+    ) {
+        return withStoredAspect(definition, storedAspect, 1);
     }
 
     static ScanDefinition withStoredAspect(
@@ -393,6 +432,10 @@ public final class ScanRegistry {
         return result;
     }
 
-    public record ItemScanIdentity(ScanTargetType type, String targetId) {
+    public record ItemScanIdentity(
+            ScanTargetType type,
+            String targetId,
+            String knowledgeKey
+    ) {
     }
 }

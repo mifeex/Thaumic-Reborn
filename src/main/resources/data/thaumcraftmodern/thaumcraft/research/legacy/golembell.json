@@ -6,7 +6,7 @@
   "title": "tc.research_name.GOLEMBELL",
   "subtitle": "tc.research_text.GOLEMBELL",
   "concealed": true,
-  "auto_unlock": false,
+  "auto_unlock": true,
   "parents": [
     "golemstraw"
   ],

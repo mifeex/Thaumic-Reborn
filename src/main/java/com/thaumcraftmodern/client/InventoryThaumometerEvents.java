@@ -54,7 +54,7 @@ public final class InventoryThaumometerEvents {
         }
         ScanRegistry.ItemScanIdentity identity =
                 ScanRegistry.identityForItem(hovered.getItem());
-        String scanKey = ScanRegistry.knowledgeKey(identity.type(), identity.targetId());
+        String scanKey = identity.knowledgeKey();
         boolean studied = KnowledgeAccess.get(minecraft.player)
                 .map(knowledge -> knowledge.hasScan(scanKey)).orElse(false);
         int menuSlot = screen.getMenu().slots.indexOf(hovered);
@@ -123,7 +123,7 @@ public final class InventoryThaumometerEvents {
                 || minecraft.player == null) return;
         ScanRegistry.ItemScanIdentity identity =
                 ScanRegistry.identityForItem(event.getItemStack());
-        String scanKey = ScanRegistry.knowledgeKey(identity.type(), identity.targetId());
+        String scanKey = identity.knowledgeKey();
         boolean studied = KnowledgeAccess.get(minecraft.player)
                 .map(knowledge -> knowledge.hasScan(scanKey)).orElse(false);
         if (!studied) return;

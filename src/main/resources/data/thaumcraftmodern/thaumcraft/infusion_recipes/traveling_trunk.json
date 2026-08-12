@@ -1,0 +1,13 @@
+{
+  "research": "traveltrunk",
+  "instability": 3,
+  "central": { "item": "thaumcraftmodern:hungry_chest" },
+  "components": [
+    { "item": "minecraft:iron_ingot" },
+    { "item": "thaumcraftmodern:greatwood_planks" },
+    { "item": "thaumcraftmodern:wood_golem" },
+    { "item": "thaumcraftmodern:greatwood_planks" }
+  ],
+  "essentia": { "motus": 4, "spiritus": 4, "iter": 4, "vacuos": 16 },
+  "result": { "item": "thaumcraftmodern:traveling_trunk" }
+}

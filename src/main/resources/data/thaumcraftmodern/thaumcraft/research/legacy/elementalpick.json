@@ -34,7 +34,6 @@
       "body": "tc.research_page.ELEMENTALPICK.2"
     }
   ],
-  "purchase_cost":[{"id":"instrumentum","amount":3},{"id":"ignis","amount":3},{"id":"sensus","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -7,

@@ -68,6 +68,26 @@ public final class GolemBellItem extends Item {
 
     @Override
     public boolean onLeftClickEntity(ItemStack bell, Player player, net.minecraft.world.entity.Entity target) {
+        if (target instanceof com.thaumcraftmodern.entity.TravelingTrunkEntity trunk) {
+            if (trunk.upgrade() == com.thaumcraftmodern.entity.GolemUpgradeType.AQUA
+                    && !trunk.canControl(player)) return false;
+            if (!player.level().isClientSide) {
+                boolean dismantling = player.isShiftKeyDown();
+                boolean preserve = !dismantling
+                        && trunk.upgrade() == com.thaumcraftmodern.entity.GolemUpgradeType.ORDO;
+                if (!preserve) trunk.dropContents();
+                if (dismantling && trunk.upgrade() != null && trunk.getRandom().nextBoolean()) {
+                    trunk.spawnAtLocation(com.thaumcraftmodern.registry.ModItems
+                            .golemUpgrade(trunk.upgrade()).get());
+                }
+                if (dismantling) trunk.setUpgrade(null);
+                trunk.spawnAtLocation(trunk.createSpawner(preserve));
+                player.level().playSound(null, trunk.blockPosition(), ModSounds.ZAP.get(),
+                        SoundSource.NEUTRAL, .5F, 1F);
+                trunk.discard();
+            }
+            return true;
+        }
         if (!(target instanceof ClassicGolemEntity golem)
                 || !golem.owner().map(player.getUUID()::equals).orElse(true)) return false;
         if (!player.level().isClientSide) {

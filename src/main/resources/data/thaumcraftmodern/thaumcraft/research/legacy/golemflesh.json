@@ -2,6 +2,7 @@
   "id": "golemflesh",
   "legacy_id": "GOLEMFLESH",
   "category": "golemancy",
+  "completion_warp": 3,
   "icon": "thaumcraftmodern:flesh_golem",
   "title": "tc.research_name.GOLEMFLESH",
   "subtitle": "tc.research_text.GOLEMFLESH",

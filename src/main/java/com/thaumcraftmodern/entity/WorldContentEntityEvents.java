@@ -31,6 +31,7 @@ public final class WorldContentEntityEvents {
         event.put(ModEntities.STONE_GOLEM.get(), ClassicGolemEntity.createAttributes(GolemMaterial.STONE).build());
         event.put(ModEntities.IRON_GOLEM.get(), ClassicGolemEntity.createAttributes(GolemMaterial.IRON).build());
         event.put(ModEntities.THAUMIUM_GOLEM.get(), ClassicGolemEntity.createAttributes(GolemMaterial.THAUMIUM).build());
+        event.put(ModEntities.TRAVELING_TRUNK.get(), TravelingTrunkEntity.createAttributes().build());
         for (var entry : ModEntities.entries()) {
             event.put(
                     entry.getValue().get(),

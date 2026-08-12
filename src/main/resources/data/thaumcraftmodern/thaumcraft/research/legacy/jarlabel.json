@@ -6,7 +6,7 @@
   "title": "tc.research_name.JARLABEL",
   "subtitle": "tc.research_text.JARLABEL",
   "concealed": true,
-  "auto_unlock": false,
+  "auto_unlock": true,
   "parents": [
     "distilessentia"
   ],

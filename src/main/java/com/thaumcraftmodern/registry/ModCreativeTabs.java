@@ -38,6 +38,7 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.STONE_GOLEM.get());
                         output.accept(ModItems.IRON_GOLEM.get());
                         output.accept(ModItems.THAUMIUM_GOLEM.get());
+                        output.accept(ModItems.TRAVELING_TRUNK.get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("golem_bell").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("blank_golem_core").get());
                         for (GolemCoreType core : GolemCoreType.values()) {
@@ -306,10 +307,25 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.TAINT_TENDRIL.get());
                         output.accept(ModItems.GOLD_COIN.get());
                         output.accept(ModItems.VOID_SEED.get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("void_metal_ingot").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("void_nugget").get());
+                        output.accept(ModItems.VOID_SWORD.get());
+                        output.accept(ModItems.VOID_PICKAXE.get());
+                        output.accept(ModItems.VOID_AXE.get());
+                        output.accept(ModItems.VOID_SHOVEL.get());
+                        output.accept(ModItems.VOID_HOE.get());
+                        output.accept(ModItems.VOID_HELMET.get());
+                        output.accept(ModItems.VOID_CHESTPLATE.get());
+                        output.accept(ModItems.VOID_LEGGINGS.get());
+                        output.accept(ModItems.VOID_BOOTS.get());
+                        output.accept(ModItems.VOID_ROBE_HOOD.get());
+                        output.accept(ModItems.VOID_ROBE_CHESTPLATE.get());
+                        output.accept(ModItems.VOID_ROBE_LEGGINGS.get());
                         output.accept(ModItems.ELDRITCH_EYE.get());
                         output.accept(ModItems.CRIMSON_RITES.get());
                         output.accept(ModItems.RUNED_TABLET.get());
                         output.accept(ModItems.PRIMORDIAL_PEARL.get());
+                        output.accept(ModItems.PRIMAL_CRUSHER.get());
                         output.accept(ModItems.COMMON_LOOT_BAG.get());
                         output.accept(ModItems.UNCOMMON_LOOT_BAG.get());
                         output.accept(ModItems.RARE_LOOT_BAG.get());

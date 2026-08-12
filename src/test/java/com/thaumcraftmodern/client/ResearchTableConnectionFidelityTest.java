@@ -17,7 +17,7 @@ final class ResearchTableConnectionFidelityTest {
                         + "ResearchTableScreen.java"
         ));
         assertTrue(source.contains("drawClassicConnection("));
-        assertTrue(source.contains("RenderSystem.lineWidth(3.0F);"));
+        assertTrue(source.contains("RenderSystem.lineWidth(4.0F);"));
         assertTrue(source.contains("VertexFormat.Mode.DEBUG_LINE_STRIP"));
         assertTrue(source.contains("GlStateManager.DestFactor.ONE"));
         assertFalse(source.contains("int steps = Math.max("));

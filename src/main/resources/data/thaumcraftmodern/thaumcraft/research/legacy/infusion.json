@@ -58,11 +58,6 @@
       "body": "tc.research_page.INFUSION.5"
     }
   ],
-  "purchase_cost": [
-    {"id": "praecantatio", "amount": 6},
-    {"id": "machina", "amount": 3},
-    {"id": "fabrico", "amount": 6}
-  ],
   "inactive": false,
   "inactive_reason": null,
   "legacy": {

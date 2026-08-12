@@ -98,7 +98,7 @@ final class WoodFamilyScanFidelityTest {
                 "minecraft:wooden_trapdoors", Map.of("arbor", 2, "motus", 1));
 
         assertStandaloneTagScan("wooden_doors.json", "minecraft:wooden_doors",
-                Map.of("arbor", 4));
+                Map.of("arbor", 4, "machina", 1, "motus", 1));
         assertStandaloneTagScan("wooden_fences.json", "minecraft:wooden_fences",
                 Map.of("arbor", 2));
         assertStandaloneTagScan("all_wooden_signs.json", "minecraft:all_signs",

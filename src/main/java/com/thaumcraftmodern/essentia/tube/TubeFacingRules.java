@@ -11,6 +11,20 @@ public final class TubeFacingRules {
     }
 
     /**
+     * Points a device toward the preferred side. Repeating the same aimed
+     * face flips it to the exact opposite, matching the wand control shared
+     * by the essentia valve and reservoir.
+     */
+    public static Direction toggleFacing(
+            Direction current,
+            Direction preferred
+    ) {
+        Objects.requireNonNull(current, "current");
+        Objects.requireNonNull(preferred, "preferred");
+        return current == preferred ? preferred.getOpposite() : preferred;
+    }
+
+    /**
      * TC4 advances through ForgeDirection order and accepts a candidate only
      * when the side opposite that facing both contains an essentia transport
      * and is locally open. If no other connected side is available, the loop

@@ -245,6 +245,26 @@ public final class AuraNodeBlockEntity extends BlockEntity {
         return changed;
     }
 
+    public synchronized boolean applyPrimalTransformation(
+            PrimalNodeTransformation.Result transformation
+    ) {
+        Objects.requireNonNull(transformation, "transformation");
+        if (level == null || level.isClientSide) {
+            return false;
+        }
+        AuraNodeState.Snapshot snapshot = state.snapshot();
+        state = AuraNodeState.withAspects(
+                snapshot.nodeId(),
+                snapshot.type(),
+                transformation.modifier(),
+                transformation.current(),
+                transformation.maximum(),
+                Math.addExact(snapshot.revision(), 1L)
+        );
+        markChangedAndSync();
+        return true;
+    }
+
     synchronized boolean replaceType(AuraNodeType nextType) {
         Objects.requireNonNull(nextType, "nextType");
         if (level == null || level.isClientSide || state.type() == nextType) {

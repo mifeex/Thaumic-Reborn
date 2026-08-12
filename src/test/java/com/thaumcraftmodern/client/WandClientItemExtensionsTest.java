@@ -72,4 +72,21 @@ final class WandClientItemExtensionsTest {
                         + ".getUseItem().getItem()"
         ));
     }
+
+    @Test
+    void guiUsesExactTc4SizingAndCenteringSequence() throws IOException {
+        String renderer = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/render/"
+                        + "ClassicWandItemRenderer.java"
+        ));
+        assertTrue(renderer.contains("applyClassicGuiPose(poseStack, wand.form())"));
+        assertTrue(renderer.contains("poseStack.translate(0.5D, 0.5D, 0.0D)"));
+        assertTrue(renderer.contains("poseStack.scale(0.6F, 0.6F, 0.6F)"));
+        assertTrue(renderer.contains("Axis.XP.rotationDegrees(20.0F)"));
+        assertTrue(renderer.contains("Axis.YP.rotationDegrees(-45.0F)"));
+        assertTrue(renderer.contains("Axis.ZP.rotationDegrees(45.0F)"));
+        assertTrue(renderer.contains("poseStack.translate(0.0D, 0.6D, 0.0D)"));
+        assertTrue(renderer.contains("poseStack.scale(0.8F, 0.8F, 0.8F)"));
+        assertTrue(renderer.contains("poseStack.translate(-0.7D, 1.2D, 0.0D)"));
+    }
 }

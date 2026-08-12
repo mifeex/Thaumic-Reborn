@@ -10,6 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /** Guards the TC4 setHarvestLevel families after their metadata split into blocks. */
 class ClassicHarvestLevelFidelityTest {
@@ -78,6 +79,34 @@ class ClassicHarvestLevelFidelityTest {
                 , id("arcane_bellows")
                 , id("arcane_ear")
         ), values("mineable/axe.json"));
+    }
+
+    @Test
+    void classicTubesArePickaxeMineableWithoutAHarvestTier()
+            throws IOException {
+        Set<String> pickaxe = values("mineable/pickaxe.json");
+        Set<String> tubes = Set.of(
+                id("essentia_tube"),
+                id("filtered_essentia_tube"),
+                id("restricted_essentia_tube"),
+                id("one_way_essentia_tube"),
+                id("essentia_valve"),
+                id("reversible_essentia_tube")
+        );
+        assertTrue(pickaxe.containsAll(tubes));
+        assertTrue(java.util.Collections.disjoint(
+                tubes,
+                values("needs_stone_tool.json")
+        ));
+        assertTrue(java.util.Collections.disjoint(
+                tubes,
+                values("needs_iron_tool.json")
+        ));
+        String blocks = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/registry/ModBlocks.java"
+        ));
+        assertTrue(blocks.contains(".strength(0.5F, 5.0F)"));
+        assertTrue(blocks.contains("classicTubeProperties().noOcclusion()"));
     }
 
     private static Set<String> values(String relativePath) throws IOException {

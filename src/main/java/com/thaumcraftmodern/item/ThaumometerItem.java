@@ -114,7 +114,7 @@ public final class ThaumometerItem extends Item {
         }
 
         ScanRegistry.ItemScanIdentity identity = ScanRegistry.identityForItem(target);
-        if (!isAlreadyStudied(player, identity.type(), identity.targetId())) {
+        if (!isAlreadyStudied(player, identity.knowledgeKey())) {
             player.startUsingItem(hand);
             if (player instanceof ServerPlayer serverPlayer) {
                 ScanSessionManager.startItem(serverPlayer, hand, otherHand, target);
@@ -132,7 +132,7 @@ public final class ThaumometerItem extends Item {
         if (entity instanceof ItemEntity itemEntity) {
             ScanRegistry.ItemScanIdentity identity =
                     ScanRegistry.identityForItem(itemEntity.getItem());
-            if (isAlreadyStudied(player, identity.type(), identity.targetId())) {
+            if (isAlreadyStudied(player, identity.knowledgeKey())) {
                 return false;
             }
             player.startUsingItem(hand);
@@ -202,10 +202,12 @@ public final class ThaumometerItem extends Item {
             ScanTargetType type,
             String targetId
     ) {
+        return isAlreadyStudied(player, ScanRegistry.knowledgeKey(type, targetId));
+    }
+
+    private static boolean isAlreadyStudied(Player player, String knowledgeKey) {
         return KnowledgeAccess.get(player)
-                .map(knowledge -> knowledge.hasScan(
-                        ScanRegistry.knowledgeKey(type, targetId)
-                ))
+                .map(knowledge -> knowledge.hasScan(knowledgeKey))
                 .orElse(false);
     }
 

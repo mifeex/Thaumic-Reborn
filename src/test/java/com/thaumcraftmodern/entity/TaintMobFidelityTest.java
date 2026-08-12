@@ -119,6 +119,13 @@ final class TaintMobFidelityTest {
         assertTrue(mob.contains(
                 "case TAINT_SPORE_SWARMER -> ModSounds.ROOTS.get()"
         ));
+        assertTrue(mob.contains("taintSwarmSpawnCounter = 500"));
+        assertTrue(mob.contains("spawnTaintSwarm()"));
+        assertTrue(mob.contains("burstSporeIntoCrawlers()"));
+        assertTrue(mob.contains("ModEntities.TAINTED_CRAWLER.get()"));
+        assertTrue(mob.contains("ModEntities.TAINT_SWARM.get()"));
+        assertTrue(mob.contains("kind == LegacyMobKind.TAINT_SPORE"));
+        assertTrue(mob.contains("getNavigation().stop()"));
         assertTrue(mob.contains("ModSounds.GORE.get()"));
     }
 

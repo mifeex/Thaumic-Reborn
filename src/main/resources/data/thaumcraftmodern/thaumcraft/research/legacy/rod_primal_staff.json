@@ -2,6 +2,7 @@
   "id": "rod_primal_staff",
   "legacy_id": "ROD_primal_staff",
   "category": "eldritch",
+  "completion_warp": 3,
   "icon": "thaumcraftmodern:primal_staff_rod",
   "title": "tc.research_name.ROD_primal_staff",
   "subtitle": "tc.research_text.ROD_primal_staff",

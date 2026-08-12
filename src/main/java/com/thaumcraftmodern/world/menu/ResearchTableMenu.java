@@ -148,10 +148,10 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
 
     public static List<String> palette() {
         return AspectRegistryRuntime.catalog().definitions().stream()
-                .sorted(java.util.Comparator
-                        .comparingInt(com.thaumcraftmodern.aspect.AspectDefinition::order)
-                        .thenComparing(com.thaumcraftmodern.aspect.AspectDefinition::id))
                 .map(com.thaumcraftmodern.aspect.AspectDefinition::id)
+                // TC4 AspectList.getAspectsSorted() compares Aspect.getTag()
+                // with String.compareTo; modern aspect IDs are those tags.
+                .sorted()
                 .toList();
     }
 
@@ -215,9 +215,9 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                 serverPlayer.level().playSound(
                         null,
                         table.getBlockPos(),
-                        ModSounds.WRITE.get(),
+                        ModSounds.LEARN.get(),
                         SoundSource.BLOCKS,
-                        0.2F,
+                        1.0F,
                         1.0F
                 );
                 return true;
@@ -356,14 +356,6 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                 consumeInk(tools);
                 ResearchNotesItem.savePuzzle(notes, puzzle);
                 table.items().setStackInSlot(ResearchTableBlockEntity.NOTES_SLOT, notes);
-                serverPlayer.level().playSound(
-                        null,
-                        table.getBlockPos(),
-                        ModSounds.WRITE.get(),
-                    SoundSource.MASTER,
-                    0.2F,
-                    1.0F
-                );
                 if (result == HexResearchPuzzle.PlacementResult.PLACED_AND_COMPLETED) {
                     String completedResearchId = ResearchNotesItem.researchId(notes);
                     ResearchCompletionService.markDiscoveryReady(
@@ -377,6 +369,14 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                     serverPlayer.displayClientMessage(
                             Component.translatable("puzzle.thaumcraftmodern.first_discovery.complete"),
                             false
+                    );
+                    serverPlayer.level().playSound(
+                            null,
+                            table.getBlockPos(),
+                            ModSounds.LEARN.get(),
+                            SoundSource.BLOCKS,
+                            1.0F,
+                            1.0F
                     );
                 }
                 table.setChanged();
@@ -420,14 +420,6 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
             consumeInk(tools);
             ResearchNotesItem.savePuzzle(notes, puzzle);
             table.items().setStackInSlot(ResearchTableBlockEntity.NOTES_SLOT, notes);
-            serverPlayer.level().playSound(
-                    null,
-                    table.getBlockPos(),
-                    ModSounds.ERASE.get(),
-                    SoundSource.MASTER,
-                    0.2F,
-                    1.0F + serverPlayer.getRandom().nextFloat() * 0.1F
-            );
             table.setChanged();
             broadcastChanges();
             if (refunded) {
@@ -491,14 +483,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                 knowledge.aspectAmounts()
         );
         if (!result.combined()) {
-            player.level().playSound(
-                    null,
-                    table.getBlockPos(),
-                    ModSounds.HH_OFF.get(),
-                    SoundSource.MASTER,
-                    0.2F,
-                    1.05F
-            );
+            playCombinationResultSound(player, false);
             player.displayClientMessage(
                     Component.translatable(
                             "screen.thaumcraftmodern.research_table.combine."
@@ -509,14 +494,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
             return true;
         }
 
-        player.level().playSound(
-                null,
-                table.getBlockPos(),
-                ModSounds.HH_ON.get(),
-                SoundSource.MASTER,
-                0.3F,
-                1.0F
-        );
+        playCombinationResultSound(player, true);
         KnowledgeSync.send(player, syncReason);
         player.displayClientMessage(
                 Component.translatable(
@@ -532,6 +510,20 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                 false
         );
         return true;
+    }
+
+    private static void playCombinationResultSound(
+            ServerPlayer player,
+            boolean successful
+    ) {
+        player.playNotifySound(
+                successful ? ModSounds.HH_ON.get() : ModSounds.HH_OFF.get(),
+                SoundSource.PLAYERS,
+                successful ? 0.3F : 0.2F,
+                successful
+                        ? 1.0F
+                        : 1.0F + player.getRandom().nextFloat() * 0.1F
+        );
     }
 
     private void playExpertiseRewardSound(ServerPlayer player) {

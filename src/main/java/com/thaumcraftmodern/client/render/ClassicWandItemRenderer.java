@@ -41,7 +41,7 @@ public final class ClassicWandItemRenderer
             "textures/misc/script.png"
     );
     private static final ResourceLocation FOCUS_CUBE = new ResourceLocation(
-            "minecraft", "textures/block/white_concrete.png");
+            ThaumcraftModern.MOD_ID, "textures/models/wand.png");
     private static final Map<HumanoidArm, ReleaseState> RELEASE_STATES =
             new EnumMap<>(HumanoidArm.class);
 
@@ -83,11 +83,12 @@ public final class ClassicWandItemRenderer
         poseStack.pushPose();
         ClassicWandRenderCalibration.Form calibration =
                 ClassicWandRenderCalibration.form(wand.form());
-        if (displayContext == ItemDisplayContext.GUI
-                && calibration.gui().override()) {
-            applyGuiOverride(poseStack, calibration.gui());
-        }
-        if (isHand(displayContext)) {
+        if (displayContext == ItemDisplayContext.GUI) {
+            applyClassicGuiPose(poseStack, wand.form());
+            if (calibration.gui().override()) {
+                applyGuiOverride(poseStack, calibration.gui());
+            }
+        } else if (isHand(displayContext)) {
             translate(poseStack, calibration.handPreOffset());
             translate(poseStack, calibration.handOffset());
             scale(
@@ -312,6 +313,33 @@ public final class ClassicWandItemRenderer
         poseStack.mulPose(Axis.YP.rotationDegrees(rotation.y()));
         poseStack.mulPose(Axis.ZP.rotationDegrees(rotation.z()));
         scale(poseStack, gui.scale());
+    }
+
+    /**
+     * Exact TC4 {@code ItemWandRenderer} inventory transform. The original
+     * builtin/entity JSON is identity; all slot sizing and centering happens
+     * here in this order.
+     */
+    private static void applyClassicGuiPose(
+            PoseStack poseStack,
+            WandForm form
+    ) {
+        if (form == WandForm.STAFF) {
+            poseStack.translate(0.0D, 0.5D, 0.0D);
+        }
+        poseStack.translate(0.5D, 0.5D, 0.0D);
+        poseStack.scale(0.6F, 0.6F, 0.6F);
+        if (form == WandForm.STAFF) {
+            poseStack.scale(0.8F, 0.8F, 0.8F);
+        }
+        poseStack.mulPose(Axis.XP.rotationDegrees(20.0F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(-45.0F));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(45.0F));
+        if (form == WandForm.STAFF) {
+            poseStack.translate(-0.7D, 1.2D, 0.0D);
+        } else {
+            poseStack.translate(0.0D, 0.6D, 0.0D);
+        }
     }
 
     private static AnimationPose currentUsePose(

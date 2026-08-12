@@ -9,7 +9,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id
+    archivesName = mod_artifact_name
 }
 
 def configuredRunDirectory = project.findProperty('runDirectory') ?: 'run'
@@ -250,7 +250,7 @@ tasks.named('test', Test).configure {
 }
 
 tasks.named('jar', Jar).configure {
-    archiveFileName = "${mod_id}-${mod_version}.jar"
+    archiveFileName = "${mod_artifact_name}-${mod_version}.jar"
 
     manifest {
         attributes([

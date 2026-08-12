@@ -47,8 +47,8 @@ final class InventoryThaumometerFeatureTest {
                 "client/InventoryThaumometerEvents.java"));
         assertTrue(client.contains("Screen.hasShiftDown()"));
         assertTrue(client.contains("knowledge.hasScan(scanKey)"));
-        assertTrue(client.contains("ScanRegistry.knowledgeKey("),
-                "Shared scan families must check their common knowledge key");
+        assertTrue(client.contains("identity.knowledgeKey()"),
+                "Item NBT variants must check their resolved item knowledge key");
         assertTrue(client.contains("ScanRegistry.findForItem"));
         assertTrue(client.contains("definition.aspects()"));
         assertTrue(client.contains("AspectRegistryRuntime.find"));

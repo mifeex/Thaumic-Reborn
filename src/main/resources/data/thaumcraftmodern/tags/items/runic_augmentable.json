@@ -25,6 +25,10 @@
     "thaumcraftmodern:runic_ring_lesser", "thaumcraftmodern:runic_ring",
     "thaumcraftmodern:runic_ring_charged", "thaumcraftmodern:runic_ring_regen",
     "thaumcraftmodern:runic_amulet", "thaumcraftmodern:runic_amulet_emergency",
-    "thaumcraftmodern:runic_girdle", "thaumcraftmodern:runic_girdle_kinetic"
+    "thaumcraftmodern:runic_girdle", "thaumcraftmodern:runic_girdle_kinetic",
+    "thaumcraftmodern:void_helmet", "thaumcraftmodern:void_chestplate",
+    "thaumcraftmodern:void_leggings", "thaumcraftmodern:void_boots",
+    "thaumcraftmodern:void_robe_hood", "thaumcraftmodern:void_robe_chestplate",
+    "thaumcraftmodern:void_robe_leggings"
   ]
 }

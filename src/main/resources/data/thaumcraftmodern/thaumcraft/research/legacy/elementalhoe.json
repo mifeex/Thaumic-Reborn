@@ -29,7 +29,6 @@
       "aspect_costs":[{"id":"meto","amount":8},{"id":"herba","amount":8},{"id":"terra","amount":8}],"instability":"minor","detail":"tc.research_text.ELEMENTALHOE"
     }
   ],
-  "purchase_cost":[{"id":"instrumentum","amount":3},{"id":"victus","amount":3},{"id":"messis","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -7,

@@ -2,6 +2,7 @@
   "id": "crimson",
   "legacy_id": "CRIMSON",
   "category": "basics",
+  "completion_warp": 3,
   "icon": "thaumcraftmodern:crimson_rites",
   "title": "tc.research_name.CRIMSON",
   "subtitle": "tc.research_text.CRIMSON",

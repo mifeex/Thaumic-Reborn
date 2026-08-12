@@ -34,7 +34,6 @@
       "body": "tc.research_page.ELEMENTALAXE.2"
     }
   ],
-  "purchase_cost":[{"id":"instrumentum","amount":3},{"id":"aqua","amount":3},{"id":"motus","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -7,

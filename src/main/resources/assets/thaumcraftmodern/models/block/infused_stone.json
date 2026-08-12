@@ -22,12 +22,12 @@
       "from": [-0.01, -0.01, -0.01],
       "to": [16.01, 16.01, 16.01],
       "faces": {
-        "down": {"texture":"#ore","tintindex":0,"cullface":"down"},
-        "up": {"texture":"#ore","tintindex":0,"cullface":"up"},
-        "north": {"texture":"#ore","tintindex":0,"cullface":"north"},
-        "south": {"texture":"#ore","tintindex":0,"cullface":"south"},
-        "west": {"texture":"#ore","tintindex":0,"cullface":"west"},
-        "east": {"texture":"#ore","tintindex":0,"cullface":"east"}
+        "down": {"texture":"#ore","tintindex":0,"cullface":"down","forge_data":{"block_light":4,"ambient_occlusion":false}},
+        "up": {"texture":"#ore","tintindex":0,"cullface":"up","forge_data":{"block_light":4,"ambient_occlusion":false}},
+        "north": {"texture":"#ore","tintindex":0,"cullface":"north","forge_data":{"block_light":4,"ambient_occlusion":false}},
+        "south": {"texture":"#ore","tintindex":0,"cullface":"south","forge_data":{"block_light":4,"ambient_occlusion":false}},
+        "west": {"texture":"#ore","tintindex":0,"cullface":"west","forge_data":{"block_light":4,"ambient_occlusion":false}},
+        "east": {"texture":"#ore","tintindex":0,"cullface":"east","forge_data":{"block_light":4,"ambient_occlusion":false}}
       }
     },
     {

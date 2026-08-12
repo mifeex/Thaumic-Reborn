@@ -14,13 +14,17 @@ final class SharedScanKnowledgeUsageTest {
     @Test
     void allThaumometerSurfacesUseResolvedKnowledgeKeys() throws Exception {
         for (String relative : new String[]{
-                "item/ThaumometerItem.java",
                 "client/ClientThaumometerTarget.java",
                 "client/InventoryThaumometerEvents.java"
         }) {
             String source = Files.readString(MAIN.resolve(relative));
-            assertTrue(source.contains("ScanRegistry.knowledgeKey("), relative);
+            assertTrue(source.contains("identity.knowledgeKey()"), relative);
         }
+
+        String thaumometer = Files.readString(MAIN.resolve(
+                "item/ThaumometerItem.java"));
+        assertTrue(thaumometer.contains("identity.knowledgeKey()"));
+        assertTrue(thaumometer.contains("ScanRegistry.knowledgeKey("));
 
         String inventory = Files.readString(MAIN.resolve(
                 "client/InventoryThaumometerEvents.java"));

@@ -1,10 +1,10 @@
-# Master Prompt — Thaumcraft Modern (актуальный рабочий контракт)
+# Master Prompt — Thaumic Reborn (актуальный рабочий контракт)
 
 Скопируй текст ниже в новую задачу Codex, работающую с проектом
 `/Users/evgenii/Documents/ThaumcraftModern`.
 
 ```text
-Ты продолжаешь разработку Thaumcraft Modern — самостоятельного faithful-порта
+Ты продолжаешь разработку Thaumic Reborn — самостоятельного faithful-порта
 Thaumcraft 4.2.3.5 для Minecraft Forge 1.20.1 / Java 17.
 
 Это не аддон и не «мод, вдохновлённый Thaumcraft». Цель — сохранить игровую

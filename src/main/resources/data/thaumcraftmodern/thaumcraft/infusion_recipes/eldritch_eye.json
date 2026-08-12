@@ -1,0 +1,25 @@
+{
+  "research": "oculus",
+  "instability": 5,
+  "central": {
+    "item": "minecraft:ender_eye"
+  },
+  "components": [
+    {
+      "item": "thaumcraftmodern:void_seed"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "essentia": {
+    "alienis": 64,
+    "vacuos": 16,
+    "tenebrae": 16,
+    "iter": 16
+  },
+  "result": {
+    "item": "thaumcraftmodern:eldritch_eye",
+    "count": 1
+  }
+}

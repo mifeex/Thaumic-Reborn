@@ -106,6 +106,7 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
     private static final int EXPERTISE_RECIPE_ICON_SIZE = 16;
     private static final int EXPERTISE_RECIPE_BACKGROUND_SIZE = 20;
     private static final int EXPERTISE_RECIPE_COMPONENT_STEP = 18;
+    private static final float DRAGGED_ASPECT_Z = 20.0F;
     private static final RuneMark[] RUNES = {
             new RuneMark(110, 23, 1, false),
             new RuneMark(133, 18, 4, true),
@@ -363,7 +364,7 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
         }
     }
 
-    /** TC4 GuiResearchTable.drawLine: a 3 px additive GPU line. */
+    /** TC4-style additive GPU connection, slightly widened for readability. */
     private void drawClassicConnection(
             GuiGraphics graphics,
             float startX,
@@ -383,7 +384,7 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                 GlStateManager.DestFactor.ONE
         );
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        RenderSystem.lineWidth(3.0F);
+        RenderSystem.lineWidth(4.0F);
         BufferBuilder buffer = Tesselator.getInstance().getBuilder();
         buffer.begin(
                 VertexFormat.Mode.DEBUG_LINE_STRIP,
@@ -901,7 +902,6 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                                     secondCombinationIndex
                             )
                     );
-                    playButtonClickSound();
                     minecraft.gameMode.handleInventoryButtonClick(
                             menu.containerId,
                             ResearchTableMenu.encodeCombination(
@@ -949,7 +949,6 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                                             paletteIndex
                                     )
                             );
-                            playCombineSound();
                             minecraft.gameMode.handleInventoryButtonClick(
                                     menu.containerId,
                                     ResearchTableMenu.encodeMasteryCombination(
@@ -1005,6 +1004,12 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                                     cell,
                                     ResearchTableMenu.encodeErase(cell)
                             );
+                            HexResearchPuzzle puzzle = menu.puzzle(minecraft.player);
+                            if (!puzzle.isComplete()
+                                    && !puzzle.isAnchor(cell)
+                                    && puzzle.aspectAt(cell).isPresent()) {
+                                playEraseSound();
+                            }
                             minecraft.gameMode.handleInventoryButtonClick(
                                     menu.containerId,
                                     ResearchTableMenu.encodeErase(cell)
@@ -1024,7 +1029,14 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                                     knowledge == null ? -1 : knowledge.aspectAmount(aspectId),
                                     ResearchTableMenu.encodePlacement(cell, placementPaletteIndex)
                             );
-                            playCombineSound();
+                            if (knowledge != null
+                                    && menu.puzzle(minecraft.player).validatePlacement(
+                                            cell,
+                                            aspectId,
+                                            knowledge
+                                    ) == HexResearchPuzzle.PlacementResult.PLACED) {
+                                playPlacementSound();
+                            }
                             minecraft.gameMode.handleInventoryButtonClick(
                                     menu.containerId,
                                     ResearchTableMenu.encodePlacement(cell, placementPaletteIndex)
@@ -1123,7 +1135,17 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                     currentAmount,
                     ResearchTableMenu.encodePlacement(cell, paletteIndex)
             );
-            playCombineSound();
+            PlayerThaumKnowledge knowledge = minecraft.player == null
+                    ? null
+                    : KnowledgeAccess.get(minecraft.player).orElse(null);
+            if (knowledge != null
+                    && menu.puzzle(minecraft.player).validatePlacement(
+                            cell,
+                            aspectId,
+                            knowledge
+                    ) == HexResearchPuzzle.PlacementResult.PLACED) {
+                playPlacementSound();
+            }
             minecraft.gameMode.handleInventoryButtonClick(
                     menu.containerId,
                     ResearchTableMenu.encodePlacement(cell, paletteIndex)
@@ -1261,16 +1283,19 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
             return;
         }
         String aspectId = ResearchTableMenu.palette().get(draggedPaletteIndex);
-        AspectRegistryRuntime.find(aspectId).ifPresent(definition ->
-                ClassicUiRender.drawAspect(
-                        graphics,
-                        new ResourceLocation(definition.icon()),
-                        mouseX - 8,
-                        mouseY - 8,
-                        16,
-                        definition.color()
-                )
-        );
+        AspectRegistryRuntime.find(aspectId).ifPresent(definition -> {
+            graphics.pose().pushPose();
+            graphics.pose().translate(0.0F, 0.0F, DRAGGED_ASPECT_Z);
+            ClassicUiRender.drawAspect(
+                    graphics,
+                    new ResourceLocation(definition.icon()),
+                    mouseX - 8,
+                    mouseY - 8,
+                    16,
+                    definition.color()
+            );
+            graphics.pose().popPose();
+        });
     }
 
     private int cellX(HexResearchPuzzle.Cell cell) {
@@ -1381,8 +1406,9 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
     private void playPaletteScrollSound() {
         if (minecraft != null) {
             minecraft.getSoundManager().play(SimpleSoundInstance.forUI(
-                    ModSounds.PAGE.get(),
-                    1.0F
+                    ModSounds.KEY.get(),
+                    1.0F,
+                    0.3F
             ));
         }
     }
@@ -1403,6 +1429,28 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                     ModSounds.HH_ON.get(),
                     1.0F,
                     0.3F
+            ));
+        }
+    }
+
+    private void playPlacementSound() {
+        playCombineSound();
+        if (minecraft != null) {
+            minecraft.getSoundManager().play(SimpleSoundInstance.forUI(
+                    ModSounds.WRITE.get(),
+                    1.0F,
+                    0.2F
+            ));
+        }
+    }
+
+    private void playEraseSound() {
+        playCombineSound();
+        if (minecraft != null && minecraft.player != null) {
+            minecraft.getSoundManager().play(SimpleSoundInstance.forUI(
+                    ModSounds.ERASE.get(),
+                    1.0F + minecraft.player.getRandom().nextFloat() * 0.1F,
+                    0.2F
             ));
         }
     }

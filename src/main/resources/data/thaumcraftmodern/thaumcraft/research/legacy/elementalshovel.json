@@ -34,7 +34,6 @@
       "body": "tc.research_page.ELEMENTALSHOVEL.2"
     }
   ],
-  "purchase_cost":[{"id":"instrumentum","amount":3},{"id":"terra","amount":3},{"id":"fabrico","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -7,

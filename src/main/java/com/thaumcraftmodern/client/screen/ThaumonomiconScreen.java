@@ -13,10 +13,11 @@ import com.thaumcraftmodern.crucible.CrucibleRecipeDefinition;
 import com.thaumcraftmodern.crucible.CrucibleRecipeRegistry;
 import com.thaumcraftmodern.construction.InfusionAltarResearchRecipe;
 import com.thaumcraftmodern.construction.InfernalFurnaceResearchRecipe;
+import com.thaumcraftmodern.construction.AdvancedAlchemicalFurnaceResearchRecipe;
 import com.thaumcraftmodern.construction.ThaumatoriumResearchRecipe;
 import com.thaumcraftmodern.item.ResearchNotesItem;
-import com.thaumcraftmodern.item.RunicShieldService;
 import com.thaumcraftmodern.item.ScribingToolsItem;
+import com.thaumcraftmodern.infusion.InfusionRecipeDefinition;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.knowledge.PlayerThaumKnowledge;
 import com.thaumcraftmodern.network.ModNetwork;
@@ -45,6 +46,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.Util;
+import net.minecraft.util.Mth;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
@@ -1216,11 +1218,16 @@ public final class ThaumonomiconScreen extends Screen {
         if (hovered == null || minecraft == null) {
             return;
         }
-        List<Component> tooltip = new ArrayList<>();
-        tooltip.add(hovered.stack().getHoverName());
-        if (RunicShieldService.finalCharge(hovered.stack()) > 0) {
-            tooltip.add(RunicShieldService.chargeTooltip(hovered.stack()));
-        }
+        /*
+         * TC4 GuiResearchRecipe passes the hovered stack to renderToolTip.
+         * Building the normal item tooltip here is important: it preserves
+         * the item's own colored lines (vis discount and Fortress mask) and
+         * Forge's global lines (warping and runic charge), using the same
+         * font, ordering and formatting as the inventory tooltip.
+         */
+        List<Component> tooltip = new ArrayList<>(
+                getTooltipFromItem(minecraft, hovered.stack())
+        );
         if (researchForItem(hovered.stack()).isPresent()) {
             tooltip.add(Component.translatable(
                     "screen.thaumcraftmodern.thaumonomicon.open_item_page"
@@ -1236,51 +1243,39 @@ public final class ThaumonomiconScreen extends Screen {
     }
 
     private void renderBookControls(GuiGraphics graphics, int mouseX, int mouseY) {
-        // These are the original TC4 arrow/back sprites stored below the book.
-        ClassicUiRender.drawScaledTexture(
-                graphics,
-                BOOK,
-                left + BACK_BUTTON.x(),
-                top + BACK_BUTTON.y(),
-                BACK_BUTTON.width(),
-                BACK_BUTTON.height(),
+        /*
+         * TC4 4.2.3.5 GuiResearchRecipe animates all three controls with
+         * drawTexturedModalRectScaled and this exact player-tick sine wave.
+         */
+        int playerTicks = minecraft != null && minecraft.player != null
+                ? minecraft.player.tickCount : 0;
+        float controlScale = bookControlScale(playerTicks);
+        drawAnimatedBookControl(
+                graphics, BACK_BUTTON,
                 76,
                 404,
                 40,
                 24,
-                512,
-                512
+                controlScale
         );
         if (pagePair > 0) {
-            ClassicUiRender.drawScaledTexture(
-                    graphics,
-                    BOOK,
-                    left + PREVIOUS_BUTTON.x(),
-                    top + PREVIOUS_BUTTON.y(),
-                    PREVIOUS_BUTTON.width(),
-                    PREVIOUS_BUTTON.height(),
+            drawAnimatedBookControl(
+                    graphics, PREVIOUS_BUTTON,
                     0,
                     368,
                     24,
                     16,
-                    512,
-                    512
+                    controlScale
             );
         }
         if (openResearch != null && pagePair + 2 < openResearch.pages().size()) {
-            ClassicUiRender.drawScaledTexture(
-                    graphics,
-                    BOOK,
-                    left + NEXT_BUTTON.x(),
-                    top + NEXT_BUTTON.y(),
-                    NEXT_BUTTON.width(),
-                    NEXT_BUTTON.height(),
+            drawAnimatedBookControl(
+                    graphics, NEXT_BUTTON,
                     24,
                     368,
                     24,
                     16,
-                    512,
-                    512
+                    controlScale
             );
         }
 
@@ -1308,6 +1303,46 @@ public final class ThaumonomiconScreen extends Screen {
                     mouseY
             );
         }
+    }
+
+    static float bookControlScale(int playerTicks) {
+        float bob = Mth.sin((float) playerTicks / 3.0F) * 0.2F + 0.1F;
+        return 1.0F + bob;
+    }
+
+    private void drawAnimatedBookControl(
+            GuiGraphics graphics,
+            ButtonRegion region,
+            int sourceX,
+            int sourceY,
+            int sourceWidth,
+            int sourceHeight,
+            float scale
+    ) {
+        int x = left + region.x();
+        int y = top + region.y();
+        graphics.pose().pushPose();
+        graphics.pose().translate(
+                x + region.width() / 2.0F,
+                y + region.height() / 2.0F,
+                0.0F
+        );
+        graphics.pose().scale(scale, scale, 1.0F);
+        ClassicUiRender.drawScaledTexture(
+                graphics,
+                BOOK,
+                -region.width() / 2,
+                -region.height() / 2,
+                region.width(),
+                region.height(),
+                sourceX,
+                sourceY,
+                sourceWidth,
+                sourceHeight,
+                512,
+                512
+        );
+        graphics.pose().popPose();
     }
 
     private void renderPage(
@@ -1451,8 +1486,16 @@ public final class ThaumonomiconScreen extends Screen {
                 0xFFFFFFFF
         );
 
-        ItemStack central = infusionStack(display.centralItem(), 1);
+        long durabilityPreviewTime = Util.getMillis();
+        ItemStack central = ThaumonomiconDurabilityPreview.atTime(
+                infusionStack(display.centralItem(), 1),
+                durabilityPreviewTime
+        );
         ItemStack output = infusionStack(display.outputItem(), 1);
+        if (isDamageableTransformation(central, output)) {
+            output.setDamageValue(InfusionRecipeDefinition.transferredDamage(
+                    central.getDamageValue(), output.getMaxDamage()));
+        }
         if (runicPreview != null) {
             if (runicPreview.inputHardening() > 0) {
                 central.getOrCreateTag().putByte("RS.HARDEN",
@@ -1477,7 +1520,7 @@ public final class ThaumonomiconScreen extends Screen {
                 16, 16);
         int centralX = centerX - 8;
         int centralY = y + INFUSION_CENTRAL_Y + INFUSION_MATRIX_Y_OFFSET;
-        renderLinkedItem(graphics, central, centralX, centralY);
+        renderLinkedItemExact(graphics, central, centralX, centralY);
 
         int componentCount = displayedComponents.size();
         for (int index = 0; index < componentCount; index++) {
@@ -2278,6 +2321,23 @@ public final class ThaumonomiconScreen extends Screen {
                     }).toList()
             );
         }
+        if (AdvancedAlchemicalFurnaceResearchRecipe.ID.equals(recipeId)) {
+            AdvancedAlchemicalFurnaceResearchRecipe.Snapshot recipe =
+                    AdvancedAlchemicalFurnaceResearchRecipe.snapshot();
+            return new CompoundRecipeView(
+                    recipe.width(), recipe.height(), recipe.depth(), recipe.costs(),
+                    recipe.cells().stream().map(cell -> switch (cell) {
+                        case EMPTY -> ItemStack.EMPTY;
+                        case ADVANCED_CONSTRUCT -> new ItemStack(
+                                ModItems.ADVANCED_ALCHEMICAL_CONSTRUCT.get());
+                        case ALCHEMICAL_FURNACE -> new ItemStack(
+                                ModItems.ALCHEMICAL_FURNACE.get());
+                        case ARCANE_ALEMBIC -> new ItemStack(ModItems.ARCANE_ALEMBIC.get());
+                        case ALCHEMICAL_CONSTRUCT -> new ItemStack(
+                                ModItems.ALCHEMICAL_CONSTRUCT.get());
+                    }).toList()
+            );
+        }
         return null;
     }
 
@@ -2393,10 +2453,21 @@ public final class ThaumonomiconScreen extends Screen {
 
     private void renderLinkedItem(GuiGraphics graphics, ItemStack stack,
             int x, int y) {
-        ItemStack displayed = durabilityPreview(stack);
+        renderLinkedItemExact(graphics, durabilityPreview(stack), x, y);
+    }
+
+    private void renderLinkedItemExact(GuiGraphics graphics, ItemStack displayed,
+            int x, int y) {
         graphics.renderItem(displayed, x, y);
         graphics.renderItemDecorations(font, displayed, x, y);
         registerItemLink(displayed, x, y, 16, 16);
+    }
+
+    private static boolean isDamageableTransformation(
+            ItemStack central,
+            ItemStack output
+    ) {
+        return central.isDamageableItem() && output.isDamageableItem();
     }
 
     private static ItemStack durabilityPreview(ItemStack stack) {

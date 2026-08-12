@@ -6,7 +6,7 @@
   "title": "tc.research_name.COREGATHER",
   "subtitle": "tc.research_text.COREGATHER",
   "concealed": true,
-  "auto_unlock": false,
+  "auto_unlock": true,
   "parents": [
     "golemstraw"
   ],

@@ -15,6 +15,7 @@ public final class ModSounds {
     public static final RegistryObject<SoundEvent> CAMERA_TICKS = sound("cameraticks");
     public static final RegistryObject<SoundEvent> CAMERA_CLACK = sound("cameraclack");
     public static final RegistryObject<SoundEvent> PAGE = sound("page");
+    public static final RegistryObject<SoundEvent> KEY = sound("key");
     public static final RegistryObject<SoundEvent> LEARN = sound("learn");
     public static final RegistryObject<SoundEvent> WRITE = sound("write");
     public static final RegistryObject<SoundEvent> ERASE = sound("erase");

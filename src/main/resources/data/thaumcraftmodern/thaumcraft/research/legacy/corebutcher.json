@@ -2,6 +2,7 @@
   "id": "corebutcher",
   "legacy_id": "COREBUTCHER",
   "category": "golemancy",
+  "completion_warp": 1,
   "icon": "thaumcraftmodern:butcher_golem_core",
   "title": "tc.research_name.COREBUTCHER",
   "subtitle": "tc.research_text.COREBUTCHER",

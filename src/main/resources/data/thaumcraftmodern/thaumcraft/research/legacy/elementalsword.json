@@ -29,7 +29,6 @@
       "aspect_costs":[{"id":"aer","amount":8},{"id":"motus","amount":8},{"id":"potentia","amount":8}],"instability":"minor","detail":"tc.research_text.ELEMENTALSWORD"
     }
   ],
-  "purchase_cost":[{"id":"telum","amount":3},{"id":"aer","amount":3},{"id":"potentia","amount":3}],
   "inactive": false,
   "legacy": {
     "x": -7,

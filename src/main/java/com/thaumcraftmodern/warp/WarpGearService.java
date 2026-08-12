@@ -1,5 +1,6 @@
 package com.thaumcraftmodern.warp;
 
+import com.thaumcraftmodern.item.CultistArmorItem;
 import com.thaumcraftmodern.registry.ModItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,8 +28,30 @@ public final class WarpGearService {
         if (stack.is(ModItems.PRIMAL_STAFF_ROD.get())) {
             return 1;
         }
+        if (stack.is(ModItems.PRIMAL_CRUSHER.get())) {
+            return 2;
+        }
         if (stack.is(ModItems.BOTTLED_TAINT.get())
                 || stack.is(ModItems.LIQUID_DEATH_BUCKET.get())) {
+            return 1;
+        }
+        if (stack.getItem() instanceof CultistArmorItem cultistArmor) {
+            return cultistArmor.classicWarp();
+        }
+        if (stack.is(ModItems.VOID_ROBE_HOOD.get())
+                || stack.is(ModItems.VOID_ROBE_CHESTPLATE.get())
+                || stack.is(ModItems.VOID_ROBE_LEGGINGS.get())) {
+            return 2;
+        }
+        if (stack.is(ModItems.VOID_SWORD.get())
+                || stack.is(ModItems.VOID_PICKAXE.get())
+                || stack.is(ModItems.VOID_AXE.get())
+                || stack.is(ModItems.VOID_SHOVEL.get())
+                || stack.is(ModItems.VOID_HOE.get())
+                || stack.is(ModItems.VOID_HELMET.get())
+                || stack.is(ModItems.VOID_CHESTPLATE.get())
+                || stack.is(ModItems.VOID_LEGGINGS.get())
+                || stack.is(ModItems.VOID_BOOTS.get())) {
             return 1;
         }
         return stack.hasTag()

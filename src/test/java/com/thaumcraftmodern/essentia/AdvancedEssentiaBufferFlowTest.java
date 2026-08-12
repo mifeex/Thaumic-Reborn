@@ -28,8 +28,23 @@ final class AdvancedEssentiaBufferFlowTest {
     void configuredInputCanPullFromAnOrdinaryJar() {
         assertTrue(AdvancedEssentiaBufferBlockEntity.INPUT_SUCTION
                 > EssentiaJarBlockEntity.SUCTION);
-        assertTrue(AdvancedEssentiaBufferBlockEntity.INPUT_SUCTION
-                >= EssentiaJarBlockEntity.SUCTION);
+        assertEquals(AdvancedEssentiaBufferBlockEntity.INPUT_SUCTION,
+                AdvancedEssentiaBufferBlockEntity.suctionForRole(
+                        AdvancedBufferSideRole.INPUT));
+        assertEquals(0, AdvancedEssentiaBufferBlockEntity.suctionForRole(
+                AdvancedBufferSideRole.BLOCKED));
+    }
+
+    @Test
+    void bothOutputRolesArePassiveSources() {
+        assertTrue(AdvancedEssentiaBufferBlockEntity.isOutputRole(
+                AdvancedBufferSideRole.MAIN_OUTPUT));
+        assertTrue(AdvancedEssentiaBufferBlockEntity.isOutputRole(
+                AdvancedBufferSideRole.RESERVE_OUTPUT));
+        assertEquals(0, AdvancedEssentiaBufferBlockEntity.suctionForRole(
+                AdvancedBufferSideRole.MAIN_OUTPUT));
+        assertEquals(0, AdvancedEssentiaBufferBlockEntity.suctionForRole(
+                AdvancedBufferSideRole.RESERVE_OUTPUT));
     }
 
     @Test
@@ -104,7 +119,7 @@ final class AdvancedEssentiaBufferFlowTest {
         assertFalse(buffer.contains("requestAutomaticReturn"));
         assertFalse(buffer.contains("pullReturnedEssentia"));
         assertFalse(buffer.contains("returnController("));
-        assertTrue(buffer.contains("tube.returnEnabled()"));
+        assertFalse(buffer.contains("tube.returnEnabled()"));
         assertFalse(tube.contains("automaticReturnRequested"));
         assertFalse(tube.contains("requestAutomaticReturn"));
         assertTrue(tube.contains("!remote.canReturnEssentia()"));
@@ -127,21 +142,21 @@ final class AdvancedEssentiaBufferFlowTest {
     }
 
     @Test
-    void reserveOutputAlsoServesOrdinarySupplyUntilReturnMode()
+    void bothOutputsExposeTheSameSupplyAndNeverPushDirectly()
             throws Exception {
         String buffer = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/world/block/entity/"
                         + "AdvancedEssentiaBufferBlockEntity.java"));
         assertTrue(buffer.contains(
-                "return role(side) == AdvancedBufferSideRole.RESERVE_OUTPUT;"));
+                "role == AdvancedBufferSideRole.MAIN_OUTPUT"));
         assertTrue(buffer.contains(
-                "controller.state() == AdvancedBufferFlowController.State.RESERVE\n"
-                        + "                ? returned : supply"));
+                "role == AdvancedBufferSideRole.RESERVE_OUTPUT"));
+        assertTrue(buffer.contains("return supply;"));
         assertTrue(buffer.contains(
                 "remote.suctionType(side.getOpposite())"));
         assertTrue(buffer.contains(
                 "store.amount(wanted) > 0"));
-        assertTrue(buffer.contains(
-                "String aspect = requestedAspect(returned, reserve)"));
+        assertFalse(buffer.contains("sendToReserve("));
+        assertFalse(buffer.contains("queueSupplyForReserve("));
     }
 }

@@ -2,7 +2,8 @@
   "id": "oculus",
   "legacy_id": "OCULUS",
   "category": "eldritch",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "completion_warp": 6,
+  "icon": "thaumcraftmodern:eldritch_eye",
   "title": "tc.research_name.OCULUS",
   "subtitle": "tc.research_text.OCULUS",
   "concealed": true,
@@ -24,9 +25,39 @@
       "body": "tc.research_page.OCULUS.1"
     },
     {
-      "type": "unavailable",
-      "title": "",
-      "body": "",
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumcraftmodern:eldritch_eye",
+      "central": "minecraft:ender_eye",
+      "components": [
+        {
+          "item": "thaumcraftmodern:void_seed",
+          "count": 1
+        },
+        {
+          "item": "minecraft:gold_ingot",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "alienis",
+          "amount": 64
+        },
+        {
+          "id": "vacuos",
+          "amount": 16
+        },
+        {
+          "id": "tenebrae",
+          "amount": 16
+        },
+        {
+          "id": "iter",
+          "amount": 16
+        }
+      ],
+      "instability": "very_high",
       "legacy_type": "recipe",
       "legacy_content": "EldritchEye",
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"EldritchEye\"))"
@@ -37,8 +68,7 @@
       "body": "tc.research_page.OCULUS.2"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": -2,
     "y": 2,

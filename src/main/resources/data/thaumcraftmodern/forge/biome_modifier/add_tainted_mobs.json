@@ -4,37 +4,7 @@
   "spawners": [
     {
       "type": "thaumcraftmodern:taintacle",
-      "weight": 100,
-      "minCount": 1,
-      "maxCount": 1
-    },
-    {
-      "type": "thaumcraftmodern:taint_swarm",
-      "weight": 100,
-      "minCount": 1,
-      "maxCount": 2
-    },
-    {
-      "type": "thaumcraftmodern:thaumic_slime",
-      "weight": 100,
-      "minCount": 1,
-      "maxCount": 2
-    },
-    {
-      "type": "thaumcraftmodern:taint_spore_swarmer",
-      "weight": 100,
-      "minCount": 1,
-      "maxCount": 1
-    },
-    {
-      "type": "thaumcraftmodern:tainted_crawler",
-      "weight": 5,
-      "minCount": 1,
-      "maxCount": 1
-    },
-    {
-      "type": "thaumcraftmodern:taint_spore",
-      "weight": 5,
+      "weight": 1,
       "minCount": 1,
       "maxCount": 1
     }

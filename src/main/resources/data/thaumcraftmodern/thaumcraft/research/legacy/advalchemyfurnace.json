@@ -35,12 +35,9 @@
       "body": "tc.research_page.ADVALCHEMYFURNACE.2"
     },
     {
-      "type": "unavailable",
+      "type": "compound_crafting",
       "title": "",
-      "body": "",
-      "legacy_type": "recipe",
-      "legacy_content": "AdvAlchemyFurnace",
-      "source_expression": "new ResearchPage((List)recipes.get(\"AdvAlchemyFurnace\"))"
+      "recipe": "thaumcraftmodern:advanced_alchemical_furnace_construct"
     }
   ],
   "purchase_cost": [

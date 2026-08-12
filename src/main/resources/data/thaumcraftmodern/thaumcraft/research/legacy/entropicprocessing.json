@@ -2,7 +2,7 @@
   "id": "entropicprocessing",
   "legacy_id": "ENTROPICPROCESSING",
   "category": "alchemy",
-  "icon": "thaumcraftmodern:textures/misc/r_alchent.png",
+  "icon_resource": "thaumcraftmodern:textures/misc/r_alchent.png",
   "title": "tc.research_name.ENTROPICPROCESSING",
   "subtitle": "tc.research_text.ENTROPICPROCESSING",
   "concealed": true,

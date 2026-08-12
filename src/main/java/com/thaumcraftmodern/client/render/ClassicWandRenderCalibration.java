@@ -182,12 +182,7 @@ public final class ClassicWandRenderCalibration {
                         0.5F,
                         0.13125F,
                         1.8F,
-                        new Gui(
-                                true,
-                                new Vector(0.0F, -4.0F, 0.0F),
-                                new Vector(25.0F, 0.0F, 45.0F),
-                                new Vector(0.5F, 0.5F, 0.5F)
-                        )
+                        Gui.NONE
                 )
         );
         defaults.put(

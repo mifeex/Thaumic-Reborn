@@ -49,4 +49,14 @@ class TaintedBiomeSpawnPolicyTest {
                 true
         ));
     }
+
+    @Test
+    void taintacleUsesClassicTaintedSurfacePredicate() throws Exception {
+        String policy = java.nio.file.Files.readString(java.nio.file.Path.of(
+                "src/main/java/com/thaumcraftmodern/entity/"
+                        + "TaintedBiomeSpawnPolicy.java"));
+        assertTrue(policy.contains("TAINT_FIBRES"));
+        assertTrue(policy.contains("CRUSTED_TAINT"));
+        assertTrue(policy.contains("validTaintacleGround"));
+    }
 }

@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,56 +12,54 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ResearchTableClassicAspectOrderTest {
     @Test
-    void paletteUsesTc4AspectRegistrationOrderInsteadOfAlphabeticalIds()
+    void paletteUsesTc4GetAspectsSortedTagOrder()
             throws Exception {
         String source = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/world/menu/ResearchTableMenu.java"
         ));
 
         assertTrue(source.contains(
-                ".comparingInt(com.thaumcraftmodern.aspect.AspectDefinition::order)\n"
-                        + "                        .thenComparing(com.thaumcraftmodern.aspect.AspectDefinition::id))\n"
-                        + "                .map(com.thaumcraftmodern.aspect.AspectDefinition::id)\n"
-                        + "                .toList()"
-        ));
-        assertTrue(!source.contains(
                 ".map(com.thaumcraftmodern.aspect.AspectDefinition::id)\n"
-                        + "                .sorted()"
+                        + "                // TC4 AspectList.getAspectsSorted() compares Aspect.getTag()\n"
+                        + "                // with String.compareTo; modern aspect IDs are those tags.\n"
+                        + "                .sorted()\n"
+                        + "                .toList()"
         ));
     }
 
     @Test
-    void bundledAspectOrdersExactlyMatchTc4AspectDeclarationOrder()
+    void bundledPaletteExactlyMatchesTc4LexicographicTagOrder()
             throws Exception {
         List<String> expected = List.of(
-                "aer", "terra", "ignis", "aqua", "ordo", "perditio",
-                "vacuos", "lux", "tempestas", "motus", "gelum", "vitreus",
-                "victus", "venenum", "potentia", "permutatio", "metallum",
-                "mortuus", "volatus", "tenebrae", "spiritus", "sano", "iter",
-                "alienis", "praecantatio", "auram", "vitium", "limus", "herba",
-                "arbor", "bestia", "corpus", "exanimis", "cognitio", "sensus",
-                "humanus", "messis", "perfodio", "instrumentum", "meto", "telum",
-                "tutamen", "fames", "lucrum", "fabrico", "pannus", "machina",
-                "vinculum"
+                "aer", "alienis", "aqua", "arbor", "auram", "bestia",
+                "cognitio", "corpus", "exanimis", "fabrico", "fames", "gelum",
+                "herba", "humanus", "ignis", "instrumentum", "iter", "limus",
+                "lucrum", "lux", "machina", "messis", "metallum", "meto",
+                "mortuus", "motus", "ordo", "pannus", "perditio", "perfodio",
+                "permutatio", "potentia", "praecantatio", "sano", "sensus",
+                "spiritus", "telum", "tempestas", "tenebrae", "terra", "tutamen",
+                "vacuos", "venenum", "victus", "vinculum", "vitium", "vitreus",
+                "volatus"
         );
         Path aspects = Path.of(
                 "src/main/resources/data/thaumcraftmodern/thaumcraft/aspects"
         );
-        List<OrderedAspect> actual = new ArrayList<>();
+        List<String> actual;
         try (var files = Files.list(aspects)) {
-            for (Path file : files.filter(path -> path.toString().endsWith(".json")).toList()) {
-                var json = JsonParser.parseString(Files.readString(file)).getAsJsonObject();
-                actual.add(new OrderedAspect(
-                        json.get("id").getAsString(),
-                        json.get("order").getAsInt()
-                ));
-            }
+            actual = files.filter(path -> path.toString().endsWith(".json"))
+                    .map(ResearchTableClassicAspectOrderTest::aspectId)
+                    .sorted()
+                    .toList();
         }
-        actual.sort(Comparator.comparingInt(OrderedAspect::order)
-                .thenComparing(OrderedAspect::id));
-        assertEquals(expected, actual.stream().map(OrderedAspect::id).toList());
+        assertEquals(expected, actual);
     }
 
-    private record OrderedAspect(String id, int order) {
+    private static String aspectId(Path path) {
+        try {
+            return JsonParser.parseString(Files.readString(path))
+                    .getAsJsonObject().get("id").getAsString();
+        } catch (java.io.IOException exception) {
+            throw new java.io.UncheckedIOException(exception);
+        }
     }
 }

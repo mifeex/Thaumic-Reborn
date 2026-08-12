@@ -2,7 +2,7 @@
   "id": "traveltrunk",
   "legacy_id": "TRAVELTRUNK",
   "category": "golemancy",
-  "icon": "thaumcraftmodern:thaumonomicon",
+  "icon": "thaumcraftmodern:traveling_trunk",
   "title": "tc.research_name.TRAVELTRUNK",
   "subtitle": "tc.research_text.TRAVELTRUNK",
   "concealed": true,
@@ -24,9 +24,24 @@
       "body": "tc.research_page.TRAVELTRUNK.1"
     },
     {
-      "type": "unavailable",
-      "title": "",
-      "body": "",
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:traveling_trunk",
+      "output": "thaumcraftmodern:traveling_trunk",
+      "central": "thaumcraftmodern:hungry_chest",
+      "components": [
+        {"item":"minecraft:iron_ingot"},
+        {"item":"thaumcraftmodern:greatwood_planks"},
+        {"item":"thaumcraftmodern:wood_golem"},
+        {"item":"thaumcraftmodern:greatwood_planks"}
+      ],
+      "aspect_costs": [
+        {"id":"motus","amount":4},
+        {"id":"spiritus","amount":4},
+        {"id":"iter","amount":4},
+        {"id":"vacuos","amount":16}
+      ],
+      "instability": "high",
       "legacy_type": "recipe",
       "legacy_content": "TravelTrunk",
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"TravelTrunk\"))"
@@ -37,56 +52,55 @@
       "body": "tc.research_page.TRAVELTRUNK.2"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UAI",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEAIR\"",
       "source_expression": "new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.TRAVELTRUNK.UAI\")"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UEA",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEEARTH\"",
       "source_expression": "new ResearchPage(\"UPGRADEEARTH\", \"tc.research_page.TRAVELTRUNK.UEA\")"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UFI",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEFIRE\"",
       "source_expression": "new ResearchPage(\"UPGRADEFIRE\", \"tc.research_page.TRAVELTRUNK.UFI\")"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UWA",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEWATER\"",
       "source_expression": "new ResearchPage(\"UPGRADEWATER\", \"tc.research_page.TRAVELTRUNK.UWA\")"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UOR",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEORDER\"",
       "source_expression": "new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.TRAVELTRUNK.UOR\")"
     },
     {
-      "type": "unavailable",
+      "type": "text",
       "title": "",
-      "body": "",
+      "body": "tc.research_page.TRAVELTRUNK.UEN",
       "legacy_type": "recipe",
       "legacy_content": "\"UPGRADEENTROPY\"",
       "source_expression": "new ResearchPage(\"UPGRADEENTROPY\", \"tc.research_page.TRAVELTRUNK.UEN\")"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": 0,
     "y": 4,

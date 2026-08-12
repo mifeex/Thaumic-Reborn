@@ -6,12 +6,14 @@ import com.thaumcraftmodern.essentia.EssentiaTransport;
 import com.thaumcraftmodern.essentia.tube.TubePolicyRegistry;
 import com.thaumcraftmodern.essentia.tube.TubeEssentiaReleaseRules;
 import com.thaumcraftmodern.essentia.tube.TubeEssentiaReleaseRisk;
+import com.thaumcraftmodern.essentia.tube.TubeFacingRules;
 import com.thaumcraftmodern.essentia.tube.TubeWandTargetResolver;
 import com.thaumcraftmodern.item.JarLabelItem;
 import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.world.block.entity.EssentiaTubeBlockEntity;
 import com.thaumcraftmodern.wand.WandVisService;
+import com.thaumcraftmodern.wand.WandInteractable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -50,7 +52,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Locale;
 
-public final class EssentiaTubeBlock extends BaseEntityBlock {
+public final class EssentiaTubeBlock extends BaseEntityBlock
+        implements WandInteractable {
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -282,6 +285,9 @@ public final class EssentiaTubeBlock extends BaseEntityBlock {
                                     ? "message.thaumcraftmodern.reverse.return"
                                     : "message.thaumcraftmodern.reverse.switching",
                             tube.reverseSwitchTicks()), true);
+                } else if (core && tube.policy().redstoneValve()) {
+                    tube.setFacing(TubeFacingRules.toggleFacing(
+                            tube.facing(), hit.getDirection().getOpposite()));
                 } else if (core) {
                     tube.rotateFacing();
                 } else {
@@ -333,6 +339,21 @@ public final class EssentiaTubeBlock extends BaseEntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public InteractionResult onWandRightClick(
+            BlockState state,
+            Level level,
+            BlockPos pos,
+            Player player,
+            InteractionHand hand,
+            BlockHitResult hit
+    ) {
+        // WandItem uses this callback directly (including while sneaking),
+        // while ordinary block activation enters use(). Keep one interaction
+        // implementation so valve rotation and sounds cannot diverge.
+        return use(state, level, pos, player, hand, hit);
     }
 
     private static void releaseCloggedEssentia(

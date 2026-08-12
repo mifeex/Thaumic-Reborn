@@ -57,10 +57,19 @@ final class ThaumonomiconRecipePresentationFidelityTest {
         assertTrue(renderer.contains("graphics.renderItemDecorations("));
         assertFalse(renderer.contains("graphics.renderTooltip("));
         assertTrue(screen.contains("renderItemLinkTooltip("));
-        assertTrue(screen.contains("tooltip.add(hovered.stack().getHoverName())"));
         assertTrue(screen.contains(
-                "RunicShieldService.chargeTooltip(hovered.stack())"));
+                "getTooltipFromItem(minecraft, hovered.stack())"));
+        assertFalse(screen.contains(
+                "tooltip.add(hovered.stack().getHoverName())"));
         assertTrue(screen.contains("durabilityPreview(stack)"));
+        assertTrue(screen.contains(
+                "isDamageableTransformation(central, output)"));
+        assertTrue(screen.contains(
+                "central.isDamageableItem() && output.isDamageableItem()"));
+        assertTrue(screen.contains(
+                "central.getDamageValue(), output.getMaxDamage()"));
+        assertTrue(screen.contains(
+                "renderLinkedItemExact(graphics, central, centralX, centralY)"));
         assertTrue(screen.contains(
                 "graphics.renderItemDecorations(font, displayed, x, y)"));
     }
