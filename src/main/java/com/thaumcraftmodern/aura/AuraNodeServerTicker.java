@@ -94,9 +94,7 @@ final class AuraNodeServerTicker {
                 stabilizerLock,
                 ticks
         );
-        if (snapshot.modifier() == AuraNodeModifier.FADING
-                && stabilizerLock == 0
-                && ticks % 1200 == 0
+        if (ticks % 1200 == 0
                 && decayEmptyAspects(level, position, node)) {
             return;
         }
@@ -331,7 +329,7 @@ final class AuraNodeServerTicker {
     }
 
     /**
-     * TC4 permanently reduced an empty pool on each 1200-tick fading cycle
+     * TC4 permanently reduced empty pools during every 1200-tick node cleanup
      * and removed the node once no aspect remained.
      *
      * @return true when the node block itself was removed
@@ -363,6 +361,14 @@ final class AuraNodeServerTicker {
             return false;
         }
         if (current.isEmpty()) {
+            level.playSound(
+                    null,
+                    position,
+                    ModSounds.CRAFT_FAIL.get(),
+                    SoundSource.BLOCKS,
+                    1.0F,
+                    1.0F
+            );
             level.sendParticles(
                     com.thaumcraftmodern.registry.ModParticles.NODE_BURST.get(),
                     position.getX() + 0.5D,

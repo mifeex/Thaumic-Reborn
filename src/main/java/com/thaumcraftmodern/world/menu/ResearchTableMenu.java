@@ -14,6 +14,7 @@ import com.thaumcraftmodern.registry.ModMenus;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.network.packet.ResearchTableFeedbackPacket;
+import com.thaumcraftmodern.network.packet.ScanFeedbackPacket;
 import com.thaumcraftmodern.research.HexResearchPuzzle;
 import com.thaumcraftmodern.research.ResearchDiagnostics;
 import com.thaumcraftmodern.research.ResearchCompletionService;
@@ -488,29 +489,37 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
         );
         if (!result.combined()) {
             playCombinationResultSound(player, false);
-            sendFeedback(player,
-                    Component.translatable(
-                            "screen.thaumcraftmodern.research_table.combine."
-                                    + result.status().name().toLowerCase(Locale.ROOT)
-                    ), false
-            );
+            if (result.status() == AspectCombinationService.Status.NO_COMBINATION) {
+                KnowledgeSync.send(player, syncReason + ":failed_combination");
+            }
             return true;
         }
 
         playCombinationResultSound(player, true);
         KnowledgeSync.send(player, syncReason);
-        sendFeedback(player,
-                Component.translatable(
+        ModNetwork.sendTo(player, new ScanFeedbackPacket(
+                true,
+                "tc.addaspectpool",
+                "",
+                List.of(new ScanFeedbackPacket.AspectGain(
+                        result.resultAspectId(),
+                        result.createdAmount(),
+                        knowledge.aspectAmount(result.resultAspectId()),
                         result.newlyDiscovered()
-                                ? "screen.thaumcraftmodern.research_table.combine.discovered"
-                                : "screen.thaumcraftmodern.research_table.combine.created",
-                        Component.translatable(
-                                "aspect.thaumcraftmodern."
-                                        + result.resultAspectId()
-                        ),
-                        result.createdAmount()
-                ), true
-        );
+                ))
+        ));
+        if (result.newlyDiscovered()) {
+            player.displayClientMessage(
+                    Component.translatable(
+                            "message.thaumcraftmodern.scan.aspect_discovered",
+                            Component.translatable(
+                                    "aspect.thaumcraftmodern."
+                                            + result.resultAspectId()
+                            )
+                    ),
+                    false
+            );
+        }
         return true;
     }
 

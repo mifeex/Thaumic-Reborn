@@ -1,15 +1,16 @@
 package com.thaumcraftmodern.world.block.entity;
 
 import com.thaumcraftmodern.aura.AuraNodeBlockEntity;
-import com.thaumcraftmodern.aura.AuraNodeState;
+import com.thaumcraftmodern.aura.AuraNodeSpatialIndex;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.essentia.EssentiaConnections;
-import com.thaumicreborn.api.essentia.EssentiaTransport;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModItems;
+import com.thaumcraftmodern.visnet.VisMachineAccess;
 import com.thaumcraftmodern.world.block.InfernalFurnaceBlock;
 import com.thaumcraftmodern.world.block.ArcaneBellowsBlock;
 import com.thaumcraftmodern.registry.ModBlocks;
+import com.thaumicreborn.api.essentia.EssentiaTransport;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -35,7 +36,6 @@ import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.EnumMap;
 
 /** Exact tick and transport contract of TC4 {@code TileArcaneFurnace}. */
 public final class InfernalFurnaceBlockEntity extends BlockEntity
@@ -46,6 +46,10 @@ public final class InfernalFurnaceBlockEntity extends BlockEntity
     public static final int BELLOWS_REDUCTION = 20;
     public static final int ESSENTIA_SPEED_TICKS = 600;
     public static final int ESSENTIA_SUCTION = 128;
+    static final int AURA_SEARCH_RADIUS = 10;
+    static final int INITIAL_AURA_SEARCH_INTERVAL = 40;
+    static final int AURA_SEARCH_BACKOFF_STEP = 40;
+    static final int MAX_AURA_SEARCH_INTERVAL = 200;
 
     private final NonNullList<ItemStack> items = NonNullList.withSize(
             INVENTORY_SIZE, ItemStack.EMPTY);
@@ -55,6 +59,7 @@ public final class InfernalFurnaceBlockEntity extends BlockEntity
     private int drawDelay;
     private BlockPos cachedAuraNode;
     private int auraSearchCooldown;
+    private int auraSearchInterval = INITIAL_AURA_SEARCH_INTERVAL;
 
     public InfernalFurnaceBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.INFERNAL_FURNACE.get(), pos, state);
@@ -77,7 +82,9 @@ public final class InfernalFurnaceBlockEntity extends BlockEntity
             cookedFlag = true;
         }
         if (cookedFlag && speedyTime > 0) speedyTime--;
-        if (speedyTime <= 0) speedyTime = drainIgnisVis(level, 5);
+        if (cookedFlag && speedyTime <= 0) {
+            speedyTime = drainIgnisVis(level, 5);
+        }
         if (furnaceMaxCookTime == 0) furnaceMaxCookTime = calcCookTime();
         if (furnaceCookTime > furnaceMaxCookTime) {
             furnaceCookTime = furnaceMaxCookTime;
@@ -90,37 +97,50 @@ public final class InfernalFurnaceBlockEntity extends BlockEntity
     }
 
     private int drainIgnisVis(ServerLevel level, int maximum) {
+        int networkDrain = VisMachineAccess.consumeNearest(
+                level,
+                worldPosition,
+                PrimalAspect.IGNIS,
+                maximum
+        );
+        if (networkDrain > 0) {
+            auraSearchCooldown = 0;
+            auraSearchInterval = INITIAL_AURA_SEARCH_INTERVAL;
+            return networkDrain;
+        }
+
         AuraNodeBlockEntity node = cachedAuraNode == null ? null
                 : level.getBlockEntity(cachedAuraNode) instanceof AuraNodeBlockEntity found
                 ? found : null;
         if (node == null && auraSearchCooldown-- <= 0) {
-            auraSearchCooldown = 40;
-            double nearest = Double.MAX_VALUE;
-            for (int x = -10; x <= 10; x++) for (int y = -10; y <= 10; y++)
-                for (int z = -10; z <= 10; z++) {
-                    BlockPos candidate = worldPosition.offset(x, y, z);
-                    if (!level.hasChunkAt(candidate)
-                            || !(level.getBlockEntity(candidate)
-                            instanceof AuraNodeBlockEntity found)) continue;
-                    double distance = candidate.distSqr(worldPosition);
-                    if (distance < nearest) {
-                        nearest = distance;
-                        node = found;
-                        cachedAuraNode = candidate.immutable();
-                    }
-                }
+            node = AuraNodeSpatialIndex.nearest(
+                    level,
+                    worldPosition,
+                    AURA_SEARCH_RADIUS,
+                    ignored -> true
+            );
+            cachedAuraNode = node == null
+                    ? null
+                    : node.getBlockPos().immutable();
+            if (node == null) {
+                auraSearchCooldown = auraSearchInterval;
+                auraSearchInterval = nextAuraSearchInterval(
+                        auraSearchInterval
+                );
+            } else {
+                auraSearchCooldown = INITIAL_AURA_SEARCH_INTERVAL;
+                auraSearchInterval = INITIAL_AURA_SEARCH_INTERVAL;
+            }
         }
         if (node == null) return 0;
-        AuraNodeState state = node.snapshotState();
-        AuraNodeState.Snapshot snapshot = state.snapshot();
-        int consumed = Math.min(maximum,
-                snapshot.current().getOrDefault(PrimalAspect.IGNIS, 0));
-        if (consumed <= 0) return 0;
-        EnumMap<PrimalAspect, Integer> remaining =
-                new EnumMap<>(snapshot.current());
-        remaining.put(PrimalAspect.IGNIS,
-                remaining.get(PrimalAspect.IGNIS) - consumed);
-        return node.replaceCurrent(snapshot.revision(), remaining) ? consumed : 0;
+        return node.drainForMachine(PrimalAspect.IGNIS, maximum);
+    }
+
+    static int nextAuraSearchInterval(int currentInterval) {
+        return Math.min(
+                MAX_AURA_SEARCH_INTERVAL,
+                currentInterval + AURA_SEARCH_BACKOFF_STEP
+        );
     }
 
     private void nozzleTick(ServerLevel level) {

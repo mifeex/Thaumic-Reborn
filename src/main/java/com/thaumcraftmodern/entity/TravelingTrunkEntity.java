@@ -121,10 +121,6 @@ public final class TravelingTrunkEntity extends PathfinderMob implements MenuPro
                 && jumpDelay-- <= 0) {
             squish = .35F;
             jumpDelay = random.nextInt(10) + 5;
-            if (!level().isClientSide) {
-                playSound(SoundEvents.CHEST_CLOSE, .1F,
-                        .9F + random.nextFloat() * .1F);
-            }
         }
         squish *= .6F;
         previousOnGround = onGround();

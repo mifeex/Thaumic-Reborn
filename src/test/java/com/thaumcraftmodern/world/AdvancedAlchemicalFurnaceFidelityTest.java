@@ -1,6 +1,7 @@
 package com.thaumcraftmodern.world;
 
 import com.thaumcraftmodern.world.block.entity.AdvancedAlchemicalFurnaceBlockEntity;
+import com.thaumcraftmodern.world.block.AdvancedAlchemicalFurnaceBlock;
 import com.thaumcraftmodern.construction.AdvancedAlchemicalFurnaceResearchRecipe;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +35,10 @@ final class AdvancedAlchemicalFurnaceFidelityTest {
         assertEquals(13, AdvancedAlchemicalFurnaceBlockEntity.processingDelayForHeat(250, 8));
         assertEquals(0, AdvancedAlchemicalFurnaceBlockEntity.heatLight(100));
         assertEquals(12, AdvancedAlchemicalFurnaceBlockEntity.heatLight(500));
+    }
+
+    @Test void ambientBoilingPopIsThrottledWithoutMutingProcessing() {
+        assertEquals(200, AdvancedAlchemicalFurnaceBlock.AMBIENT_POP_CHANCE);
     }
 
     @Test void thaumicBasesBellowsMustFaceTheMultiblockAndRemainUnpowered()

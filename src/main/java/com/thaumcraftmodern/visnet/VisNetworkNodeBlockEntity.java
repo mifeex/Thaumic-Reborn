@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,14 +16,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.ToIntFunction;
 
 /** Server-authoritative TC4 vis-network node with the original eight-block reach. */
 public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
     public static final int RANGE = 8;
+    static final int NETWORK_RESCAN_INTERVAL = 40;
     private @Nullable BlockPos parentPosition;
-    private int networkCounter;
+    private int networkCounter = NETWORK_RESCAN_INTERVAL - 1;
     private byte attunement = -1;
     private int pulseTicks;
     private @Nullable PrimalAspect pulseAspect;
@@ -50,10 +53,15 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
         if (node.pulseTicks > 0) {
             node.pulseTicks--;
         }
-        if (++node.networkCounter % 40 == 0 || !node.hasValidParent()) {
-            node.parentPosition = node.isSource()
+        if (++node.networkCounter >= NETWORK_RESCAN_INTERVAL) {
+            node.networkCounter = 0;
+            BlockPos nextParent = node.isSource()
                     ? null : VisNetwork.findParent(level, node);
-            node.sync();
+            if (!Objects.equals(nextParent, node.parentPosition)) {
+                node.parentPosition = nextParent;
+                VisNetworkSpatialIndex.topologyChanged(node);
+                node.sync();
+            }
         }
         node.serverNetworkTick();
         PrimalAspect nextDominant = node.currentDominantAspect();
@@ -104,38 +112,53 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
     }
 
     public final int consumeVis(PrimalAspect aspect, int amount) {
-        return consumeVis(aspect, amount, new HashSet<>());
-    }
-
-    private int consumeVis(
-            PrimalAspect aspect,
-            int amount,
-            Set<BlockPos> visited
-    ) {
-        if (amount <= 0 || level == null || !visited.add(worldPosition)) {
+        if (amount <= 0 || !(level instanceof ServerLevel serverLevel)) {
             return 0;
         }
-        int consumed;
-        if (isSource()) {
-            consumed = consumeSource(aspect, amount);
-        } else {
-            VisNetworkNodeBlockEntity parent = parent();
-            consumed = parent == null
-                    ? 0 : parent.consumeVis(aspect, amount, visited);
+        VisNetworkSpatialIndex.Route route =
+                VisNetworkSpatialIndex.route(serverLevel, this);
+        if (route == null
+                || !(serverLevel.getBlockEntity(BlockPos.of(
+                        route.sourcePosition()))
+                instanceof VisNetworkNodeBlockEntity source)) {
+            return 0;
         }
+        int consumed = source.consumeSource(aspect, amount);
         // TC4 TileVisRelay.addPulse only starts a new five-tick pulse after
         // the previous one finished. Rewriting it to five on every transfer
         // prevents the client from ever observing the next rising edge while
         // a charger continuously accepts vis.
-        if (consumed > 0 && pulseTicks <= 0) {
-            pulseAspect = aspect;
-            pulseTicks = 5;
-            sync();
+        if (consumed > 0) {
+            for (long position : route.positions()) {
+                if (serverLevel.getBlockEntity(BlockPos.of(position))
+                        instanceof VisNetworkNodeBlockEntity node) {
+                    node.addPulse(aspect);
+                }
+            }
         }
         return consumed;
     }
 
+    private void addPulse(PrimalAspect aspect) {
+        if (pulseTicks <= 0) {
+            pulseAspect = aspect;
+            pulseTicks = 5;
+            sync();
+        }
+    }
+
     public final int availableVis(PrimalAspect aspect) {
+        if (level instanceof ServerLevel serverLevel) {
+            VisNetworkSpatialIndex.Route route =
+                    VisNetworkSpatialIndex.route(serverLevel, this);
+            if (route == null) {
+                return 0;
+            }
+            return serverLevel.getBlockEntity(BlockPos.of(
+                    route.sourcePosition()))
+                    instanceof VisNetworkNodeBlockEntity source
+                    ? source.availableSource(aspect) : 0;
+        }
         return availableVis(aspect, new HashSet<>());
     }
 
@@ -151,6 +174,19 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
     }
 
     public final boolean hasRouteToSource(Set<BlockPos> visited) {
+        if (level instanceof ServerLevel serverLevel) {
+            VisNetworkSpatialIndex.Route route =
+                    VisNetworkSpatialIndex.route(serverLevel, this);
+            if (route == null) {
+                return false;
+            }
+            for (long position : route.positions()) {
+                if (!visited.add(BlockPos.of(position))) {
+                    return false;
+                }
+            }
+            return true;
+        }
         if (!visited.add(worldPosition)) {
             return false;
         }
@@ -159,6 +195,11 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
         }
         VisNetworkNodeBlockEntity parent = parent();
         return parent != null && parent.hasRouteToSource(visited);
+    }
+
+    public final boolean hasRouteToSource() {
+        return level instanceof ServerLevel serverLevel
+                && VisNetworkSpatialIndex.route(serverLevel, this) != null;
     }
 
     public final byte attunement() {
@@ -171,7 +212,8 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
         }
         attunement = value;
         parentPosition = null;
-        networkCounter = 0;
+        networkCounter = NETWORK_RESCAN_INTERVAL - 1;
+        VisNetworkSpatialIndex.topologyChanged(this);
         sync();
     }
 
@@ -296,10 +338,6 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
         return beamOpacity;
     }
 
-    private boolean hasValidParent() {
-        return isSource() || parent() != null;
-    }
-
     private @Nullable VisNetworkNodeBlockEntity parent() {
         if (level == null || parentPosition == null
                 || !level.isLoaded(parentPosition)) {
@@ -319,6 +357,18 @@ public abstract class VisNetworkNodeBlockEntity extends BlockEntity {
                     Block.UPDATE_CLIENTS
             );
         }
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        VisNetworkSpatialIndex.track(this);
+    }
+
+    @Override
+    public void setRemoved() {
+        VisNetworkSpatialIndex.untrack(this);
+        super.setRemoved();
     }
 
     @Override

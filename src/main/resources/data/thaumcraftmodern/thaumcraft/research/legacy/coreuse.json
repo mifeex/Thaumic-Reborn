@@ -29,9 +29,23 @@
       "body": "tc.research_page.COREUSE.2"
     },
     {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumcraftmodern:core_use"
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:core_use",
+      "output": "thaumcraftmodern:use_golem_core",
+      "central": "thaumcraftmodern:empty_golem_core",
+      "components": [
+        { "item": "minecraft:comparator" },
+        { "item": "minecraft:flint_and_steel" },
+        { "item": "minecraft:shears" },
+        { "item": "minecraft:lever" }
+      ],
+      "aspect_costs": [
+        { "id": "instrumentum", "amount": 20 },
+        { "id": "machina", "amount": 20 },
+        { "id": "humanus", "amount": 20 }
+      ],
+      "instability": "high"
     },
     {
       "type": "unavailable",

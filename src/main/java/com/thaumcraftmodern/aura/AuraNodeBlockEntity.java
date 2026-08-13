@@ -112,6 +112,25 @@ public final class AuraNodeBlockEntity extends BlockEntity {
         return changed;
     }
 
+    /**
+     * Machine drain path with one atomic mutation and one custom state packet.
+     * It deliberately avoids a vanilla block update and chunk-section rebuild.
+     */
+    public synchronized int drainForMachine(
+            PrimalAspect aspect,
+            int maximum
+    ) {
+        if (level == null || level.isClientSide) {
+            return 0;
+        }
+        int consumed = state.drain(aspect, maximum);
+        if (consumed > 0) {
+            setChanged();
+            syncStatePacket();
+        }
+        return consumed;
+    }
+
     public synchronized NodeVisTransferService.Result transferToWand(
             NodeVisTransferService service,
             NodeVisTransferService.Request request,
@@ -373,13 +392,18 @@ public final class AuraNodeBlockEntity extends BlockEntity {
     @Override
     public synchronized void onLoad() {
         super.onLoad();
+        AuraNodeSpatialIndex.track(this);
         notifyClientIndexChanged();
     }
 
     @Override
     public synchronized void setRemoved() {
-        if (level != null && level.isClientSide) {
-            AuraNodeClientLifecycle.removed(this);
+        if (level != null) {
+            if (level.isClientSide) {
+                AuraNodeClientLifecycle.removed(this);
+            } else {
+                AuraNodeSpatialIndex.untrack(this);
+            }
         }
         super.setRemoved();
     }
@@ -417,16 +441,17 @@ public final class AuraNodeBlockEntity extends BlockEntity {
         if (level != null) {
             BlockState blockState = getBlockState();
             level.sendBlockUpdated(worldPosition, blockState, blockState, 3);
-            if (level instanceof ServerLevel serverLevel) {
-                ModNetwork.sendToTrackingChunk(
-                        serverLevel,
-                        worldPosition,
-                        new AuraNodeStateSyncPacket(
-                                worldPosition,
-                                getUpdateTag()
-                        )
-                );
-            }
+            syncStatePacket();
+        }
+    }
+
+    private void syncStatePacket() {
+        if (level instanceof ServerLevel serverLevel) {
+            ModNetwork.sendToTrackingChunk(
+                    serverLevel,
+                    worldPosition,
+                    new AuraNodeStateSyncPacket(worldPosition, getUpdateTag())
+            );
         }
     }
 

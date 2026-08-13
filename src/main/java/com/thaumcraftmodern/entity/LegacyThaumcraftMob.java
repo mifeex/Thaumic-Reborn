@@ -66,6 +66,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.InteractionHand;
@@ -282,6 +283,58 @@ public final class LegacyThaumcraftMob extends Monster
                     EquipmentSlot.MAINHAND,
                     new ItemStack(Items.IRON_AXE)
             );
+        }
+    }
+
+    /** Restores TC4's real server-side cultist equipment and its drop rolls. */
+    private void equipCrimsonArmor(boolean rollClericBoots) {
+        switch (kind) {
+            case CRIMSON_KNIGHT, CRIMSON_INQUISITOR -> {
+                equipCultistArmorSlot(EquipmentSlot.HEAD,
+                        ModItems.CULTIST_KNIGHT_HELMET.get());
+                equipCultistArmorSlot(EquipmentSlot.CHEST,
+                        ModItems.CULTIST_KNIGHT_CHESTPLATE.get());
+                equipCultistArmorSlot(EquipmentSlot.LEGS,
+                        ModItems.CULTIST_KNIGHT_LEGGINGS.get());
+                equipCultistArmorSlot(EquipmentSlot.FEET,
+                        ModItems.CULTIST_BOOTS.get());
+            }
+            case CRIMSON_CLERIC -> {
+                equipCultistArmorSlot(EquipmentSlot.HEAD,
+                        ModItems.CULTIST_CLERIC_HOOD.get());
+                equipCultistArmorSlot(EquipmentSlot.CHEST,
+                        ModItems.CULTIST_CLERIC_ROBE.get());
+                equipCultistArmorSlot(EquipmentSlot.LEGS,
+                        ModItems.CULTIST_CLERIC_LEGGINGS.get());
+                if (rollClericBoots
+                        && getRandom().nextFloat() < (level().getDifficulty()
+                                == net.minecraft.world.Difficulty.HARD
+                                ? 0.3F : 0.1F)) {
+                    equipCultistArmorSlot(EquipmentSlot.FEET,
+                            ModItems.CULTIST_BOOTS.get());
+                }
+            }
+            case CRIMSON_PRAETOR -> {
+                equipCultistArmorSlot(EquipmentSlot.HEAD,
+                        ModItems.CULTIST_PRAETOR_HELMET.get());
+                equipCultistArmorSlot(EquipmentSlot.CHEST,
+                        ModItems.CULTIST_PRAETOR_CHESTPLATE.get());
+                equipCultistArmorSlot(EquipmentSlot.LEGS,
+                        ModItems.CULTIST_PRAETOR_LEGGINGS.get());
+                equipCultistArmorSlot(EquipmentSlot.FEET,
+                        ModItems.CULTIST_BOOTS.get());
+            }
+            default -> {
+            }
+        }
+    }
+
+    private void equipCultistArmorSlot(EquipmentSlot slot, Item item) {
+        if (getItemBySlot(slot).isEmpty()) {
+            setItemSlot(slot, new ItemStack(item));
+            // Vanilla's original mob-equipment base chance is 8.5%; Looting
+            // is applied later by LivingEntity's standard equipment drop path.
+            setDropChance(slot, 0.085F);
         }
     }
 
@@ -2271,6 +2324,7 @@ public final class LegacyThaumcraftMob extends Monster
                 spawnData,
                 data
         );
+        equipCrimsonArmor(true);
         if (kind == LegacyMobKind.PECH) {
             PechBehavior.HeldItemRoll roll = PechBehavior.heldItemRoll(
                     getRandom().nextInt(20)
@@ -2540,6 +2594,8 @@ public final class LegacyThaumcraftMob extends Monster
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         equipCrimsonWeapon();
+        // Migrate cultists saved before armor became real server equipment.
+        equipCrimsonArmor(false);
         entityData.set(HARMLESS, tag.getBoolean("WarpHarmless"));
         entityData.set(
                 WARP_VIEWER,

@@ -96,7 +96,7 @@ public final class WarpEvents {
             return;
         }
         if (effect <= 4) {
-            grantPrimalPoints(player, knowledge, 1);
+            grantWhisperPrimalPoints(knowledge);
             message(player, "warp.text.3");
         } else if (effect <= 8) {
             return;
@@ -182,7 +182,7 @@ public final class WarpEvents {
             addEffect(player, ModEffects.UNNATURAL_HUNGER.get(), 6000, amplifier);
             message(player, "warp.text.2");
         } else if (effect <= 84) {
-            grantPrimalPoints(player, knowledge, warp / 10);
+            grantWhisperPrimalPoints(knowledge);
             message(player, "warp.text.3");
         } else if (effect <= 88) {
             return;
@@ -247,6 +247,12 @@ public final class WarpEvents {
                     PRIMALS.get(player.getRandom().nextInt(PRIMALS.size())),
                     1
             );
+        }
+    }
+
+    static void grantWhisperPrimalPoints(PlayerThaumKnowledge knowledge) {
+        for (String primal : PRIMALS) {
+            knowledge.addAspectPoints(primal, 1);
         }
     }
 

@@ -4,9 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Set;
-
 final class VisNetwork {
     private VisNetwork() {
     }
@@ -18,30 +15,26 @@ final class VisNetwork {
         BlockPos origin = child.getBlockPos();
         double nearest = Double.MAX_VALUE;
         BlockPos result = null;
-        for (BlockPos cursor : BlockPos.betweenClosed(
-                origin.offset(-VisNetworkNodeBlockEntity.RANGE,
-                        -VisNetworkNodeBlockEntity.RANGE,
-                        -VisNetworkNodeBlockEntity.RANGE),
-                origin.offset(VisNetworkNodeBlockEntity.RANGE,
-                        VisNetworkNodeBlockEntity.RANGE,
-                        VisNetworkNodeBlockEntity.RANGE))) {
+        for (long position : VisNetworkSpatialIndex.networkCandidates(
+                level, origin)) {
+            BlockPos cursor = BlockPos.of(position);
+            if (!(level.getBlockEntity(cursor)
+                    instanceof VisNetworkNodeBlockEntity candidate)) {
+                continue;
+            }
             if (cursor.equals(origin)
-                    || !(level.getBlockEntity(cursor)
-                    instanceof VisNetworkNodeBlockEntity candidate)
                     || !attunementsMatch(child, candidate)
                     // A candidate whose route already passes through this
                     // child is a descendant, not a valid parent. Without the
                     // pre-seeded visited set two relays periodically select
                     // each other during the 40-tick rebuild, lose the route,
                     // and reconnect on the following rebuild.
-                    || !candidate.hasRouteToSource(
-                    new HashSet<>(Set.of(origin)))) {
+                    || !VisNetworkSpatialIndex.routeAvoids(
+                    level, candidate, origin)) {
                 continue;
             }
             double distance = cursor.distSqr(origin);
-            if (distance > VisNetworkNodeBlockEntity.RANGE
-                    * VisNetworkNodeBlockEntity.RANGE
-                    || distance >= nearest) {
+            if (distance >= nearest) {
                 continue;
             }
             nearest = distance;

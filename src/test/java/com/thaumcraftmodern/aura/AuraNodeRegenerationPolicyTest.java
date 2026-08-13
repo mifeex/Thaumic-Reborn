@@ -9,6 +9,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AuraNodeRegenerationPolicyTest {
+    @Test
+    void everyNodeRunsClassicEmptyAspectDecay() throws Exception {
+        String ticker = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/aura/AuraNodeServerTicker.java"
+        ));
+        String gate = ticker.substring(
+                ticker.indexOf("if (ticks % 1200 == 0"),
+                ticker.indexOf("regenerate(")
+        );
+
+        org.junit.jupiter.api.Assertions.assertTrue(
+                gate.contains("ticks % 1200 == 0")
+        );
+        org.junit.jupiter.api.Assertions.assertTrue(
+                gate.contains("decayEmptyAspects(level, position, node)")
+        );
+        org.junit.jupiter.api.Assertions.assertFalse(
+                gate.contains("AuraNodeModifier.FADING")
+        );
+        org.junit.jupiter.api.Assertions.assertTrue(
+                ticker.contains("ModSounds.CRAFT_FAIL.get()")
+        );
+        org.junit.jupiter.api.Assertions.assertTrue(
+                ticker.contains("level.removeBlock(position, false)")
+        );
+    }
     private static final Path ROOT = Path.of("").toAbsolutePath();
 
     @Test

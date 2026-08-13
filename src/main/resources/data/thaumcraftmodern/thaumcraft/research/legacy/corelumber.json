@@ -24,9 +24,23 @@
       "body": "tc.research_page.CORELUMBER.1"
     },
     {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumcraftmodern:core_lumber"
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:core_lumber",
+      "output": "thaumcraftmodern:lumber_golem_core",
+      "central": "thaumcraftmodern:harvest_golem_core",
+      "components": [
+        { "item": "thaumcraftmodern:axe_of_the_stream" },
+        { "item": "minecraft:iron_axe" },
+        { "item": "minecraft:iron_axe" },
+        { "item": "minecraft:iron_axe" }
+      ],
+      "aspect_costs": [
+        { "id": "instrumentum", "amount": 16 },
+        { "id": "arbor", "amount": 16 },
+        { "id": "meto", "amount": 16 }
+      ],
+      "instability": "moderate"
     }
   ],
   "purchase_cost": [

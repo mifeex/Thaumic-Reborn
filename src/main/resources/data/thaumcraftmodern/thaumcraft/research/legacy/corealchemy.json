@@ -24,9 +24,23 @@
       "body": "tc.research_page.COREALCHEMY.1"
     },
     {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumcraftmodern:core_alchemy"
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:core_alchemy",
+      "output": "thaumcraftmodern:alchemy_golem_core",
+      "central": "thaumcraftmodern:liquid_golem_core",
+      "components": [
+        { "item": "thaumcraftmodern:warded_jar" },
+        { "item": "minecraft:potion" },
+        { "item": "minecraft:potion" },
+        { "item": "minecraft:potion" }
+      ],
+      "aspect_costs": [
+        { "id": "praecantatio", "amount": 15 },
+        { "id": "aqua", "amount": 15 },
+        { "id": "motus", "amount": 15 }
+      ],
+      "instability": "moderate"
     },
     {
       "type": "text",

@@ -113,11 +113,12 @@ public final class InfernalFurnaceBakedModel implements BakedModel {
     }
 
     private static void addNozzle(List<BakedQuad> quads, Direction outward) {
-        // Exact three-layer nozzle from BlockArcaneFurnaceRenderer: brick
-        // opening, unshaded fire, then the outer iron trim.
-        addNozzleFace(quads, outward, 12, 13, sprite(13), true);
-        addNozzleFace(quads, outward, 13, 14,
+        // Keep the animated fire recessed behind both the brick opening and
+        // the outer iron grate. A distinct depth prevents the face-like fire
+        // frame from winning the depth test over the grate at close range.
+        addNozzleFace(quads, outward, 11, 12,
                 sprite(new ResourceLocation("minecraft", "block/fire_0")), false);
+        addNozzleFace(quads, outward, 12, 13, sprite(13), true);
         addNozzleFace(quads, outward, 14, 15, sprite(15), true);
     }
 

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 final class TravelingTrunkPresentationFidelityTest {
     @Test
@@ -26,7 +27,7 @@ final class TravelingTrunkPresentationFidelityTest {
     }
 
     @Test
-    void woodenBodyAndLidHaveMovementDamageDeathAndContainerSounds()
+    void woodenBodyAndLidHaveDamageDeathAndContainerSoundsOnly()
             throws Exception {
         String entity = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/entity/"
@@ -35,7 +36,7 @@ final class TravelingTrunkPresentationFidelityTest {
         assertTrue(entity.contains("SoundEvents.WOOD_STEP"));
         assertTrue(entity.contains("SoundEvents.WOOD_HIT"));
         assertTrue(entity.contains("SoundEvents.WOOD_BREAK"));
-        assertTrue(entity.contains("SoundEvents.CHEST_CLOSE, .1F"));
+        assertFalse(entity.contains("SoundEvents.CHEST_CLOSE, .1F"));
         assertTrue(entity.contains(".9F + random.nextFloat() * .1F"));
         assertTrue(entity.contains(
                 "open ? SoundEvents.CHEST_OPEN : SoundEvents.CHEST_CLOSE"

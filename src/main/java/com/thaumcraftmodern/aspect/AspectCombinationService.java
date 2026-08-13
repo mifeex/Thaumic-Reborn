@@ -27,12 +27,18 @@ public final class AspectCombinationService {
             return new Result(Status.ASPECT_NOT_KNOWN, "", false);
         }
 
-        AspectDefinition result = catalog.compositionResult(firstAspectId, secondAspectId).orElse(null);
+        if (!knowledge.tryConsumeAspects(firstAspectId, secondAspectId)) {
+            return new Result(Status.NOT_ENOUGH_POINTS, "", false);
+        }
+
+        // TC4 consumes both selected research points for every affordable
+        // attempt, including pairs that do not form a compound aspect.
+        AspectDefinition result = catalog.compositionResult(
+                firstAspectId,
+                secondAspectId
+        ).orElse(null);
         if (result == null) {
             return new Result(Status.NO_COMBINATION, "", false);
-        }
-        if (!knowledge.tryConsumeAspects(firstAspectId, secondAspectId)) {
-            return new Result(Status.NOT_ENOUGH_POINTS, result.id(), false);
         }
 
         boolean newlyDiscovered = !knowledge.knowsAspect(result.id());

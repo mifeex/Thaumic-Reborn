@@ -24,9 +24,23 @@
       "body": "tc.research_page.COREFISHING.1"
     },
     {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumcraftmodern:core_fishing"
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:core_fishing",
+      "output": "thaumcraftmodern:fishing_golem_core",
+      "central": "thaumcraftmodern:harvest_golem_core",
+      "components": [
+        { "item": "minecraft:fishing_rod" },
+        { "item": "minecraft:cod" },
+        { "item": "minecraft:pufferfish" },
+        { "item": "minecraft:salmon" }
+      ],
+      "aspect_costs": [
+        { "id": "aqua", "amount": 16 },
+        { "id": "meto", "amount": 16 },
+        { "id": "bestia", "amount": 16 }
+      ],
+      "instability": "high"
     },
     {
       "type": "unavailable",

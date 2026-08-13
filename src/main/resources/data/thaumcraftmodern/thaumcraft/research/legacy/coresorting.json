@@ -25,9 +25,24 @@
       "body": "tc.research_page.CORESORTING.1"
     },
     {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumcraftmodern:core_sorting"
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumcraftmodern:core_sorting",
+      "output": "thaumcraftmodern:sorting_golem_core",
+      "central": "thaumcraftmodern:zombie_brain",
+      "components": [
+        { "item": "thaumcraftmodern:fill_golem_core" },
+        { "item": "minecraft:comparator" },
+        { "item": "thaumcraftmodern:empty_golem_core" },
+        { "item": "minecraft:paper" }
+      ],
+      "aspect_costs": [
+        { "id": "vacuos", "amount": 16 },
+        { "id": "permutatio", "amount": 16 },
+        { "id": "fames", "amount": 16 },
+        { "id": "lucrum", "amount": 16 }
+      ],
+      "instability": "high"
     }
   ],
   "purchase_cost": [

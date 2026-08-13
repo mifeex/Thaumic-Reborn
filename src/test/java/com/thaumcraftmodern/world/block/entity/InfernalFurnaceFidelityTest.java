@@ -66,6 +66,11 @@ final class InfernalFurnaceFidelityTest {
         String client = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/WorldContentClientEvents.java"));
         assertTrue(model.contains("\"minecraft\", \"block/lava_still\""));
+        int fire = model.indexOf("addNozzleFace(quads, outward, 11, 12");
+        int opening = model.indexOf("addNozzleFace(quads, outward, 12, 13");
+        int grate = model.indexOf("addNozzleFace(quads, outward, 14, 15");
+        assertTrue(fire >= 0 && fire < opening && opening < grate,
+                "the animated face must remain recessed behind the iron grate");
         assertTrue(model.contains("sprite(13), true"));
         assertTrue(model.contains("block/fire_0\")), false"));
         assertTrue(model.contains("sprite(15), true"));

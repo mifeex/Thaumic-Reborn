@@ -56,7 +56,10 @@ final class GolemCoreAndUpgradeFidelityTest {
             assertEquals("thaumcraftmodern:" + core.id() + "_golem_core", research.get("icon").getAsString());
             assertTrue(research.getAsJsonArray("pages").asList().stream()
                     .map(element -> element.getAsJsonObject())
-                    .anyMatch(page -> "recipe".equals(page.get("type").getAsString())), researchId);
+                    .anyMatch(page -> {
+                        String type = page.get("type").getAsString();
+                        return "recipe".equals(type) || "infusion".equals(type);
+                    }), researchId);
         }
     }
 

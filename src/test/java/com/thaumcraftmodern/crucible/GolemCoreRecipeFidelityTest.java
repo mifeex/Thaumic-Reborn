@@ -42,6 +42,29 @@ class GolemCoreRecipeFidelityTest {
         }
     }
 
+    @Test void advancedCoreResearchPagesUseTheirInfusionRecipes()
+            throws Exception {
+        Path research = Path.of(
+                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy");
+        for (String id : new String[]{"coreuse", "corealchemy", "corelumber",
+                "coresorting", "corefishing"}) {
+            JsonObject json = JsonParser.parseString(Files.readString(
+                    research.resolve(id + ".json"))).getAsJsonObject();
+            boolean hasInfusionPage = false;
+            for (var rawPage : json.getAsJsonArray("pages")) {
+                JsonObject page = rawPage.getAsJsonObject();
+                if ("infusion".equals(page.get("type").getAsString())) {
+                    hasInfusionPage = true;
+                    assertTrue(page.has("output"), id);
+                    assertTrue(page.has("central"), id);
+                    assertTrue(!page.getAsJsonArray("components").isEmpty(), id);
+                    assertTrue(!page.getAsJsonArray("aspect_costs").isEmpty(), id);
+                }
+            }
+            assertTrue(hasInfusionPage, id);
+        }
+    }
+
     private static void assertRecipe(String id, String catalyst, String output,
             Map<String, Integer> aspects) throws Exception {
         JsonObject json = JsonParser.parseString(

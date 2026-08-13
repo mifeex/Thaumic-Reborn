@@ -43,9 +43,11 @@ class AspectCombinationServiceTest {
     }
 
     @Test
-    void invalidPairOrEmptyPoolDoesNotCreateFreeKnowledge() {
+    void invalidAffordablePairConsumesBothInputsWithoutCreatingKnowledge() {
         PlayerThaumKnowledge knowledge = new PlayerThaumKnowledge();
         AspectCatalog catalog = AspectFixtures.firstDiscoveryCatalog();
+        int aerBefore = knowledge.aspectAmount("aer");
+        int ordoBefore = knowledge.aspectAmount("ordo");
 
         AspectCombinationService.Result invalid = AspectCombinationService.combine(
                 catalog,
@@ -54,6 +56,14 @@ class AspectCombinationServiceTest {
                 "ordo"
         );
         assertEquals(AspectCombinationService.Status.NO_COMBINATION, invalid.status());
+        assertEquals(aerBefore - 1, knowledge.aspectAmount("aer"));
+        assertEquals(ordoBefore - 1, knowledge.aspectAmount("ordo"));
+    }
+
+    @Test
+    void emptyPoolDoesNotConsumeOrCreateKnowledge() {
+        PlayerThaumKnowledge knowledge = new PlayerThaumKnowledge();
+        AspectCatalog catalog = AspectFixtures.firstDiscoveryCatalog();
 
         for (int index = 0; index < PlayerThaumKnowledge.STARTING_PRIMAL_AMOUNT; index++) {
             assertTrue(AspectCombinationService.combine(catalog, knowledge, "aer", "ignis").combined());

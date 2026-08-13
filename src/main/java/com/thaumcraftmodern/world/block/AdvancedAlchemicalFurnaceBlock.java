@@ -31,6 +31,8 @@ import org.jetbrains.annotations.Nullable;
 
 /** The invisible 3x2x3 shell rendered and operated as TC4's advanced furnace. */
 public final class AdvancedAlchemicalFurnaceBlock extends BaseEntityBlock {
+    /** TC4 used 50; a longer interval keeps the boiling cue from dominating. */
+    public static final int AMBIENT_POP_CHANCE = 200;
     public static final int CENTER = 0;
     public static final int LOWER_NOZZLE = 1;
     public static final int UPPER_CORNER = 2;
@@ -83,7 +85,8 @@ public final class AdvancedAlchemicalFurnaceBlock extends BaseEntityBlock {
         level.addParticle(ModParticles.CRUCIBLE_BUBBLE.get(),
                 pos.getX() + random.nextFloat(), pos.getY() + 1.0,
                 pos.getZ() + random.nextFloat(), red, 0, blue);
-        if (random.nextInt(50) == 0) level.playLocalSound(pos.getX() + random.nextFloat(),
+        if (random.nextInt(AMBIENT_POP_CHANCE) == 0)
+            level.playLocalSound(pos.getX() + random.nextFloat(),
                 pos.getY() + 1.0, pos.getZ() + random.nextFloat(), SoundEvents.LAVA_POP,
                 SoundSource.BLOCKS, 0.1F + random.nextFloat() * 0.1F,
                 0.9F + random.nextFloat() * 0.15F, false);

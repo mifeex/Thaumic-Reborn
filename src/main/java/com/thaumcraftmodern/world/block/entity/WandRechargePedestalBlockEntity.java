@@ -1,6 +1,7 @@
 package com.thaumcraftmodern.world.block.entity;
 
 import com.thaumcraftmodern.aura.AuraNodeBlockEntity;
+import com.thaumcraftmodern.aura.AuraNodeSpatialIndex;
 import com.thaumcraftmodern.aura.AuraNodeState;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.aspect.AspectCatalog;
@@ -59,7 +60,8 @@ public final class WandRechargePedestalBlockEntity extends BlockEntity
             WandRechargePedestalBlockEntity pedestal) {
         if (!(rawLevel instanceof ServerLevel level)) return;
         pedestal.counter++;
-        if (pedestal.nodes.isEmpty() || pedestal.counter % RESCAN_INTERVAL == 0) {
+        if (pedestal.counter == 1
+                || pedestal.counter % RESCAN_INTERVAL == 0) {
             pedestal.findNodes(level);
         }
         if (pedestal.counter % TRANSFER_INTERVAL == 0 && !pedestal.item().isEmpty()) {
@@ -231,17 +233,11 @@ public final class WandRechargePedestalBlockEntity extends BlockEntity
 
     private void findNodes(ServerLevel level) {
         nodes.clear();
-        for (int x = -RANGE; x <= RANGE; x++) {
-            for (int y = -RANGE; y <= RANGE; y++) {
-                for (int z = -RANGE; z <= RANGE; z++) {
-                    BlockPos check = worldPosition.offset(x, y, z);
-                    if (level.isLoaded(check)
-                            && level.getBlockEntity(check) instanceof AuraNodeBlockEntity) {
-                        nodes.add(check.immutable());
-                    }
-                }
-            }
-        }
+        nodes.addAll(AuraNodeSpatialIndex.withinCube(
+                level,
+                worldPosition,
+                RANGE
+        ));
     }
 
     private void setDrain(ServerLevel level, BlockPos position, String aspectId, int color) {

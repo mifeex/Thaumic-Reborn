@@ -49,16 +49,8 @@ public final class HungryChestBlockEntity extends RandomizableContainerBlockEnti
         }
         chest.previousLid = chest.lid;
         boolean shouldOpen = chest.openers > 0;
-        float old = chest.lid;
         chest.lid = net.minecraft.util.Mth.clamp(
                 chest.lid + (shouldOpen ? NORMAL_LID_SPEED : -NORMAL_LID_SPEED), 0, 1);
-        if (old == 0 && chest.lid > 0) {
-            level.playSound(null, pos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, .5F,
-                    level.random.nextFloat() * .1F + .9F);
-        } else if (old >= .5F && chest.lid < .5F) {
-            level.playSound(null, pos, SoundEvents.CHEST_CLOSE, SoundSource.BLOCKS, .5F,
-                    level.random.nextFloat() * .1F + .9F);
-        }
     }
 
     public boolean startEating(ItemEntity item) {
@@ -155,8 +147,36 @@ public final class HungryChestBlockEntity extends RandomizableContainerBlockEnti
         }
         return super.triggerEvent(id, value);
     }
-    @Override public void startOpen(Player player) { if (!player.isSpectator()) { openers++; syncOpeners(); } }
-    @Override public void stopOpen(Player player) { if (!player.isSpectator()) { openers = Math.max(0, openers - 1); syncOpeners(); } }
+    @Override
+    public void startOpen(Player player) {
+        if (player.isSpectator()) return;
+        int previous = openers++;
+        if (previous == 0) playChestSound(SoundEvents.CHEST_OPEN);
+        syncOpeners();
+    }
+
+    @Override
+    public void stopOpen(Player player) {
+        if (player.isSpectator()) return;
+        int previous = openers;
+        openers = Math.max(0, openers - 1);
+        if (previous > 0 && openers == 0) {
+            playChestSound(SoundEvents.CHEST_CLOSE);
+        }
+        syncOpeners();
+    }
+
+    private void playChestSound(net.minecraft.sounds.SoundEvent sound) {
+        if (level == null || level.isClientSide) return;
+        level.playSound(
+                null,
+                worldPosition,
+                sound,
+                SoundSource.BLOCKS,
+                0.5F,
+                level.random.nextFloat() * 0.1F + 0.9F
+        );
+    }
     private void syncOpeners() { if (level != null) level.blockEvent(worldPosition, getBlockState().getBlock(), 1, openers); }
     @Override protected Component getDefaultName() { return Component.translatable("container.thaumcraftmodern.hungry_chest"); }
     @Override protected AbstractContainerMenu createMenu(int id, Inventory inventory) { return ChestMenu.threeRows(id, inventory, this); }

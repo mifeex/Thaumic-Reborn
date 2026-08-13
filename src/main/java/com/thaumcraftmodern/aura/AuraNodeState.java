@@ -168,6 +168,23 @@ public final class AuraNodeState {
         return true;
     }
 
+    /** Atomically removes up to {@code maximum} units of one primal aspect. */
+    public synchronized int drain(PrimalAspect aspect, int maximum) {
+        Objects.requireNonNull(aspect, "aspect");
+        if (maximum <= 0) {
+            return 0;
+        }
+        String aspectId = aspect.id();
+        int available = current.getOrDefault(aspectId, 0);
+        int consumed = Math.min(maximum, available);
+        if (consumed <= 0) {
+            return 0;
+        }
+        current.put(aspectId, available - consumed);
+        revision = Math.addExact(revision, 1L);
+        return consumed;
+    }
+
     /**
      * Server tick mutation used by regeneration and node-to-node discharge.
      * It atomically replaces every aspect pool, including compound aspects.

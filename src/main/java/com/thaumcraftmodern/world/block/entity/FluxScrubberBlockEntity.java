@@ -15,15 +15,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public final class FluxScrubberBlockEntity extends BlockEntity implements EssentiaTransport {
     public static final int RANGE = 16;
     private int essentia, charges, power;
     private Direction facing = Direction.DOWN;
-    private final List<BlockPos> checklist = new ArrayList<>();
+    private long[] checklist = new long[0];
+    private int checklistCursor;
     public FluxScrubberBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FLUX_SCRUBBER.get(), pos, state);
     }
@@ -39,13 +36,13 @@ public final class FluxScrubberBlockEntity extends BlockEntity implements Essent
         if (scrubber.power >= 5) scrubber.checkFlux(level);
     }
     private void checkFlux(ServerLevel level) {
-        if (checklist.isEmpty()) {
-            for (int x=-RANGE;x<=RANGE;x++) for(int y=-RANGE;y<=RANGE;y++) for(int z=-RANGE;z<=RANGE;z++)
-                checklist.add(worldPosition.offset(x,y,z));
-            Collections.shuffle(checklist);
+        if (checklistCursor >= checklist.length) {
+            rebuildChecklist(level);
         }
-        for (int checked=0; checked<16 && !checklist.isEmpty(); checked++) {
-            BlockPos target = checklist.remove(0);
+        for (int checked = 0;
+                checked < 16 && checklistCursor < checklist.length;
+                checked++) {
+            BlockPos target = BlockPos.of(checklist[checklistCursor++]);
             if (target.distSqr(worldPosition) >= RANGE * RANGE) continue;
             BlockState flux = level.getBlockState(target);
             if (!flux.is(ModBlocks.FLUX_GOO.get())) continue;
@@ -56,6 +53,30 @@ public final class FluxScrubberBlockEntity extends BlockEntity implements Essent
             charges++;
             setChanged();
             return;
+        }
+    }
+
+    private void rebuildChecklist(ServerLevel level) {
+        int diameter = RANGE * 2 + 1;
+        checklist = new long[diameter * diameter * diameter];
+        checklistCursor = 0;
+        int index = 0;
+        for (int x = -RANGE; x <= RANGE; x++) {
+            for (int y = -RANGE; y <= RANGE; y++) {
+                for (int z = -RANGE; z <= RANGE; z++) {
+                    checklist[index++] = BlockPos.asLong(
+                            worldPosition.getX() + x,
+                            worldPosition.getY() + y,
+                            worldPosition.getZ() + z
+                    );
+                }
+            }
+        }
+        for (int current = checklist.length - 1; current > 0; current--) {
+            int swapIndex = level.random.nextInt(current + 1);
+            long swap = checklist[current];
+            checklist[current] = checklist[swapIndex];
+            checklist[swapIndex] = swap;
         }
     }
     public int charges() { return charges; }

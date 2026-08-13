@@ -1223,7 +1223,13 @@ public final class ThaumonomiconScreen extends Screen {
         refreshSelectedCategoryView();
         navigation.refresh(ResearchRegistry::find);
         if (navigation.research() == null) {
-            centerSelectedCategory();
+            /*
+             * Knowledge syncs arrive while this screen is open after actions
+             * such as purchasing secondary research. Keep the player's
+             * current viewport instead of snapping the refreshed tree back to
+             * its center; only constrain it if the visible bounds changed.
+             */
+            clampTreePan();
         }
         updateOrigin();
     }
