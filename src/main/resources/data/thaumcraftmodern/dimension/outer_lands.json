@@ -1,0 +1,10 @@
+{
+  "type": "thaumcraftmodern:outer_lands",
+  "generator": {
+    "type": "thaumcraftmodern:outer_lands",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "thaumcraftmodern:eldritch"
+    }
+  }
+}

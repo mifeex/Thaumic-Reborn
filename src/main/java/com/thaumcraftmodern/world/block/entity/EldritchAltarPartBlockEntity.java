@@ -8,6 +8,7 @@ import com.thaumcraftmodern.registry.ModEntities;
 import com.thaumcraftmodern.registry.ModParticles;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -19,6 +20,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Block;
+import com.thaumcraftmodern.registry.ModBlocks;
+import com.thaumcraftmodern.registry.ModSounds;
+import org.jetbrains.annotations.Nullable;
 
 public final class EldritchAltarPartBlockEntity extends BlockEntity {
     private static final double CAP_RENDER_MARGIN = 0.25D;
@@ -26,6 +36,7 @@ public final class EldritchAltarPartBlockEntity extends BlockEntity {
     private static final double OBELISK_RENDER_HEIGHT = 4.25D;
     private int spawnCounter;
     private int obeliskEffectCounter;
+    private int insertedEyes;
 
     public EldritchAltarPartBlockEntity(
             BlockPos position,
@@ -132,6 +143,92 @@ public final class EldritchAltarPartBlockEntity extends BlockEntity {
                     targetY - sourceY,
                     targetZ - sourceZ
             );
+        }
+    }
+
+    public boolean insertEye(ServerLevel level) {
+        if (getBlockState().getValue(EldritchAltarPartBlock.PART) != 0
+                || insertedEyes >= 4) {
+            return false;
+        }
+        insertedEyes++;
+        setChanged();
+        level.sendBlockUpdated(
+                worldPosition,
+                getBlockState(),
+                getBlockState(),
+                Block.UPDATE_CLIENTS
+        );
+        level.playSound(
+                null,
+                worldPosition,
+                ModSounds.CRYSTAL.get(),
+                SoundSource.BLOCKS,
+                0.65F,
+                0.85F + insertedEyes * 0.08F
+        );
+        level.sendParticles(
+                ParticleTypes.PORTAL,
+                worldPosition.getX() + 0.5D,
+                worldPosition.getY() + 1.1D,
+                worldPosition.getZ() + 0.5D,
+                12 + insertedEyes * 4,
+                0.45D,
+                0.35D,
+                0.45D,
+                0.1D
+        );
+        if (insertedEyes == 4) {
+            level.setBlock(
+                    worldPosition.above(),
+                    ModBlocks.OUTER_LANDS_PORTAL.get().defaultBlockState(),
+                    3
+            );
+            level.playSound(
+                    null,
+                    worldPosition,
+                    net.minecraft.sounds.SoundEvents.END_PORTAL_SPAWN,
+                    SoundSource.BLOCKS,
+                    1.0F,
+                    0.7F
+            );
+        }
+        return true;
+    }
+
+    public int insertedEyes() {
+        return insertedEyes;
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putInt("InsertedEyes", insertedEyes);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        insertedEyes = Mth.clamp(tag.getInt("InsertedEyes"), 0, 4);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(
+            Connection connection,
+            ClientboundBlockEntityDataPacket packet
+    ) {
+        if (packet.getTag() != null) {
+            load(packet.getTag());
         }
     }
 

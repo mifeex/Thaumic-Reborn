@@ -4,15 +4,19 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
+import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
 import com.thaumcraftmodern.world.block.entity.EldritchAltarPartBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
@@ -33,12 +37,15 @@ public final class EldritchAltarPartRenderer
     private static final ResourceLocation FIELD_BACKING =
             texture("textures/misc/particlefield32.png");
     private static final int FULL_BRIGHT = 0x00F000F0;
+    private static final float EYE_VERTICAL_OFFSET = 0.2F + 5.0F / 16.0F;
     private static final LegacyEldritchCapModel CAP_MODEL =
             new LegacyEldritchCapModel();
+    private final ItemRenderer items;
 
     public EldritchAltarPartRenderer(
             BlockEntityRendererProvider.Context context
     ) {
+        items = context.getItemRenderer();
     }
 
     @Override
@@ -55,6 +62,13 @@ public final class EldritchAltarPartRenderer
         );
         if (part == 0) {
             renderCap(poseStack, buffers, ALTAR_CAP, packedLight, -90.0F);
+            renderAltarEyes(
+                    blockEntity,
+                    poseStack,
+                    buffers,
+                    packedLight,
+                    packedOverlay
+            );
         } else if (part == 1) {
             renderObelisk(
                     blockEntity,
@@ -66,6 +80,42 @@ public final class EldritchAltarPartRenderer
         } else if (part == 4) {
             renderCap(poseStack, buffers, CAP, packedLight, -90.0F);
         }
+    }
+
+    /** Exact four-side placement from TC4's TileEldritchCapRenderer. */
+    private void renderAltarEyes(
+            EldritchAltarPartBlockEntity altar,
+            PoseStack poseStack,
+            MultiBufferSource buffers,
+            int packedLight,
+            int packedOverlay
+    ) {
+        int eyeCount = Mth.clamp(altar.insertedEyes(), 0, 4);
+        if (eyeCount == 0) {
+            return;
+        }
+        ItemStack eye = new ItemStack(ModItems.ELDRITCH_EYE.get());
+        poseStack.pushPose();
+        poseStack.translate(0.5D, 0.0D, 0.5D);
+        for (int side = 0; side < eyeCount; side++) {
+            poseStack.pushPose();
+            poseStack.mulPose(Axis.YP.rotationDegrees(side * 90.0F));
+            poseStack.translate(0.46D, EYE_VERTICAL_OFFSET, 0.0D);
+            poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
+            poseStack.mulPose(Axis.XN.rotationDegrees(18.0F));
+            items.renderStatic(
+                    eye,
+                    ItemDisplayContext.GROUND,
+                    packedLight,
+                    packedOverlay,
+                    poseStack,
+                    buffers,
+                    altar.getLevel(),
+                    side
+            );
+            poseStack.popPose();
+        }
+        poseStack.popPose();
     }
 
     private static void renderCap(

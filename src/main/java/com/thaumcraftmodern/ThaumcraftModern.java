@@ -7,6 +7,7 @@ import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModBiomeSources;
+import com.thaumcraftmodern.registry.ModChunkGenerators;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModCreativeTabs;
 import com.thaumcraftmodern.registry.ModFeatures;
@@ -58,6 +59,7 @@ public final class ThaumcraftModern {
         ModBlocks.register(modBus);
         ModFluids.register(modBus);
         ModBiomeSources.register(modBus);
+        ModChunkGenerators.register(modBus);
         ModFeatures.register(modBus);
         ModStructures.register(modBus);
         ModEffects.register(modBus);

@@ -180,7 +180,9 @@ public class AuraNodeBlock extends BaseEntityBlock
             BlockState newState,
             boolean movedByPiston
     ) {
-        if (!level.isClientSide && !state.is(newState.getBlock())) {
+        if (!level.isClientSide
+                && !state.is(newState.getBlock())
+                && !newState.is(ModBlocks.OUTER_LANDS_PORTAL.get())) {
             EldritchAltarPartBlock.destroyFromAuraNode(level, position);
         }
         super.onRemove(state, level, position, newState, movedByPiston);

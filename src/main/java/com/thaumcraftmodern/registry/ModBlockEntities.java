@@ -39,6 +39,8 @@ import com.thaumcraftmodern.world.block.entity.EssentiaTubeBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ThaumatoriumBlockEntity;
 import com.thaumcraftmodern.world.block.entity.VoidJarBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EldritchAltarPartBlockEntity;
+import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
+import com.thaumcraftmodern.world.block.entity.OuterLandsPortalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EtherealBloomBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ManaPodBlockEntity;
 import com.thaumcraftmodern.world.block.entity.MnemonicMatrixBlockEntity;
@@ -389,6 +391,22 @@ public final class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             EldritchAltarPartBlockEntity::new,
                             ModBlocks.ELDRITCH_ALTAR_PART.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<BlockEntityType<EldritchLockBlockEntity>>
+            ELDRITCH_LOCK = BLOCK_ENTITIES.register(
+                    "eldritch_lock",
+                    () -> BlockEntityType.Builder.of(
+                            EldritchLockBlockEntity::new,
+                            ModBlocks.ELDRITCH_LOCK.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<BlockEntityType<OuterLandsPortalBlockEntity>>
+            OUTER_LANDS_PORTAL = BLOCK_ENTITIES.register(
+                    "outer_lands_portal",
+                    () -> BlockEntityType.Builder.of(
+                            OuterLandsPortalBlockEntity::new,
+                            ModBlocks.OUTER_LANDS_PORTAL.get()
                     ).build(null)
             );
     public static final RegistryObject<BlockEntityType<EtherealBloomBlockEntity>>

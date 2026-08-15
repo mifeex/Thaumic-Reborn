@@ -2407,5 +2407,12 @@
   "enchantment.special.sapless": "Истощение",
   "item.thaumcraftmodern.traveling_trunk": "Ходячий сундук",
   "entity.thaumcraftmodern.traveling_trunk": "Ходячий сундук",
-  "container.thaumcraftmodern.traveling_trunk": "Ходячий сундук"
+  "container.thaumcraftmodern.traveling_trunk": "Ходячий сундук",
+  "block.thaumcraftmodern.ancient_rock": "Древняя порода",
+  "block.thaumcraftmodern.ancient_stairs": "Ступени из древнего камня",
+  "block.thaumcraftmodern.ancient_slab": "Плита из древнего камня",
+  "block.thaumcraftmodern.ancient_crust": "Древняя корка",
+  "block.thaumcraftmodern.ancient_seal": "Древняя печать",
+  "block.thaumcraftmodern.eldritch_lock": "Древний замок",
+  "dimension.thaumcraftmodern.outer_lands": "Древний мир"
 }

@@ -224,7 +224,7 @@ public final class LegacyThaumcraftMob extends Monster
         super(entityType, level);
         this.kind = Objects.requireNonNull(kind, "kind");
         taintSporeSize = kind == LegacyMobKind.TAINT_SPORE_SWARMER ? 10 : 2;
-        constructBossEvent = kind == LegacyMobKind.ELDRITCH_CONSTRUCT
+        constructBossEvent = isOuterLandsBossKind(kind)
                 ? new ServerBossEvent(
                         getDisplayName(),
                         BossEvent.BossBarColor.PURPLE,
@@ -255,6 +255,13 @@ public final class LegacyThaumcraftMob extends Monster
 
     public LegacyMobKind kind() {
         return kind;
+    }
+
+    private static boolean isOuterLandsBossKind(LegacyMobKind kind) {
+        return kind == LegacyMobKind.ELDRITCH_CONSTRUCT
+                || kind == LegacyMobKind.ELDRITCH_WARDEN
+                || kind == LegacyMobKind.CRIMSON_PRAETOR
+                || kind == LegacyMobKind.GIANT_TAINTACLE;
     }
 
     @Override
@@ -327,6 +334,38 @@ public final class LegacyThaumcraftMob extends Monster
             default -> {
             }
         }
+    }
+
+    /** TC4 EntityInhabitedZombie.onInitialSpawn equipment, unchanged. */
+    private void equipInhabitedZombieArmor() {
+        if (kind != LegacyMobKind.INHABITED_ZOMBIE) {
+            return;
+        }
+        equipInhabitedZombieHelmet();
+        float armorChance = level().getDifficulty()
+                == net.minecraft.world.Difficulty.HARD ? 0.9F : 0.6F;
+        if (getRandom().nextFloat() <= armorChance) {
+            equipCultistArmorSlot(
+                    EquipmentSlot.CHEST,
+                    ModItems.CULTIST_KNIGHT_CHESTPLATE.get()
+            );
+        }
+        if (getRandom().nextFloat() <= armorChance) {
+            equipCultistArmorSlot(
+                    EquipmentSlot.LEGS,
+                    ModItems.CULTIST_KNIGHT_LEGGINGS.get()
+            );
+        }
+    }
+
+    private void equipInhabitedZombieHelmet() {
+        if (kind != LegacyMobKind.INHABITED_ZOMBIE) {
+            return;
+        }
+        equipCultistArmorSlot(
+                EquipmentSlot.HEAD,
+                ModItems.CULTIST_KNIGHT_HELMET.get()
+        );
     }
 
     private void equipCultistArmorSlot(EquipmentSlot slot, Item item) {
@@ -648,7 +687,7 @@ public final class LegacyThaumcraftMob extends Monster
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
-        if (constructBossEvent != null) {
+        if (constructBossEvent != null && shouldDisplayBossBar()) {
             constructBossEvent.addPlayer(player);
         }
     }
@@ -659,6 +698,11 @@ public final class LegacyThaumcraftMob extends Monster
         if (constructBossEvent != null) {
             constructBossEvent.removePlayer(player);
         }
+    }
+
+    private boolean shouldDisplayBossBar() {
+        return kind == LegacyMobKind.ELDRITCH_CONSTRUCT
+                || getPersistentData().getBoolean("OuterLandsBoss");
     }
 
     @Override
@@ -811,6 +855,14 @@ public final class LegacyThaumcraftMob extends Monster
     @Override
     public void aiStep() {
         super.aiStep();
+        if (!level().isClientSide && constructBossEvent != null) {
+            constructBossEvent.setProgress(Mth.clamp(
+                    getHealth() / getMaxHealth(),
+                    0.0F,
+                    1.0F
+            ));
+            constructBossEvent.setName(getDisplayName());
+        }
         tickFuriousZombie();
         tickPech();
         tickFirebatParticles();
@@ -2325,6 +2377,7 @@ public final class LegacyThaumcraftMob extends Monster
                 data
         );
         equipCrimsonArmor(true);
+        equipInhabitedZombieArmor();
         if (kind == LegacyMobKind.PECH) {
             PechBehavior.HeldItemRoll roll = PechBehavior.heldItemRoll(
                     getRandom().nextInt(20)
@@ -2487,13 +2540,12 @@ public final class LegacyThaumcraftMob extends Monster
                 }
             }
         }
-        if (kind == LegacyMobKind.GIANT_TAINTACLE
-                && level().getEntitiesOfClass(
-                        LegacyThaumcraftMob.class,
-                        getBoundingBox().inflate(48.0D, 24.0D, 48.0D),
-                        mob -> mob.kind == LegacyMobKind.GIANT_TAINTACLE
-                ).size() <= 1) {
-            spawnAtLocation(new ItemStack(ModItems.PRIMORDIAL_PEARL.get()), 1.5F);
+        if (kind == LegacyMobKind.CRIMSON_PRAETOR
+                && getPersistentData().getBoolean("OuterLandsPearlReward")) {
+            spawnAtLocation(
+                    new ItemStack(ModItems.PRIMORDIAL_PEARL.get()),
+                    1.5F
+            );
         }
     }
 
@@ -2596,6 +2648,8 @@ public final class LegacyThaumcraftMob extends Monster
         equipCrimsonWeapon();
         // Migrate cultists saved before armor became real server equipment.
         equipCrimsonArmor(false);
+        // Migrate inhabited zombies saved before their guaranteed TC4 helm.
+        equipInhabitedZombieHelmet();
         entityData.set(HARMLESS, tag.getBoolean("WarpHarmless"));
         entityData.set(
                 WARP_VIEWER,

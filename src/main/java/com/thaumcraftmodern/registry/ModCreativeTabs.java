@@ -374,6 +374,10 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.OBSIDIAN_TOTEM.get());
                         output.accept(ModItems.OBSIDIAN_TILE.get());
                         output.accept(ModItems.ANCIENT_STONE.get());
+                        output.accept(ModItems.ANCIENT_ROCK.get());
+                        output.accept(ModItems.ANCIENT_STAIRS.get());
+                        output.accept(ModItems.ANCIENT_SLAB.get());
+                        output.accept(ModItems.ANCIENT_CRUST.get());
                         for (var spawnEgg : ModItems.SPAWN_EGGS.values()) {
                             output.accept(spawnEgg.get());
                         }

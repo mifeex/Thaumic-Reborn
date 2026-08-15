@@ -31,6 +31,8 @@ import com.thaumcraftmodern.client.render.DeconstructionTableModel;
 import com.thaumcraftmodern.client.render.ResearchTableModel;
 import com.thaumcraftmodern.client.render.ReloadSafeObjLoader;
 import com.thaumcraftmodern.client.render.EldritchAltarPartRenderer;
+import com.thaumcraftmodern.client.render.OuterLandsPortalRenderer;
+import com.thaumcraftmodern.client.render.EldritchLockRenderer;
 import com.thaumcraftmodern.client.render.EtherealBloomBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EssentiaJarBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EssentiaBufferBlockEntityRenderer;
@@ -101,6 +103,7 @@ import com.thaumcraftmodern.crystal.CrystalClusterVariant;
 import java.util.concurrent.ThreadLocalRandom;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import com.thaumcraftmodern.client.render.InfernalFurnaceBakedModel;
 import com.thaumcraftmodern.client.render.LegacyObjMesh;
@@ -111,6 +114,19 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class ClientModEvents {
     private ClientModEvents() {
+    }
+
+    @SubscribeEvent
+    public static void registerDimensionEffects(
+            RegisterDimensionSpecialEffectsEvent event
+    ) {
+        event.register(
+                new ResourceLocation(
+                        ThaumcraftModern.MOD_ID,
+                        "outer_lands"
+                ),
+                new OuterLandsDimensionEffects()
+        );
     }
 
     @SubscribeEvent
@@ -442,6 +458,14 @@ public final class ClientModEvents {
         event.registerBlockEntityRenderer(
                 ModBlockEntities.ELDRITCH_ALTAR_PART.get(),
                 EldritchAltarPartRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.OUTER_LANDS_PORTAL.get(),
+                OuterLandsPortalRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.ELDRITCH_LOCK.get(),
+                EldritchLockRenderer::new
         );
         event.registerBlockEntityRenderer(
                 ModBlockEntities.ETHEREAL_BLOOM.get(),

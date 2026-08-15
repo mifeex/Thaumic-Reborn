@@ -32,6 +32,11 @@ import com.thaumcraftmodern.world.block.ClassicCrystalSoundType;
 import com.thaumcraftmodern.world.block.ClassicJarSoundType;
 import com.thaumcraftmodern.world.block.DeconstructionTableBlock;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
+import com.thaumcraftmodern.world.block.EldritchLockBlock;
+import com.thaumcraftmodern.world.block.EldritchBarrierBlock;
+import com.thaumcraftmodern.world.block.EldritchNothingBlock;
+import com.thaumcraftmodern.world.block.OuterLandsPortalBlock;
+import com.thaumcraftmodern.world.block.AncientStoneBlock;
 import com.thaumcraftmodern.world.block.EtherealBloomBlock;
 import com.thaumcraftmodern.world.block.EssentiaJarBlock;
 import com.thaumcraftmodern.world.block.EssentiaBufferBlock;
@@ -878,9 +883,94 @@ public final class ModBlocks {
             );
     public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register(
             "ancient_stone",
-            () -> new Block(
+            () -> new AncientStoneBlock(
                     BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS)
                             .strength(4.0F, 40.0F)
+                            .lightLevel(state -> state.getValue(
+                                    AncientStoneBlock.VARIANT
+                            ) == 3 ? 11 : 0)
+            )
+    );
+    public static final RegistryObject<Block> ANCIENT_ROCK = BLOCKS.register(
+            "ancient_rock",
+            () -> new AncientStoneBlock(
+                    BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS)
+                            .strength(4.0F, 40.0F)
+            )
+    );
+    public static final RegistryObject<Block> ANCIENT_STAIRS = BLOCKS.register(
+            "ancient_stairs",
+            () -> new StairBlock(
+                    ANCIENT_STONE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICK_STAIRS)
+                            .strength(4.0F, 40.0F)
+            )
+    );
+    public static final RegistryObject<Block> ANCIENT_SLAB = BLOCKS.register(
+            "ancient_slab",
+            () -> new SlabBlock(
+                    BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICK_SLAB)
+                            .strength(4.0F, 40.0F)
+            )
+    );
+    public static final RegistryObject<Block> ANCIENT_CRUST = BLOCKS.register(
+            "ancient_crust",
+            () -> new Block(
+                    BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS)
+                            .strength(3.0F, 20.0F)
+            )
+    );
+    public static final RegistryObject<Block> ANCIENT_SEAL = BLOCKS.register(
+            "ancient_seal",
+            () -> new Block(
+                    BlockBehaviour.Properties.copy(Blocks.BEDROCK)
+                            .noLootTable()
+            )
+    );
+    public static final RegistryObject<Block> ELDRITCH_NOTHING = BLOCKS.register(
+            "eldritch_nothing",
+            () -> new EldritchNothingBlock(
+                    BlockBehaviour.Properties.of()
+                            .noCollission()
+                            .noOcclusion()
+                            .noLootTable()
+                            .replaceable()
+            )
+    );
+    public static final RegistryObject<Block> ELDRITCH_DOOR = BLOCKS.register(
+            "eldritch_door",
+            () -> new Block(
+                    BlockBehaviour.Properties.copy(Blocks.BEDROCK)
+                            .noLootTable()
+                            .lightLevel(state -> 12)
+            )
+    );
+    public static final RegistryObject<Block> ELDRITCH_BARRIER = BLOCKS.register(
+            "eldritch_barrier",
+            () -> new EldritchBarrierBlock(
+                    BlockBehaviour.Properties.copy(Blocks.BEDROCK)
+                            .noLootTable()
+                            .noOcclusion()
+            )
+    );
+    public static final RegistryObject<Block> ELDRITCH_LOCK = BLOCKS.register(
+            "eldritch_lock",
+            () -> new EldritchLockBlock(
+                    BlockBehaviour.Properties.copy(Blocks.BEDROCK)
+                            .noLootTable()
+                            .lightLevel(state -> 7)
+                            .noOcclusion()
+            )
+    );
+    public static final RegistryObject<Block> OUTER_LANDS_PORTAL = BLOCKS.register(
+            "outer_lands_portal",
+            () -> new OuterLandsPortalBlock(
+                    BlockBehaviour.Properties.of()
+                            .strength(-1.0F, 3600000.0F)
+                            .noCollission()
+                            .noOcclusion()
+                            .lightLevel(state -> 11)
+                            .noLootTable()
             )
     );
 

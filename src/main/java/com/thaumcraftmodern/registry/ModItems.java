@@ -47,6 +47,7 @@ import com.thaumcraftmodern.item.ElementalShovelItem;
 import com.thaumcraftmodern.item.ElementalSwordItem;
 import com.thaumcraftmodern.item.PrimalCrusherItem;
 import com.thaumcraftmodern.item.PrimordialPearlItem;
+import com.thaumcraftmodern.item.EldritchEyeItem;
 import com.thaumcraftmodern.item.TaintedMaterialItem;
 import com.thaumcraftmodern.item.VoidArmorItem;
 import com.thaumcraftmodern.item.VoidRobeArmorItem;
@@ -217,7 +218,9 @@ public final class ModItems {
     public static final RegistryObject<Item> ELDRITCH_EYE =
             ITEMS.register(
                     "eldritch_eye",
-                    () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON))
+                    () -> new EldritchEyeItem(
+                            new Item.Properties().rarity(Rarity.UNCOMMON)
+                    )
             );
     public static final RegistryObject<Item> CRIMSON_RITES =
             ITEMS.register(
@@ -796,6 +799,14 @@ public final class ModItems {
             blockItem("obsidian_tile", ModBlocks.OBSIDIAN_TILE);
     public static final RegistryObject<Item> ANCIENT_STONE =
             blockItem("ancient_stone", ModBlocks.ANCIENT_STONE);
+    public static final RegistryObject<Item> ANCIENT_ROCK =
+            blockItem("ancient_rock", ModBlocks.ANCIENT_ROCK);
+    public static final RegistryObject<Item> ANCIENT_STAIRS =
+            blockItem("ancient_stairs", ModBlocks.ANCIENT_STAIRS);
+    public static final RegistryObject<Item> ANCIENT_SLAB =
+            blockItem("ancient_slab", ModBlocks.ANCIENT_SLAB);
+    public static final RegistryObject<Item> ANCIENT_CRUST =
+            blockItem("ancient_crust", ModBlocks.ANCIENT_CRUST);
     public static final RegistryObject<Item> BALANCED_SHARD =
             ITEMS.register(
                     "balanced_shard",

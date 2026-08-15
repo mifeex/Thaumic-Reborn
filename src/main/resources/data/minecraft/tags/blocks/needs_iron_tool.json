@@ -12,6 +12,10 @@
     "thaumcraftmodern:entropy_infused_stone",
     "thaumcraftmodern:amber_ore",
     "thaumcraftmodern:eldritch_altar_part",
-    "thaumcraftmodern:ancient_stone"
+    "thaumcraftmodern:ancient_stone",
+    "thaumcraftmodern:ancient_rock",
+    "thaumcraftmodern:ancient_stairs",
+    "thaumcraftmodern:ancient_slab",
+    "thaumcraftmodern:ancient_crust"
   ]
 }

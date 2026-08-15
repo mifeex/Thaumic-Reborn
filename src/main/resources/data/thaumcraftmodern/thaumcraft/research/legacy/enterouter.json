@@ -24,8 +24,7 @@
       "body": "tc.research_page.ENTEROUTER.1"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
   "legacy": {
     "x": -3,
     "y": 4,

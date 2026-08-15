@@ -4,6 +4,7 @@ import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.client.render.LegacyFlyingMobRenderer;
 import com.thaumcraftmodern.client.render.LegacyMobRenderer;
 import com.thaumcraftmodern.client.render.BrainyZombieRenderer;
+import com.thaumcraftmodern.client.render.InhabitedZombieRenderer;
 import com.thaumcraftmodern.client.render.TaintacleModel;
 import com.thaumcraftmodern.client.render.TaintacleRenderer;
 import com.thaumcraftmodern.client.render.ThaumicSlimeRenderer;
@@ -114,6 +115,11 @@ public final class WorldContentClientEvents {
                 event.registerEntityRenderer(
                         entry.getValue().get(),
                         BrainyZombieRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.INHABITED_ZOMBIE) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        InhabitedZombieRenderer::new
                 );
             } else if (entry.getKey() == LegacyMobKind.WISP) {
                 event.registerEntityRenderer(

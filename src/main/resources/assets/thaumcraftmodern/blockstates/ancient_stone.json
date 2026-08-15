@@ -1,1 +1,12 @@
-{"variants":{"":{"model":"thaumcraftmodern:block/ancient_stone"}}}
+{
+  "variants": {
+    "variant=0": {"model": "thaumcraftmodern:block/ancient_stone"},
+    "variant=1": {"model": "thaumcraftmodern:block/ancient_stone_2"},
+    "variant=2": {"model": "thaumcraftmodern:block/ancient_stone_3"},
+    "variant=3": {"model": "thaumcraftmodern:block/ancient_stone_4"},
+    "variant=4": {"model": "thaumcraftmodern:block/ancient_stone_5"},
+    "variant=5": {"model": "thaumcraftmodern:block/ancient_stone_6"},
+    "variant=6": {"model": "thaumcraftmodern:block/ancient_stone_7"},
+    "variant=7": {"model": "thaumcraftmodern:block/ancient_stone_8"}
+  }
+}
