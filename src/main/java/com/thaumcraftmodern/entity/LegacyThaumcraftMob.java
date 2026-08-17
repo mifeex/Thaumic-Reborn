@@ -13,6 +13,7 @@ import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.research.ResearchProgressService;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
 import com.thaumcraftmodern.worldgen.ModWorldgenKeys;
+import com.thaumcraftmodern.worldgen.outerlands.OuterLandsSpawnRules;
 import com.thaumcraftmodern.world.menu.PechMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -2847,6 +2848,7 @@ public final class LegacyThaumcraftMob extends Monster
             return WispSpawnPolicy.allows(level.getLevel().getDifficulty());
         }
         if (sample.kind == LegacyMobKind.ELDRITCH_GUARDIAN
+                && !OuterLandsSpawnRules.isOuterLands(level)
                 && EldritchGuardianBehavior.usesSurfaceNightRules(reason)) {
             int surfaceY = level.getHeight(
                     net.minecraft.world.level.levelgen.Heightmap.Types

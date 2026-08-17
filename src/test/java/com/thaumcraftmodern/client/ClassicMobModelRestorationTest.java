@@ -11,6 +11,7 @@ import java.security.MessageDigest;
 import java.util.HexFormat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ClassicMobModelRestorationTest {
@@ -110,7 +111,7 @@ final class ClassicMobModelRestorationTest {
     }
 
     @Test
-    void ancientCrabNaturalSpawnIsLimitedToEldritchBiome()
+    void eldritchBiomeKeepsOriginalGuardianAndInhabitedZombieSpawns()
             throws Exception {
         JsonObject modifier = JsonParser.parseString(Files.readString(
                 RESOURCES.resolve(
@@ -123,6 +124,12 @@ final class ClassicMobModelRestorationTest {
                 modifier.get("biomes").getAsString()
         );
         assertTrue(modifier.toString().contains(
+                "thaumcraftmodern:inhabited_zombie"
+        ));
+        assertTrue(modifier.toString().contains(
+                "thaumcraftmodern:eldritch_guardian"
+        ));
+        assertFalse(modifier.toString().contains(
                 "thaumcraftmodern:eldritch_crab"
         ));
         String entity = source(

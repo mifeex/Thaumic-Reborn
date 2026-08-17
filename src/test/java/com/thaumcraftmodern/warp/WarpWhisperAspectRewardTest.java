@@ -14,7 +14,11 @@ final class WarpWhisperAspectRewardTest {
         WarpEvents.grantWhisperPrimalPoints(knowledge);
 
         for (PrimalAspect primal : PrimalAspect.ordered()) {
-            assertEquals(1, knowledge.aspectAmount(primal.id()), primal.id());
+            assertEquals(
+                    PlayerThaumKnowledge.STARTING_PRIMAL_AMOUNT + 1,
+                    knowledge.aspectAmount(primal.id()),
+                    primal.id()
+            );
         }
         assertEquals(PrimalAspect.ordered().size(), knowledge.knownAspects().size());
     }

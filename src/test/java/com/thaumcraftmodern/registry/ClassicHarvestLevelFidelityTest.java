@@ -48,7 +48,11 @@ class ClassicHarvestLevelFidelityTest {
                 id("entropy_infused_stone"),
                 id("amber_ore"),
                 id("eldritch_altar_part"),
-                id("ancient_stone")
+                id("ancient_stone"),
+                id("ancient_rock"),
+                id("ancient_stairs"),
+                id("ancient_slab"),
+                id("ancient_crust")
         ), values("needs_iron_tool.json"));
     }
 

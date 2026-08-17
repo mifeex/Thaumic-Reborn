@@ -4,15 +4,22 @@ import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.entity.LegacyMobKind;
 import com.thaumcraftmodern.entity.LegacyThaumcraftMob;
 import com.thaumcraftmodern.registry.ModBlocks;
+import com.thaumcraftmodern.registry.ModEntities;
+import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.OuterLandsPortalBlockEntity;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsDimensions;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsLabyrinthGenerator;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsMaze;
+import com.thaumcraftmodern.worldgen.outerlands.OuterLandsMindSpiderSpawners;
+import com.thaumcraftmodern.worldgen.outerlands.OuterLandsSpawnRules;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
@@ -91,6 +98,109 @@ public final class OuterLandsGameTests {
                 )).isAir(),
                 "Space outside the finite maze is not void");
         helper.succeed();
+    }
+
+    @GameTest(
+            template = "empty",
+            batch = "outerLands",
+            timeoutTicks = 300
+    )
+    public static void dimensionBuildsPersistentRunedTabletRoom(
+            GameTestHelper helper
+    ) {
+        ServerLevel outer = helper.getLevel().getServer().getLevel(
+                OuterLandsDimensions.OUTER_LANDS
+        );
+        helper.assertTrue(outer != null,
+                "Outer Lands dimension was not registered");
+
+        int regionX = 301;
+        int regionZ = 301;
+        OuterLandsMaze maze = OuterLandsMaze.forRegion(
+                outer.getSeed(), regionX, regionZ
+        );
+        int centerChunkX = regionX * OuterLandsMaze.REGION_SIZE_CHUNKS
+                + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
+        int centerChunkZ = regionZ * OuterLandsMaze.REGION_SIZE_CHUNKS
+                + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
+        int originChunkX = centerChunkX - (1 + maze.width() / 2);
+        int originChunkZ = centerChunkZ - (1 + maze.height() / 2);
+        BlockPos tabletCenter = null;
+        for (int row = 0; row < maze.height() && tabletCenter == null; row++) {
+            for (int column = 0; column < maze.width(); column++) {
+                if (maze.cell(column, row) != null
+                        && maze.cell(column, row).feature() == 6) {
+                    tabletCenter = new BlockPos(
+                            (originChunkX + column) * 16 + 8,
+                            OuterLandsLabyrinthGenerator.BASE_Y + 2,
+                            (originChunkZ + row) * 16 + 8
+                    );
+                    break;
+                }
+            }
+        }
+        helper.assertTrue(tabletCenter != null,
+                "Generated maze has no runed-tablet room");
+        BlockPos roomCenter = tabletCenter;
+        outer.getChunkAt(roomCenter);
+
+        helper.runAfterDelay(20, () -> {
+            var monsterSpawns = outer.getBiome(roomCenter).value()
+                    .getMobSettings().getMobs(MobCategory.MONSTER).unwrap();
+            helper.assertTrue(monsterSpawns.stream().anyMatch(
+                            spawn -> spawn.type
+                                    == ModEntities.INHABITED_ZOMBIE.get()),
+                    "Eldritch biome has no natural inhabited-zombie spawn");
+            helper.assertTrue(monsterSpawns.stream().anyMatch(
+                            spawn -> spawn.type
+                                    == ModEntities.ELDRITCH_GUARDIAN.get()),
+                    "Eldritch biome has no natural guardian spawn");
+            helper.assertTrue(outer.getBlockState(roomCenter).is(
+                            ModBlocks.ARCANE_PEDESTAL.get()),
+                    "Runed-tablet room did not generate its center pedestal");
+            helper.assertTrue(outer.getBlockEntity(roomCenter)
+                            instanceof ArcanePedestalBlockEntity pedestal
+                            && pedestal.item().is(ModItems.RUNED_TABLET.get()),
+                    "Runed tablet was not persisted on its pedestal");
+            helper.assertTrue(OuterLandsSpawnRules.isEnclosedMazePosition(
+                            outer, roomCenter.above()),
+                    "Tablet room was not recognized as enclosed maze interior");
+            helper.assertTrue(!OuterLandsSpawnRules.isEnclosedMazePosition(
+                            outer,
+                            new BlockPos(roomCenter.getX(),
+                                    OuterLandsLabyrinthGenerator.BASE_Y + 15,
+                                    roomCenter.getZ())),
+                    "Labyrinth roof was accepted as a natural spawn position");
+            helper.succeed();
+        });
+    }
+
+    @GameTest(
+            template = "empty",
+            batch = "outerLands",
+            timeoutTicks = 300
+    )
+    public static void mindSpiderSpawnerStoresConfiguredEntityType(
+            GameTestHelper helper
+    ) {
+        BlockPos relative = new BlockPos(3, 2, 3);
+        helper.setBlock(relative, net.minecraft.world.level.block.Blocks.SPAWNER);
+        BlockPos center = helper.absolutePos(relative);
+        helper.assertTrue(OuterLandsMindSpiderSpawners.configure(
+                        helper.getLevel(), center),
+                "Mind-spider spawner could not be configured");
+        helper.runAfterDelay(1, () -> {
+            helper.assertTrue(helper.getLevel().getBlockEntity(center)
+                            instanceof SpawnerBlockEntity,
+                    "Configured spawner lost its block entity");
+            SpawnerBlockEntity spawner = (SpawnerBlockEntity)
+                    helper.getLevel().getBlockEntity(center);
+            helper.assertTrue(
+                    OuterLandsMindSpiderSpawners.isConfigured(spawner),
+                    "Spawner does not contain mind_spider spawn data"
+            );
+            helper.succeed();
+        });
     }
 
     @GameTest(

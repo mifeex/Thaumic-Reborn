@@ -7,12 +7,12 @@ import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.AncientStoneBlock;
 import com.thaumcraftmodern.world.block.EldritchLockBlock;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
 import java.util.Random;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
@@ -646,18 +646,18 @@ public final class OuterLandsLabyrinthGenerator {
         int centerZ = chunk.getMinBlockZ() + 8;
         set(level, centerX, BASE_Y + 2, centerZ,
                 ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
-        ItemEntity tablet = new ItemEntity(
-                level.getLevel(),
-                centerX + 0.5D,
-                BASE_Y + 3.5D,
-                centerZ + 0.5D,
-                new ItemStack(ModItems.RUNED_TABLET.get())
+        BlockPos pedestalPosition = new BlockPos(
+                centerX, BASE_Y + 2, centerZ
         );
-        tablet.setUnlimitedLifetime();
-        tablet.setInvulnerable(true);
-        tablet.setDeltaMovement(0.0D, 0.0D, 0.0D);
-        tablet.getPersistentData().putBoolean("OuterLandsTablet", true);
-        level.addFreshEntity(tablet);
+        if (level.getBlockEntity(pedestalPosition)
+                instanceof ArcanePedestalBlockEntity pedestal) {
+            /*
+             * TC4 used EntityPermanentItem here. WorldGenRegion discards that
+             * entity in 1.20.1, so the pedestal inventory is the durable
+             * modern equivalent and renders the tablet in the same place.
+             */
+            pedestal.setItem(0, new ItemStack(ModItems.RUNED_TABLET.get()));
+        }
 
         int guardians = 2 + (level.getDifficulty() == Difficulty.HARD
                 ? 2 : level.getDifficulty() == Difficulty.NORMAL ? 1 : 0);
@@ -837,8 +837,7 @@ public final class OuterLandsLabyrinthGenerator {
             }
         }
         set(level, center.getX(), center.getY(), center.getZ(), Blocks.SPAWNER.defaultBlockState());
-        spawnMob(level, ModEntities.MIND_SPIDER.get(), x + 8,
-                BASE_Y + 4, z + 8, center);
+        OuterLandsMindSpiderSpawners.configure(level, center);
     }
 
     private static boolean hasSolidNeighbor(WorldGenLevel level, BlockPos position) {
@@ -1009,12 +1008,20 @@ public final class OuterLandsLabyrinthGenerator {
             int x,
             int y,
             int z,
-            Direction direction,
+            Direction wallDirection,
             Half half
     ) {
+        /*
+         * Call sites describe the wall the trim belongs to. StairBlock.FACING
+         * describes the direction of the staircase itself, so the visible
+         * slope must point back into the room, away from that wall.
+         */
         set(level, x, y, z,
                 ModBlocks.ANCIENT_STAIRS.get().defaultBlockState()
-                        .setValue(StairBlock.FACING, direction)
+                        .setValue(
+                                StairBlock.FACING,
+                                wallDirection.getOpposite()
+                        )
                         .setValue(StairBlock.HALF, half));
     }
 

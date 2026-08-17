@@ -304,26 +304,22 @@ public final class WarpEvents {
         }
         RandomSource random = player.getRandom();
         for (int attempt = 0; attempt < 50; attempt++) {
-            int x = player.blockPosition().getX()
-                    + random.nextIntBetweenInclusive(7, 24)
-                    * random.nextIntBetweenInclusive(-1, 1);
-            int z = player.blockPosition().getZ()
-                    + random.nextIntBetweenInclusive(7, 24)
-                    * random.nextIntBetweenInclusive(-1, 1);
-            int y = level.getHeight(
-                    net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    x,
-                    z
-            );
+            int x = randomSpawnCoordinate(player.blockPosition().getX(), random);
+            int y = randomSpawnCoordinate(player.blockPosition().getY(), random);
+            int z = randomSpawnCoordinate(player.blockPosition().getZ(), random);
             BlockPos position = new BlockPos(x, y, z);
-            mob.moveTo(x + 0.5D, y, z + 0.5D, random.nextFloat() * 360.0F, 0);
+            if (!level.getBlockState(position.below()).isFaceSturdy(
+                    level,
+                    position.below(),
+                    net.minecraft.core.Direction.UP
+            )) {
+                continue;
+            }
+            mob.moveTo(x, y, z, random.nextFloat() * 360.0F, 0.0F);
             if (level.noCollision(mob)
-                    && level.getBlockState(position.below()).isFaceSturdy(
-                            level,
-                            position.below(),
-                            net.minecraft.core.Direction.UP
-                    )) {
+                    && !level.containsAnyLiquid(mob.getBoundingBox())) {
                 mob.setTarget(player);
+                mob.setLastHurtByMob(player);
                 if (!hostile) {
                     mob.setWarpIllusion(player);
                 }
@@ -331,6 +327,12 @@ public final class WarpEvents {
                 return;
             }
         }
+    }
+
+    static int randomSpawnCoordinate(int origin, RandomSource random) {
+        return origin
+                + random.nextIntBetweenInclusive(7, 24)
+                * random.nextIntBetweenInclusive(-1, 1);
     }
 
     private static void message(ServerPlayer player, String key) {

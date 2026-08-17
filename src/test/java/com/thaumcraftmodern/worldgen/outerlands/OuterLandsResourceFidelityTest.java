@@ -125,6 +125,9 @@ class OuterLandsResourceFidelityTest {
         assertTrue(generator.contains("generateClassicKeyRoom(level"));
         assertTrue(generator.contains("generateClassicNestRoom(level"));
         assertTrue(generator.contains("generateClassicLibraryRoom(level"));
+        assertTrue(generator.contains("case 14 -> generateWebRoom(level"));
+        assertTrue(generator.contains("OuterLandsMindSpiderSpawners.configure(level, center)"));
+        assertTrue(generator.contains("wallDirection.getOpposite()"));
         assertTrue(generator.contains("generateClassicConnections(level, chunk, cell, random, 3, true)"));
         assertTrue(Files.exists(RESOURCES.resolve(
                 "assets/thaumcraftmodern/blockstates/eldritch_nothing.json"
