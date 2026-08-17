@@ -1,0 +1,42 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:pech/stalker",
+  "display": "entity.thaumic_reborn.pech_stalker",
+  "aspects": [
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "praecantatio",
+      "amount": 4
+    },
+    {
+      "id": "permutatio",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.Pech",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "humanus",
+        "amount": 2
+      },
+      {
+        "id": "praecantatio",
+        "amount": 4
+      },
+      {
+        "id": "permutatio",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [
+      "new ThaumcraftApi.EntityTagsNBT(\"PechType\", (byte)2)"
+    ],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.Pech\", (new AspectList()).add(Aspect.MAN, 2).add(Aspect.MAGIC, 4).add(Aspect.EXCHANGE, 2), new ThaumcraftApi.EntityTagsNBT(\"PechType\", (byte)2))"
+  }
+}

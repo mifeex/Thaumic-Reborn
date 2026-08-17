@@ -1,0 +1,101 @@
+{
+  "id": "infusion",
+  "legacy_id": "INFUSION",
+  "category": "artifice",
+  "icon": "thaumic_reborn:runic_matrix",
+  "title": "tc.research_name.INFUSION",
+  "subtitle": "tc.research_text.INFUSION",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "distilessentia"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSION.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:infusion_matrix"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:arcane_pedestal"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSION.2"
+    },
+    {
+      "type": "compound_crafting",
+      "title": "",
+      "recipe": "thaumic_reborn:infusion_altar_construct"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSION.3"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSION.4"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSION.5"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -4,
+    "y": 5,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockStoneDevice, 1, 2)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 6
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      },
+      {
+        "id": "fabrico",
+        "amount": 6
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"INFUSION\", \"ARTIFICE\", (new AspectList()).add(Aspect.MAGIC, 6).add(Aspect.MECHANISM, 3).add(Aspect.CRAFT, 6), -4, 5, 2, new ItemStack(ConfigBlocks.blockStoneDevice, 1, 2))).setPages(new ResearchPage(\"tc.research_page.INFUSION.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"InfusionMatrix\")), new ResearchPage((IArcaneRecipe)recipes.get(\"ArcanePedestal\")), new ResearchPage(\"tc.research_page.INFUSION.2\"), new ResearchPage((List)recipes.get(\"InfusionAltar\")), new ResearchPage(\"tc.research_page.INFUSION.3\"), new ResearchPage(\"tc.research_page.INFUSION.4\"), new ResearchPage(\"tc.research_page.INFUSION.5\")).setParents(\"DISTILESSENTIA\").setConcealed().registerResearchItem()"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "primnode",
+  "legacy_id": "PRIMNODE",
+  "category": "eldritch",
+  "completion_warp": 1,
+  "icon_resource": "thaumic_reborn:textures/misc/r_nodes_2.png",
+  "title": "tc.research_name.PRIMNODE",
+  "subtitle": "tc.research_text.PRIMNODE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "primpearl"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 144,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PRIMNODE.1"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "auram",
+      "amount": 1
+    },
+    {
+      "id": "praecantatio",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    },
+    {
+      "id": "perditio",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": 6,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodes_2.png\")",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 1
+      },
+      {
+        "id": "praecantatio",
+        "amount": 1
+      },
+      {
+        "id": "ordo",
+        "amount": 1
+      },
+      {
+        "id": "perditio",
+        "amount": 1
+      }
+    ],
+    "warp": [
+      1
+    ],
+    "source_expression": "(new ResearchItem(\"PRIMNODE\", \"ELDRITCH\", (new AspectList()).add(Aspect.AURA, 1).add(Aspect.MAGIC, 1).add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), 0, 6, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodes_2.png\"))).setPages(new ResearchPage(\"tc.research_page.PRIMNODE.1\")).setSecondary().setParents(\"PRIMPEARL\").registerResearchItem()"
+  }
+}

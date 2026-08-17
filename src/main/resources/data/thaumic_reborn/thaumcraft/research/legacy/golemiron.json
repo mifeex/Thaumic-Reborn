@@ -1,0 +1,92 @@
+{
+  "id": "golemiron",
+  "legacy_id": "GOLEMIRON",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:iron_golem",
+  "title": "tc.research_name.GOLEMIRON",
+  "subtitle": "tc.research_text.GOLEMIRON",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemstone"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 240,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMIRON.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemiron"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "spiritus",
+      "amount": 9
+    },
+    {
+      "id": "motus",
+      "amount": 9
+    },
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": 10,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 6)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 9
+      },
+      {
+        "id": "motus",
+        "amount": 9
+      },
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMIRON\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 9).add(Aspect.MOTION, 9).add(Aspect.METAL, 3).add(Aspect.EXCHANGE, 3), 0, 10, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 6))).setPages(new ResearchPage(\"tc.research_page.GOLEMIRON.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemIron\"))).setSecondary().setConcealed().setParents(\"GOLEMSTONE\").registerResearchItem()"
+  }
+}

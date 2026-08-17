@@ -1,7 +1,0 @@
-{
-  "research":"elementalaxe","instability":1,
-  "central":{"item":"thaumcraftmodern:thaumium_axe"},
-  "components":[{"item":"thaumcraftmodern:water_shard"},{"item":"thaumcraftmodern:water_shard"},{"item":"minecraft:diamond"},{"item":"thaumcraftmodern:greatwood_log"}],
-  "essentia":{"aqua":16,"arbor":8},
-  "result":{"item":"thaumcraftmodern:axe_of_the_stream","count":1}
-}

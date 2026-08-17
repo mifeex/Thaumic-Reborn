@@ -61,10 +61,10 @@ final class ResearchTablePlacementPreviewTest {
     @Test
     void whiteHoverHexPreservesTheOrdinaryHexAlphaMask() throws Exception {
         BufferedImage ordinary = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/gui/hex1.png"
+                "src/main/resources/assets/thaumic_reborn/textures/gui/hex1.png"
         ).toFile());
         BufferedImage hovered = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/gui/hex_hover_white.png"
+                "src/main/resources/assets/thaumic_reborn/textures/gui/hex_hover_white.png"
         ).toFile());
         assertNotNull(ordinary);
         assertNotNull(hovered);

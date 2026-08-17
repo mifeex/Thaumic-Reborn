@@ -1,0 +1,10 @@
+{
+  "id": "gelum",
+  "order": 100,
+  "color": "E1FFFF",
+  "icon": "thaumic_reborn:textures/aspects/gelum.png",
+  "components": [
+    "ignis",
+    "perditio"
+  ]
+}

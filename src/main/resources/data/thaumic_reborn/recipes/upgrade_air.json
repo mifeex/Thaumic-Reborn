@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "upgradeair",
+  "vis": {
+    "aer": 10
+  },
+  "pattern": [
+    "NNN",
+    "NCN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "C": {
+      "item": "thaumic_reborn:air_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_upgrade_aer"
+  }
+}

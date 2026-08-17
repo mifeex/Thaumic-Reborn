@@ -1,0 +1,58 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:cultist_cleric_leggings",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "pannus",
+      "amount": 2
+    },
+    {
+      "id": "alienis",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemLegsCultistRobe, 1, 32767)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "pannus",
+        "amount": 2
+      },
+      {
+        "id": "alienis",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "operation": "add",
+        "id": "pannus",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "alienis",
+        "amount": 1
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemLegsCultistRobe, 1, 32767), (new AspectList()).add(Aspect.METAL, 3).add(Aspect.CLOTH, 2).add(Aspect.ELDRITCH, 1))"
+  }
+}

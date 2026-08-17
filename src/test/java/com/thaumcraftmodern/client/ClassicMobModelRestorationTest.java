@@ -18,7 +18,7 @@ final class ClassicMobModelRestorationTest {
     private static final Path JAVA = Path.of("src/main/java");
     private static final Path RESOURCES = Path.of("src/main/resources");
     private static final Path ASSETS = RESOURCES.resolve(
-            "assets/thaumcraftmodern"
+            "assets/thaumic_reborn"
     );
 
     @Test
@@ -115,22 +115,22 @@ final class ClassicMobModelRestorationTest {
             throws Exception {
         JsonObject modifier = JsonParser.parseString(Files.readString(
                 RESOURCES.resolve(
-                        "data/thaumcraftmodern/forge/biome_modifier/"
+                        "data/thaumic_reborn/forge/biome_modifier/"
                                 + "add_eldritch_mobs.json"
                 )
         )).getAsJsonObject();
         assertEquals(
-                "thaumcraftmodern:eldritch",
+                "thaumic_reborn:eldritch",
                 modifier.get("biomes").getAsString()
         );
         assertTrue(modifier.toString().contains(
-                "thaumcraftmodern:inhabited_zombie"
+                "thaumic_reborn:inhabited_zombie"
         ));
         assertTrue(modifier.toString().contains(
-                "thaumcraftmodern:eldritch_guardian"
+                "thaumic_reborn:eldritch_guardian"
         ));
         assertFalse(modifier.toString().contains(
-                "thaumcraftmodern:eldritch_crab"
+                "thaumic_reborn:eldritch_crab"
         ));
         String entity = source(
                 "com/thaumcraftmodern/entity/LegacyThaumcraftMob.java"

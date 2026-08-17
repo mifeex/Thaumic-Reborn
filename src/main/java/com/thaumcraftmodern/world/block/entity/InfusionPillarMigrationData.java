@@ -11,7 +11,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 public final class InfusionPillarMigrationData extends SavedData {
     static final int CURRENT_VERSION = 1;
     private static final String DATA_NAME =
-            "thaumcraftmodern_infusion_pillar_migration";
+            "thaumic_reborn_infusion_pillar_migration";
     private static final String VERSION_KEY = "Version";
     private static final String CHUNKS_KEY = "MigratedChunks";
 

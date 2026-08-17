@@ -30,7 +30,7 @@ class ElementalEquipmentFidelityTest {
     @Test
     void thaumonomiconExplainsModernElementalToolControls() throws Exception {
         JsonObject russian = json(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json"));
+                "src/main/resources/assets/thaumic_reborn/lang/ru_ru.json"));
         String sword = russian.get("tc.research_page.ELEMENTALSWORD.1").getAsString();
         String pickaxe = russian.get("tc.research_page.ELEMENTALPICK.1").getAsString();
         String axe = russian.get("tc.research_page.ELEMENTALAXE.2").getAsString();
@@ -47,13 +47,13 @@ class ElementalEquipmentFidelityTest {
     void allSixExecutableInfusionsUseOriginalInstabilityAndResearch() throws Exception {
         for (String id : List.of("elemental_pick", "elemental_axe", "elemental_sword",
                 "elemental_shovel", "elemental_hoe", "boots_traveller")) {
-            JsonObject recipe = json(Path.of("src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes",
+            JsonObject recipe = json(Path.of("src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes",
                     id + ".json"));
             assertEquals(1, recipe.get("instability").getAsInt(), id);
             assertFalse(recipe.getAsJsonArray("components").isEmpty(), id);
             assertTrue(recipe.getAsJsonObject("essentia").size() > 0, id);
             assertTrue(recipe.getAsJsonObject("result").get("item").getAsString()
-                    .startsWith("thaumcraftmodern:"), id);
+                    .startsWith("thaumic_reborn:"), id);
         }
     }
 
@@ -62,29 +62,29 @@ class ElementalEquipmentFidelityTest {
         for (String id : List.of("elementalpick", "elementalaxe", "elementalsword",
                 "elementalshovel", "elementalhoe", "bootstraveller")) {
             JsonObject research = json(Path.of(
-                    "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy", id + ".json"));
+                    "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy", id + ".json"));
             assertFalse(research.get("inactive").getAsBoolean(), id);
             assertTrue(research.getAsJsonArray("pages").asList().stream()
                     .anyMatch(page -> page.getAsJsonObject().get("type").getAsString().equals("infusion")), id);
-            assertTrue(research.get("icon").getAsString().startsWith("thaumcraftmodern:"), id);
+            assertTrue(research.get("icon").getAsString().startsWith("thaumic_reborn:"), id);
         }
     }
 
     @Test
     void travellerBootsUseOnlyTheFourRawFishVariants() throws Exception {
         JsonObject recipe = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/boots_traveller.json"));
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/boots_traveller.json"));
         JsonObject research = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/bootstraveller.json"));
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/bootstraveller.json"));
 
-        assertEquals("thaumcraftmodern:raw_fishes", recipe.getAsJsonArray("components")
+        assertEquals("thaumic_reborn:raw_fishes", recipe.getAsJsonArray("components")
                 .get(5).getAsJsonObject().get("tag").getAsString());
         JsonObject display = research.getAsJsonArray("pages").get(1).getAsJsonObject();
-        assertEquals("thaumcraftmodern:raw_fishes", display.getAsJsonArray("components")
+        assertEquals("thaumic_reborn:raw_fishes", display.getAsJsonArray("components")
                 .get(5).getAsJsonObject().get("tag").getAsString());
 
         JsonObject tag = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/tags/items/raw_fishes.json"));
+                "src/main/resources/data/thaumic_reborn/tags/items/raw_fishes.json"));
         assertEquals(List.of(
                 "minecraft:cod",
                 "minecraft:salmon",
@@ -103,7 +103,7 @@ class ElementalEquipmentFidelityTest {
                     "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/items",
                     texture));
             try (InputStream packaged = getClass().getResourceAsStream(
-                    "/assets/thaumcraftmodern/textures/item/" + texture)) {
+                    "/assets/thaumic_reborn/textures/item/" + texture)) {
                 assertNotNull(packaged, texture);
                 assertEquals(sha256(original), sha256(packaged.readAllBytes()), texture);
             }

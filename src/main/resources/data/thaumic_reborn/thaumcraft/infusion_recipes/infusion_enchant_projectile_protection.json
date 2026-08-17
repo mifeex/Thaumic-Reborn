@@ -1,0 +1,24 @@
+{
+  "research": "infusionenchantment",
+  "instability": 1,
+  "components": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "tutamen": 4,
+    "volatus": 4
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:projectile_protection"
+  }
+}

@@ -432,7 +432,7 @@ public final class ThaumicRebornApiServices implements ApiServices {
     }
 
     private static FocusDefinition focus(WandFocusType value) {
-        return new FocusDefinition(new ResourceLocation("thaumcraftmodern", value.itemId()),
+        return new FocusDefinition(new ResourceLocation("thaumic_reborn", value.itemId()),
                 value.color(), value.continuous(), value.cooldownTicks(),
                 value.centivisCost());
     }

@@ -1,0 +1,28 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focusexcavation",
+  "vis": {
+    "terra": 20,
+    "perditio": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:gems/emerald"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumic_reborn:earth_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focus_excavation"
+  }
+}

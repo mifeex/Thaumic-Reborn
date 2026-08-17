@@ -3,8 +3,8 @@
   "values": [
     "#minecraft:bamboo_blocks",
     "minecraft:bamboo",
-    "thaumcraftmodern:greatwood_log",
-    "thaumcraftmodern:silverwood_log",
-    "thaumcraftmodern:silverwood_node"
+    "thaumic_reborn:greatwood_log",
+    "thaumic_reborn:silverwood_log",
+    "thaumic_reborn:silverwood_node"
   ]
 }

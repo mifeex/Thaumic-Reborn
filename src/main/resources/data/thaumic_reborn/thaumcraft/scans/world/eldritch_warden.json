@@ -1,0 +1,11 @@
+{
+  "type":"entity",
+  "target":"thaumic_reborn:eldritch_warden",
+  "display":"entity.thaumic_reborn.eldritch_warden",
+  "aspects":[
+    {"id":"alienis","amount":8},
+    {"id":"mortuus","amount":4},
+    {"id":"exanimis","amount":6},
+    {"id":"potentia","amount":4}
+  ]
+}

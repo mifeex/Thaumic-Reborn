@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class ThaumiumToolRecipePatternTest {
     private static final Path RECIPES = Path.of(
-            "src/main/resources/data/thaumcraftmodern/recipes"
+            "src/main/resources/data/thaumic_reborn/recipes"
     );
 
     @Test

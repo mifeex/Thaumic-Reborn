@@ -1,0 +1,18 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:thaumium_ingot",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/thaumium.json"
+}

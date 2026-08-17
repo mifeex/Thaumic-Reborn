@@ -13,12 +13,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "data/legacy_tc4_4_2_3_5/archive/recipes.json"
-OUT = ROOT / "src/main/resources/data/thaumcraftmodern/recipes"
+OUT = ROOT / "src/main/resources/data/thaumic_reborn/recipes"
 MANIFEST = ROOT / "data/legacy_tc4_4_2_3_5/modern_migration/arcane_recipes.json"
-MODELS = ROOT / "src/main/resources/assets/thaumcraftmodern/models/item"
-RESEARCH = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/research"
-EN_US = ROOT / "src/main/resources/assets/thaumcraftmodern/lang/en_us.json"
-RU_RU = ROOT / "src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json"
+MODELS = ROOT / "src/main/resources/assets/thaumic_reborn/models/item"
+RESEARCH = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/research"
+EN_US = ROOT / "src/main/resources/assets/thaumic_reborn/lang/en_us.json"
+RU_RU = ROOT / "src/main/resources/assets/thaumic_reborn/lang/ru_ru.json"
 
 ASPECTS = {
     "AIR": "aer", "FIRE": "ignis", "WATER": "aqua", "EARTH": "terra",
@@ -84,101 +84,101 @@ ORE = {
 
 # (legacy field, metadata) -> modern registry id.  Metadata -1 means any.
 TC = {
-    ("ConfigItems.itemZombieBrain", -1): "thaumcraftmodern:zombie_brain",
-    ("ConfigItems.itemThaumometer", -1): "thaumcraftmodern:thaumometer",
-    ("ConfigItems.itemWandCap", 1): "thaumcraftmodern:gold_wand_cap",
-    ("ConfigItems.itemWandCap", 3): "thaumcraftmodern:copper_wand_cap",
-    ("ConfigItems.itemWandCap", 5): "thaumcraftmodern:inert_silver_wand_cap",
-    ("ConfigItems.itemWandCap", 6): "thaumcraftmodern:inert_thaumium_wand_cap",
-    ("ConfigItems.itemWandCap", 8): "thaumcraftmodern:inert_void_wand_cap",
-    ("ConfigItems.itemWandRod", 0): "thaumcraftmodern:greatwood_wand_rod",
-    ("ConfigItems.itemWandRod", 1): "thaumcraftmodern:obsidian_wand_rod",
-    ("ConfigItems.itemWandRod", 2): "thaumcraftmodern:silverwood_wand_rod",
-    ("ConfigItems.itemWandRod", 3): "thaumcraftmodern:ice_wand_rod",
-    ("ConfigItems.itemWandRod", 4): "thaumcraftmodern:quartz_wand_rod",
-    ("ConfigItems.itemWandRod", 5): "thaumcraftmodern:reed_wand_rod",
-    ("ConfigItems.itemWandRod", 6): "thaumcraftmodern:blaze_wand_rod",
-    ("ConfigItems.itemWandRod", 7): "thaumcraftmodern:bone_wand_rod",
-    ("ConfigItems.itemWandRod", 50): "thaumcraftmodern:greatwood_staff_rod",
-    ("ConfigItems.itemWandRod", 51): "thaumcraftmodern:obsidian_staff_rod",
-    ("ConfigItems.itemWandRod", 52): "thaumcraftmodern:silverwood_staff_rod",
-    ("ConfigItems.itemWandRod", 53): "thaumcraftmodern:ice_staff_rod",
-    ("ConfigItems.itemWandRod", 54): "thaumcraftmodern:quartz_staff_rod",
-    ("ConfigItems.itemWandRod", 55): "thaumcraftmodern:reed_staff_rod",
-    ("ConfigItems.itemWandRod", 56): "thaumcraftmodern:blaze_staff_rod",
-    ("ConfigItems.itemWandRod", 57): "thaumcraftmodern:bone_staff_rod",
-    ("ConfigItems.itemShard", 0): "thaumcraftmodern:air_shard",
-    ("ConfigItems.itemShard", -1): "thaumcraftmodern:air_shard",
-    ("ConfigItems.itemShard", 1): "thaumcraftmodern:fire_shard",
-    ("ConfigItems.itemShard", 2): "thaumcraftmodern:water_shard",
-    ("ConfigItems.itemShard", 3): "thaumcraftmodern:earth_shard",
-    ("ConfigItems.itemShard", 4): "thaumcraftmodern:order_shard",
-    ("ConfigItems.itemShard", 5): "thaumcraftmodern:entropy_shard",
-    ("ConfigItems.itemShard", 6): "thaumcraftmodern:balanced_shard",
-    ("ConfigItems.itemShard", 32767): "#thaumcraftmodern:elemental_shards",
-    ("ConfigItems.itemResource", 1): "thaumcraftmodern:nitor",
-    ("ConfigItems.itemResource", 2): "thaumcraftmodern:thaumium_ingot",
-    ("ConfigItems.itemResource", 3): "thaumcraftmodern:quicksilver",
-    ("ConfigItems.itemResource", 6): "thaumcraftmodern:amber",
-    ("ConfigItems.itemResource", 7): "thaumcraftmodern:enchanted_fabric",
-    ("ConfigItems.itemResource", 8): "thaumcraftmodern:vis_filter",
-    ("ConfigItems.itemResource", 10): "thaumcraftmodern:mirrored_glass",
-    ("ConfigItems.itemResource", 15): "thaumcraftmodern:primal_charm",
-    ("ConfigItems.itemResource", 16): "thaumcraftmodern:void_metal_ingot",
-    ("ConfigItems.itemNugget", 5): "thaumcraftmodern:quicksilver_nugget",
-    ("ConfigItems.itemNugget", 6): "thaumcraftmodern:thaumium_nugget",
-    ("ConfigItems.itemNugget", 7): "thaumcraftmodern:void_nugget",
-    ("ConfigItems.itemEssence", 0): "thaumcraftmodern:essentia_phial",
-    ("ConfigItems.itemEldritchObject", 3): "thaumcraftmodern:primordial_pearl",
-    ("ConfigItems.itemBaubleBlanks", 2): "thaumcraftmodern:blank_belt",
-    ("ConfigItems.itemGolemCore", 100): "thaumcraftmodern:blank_golem_core",
-    **{("ConfigItems.itemGolemUpgrade", i): f"thaumcraftmodern:golem_upgrade_{ASPECTS[a]}"
+    ("ConfigItems.itemZombieBrain", -1): "thaumic_reborn:zombie_brain",
+    ("ConfigItems.itemThaumometer", -1): "thaumic_reborn:thaumometer",
+    ("ConfigItems.itemWandCap", 1): "thaumic_reborn:gold_wand_cap",
+    ("ConfigItems.itemWandCap", 3): "thaumic_reborn:copper_wand_cap",
+    ("ConfigItems.itemWandCap", 5): "thaumic_reborn:inert_silver_wand_cap",
+    ("ConfigItems.itemWandCap", 6): "thaumic_reborn:inert_thaumium_wand_cap",
+    ("ConfigItems.itemWandCap", 8): "thaumic_reborn:inert_void_wand_cap",
+    ("ConfigItems.itemWandRod", 0): "thaumic_reborn:greatwood_wand_rod",
+    ("ConfigItems.itemWandRod", 1): "thaumic_reborn:obsidian_wand_rod",
+    ("ConfigItems.itemWandRod", 2): "thaumic_reborn:silverwood_wand_rod",
+    ("ConfigItems.itemWandRod", 3): "thaumic_reborn:ice_wand_rod",
+    ("ConfigItems.itemWandRod", 4): "thaumic_reborn:quartz_wand_rod",
+    ("ConfigItems.itemWandRod", 5): "thaumic_reborn:reed_wand_rod",
+    ("ConfigItems.itemWandRod", 6): "thaumic_reborn:blaze_wand_rod",
+    ("ConfigItems.itemWandRod", 7): "thaumic_reborn:bone_wand_rod",
+    ("ConfigItems.itemWandRod", 50): "thaumic_reborn:greatwood_staff_rod",
+    ("ConfigItems.itemWandRod", 51): "thaumic_reborn:obsidian_staff_rod",
+    ("ConfigItems.itemWandRod", 52): "thaumic_reborn:silverwood_staff_rod",
+    ("ConfigItems.itemWandRod", 53): "thaumic_reborn:ice_staff_rod",
+    ("ConfigItems.itemWandRod", 54): "thaumic_reborn:quartz_staff_rod",
+    ("ConfigItems.itemWandRod", 55): "thaumic_reborn:reed_staff_rod",
+    ("ConfigItems.itemWandRod", 56): "thaumic_reborn:blaze_staff_rod",
+    ("ConfigItems.itemWandRod", 57): "thaumic_reborn:bone_staff_rod",
+    ("ConfigItems.itemShard", 0): "thaumic_reborn:air_shard",
+    ("ConfigItems.itemShard", -1): "thaumic_reborn:air_shard",
+    ("ConfigItems.itemShard", 1): "thaumic_reborn:fire_shard",
+    ("ConfigItems.itemShard", 2): "thaumic_reborn:water_shard",
+    ("ConfigItems.itemShard", 3): "thaumic_reborn:earth_shard",
+    ("ConfigItems.itemShard", 4): "thaumic_reborn:order_shard",
+    ("ConfigItems.itemShard", 5): "thaumic_reborn:entropy_shard",
+    ("ConfigItems.itemShard", 6): "thaumic_reborn:balanced_shard",
+    ("ConfigItems.itemShard", 32767): "#thaumic_reborn:elemental_shards",
+    ("ConfigItems.itemResource", 1): "thaumic_reborn:nitor",
+    ("ConfigItems.itemResource", 2): "thaumic_reborn:thaumium_ingot",
+    ("ConfigItems.itemResource", 3): "thaumic_reborn:quicksilver",
+    ("ConfigItems.itemResource", 6): "thaumic_reborn:amber",
+    ("ConfigItems.itemResource", 7): "thaumic_reborn:enchanted_fabric",
+    ("ConfigItems.itemResource", 8): "thaumic_reborn:vis_filter",
+    ("ConfigItems.itemResource", 10): "thaumic_reborn:mirrored_glass",
+    ("ConfigItems.itemResource", 15): "thaumic_reborn:primal_charm",
+    ("ConfigItems.itemResource", 16): "thaumic_reborn:void_metal_ingot",
+    ("ConfigItems.itemNugget", 5): "thaumic_reborn:quicksilver_nugget",
+    ("ConfigItems.itemNugget", 6): "thaumic_reborn:thaumium_nugget",
+    ("ConfigItems.itemNugget", 7): "thaumic_reborn:void_nugget",
+    ("ConfigItems.itemEssence", 0): "thaumic_reborn:essentia_phial",
+    ("ConfigItems.itemEldritchObject", 3): "thaumic_reborn:primordial_pearl",
+    ("ConfigItems.itemBaubleBlanks", 2): "thaumic_reborn:blank_belt",
+    ("ConfigItems.itemGolemCore", 100): "thaumic_reborn:blank_golem_core",
+    **{("ConfigItems.itemGolemUpgrade", i): f"thaumic_reborn:golem_upgrade_{ASPECTS[a]}"
        for i, a in enumerate(("AIR", "EARTH", "FIRE", "WATER", "ORDER", "ENTROPY"))},
-    **{("ConfigItems.itemGolemDecoration", i): f"thaumcraftmodern:golem_decoration_{n}"
+    **{("ConfigItems.itemGolemDecoration", i): f"thaumic_reborn:golem_decoration_{n}"
        for i, n in enumerate(("top_hat", "glasses", "bow_tie", "fez", "dart_launcher", "visor", "armor", "hammer"))},
-    ("ConfigBlocks.blockMagicalLog", 0): "thaumcraftmodern:greatwood_log",
-    ("ConfigBlocks.blockMagicalLeaves", 1): "thaumcraftmodern:silverwood_leaves",
-    ("ConfigBlocks.blockTable", 0): "thaumcraftmodern:thaumcraft_table",
-    ("ConfigBlocks.blockTable", -1): "thaumcraftmodern:thaumcraft_table",
-    ("ConfigBlocks.blockTable", 14): "thaumcraftmodern:deconstruction_table",
-    ("ConfigBlocks.blockSlabStone", 0): "thaumcraftmodern:arcane_stone_slab",
-    ("ConfigBlocks.blockCosmeticOpaque", 0): "thaumcraftmodern:arcane_lamp",
-    ("ConfigBlocks.blockCosmeticOpaque", 2): "thaumcraftmodern:warded_glass",
-    ("ConfigBlocks.blockCosmeticSolid", 2): "thaumcraftmodern:paving_stone_of_travel",
-    ("ConfigBlocks.blockCosmeticSolid", 3): "thaumcraftmodern:paving_stone_of_warding",
-    ("ConfigBlocks.blockCosmeticSolid", 6): "thaumcraftmodern:arcane_stone",
-    ("ConfigBlocks.blockCosmeticSolid", 7): "thaumcraftmodern:arcane_stone_brick",
-    ("ConfigBlocks.blockCosmeticSolid", 9): "thaumcraftmodern:golem_fetter",
-    ("ConfigBlocks.blockStoneDevice", 0): "thaumcraftmodern:alchemical_furnace",
-    ("ConfigBlocks.blockStoneDevice", 1): "thaumcraftmodern:arcane_pedestal",
-    ("ConfigBlocks.blockStoneDevice", 2): "thaumcraftmodern:runic_matrix",
-    ("ConfigBlocks.blockStoneDevice", 9): "thaumcraftmodern:node_stabilizer",
-    ("ConfigBlocks.blockStoneDevice", 11): "thaumcraftmodern:node_transducer",
-    ("ConfigBlocks.blockStoneDevice", 12): "thaumcraftmodern:arcane_spa",
-    ("ConfigBlocks.blockStoneDevice", 13): "thaumcraftmodern:focal_manipulator",
-    ("ConfigBlocks.blockStoneDevice", 14): "thaumcraftmodern:flux_scrubber",
-    ("ConfigBlocks.blockMetalDevice", 0): "thaumcraftmodern:crucible",
-    ("ConfigBlocks.blockMetalDevice", 1): "thaumcraftmodern:arcane_alembic",
-    ("ConfigBlocks.blockMetalDevice", 2): "thaumcraftmodern:vis_charge_relay",
-    ("ConfigBlocks.blockMetalDevice", 7): "thaumcraftmodern:arcane_lamp",
-    ("ConfigBlocks.blockMetalDevice", 9): "thaumcraftmodern:alchemical_construct",
-    ("ConfigBlocks.blockMetalDevice", 3): "thaumcraftmodern:advanced_alchemical_construct",
-    ("ConfigBlocks.blockMetalDevice", 12): "thaumcraftmodern:mnemonic_matrix",
-    ("ConfigBlocks.blockMetalDevice", 14): "thaumcraftmodern:vis_relay",
-    ("ConfigBlocks.blockWoodenDevice", 0): "thaumcraftmodern:arcane_bellows",
-    ("ConfigBlocks.blockWoodenDevice", -1): "thaumcraftmodern:arcane_bellows",
-    ("ConfigBlocks.blockWoodenDevice", 1): "thaumcraftmodern:arcane_ear",
-    ("ConfigBlocks.blockWoodenDevice", 2): "thaumcraftmodern:arcane_pressure_plate",
-    ("ConfigBlocks.blockWoodenDevice", 4): "thaumcraftmodern:arcane_bore_base",
-    ("ConfigBlocks.blockWoodenDevice", 6): "thaumcraftmodern:greatwood_planks",
-    ("ConfigBlocks.blockWoodenDevice", 7): "thaumcraftmodern:silverwood_planks",
-    ("ConfigBlocks.blockJar", 0): "thaumcraftmodern:warded_jar",
-    ("ConfigBlocks.blockJar", -1): "thaumcraftmodern:warded_jar",
-    ("ConfigBlocks.blockJar", 3): "thaumcraftmodern:void_jar",
-    **{("ConfigBlocks.blockTube", i): f"thaumcraftmodern:{n}" for i, n in enumerate(
+    ("ConfigBlocks.blockMagicalLog", 0): "thaumic_reborn:greatwood_log",
+    ("ConfigBlocks.blockMagicalLeaves", 1): "thaumic_reborn:silverwood_leaves",
+    ("ConfigBlocks.blockTable", 0): "thaumic_reborn:thaumcraft_table",
+    ("ConfigBlocks.blockTable", -1): "thaumic_reborn:thaumcraft_table",
+    ("ConfigBlocks.blockTable", 14): "thaumic_reborn:deconstruction_table",
+    ("ConfigBlocks.blockSlabStone", 0): "thaumic_reborn:arcane_stone_slab",
+    ("ConfigBlocks.blockCosmeticOpaque", 0): "thaumic_reborn:arcane_lamp",
+    ("ConfigBlocks.blockCosmeticOpaque", 2): "thaumic_reborn:warded_glass",
+    ("ConfigBlocks.blockCosmeticSolid", 2): "thaumic_reborn:paving_stone_of_travel",
+    ("ConfigBlocks.blockCosmeticSolid", 3): "thaumic_reborn:paving_stone_of_warding",
+    ("ConfigBlocks.blockCosmeticSolid", 6): "thaumic_reborn:arcane_stone",
+    ("ConfigBlocks.blockCosmeticSolid", 7): "thaumic_reborn:arcane_stone_brick",
+    ("ConfigBlocks.blockCosmeticSolid", 9): "thaumic_reborn:golem_fetter",
+    ("ConfigBlocks.blockStoneDevice", 0): "thaumic_reborn:alchemical_furnace",
+    ("ConfigBlocks.blockStoneDevice", 1): "thaumic_reborn:arcane_pedestal",
+    ("ConfigBlocks.blockStoneDevice", 2): "thaumic_reborn:runic_matrix",
+    ("ConfigBlocks.blockStoneDevice", 9): "thaumic_reborn:node_stabilizer",
+    ("ConfigBlocks.blockStoneDevice", 11): "thaumic_reborn:node_transducer",
+    ("ConfigBlocks.blockStoneDevice", 12): "thaumic_reborn:arcane_spa",
+    ("ConfigBlocks.blockStoneDevice", 13): "thaumic_reborn:focal_manipulator",
+    ("ConfigBlocks.blockStoneDevice", 14): "thaumic_reborn:flux_scrubber",
+    ("ConfigBlocks.blockMetalDevice", 0): "thaumic_reborn:crucible",
+    ("ConfigBlocks.blockMetalDevice", 1): "thaumic_reborn:arcane_alembic",
+    ("ConfigBlocks.blockMetalDevice", 2): "thaumic_reborn:vis_charge_relay",
+    ("ConfigBlocks.blockMetalDevice", 7): "thaumic_reborn:arcane_lamp",
+    ("ConfigBlocks.blockMetalDevice", 9): "thaumic_reborn:alchemical_construct",
+    ("ConfigBlocks.blockMetalDevice", 3): "thaumic_reborn:advanced_alchemical_construct",
+    ("ConfigBlocks.blockMetalDevice", 12): "thaumic_reborn:mnemonic_matrix",
+    ("ConfigBlocks.blockMetalDevice", 14): "thaumic_reborn:vis_relay",
+    ("ConfigBlocks.blockWoodenDevice", 0): "thaumic_reborn:arcane_bellows",
+    ("ConfigBlocks.blockWoodenDevice", -1): "thaumic_reborn:arcane_bellows",
+    ("ConfigBlocks.blockWoodenDevice", 1): "thaumic_reborn:arcane_ear",
+    ("ConfigBlocks.blockWoodenDevice", 2): "thaumic_reborn:arcane_pressure_plate",
+    ("ConfigBlocks.blockWoodenDevice", 4): "thaumic_reborn:arcane_bore_base",
+    ("ConfigBlocks.blockWoodenDevice", 6): "thaumic_reborn:greatwood_planks",
+    ("ConfigBlocks.blockWoodenDevice", 7): "thaumic_reborn:silverwood_planks",
+    ("ConfigBlocks.blockJar", 0): "thaumic_reborn:warded_jar",
+    ("ConfigBlocks.blockJar", -1): "thaumic_reborn:warded_jar",
+    ("ConfigBlocks.blockJar", 3): "thaumic_reborn:void_jar",
+    **{("ConfigBlocks.blockTube", i): f"thaumic_reborn:{n}" for i, n in enumerate(
         ("essentia_tube", "essentia_valve", "essentia_centrifuge", "filtered_essentia_tube",
          "essentia_buffer", "restricted_essentia_tube", "one_way_essentia_tube", "essentia_crystallizer"))},
-    ("ConfigBlocks.blockTube", -1): "thaumcraftmodern:essentia_tube",
+    ("ConfigBlocks.blockTube", -1): "thaumic_reborn:essentia_tube",
 }
 
 GENERIC = {
@@ -252,12 +252,12 @@ def tc_stack(
     else:
         key = f"{token}:{meta}" if f"{token}:{meta}" in GENERIC else token
         if key in GENERIC:
-            item = "thaumcraftmodern:" + GENERIC[key]
+            item = "thaumic_reborn:" + GENERIC[key]
         else:
             # Stable metadata names for classic resources/devices.
             stem = token.rsplit(".", 1)[-1]
             stem = re.sub(r"(?<!^)(?=[A-Z])", "_", stem).lower().removeprefix("item_").removeprefix("block_")
-            item = f"thaumcraftmodern:legacy_{stem}_{meta if meta >= 0 else 0}"
+            item = f"thaumic_reborn:legacy_{stem}_{meta if meta >= 0 else 0}"
     return item, count
 
 
@@ -272,9 +272,9 @@ def ingredient(
 
 def result(token: str, color: str | None = None, primal: int | None = None) -> dict:
     if token == "banner":
-        return {"item": f"thaumcraftmodern:{color}_thaumcraft_banner"}
+        return {"item": f"thaumic_reborn:{color}_thaumcraft_banner"}
     if "itemPrimalArrow" in token:
-        return {"item": f"thaumcraftmodern:{ASPECTS[['AIR','FIRE','WATER','EARTH','ORDER','ENTROPY'][primal or 0]]}_primal_arrow", "count": 8}
+        return {"item": f"thaumic_reborn:{ASPECTS[['AIR','FIRE','WATER','EARTH','ORDER','ENTROPY'][primal or 0]]}_primal_arrow", "count": 8}
     item, count = tc_stack(token, color)
     value = {"item": item}
     if count != 1: value["count"] = count
@@ -319,7 +319,7 @@ def convert(entry: dict, color: str | None = None, primal: int | None = None) ->
     rid = (f"banner_{color}" if color else f"primal_arrow_{ASPECTS[['AIR','FIRE','WATER','EARTH','ORDER','ENTROPY'][primal]]}"
            if primal is not None else slug(entry["id"]))
     data = {
-        "type": "thaumcraftmodern:arcane_shapeless" if entry["kind"] == "arcane_shapeless" else "thaumcraftmodern:arcane_shaped",
+        "type": "thaumic_reborn:arcane_shapeless" if entry["kind"] == "arcane_shapeless" else "thaumic_reborn:arcane_shaped",
         "research": research,
         "vis": vis(args[2], primal),
     }
@@ -357,17 +357,17 @@ def main() -> None:
             generated.add(rid)
             (OUT / f"{rid}.json").write_text(json.dumps(data, indent=2) + "\n")
             records.append({
-                "legacy_id": entry["id"], "modern_id": f"thaumcraftmodern:{rid}",
+                "legacy_id": entry["id"], "modern_id": f"thaumic_reborn:{rid}",
                 "source_expression": entry["source_expression"], "status": "runtime",
             })
     by_legacy = {}
     for record in records:
         by_legacy.setdefault(record["legacy_id"].strip('"'), []).append(record["modern_id"])
     by_legacy["(IArcaneRecipe[])banners.toArray(new IArcaneRecipe[0])"] = [
-        f"thaumcraftmodern:banner_{color}" for color in COLORS
+        f"thaumic_reborn:banner_{color}" for color in COLORS
     ]
     by_legacy["(IArcaneRecipe[])rcbb.toArray(new IArcaneRecipe[0])"] = [
-        f"thaumcraftmodern:primal_arrow_{ASPECTS[aspect]}"
+        f"thaumic_reborn:primal_arrow_{ASPECTS[aspect]}"
         for aspect in ("AIR", "FIRE", "WATER", "EARTH", "ORDER", "ENTROPY")
     ]
     converted_pages = 0
@@ -412,7 +412,7 @@ def main() -> None:
             value = pending.pop()
             if isinstance(value, dict):
                 item = value.get("item")
-                if isinstance(item, str) and item.startswith("thaumcraftmodern:"):
+                if isinstance(item, str) and item.startswith("thaumic_reborn:"):
                     referenced_items.add(item.split(":", 1)[1])
                 pending.extend(value.values())
             elif isinstance(value, list):
@@ -425,7 +425,7 @@ def main() -> None:
             placeholder_items.add(item_id)
             model.write_text(json.dumps({
                 "parent": "minecraft:item/generated",
-                "textures": {"layer0": "thaumcraftmodern:item/knowledgefragment"},
+                "textures": {"layer0": "thaumic_reborn:item/knowledgefragment"},
             }, indent=2) + "\n")
     language = json.loads(EN_US.read_text())
     aspect_names = {
@@ -433,7 +433,7 @@ def main() -> None:
         "ordo": "Order", "perditio": "Entropy", "terra": "Earth",
     }
     for item_id in placeholder_items:
-        key = f"item.thaumcraftmodern.{item_id}"
+        key = f"item.thaumic_reborn.{item_id}"
         words = [aspect_names.get(word, word.capitalize()) for word in item_id.split("_")]
         language.setdefault(key, " ".join(words))
     EN_US.write_text(json.dumps(language, indent=2, ensure_ascii=False) + "\n")

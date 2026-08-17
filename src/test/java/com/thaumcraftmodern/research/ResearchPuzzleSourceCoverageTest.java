@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ResearchPuzzleSourceCoverageTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
 
     @Test

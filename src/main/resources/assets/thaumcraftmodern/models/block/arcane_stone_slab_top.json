@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "thaumcraftmodern:block/arcane_stone",
-    "side": "thaumcraftmodern:block/arcane_stone",
-    "top": "thaumcraftmodern:block/arcane_stone"
-  }
-}

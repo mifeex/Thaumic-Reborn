@@ -171,7 +171,7 @@ public final class ThaumonomiconScreen extends Screen {
             browserModel.categoryView("", research -> false);
 
     public ThaumonomiconScreen() {
-        super(Component.translatable("screen.thaumcraftmodern.thaumonomicon.title"));
+        super(Component.translatable("screen.thaumic_reborn.thaumonomicon.title"));
     }
 
     @Override

@@ -1,0 +1,10 @@
+{
+  "id": "tempestas",
+  "order": 80,
+  "color": "FFFFFF",
+  "icon": "thaumic_reborn:textures/aspects/tempestas.png",
+  "components": [
+    "aer",
+    "aqua"
+  ]
+}

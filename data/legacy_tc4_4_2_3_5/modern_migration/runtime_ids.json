@@ -3,11 +3,11 @@
   "research_icons_updated": 0,
   "collapsed_duplicates_deactivated": 11,
   "unresolved_without_1_20_1_equivalent": [
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_236_new_itemstack_configitems.itemnugget_1_21.json",
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_280_new_itemstack_configitems.itemtriplemeattreat_1_.json",
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_290_new_itemstack_configblocks.blockairy_1_2.json",
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_291_new_itemstack_configblocks.blockairy_1_3.json",
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_302_new_itemstack_configitems.itemfocuspech.json",
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy/object_319_new_itemstack_configblocks.blockeldritchportal.json"
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_236_new_itemstack_configitems.itemnugget_1_21.json",
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_280_new_itemstack_configitems.itemtriplemeattreat_1_.json",
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_290_new_itemstack_configblocks.blockairy_1_2.json",
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_291_new_itemstack_configblocks.blockairy_1_3.json",
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_302_new_itemstack_configitems.itemfocuspech.json",
+    "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy/object_319_new_itemstack_configblocks.blockeldritchportal.json"
   ]
 }

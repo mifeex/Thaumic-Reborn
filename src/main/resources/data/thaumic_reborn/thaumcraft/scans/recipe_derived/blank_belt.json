@@ -1,0 +1,26 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:blank_belt",
+  "display": "",
+  "aspects": [
+    {
+      "id": "pannus",
+      "amount": 4
+    },
+    {
+      "id": "bestia",
+      "amount": 2
+    },
+    {
+      "id": "tutamen",
+      "amount": 2
+    },
+    {
+      "id": "metallum",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/mundane_belt.json"
+}

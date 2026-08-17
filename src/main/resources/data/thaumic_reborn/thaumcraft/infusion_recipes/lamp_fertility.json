@@ -1,0 +1,11 @@
+{
+  "research":"lampfertility",
+  "instability":4,
+  "central":{"item":"thaumic_reborn:arcane_lamp"},
+  "components":[
+    {"item":"minecraft:gold_ingot"},{"item":"minecraft:wheat"},{"item":"thaumic_reborn:water_shard"},
+    {"item":"minecraft:gold_ingot"},{"item":"minecraft:carrot"},{"item":"thaumic_reborn:water_shard"}
+  ],
+  "essentia":{"bestia":16,"victus":16,"lux":8},
+  "result":{"item":"thaumic_reborn:lamp_fertility"}
+}

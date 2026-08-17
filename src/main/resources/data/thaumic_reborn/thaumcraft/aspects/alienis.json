@@ -1,0 +1,10 @@
+{
+  "id": "alienis",
+  "order": 230,
+  "color": "805080",
+  "icon": "thaumic_reborn:textures/aspects/alienis.png",
+  "components": [
+    "vacuos",
+    "tenebrae"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:amber",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vinculum",
+      "amount": 2
+    },
+    {
+      "id": "vitreus",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemResource, 1, 6)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "vinculum",
+        "amount": 2
+      },
+      {
+        "id": "vitreus",
+        "amount": 2
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "vinculum",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "vitreus",
+        "amount": 2
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemResource, 1, 6), (new AspectList()).add(Aspect.TRAP, 2).add(Aspect.CRYSTAL, 2))"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category":"building",
+  "pattern":["W"],
+  "key":{"W":{"item":"thaumic_reborn:greatwood_log"}},
+  "result":{"item":"thaumic_reborn:greatwood_planks","count":4}
+}

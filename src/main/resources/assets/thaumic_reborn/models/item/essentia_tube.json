@@ -1,0 +1,7 @@
+{
+  "parent": "thaumic_reborn:block/essentia_tube_base",
+  "textures": {
+    "tube": "thaumic_reborn:block/pipe_1",
+    "joint": "thaumic_reborn:block/pipe_2"
+  }
+}

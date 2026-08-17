@@ -1,0 +1,91 @@
+{
+  "id": "basicthaumaturgy",
+  "legacy_id": "BASICTHAUMATURGY",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:basic_wand",
+  "title": "tc.research_name.BASICTHAUMATURGY",
+  "subtitle": "tc.research_text.BASICTHAUMATURGY",
+  "concealed": false,
+  "auto_unlock": true,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BASICTHAUMATURGY.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BASICTHAUMATURGY.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:iron_wand_cap"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:basic_wand"
+    },
+    {
+      "type": "text",
+      "title": "research.thaumic_reborn.wand_forms.page.title",
+      "body": "research.thaumic_reborn.wand_forms.page.body"
+    },
+    {
+      "type": "text",
+      "title": "research.thaumic_reborn.wand_drain.page.title",
+      "body": "research.thaumic_reborn.wand_drain.page.body"
+    },
+    {
+      "type": "text",
+      "title": "research.thaumic_reborn.wand_catalog.rods.title",
+      "body": "research.thaumic_reborn.wand_catalog.rods.body"
+    },
+    {
+      "type": "text",
+      "title": "research.thaumic_reborn.wand_catalog.caps.title",
+      "body": "research.thaumic_reborn.wand_catalog.caps.body"
+    },
+    {
+      "type": "text",
+      "title": "research.thaumic_reborn.wand_catalog.availability.title",
+      "body": "research.thaumic_reborn.wand_catalog.availability.body"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 0,
+    "y": 0,
+    "complexity": 0,
+    "icon_raw": "wand",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": true
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "}\n\n   private static void initThaumaturgyResearch() {\n      (new ResearchItem(\"BASICTHAUMATURGY\", \"THAUMATURGY\", new AspectList(), 0, 0, 0, wand)).setPages(new ResearchPage(\"tc.research_page.BASICTHAUMATURGY.1\"), new ResearchPage(\"tc.research_page.BASICTHAUMATURGY.2\"), new ResearchPage((IRecipe)recipes.get(\"WandCapIron\")), new ResearchPage((IRecipe)recipes.get(\"WandBasic\"))).setAutoUnlock().setStub().setRound().registerResearchItem()"
+  }
+}

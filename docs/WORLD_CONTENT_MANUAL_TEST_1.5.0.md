@@ -7,9 +7,9 @@
    `./gradlew runServer -PrunDirectory=/absolute/path/to/test-run`.
 3. Прочитать EULA и самостоятельно установить `eula=true`.
 4. Оставить стандартный `level-type=minecraft:normal` и подтвердить, что
-   Overworld использует `thaumcraftmodern:legacy_overworld`. Отдельным
+   Overworld использует `thaumic_reborn:legacy_overworld`. Отдельным
    прогоном проверить совместимый явный preset:
-   `level-type=thaumcraftmodern:thaumcraft_modern`.
+   `level-type=thaumic_reborn:thaumcraft_modern`.
 5. Для каждого прогона менять `level-seed` и использовать новую
    `level-name`.
 6. Дождаться `Done`, выполнить `save-all`, затем `stop`.
@@ -24,9 +24,9 @@
 ## Проверка контента
 
 - в совершенно новом мире выполнить:
-  `/locate biome thaumcraftmodern:magical_forest`,
-  `/locate biome thaumcraftmodern:tainted_lands` и
-  `/locate biome thaumcraftmodern:eerie`;
+  `/locate biome thaumic_reborn:magical_forest`,
+  `/locate biome thaumic_reborn:tainted_lands` и
+  `/locate biome thaumic_reborn:eerie`;
 - найти Cinnabar глубоко, Amber около поверхности и все шесть Infused Stone;
 - добыть руды без чар, с Fortune и с Silk Touch;
 - вырастить оба саженца bonemeal и natural random ticks;

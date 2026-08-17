@@ -1,0 +1,10 @@
+{
+  "id": "iter",
+  "order": 220,
+  "color": "E0585B",
+  "icon": "thaumic_reborn:textures/aspects/iter.png",
+  "components": [
+    "motus",
+    "terra"
+  ]
+}

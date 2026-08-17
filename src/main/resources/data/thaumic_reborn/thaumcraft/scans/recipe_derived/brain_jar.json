@@ -1,0 +1,38 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:brain_jar",
+  "display": "",
+  "aspects": [
+    {
+      "id": "corpus",
+      "amount": 1
+    },
+    {
+      "id": "cognitio",
+      "amount": 3
+    },
+    {
+      "id": "exanimis",
+      "amount": 1
+    },
+    {
+      "id": "sensus",
+      "amount": 3
+    },
+    {
+      "id": "bestia",
+      "amount": 3
+    },
+    {
+      "id": "venenum",
+      "amount": 3
+    },
+    {
+      "id": "aqua",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/brain_jar.json"
+}

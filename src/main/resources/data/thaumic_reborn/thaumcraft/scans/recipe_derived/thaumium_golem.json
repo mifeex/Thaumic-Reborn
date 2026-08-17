@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:thaumium_golem",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 6
+    },
+    {
+      "id": "praecantatio",
+      "amount": 1
+    },
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "motus",
+      "amount": 2
+    },
+    {
+      "id": "spiritus",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/golemthaumium.json"
+}

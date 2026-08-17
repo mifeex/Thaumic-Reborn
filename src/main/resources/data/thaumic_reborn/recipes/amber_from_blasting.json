@@ -1,0 +1,8 @@
+{
+  "type":"minecraft:blasting",
+  "category":"misc",
+  "ingredient":{"item":"thaumic_reborn:amber_ore"},
+  "result":"thaumic_reborn:amber",
+  "experience":0.7,
+  "cookingtime":100
+}

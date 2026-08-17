@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:tainted_lands",
-    "thaumcraftmodern:eerie",
-    "thaumcraftmodern:eldritch"
+    "thaumic_reborn:tainted_lands",
+    "thaumic_reborn:eerie",
+    "thaumic_reborn:eldritch"
   ]
 }

@@ -1,0 +1,80 @@
+{
+  "id": "nodejar",
+  "legacy_id": "NODEJAR",
+  "category": "basics",
+  "icon": "thaumic_reborn:jarred_aura_node",
+  "title": "tc.research_name.NODEJAR",
+  "subtitle": "tc.research_text.NODEJAR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "nodepreserve"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -168,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.NODEJAR.1"
+    },
+    {
+      "type": "compound_crafting",
+      "title": "",
+      "recipe": "thaumic_reborn:node_jar_capture"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.NODEJAR.2"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -7,
+    "y": 4,
+    "complexity": 3,
+    "icon_raw": "jarIs",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 6
+      },
+      {
+        "id": "lucrum",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"NODEJAR\", \"BASICS\", (new AspectList()).add(Aspect.AURA, 6).add(Aspect.GREED, 3).add(Aspect.EXCHANGE, 3).add(Aspect.MOTION, 3), -7, 4, 3, jarIs)).setPages(new ResearchPage(\"tc.research_page.NODEJAR.1\"), new ResearchPage((List)recipes.get(\"NodeJar\")), new ResearchPage(\"tc.research_page.NODEJAR.2\")).setParents(\"NODEPRESERVE\").setConcealed().registerResearchItem()"
+  }
+}

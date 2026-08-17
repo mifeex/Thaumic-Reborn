@@ -1,0 +1,28 @@
+{
+  "research": "rod_primal_staff",
+  "instability": 8,
+  "central": {"item": "thaumic_reborn:silverwood_wand_rod"},
+  "components": [
+    {"item": "thaumic_reborn:primal_charm"},
+    {"item": "thaumic_reborn:obsidian_wand_rod"},
+    {"item": "thaumic_reborn:ice_wand_rod"},
+    {"item": "thaumic_reborn:quartz_wand_rod"},
+    {"item": "thaumic_reborn:primal_charm"},
+    {"item": "thaumic_reborn:reed_wand_rod"},
+    {"item": "thaumic_reborn:blaze_wand_rod"},
+    {"item": "thaumic_reborn:bone_wand_rod"}
+  ],
+  "essentia": {
+    "aer": 32,
+    "ignis": 32,
+    "aqua": 32,
+    "terra": 32,
+    "ordo": 32,
+    "perditio": 32,
+    "praecantatio": 64
+  },
+  "result": {
+    "item": "thaumic_reborn:primal_staff_rod",
+    "count": 1
+  }
+}

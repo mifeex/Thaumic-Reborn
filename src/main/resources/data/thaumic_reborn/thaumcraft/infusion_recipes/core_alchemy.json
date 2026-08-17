@@ -1,0 +1,7 @@
+{
+  "research":"corealchemy","instability":2,
+  "central":{"item":"thaumic_reborn:liquid_golem_core"},
+  "components":[{"item":"thaumic_reborn:warded_jar"},{"item":"minecraft:potion"},{"item":"minecraft:potion"},{"item":"minecraft:potion"}],
+  "essentia":{"praecantatio":15,"aqua":15,"motus":15},
+  "result":{"item":"thaumic_reborn:alchemy_golem_core","count":1}
+}

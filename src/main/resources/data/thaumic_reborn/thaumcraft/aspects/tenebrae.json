@@ -1,0 +1,10 @@
+{
+  "id": "tenebrae",
+  "order": 190,
+  "color": "222222",
+  "icon": "thaumic_reborn:textures/aspects/tenebrae.png",
+  "components": [
+    "vacuos",
+    "lux"
+  ]
+}

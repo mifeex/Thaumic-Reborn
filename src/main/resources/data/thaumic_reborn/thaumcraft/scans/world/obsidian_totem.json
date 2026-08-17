@@ -1,0 +1,10 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:obsidian_totem",
+  "display":"block.thaumic_reborn.obsidian_totem",
+  "aspects":[
+    {"id":"tenebrae","amount":4},
+    {"id":"terra","amount":4},
+    {"id":"alienis","amount":2}
+  ]
+}

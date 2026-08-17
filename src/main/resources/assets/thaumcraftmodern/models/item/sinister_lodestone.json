@@ -1,1 +1,0 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"thaumcraftmodern:item/sinister_stone"},"overrides":[{"predicate":{"thaumcraftmodern:active":1.0},"model":"thaumcraftmodern:item/sinister_lodestone_active"}]}

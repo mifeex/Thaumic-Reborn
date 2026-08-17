@@ -112,7 +112,7 @@ final class ThaumonomiconOpenBookRenderer {
         );
         if (hasResearchLink.test(hovered.stack())) {
             tooltip.add(Component.translatable(
-                    "screen.thaumcraftmodern.thaumonomicon.open_item_page"
+                    "screen.thaumic_reborn.thaumonomicon.open_item_page"
             ).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
         graphics.renderTooltip(
@@ -161,7 +161,7 @@ final class ThaumonomiconOpenBookRenderer {
             graphics.renderTooltip(
                     font,
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.back"
+                            "screen.thaumic_reborn.thaumonomicon.back"
                     ),
                     mouseX,
                     mouseY
@@ -172,7 +172,7 @@ final class ThaumonomiconOpenBookRenderer {
             graphics.renderTooltip(
                     font,
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.previous_page"
+                            "screen.thaumic_reborn.thaumonomicon.previous_page"
                     ),
                     mouseX,
                     mouseY
@@ -184,7 +184,7 @@ final class ThaumonomiconOpenBookRenderer {
             graphics.renderTooltip(
                     font,
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.next_page"
+                            "screen.thaumic_reborn.thaumonomicon.next_page"
                     ),
                     mouseX,
                     mouseY

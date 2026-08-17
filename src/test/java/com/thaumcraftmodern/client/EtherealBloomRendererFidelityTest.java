@@ -17,7 +17,7 @@ final class EtherealBloomRendererFidelityTest {
                     + "EtherealBloomBlockEntityRenderer.java"
     );
     private static final Path CRYSTAL_TEXTURE = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/models/"
+            "src/main/resources/assets/thaumic_reborn/textures/models/"
                     + "crystalcapacitor.png"
     );
 

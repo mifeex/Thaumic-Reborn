@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:bamboo_mosaic_slab",
-    "thaumcraftmodern:greatwood_slab",
-    "thaumcraftmodern:silverwood_slab"
+    "thaumic_reborn:greatwood_slab",
+    "thaumic_reborn:silverwood_slab"
   ]
 }

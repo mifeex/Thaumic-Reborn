@@ -1,0 +1,19 @@
+{
+  "research": "sanitycheck",
+  "instability": 4,
+  "central": {"item": "thaumic_reborn:thaumometer"},
+  "components": [
+    {"item": "thaumic_reborn:mirrored_glass"},
+    {"item": "thaumic_reborn:zombie_brain"},
+    {"item": "minecraft:diamond"}
+  ],
+  "essentia": {
+    "cognitio": 24,
+    "sensus": 24,
+    "alienis": 8
+  },
+  "result": {
+    "item": "thaumic_reborn:sanity_checker",
+    "count": 1
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "thaumcraftmodern:item/classic_staff_base",
-  "textures": {
-    "rod": "thaumcraftmodern:item/wand_rod_silverwood_model",
-    "cap": "thaumcraftmodern:item/wand_cap_thaumium_model"
-  }
-}

@@ -92,7 +92,7 @@ public final class HandMirrorItem extends Item {
                 new SimpleMenuProvider(
                         (id, inventory, ignored) -> new HandMirrorMenu(
                                 id, inventory, hand, slot),
-                        Component.translatable("container.thaumcraftmodern.hand_mirror")),
+                        Component.translatable("container.thaumic_reborn.hand_mirror")),
                 buffer -> {
                     buffer.writeEnum(hand);
                     buffer.writeVarInt(slot);

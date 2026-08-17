@@ -57,7 +57,7 @@ public final class GolemBellItem extends Item {
         link(bell, golem, player.level());
         synchronizeBell(player, hand, bell);
         player.displayClientMessage(Component.translatable(
-                "message.thaumcraftmodern.golem_bell.selected",
+                "message.thaumic_reborn.golem_bell.selected",
                 golem.getDisplayName()).withStyle(ChatFormatting.DARK_PURPLE), true);
         playBell(player.level(), golem.blockPosition(), SoundSource.NEUTRAL);
     }
@@ -144,18 +144,18 @@ public final class GolemBellItem extends Item {
             clearLink(stack);
             synchronizeBell(player, hand, stack);
             player.displayClientMessage(Component.translatable(
-                    "message.thaumcraftmodern.golem_bell.unlinked"), true);
+                    "message.thaumic_reborn.golem_bell.unlinked"), true);
             return InteractionResult.FAIL;
         }
         byte result = golem.changeMarker(position, face, player.isShiftKeyDown());
         writeMarkers(stack, golem.markers());
         synchronizeBell(player, hand, stack);
         Component feedback = result == Byte.MIN_VALUE
-                ? Component.translatable("message.thaumcraftmodern.golem_bell.marker_removed")
+                ? Component.translatable("message.thaumic_reborn.golem_bell.marker_removed")
                 : result < 0
-                        ? Component.translatable("message.thaumcraftmodern.golem_bell.marker_added")
+                        ? Component.translatable("message.thaumic_reborn.golem_bell.marker_added")
                         : Component.translatable(
-                                "message.thaumcraftmodern.golem_bell.marker_color", result);
+                                "message.thaumic_reborn.golem_bell.marker_color", result);
         player.displayClientMessage(feedback.copy().withStyle(ChatFormatting.DARK_PURPLE), true);
         playBell(level, position, SoundSource.BLOCKS);
         return InteractionResult.CONSUME;
@@ -275,7 +275,7 @@ public final class GolemBellItem extends Item {
                 }
                 playBell(level, player.blockPosition(), SoundSource.PLAYERS);
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.golem_bell.markers_cleared")
+                        "message.thaumic_reborn.golem_bell.markers_cleared")
                         .withStyle(ChatFormatting.DARK_PURPLE), true);
             }
         }

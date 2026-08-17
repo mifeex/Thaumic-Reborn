@@ -1,0 +1,14 @@
+{
+  "id": "table",
+  "legacy_id": "Table",
+  "legacy_kind": "crafting_shaped_ore",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:thaumcraft_table",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "oreDictRecipe(new ItemStack(ConfigBlocks.blockTable, 1, 0), new Object[]{\"SSS\", \"W W\", 'S', \"slabWood\", 'W', \"plankWood\"})",
+    "source_statement": "ConfigResearch.recipes.put(\"Table\", oreDictRecipe(new ItemStack(ConfigBlocks.blockTable, 1, 0), new Object[]{\"SSS\", \"W W\", 'S', \"slabWood\", 'W', \"plankWood\"}))",
+    "unkeyed": false
+  }
+}

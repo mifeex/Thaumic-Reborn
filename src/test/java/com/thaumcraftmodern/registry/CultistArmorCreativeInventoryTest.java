@@ -20,7 +20,7 @@ class CultistArmorCreativeInventoryTest {
     @Test
     void allThreeOriginalSetsHaveModelsTexturesAndCreativeEntries()
             throws Exception {
-        Path assets = Path.of("src/main/resources/assets/thaumcraftmodern");
+        Path assets = Path.of("src/main/resources/assets/thaumic_reborn");
         String creative = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/registry/ModCreativeTabs.java"
         ));

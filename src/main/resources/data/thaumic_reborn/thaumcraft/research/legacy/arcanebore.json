@@ -1,0 +1,93 @@
+{
+  "id": "arcanebore",
+  "legacy_id": "ARCANEBORE",
+  "category": "artifice",
+  "icon": "thaumic_reborn:arcane_bore_base",
+  "title": "tc.research_name.ARCANEBORE",
+  "subtitle": "tc.research_text.ARCANEBORE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "focusexcavation",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -72,
+  "y": 192,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ARCANEBORE.1"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "ArcaneBore",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"ArcaneBore\"))"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ARCANEBORE.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:arcane_bore_base"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ARCANEBORE.3"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -3,
+    "y": 8,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 5)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "perfodio",
+        "amount": 6
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      },
+      {
+        "id": "instrumentum",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "}\n\n      (new ResearchItem(\"ARCANEBORE\", \"ARTIFICE\", (new AspectList()).add(Aspect.MINE, 6).add(Aspect.MOTION, 3).add(Aspect.MECHANISM, 3).add(Aspect.TOOL, 3), -3, 8, 2, new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 5))).setPages(new ResearchPage(\"tc.research_page.ARCANEBORE.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"ArcaneBore\")), new ResearchPage(\"tc.research_page.ARCANEBORE.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"ArcaneBoreBase\")), new ResearchPage(\"tc.research_page.ARCANEBORE.3\")).setConcealed().setParents(\"FOCUSEXCAVATION\", \"INFUSION\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "thaumic_reborn:eerie",
+  "spawners": [
+    {
+      "type": "minecraft:witch",
+      "weight": 8,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "minecraft:enderman",
+      "weight": 4,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:angry_zombie",
+      "weight": 32,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:furious_zombie",
+      "weight": 8,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:wisp",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:eldritch_guardian",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+}

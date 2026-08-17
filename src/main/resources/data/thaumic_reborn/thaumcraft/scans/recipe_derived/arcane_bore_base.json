@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:arcane_bore_base",
+  "display": "",
+  "aspects": [
+    {
+      "id": "arbor",
+      "amount": 6
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    },
+    {
+      "id": "metallum",
+      "amount": 12
+    },
+    {
+      "id": "aer",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/arcane_bore_base.json"
+}

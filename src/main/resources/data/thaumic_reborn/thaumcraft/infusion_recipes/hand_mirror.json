@@ -1,0 +1,12 @@
+{
+  "research": "mirrorhand",
+  "instability": 5,
+  "central": { "item": "thaumic_reborn:magic_mirror" },
+  "components": [
+    { "item": "minecraft:stick" },
+    { "item": "minecraft:compass" },
+    { "item": "minecraft:map" }
+  ],
+  "result": { "item": "thaumic_reborn:hand_mirror" },
+  "essentia": { "instrumentum": 16, "iter": 16 }
+}

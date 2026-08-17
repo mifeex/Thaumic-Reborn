@@ -1,0 +1,7 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/taint_fibres"
+  },
+  "elements": []
+}

@@ -17,7 +17,7 @@ record RunicAugmentationPreview(
 ) {
     static RunicAugmentationPreview atTime(ResearchPageDefinition page,
             InfusionDisplayDefinition display, long timeMillis) {
-        if (!"thaumcraftmodern:runic_augmentation".equals(page.recipeId())) {
+        if (!"thaumic_reborn:runic_augmentation".equals(page.recipeId())) {
             return null;
         }
         int charge = (int) Math.floorMod(timeMillis / 1_000L, 5L);

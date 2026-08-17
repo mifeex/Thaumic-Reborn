@@ -1,0 +1,10 @@
+{
+  "id": "auram",
+  "order": 250,
+  "color": "FFC0FF",
+  "icon": "thaumic_reborn:textures/aspects/auram.png",
+  "components": [
+    "praecantatio",
+    "aer"
+  ]
+}

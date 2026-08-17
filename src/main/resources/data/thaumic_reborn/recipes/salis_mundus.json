@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {"item": "thaumic_reborn:balanced_shard"},
+  "result": "thaumic_reborn:salis_mundus",
+  "experience": 0.0,
+  "cookingtime": 200
+}

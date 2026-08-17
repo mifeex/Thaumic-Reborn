@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "golembell",
+  "vis": {
+    "ordo": 5
+  },
+  "pattern": [
+    " QQ",
+    " QQ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_bell"
+  }
+}

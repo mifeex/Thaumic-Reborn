@@ -1,0 +1,10 @@
+{
+  "id": "sensus",
+  "order": 340,
+  "color": "0FD9FF",
+  "icon": "thaumic_reborn:textures/aspects/sensus.png",
+  "components": [
+    "aer",
+    "spiritus"
+  ]
+}

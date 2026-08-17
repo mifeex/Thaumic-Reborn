@@ -1,0 +1,97 @@
+{
+  "id": "visamulet",
+  "legacy_id": "VISAMULET",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:vis_storage_amulet",
+  "title": "tc.research_name.VISAMULET",
+  "subtitle": "tc.research_text.VISAMULET",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "wandped"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -216,
+  "y": -192,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.VISAMULET.1"
+    },
+    {
+      "type": "infusion",
+      "title": "",
+      "recipe": "thaumic_reborn:vis_storage_amulet",
+      "instability": 6,
+      "essentia": {
+        "auram": 24,
+        "potentia": 64,
+        "praecantatio": 64,
+        "vacuos": 24
+      },
+      "central": {"item": "thaumic_reborn:mundane_amulet", "count": 1},
+      "components": [
+        {"item": "thaumic_reborn:salis_mundus", "count": 1},
+        {"item": "thaumic_reborn:balanced_crystal_cluster", "count": 1},
+        {"item": "thaumic_reborn:balanced_crystal_cluster", "count": 1},
+        {"item": "thaumic_reborn:salis_mundus", "count": 1},
+        {"item": "thaumic_reborn:balanced_crystal_cluster", "count": 1},
+        {"item": "thaumic_reborn:balanced_crystal_cluster", "count": 1}
+      ],
+      "result": {"item": "thaumic_reborn:vis_storage_amulet", "count": 1}
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.VISAMULET.2"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -9,
+    "y": -8,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemAmuletVis, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 6
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      },
+      {
+        "id": "vacuos",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"VISAMULET\", \"THAUMATURGY\", (new AspectList()).add(Aspect.AURA, 3).add(Aspect.MAGIC, 6).add(Aspect.ENERGY, 3).add(Aspect.VOID, 3), -9, -8, 2, new ItemStack(ConfigItems.itemAmuletVis, 1, 1))).setPages(new ResearchPage(\"tc.research_page.VISAMULET.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"VisAmulet\")), new ResearchPage(\"tc.research_page.VISAMULET.2\")).setConcealed().setParents(\"WANDPED\").registerResearchItem()"
+  }
+}

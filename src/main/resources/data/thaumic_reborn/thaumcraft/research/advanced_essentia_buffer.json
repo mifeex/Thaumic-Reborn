@@ -1,0 +1,52 @@
+{
+  "id": "advancedessentiabuffer",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:advanced_essentia_buffer",
+  "title": "tc.research_name.ADVANCEDESSENTIABUFFER",
+  "subtitle": "tc.research_text.ADVANCEDESSENTIABUFFER",
+  "concealed": true,
+  "reveal_when": {
+    "type": "scan",
+    "id": "block:thaumic_reborn:essentia_buffer"
+  },
+  "parents": ["reversibleessentiatube", "centrifuge"],
+  "completion_warp": 2,
+  "x": 300,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ADVANCEDESSENTIABUFFER.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ADVANCEDESSENTIABUFFER.2"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:advanced_essentia_buffer",
+      "central": "thaumic_reborn:essentia_buffer",
+      "components": [
+        { "item": "thaumic_reborn:zombie_brain", "count": 1 },
+        { "item": "thaumic_reborn:essentia_tube", "count": 1 },
+        { "item": "minecraft:redstone", "count": 1 },
+        { "item": "thaumic_reborn:essentia_valve", "count": 1 },
+        { "item": "thaumic_reborn:essentia_tube", "count": 1 },
+        { "item": "minecraft:redstone", "count": 1 },
+        { "item": "thaumic_reborn:restricted_essentia_tube", "count": 1 }
+      ],
+      "aspect_costs": [
+        { "id": "potentia", "amount": 32 },
+        { "id": "machina", "amount": 16 },
+        { "id": "praecantatio", "amount": 16 },
+        { "id": "vacuos", "amount": 16 },
+        { "id": "aqua", "amount": 28 }
+      ],
+      "instability": "moderate",
+      "detail": "research.thaumic_reborn.infusion_layout_test.variant.dense"
+    }
+  ]
+}

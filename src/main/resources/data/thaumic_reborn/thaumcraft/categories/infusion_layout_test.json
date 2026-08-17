@@ -1,0 +1,7 @@
+{
+  "id": "infusion_layout_test",
+  "title": "screen.thaumic_reborn.thaumonomicon.category.infusion_layout_test",
+  "icon": "thaumic_reborn:runic_matrix",
+  "background": "thaumic_reborn:textures/gui/gui_researchback.png",
+  "order": 900
+}

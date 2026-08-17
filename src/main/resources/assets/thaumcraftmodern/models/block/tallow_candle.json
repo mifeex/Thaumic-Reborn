@@ -1,7 +1,0 @@
-{
-  "textures":{"particle":"thaumcraftmodern:block/candlestub","candle":"thaumcraftmodern:block/candlestub"},
-  "elements":[
-    {"from":[6,0,6],"to":[10,9,10],"faces":{"north":{"texture":"#candle"},"south":{"texture":"#candle"},"east":{"texture":"#candle"},"west":{"texture":"#candle"},"up":{"texture":"#candle"},"down":{"texture":"#candle"}}},
-    {"from":[7.5,9,7.5],"to":[8.5,11,8.5],"faces":{"north":{"texture":"#candle"},"south":{"texture":"#candle"},"east":{"texture":"#candle"},"west":{"texture":"#candle"}}}
-  ]
-}

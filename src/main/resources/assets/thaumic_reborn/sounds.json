@@ -1,0 +1,391 @@
+{
+  "whispers": {
+    "category": "players",
+    "sounds": [{"name": "thaumic_reborn:whispers", "stream": false}]
+  },
+  "heartbeat": {
+    "category": "players",
+    "sounds": [{"name": "thaumic_reborn:heartbeat", "stream": false}]
+  },
+  "cameraticks": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:cameraticks",
+        "stream": false
+      }
+    ]
+  },
+  "cameraclack": {
+    "sounds": [
+      "thaumic_reborn:cameraclack1",
+      "thaumic_reborn:cameraclack2",
+      "thaumic_reborn:cameraclack3"
+    ]
+  },
+  "page": {
+    "sounds": [
+      "thaumic_reborn:page1",
+      "thaumic_reborn:page2"
+    ]
+  },
+  "key": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:key",
+        "stream": false
+      }
+    ]
+  },
+  "learn": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:learn",
+        "stream": false
+      }
+    ]
+  },
+  "write": {
+    "sounds": [
+      "thaumic_reborn:write1",
+      "thaumic_reborn:write2"
+    ]
+  },
+  "erase": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:erase",
+        "stream": false
+      }
+    ]
+  },
+  "crystal": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "thaumic_reborn:crystal",
+        "stream": false
+      }
+    ]
+  },
+  "hhoff": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:hhoff",
+        "stream": false
+      }
+    ]
+  },
+  "hhon": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:hhon",
+        "stream": false
+      }
+    ]
+  },
+  "wand": {
+    "sounds": [
+      "thaumic_reborn:wand1",
+      "thaumic_reborn:wand2",
+      "thaumic_reborn:wand3"
+    ]
+  },
+  "jar": {
+    "sounds": [
+      "thaumic_reborn:jar1",
+      "thaumic_reborn:jar2",
+      "thaumic_reborn:jar3",
+      "thaumic_reborn:jar4"
+    ]
+  },
+  "zap": {
+    "sounds": [
+      "thaumic_reborn:zap1",
+      "thaumic_reborn:zap2"
+    ]
+  },
+  "wisplive": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:wisplive1",
+      "thaumic_reborn:wisplive2",
+      "thaumic_reborn:wisplive3"
+    ]
+  },
+  "wispdead": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "thaumic_reborn:wispdead",
+        "stream": false
+      }
+    ]
+  },
+  "craft_success": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:craftstart",
+        "stream": false
+      }
+    ]
+  },
+  "craft_fail": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:craftfail",
+        "stream": false
+      }
+    ]
+  },
+  "infuser": {
+    "sounds": ["thaumic_reborn:infuser"]
+  },
+  "infuser_start": {
+    "sounds": ["thaumic_reborn:infuserstart"]
+  },
+  "egidle": {
+    "category": "master",
+    "sounds": [
+      "thaumic_reborn:egidle1",
+      "thaumic_reborn:egidle2"
+    ]
+  },
+  "egattack": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "thaumic_reborn:egattack",
+        "stream": false
+      }
+    ]
+  },
+  "jacobs": {
+    "sounds": [
+      {
+        "name": "thaumic_reborn:jacobs",
+        "stream": false
+      }
+    ]
+  },
+  "shock": {
+    "sounds": [
+      "thaumic_reborn:shock1",
+      "thaumic_reborn:shock2"
+    ]
+  },
+  "egdeath": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "thaumic_reborn:egdeath",
+        "stream": false
+      }
+    ]
+  },
+  "egscreech": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "thaumic_reborn:egscreech",
+        "stream": false
+      }
+    ]
+  },
+  "chant": {
+    "category": "master",
+    "sounds": [
+      "thaumic_reborn:chant1",
+      "thaumic_reborn:chant2",
+      "thaumic_reborn:chant3"
+    ]
+  },
+  "gore": {
+    "category": "master",
+    "sounds": [
+      "thaumic_reborn:gore1",
+      "thaumic_reborn:gore2"
+    ]
+  },
+  "roots": {
+    "category": "master",
+    "sounds": [
+      "thaumic_reborn:roots1",
+      "thaumic_reborn:roots2",
+      "thaumic_reborn:roots3"
+    ]
+  },
+  "swarm": {
+    "category": "master",
+    "sounds": [
+      "thaumic_reborn:swarm1",
+      "thaumic_reborn:swarm2",
+      "thaumic_reborn:swarm3"
+    ]
+  },
+  "swarmattack": {
+    "category": "hostile",
+    "sounds": ["thaumic_reborn:swarmattack"]
+  },
+  "fly": {
+    "category": "ambient",
+    "sounds": [
+      "thaumic_reborn:fly1",
+      "thaumic_reborn:fly2"
+    ]
+  },
+  "pech_idle": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:pech_idle1",
+      "thaumic_reborn:pech_idle2",
+      "thaumic_reborn:pech_idle3"
+    ]
+  },
+  "pech_hit": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:pech_hit1",
+      "thaumic_reborn:pech_hit2"
+    ]
+  },
+  "pech_death": {
+    "category": "hostile",
+    "sounds": ["thaumic_reborn:pech_death"]
+  },
+  "pech_charge": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:pech_charge1",
+      "thaumic_reborn:pech_charge2"
+    ]
+  },
+  "pech_trade": {
+    "category": "hostile",
+    "sounds": ["thaumic_reborn:pech_trade"]
+  },
+  "pech_dice": {
+    "category": "players",
+    "sounds": ["thaumic_reborn:pech_dice"]
+  },
+  "crabtalk": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:crabtalk1",
+      "thaumic_reborn:crabtalk2",
+      "thaumic_reborn:crabtalk3"
+    ]
+  },
+  "crabdeath": {
+    "category": "hostile",
+    "sounds": ["thaumic_reborn:crabdeath"]
+  },
+  "crabclaw": {
+    "category": "hostile",
+    "sounds": ["thaumic_reborn:crabclaw"]
+  },
+  "bubble": {
+    "category": "block",
+    "sounds": [
+      "thaumic_reborn:bubble1",
+      "thaumic_reborn:bubble2",
+      "thaumic_reborn:bubble3",
+      "thaumic_reborn:bubble4"
+    ]
+  },
+  "spill": {
+    "category": "block",
+    "sounds": ["thaumic_reborn:spill"]
+  },
+  "squeek": {
+    "category": "block",
+    "sounds": [
+      "thaumic_reborn:squeek1",
+      "thaumic_reborn:squeek2"
+    ]
+  },
+  "creak": {
+    "category": "block",
+    "sounds": [
+      "thaumic_reborn:creak1",
+      "thaumic_reborn:creak2"
+    ]
+  },
+  "tool": {
+    "category": "block",
+    "sounds": [
+      "thaumic_reborn:tool1",
+      "thaumic_reborn:tool2"
+    ]
+  },
+  "pump": {
+    "category": "block",
+    "sounds": [
+      "thaumic_reborn:pump1",
+      "thaumic_reborn:pump2",
+      "thaumic_reborn:pump3"
+    ]
+  },
+  "witness_idle": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:witness_idle1",
+      "thaumic_reborn:witness_idle2",
+      "thaumic_reborn:witness_idle3",
+      "thaumic_reborn:witness_idle4"
+    ]
+  },
+  "witness_alert": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:witness_alert1",
+      "thaumic_reborn:witness_alert2",
+      "thaumic_reborn:witness_alert3"
+    ]
+  },
+  "witness_attack": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:witness_attack1",
+      "thaumic_reborn:witness_attack2",
+      "thaumic_reborn:witness_attack3"
+    ]
+  },
+  "witness_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:witness_hurt1",
+      "thaumic_reborn:witness_hurt2"
+    ]
+  },
+  "witness_death": {
+    "category": "hostile",
+    "sounds": [
+      "thaumic_reborn:witness_death1",
+      "thaumic_reborn:witness_death2"
+    ]
+  },
+  "wandfail": {
+    "category": "player",
+    "sounds": ["thaumic_reborn:wandfail"]
+  },
+  "wind": {
+    "category": "player",
+    "sounds": ["thaumic_reborn:wind1", "thaumic_reborn:wind2"]
+  },
+  "swing": {
+    "category": "player",
+    "sounds": ["thaumic_reborn:swing1", "thaumic_reborn:swing2"]
+  },
+  "runic_shield_effect": {
+    "category": "players",
+    "sounds": [{"name":"thaumic_reborn:runic_shield_effect","stream":false}]
+  },
+  "runic_shield_charge": {
+    "category": "players",
+    "sounds": [{"name":"thaumic_reborn:runic_shield_charge","stream":false}]
+  },
+  "upgrade": {
+    "category": "neutral",
+    "sounds": ["thaumic_reborn:upgrade"]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:golem_fetter",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 6
+    },
+    {
+      "id": "praecantatio",
+      "amount": 4
+    },
+    {
+      "id": "metallum",
+      "amount": 6
+    },
+    {
+      "id": "potentia",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/golem_fetter.json"
+}

@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.7424242424,
+    "frequency_reduction_method": "default",
+    "salt": 14298532,
+    "separation": 2,
+    "spacing": 7
+  },
+  "structures": [
+    {
+      "structure": "thaumic_reborn:eldritch_ring",
+      "weight": 1
+    }
+  ]
+}

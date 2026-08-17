@@ -1,0 +1,32 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:tainted_cow",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 3
+    },
+    {
+      "id": "terra",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.TaintedCow",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 3
+      },
+      {
+        "id": "terra",
+        "amount": 3
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.TaintedCow\", (new AspectList()).add(Aspect.TAINT, 3).add(Aspect.EARTH, 3))"
+  }
+}

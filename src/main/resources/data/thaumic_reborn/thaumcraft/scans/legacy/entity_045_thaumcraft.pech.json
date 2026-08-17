@@ -1,0 +1,50 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:pech/mage",
+  "display": "entity.thaumic_reborn.pech_mage",
+  "aspects": [
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "praecantatio",
+      "amount": 2
+    },
+    {
+      "id": "permutatio",
+      "amount": 2
+    },
+    {
+      "id": "telum",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.Pech",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "humanus",
+        "amount": 2
+      },
+      {
+        "id": "praecantatio",
+        "amount": 2
+      },
+      {
+        "id": "permutatio",
+        "amount": 2
+      },
+      {
+        "id": "telum",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [
+      "new ThaumcraftApi.EntityTagsNBT(\"PechType\", (byte)1)"
+    ],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.Pech\", (new AspectList()).add(Aspect.MAN, 2).add(Aspect.MAGIC, 2).add(Aspect.EXCHANGE, 2).add(Aspect.WEAPON, 2), new ThaumcraftApi.EntityTagsNBT(\"PechType\", (byte)1))"
+  }
+}

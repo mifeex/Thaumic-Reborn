@@ -12,7 +12,7 @@ final class KnowledgeSyncPacketCompressionTest {
     @Test
     void largeRegistryPayloadRoundTripsBelowVanillaNbtReadLimit() {
         CompoundTag scans = new CompoundTag();
-        String repeated = "thaumcraftmodern:generated_recipe_scan/"
+        String repeated = "thaumic_reborn:generated_recipe_scan/"
                 + "abcdefghijklmnopqrstuvwxyz0123456789".repeat(32);
         for (int index = 0; index < 20_000; index++) {
             scans.putString("scan_" + index, repeated);

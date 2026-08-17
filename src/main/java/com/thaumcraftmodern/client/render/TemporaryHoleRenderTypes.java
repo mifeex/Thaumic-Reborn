@@ -21,7 +21,7 @@ final class TemporaryHoleRenderTypes extends RenderStateShard {
     );
     private static final TexturingStateShard REPEAT_TEXTURE =
             new TexturingStateShard(
-                    "thaumcraftmodern_portable_hole_repeat",
+                    "thaumic_reborn_portable_hole_repeat",
                     () -> {
                         RenderSystem.texParameter(
                                 GL11.GL_TEXTURE_2D,
@@ -48,7 +48,7 @@ final class TemporaryHoleRenderTypes extends RenderStateShard {
     );
 
     private TemporaryHoleRenderTypes() {
-        super("thaumcraftmodern_portable_hole", () -> { }, () -> { });
+        super("thaumic_reborn_portable_hole", () -> { }, () -> { });
     }
 
     static RenderType tunnel() {

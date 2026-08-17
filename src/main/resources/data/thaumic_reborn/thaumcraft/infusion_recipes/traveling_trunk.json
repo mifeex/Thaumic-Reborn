@@ -1,0 +1,13 @@
+{
+  "research": "traveltrunk",
+  "instability": 3,
+  "central": { "item": "thaumic_reborn:hungry_chest" },
+  "components": [
+    { "item": "minecraft:iron_ingot" },
+    { "item": "thaumic_reborn:greatwood_planks" },
+    { "item": "thaumic_reborn:wood_golem" },
+    { "item": "thaumic_reborn:greatwood_planks" }
+  ],
+  "essentia": { "motus": 4, "spiritus": 4, "iter": 4, "vacuos": 16 },
+  "result": { "item": "thaumic_reborn:traveling_trunk" }
+}

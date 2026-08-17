@@ -1,0 +1,92 @@
+{
+  "id": "golemclay",
+  "legacy_id": "GOLEMCLAY",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:clay_golem",
+  "title": "tc.research_name.GOLEMCLAY",
+  "subtitle": "tc.research_text.GOLEMCLAY",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemwood"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 48,
+  "y": 144,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMCLAY.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemclay"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "spiritus",
+      "amount": 6
+    },
+    {
+      "id": "motus",
+      "amount": 6
+    },
+    {
+      "id": "terra",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 2,
+    "y": 6,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 3)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 6
+      },
+      {
+        "id": "motus",
+        "amount": 6
+      },
+      {
+        "id": "terra",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMCLAY\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 6).add(Aspect.MOTION, 6).add(Aspect.EARTH, 3).add(Aspect.EXCHANGE, 3), 2, 6, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 3))).setPages(new ResearchPage(\"tc.research_page.GOLEMCLAY.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemClay\"))).setSecondary().setConcealed().setParents(\"GOLEMWOOD\").registerResearchItem()"
+  }
+}

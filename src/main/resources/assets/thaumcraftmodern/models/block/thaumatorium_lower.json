@@ -1,7 +1,0 @@
-{
-  "loader":"thaumcraftmodern:reload_safe_obj",
-  "flip_v":true,
-  "automatic_culling":false,
-  "model":"thaumcraftmodern:textures/models/thaumatorium_block.obj",
-  "textures":{"wire_214228153":"thaumcraftmodern:block/thaumatorium","texture0":"thaumcraftmodern:block/thaumatorium","particle":"thaumcraftmodern:block/thaumatorium"}
-}

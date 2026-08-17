@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ThaumonomiconClassicIconFidelityTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
     private static final Path TEXTURES = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/misc"
+            "src/main/resources/assets/thaumic_reborn/textures/misc"
     );
 
     @Test
@@ -42,7 +42,7 @@ class ThaumonomiconClassicIconFidelityTest {
             assertFalse(research.get("inactive").getAsBoolean(), entry.getKey());
             assertFalse(research.has("icon"), entry.getKey());
             assertEquals(
-                    "thaumcraftmodern:textures/misc/" + entry.getValue(),
+                    "thaumic_reborn:textures/misc/" + entry.getValue(),
                     research.get("icon_resource").getAsString(),
                     entry.getKey()
             );
@@ -85,10 +85,10 @@ class ThaumonomiconClassicIconFidelityTest {
         expected.put("legacy/eldritch", "textures/misc/r_eldritch.png");
 
         Path categoryRoot = Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/categories"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/categories"
         );
         Path assetRoot = Path.of(
-                "src/main/resources/assets/thaumcraftmodern"
+                "src/main/resources/assets/thaumic_reborn"
         );
         for (Map.Entry<String, String> entry : expected.entrySet()) {
             JsonObject category = JsonParser.parseString(Files.readString(
@@ -96,7 +96,7 @@ class ThaumonomiconClassicIconFidelityTest {
             )).getAsJsonObject();
             assertFalse(category.has("icon"), entry.getKey());
             assertEquals(
-                    "thaumcraftmodern:" + entry.getValue(),
+                    "thaumic_reborn:" + entry.getValue(),
                     category.get("icon_resource").getAsString(),
                     entry.getKey()
             );
@@ -109,7 +109,7 @@ class ThaumonomiconClassicIconFidelityTest {
                 categoryRoot.resolve("legacy/eldritch.json")
         )).getAsJsonObject();
         assertEquals(
-                "thaumcraftmodern:textures/gui/gui_researchbackeldritch.png",
+                "thaumic_reborn:textures/gui/gui_researchbackeldritch.png",
                 eldritch.get("background").getAsString()
         );
     }

@@ -1,0 +1,16 @@
+{
+  "research": "maskangryghost",
+  "instability": 8,
+  "central": { "tag": "thaumic_reborn:fortress_helmets" },
+  "components": [
+    { "item": "minecraft:white_dye" },
+    { "item": "minecraft:iron_ingot" },
+    { "item": "minecraft:leather" },
+    { "item": "minecraft:poisonous_potato" },
+    { "item": "minecraft:wither_skeleton_skull" },
+    { "item": "minecraft:iron_ingot" }
+  ],
+  "result": { "item": "thaumic_reborn:fortress_helmet_mask_angry_ghost" },
+  "result_modifier": { "type": "item_replacement", "key": "mask", "value": 1 },
+  "essentia": { "perditio": 64, "mortuus": 64, "tutamen": 16 }
+}

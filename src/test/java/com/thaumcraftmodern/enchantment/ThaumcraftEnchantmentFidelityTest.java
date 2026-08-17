@@ -40,7 +40,7 @@ final class ThaumcraftEnchantmentFidelityTest {
                 primal("aqua"), primal("ordo"), primal("perditio"),
                 new AspectDefinition(
                         "motus", 0x123456,
-                        "thaumcraftmodern:textures/aspects/motus.png",
+                        "thaumic_reborn:textures/aspects/motus.png",
                         List.of("aer", "ordo")
                 )
         ));
@@ -61,7 +61,7 @@ final class ThaumcraftEnchantmentFidelityTest {
     private static AspectDefinition primal(String id) {
         return new AspectDefinition(
                 id, 0xFFFFFF,
-                "thaumcraftmodern:textures/aspects/" + id + ".png"
+                "thaumic_reborn:textures/aspects/" + id + ".png"
         );
     }
 

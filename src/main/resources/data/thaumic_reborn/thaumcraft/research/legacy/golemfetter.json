@@ -1,0 +1,76 @@
+{
+  "id": "golemfetter",
+  "legacy_id": "GOLEMFETTER",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_fetter",
+  "title": "tc.research_name.GOLEMFETTER",
+  "subtitle": "tc.research_text.GOLEMFETTER",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemstone"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 192,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMFETTER.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golem_fetter"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "vinculum",
+      "amount": 3
+    },
+    {
+      "id": "machina",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": 8,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 9)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "vinculum",
+        "amount": 3
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMFETTER\", \"GOLEMANCY\", (new AspectList()).add(Aspect.TRAP, 3).add(Aspect.MECHANISM, 3), 4, 8, 1, new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 9))).setPages(new ResearchPage(\"tc.research_page.GOLEMFETTER.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"GolemFetter\"))).setParents(\"GOLEMSTONE\").setSecondary().registerResearchItem()"
+  }
+}

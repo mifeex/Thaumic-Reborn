@@ -65,12 +65,12 @@ final class InventoryThaumometerFeatureTest {
         assertFalse(renderer.contains("RenderSystem"));
 
         for (String locale : new String[]{"en_us", "ru_ru"}) {
-            Path lang = Path.of("src/main/resources/assets/thaumcraftmodern/lang/"
+            Path lang = Path.of("src/main/resources/assets/thaumic_reborn/lang/"
                     + locale + ".json");
             assertTrue(JsonParser.parseString(Files.readString(lang))
-                    .getAsJsonObject().has("tooltip.thaumcraftmodern.aspects"));
+                    .getAsJsonObject().has("tooltip.thaumic_reborn.aspects"));
             assertTrue(JsonParser.parseString(Files.readString(lang))
-                    .getAsJsonObject().has("screen.thaumcraftmodern.thaumometer."
+                    .getAsJsonObject().has("screen.thaumic_reborn.thaumometer."
                             + "inventory_scanning"));
         }
     }

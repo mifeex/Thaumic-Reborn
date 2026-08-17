@@ -19,7 +19,7 @@ import java.util.function.ToIntFunction;
 final class ThaumonomiconAspectCostRenderer {
     private static final ResourceLocation UNKNOWN_ASPECT =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "textures/aspects/_unknown.png"
             );
 

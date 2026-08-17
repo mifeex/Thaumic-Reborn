@@ -1,0 +1,10 @@
+{
+  "type":"entity",
+  "target":"thaumic_reborn:eldritch_construct",
+  "display":"entity.thaumic_reborn.eldritch_construct",
+  "aspects":[
+    {"id":"alienis","amount":8},
+    {"id":"machina","amount":6},
+    {"id":"terra","amount":6}
+  ]
+}

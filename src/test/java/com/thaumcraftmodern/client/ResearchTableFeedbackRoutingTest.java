@@ -26,7 +26,7 @@ final class ResearchTableFeedbackRoutingTest {
         assertTrue(menu.contains("result.newlyDiscovered()"));
         assertTrue(menu.contains("displayClientMessage("));
         assertTrue(menu.contains(
-                "message.thaumcraftmodern.scan.aspect_discovered"
+                "message.thaumic_reborn.scan.aspect_discovered"
         ));
         String failedCombination = menu.substring(
                 menu.indexOf("if (!result.combined())"),

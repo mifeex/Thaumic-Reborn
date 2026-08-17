@@ -1,0 +1,11 @@
+{
+  "type": "block_tag",
+  "target": "thaumic_reborn:quartz_block_equivalents",
+  "display": "",
+  "aspects": [
+    { "id": "vitreus", "amount": 3 },
+    { "id": "potentia", "amount": 3 }
+  ],
+  "inactive": false,
+  "recipe_derivation": "Four TC4 quartz items scaled by the original 0.75 crafting factor."
+}

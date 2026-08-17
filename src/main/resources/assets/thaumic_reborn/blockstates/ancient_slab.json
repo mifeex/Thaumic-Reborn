@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": {"model":"thaumic_reborn:block/ancient_slab"},
+    "type=top": {"model":"thaumic_reborn:block/ancient_slab_top"},
+    "type=double": {"model":"thaumic_reborn:block/ancient_stone"}
+  }
+}

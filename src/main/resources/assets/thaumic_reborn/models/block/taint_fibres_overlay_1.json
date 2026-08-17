@@ -1,0 +1,6 @@
+{
+  "parent": "thaumic_reborn:block/taint_fibres_overlay",
+  "textures": {
+    "overlay": "thaumic_reborn:block/taint_over_1"
+  }
+}

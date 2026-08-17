@@ -96,7 +96,7 @@
 14. Отложить настоящее Discovery и выдать предмет старого формата:
 
     ```text
-    /give @s thaumcraftmodern:discovery{Research:"first_discovery"}
+    /give @s thaumic_reborn:discovery{Research:"first_discovery"}
     ```
 
     Его использование должно показать безопасный отказ, не завершить
@@ -104,7 +104,7 @@
     рассогласованный payload:
 
     ```text
-    /give @s thaumcraftmodern:discovery{Research:"first_discovery",DiscoveryVersion:1,ValidatedResearch:"basics"}
+    /give @s thaumic_reborn:discovery{Research:"first_discovery",DiscoveryVersion:1,ValidatedResearch:"basics"}
     ```
 
     Автоматической миграции старых Discovery нет: проверка одного item NBT не
@@ -184,7 +184,7 @@
 automaticScanFallback = false
 ```
 
-Файл находится в `serverconfig/thaumcraftmodern-server.toml` конкретного мира.
+Файл находится в `serverconfig/thaumic_reborn-server.toml` конкретного мира.
 Для этой проверки допустимы команды, хотя они не входят в survival-приёмку:
 
 1. При `false` выдать `minecraft:structure_void`, держать его во второй руке и
@@ -222,7 +222,7 @@ automaticScanFallback = false
 4. До решения Notes игроком B выдать ему внешне корректный Discovery:
 
    ```text
-   /give @s thaumcraftmodern:discovery{Research:"first_discovery",DiscoveryVersion:1,ValidatedResearch:"first_discovery"}
+   /give @s thaumic_reborn:discovery{Research:"first_discovery",DiscoveryVersion:1,ValidatedResearch:"first_discovery"}
    ```
 
    Сервер должен отклонить предмет из-за отсутствия player-owned claim, не

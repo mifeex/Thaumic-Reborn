@@ -1,0 +1,8 @@
+{
+  "feature": "thaumic_reborn:legacy_ores",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

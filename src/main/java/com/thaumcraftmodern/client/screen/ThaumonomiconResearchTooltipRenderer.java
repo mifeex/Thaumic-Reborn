@@ -114,7 +114,7 @@ final class ThaumonomiconResearchTooltipRenderer {
                 : null;
         String warp = research.completionWarp() > 0
                 ? Component.translatable(
-                        "tooltip.thaumcraftmodern.research_completion_warp",
+                        "tooltip.thaumic_reborn.research_completion_warp",
                         research.completionWarp()
                 ).getString()
                 : "";
@@ -248,7 +248,7 @@ final class ThaumonomiconResearchTooltipRenderer {
         if (research.inactive()) {
             return new ResearchTooltipLine(
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.content_inactive"
+                            "screen.thaumic_reborn.thaumonomicon.content_inactive"
                     ).getString(),
                     RESEARCH_TOOLTIP_BLOCKED
             );

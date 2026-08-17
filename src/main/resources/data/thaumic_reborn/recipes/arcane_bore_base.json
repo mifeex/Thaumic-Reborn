@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "arcanebore",
+  "vis": {
+    "aer": 10,
+    "ordo": 10
+  },
+  "pattern": [
+    "WIW",
+    "IDI",
+    "WIW"
+  ],
+  "key": {
+    "W": {
+      "item": "thaumic_reborn:greatwood_planks"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:dispenser"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_bore_base"
+  }
+}

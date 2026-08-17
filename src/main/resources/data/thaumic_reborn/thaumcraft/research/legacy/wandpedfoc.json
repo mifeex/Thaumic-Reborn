@@ -1,0 +1,119 @@
+{
+  "id": "wandpedfoc",
+  "legacy_id": "WANDPEDFOC",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:compound_recharge_focus",
+  "title": "tc.research_name.WANDPEDFOC",
+  "subtitle": "tc.research_text.WANDPEDFOC",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "wandped"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -240,
+  "y": -168,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WANDPEDFOC.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:compound_recharge_focus",
+      "central": "minecraft:comparator",
+      "components": [
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:vis_filter", "count": 1},
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:vis_filter", "count": 1},
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:vis_filter", "count": 1},
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:vis_filter", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "ordo", "amount": 10},
+        {"id": "praecantatio", "amount": 15},
+        {"id": "permutatio", "amount": 10}
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.WANDPEDFOC"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "auram",
+      "amount": 6
+    },
+    {
+      "id": "praecantatio",
+      "amount": 6
+    },
+    {
+      "id": "permutatio",
+      "amount": 6
+    },
+    {
+      "id": "potentia",
+      "amount": 3
+    },
+    {
+      "id": "instrumentum",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -10,
+    "y": -7,
+    "complexity": 3,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockStoneDevice, 1, 8)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 6
+      },
+      {
+        "id": "praecantatio",
+        "amount": 6
+      },
+      {
+        "id": "permutatio",
+        "amount": 6
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      },
+      {
+        "id": "instrumentum",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"WANDPEDFOC\", \"THAUMATURGY\", (new AspectList()).add(Aspect.AURA, 6).add(Aspect.MAGIC, 6).add(Aspect.EXCHANGE, 6).add(Aspect.ENERGY, 3).add(Aspect.TOOL, 3), -10, -7, 3, new ItemStack(ConfigBlocks.blockStoneDevice, 1, 8))).setPages(new ResearchPage(\"tc.research_page.WANDPEDFOC.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"WandPedFocus\"))).setSecondary().setConcealed().setParents(\"WANDPED\").registerResearchItem()"
+  }
+}

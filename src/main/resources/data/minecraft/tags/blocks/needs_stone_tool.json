@@ -1,15 +1,15 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:crucible",
-    "thaumcraftmodern:arcane_lamp",
-    "thaumcraftmodern:lamp_growth",
-    "thaumcraftmodern:lamp_fertility",
-    "thaumcraftmodern:item_grate",
-    "thaumcraftmodern:arcane_alembic",
-    "thaumcraftmodern:mnemonic_matrix",
-    "thaumcraftmodern:alchemical_construct",
-    "thaumcraftmodern:advanced_alchemical_construct",
-    "thaumcraftmodern:thaumatorium"
+    "thaumic_reborn:crucible",
+    "thaumic_reborn:arcane_lamp",
+    "thaumic_reborn:lamp_growth",
+    "thaumic_reborn:lamp_fertility",
+    "thaumic_reborn:item_grate",
+    "thaumic_reborn:arcane_alembic",
+    "thaumic_reborn:mnemonic_matrix",
+    "thaumic_reborn:alchemical_construct",
+    "thaumic_reborn:advanced_alchemical_construct",
+    "thaumic_reborn:thaumatorium"
   ]
 }

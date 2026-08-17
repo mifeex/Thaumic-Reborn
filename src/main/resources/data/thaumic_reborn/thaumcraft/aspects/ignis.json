@@ -1,0 +1,7 @@
+{
+  "id": "ignis",
+  "order": 20,
+  "color": "FF5A01",
+  "icon": "thaumic_reborn:textures/aspects/ignis.png",
+  "components": []
+}

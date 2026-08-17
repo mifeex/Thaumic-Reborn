@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "cap=false,facing=north": {"model":"thaumic_reborn:block/infusion_pillar"},
+    "cap=false,facing=east": {"model":"thaumic_reborn:block/infusion_pillar","y":90},
+    "cap=false,facing=south": {"model":"thaumic_reborn:block/infusion_pillar","y":180},
+    "cap=false,facing=west": {"model":"thaumic_reborn:block/infusion_pillar","y":270},
+    "cap=true,facing=north": {"model":"thaumic_reborn:block/infusion_pillar_cap"},
+    "cap=true,facing=east": {"model":"thaumic_reborn:block/infusion_pillar_cap","y":90},
+    "cap=true,facing=south": {"model":"thaumic_reborn:block/infusion_pillar_cap","y":180},
+    "cap=true,facing=west": {"model":"thaumic_reborn:block/infusion_pillar_cap","y":270}
+  }
+}

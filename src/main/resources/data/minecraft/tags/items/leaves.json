@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:greatwood_leaves",
-    "thaumcraftmodern:silverwood_leaves"
+    "thaumic_reborn:greatwood_leaves",
+    "thaumic_reborn:silverwood_leaves"
   ]
 }

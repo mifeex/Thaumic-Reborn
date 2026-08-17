@@ -1,0 +1,46 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "basicartiface",
+  "vis": {
+    "terra": 25,
+    "ignis": 25,
+    "aer": 25,
+    "aqua": 25,
+    "ordo": 25,
+    "perditio": 25
+  },
+  "pattern": [
+    "123",
+    "ISI",
+    "456"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:balanced_shard"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "1": {
+      "item": "thaumic_reborn:air_shard"
+    },
+    "2": {
+      "item": "thaumic_reborn:fire_shard"
+    },
+    "3": {
+      "item": "thaumic_reborn:water_shard"
+    },
+    "4": {
+      "item": "thaumic_reborn:earth_shard"
+    },
+    "5": {
+      "item": "thaumic_reborn:order_shard"
+    },
+    "6": {
+      "item": "thaumic_reborn:entropy_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:primal_charm"
+  }
+}

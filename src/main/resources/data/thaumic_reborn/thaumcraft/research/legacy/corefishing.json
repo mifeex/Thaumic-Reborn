@@ -1,0 +1,140 @@
+{
+  "id": "corefishing",
+  "legacy_id": "COREFISHING",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:fishing_golem_core",
+  "title": "tc.research_name.COREFISHING",
+  "subtitle": "tc.research_text.COREFISHING",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coreharvest",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -48,
+  "y": 168,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREFISHING.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumic_reborn:core_fishing",
+      "output": "thaumic_reborn:fishing_golem_core",
+      "central": "thaumic_reborn:harvest_golem_core",
+      "components": [
+        { "item": "minecraft:fishing_rod" },
+        { "item": "minecraft:cod" },
+        { "item": "minecraft:pufferfish" },
+        { "item": "minecraft:salmon" }
+      ],
+      "aspect_costs": [
+        { "id": "aqua", "amount": 16 },
+        { "id": "meto", "amount": 16 },
+        { "id": "bestia", "amount": 16 }
+      ],
+      "instability": "high"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEAIR\"",
+      "source_expression": "new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.COREFISHING.2\")"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEFIRE\"",
+      "source_expression": "new ResearchPage(\"UPGRADEFIRE\", \"tc.research_page.COREFISHING.3\")"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEORDER\"",
+      "source_expression": "new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREFISHING.4\")"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEENTROPY\"",
+      "source_expression": "new ResearchPage(\"UPGRADEENTROPY\", \"tc.research_page.COREFISHING.5\")"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "aqua",
+      "amount": 3
+    },
+    {
+      "id": "meto",
+      "amount": 3
+    },
+    {
+      "id": "bestia",
+      "amount": 3
+    },
+    {
+      "id": "fames",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -2,
+    "y": 7,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 11)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "meto",
+        "amount": 3
+      },
+      {
+        "id": "bestia",
+        "amount": 3
+      },
+      {
+        "id": "fames",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"COREFISHING\", \"GOLEMANCY\", (new AspectList()).add(Aspect.WATER, 3).add(Aspect.HARVEST, 3).add(Aspect.BEAST, 3).add(Aspect.HUNGER, 3), -2, 7, 2, new ItemStack(ConfigItems.itemGolemCore, 1, 11))).setPages(new ResearchPage(\"tc.research_page.COREFISHING.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"CoreFishing\")), new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.COREFISHING.2\"), new ResearchPage(\"UPGRADEFIRE\", \"tc.research_page.COREFISHING.3\"), new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREFISHING.4\"), new ResearchPage(\"UPGRADEENTROPY\", \"tc.research_page.COREFISHING.5\")).setConcealed().setSecondary().setParents(\"COREHARVEST\", \"INFUSION\").registerResearchItem()"
+  }
+}

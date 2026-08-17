@@ -1,0 +1,16 @@
+{
+  "loader": "thaumic_reborn:reload_safe_obj",
+  "flip_v": true,
+  "automatic_culling": false,
+  "model": "thaumic_reborn:textures/models/vis_relay.obj",
+  "visibility": {
+    "Crystal": true,
+    "RingFloat": false,
+    "RingBase": false,
+    "Support": false
+  },
+  "textures": {
+    "texture0": "thaumic_reborn:block/vis_relay",
+    "particle": "thaumic_reborn:block/vis_relay"
+  }
+}

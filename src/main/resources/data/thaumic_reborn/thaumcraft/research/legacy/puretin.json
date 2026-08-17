@@ -1,0 +1,89 @@
+{
+  "id": "puretin",
+  "legacy_id": "PURETIN",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:native_tin_cluster",
+  "title": "tc.research_name.PURETIN",
+  "subtitle": "tc.research_text.PURETIN",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "pureiron"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": 168,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PURETIN.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:puretin",
+      "legacy_type": "recipe",
+      "legacy_content": "PureTin",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"PureTin\"))"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 2
+    },
+    {
+      "id": "vitreus",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -4,
+    "y": 7,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemNugget, 1, 18)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 2
+      },
+      {
+        "id": "vitreus",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "}\n\n      if (Config.foundTinOre && Config.foundTinIngot) {\n         (new ResearchItem(\"PURETIN\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.ORDER, 2).add(Aspect.CRYSTAL, 1), -4, 7, 1, new ItemStack(ConfigItems.itemNugget, 1, 18))).setPages(new ResearchPage(\"tc.research_page.PURETIN.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"PureTin\"))).setConcealed().setSecondary().setParents(\"PUREIRON\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "parent":"thaumic_reborn:block/jarred_aura_node",
+  "textures":{"bottom":"thaumic_reborn:block/jar_bottom","side":"thaumic_reborn:block/jar_side_void","top":"thaumic_reborn:block/jar_top_void","particle":"thaumic_reborn:block/jar_side_void"}
+}

@@ -1,0 +1,14 @@
+{
+  "research": "pureiron",
+  "catalyst": {
+    "tag": "forge:ores/iron"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_iron_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureIron"
+}

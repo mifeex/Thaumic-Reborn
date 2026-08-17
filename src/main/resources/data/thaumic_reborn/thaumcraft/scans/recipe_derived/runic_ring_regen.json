@@ -1,0 +1,42 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:runic_ring_regen",
+  "display": "",
+  "aspects": [
+    {
+      "id": "aer",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 1
+    },
+    {
+      "id": "aqua",
+      "amount": 8
+    },
+    {
+      "id": "terra",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    },
+    {
+      "id": "perditio",
+      "amount": 1
+    },
+    {
+      "id": "vitreus",
+      "amount": 4
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/runic_ring_regen.json"
+}

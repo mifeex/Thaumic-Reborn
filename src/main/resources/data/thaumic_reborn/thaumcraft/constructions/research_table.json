@@ -1,0 +1,11 @@
+{
+  "id": "research_table",
+  "handler": "research_table_pair",
+  "trigger": {
+    "type": "item",
+    "item": "thaumic_reborn:scribing_tools",
+    "consume": 1
+  },
+  "research": "",
+  "vis": {}
+}

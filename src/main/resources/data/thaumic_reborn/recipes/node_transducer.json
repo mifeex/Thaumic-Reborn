@@ -1,0 +1,34 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "vispower",
+  "vis": {
+    "ignis": 32,
+    "aer": 32,
+    "perditio": 32
+  },
+  "pattern": [
+    "RCR",
+    "ISI",
+    "RAR"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:node_stabilizer"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "A": {
+      "item": "thaumic_reborn:nitor"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:node_transducer"
+  }
+}

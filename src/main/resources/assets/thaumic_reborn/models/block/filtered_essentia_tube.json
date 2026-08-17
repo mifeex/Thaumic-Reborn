@@ -1,0 +1,19 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/pipe_filter",
+    "filter": "thaumic_reborn:block/pipe_filter",
+    "core": "thaumic_reborn:block/pipe_filter_core"
+  },
+  "elements": [
+    {
+      "from": [5.5, 5.5, 5.5], "to": [10.5, 10.5, 10.5],
+      "faces": {
+        "down": {"uv":[5.5,10.5,10.5,5.5],"texture": "#filter"}, "up": {"uv":[5.5,5.5,10.5,10.5],"texture": "#filter"},
+        "north": {"uv":[5.5,5.5,10.5,10.5],"texture": "#filter"}, "south": {"uv":[5.5,5.5,10.5,10.5],"texture": "#filter"},
+        "west": {"uv":[5.5,5.5,10.5,10.5],"texture": "#filter"}, "east": {"uv":[5.5,5.5,10.5,10.5],"texture": "#filter"}
+      }
+    }
+  ]
+}

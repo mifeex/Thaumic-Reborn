@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=down":{"model":"thaumic_reborn:block/invisible_vis_device"},
+    "facing=up":{"model":"thaumic_reborn:block/invisible_vis_device"},
+    "facing=north":{"model":"thaumic_reborn:block/invisible_vis_device"},
+    "facing=south":{"model":"thaumic_reborn:block/invisible_vis_device"},
+    "facing=west":{"model":"thaumic_reborn:block/invisible_vis_device"},
+    "facing=east":{"model":"thaumic_reborn:block/invisible_vis_device"}
+  }
+}

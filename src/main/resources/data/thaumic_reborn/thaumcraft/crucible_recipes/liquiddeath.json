@@ -1,0 +1,15 @@
+{
+  "research": "liquiddeath",
+  "catalyst": {
+    "item": "minecraft:bucket"
+  },
+  "output": {
+    "item": "thaumic_reborn:liquid_death_bucket"
+  },
+  "aspects": {
+    "mortuus": 32,
+    "venenum": 32,
+    "perditio": 32
+  },
+  "legacy_id": "LiquidDeath"
+}

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class WizardTowerLootFidelityTest {
     private static final Path TABLE = Path.of(
-            "src/main/resources/data/thaumcraftmodern/loot_tables/chests/"
+            "src/main/resources/data/thaumic_reborn/loot_tables/chests/"
                     + "wizard_tower.json"
     );
 
@@ -44,11 +44,11 @@ class WizardTowerLootFidelityTest {
                         Map.entry("minecraft:gold_nugget", 5),
                         Map.entry("minecraft:fire_charge", 5),
                         Map.entry("minecraft:skeleton_skull", 3),
-                        Map.entry("thaumcraftmodern:knowledge_fragment", 20),
-                        Map.entry("thaumcraftmodern:alumentum", 5),
-                        Map.entry("thaumcraftmodern:nitor", 5),
-                        Map.entry("thaumcraftmodern:thaumium_ingot", 5),
-                        Map.entry("thaumcraftmodern:thaumonomicon", 20)
+                        Map.entry("thaumic_reborn:knowledge_fragment", 20),
+                        Map.entry("thaumic_reborn:alumentum", 5),
+                        Map.entry("thaumic_reborn:nitor", 5),
+                        Map.entry("thaumic_reborn:thaumium_ingot", 5),
+                        Map.entry("thaumic_reborn:thaumonomicon", 20)
                 ),
                 actual
         );

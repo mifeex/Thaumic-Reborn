@@ -1,0 +1,16 @@
+{
+  "research": "golemclay",
+  "catalyst": {
+    "item": "minecraft:clay"
+  },
+  "output": {
+    "item": "thaumic_reborn:clay_golem"
+  },
+  "aspects": {
+    "humanus": 4,
+    "motus": 4,
+    "spiritus": 4
+  },
+  "legacy_id": "GolemClay",
+  "inactive": false
+}

@@ -1,0 +1,30 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "distilessentia",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "VTF",
+    "TWT",
+    "FTV"
+  ],
+  "key": {
+    "W": {
+      "item": "thaumic_reborn:greatwood_planks"
+    },
+    "V": {
+      "item": "thaumic_reborn:essentia_valve"
+    },
+    "T": {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    "F": {
+      "item": "thaumic_reborn:vis_filter"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:alchemical_construct"
+  }
+}

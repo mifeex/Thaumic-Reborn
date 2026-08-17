@@ -1,0 +1,15 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:balanced_shard",
+  "display": "item.thaumic_reborn.balanced_shard",
+  "aspects": [
+    { "id": "aer", "amount": 2 },
+    { "id": "ignis", "amount": 2 },
+    { "id": "aqua", "amount": 2 },
+    { "id": "terra", "amount": 2 },
+    { "id": "ordo", "amount": 2 },
+    { "id": "perditio", "amount": 2 },
+    { "id": "vitreus", "amount": 1 }
+  ],
+  "inactive": false
+}

@@ -1,0 +1,79 @@
+{
+  "id": "coreguard",
+  "legacy_id": "COREGUARD",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:guard_golem_core",
+  "title": "tc.research_name.COREGUARD",
+  "subtitle": "tc.research_text.COREGUARD",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coregather"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREGUARD.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:coreguard"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEORDER\"",
+      "source_expression": "new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREGUARD.2\")"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -4,
+    "y": 5,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 4)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "telum",
+        "amount": 3
+      },
+      {
+        "id": "vinculum",
+        "amount": 3
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"COREGUARD\", \"GOLEMANCY\", (new AspectList()).add(Aspect.WEAPON, 3).add(Aspect.TRAP, 3).add(Aspect.SENSES, 3), -4, 5, 2, new ItemStack(ConfigItems.itemGolemCore, 1, 4))).setPages(new ResearchPage(\"tc.research_page.COREGUARD.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"CoreGuard\")), new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREGUARD.2\")).setConcealed().setParents(\"COREGATHER\").registerResearchItem()"
+  }
+}

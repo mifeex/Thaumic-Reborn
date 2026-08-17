@@ -1,0 +1,14 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:thaumium_block",
+  "display": "block.thaumic_reborn.thaumium_block",
+  "aspects": [
+    { "id": "metallum", "amount": 8 },
+    { "id": "praecantatio", "amount": 2 }
+  ],
+  "legacy": {
+    "registration_mode": "explicit",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4)",
+    "source": "ConfigAspects.registerThaumcraftAlchemyBaseline"
+  }
+}

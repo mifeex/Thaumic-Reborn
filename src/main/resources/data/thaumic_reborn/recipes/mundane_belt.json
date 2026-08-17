@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" L ", "L L", " I "],
+  "key": {
+    "L": {"item": "minecraft:leather"},
+    "I": {"item": "minecraft:iron_ingot"}
+  },
+  "result": {"item": "thaumic_reborn:blank_belt"}
+}

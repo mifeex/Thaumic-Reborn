@@ -1,0 +1,10 @@
+{
+  "id": "corpus",
+  "order": 310,
+  "color": "EE478D",
+  "icon": "thaumic_reborn:textures/aspects/corpus.png",
+  "components": [
+    "mortuus",
+    "bestia"
+  ]
+}

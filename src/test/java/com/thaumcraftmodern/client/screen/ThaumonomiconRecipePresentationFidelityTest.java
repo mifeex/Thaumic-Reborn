@@ -32,7 +32,7 @@ final class ThaumonomiconRecipePresentationFidelityTest {
                     + "ThaumonomiconRecipeOutputRenderer.java"
     );
     private static final Path OVERLAY = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/gui/"
+            "src/main/resources/assets/thaumic_reborn/textures/gui/"
                     + "gui_researchbook_overlay.png"
     );
 
@@ -135,11 +135,11 @@ final class ThaumonomiconRecipePresentationFidelityTest {
                         new InfusionDisplayDefinition.ComponentStack(
                                 "minecraft:ender_pearl", 1),
                         new InfusionDisplayDefinition.ComponentStack(
-                                "thaumcraftmodern:salis_mundus", 1)),
+                                "thaumic_reborn:salis_mundus", 1)),
                 InfusionDisplayDefinition.Instability.MODERATE, "");
         ResearchPageDefinition page = new ResearchPageDefinition(
                 ResearchPageDefinition.Type.INFUSION, "", "",
-                "thaumcraftmodern:runic_augmentation", List.of(), display);
+                "thaumic_reborn:runic_augmentation", List.of(), display);
 
         var first = RunicAugmentationPreview.atTime(
                 page, display, 0L);

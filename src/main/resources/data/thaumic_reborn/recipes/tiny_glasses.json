@@ -1,0 +1,22 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyglasses",
+  "vis": {
+    "aer": 4,
+    "aqua": 4
+  },
+  "pattern": [
+    "GIG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_glasses"
+  }
+}

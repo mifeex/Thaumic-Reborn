@@ -1,0 +1,160 @@
+{
+  "id": "banners",
+  "legacy_id": "BANNERS",
+  "category": "artifice",
+  "icon": "thaumic_reborn:white_thaumcraft_banner",
+  "title": "tc.research_name.BANNERS",
+  "subtitle": "tc.research_text.BANNERS",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "criterion",
+    "id": "thaumic_reborn:legacy_clue/banners"
+  },
+  "x": 96,
+  "y": 192,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BANNERS.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_white"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_orange"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_magenta"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_light_blue"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_yellow"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_lime"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_pink"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_gray"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_light_gray"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_cyan"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_purple"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_blue"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_brown"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_green"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_red"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:banner_black"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "sensus",
+      "amount": 3
+    },
+    {
+      "id": "pannus",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": 8,
+    "complexity": 1,
+    "icon_raw": "is",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [
+      "new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 8)"
+    ],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "sensus",
+        "amount": 3
+      },
+      {
+        "id": "pannus",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"BANNERS\", \"ARTIFICE\", (new AspectList()).add(Aspect.SENSES, 3).add(Aspect.CLOTH, 3).add(Aspect.MAGIC, 1), 4, 8, 1, is)).setPages(new ResearchPage(\"tc.research_page.BANNERS.1\"), new ResearchPage((IArcaneRecipe[])banners.toArray(new IArcaneRecipe[0]))).setHidden().setItemTriggers(new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 8)).setSecondary().registerResearchItem()"
+  }
+}

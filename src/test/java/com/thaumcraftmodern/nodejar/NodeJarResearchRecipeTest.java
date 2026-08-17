@@ -13,7 +13,7 @@ class NodeJarResearchRecipeTest {
         NodeJarResearchRecipe.Snapshot recipe =
                 NodeJarResearchRecipe.snapshot();
 
-        assertEquals("thaumcraftmodern:node_jar_capture",
+        assertEquals("thaumic_reborn:node_jar_capture",
                 NodeJarResearchRecipe.ID.toString());
         assertEquals(3, recipe.width());
         assertEquals(4, recipe.height());

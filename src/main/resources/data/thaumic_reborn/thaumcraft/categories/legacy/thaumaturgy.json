@@ -1,0 +1,15 @@
+{
+  "id": "thaumaturgy",
+  "title": "tc.research_category.THAUMATURGY",
+  "icon_resource": "thaumic_reborn:textures/misc/r_thaumaturgy.png",
+  "background": "thaumic_reborn:textures/gui/gui_researchback.png",
+  "order": 101,
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "id": "THAUMATURGY",
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_thaumaturgy.png\")",
+    "background_raw": "new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\")",
+    "source_expression": "ResearchCategories.registerCategory(\"THAUMATURGY\", new ResourceLocation(\"thaumcraft\", \"textures/misc/r_thaumaturgy.png\"), new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\"))"
+  }
+}

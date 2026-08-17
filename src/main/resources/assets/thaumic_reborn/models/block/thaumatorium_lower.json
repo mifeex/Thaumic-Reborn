@@ -1,0 +1,7 @@
+{
+  "loader":"thaumic_reborn:reload_safe_obj",
+  "flip_v":true,
+  "automatic_culling":false,
+  "model":"thaumic_reborn:textures/models/thaumatorium_block.obj",
+  "textures":{"wire_214228153":"thaumic_reborn:block/thaumatorium","texture0":"thaumic_reborn:block/thaumatorium","particle":"thaumic_reborn:block/thaumatorium"}
+}

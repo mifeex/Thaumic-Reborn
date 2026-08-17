@@ -1,0 +1,45 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:taint_fibres",
+  "display": "",
+  "aspects": [
+    {
+      "id": "victus",
+      "amount": 1
+    },
+    {
+      "id": "vitium",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockTaintFibres, 1, 0)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "victus",
+        "amount": 1
+      },
+      {
+        "id": "vitium",
+        "amount": 2
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "victus",
+        "amount": 1
+      },
+      {
+        "operation": "add",
+        "id": "vitium",
+        "amount": 2
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockTaintFibres, 1, 0), (new AspectList()).add(Aspect.LIFE, 1).add(Aspect.TAINT, 2))"
+  }
+}

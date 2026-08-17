@@ -1,0 +1,10 @@
+{
+  "id": "vinculum",
+  "order": 470,
+  "color": "9A8080",
+  "icon": "thaumic_reborn:textures/aspects/vinculum.png",
+  "components": [
+    "motus",
+    "perditio"
+  ]
+}

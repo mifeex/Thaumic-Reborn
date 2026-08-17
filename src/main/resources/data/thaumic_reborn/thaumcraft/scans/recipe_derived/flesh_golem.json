@@ -1,0 +1,26 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:flesh_golem",
+  "display": "",
+  "aspects": [
+    {
+      "id": "corpus",
+      "amount": 3
+    },
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "motus",
+      "amount": 2
+    },
+    {
+      "id": "spiritus",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/golemflesh.json"
+}

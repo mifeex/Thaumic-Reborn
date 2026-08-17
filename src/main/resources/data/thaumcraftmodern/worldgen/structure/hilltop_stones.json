@@ -1,7 +1,0 @@
-{
-  "type": "thaumcraftmodern:legacy_world_structure",
-  "biomes": "#thaumcraftmodern:has_hilltop_stones",
-  "kind": "hilltop_stones",
-  "spawn_overrides": {},
-  "step": "surface_structures"
-}

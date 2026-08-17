@@ -30,15 +30,15 @@ registry ID, родители, категории, аспекты и рецеп�
 
 | Что меняется | Где находится |
 |---|---|
-| Аспекты и формулы их объединения | `src/main/resources/data/thaumcraftmodern/thaumcraft/aspects/` |
-| Иконки аспектов | `src/main/resources/assets/thaumcraftmodern/textures/aspects/` |
-| Состав аспектов у блоков, предметов и сущностей | `src/main/resources/data/thaumcraftmodern/thaumcraft/scans/` |
-| Обычные Minecraft-рецепты | `src/main/resources/data/thaumcraftmodern/recipes/` |
-| Вкладки Таумономикона | `src/main/resources/data/thaumcraftmodern/thaumcraft/categories/` |
-| Исследования и страницы Таумономикона | `src/main/resources/data/thaumcraftmodern/thaumcraft/research/` |
-| In-world сборка составных структур | `src/main/resources/data/thaumcraftmodern/thaumcraft/constructions/` |
-| Русские названия и тексты | `src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json` |
-| Английские названия и тексты | `src/main/resources/assets/thaumcraftmodern/lang/en_us.json` |
+| Аспекты и формулы их объединения | `src/main/resources/data/thaumic_reborn/thaumcraft/aspects/` |
+| Иконки аспектов | `src/main/resources/assets/thaumic_reborn/textures/aspects/` |
+| Состав аспектов у блоков, предметов и сущностей | `src/main/resources/data/thaumic_reborn/thaumcraft/scans/` |
+| Обычные Minecraft-рецепты | `src/main/resources/data/thaumic_reborn/recipes/` |
+| Вкладки Таумономикона | `src/main/resources/data/thaumic_reborn/thaumcraft/categories/` |
+| Исследования и страницы Таумономикона | `src/main/resources/data/thaumic_reborn/thaumcraft/research/` |
+| In-world сборка составных структур | `src/main/resources/data/thaumic_reborn/thaumcraft/constructions/` |
+| Русские названия и тексты | `src/main/resources/assets/thaumic_reborn/lang/ru_ru.json` |
+| Английские названия и тексты | `src/main/resources/assets/thaumic_reborn/lang/en_us.json` |
 
 ## Триггеры составных структур
 
@@ -51,7 +51,7 @@ registry ID, родители, категории, аспекты и рецеп�
   "handler": "research_table_pair",
   "trigger": {
     "type": "item",
-    "item": "thaumcraftmodern:scribing_tools",
+    "item": "thaumic_reborn:scribing_tools",
     "consume": 1
   },
   "research": "",
@@ -79,7 +79,7 @@ registry ID, родители, категории, аспекты и рецеп�
   "id": "motus",
   "order": 90,
   "color": "CDCCF4",
-  "icon": "thaumcraftmodern:textures/aspects/motus.png",
+  "icon": "thaumic_reborn:textures/aspects/motus.png",
   "components": [
     "aer",
     "ordo"
@@ -110,7 +110,7 @@ registry ID, родители, категории, аспекты и рецеп�
 Добавьте название в оба lang-файла:
 
 ```json
-"aspect.thaumcraftmodern.motus": "Движение"
+"aspect.thaumic_reborn.motus": "Движение"
 ```
 
 ## Состав аспектов у изучаемых целей
@@ -129,7 +129,7 @@ heuristic по типу, Minecraft-тегам и ID цели. Он являет�
 automaticScanFallback = false
 ```
 
-Файл `thaumcraftmodern-server.toml` находится в `serverconfig` конкретного мира.
+Файл `thaumic_reborn-server.toml` находится в `serverconfig` конкретного мира.
 После изменения перезапустите мир или dedicated server. При `true`, например,
 вода может получить Aqua, лава — Ignis и Terra, животные — Victus, а водные
 животные — Victus и Aqua. Это совместимый вывод, а не доказанные TC4 data.
@@ -158,7 +158,7 @@ automaticScanFallback = false
 
 `type` принимает `block`, `item`, `entity` или `phenomenon`. Последний тип
 используется для стабильных не-registry целей, например
-`thaumcraftmodern:aura_node`. Выпавший предмет использует определение `item`.
+`thaumic_reborn:aura_node`. Выпавший предмет использует определение `item`.
 Если это `BlockItem` и отдельного `item`-определения нет,
 он автоматически использует `block`-определение того же блока. Поэтому
 поставленный и выпавший камень имеют один `scanKey` и не дают награду дважды.
@@ -228,7 +228,7 @@ automaticScanFallback = false
 
 ## Обычные рецепты крафта
 
-Они находятся в `data/thaumcraftmodern/recipes` и используют обычный формат
+Они находятся в `data/thaumic_reborn/recipes` и используют обычный формат
 Minecraft 1.20.1: `minecraft:crafting_shaped` или
 `minecraft:crafting_shapeless`.
 
@@ -237,15 +237,15 @@ Minecraft 1.20.1: `minecraft:crafting_shaped` или
 ```json
 {
   "type": "recipe",
-  "title": "research.thaumcraftmodern.example.recipe.title",
-  "recipe": "thaumcraftmodern:knowledge_fragment"
+  "title": "research.thaumic_reborn.example.recipe.title",
+  "recipe": "thaumic_reborn:knowledge_fragment"
 }
 ```
 
 Если recipe реализует общий `AspectCostProvider`, Таумономикон автоматически
 показывает под схемой все ненулевые затраты в едином виде: цветная иконка
 аспекта и точное число в правом нижнем углу. Текущие
-`thaumcraftmodern:arcane_shaped` и `thaumcraftmodern:arcane_shapeless`
+`thaumic_reborn:arcane_shaped` и `thaumic_reborn:arcane_shapeless`
 предоставляют свои значения `vis` автоматически. Тот же контракт предназначен
 для рецептов матрицы/инфузии и других механик, расходующих аспекты.
 
@@ -256,8 +256,8 @@ Minecraft 1.20.1: `minecraft:crafting_shaped` или
 ```json
 {
   "type": "text",
-  "title": "research.thaumcraftmodern.example.action.title",
-  "body": "research.thaumcraftmodern.example.action.body",
+  "title": "research.thaumic_reborn.example.action.title",
+  "body": "research.thaumic_reborn.example.action.body",
   "aspect_costs": [
     { "id": "aer", "amount": 25 },
     { "id": "praecantatio", "amount": 16 },
@@ -275,7 +275,7 @@ JSON. Не добавляйте стоимость к обычному vanilla-�
 После `/reload` проверьте рецепт командой:
 
 ```text
-/recipe give @s thaumcraftmodern:knowledge_fragment
+/recipe give @s thaumic_reborn:knowledge_fragment
 ```
 
 ## Создание вкладки Таумономикона
@@ -285,9 +285,9 @@ JSON. Не добавляйте стоимость к обычному vanilla-�
 ```json
 {
   "id": "alchemy",
-  "title": "screen.thaumcraftmodern.thaumonomicon.category.alchemy",
+  "title": "screen.thaumic_reborn.thaumonomicon.category.alchemy",
   "icon": "minecraft:brewing_stand",
-  "background": "thaumcraftmodern:textures/gui/gui_researchback.png",
+  "background": "thaumic_reborn:textures/gui/gui_researchback.png",
   "order": 20
 }
 ```
@@ -315,8 +315,8 @@ Production-категория `research`, которая использовал�
   "id": "alchemy_start",
   "category": "alchemy",
   "icon": "minecraft:glass_bottle",
-  "title": "research.thaumcraftmodern.alchemy_start.title",
-  "subtitle": "research.thaumcraftmodern.alchemy_start.subtitle",
+  "title": "research.thaumic_reborn.alchemy_start.title",
+  "subtitle": "research.thaumic_reborn.alchemy_start.subtitle",
   "concealed": true,
   "parents": [
     "basics"
@@ -346,12 +346,12 @@ Production-категория `research`, которая использовал�
   "pages": [
     {
       "type": "text",
-      "title": "research.thaumcraftmodern.alchemy_start.page.title",
-      "body": "research.thaumcraftmodern.alchemy_start.page.body"
+      "title": "research.thaumic_reborn.alchemy_start.page.title",
+      "body": "research.thaumic_reborn.alchemy_start.page.body"
     },
     {
       "type": "recipe",
-      "title": "research.thaumcraftmodern.alchemy_start.recipe.title",
+      "title": "research.thaumic_reborn.alchemy_start.recipe.title",
       "recipe": "minecraft:brewing_stand"
     }
   ]
@@ -375,7 +375,7 @@ Production-категория `research`, которая использовал�
   progression, но не рисует отдельный узел/страницу.
 - `pages` поддерживает `text`, `recipe` и точечный
   `compound_crafting`. Последний сейчас предназначен для runtime descriptor
-  `thaumcraftmodern:node_jar_capture`, а не для произвольной картинки.
+  `thaumic_reborn:node_jar_capture`, а не для произвольной картинки.
 - Любая страница может содержать `aspect_costs`; это общий UI-контракт для
   действий палочкой и механик без Minecraft `Recipe`. Recipe-страницы обычно
   получают стоимость автоматически через `AspectCostProvider`.
@@ -529,7 +529,7 @@ smelted:minecraft:iron_ingot
 ```java
 ResearchProgressService.recordCriterion(
         serverPlayer,
-        "thaumcraftmodern:entered_outer_lands",
+        "thaumic_reborn:entered_outer_lands",
         "outer_lands"
 );
 ```
@@ -566,7 +566,7 @@ ResearchProgressService.addWarp(
 Клиентский конфиг находится в:
 
 ```text
-config/thaumcraftmodern-client.toml
+config/thaumic_reborn-client.toml
 ```
 
 По умолчанию отладочный показ отключён:
@@ -587,7 +587,7 @@ debugShowAllResearch = false
 Текущий гекс-пазл общий для всех записок. Для проверки нового ID:
 
 ```text
-/give @s thaumcraftmodern:research_notes{Research:"alchemy_start",Placements:{}}
+/give @s thaumic_reborn:research_notes{Research:"alchemy_start",Placements:{}}
 ```
 
 После решения записки превратятся в Открытие с ID `alchemy_start`, а его
@@ -597,7 +597,7 @@ debugShowAllResearch = false
 Не заменяйте этот сценарий прямой выдачей Discovery:
 
 ```text
-/give @s thaumcraftmodern:discovery{Research:"alchemy_start"}
+/give @s thaumic_reborn:discovery{Research:"alchemy_start"}
 ```
 
 Такой legacy-предмет не имеет versioned payload и должен быть отклонён. Даже
@@ -612,7 +612,7 @@ claim о решённых Notes.
 ## API составных жезлов
 
 Компоненты не зашиты в Java. Rod добавляется в
-`data/thaumcraftmodern/thaumcraft/wands/<id>.json`:
+`data/thaumic_reborn/thaumcraft/wands/<id>.json`:
 
 ```json
 {
@@ -629,7 +629,7 @@ claim о решённых Notes.
 ```
 
 Cap добавляется в ту же папку
-`data/thaumcraftmodern/thaumcraft/wands/<id>.json`:
+`data/thaumic_reborn/thaumcraft/wands/<id>.json`:
 
 ```json
 {

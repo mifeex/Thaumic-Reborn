@@ -1,0 +1,19 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "rod_greatwood",
+  "vis": {
+    "perditio": 3
+  },
+  "pattern": [
+    " G",
+    "G "
+  ],
+  "key": {
+    "G": {
+      "item": "thaumic_reborn:greatwood_log"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:greatwood_wand_rod"
+  }
+}

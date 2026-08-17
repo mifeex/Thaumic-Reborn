@@ -1,0 +1,14 @@
+{
+  "id": "arctable",
+  "legacy_id": "ArcTable",
+  "legacy_kind": "multiblock",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:arcane_workbench_conversion",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "Arrays.asList(new AspectList(), 1, 2, 1, Arrays.asList(basicWand, new ItemStack(ConfigBlocks.blockTable)))",
+    "source_statement": "ConfigResearch.recipes.put(\"ArcTable\", Arrays.asList(new AspectList(), 1, 2, 1, Arrays.asList(basicWand, new ItemStack(ConfigBlocks.blockTable))))",
+    "unkeyed": false
+  }
+}

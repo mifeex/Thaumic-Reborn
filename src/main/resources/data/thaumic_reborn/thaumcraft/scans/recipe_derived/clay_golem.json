@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:clay_golem",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 2
+    },
+    {
+      "id": "aqua",
+      "amount": 2
+    },
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "motus",
+      "amount": 2
+    },
+    {
+      "id": "spiritus",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/golemclay.json"
+}

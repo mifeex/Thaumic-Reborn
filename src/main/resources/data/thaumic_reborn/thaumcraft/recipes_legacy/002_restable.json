@@ -1,0 +1,14 @@
+{
+  "id": "restable",
+  "legacy_id": "ResTable",
+  "legacy_kind": "multiblock",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:research_table",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "Arrays.asList(new AspectList(), 1, 2, 2, Arrays.asList(null, new ItemStack(ConfigItems.itemInkwell), new ItemStack(ConfigBlocks.blockTable), new ItemStack(ConfigBlocks.blockTable)))",
+    "source_statement": "ConfigResearch.recipes.put(\"ResTable\", Arrays.asList(new AspectList(), 1, 2, 2, Arrays.asList(null, new ItemStack(ConfigItems.itemInkwell), new ItemStack(ConfigBlocks.blockTable), new ItemStack(ConfigBlocks.blockTable))))",
+    "unkeyed": false
+  }
+}

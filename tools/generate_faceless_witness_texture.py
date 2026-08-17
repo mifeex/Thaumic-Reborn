@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 SIZE = 128
-OUT = Path("src/main/resources/assets/thaumcraftmodern/textures/entity/models/faceless_witness.png")
+OUT = Path("src/main/resources/assets/thaumic_reborn/textures/entity/models/faceless_witness.png")
 BLACK = [(10, 9, 15, 255), (17, 16, 24, 255), (25, 23, 34, 255), (35, 31, 45, 255)]
 IRON = [(24, 23, 31, 255), (34, 32, 42, 255), (46, 42, 54, 255), (57, 51, 65, 255)]
 VIOLET = [(53, 37, 75, 255), (72, 48, 101, 255), (96, 63, 133, 255), (125, 82, 169, 255), (166, 111, 218, 255)]

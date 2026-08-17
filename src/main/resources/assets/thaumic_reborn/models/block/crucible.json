@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "top": "thaumic_reborn:block/crucible1",
+    "bottom": "thaumic_reborn:block/crucible2",
+    "outer": "thaumic_reborn:block/crucible3",
+    "inner": "thaumic_reborn:block/crucible5",
+    "inner_bottom": "thaumic_reborn:block/crucible6",
+    "particle": "thaumic_reborn:block/crucible3"
+  },
+  "elements": [
+    {
+      "name": "classic_outer_shell",
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": {"texture": "#bottom"},
+        "up": {"texture": "#top"},
+        "north": {"texture": "#outer"},
+        "south": {"texture": "#outer"},
+        "west": {"texture": "#outer"},
+        "east": {"texture": "#outer"}
+      }
+    },
+    {
+      "name": "inner_north",
+      "from": [0, 0, 2],
+      "to": [16, 16, 2],
+      "faces": {
+        "south": {"texture": "#inner"}
+      }
+    },
+    {
+      "name": "inner_south",
+      "from": [0, 0, 14],
+      "to": [16, 16, 14],
+      "faces": {
+        "north": {"texture": "#inner"}
+      }
+    },
+    {
+      "name": "inner_west",
+      "from": [2, 0, 0],
+      "to": [2, 16, 16],
+      "faces": {
+        "east": {"texture": "#inner"}
+      }
+    },
+    {
+      "name": "inner_east",
+      "from": [14, 0, 0],
+      "to": [14, 16, 16],
+      "faces": {
+        "west": {"texture": "#inner"}
+      }
+    },
+    {
+      "name": "inner_floor",
+      "from": [0, 4, 0],
+      "to": [16, 4, 16],
+      "faces": {
+        "down": {"texture": "#inner_bottom"},
+        "up": {"texture": "#inner_bottom"}
+      }
+    }
+  ]
+}

@@ -21,7 +21,7 @@ import net.minecraft.world.level.saveddata.SavedData;
  */
 public final class LegacyStructureMarkerIndex extends SavedData {
     private static final String DATA_NAME =
-            "thaumcraftmodern_legacy_structure_markers";
+            "thaumic_reborn_legacy_structure_markers";
 
     private final Map<LegacyStructureKind, Set<Long>> markers =
             new EnumMap<>(LegacyStructureKind.class);

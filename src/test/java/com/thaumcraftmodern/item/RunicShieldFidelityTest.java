@@ -45,7 +45,7 @@ class RunicShieldFidelityTest {
     void completeResearchBranchIsActiveAndExecutable() throws Exception {
         for (String id : new String[]{"runicarmor", "runicaugmentation",
                 "runiccharged", "runichealing", "runicemergency", "runickinetic"}) {
-            JsonObject research = json(Path.of("src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/"
+            JsonObject research = json(Path.of("src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/"
                     + id + ".json"));
             assertFalse(research.get("inactive").getAsBoolean(), id);
             assertTrue(research.getAsJsonArray("pages").asList().stream()
@@ -53,7 +53,7 @@ class RunicShieldFidelityTest {
                             .get("type").getAsString())), id);
         }
         JsonObject augmentation = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/runic_augmentation.json"));
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/runic_augmentation.json"));
         assertEquals("runic_augment", augmentation.getAsJsonObject(
                 "result_modifier").get("type").getAsString());
 
@@ -67,7 +67,7 @@ class RunicShieldFidelityTest {
     void augmentationCoversEveryModernCurioAndClassicRunicArmorFamily()
             throws Exception {
         JsonObject augmentable = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/tags/items/runic_augmentable.json"));
+                "src/main/resources/data/thaumic_reborn/tags/items/runic_augmentable.json"));
         Set<String> values = new HashSet<>();
         augmentable.getAsJsonArray("values").forEach(value ->
                 values.add(value.getAsString()));
@@ -86,7 +86,7 @@ class RunicShieldFidelityTest {
                 "cultist_cleric_robe", "cultist_cleric_leggings",
                 "cultist_praetor_helmet", "cultist_praetor_chestplate",
                 "cultist_praetor_leggings", "cultist_boots"}) {
-            assertTrue(values.contains("thaumcraftmodern:" + item), item);
+            assertTrue(values.contains("thaumic_reborn:" + item), item);
         }
     }
 
@@ -108,11 +108,11 @@ class RunicShieldFidelityTest {
             throws Exception {
         Path originalPath = Path.of("reference/Thaumcraft-4.2-FOREVA-master/"
                 + "src/main/resources/assets/thaumcraft/" + original);
-        Path modernPath = Path.of("src/main/resources/assets/thaumcraftmodern/"
+        Path modernPath = Path.of("src/main/resources/assets/thaumic_reborn/"
                 + modern);
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         try (InputStream packaged = RunicShieldFidelityTest.class
-                .getResourceAsStream("/assets/thaumcraftmodern/" + modern)) {
+                .getResourceAsStream("/assets/thaumic_reborn/" + modern)) {
             assertNotNull(packaged, modernPath.toString());
             assertEquals(java.util.HexFormat.of().formatHex(
                             digest.digest(Files.readAllBytes(originalPath))),
@@ -128,7 +128,7 @@ class RunicShieldFidelityTest {
     private static void assertPotion(String recipeId, String potion)
             throws Exception {
         JsonObject recipe = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/"
                         + recipeId + ".json"));
         JsonObject ingredient = recipe.getAsJsonArray("components").asList()
                 .stream().map(value -> value.getAsJsonObject())

@@ -18,7 +18,7 @@ final class ResearchTableClassicSoundFidelityTest {
                 "src/main/java/com/thaumcraftmodern/world/menu/ResearchTableMenu.java"
         ));
         String sounds = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/sounds.json"
+                "src/main/resources/assets/thaumic_reborn/sounds.json"
         ));
 
         assertTrue(screen.contains("ModSounds.CAMERA_CLACK.get()"));
@@ -34,7 +34,7 @@ final class ResearchTableClassicSoundFidelityTest {
         assertTrue(menu.contains("SoundSource.PLAYERS"));
         assertTrue(sounds.contains("\"key\""));
         assertTrue(Files.exists(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/sounds/key.ogg"
+                "src/main/resources/assets/thaumic_reborn/sounds/key.ogg"
         )));
 
         assertFalse(menu.contains("SoundSource.MASTER"));

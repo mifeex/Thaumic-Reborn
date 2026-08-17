@@ -234,7 +234,7 @@ public final class AlchemicalFurnaceBlockEntity extends BlockEntity
     }
 
     @Override public Component getDisplayName() {
-        return Component.translatable("container.thaumcraftmodern.alchemical_furnace");
+        return Component.translatable("container.thaumic_reborn.alchemical_furnace");
     }
 
     @Override public @Nullable AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {

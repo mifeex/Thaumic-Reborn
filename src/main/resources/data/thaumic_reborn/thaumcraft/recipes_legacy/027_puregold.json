@@ -1,0 +1,25 @@
+{
+  "id": "puregold",
+  "legacy_id": "PureGold",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:puregold"
+  ],
+  "required_aspects": [
+    {
+      "id": "metallum",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"PUREGOLD\", new ItemStack(ConfigItems.itemNugget, 1, 31), \"oreGold\", (new AspectList()).merge(Aspect.METAL, 1).merge(Aspect.ORDER, 1))",
+    "source_statement": "ConfigResearch.recipes.put(\"PureGold\", ThaumcraftApi.addCrucibleRecipe(\"PUREGOLD\", new ItemStack(ConfigItems.itemNugget, 1, 31), \"oreGold\", (new AspectList()).merge(Aspect.METAL, 1).merge(Aspect.ORDER, 1)))",
+    "unkeyed": false
+  }
+}

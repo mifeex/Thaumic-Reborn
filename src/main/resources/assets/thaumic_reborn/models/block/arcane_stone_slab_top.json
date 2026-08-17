@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "thaumic_reborn:block/arcane_stone",
+    "side": "thaumic_reborn:block/arcane_stone",
+    "top": "thaumic_reborn:block/arcane_stone"
+  }
+}

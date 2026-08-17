@@ -1,0 +1,10 @@
+{
+  "id": "perfodio",
+  "order": 370,
+  "color": "DCD2D8",
+  "icon": "thaumic_reborn:textures/aspects/perfodio.png",
+  "components": [
+    "humanus",
+    "terra"
+  ]
+}

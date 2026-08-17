@@ -29,7 +29,7 @@ final class ArcaneLevitatorRenderType extends RenderStateShard {
                     .createCompositeState(false));
 
     private ArcaneLevitatorRenderType() {
-        super("thaumcraftmodern_arcane_levitator_render_type", () -> {}, () -> {});
+        super("thaumic_reborn_arcane_levitator_render_type", () -> {}, () -> {});
     }
 
     static RenderType get() {

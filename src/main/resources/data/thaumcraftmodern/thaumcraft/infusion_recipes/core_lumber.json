@@ -1,7 +1,0 @@
-{
-  "research":"corelumber","instability":2,
-  "central":{"item":"thaumcraftmodern:harvest_golem_core"},
-  "components":[{"item":"thaumcraftmodern:axe_of_the_stream"},{"item":"minecraft:iron_axe"},{"item":"minecraft:iron_axe"},{"item":"minecraft:iron_axe"}],
-  "essentia":{"instrumentum":16,"arbor":16,"meto":16},
-  "result":{"item":"thaumcraftmodern:lumber_golem_core","count":1}
-}

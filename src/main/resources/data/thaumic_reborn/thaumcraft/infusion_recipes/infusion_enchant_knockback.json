@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 1,
+  "components": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "telum": 3,
+    "motus": 3
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:knockback"
+  }
+}

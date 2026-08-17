@@ -39,7 +39,7 @@ final class NitorBlockFidelityTest {
     @Test
     void brokenNitorReturnsThePlaceableNitorItem() throws Exception {
         JsonObject loot = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/loot_tables/blocks/"
+                "src/main/resources/data/thaumic_reborn/loot_tables/blocks/"
                         + "nitor.json"))).getAsJsonObject();
 
         JsonObject entry = loot.getAsJsonArray("pools")
@@ -47,6 +47,6 @@ final class NitorBlockFidelityTest {
                 .getAsJsonArray("entries")
                 .get(0).getAsJsonObject();
         assertEquals("minecraft:item", entry.get("type").getAsString());
-        assertEquals("thaumcraftmodern:nitor", entry.get("name").getAsString());
+        assertEquals("thaumic_reborn:nitor", entry.get("name").getAsString());
     }
 }

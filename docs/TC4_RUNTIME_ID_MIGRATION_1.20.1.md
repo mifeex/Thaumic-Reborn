@@ -16,7 +16,7 @@ python3 tools/migrate_tc4_runtime_ids.py
 - переводит SRG-поля `Blocks.field_*` и `Items.field_*` на registry ID 1.20.1;
 - переводит metadata-варианты на отдельные современные ID;
 - переводит `ConfigBlocks` и `ConfigItems` на реально зарегистрированный
-  контент `thaumcraftmodern`;
+  контент `thaumic_reborn`;
 - переводит старые entity names (`Thaumcraft.EldritchGuardian`,
   `Thaumcraft.CultistKnight` и другие) на современные entity type ID;
 - заменяет Ore Dictionary на `BLOCK_TAG`/`ITEM_TAG`;
@@ -35,7 +35,7 @@ python3 tools/migrate_tc4_runtime_ids.py
   соответствующего объекта в текущем registry пока нет.
 
 Регрессия `Duplicate scan definition:
-block:thaumcraftmodern:ancient_stone`, которая ломала открытие Create World
+block:thaumic_reborn:ancient_stone`, которая ломала открытие Create World
 и существующего мира, закрыта: hand-authored
 `scans/world/ancient_stone.json` остаётся единственной активной записью, а
 схлопнувшиеся legacy-варианты помечены `inactive`. Unit-тест проверяет

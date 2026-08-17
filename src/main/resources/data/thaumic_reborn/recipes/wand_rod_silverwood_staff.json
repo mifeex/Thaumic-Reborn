@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "rod_silverwood_staff",
+  "vis": {
+    "ordo": 24
+  },
+  "pattern": [
+    "  S",
+    " G ",
+    "G  "
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:primal_charm"
+    },
+    "G": {
+      "item": "thaumic_reborn:silverwood_wand_rod"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:silverwood_staff_rod"
+  }
+}

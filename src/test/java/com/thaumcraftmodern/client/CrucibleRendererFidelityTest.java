@@ -24,7 +24,7 @@ final class CrucibleRendererFidelityTest {
     @Test
     void filledStateDoesNotAddASecondStaticWaterSurface() throws Exception {
         try (InputStream stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/blockstates/crucible.json"
+                "/assets/thaumic_reborn/blockstates/crucible.json"
         )) {
             assertNotNull(stream);
             JsonObject root = JsonParser.parseReader(
@@ -33,13 +33,13 @@ final class CrucibleRendererFidelityTest {
             JsonObject variants = root.getAsJsonObject("variants");
             assertNotNull(variants);
             assertEquals(
-                    "thaumcraftmodern:block/crucible",
+                    "thaumic_reborn:block/crucible",
                     variants.getAsJsonObject("filled=false")
                             .get("model")
                             .getAsString()
             );
             assertEquals(
-                    "thaumcraftmodern:block/crucible",
+                    "thaumic_reborn:block/crucible",
                     variants.getAsJsonObject("filled=true")
                             .get("model")
                             .getAsString()
@@ -78,14 +78,14 @@ final class CrucibleRendererFidelityTest {
     @Test
     void innerBowlUsesTheFullOriginalTc4Textures() throws Exception {
         String model = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/block/"
+                "src/main/resources/assets/thaumic_reborn/models/block/"
                         + "crucible.json"
         ));
         assertTrue(model.contains(
-                "\"inner\": \"thaumcraftmodern:block/crucible5\""
+                "\"inner\": \"thaumic_reborn:block/crucible5\""
         ));
         assertTrue(model.contains(
-                "\"inner_bottom\": \"thaumcraftmodern:block/crucible6\""
+                "\"inner_bottom\": \"thaumic_reborn:block/crucible6\""
         ));
         assertEquals(4, count(model, "\"texture\": \"#inner\""));
         assertEquals(2, count(model, "\"texture\": \"#inner_bottom\""));

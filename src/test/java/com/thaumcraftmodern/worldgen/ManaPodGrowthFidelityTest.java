@@ -75,7 +75,7 @@ class ManaPodGrowthFidelityTest {
     @Test
     void allEightAgesHaveModels() throws IOException {
         JsonObject variants = read(
-                "resources/assets/thaumcraftmodern/blockstates/mana_pod.json"
+                "resources/assets/thaumic_reborn/blockstates/mana_pod.json"
         ).getAsJsonObject("variants");
         assertEquals(8, variants.size());
         assertTrue(variants.getAsJsonObject("age=0").get("model")
@@ -110,11 +110,11 @@ class ManaPodGrowthFidelityTest {
 
         assertEquals(
                 "0dc08210ddc8b2a60119c74fa470657fdf6910ac80d593f26f1cd5fb452c4844",
-                sha256("resources/assets/thaumcraftmodern/textures/models/manapod_0.png")
+                sha256("resources/assets/thaumic_reborn/textures/models/manapod_0.png")
         );
         assertEquals(
                 "b8d64786fdd4414a509276f5c30b34e1c40868eed42e33e06a0647748092ee83",
-                sha256("resources/assets/thaumcraftmodern/textures/models/manapod_2.png")
+                sha256("resources/assets/thaumic_reborn/textures/models/manapod_2.png")
         );
     }
 
@@ -150,7 +150,7 @@ class ManaPodGrowthFidelityTest {
     void youngPodsDropNothingAndRipePodsDropOneOrTwoBeans()
             throws IOException {
         String loot = Files.readString(ROOT.resolve(
-                "resources/data/thaumcraftmodern/loot_tables/blocks/"
+                "resources/data/thaumic_reborn/loot_tables/blocks/"
                         + "mana_pod.json"
         ));
         assertFalse(loot.contains("\"age\": \"0\""));

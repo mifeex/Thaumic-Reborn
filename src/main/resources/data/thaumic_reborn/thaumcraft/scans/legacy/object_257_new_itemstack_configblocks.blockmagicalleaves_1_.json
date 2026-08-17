@@ -1,0 +1,32 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:greatwood_leaves",
+  "display": "",
+  "aspects": [
+    {
+      "id": "herba",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 0)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "herba",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "herba",
+        "amount": 1
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 0), (new AspectList()).add(Aspect.PLANT, 1))"
+  }
+}

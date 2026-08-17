@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "thaumic_reborn:wands",
+  "pattern": [
+    "  I",
+    " S ",
+    "I  "
+  ],
+  "key": {
+    "I": {
+      "item": "thaumic_reborn:iron_wand_cap"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:basic_wand",
+    "count": 1,
+    "nbt": {
+      "thaumic_reborn_wand": {
+        "version": 1,
+        "rod": "wood",
+        "cap": "iron",
+        "vis": {
+          "aer": 0,
+          "terra": 0,
+          "ignis": 0,
+          "aqua": 0,
+          "ordo": 0,
+          "perditio": 0
+        }
+      }
+    }
+  }
+}

@@ -20,7 +20,7 @@ final class ScanCrucibleCoverageTest {
     void everyActiveItemLikeScanCanDissolveIntoAtLeastOneAspect()
             throws Exception {
         Path root = Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
         );
         boolean sawWispEssence = false;
         try (var paths = Files.walk(root)) {
@@ -30,7 +30,7 @@ final class ScanCrucibleCoverageTest {
                 if (!active || !ITEM_LIKE.contains(scan.get("type").getAsString())) continue;
                 assertTrue(scan.has("aspects"), path.toString());
                 assertFalse(scan.getAsJsonArray("aspects").isEmpty(), path.toString());
-                if ("thaumcraftmodern:ethereal_essence".equals(
+                if ("thaumic_reborn:ethereal_essence".equals(
                         scan.get("target").getAsString())) {
                     sawWispEssence = scan.getAsJsonArray("aspects").toString()
                             .contains("auram");

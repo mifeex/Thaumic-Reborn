@@ -52,7 +52,7 @@ public final class DeconstructionTableScreen
                     font,
                     List.of(
                             Component.translatable(
-                                            "aspect.thaumcraftmodern."
+                                            "aspect.thaumic_reborn."
                                                     + aspect.id()
                                     )
                                     .withStyle(ChatFormatting.AQUA),

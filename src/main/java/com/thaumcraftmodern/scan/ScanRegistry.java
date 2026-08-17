@@ -31,18 +31,18 @@ public final class ScanRegistry {
     private static final Map<String, Optional<ScanDefinition>> AUTOMATIC_DEFINITIONS =
             new ConcurrentHashMap<>();
     private static final Map<String, String> BLOCK_SCAN_ALIASES = Map.of(
-            "thaumcraftmodern:deepslate_air_infused_stone",
-            "thaumcraftmodern:air_infused_stone",
-            "thaumcraftmodern:deepslate_fire_infused_stone",
-            "thaumcraftmodern:fire_infused_stone",
-            "thaumcraftmodern:deepslate_water_infused_stone",
-            "thaumcraftmodern:water_infused_stone",
-            "thaumcraftmodern:deepslate_earth_infused_stone",
-            "thaumcraftmodern:earth_infused_stone",
-            "thaumcraftmodern:deepslate_order_infused_stone",
-            "thaumcraftmodern:order_infused_stone",
-            "thaumcraftmodern:deepslate_entropy_infused_stone",
-            "thaumcraftmodern:entropy_infused_stone"
+            "thaumic_reborn:deepslate_air_infused_stone",
+            "thaumic_reborn:air_infused_stone",
+            "thaumic_reborn:deepslate_fire_infused_stone",
+            "thaumic_reborn:fire_infused_stone",
+            "thaumic_reborn:deepslate_water_infused_stone",
+            "thaumic_reborn:water_infused_stone",
+            "thaumic_reborn:deepslate_earth_infused_stone",
+            "thaumic_reborn:earth_infused_stone",
+            "thaumic_reborn:deepslate_order_infused_stone",
+            "thaumic_reborn:order_infused_stone",
+            "thaumic_reborn:deepslate_entropy_infused_stone",
+            "thaumic_reborn:entropy_infused_stone"
     );
 
     private ScanRegistry() {

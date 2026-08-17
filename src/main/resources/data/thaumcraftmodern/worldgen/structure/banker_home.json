@@ -1,7 +1,0 @@
-{
-  "type": "thaumcraftmodern:legacy_world_structure",
-  "biomes": "#thaumcraftmodern:has_legacy_structures",
-  "kind": "banker_home",
-  "spawn_overrides": {},
-  "step": "surface_structures"
-}

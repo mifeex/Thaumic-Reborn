@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:chest",
+  "pools": [{
+    "rolls": {"type": "minecraft:uniform", "min": 8, "max": 12},
+    "entries": [
+      {"type": "minecraft:item", "name": "thaumic_reborn:gold_coin", "weight": 50},
+      {"type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 20},
+      {"type": "minecraft:item", "name": "minecraft:redstone", "weight": 18},
+      {"type": "minecraft:item", "name": "minecraft:glowstone_dust", "weight": 18},
+      {"type": "minecraft:item", "name": "minecraft:ender_pearl", "weight": 10},
+      {"type": "minecraft:item", "name": "thaumic_reborn:quicksilver", "weight": 8},
+      {"type": "minecraft:item", "name": "thaumic_reborn:amber", "weight": 8},
+      {"type": "minecraft:item", "name": "thaumic_reborn:knowledge_fragment", "weight": 6},
+      {"type": "minecraft:item", "name": "minecraft:diamond", "weight": 2}
+    ]
+  }]
+}

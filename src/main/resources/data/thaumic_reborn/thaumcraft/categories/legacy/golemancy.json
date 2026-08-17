@@ -1,0 +1,15 @@
+{
+  "id": "golemancy",
+  "title": "tc.research_category.GOLEMANCY",
+  "icon_resource": "thaumic_reborn:textures/misc/r_golemancy.png",
+  "background": "thaumic_reborn:textures/gui/gui_researchback.png",
+  "order": 104,
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "id": "GOLEMANCY",
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_golemancy.png\")",
+    "background_raw": "new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\")",
+    "source_expression": "ResearchCategories.registerCategory(\"GOLEMANCY\", new ResourceLocation(\"thaumcraft\", \"textures/misc/r_golemancy.png\"), new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\"))"
+  }
+}

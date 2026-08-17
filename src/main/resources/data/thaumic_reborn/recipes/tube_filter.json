@@ -1,0 +1,19 @@
+{
+  "type": "thaumic_reborn:arcane_shapeless",
+  "research": "tubefilter",
+  "vis": {
+    "aqua": 5,
+    "ordo": 16
+  },
+  "ingredients": [
+    {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    {
+      "item": "thaumic_reborn:vis_filter"
+    }
+  ],
+  "result": {
+    "item": "thaumic_reborn:filtered_essentia_tube"
+  }
+}

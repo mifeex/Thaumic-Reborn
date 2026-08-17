@@ -1,0 +1,101 @@
+{
+  "id": "advancedgolem",
+  "legacy_id": "ADVANCEDGOLEM",
+  "category": "golemancy",
+  "completion_warp": 5,
+  "icon": "thaumic_reborn:thaumium_golem",
+  "title": "tc.research_name.ADVANCEDGOLEM",
+  "subtitle": "tc.research_text.ADVANCEDGOLEM",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "infusion",
+    "upgradeair",
+    "upgradeearth",
+    "upgradefire",
+    "upgradewater",
+    "upgradeorder",
+    "upgradeentropy"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 192,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ADVANCEDGOLEM.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumic_reborn:advanced_golem",
+      "output": "thaumic_reborn:thaumium_golem",
+      "central": "thaumic_reborn:wood_golem",
+      "components": [
+        {"item":"minecraft:redstone"},
+        {"item":"minecraft:glowstone_dust"},
+        {"item":"minecraft:gunpowder"},
+        {"item":"thaumic_reborn:warded_jar"},
+        {"item":"thaumic_reborn:zombie_brain"}
+      ],
+      "aspect_costs": [
+        {"id":"cognitio","amount":8},
+        {"id":"sensus","amount":8},
+        {"id":"victus","amount":8}
+      ],
+      "instability": "high",
+      "legacy_type": "recipe",
+      "legacy_content": "AdvancedGolem",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"AdvancedGolem\"))"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 8,
+    "y": 0,
+    "complexity": 2,
+    "icon_raw": "ag",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "victus",
+        "amount": 3
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      },
+      {
+        "id": "cognitio",
+        "amount": 6
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      }
+    ],
+    "warp": [
+      5
+    ],
+    "source_expression": "(new ResearchItem(\"ADVANCEDGOLEM\", \"GOLEMANCY\", (new AspectList()).add(Aspect.LIFE, 3).add(Aspect.ENERGY, 3).add(Aspect.MIND, 6).add(Aspect.SENSES, 3), 8, 0, 2, ag)).setPages(new ResearchPage(\"tc.research_page.ADVANCEDGOLEM.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"AdvancedGolem\"))).setConcealed().setParents(\"INFUSION\", \"UPGRADEAIR\", \"UPGRADEEARTH\", \"UPGRADEFIRE\", \"UPGRADEWATER\", \"UPGRADEORDER\", \"UPGRADEENTROPY\").registerResearchItem()"
+  }
+}

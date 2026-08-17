@@ -1,0 +1,11 @@
+{
+  "multipart": [
+    {"apply": {"model": "thaumic_reborn:block/essentia_reservoir_inner"}},
+    {"when": {"facing": "north"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell"}},
+    {"when": {"facing": "south"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell", "y": 180}},
+    {"when": {"facing": "west"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell", "y": 270}},
+    {"when": {"facing": "east"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell", "y": 90}},
+    {"when": {"facing": "down"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell", "x": 90}},
+    {"when": {"facing": "up"}, "apply": {"model": "thaumic_reborn:block/essentia_reservoir_shell", "x": 270}}
+  ]
+}

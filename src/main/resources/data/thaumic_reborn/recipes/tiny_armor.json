@@ -1,0 +1,22 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyarmor",
+  "vis": {
+    "terra": 8
+  },
+  "pattern": [
+    "I I",
+    "IAI"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "A": {
+      "item": "minecraft:iron_chestplate"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_armor"
+  }
+}

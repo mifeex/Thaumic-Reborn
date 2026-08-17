@@ -21,8 +21,8 @@ class ScanFeedbackPacketTest {
         );
         ScanFeedbackPacket original = new ScanFeedbackPacket(
                 true,
-                "message.thaumcraftmodern.scan.success",
-                "block.thaumcraftmodern.aura_node",
+                "message.thaumic_reborn.scan.success",
+                "block.thaumic_reborn.aura_node",
                 List.of(new ScanFeedbackPacket.AspectGain("aer", 10, 10, false)),
                 Optional.of(ScanFeedbackPacket.NodeData.from(scan))
         );

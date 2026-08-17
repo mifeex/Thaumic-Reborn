@@ -61,7 +61,7 @@ public class ClassicGolemItem extends Item {
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag flag) {
         boolean advanced = stack.hasTag() && (stack.getTag().getBoolean("Advanced")
                 || stack.getTag().getCompound("GolemData").getBoolean("advanced"));
-        lines.add(Component.translatable("tooltip.thaumcraftmodern.golem.stats", material.health(),
+        lines.add(Component.translatable("tooltip.thaumic_reborn.golem.stats", material.health(),
                 material.carry(), material.strength(), material.armor(),
                 material.speed() * (advanced ? 1.1D : 1D), material.upgradeSlots() + (advanced ? 1 : 0))
                 .withStyle(ChatFormatting.DARK_PURPLE));
@@ -70,9 +70,9 @@ public class ClassicGolemItem extends Item {
                 : null;
         if (core != null) {
             lines.add(Component.translatable(
-                    "tooltip.thaumcraftmodern.golem.core",
+                    "tooltip.thaumic_reborn.golem.core",
                     Component.translatable(
-                            "tooltip.thaumcraftmodern.golem.core_type." + core.id())
+                            "tooltip.thaumic_reborn.golem.core_type." + core.id())
                             .withStyle(ChatFormatting.GOLD)));
         }
     }

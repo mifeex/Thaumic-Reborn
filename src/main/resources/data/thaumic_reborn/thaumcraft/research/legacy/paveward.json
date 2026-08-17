@@ -1,0 +1,89 @@
+{
+  "id": "paveward",
+  "legacy_id": "PAVEWARD",
+  "category": "artifice",
+  "icon": "thaumic_reborn:paving_stone_of_warding",
+  "title": "tc.research_name.PAVEWARD",
+  "subtitle": "tc.research_text.PAVEWARD",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "arcanestone"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 144,
+  "y": -96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PAVEWARD.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:pave_ward"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PAVEWARD.2"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "motus",
+      "amount": 3
+    },
+    {
+      "id": "vinculum",
+      "amount": 3
+    },
+    {
+      "id": "bestia",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 6,
+    "y": -4,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "vinculum",
+        "amount": 3
+      },
+      {
+        "id": "bestia",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"PAVEWARD\", \"ARTIFICE\", (new AspectList()).add(Aspect.MOTION, 3).add(Aspect.TRAP, 3).add(Aspect.BEAST, 3), 6, -4, 1, new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3))).setPages(new ResearchPage(\"tc.research_page.PAVEWARD.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"PaveWard\")), new ResearchPage(\"tc.research_page.PAVEWARD.2\")).setParents(\"ARCANESTONE\").setSecondary().registerResearchItem()"
+  }
+}

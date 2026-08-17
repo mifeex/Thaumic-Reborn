@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:fortress_helmet_mask_angry_ghost",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 6
+    },
+    {
+      "id": "pannus",
+      "amount": 1
+    },
+    {
+      "id": "venenum",
+      "amount": 1
+    },
+    {
+      "id": "exanimis",
+      "amount": 3
+    },
+    {
+      "id": "ignis",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/fortress_mask_angry_ghost.json"
+}

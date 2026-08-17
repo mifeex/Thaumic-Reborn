@@ -1,9 +1,0 @@
-{
-  "type":"block",
-  "target":"thaumcraftmodern:greatwood_planks",
-  "display":"block.thaumcraftmodern.greatwood_planks",
-  "aspects":[
-    {"id":"arbor","amount":2},
-    {"id":"praecantatio","amount":1}
-  ]
-}

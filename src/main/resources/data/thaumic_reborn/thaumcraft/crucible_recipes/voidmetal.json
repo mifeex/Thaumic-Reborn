@@ -1,0 +1,13 @@
+{
+  "research": "voidmetal",
+  "catalyst": {
+    "item": "thaumic_reborn:void_seed"
+  },
+  "output": {
+    "item": "thaumic_reborn:void_metal_ingot"
+  },
+  "aspects": {
+    "metallum": 8
+  },
+  "legacy_id": "VoidMetal"
+}

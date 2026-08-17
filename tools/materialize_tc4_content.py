@@ -27,52 +27,52 @@ ACTIVE_RESEARCH = {
 }
 
 RECIPE_MAPPINGS = {
-    "Thaumometer": "thaumcraftmodern:thaumometer",
-    "Scribe1": "thaumcraftmodern:scribing_tools",
-    "Scribe2": "thaumcraftmodern:scribing_tools",
-    "Scribe3": "thaumcraftmodern:scribing_tools",
-    "KnowFrag": "thaumcraftmodern:knowledge_fragment",
-    "Thaumonomicon": "thaumcraftmodern:thaumonomicon_conversion",
-    "ResTable": "thaumcraftmodern:research_table",
-    "WandBasic": "thaumcraftmodern:basic_wand",
-    "WandCapIron": "thaumcraftmodern:iron_wand_cap",
-    "Table": "thaumcraftmodern:thaumcraft_table",
-    "ArcTable": "thaumcraftmodern:arcane_workbench_conversion",
-    "ArcaneStone1": "thaumcraftmodern:arcane_stone",
-    "Goggles": "thaumcraftmodern:goggles_of_revealing",
-    "NodeJar": "thaumcraftmodern:node_jar_capture",
+    "Thaumometer": "thaumic_reborn:thaumometer",
+    "Scribe1": "thaumic_reborn:scribing_tools",
+    "Scribe2": "thaumic_reborn:scribing_tools",
+    "Scribe3": "thaumic_reborn:scribing_tools",
+    "KnowFrag": "thaumic_reborn:knowledge_fragment",
+    "Thaumonomicon": "thaumic_reborn:thaumonomicon_conversion",
+    "ResTable": "thaumic_reborn:research_table",
+    "WandBasic": "thaumic_reborn:basic_wand",
+    "WandCapIron": "thaumic_reborn:iron_wand_cap",
+    "Table": "thaumic_reborn:thaumcraft_table",
+    "ArcTable": "thaumic_reborn:arcane_workbench_conversion",
+    "ArcaneStone1": "thaumic_reborn:arcane_stone",
+    "Goggles": "thaumic_reborn:goggles_of_revealing",
+    "NodeJar": "thaumic_reborn:node_jar_capture",
 }
 
 MOD_ITEM_MAPPINGS = {
-    ("ConfigItems.itemThaumonomicon", None): "thaumcraftmodern:thaumonomicon",
-    ("ConfigItems.itemThaumometer", None): "thaumcraftmodern:thaumometer",
-    ("ConfigItems.itemInkwell", None): "thaumcraftmodern:scribing_tools",
-    ("ConfigItems.itemResearchNotes", None): "thaumcraftmodern:research_notes",
-    ("ConfigItems.itemResource", 9): "thaumcraftmodern:knowledge_fragment",
-    ("ConfigItems.itemShard", 0): "thaumcraftmodern:air_shard",
-    ("ConfigItems.itemShard", 1): "thaumcraftmodern:fire_shard",
-    ("ConfigItems.itemShard", 2): "thaumcraftmodern:water_shard",
-    ("ConfigItems.itemShard", 3): "thaumcraftmodern:earth_shard",
-    ("ConfigItems.itemShard", 4): "thaumcraftmodern:order_shard",
-    ("ConfigItems.itemShard", 5): "thaumcraftmodern:entropy_shard",
-    ("ConfigBlocks.blockTable", 1): "thaumcraftmodern:research_table",
+    ("ConfigItems.itemThaumonomicon", None): "thaumic_reborn:thaumonomicon",
+    ("ConfigItems.itemThaumometer", None): "thaumic_reborn:thaumometer",
+    ("ConfigItems.itemInkwell", None): "thaumic_reborn:scribing_tools",
+    ("ConfigItems.itemResearchNotes", None): "thaumic_reborn:research_notes",
+    ("ConfigItems.itemResource", 9): "thaumic_reborn:knowledge_fragment",
+    ("ConfigItems.itemShard", 0): "thaumic_reborn:air_shard",
+    ("ConfigItems.itemShard", 1): "thaumic_reborn:fire_shard",
+    ("ConfigItems.itemShard", 2): "thaumic_reborn:water_shard",
+    ("ConfigItems.itemShard", 3): "thaumic_reborn:earth_shard",
+    ("ConfigItems.itemShard", 4): "thaumic_reborn:order_shard",
+    ("ConfigItems.itemShard", 5): "thaumic_reborn:entropy_shard",
+    ("ConfigBlocks.blockTable", 1): "thaumic_reborn:research_table",
 }
 
 RESOURCE_ICON_MAPPINGS = {
-    "ASPECTS": "thaumcraftmodern:textures/misc/r_aspects.png",
-    "ELDRITCHMAJOR": "thaumcraftmodern:textures/misc/r_eldritchmajor.png",
-    "RESEARCHER1": "thaumcraftmodern:textures/misc/r_researcher1.png",
-    "RESEARCHER2": "thaumcraftmodern:textures/misc/r_researcher2.png",
-    "WARP": "thaumcraftmodern:textures/misc/r_warp.png",
+    "ASPECTS": "thaumic_reborn:textures/misc/r_aspects.png",
+    "ELDRITCHMAJOR": "thaumic_reborn:textures/misc/r_eldritchmajor.png",
+    "RESEARCHER1": "thaumic_reborn:textures/misc/r_researcher1.png",
+    "RESEARCHER2": "thaumic_reborn:textures/misc/r_researcher2.png",
+    "WARP": "thaumic_reborn:textures/misc/r_warp.png",
 }
 
 CATEGORY_ICON_RESOURCES = {
-    "BASICS": "thaumcraftmodern:textures/items/thaumonomiconcheat.png",
-    "THAUMATURGY": "thaumcraftmodern:textures/misc/r_thaumaturgy.png",
-    "ALCHEMY": "thaumcraftmodern:textures/misc/r_crucible.png",
-    "ARTIFICE": "thaumcraftmodern:textures/misc/r_artifice.png",
-    "GOLEMANCY": "thaumcraftmodern:textures/misc/r_golemancy.png",
-    "ELDRITCH": "thaumcraftmodern:textures/misc/r_eldritch.png",
+    "BASICS": "thaumic_reborn:textures/items/thaumonomiconcheat.png",
+    "THAUMATURGY": "thaumic_reborn:textures/misc/r_thaumaturgy.png",
+    "ALCHEMY": "thaumic_reborn:textures/misc/r_crucible.png",
+    "ARTIFICE": "thaumic_reborn:textures/misc/r_artifice.png",
+    "GOLEMANCY": "thaumic_reborn:textures/misc/r_golemancy.png",
+    "ELDRITCH": "thaumic_reborn:textures/misc/r_eldritch.png",
 }
 
 LEGACY_RENAMES = {
@@ -209,7 +209,7 @@ def map_stack(
     if modern is None and metadata in (None, 0):
         modern = MOD_ITEM_MAPPINGS.get((base, None))
     if modern:
-        target_type = "block" if modern == "thaumcraftmodern:research_table" else "item"
+        target_type = "block" if modern == "thaumic_reborn:research_table" else "item"
         return target_type, modern
 
     match = re.fullmatch(r"(Blocks|Items)\.(field_\w+)", base)
@@ -282,7 +282,7 @@ def research_reveal_condition(
         # them from game start or inventing a replacement trigger.
         return {
             "type": "criterion",
-            "id": f"thaumcraftmodern:legacy_clue/{entry['id'].lower()}",
+            "id": f"thaumic_reborn:legacy_clue/{entry['id'].lower()}",
         }
     if len(unique) == 1:
         return unique[0]
@@ -309,9 +309,9 @@ def materialize_categories(content_root: Path, categories: list[dict]) -> None:
             "title": f"tc.research_category.{category_id}",
             "icon_resource": CATEGORY_ICON_RESOURCES[category_id],
             "background": (
-                "thaumcraftmodern:textures/gui/gui_researchbackeldritch.png"
+                "thaumic_reborn:textures/gui/gui_researchbackeldritch.png"
                 if category_id == "ELDRITCH"
-                else "thaumcraftmodern:textures/gui/gui_researchback.png"
+                else "thaumic_reborn:textures/gui/gui_researchback.png"
             ),
             "order": 100 + order,
             "inactive": False,
@@ -435,7 +435,7 @@ def materialize_research(
         if icon_resource is not None:
             value["icon_resource"] = icon_resource
         else:
-            value["icon"] = icon or "thaumcraftmodern:thaumonomicon"
+            value["icon"] = icon or "thaumic_reborn:thaumonomicon"
         write_json(target / f"{slug(entry['id'])}.json", value)
         counts["active" if active else "inactive"] += 1
     return counts
@@ -616,7 +616,7 @@ def main() -> None:
     merge_languages(archive, args.lang_root.resolve())
 
     manifest = {
-        "format": "thaumcraftmodern.materialized-legacy-content",
+        "format": "thaumic_reborn.materialized-legacy-content",
         "format_version": 1,
         "research": dict(research_counts),
         "scans": dict(scan_counts),

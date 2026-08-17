@@ -153,7 +153,7 @@ public final class ScribingToolsItem extends Item {
             TooltipFlag flag
     ) {
         tooltip.add(Component.translatable(
-                "tooltip.thaumcraftmodern.scribing_tools.ink",
+                "tooltip.thaumic_reborn.scribing_tools.ink",
                 Math.max(0, stack.getMaxDamage() - stack.getDamageValue())
         ));
     }

@@ -1,0 +1,9 @@
+{
+  "type":"item",
+  "target":"thaumic_reborn:mana_bean",
+  "display":"item.thaumic_reborn.mana_bean",
+  "aspects":[
+    {"id":"praecantatio","amount":2},
+    {"id":"herba","amount":1}
+  ]
+}

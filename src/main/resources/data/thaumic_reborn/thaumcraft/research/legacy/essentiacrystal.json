@@ -1,0 +1,74 @@
+{
+  "id": "essentiacrystal",
+  "legacy_id": "ESSENTIACRYSTAL",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:essentia_crystallizer",
+  "title": "tc.research_name.ESSENTIACRYSTAL",
+  "subtitle": "tc.research_text.ESSENTIACRYSTAL",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "tubes"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 192,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ESSENTIACRYSTAL.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:essentia_crystalizer"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 8,
+    "y": -2,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockTube, 1, 7)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 5
+      },
+      {
+        "id": "vitreus",
+        "amount": 5
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 5
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ESSENTIACRYSTAL\", \"ALCHEMY\", (new AspectList()).add(Aspect.WATER, 5).add(Aspect.CRYSTAL, 5).add(Aspect.EXCHANGE, 3).add(Aspect.MAGIC, 5), 8, -2, 1, new ItemStack(ConfigBlocks.blockTube, 1, 7))).setPages(new ResearchPage(\"tc.research_page.ESSENTIACRYSTAL.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"EssentiaCrystalizer\"))).setConcealed().setParents(\"TUBES\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "id": "runicarmor",
+  "legacy_id": "RUNICARMOR",
+  "category": "artifice",
+  "icon": "thaumic_reborn:runic_ring",
+  "title": "tc.research_name.RUNICARMOR",
+  "subtitle": "tc.research_text.RUNICARMOR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "enchfabric"
+  ],
+  "hidden_parents": [
+    "infusion"
+  ],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 72,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RUNICARMOR.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RUNICARMOR.2"
+    },
+    {
+      "type": "infusion",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "RunicRing",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicRing\"))",
+      "recipe": "thaumic_reborn:runic_ring",
+      "output": "thaumic_reborn:runic_ring", "central": "thaumic_reborn:mundane_ring",
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "aspect_costs": [{"id":"tutamen","amount":10},{"id":"praecantatio","amount":25},{"id":"potentia","amount":25}], "instability": "minor"
+    },
+    {
+      "type": "infusion",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "RunicAmulet",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicAmulet\"))",
+      "recipe": "thaumic_reborn:runic_amulet",
+      "output": "thaumic_reborn:runic_amulet", "central": "thaumic_reborn:mundane_amulet",
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "aspect_costs": [{"id":"tutamen","amount":20},{"id":"praecantatio","amount":35},{"id":"potentia","amount":35}], "instability": "moderate"
+    },
+    {
+      "type": "infusion",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "RunicGirdle",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicGirdle\"))",
+      "recipe": "thaumic_reborn:runic_girdle",
+      "output": "thaumic_reborn:runic_girdle", "central": "thaumic_reborn:blank_belt",
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "aspect_costs": [{"id":"tutamen","amount":30},{"id":"praecantatio","amount":50},{"id":"potentia","amount":50}], "instability": "moderate"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 3,
+    "y": 4,
+    "complexity": 3,
+    "icon_raw": "new ItemStack(ConfigItems.itemRingRunic, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [
+      "INFUSION"
+    ],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "tutamen",
+        "amount": 6
+      },
+      {
+        "id": "aer",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      },
+      {
+        "id": "cognitio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"RUNICARMOR\", \"ARTIFICE\", (new AspectList()).add(Aspect.ARMOR, 6).add(Aspect.AIR, 3).add(Aspect.MAGIC, 3).add(Aspect.ENERGY, 3).add(Aspect.MIND, 3), 3, 4, 3, new ItemStack(ConfigItems.itemRingRunic, 1, 1))).setPages(new ResearchPage(\"tc.research_page.RUNICARMOR.1\"), new ResearchPage(\"tc.research_page.RUNICARMOR.2\"), new ResearchPage((InfusionRecipe)recipes.get(\"RunicRing\")), new ResearchPage((InfusionRecipe)recipes.get(\"RunicAmulet\")), new ResearchPage((InfusionRecipe)recipes.get(\"RunicGirdle\"))).setParentsHidden(\"INFUSION\").setParents(\"ENCHFABRIC\").setConcealed().registerResearchItem()"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "item": "thaumic_reborn:amber"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "telum": 4,
+    "bestia": 4
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:bane_of_arthropods"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "focusexcavation",
+  "legacy_id": "FOCUSEXCAVATION",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:focus_excavation",
+  "title": "tc.research_name.FOCUSEXCAVATION",
+  "subtitle": "tc.research_text.FOCUSEXCAVATION",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "focusfire"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": -72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.FOCUSEXCAVATION.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:focus_excavation"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": -3,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemFocusExcavation)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "terra",
+        "amount": 3
+      },
+      {
+        "id": "perditio",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"FOCUSEXCAVATION\", \"THAUMATURGY\", (new AspectList()).add(Aspect.EARTH, 3).add(Aspect.ENTROPY, 3).add(Aspect.MAGIC, 3), 0, -3, 2, new ItemStack(ConfigItems.itemFocusExcavation))).setPages(new ResearchPage(\"tc.research_page.FOCUSEXCAVATION.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"FocusExcavation\"))).setConcealed().setParents(\"FOCUSFIRE\").registerResearchItem()"
+  }
+}

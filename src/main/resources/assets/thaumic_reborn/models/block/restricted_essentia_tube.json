@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/pipe_restrict",
+    "tube": "thaumic_reborn:block/pipe_restrict"
+  },
+  "elements": [
+    {
+      "from": [6.5, 6.5, 6.5], "to": [9.5, 9.5, 9.5],
+      "faces": {
+        "down": {"texture": "#tube"}, "up": {"texture": "#tube"},
+        "north": {"texture": "#tube"}, "south": {"texture": "#tube"},
+        "west": {"texture": "#tube"}, "east": {"texture": "#tube"}
+      }
+    }
+  ]
+}

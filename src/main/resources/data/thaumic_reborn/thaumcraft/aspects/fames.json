@@ -1,0 +1,10 @@
+{
+  "id": "fames",
+  "order": 420,
+  "color": "9A0305",
+  "icon": "thaumic_reborn:textures/aspects/fames.png",
+  "components": [
+    "victus",
+    "vacuos"
+  ]
+}

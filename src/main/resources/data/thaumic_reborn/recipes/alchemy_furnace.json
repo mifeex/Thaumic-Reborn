@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "distilessentia",
+  "vis": {
+    "ignis": 5,
+    "aqua": 5
+  },
+  "pattern": [
+    "SCS",
+    "SFS",
+    "SSS"
+  ],
+  "key": {
+    "C": {
+      "item": "thaumic_reborn:crucible"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "S": {
+      "item": "thaumic_reborn:arcane_stone"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:alchemical_furnace"
+  }
+}

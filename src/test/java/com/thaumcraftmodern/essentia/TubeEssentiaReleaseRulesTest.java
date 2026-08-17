@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TubeEssentiaReleaseRulesTest {
-    private static final String ICON = "thaumcraftmodern:aspects/test";
+    private static final String ICON = "thaumic_reborn:aspects/test";
     private static final AspectCatalog CATALOG = new AspectCatalog(List.of(
             primal("aer"), primal("ignis"), primal("aqua"),
             primal("terra"), primal("ordo"), primal("perditio"),

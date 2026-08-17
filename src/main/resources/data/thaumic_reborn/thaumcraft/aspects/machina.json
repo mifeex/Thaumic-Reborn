@@ -1,0 +1,10 @@
+{
+  "id": "machina",
+  "order": 460,
+  "color": "8080A0",
+  "icon": "thaumic_reborn:textures/aspects/machina.png",
+  "components": [
+    "motus",
+    "instrumentum"
+  ]
+}

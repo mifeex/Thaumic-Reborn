@@ -420,7 +420,7 @@ public final class AdvancedEssentiaAutomationGameTests {
                     ModBlocks.ESSENTIA_TUBE.get().defaultBlockState(), 3);
         }
         UUID id = UUID.nameUUIDFromBytes(
-                "thaumcraftmodern:gametest:tube-release-risk"
+                "thaumic_reborn:gametest:tube-release-risk"
                         .getBytes(StandardCharsets.UTF_8));
         ServerPlayer player = FakePlayerFactory.get(helper.getLevel(),
                 new GameProfile(id, "tcm-tube-release-risk"));

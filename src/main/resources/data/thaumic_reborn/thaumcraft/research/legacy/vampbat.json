@@ -1,0 +1,83 @@
+{
+  "id": "vampbat",
+  "legacy_id": "VAMPBAT",
+  "category": "thaumaturgy",
+  "icon_resource": "thaumic_reborn:textures/foci/vampirebats.png",
+  "title": "tc.research_name.VAMPBAT",
+  "subtitle": "tc.research_text.VAMPBAT",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "focushellbat"
+  ],
+  "hidden_parents": [
+    "focalmanipulation"
+  ],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": -192,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "focus.upgrade.vampirebats.text"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "fames",
+      "amount": 5
+    },
+    {
+      "id": "victus",
+      "amount": 5
+    },
+    {
+      "id": "praecantatio",
+      "amount": 5
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": -8,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/foci/vampirebats.png\")",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [
+      "FOCALMANIPULATION"
+    ],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "fames",
+        "amount": 5
+      },
+      {
+        "id": "victus",
+        "amount": 5
+      },
+      {
+        "id": "praecantatio",
+        "amount": 5
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"VAMPBAT\", \"THAUMATURGY\", (new AspectList()).add(Aspect.HUNGER, 5).add(Aspect.LIFE, 5).add(Aspect.MAGIC, 5), 4, -8, 1, new ResourceLocation(\"thaumcraft\", \"textures/foci/vampirebats.png\"))).setPages(new ResearchPage(\"focus.upgrade.vampirebats.text\")).setSecondary().setParents(\"FOCUSHELLBAT\").setParentsHidden(\"FOCALMANIPULATION\").registerResearchItem()"
+  }
+}

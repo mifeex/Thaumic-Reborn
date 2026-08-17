@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "filled=false": {
+      "model": "thaumic_reborn:block/crucible"
+    },
+    "filled=true": {
+      "model": "thaumic_reborn:block/crucible"
+    }
+  }
+}

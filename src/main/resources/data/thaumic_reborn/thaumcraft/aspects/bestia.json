@@ -1,0 +1,10 @@
+{
+  "id": "bestia",
+  "order": 300,
+  "color": "9F6409",
+  "icon": "thaumic_reborn:textures/aspects/bestia.png",
+  "components": [
+    "motus",
+    "victus"
+  ]
+}

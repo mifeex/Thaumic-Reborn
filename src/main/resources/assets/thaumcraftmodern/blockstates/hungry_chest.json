@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "thaumcraftmodern:block/hungry_chest", "y": 180 },
-    "facing=south": { "model": "thaumcraftmodern:block/hungry_chest" },
-    "facing=west": { "model": "thaumcraftmodern:block/hungry_chest", "y": 90 },
-    "facing=east": { "model": "thaumcraftmodern:block/hungry_chest", "y": 270 }
-  }
-}

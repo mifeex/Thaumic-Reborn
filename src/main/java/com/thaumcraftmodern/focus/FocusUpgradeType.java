@@ -39,7 +39,7 @@ public enum FocusUpgradeType {
 
     public short id() { return id; }
     public String key() { return key; }
-    public String icon() { return "thaumcraftmodern:textures/foci/" + key + ".png"; }
+    public String icon() { return "thaumic_reborn:textures/foci/" + key + ".png"; }
     public String nameKey() { return "focus.upgrade." + key + ".name"; }
     public String textKey() { return "focus.upgrade." + key + ".text"; }
     public Map<String, Integer> aspectCost() { return aspectCost; }

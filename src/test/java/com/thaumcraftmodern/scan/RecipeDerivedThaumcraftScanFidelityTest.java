@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class RecipeDerivedThaumcraftScanFidelityTest {
     private static final Path ROOT = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/recipe_derived");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans/recipe_derived");
 
     @Test
     void classicRecipeDerivedBlocksHaveMaterializedScans() throws IOException {
@@ -29,7 +29,7 @@ class RecipeDerivedThaumcraftScanFidelityTest {
         );
         for (String id : expected) {
             JsonObject scan = json(ROOT.resolve(id + ".json"));
-            assertEquals("thaumcraftmodern:" + id, scan.get("target").getAsString());
+            assertEquals("thaumic_reborn:" + id, scan.get("target").getAsString());
             assertFalse(scan.get("inactive").getAsBoolean());
             assertFalse(scan.getAsJsonArray("aspects").isEmpty());
             assertTrue(scan.has("recipe_derivation"));
@@ -39,10 +39,10 @@ class RecipeDerivedThaumcraftScanFidelityTest {
 
     @Test
     void tableMetadataTwoMapsToResearchTable() throws IOException {
-        JsonObject scan = json(Path.of("src/main/resources/data/thaumcraftmodern/"
+        JsonObject scan = json(Path.of("src/main/resources/data/thaumic_reborn/"
                 + "thaumcraft/scans/legacy/"
                 + "object_233_new_itemstack_configblocks.blocktable_1_2.json"));
-        assertEquals("thaumcraftmodern:research_table",
+        assertEquals("thaumic_reborn:research_table",
                 scan.get("target").getAsString());
     }
 

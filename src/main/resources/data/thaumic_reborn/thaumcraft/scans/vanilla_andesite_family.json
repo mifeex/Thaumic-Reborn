@@ -1,0 +1,10 @@
+{
+  "type": "block_tag",
+  "target": "thaumic_reborn:andesite_family",
+  "display": "",
+  "aspects": [
+    {"id": "terra", "amount": 2},
+    {"id": "aer", "amount": 1}
+  ],
+  "modern_rule": "Andesite forms share aspects but retain separate research keys."
+}

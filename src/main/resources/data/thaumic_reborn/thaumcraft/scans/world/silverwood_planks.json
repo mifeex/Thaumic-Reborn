@@ -1,0 +1,10 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:silverwood_planks",
+  "display":"block.thaumic_reborn.silverwood_planks",
+  "aspects":[
+    {"id":"arbor","amount":2},
+    {"id":"praecantatio","amount":1},
+    {"id":"ordo","amount":1}
+  ]
+}

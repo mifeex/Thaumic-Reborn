@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "thaumic_reborn:straw_golem",
+    "thaumic_reborn:wood_golem",
+    "thaumic_reborn:tallow_golem",
+    "thaumic_reborn:clay_golem",
+    "thaumic_reborn:flesh_golem",
+    "thaumic_reborn:stone_golem",
+    "thaumic_reborn:iron_golem",
+    "thaumic_reborn:thaumium_golem"
+  ]
+}

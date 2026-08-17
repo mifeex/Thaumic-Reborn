@@ -1,0 +1,10 @@
+{
+  "id": "mortuus",
+  "order": 170,
+  "color": "887788",
+  "icon": "thaumic_reborn:textures/aspects/mortuus.png",
+  "components": [
+    "victus",
+    "perditio"
+  ]
+}

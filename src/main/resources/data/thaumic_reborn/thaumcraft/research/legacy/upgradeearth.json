@@ -1,0 +1,76 @@
+{
+  "id": "upgradeearth",
+  "legacy_id": "UPGRADEEARTH",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_upgrade_terra",
+  "title": "tc.research_name.UPGRADEEARTH",
+  "subtitle": "tc.research_text.UPGRADEEARTH",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golembell"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 144,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.UPGRADEEARTH.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:upgrade_earth"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "terra",
+      "amount": 6
+    },
+    {
+      "id": "victus",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 6,
+    "y": -2,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemUpgrade, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "terra",
+        "amount": 6
+      },
+      {
+        "id": "victus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"UPGRADEEARTH\", \"GOLEMANCY\", (new AspectList()).add(Aspect.EARTH, 6).add(Aspect.LIFE, 3), 6, -2, 1, new ItemStack(ConfigItems.itemGolemUpgrade, 1, 1))).setPages(new ResearchPage(\"tc.research_page.UPGRADEEARTH.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"UpgradeEarth\"))).setConcealed().setSecondary().setParents(\"GOLEMBELL\").registerResearchItem()"
+  }
+}

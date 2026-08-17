@@ -1,0 +1,30 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "golemfetter",
+  "vis": {
+    "terra": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "SSS",
+    "IRI",
+    "BBB"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:arcane_stone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "thaumic_reborn:arcane_stone_brick"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_fetter"
+  }
+}

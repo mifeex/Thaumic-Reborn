@@ -1,0 +1,15 @@
+{
+  "research": "voidmetal",
+  "catalyst": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "output": {
+    "item": "thaumic_reborn:void_seed"
+  },
+  "aspects": {
+    "tenebrae": 8,
+    "vacuos": 8,
+    "alienis": 2
+  },
+  "legacy_id": "VoidSeed"
+}

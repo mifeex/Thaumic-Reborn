@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ImplementedEldritchResearchPagesTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
     private static final Path INFUSION = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes"
     );
     private static final Path MODERN_ITEMS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/item"
+            "src/main/resources/assets/thaumic_reborn/textures/item"
     );
     private static final Path CLASSIC_ITEMS = Path.of(
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/"
@@ -33,17 +33,17 @@ class ImplementedEldritchResearchPagesTest {
             throws IOException {
         JsonObject oculus = read(RESEARCH.resolve("oculus.json"));
         assertFalse(oculus.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:eldritch_eye",
+        assertEquals("thaumic_reborn:eldritch_eye",
                 oculus.get("icon").getAsString());
 
         JsonObject pearl = read(RESEARCH.resolve("primpearl.json"));
         assertFalse(pearl.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:primordial_pearl",
+        assertEquals("thaumic_reborn:primordial_pearl",
                 pearl.get("icon").getAsString());
         assertEquals("criterion",
                 pearl.getAsJsonObject("reveal_when")
                         .get("type").getAsString());
-        assertEquals("thaumcraftmodern:legacy_clue/primpearl",
+        assertEquals("thaumic_reborn:legacy_clue/primpearl",
                 pearl.getAsJsonObject("reveal_when")
                         .get("id").getAsString());
 
@@ -69,7 +69,7 @@ class ImplementedEldritchResearchPagesTest {
         JsonObject page = research.getAsJsonArray("pages")
                 .get(1).getAsJsonObject();
         assertEquals("infusion", page.get("type").getAsString());
-        assertEquals("thaumcraftmodern:eldritch_eye",
+        assertEquals("thaumic_reborn:eldritch_eye",
                 page.get("output").getAsString());
         assertEquals("minecraft:ender_eye",
                 page.get("central").getAsString());
@@ -88,13 +88,13 @@ class ImplementedEldritchResearchPagesTest {
         assertEquals(16, essentia.get("vacuos").getAsInt());
         assertEquals(16, essentia.get("tenebrae").getAsInt());
         assertEquals(16, essentia.get("iter").getAsInt());
-        assertEquals("thaumcraftmodern:eldritch_eye",
+        assertEquals("thaumic_reborn:eldritch_eye",
                 recipe.getAsJsonObject("result").get("item").getAsString());
     }
 
     private static void assertComponents(JsonArray components) {
         assertEquals(2, components.size());
-        assertEquals("thaumcraftmodern:void_seed",
+        assertEquals("thaumic_reborn:void_seed",
                 components.get(0).getAsJsonObject().get("item").getAsString());
         assertEquals("minecraft:gold_ingot",
                 components.get(1).getAsJsonObject().get("item").getAsString());

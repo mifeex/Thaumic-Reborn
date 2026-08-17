@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "#side",
+    "side": "thaumic_reborn:block/lamp_side",
+    "top": "thaumic_reborn:block/lamp_top",
+    "metal": "thaumic_reborn:block/lamp_bore"
+  },
+  "elements": [
+    {
+      "from": [4, 2, 4], "to": [12, 14, 12],
+      "faces": {
+        "up": {"uv": [4, 4, 12, 12], "texture": "#top"},
+        "down": {"uv": [4, 4, 12, 12], "texture": "#top"},
+        "north": {"uv": [4, 2, 12, 14], "texture": "#side"},
+        "south": {"uv": [4, 2, 12, 14], "texture": "#side"},
+        "east": {"uv": [4, 2, 12, 14], "texture": "#side"},
+        "west": {"uv": [4, 2, 12, 14], "texture": "#side"}
+      }
+    },
+    {
+      "from": [6, 0.5, 6], "to": [10, 5.5, 10],
+      "faces": {
+        "down": {"uv": [13.75, 10.5, 14.375, 11.5], "texture": "#metal"},
+        "up": {"uv": [14.375, 10.5, 15, 11.5], "texture": "#metal"},
+        "west": {"uv": [13.25, 11.5, 13.75, 12.5], "texture": "#metal"},
+        "north": {"uv": [13.75, 11.5, 14.375, 12.5], "texture": "#metal"},
+        "east": {"uv": [14.375, 11.5, 14.875, 12.5], "texture": "#metal"},
+        "south": {"uv": [14.875, 11.5, 15.5, 12.5], "texture": "#metal"}
+      }
+    },
+    {
+      "from": [5.5, 0, 5.5], "to": [10.5, 1, 10.5],
+      "faces": {
+        "down": {"uv": [13.875, 12.75, 14, 14], "texture": "#metal"},
+        "up": {"uv": [14, 12.75, 14.125, 14], "texture": "#metal"},
+        "west": {"uv": [13.25, 14, 13.875, 15.25], "texture": "#metal"},
+        "north": {"uv": [13.875, 14, 14, 15.25], "texture": "#metal"},
+        "east": {"uv": [14, 14, 14.625, 15.25], "texture": "#metal"},
+        "south": {"uv": [14.625, 14, 14.75, 15.25], "texture": "#metal"}
+      }
+    }
+  ]
+}

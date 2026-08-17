@@ -42,7 +42,7 @@ public final class WandFocusRadialScreen extends Screen {
     private boolean sent;
 
     public WandFocusRadialScreen() {
-        super(Component.translatable("screen.thaumcraftmodern.focus_radial"));
+        super(Component.translatable("screen.thaumic_reborn.focus_radial"));
     }
 
     @Override

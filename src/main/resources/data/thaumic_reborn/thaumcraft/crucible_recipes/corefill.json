@@ -1,0 +1,14 @@
+{
+  "research": "corefill",
+  "catalyst": {
+    "item": "thaumic_reborn:blank_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:fill_golem_core"
+  },
+  "aspects": {
+    "fames": 5,
+    "vacuos": 5
+  },
+  "legacy_id": "CoreFill"
+}

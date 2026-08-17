@@ -1,0 +1,141 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": true,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "wood": "thaumic_reborn:block/woodplain",
+    "quill": "thaumic_reborn:block/tablequill",
+    "particle": "thaumic_reborn:block/woodplain"
+  },
+  "elements": [
+    {
+      "name": "top",
+      "from": [0, 12, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "quill_overlay",
+      "from": [0, 16.001, 0],
+      "to": [16, 16.002, 16],
+      "shade": false,
+      "faces": {
+        "up": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#quill"
+        }
+      }
+    },
+    {
+      "name": "north_apron",
+      "from": [1, 9, 1],
+      "to": [15, 12, 3],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "south_apron",
+      "from": [1, 9, 13],
+      "to": [15, 12, 15],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "west_apron",
+      "from": [1, 9, 3],
+      "to": [3, 12, 13],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "east_apron",
+      "from": [13, 9, 3],
+      "to": [15, 12, 13],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "north_west_leg",
+      "from": [1, 0, 1],
+      "to": [3, 12, 3],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "north_east_leg",
+      "from": [13, 0, 1],
+      "to": [15, 12, 3],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "south_west_leg",
+      "from": [1, 0, 13],
+      "to": [3, 12, 15],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    },
+    {
+      "name": "south_east_leg",
+      "from": [13, 0, 13],
+      "to": [15, 12, 15],
+      "faces": {
+        "down": {"texture": "#wood"},
+        "up": {"texture": "#wood"},
+        "north": {"texture": "#wood"},
+        "south": {"texture": "#wood"},
+        "west": {"texture": "#wood"},
+        "east": {"texture": "#wood"}
+      }
+    }
+  ]
+}

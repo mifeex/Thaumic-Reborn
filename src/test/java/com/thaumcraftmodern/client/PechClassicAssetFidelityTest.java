@@ -20,15 +20,15 @@ final class PechClassicAssetFidelityTest {
             throws Exception {
         Map<String, String> assets = Map.of(
                 "assets/thaumcraft/textures/gui/gui_pech.png",
-                "assets/thaumcraftmodern/textures/gui/gui_pech.png",
+                "assets/thaumic_reborn/textures/gui/gui_pech.png",
                 "assets/thaumcraft/sounds/pech_charge1.ogg",
-                "assets/thaumcraftmodern/sounds/pech_charge1.ogg",
+                "assets/thaumic_reborn/sounds/pech_charge1.ogg",
                 "assets/thaumcraft/sounds/pech_charge2.ogg",
-                "assets/thaumcraftmodern/sounds/pech_charge2.ogg",
+                "assets/thaumic_reborn/sounds/pech_charge2.ogg",
                 "assets/thaumcraft/sounds/pech_trade.ogg",
-                "assets/thaumcraftmodern/sounds/pech_trade.ogg",
+                "assets/thaumic_reborn/sounds/pech_trade.ogg",
                 "assets/thaumcraft/sounds/pech_dice.ogg",
-                "assets/thaumcraftmodern/sounds/pech_dice.ogg"
+                "assets/thaumic_reborn/sounds/pech_dice.ogg"
         );
         try (ZipFile original = new ZipFile(ORIGINAL.toFile())) {
             for (Map.Entry<String, String> asset : assets.entrySet()) {

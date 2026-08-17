@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "thaumic_reborn:block/obelisk_side"
+  }
+}

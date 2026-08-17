@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "thaumic_reborn:block/tainted_glow_berry_vine_test"
+    },
+    "berries=true": {
+      "model": "thaumic_reborn:block/tainted_glow_berry_vine_test_lit"
+    }
+  }
+}

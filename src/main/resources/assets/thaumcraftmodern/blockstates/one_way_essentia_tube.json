@@ -1,4 +1,0 @@
-{"multipart":[
-{"apply":{"model":"thaumcraftmodern:block/one_way_essentia_tube"}},
-{"when":{"north":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm"}},{"when":{"south":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm","y":180,"uvlock":true}},{"when":{"west":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm","y":270,"uvlock":true}},{"when":{"east":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm","y":90,"uvlock":true}},{"when":{"up":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm","x":270,"uvlock":true}},{"when":{"down":"true"},"apply":{"model":"thaumcraftmodern:block/essentia_tube_arm","x":90,"uvlock":true}}
-]}

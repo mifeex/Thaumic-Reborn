@@ -26,7 +26,7 @@ class EssentiaBufferVisualFidelityTest {
                         + "AspectContainerHudRegistry.java"
         ));
         JsonObject model = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/block/"
+                "src/main/resources/assets/thaumic_reborn/models/block/"
                         + "essentia_buffer.json"
         ))).getAsJsonObject();
 

@@ -1,0 +1,24 @@
+{
+  "research": "wandpedfoc",
+  "instability": 4,
+  "central": {"item": "minecraft:comparator"},
+  "components": [
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:vis_filter"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:vis_filter"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:vis_filter"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:vis_filter"}
+  ],
+  "essentia": {
+    "ordo": 10,
+    "praecantatio": 15,
+    "permutatio": 10
+  },
+  "result": {
+    "item": "thaumic_reborn:compound_recharge_focus",
+    "count": 1
+  }
+}

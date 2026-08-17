@@ -1,0 +1,7 @@
+{
+  "research":"elementalshovel","instability":1,
+  "central":{"item":"thaumic_reborn:thaumium_shovel"},
+  "components":[{"item":"thaumic_reborn:earth_shard"},{"item":"thaumic_reborn:earth_shard"},{"item":"minecraft:diamond"},{"item":"thaumic_reborn:greatwood_log"}],
+  "essentia":{"terra":16,"fabrico":8},
+  "result":{"item":"thaumic_reborn:shovel_of_the_earthmover","count":1}
+}

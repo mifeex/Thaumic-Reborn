@@ -22,7 +22,7 @@ public final class GolemCoreItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag flag) {
-        lines.add(Component.translatable("tooltip.thaumcraftmodern.golem_core." + type.id())
+        lines.add(Component.translatable("tooltip.thaumic_reborn.golem_core." + type.id())
                 .withStyle(ChatFormatting.GOLD));
     }
 }

@@ -1,0 +1,14 @@
+{
+  "research": "puresilver",
+  "catalyst": {
+    "tag": "forge:ores/silver"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_silver_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureSilver"
+}

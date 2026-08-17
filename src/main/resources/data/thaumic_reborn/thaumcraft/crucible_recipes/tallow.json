@@ -1,0 +1,13 @@
+{
+  "research": "tallow",
+  "catalyst": {
+    "item": "minecraft:rotten_flesh"
+  },
+  "output": {
+    "item": "thaumic_reborn:thaumic_tallow"
+  },
+  "aspects": {
+    "praecantatio": 2
+  },
+  "legacy_id": "Tallow"
+}

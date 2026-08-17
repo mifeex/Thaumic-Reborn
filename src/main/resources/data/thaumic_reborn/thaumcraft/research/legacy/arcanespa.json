@@ -1,0 +1,84 @@
+{
+  "id": "arcanespa",
+  "legacy_id": "ARCANESPA",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:arcane_spa",
+  "title": "tc.research_name.ARCANESPA",
+  "subtitle": "tc.research_text.ARCANESPA",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "bathsalts"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -144,
+  "y": -120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ARCANESPA.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:arcane_spa"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "aqua",
+      "amount": 3
+    },
+    {
+      "id": "machina",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -6,
+    "y": -5,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockStoneDevice, 1, 12)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ARCANESPA\", \"ALCHEMY\", (new AspectList()).add(Aspect.WATER, 3).add(Aspect.MECHANISM, 3).add(Aspect.ORDER, 3), -6, -5, 1, new ItemStack(ConfigBlocks.blockStoneDevice, 1, 12))).setPages(new ResearchPage(\"tc.research_page.ARCANESPA.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"ArcaneSpa\"))).setSecondary().setParents(\"BATHSALTS\").registerResearchItem()"
+  }
+}

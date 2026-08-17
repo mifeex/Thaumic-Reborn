@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EldritchHealParticleResourceTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test
@@ -27,7 +27,7 @@ class EldritchHealParticleResourceTest {
                 ASSETS.resolve("particles/eldritch_heal.json")
         );
         assertTrue(particle.contains(
-                "\"thaumcraftmodern:eldritch_heal\""
+                "\"thaumic_reborn:eldritch_heal\""
         ));
     }
 }

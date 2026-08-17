@@ -1,0 +1,11 @@
+{
+  "research":"lampgrowth",
+  "instability":4,
+  "central":{"item":"thaumic_reborn:arcane_lamp"},
+  "components":[
+    {"item":"minecraft:gold_ingot"},{"item":"minecraft:bone_meal"},{"item":"thaumic_reborn:earth_shard"},
+    {"item":"minecraft:gold_ingot"},{"item":"minecraft:bone_meal"},{"item":"thaumic_reborn:earth_shard"}
+  ],
+  "essentia":{"herba":16,"lux":8,"victus":16},
+  "result":{"item":"thaumic_reborn:lamp_growth"}
+}

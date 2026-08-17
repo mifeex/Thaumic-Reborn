@@ -20,10 +20,10 @@ class WandClassicContentTest {
     @Test
     void basicRecipesKeepClassicPatternsAndConfiguredNbt() throws IOException {
         JsonObject cap = json(
-                "/data/thaumcraftmodern/recipes/iron_wand_cap.json"
+                "/data/thaumic_reborn/recipes/iron_wand_cap.json"
         );
         JsonObject wand = json(
-                "/data/thaumcraftmodern/recipes/basic_wand.json"
+                "/data/thaumic_reborn/recipes/basic_wand.json"
         );
 
         assertEquals("NNN", cap.getAsJsonArray("pattern").get(0).getAsString());
@@ -58,16 +58,16 @@ class WandClassicContentTest {
     @Test
     void silverwoodIsReadyWithoutRecipeAndBootstrapBookRecipeIsGone() {
         assertNotNull(resource(
-                "/assets/thaumcraftmodern/models/item/silverwood_wand.json"
+                "/assets/thaumic_reborn/models/item/silverwood_wand.json"
         ));
         assertNotNull(resource(
-                "/data/thaumcraftmodern/thaumcraft/wands/silverwood.json"
+                "/data/thaumic_reborn/thaumcraft/wands/silverwood.json"
         ));
         assertTrue(resource(
-                "/data/thaumcraftmodern/recipes/silverwood_wand.json"
+                "/data/thaumic_reborn/recipes/silverwood_wand.json"
         ) == null);
         assertTrue(resource(
-                "/data/thaumcraftmodern/recipes/thaumonomicon.json"
+                "/data/thaumic_reborn/recipes/thaumonomicon.json"
         ) == null);
     }
 
@@ -86,7 +86,7 @@ class WandClassicContentTest {
         };
         for (String rod : rods) {
             JsonObject definition = json(
-                    "/data/thaumcraftmodern/thaumcraft/wands/"
+                    "/data/thaumic_reborn/thaumcraft/wands/"
                             + rod
                             + ".json"
             );
@@ -94,7 +94,7 @@ class WandClassicContentTest {
         }
         for (String cap : caps) {
             JsonObject definition = json(
-                    "/data/thaumcraftmodern/thaumcraft/wands/"
+                    "/data/thaumic_reborn/thaumcraft/wands/"
                             + cap
                             + ".json"
             );
@@ -102,26 +102,26 @@ class WandClassicContentTest {
         }
         assertEquals(
                 1000,
-                json("/data/thaumcraftmodern/thaumcraft/wands/codex.json")
+                json("/data/thaumic_reborn/thaumcraft/wands/codex.json")
                         .get("capacity_vis")
                         .getAsInt()
         );
         assertNotNull(resource(
-                "/assets/thaumcraftmodern/models/item/codex_wand.json"
+                "/assets/thaumic_reborn/models/item/codex_wand.json"
         ));
         assertTrue(resource(
-                "/data/thaumcraftmodern/recipes/codex_wand.json"
+                "/data/thaumic_reborn/recipes/codex_wand.json"
         ) == null);
     }
 
     @Test
     void dynamicAssemblyRecipesAndClassicCraftCostsArePresent()
             throws IOException {
-        assertEquals("thaumcraftmodern:arcane_wand_assembly",
-                json("/data/thaumcraftmodern/recipes/arcane_wand_assembly.json")
+        assertEquals("thaumic_reborn:arcane_wand_assembly",
+                json("/data/thaumic_reborn/recipes/arcane_wand_assembly.json")
                         .get("type").getAsString());
-        assertEquals("thaumcraftmodern:arcane_sceptre_assembly",
-                json("/data/thaumcraftmodern/recipes/arcane_sceptre_assembly.json")
+        assertEquals("thaumic_reborn:arcane_sceptre_assembly",
+                json("/data/thaumic_reborn/recipes/arcane_sceptre_assembly.json")
                         .get("type").getAsString());
         assertEquals(1, wandCraftCost("wood"));
         assertEquals(3, wandCraftCost("greatwood"));
@@ -137,9 +137,9 @@ class WandClassicContentTest {
         assertEquals(6, wandCraftCost("thaumium"));
         assertEquals(9, wandCraftCost("void"));
         JsonObject sceptre = json(
-                "/data/thaumcraftmodern/thaumcraft/research/legacy/sceptre.json");
+                "/data/thaumic_reborn/thaumcraft/research/legacy/sceptre.json");
         assertFalse(sceptre.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:arcane_sceptre_assembly",
+        assertEquals("thaumic_reborn:arcane_sceptre_assembly",
                 sceptre.getAsJsonArray("pages").get(1).getAsJsonObject()
                         .get("recipe").getAsString());
     }
@@ -148,12 +148,12 @@ class WandClassicContentTest {
     void infusionLayoutResearchProvidesSixIncreasingDensityPreviews()
             throws IOException {
         JsonObject research = json(
-                "/data/thaumcraftmodern/thaumcraft/research/"
+                "/data/thaumic_reborn/thaumcraft/research/"
                         + "infusion_layout_test.json"
         );
         assertTrue(research.get("auto_unlock").getAsBoolean());
         assertEquals(
-                "thaumcraftmodern:runic_matrix",
+                "thaumic_reborn:runic_matrix",
                 research.get("icon").getAsString()
         );
         long infusionPages = research.getAsJsonArray("pages").asList().stream()
@@ -177,12 +177,12 @@ class WandClassicContentTest {
     void thaumonomiconDocumentsCurrentWandAndConstructionBoundaries()
             throws IOException {
         JsonObject thaumaturgy = json(
-                "/data/thaumcraftmodern/thaumcraft/research/legacy/"
+                "/data/thaumic_reborn/thaumcraft/research/legacy/"
                         + "basicthaumaturgy.json"
         );
         assertFalse(thaumaturgy.get("inactive").getAsBoolean());
         assertEquals(
-                "research.thaumcraftmodern.wand_catalog.rods.body",
+                "research.thaumic_reborn.wand_catalog.rods.body",
                 thaumaturgy.getAsJsonArray("pages")
                         .get(6)
                         .getAsJsonObject()
@@ -190,7 +190,7 @@ class WandClassicContentTest {
                         .getAsString()
         );
         assertEquals(
-                "research.thaumcraftmodern.wand_catalog.availability.body",
+                "research.thaumic_reborn.wand_catalog.availability.body",
                 thaumaturgy.getAsJsonArray("pages")
                         .get(8)
                         .getAsJsonObject()
@@ -199,12 +199,12 @@ class WandClassicContentTest {
         );
 
         JsonObject workbench = json(
-                "/data/thaumcraftmodern/thaumcraft/research/legacy/"
+                "/data/thaumic_reborn/thaumcraft/research/legacy/"
                         + "arctable.json"
         );
         assertFalse(workbench.get("inactive").getAsBoolean());
         assertEquals(
-                "research.thaumcraftmodern.constructions.status.body",
+                "research.thaumic_reborn.constructions.status.body",
                 workbench.getAsJsonArray("pages")
                         .get(3)
                         .getAsJsonObject()
@@ -218,7 +218,7 @@ class WandClassicContentTest {
             throws IOException {
         for (String cap : new String[]{"silver", "thaumium", "void"}) {
             JsonObject metadata = json(
-                    "/assets/thaumcraftmodern/textures/item/wand_cap_"
+                    "/assets/thaumic_reborn/textures/item/wand_cap_"
                             + cap
                             + ".png.mcmeta"
             );
@@ -240,13 +240,13 @@ class WandClassicContentTest {
                 "quartz", "bone", "reed", "primal"
         }) {
             assertNotNull(resource(
-                    "/assets/thaumcraftmodern/textures/item/staff_rod_"
+                    "/assets/thaumic_reborn/textures/item/staff_rod_"
                             + rod
                             + ".png"
             ));
         }
         JsonObject wandModel = json(
-                "/assets/thaumcraftmodern/models/item/classic_wand_base.json"
+                "/assets/thaumic_reborn/models/item/classic_wand_base.json"
         );
         assertEquals("minecraft:builtin/entity",
                 wandModel.get("parent").getAsString());
@@ -261,35 +261,35 @@ class WandClassicContentTest {
     void copiedClassicTexturesAndSoundsKeepExactJarHashes()
             throws IOException, NoSuchAlgorithmException {
         assertHash(
-                "/assets/thaumcraftmodern/textures/item/wand_cap_iron.png",
+                "/assets/thaumic_reborn/textures/item/wand_cap_iron.png",
                 "d1af5486916767147f77fa18cca0cafc10e9696c4c00b60b8bbef0c011d32df2"
         );
         assertHash(
-                "/assets/thaumcraftmodern/textures/item/wand_rod_silverwood.png",
+                "/assets/thaumic_reborn/textures/item/wand_rod_silverwood.png",
                 "6b5a886b3a63cee38f8b4d65cee84f0859dd674407dfad2059f485c3d3b0e58f"
         );
         assertHash(
-                "/assets/thaumcraftmodern/textures/item/wand_cap_iron_model.png",
+                "/assets/thaumic_reborn/textures/item/wand_cap_iron_model.png",
                 "f21b3dc72fefd8e1df26393756ec5aa47aecf8559f6a7d25e0ab062efc361314"
         );
         assertHash(
-                "/assets/thaumcraftmodern/textures/item/wand_rod_wood_model.png",
+                "/assets/thaumic_reborn/textures/item/wand_rod_wood_model.png",
                 "851f35e5bc18ef7f04cf15ef6c3bd3bfc12d02162926c089810abb43970527d6"
         );
         assertHash(
-                "/assets/thaumcraftmodern/textures/item/wand_rod_silverwood_model.png",
+                "/assets/thaumic_reborn/textures/item/wand_rod_silverwood_model.png",
                 "09f6fc4133c0427be99b9f773c81a711baedff18fc13ce86ae3b4ad10a42c480"
         );
         assertHash(
-                "/assets/thaumcraftmodern/sounds/wand1.ogg",
+                "/assets/thaumic_reborn/sounds/wand1.ogg",
                 "b3a2b2f94599e1189fc82d5086f33aa2b048bff8387cf148f916417ab6b971da"
         );
         assertHash(
-                "/assets/thaumcraftmodern/sounds/wand2.ogg",
+                "/assets/thaumic_reborn/sounds/wand2.ogg",
                 "d690d1947b3226685bfd6fb00c6509fab8a6814aa41eb0992e2e9a76689e41cf"
         );
         assertHash(
-                "/assets/thaumcraftmodern/sounds/wand3.ogg",
+                "/assets/thaumic_reborn/sounds/wand3.ogg",
                 "fad1a12fd2d0edcbb51d31da51215667438cc76dace8f40f8bdb276fd4ba19ab"
         );
     }
@@ -304,7 +304,7 @@ class WandClassicContentTest {
     }
 
     private static int wandCraftCost(String id) throws IOException {
-        return json("/data/thaumcraftmodern/thaumcraft/wands/" + id + ".json")
+        return json("/data/thaumic_reborn/thaumcraft/wands/" + id + ".json")
                 .get("craft_cost_vis").getAsInt();
     }
 

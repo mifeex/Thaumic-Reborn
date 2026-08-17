@@ -1,0 +1,7 @@
+{
+  "parent": "thaumic_reborn:item/classic_staff_base",
+  "textures": {
+    "rod": "thaumic_reborn:item/wand_rod_silverwood_model",
+    "cap": "thaumic_reborn:item/wand_cap_thaumium_model"
+  }
+}

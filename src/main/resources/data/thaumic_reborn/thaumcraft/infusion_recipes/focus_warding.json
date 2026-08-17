@@ -1,0 +1,13 @@
+{
+  "research":"focuswarding",
+  "instability":4,
+  "central":{"item":"minecraft:nether_star"},
+  "components":[
+    {"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:water_shard"},
+    {"item":"minecraft:quartz"},{"item":"thaumic_reborn:order_shard"},
+    {"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:water_shard"},
+    {"item":"minecraft:quartz"},{"item":"thaumic_reborn:order_shard"}
+  ],
+  "result":{"item":"thaumic_reborn:focus_warding"},
+  "essentia":{"terra":25,"tutamen":25,"ordo":25,"cognitio":10}
+}

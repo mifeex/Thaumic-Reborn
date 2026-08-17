@@ -1,0 +1,105 @@
+{
+  "id": "rod_blaze",
+  "legacy_id": "ROD_blaze",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:blaze_wand_rod",
+  "title": "tc.research_name.ROD_blaze",
+  "subtitle": "tc.research_text.ROD_blaze",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "rod_greatwood",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -168,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_blaze.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:blaze_wand_rod",
+      "central": "minecraft:blaze_rod",
+      "components": [
+        {"item": "thaumic_reborn:balanced_shard", "count": 1},
+        {"item": "thaumic_reborn:fire_shard", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "ignis", "amount": 12},
+        {"id": "praecantatio", "amount": 6},
+        {"id": "bestia", "amount": 6}
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.ROD_blaze"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "instrumentum",
+      "amount": 3
+    },
+    {
+      "id": "ignis",
+      "amount": 6
+    },
+    {
+      "id": "potentia",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -7,
+    "y": 0,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemWandRod, 1, 6)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "ignis",
+        "amount": 6
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ROD_blaze\", \"THAUMATURGY\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.FIRE, 6).add(Aspect.ENERGY, 3).add(Aspect.MAGIC, 3), -7, 0, 2, new ItemStack(ConfigItems.itemWandRod, 1, 6))).setPages(new ResearchPage(\"tc.research_page.ROD_blaze.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"WandRodBlaze\"))).setSecondary().setConcealed().setParents(\"ROD_greatwood\", \"INFUSION\").registerResearchItem()"
+  }
+}

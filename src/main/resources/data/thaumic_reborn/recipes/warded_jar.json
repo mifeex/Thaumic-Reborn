@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "distilessentia",
+  "vis": {
+    "aqua": 1
+  },
+  "pattern": [
+    "GWG",
+    "G G",
+    "GGG"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:warded_jar"
+  }
+}

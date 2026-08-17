@@ -1,0 +1,8 @@
+{
+  "loader":"thaumic_reborn:reload_safe_obj",
+  "flip_v":true,
+  "automatic_culling":false,
+  "transform":{"translation":[0.5,0.5,0]},
+  "model":"thaumic_reborn:textures/models/crystalizer.obj",
+  "textures":{"texture0":"thaumic_reborn:block/crystalizer","particle":"thaumic_reborn:block/crystalizer_particle"}
+}

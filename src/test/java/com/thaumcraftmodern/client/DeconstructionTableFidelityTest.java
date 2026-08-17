@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class DeconstructionTableFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
     private static final Path ORIGINAL_ASSETS = Path.of(
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/"

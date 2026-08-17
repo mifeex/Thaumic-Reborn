@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "thaumic_reborn:essentia_phial"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "tag": "forge:dyes/black"
+    }
+  ],
+  "result": {
+    "item": "thaumic_reborn:scribing_tools",
+    "count": 1
+  }
+}

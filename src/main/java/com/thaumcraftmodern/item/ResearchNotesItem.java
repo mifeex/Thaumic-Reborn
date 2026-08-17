@@ -269,7 +269,7 @@ public final class ResearchNotesItem extends Item {
                     .withStyle(ChatFormatting.BLUE));
             return;
         }
-        tooltip.add(Component.translatable("tooltip.thaumcraftmodern.research_notes")
+        tooltip.add(Component.translatable("tooltip.thaumic_reborn.research_notes")
                 .withStyle(ChatFormatting.DARK_PURPLE));
         ResearchRegistry.find(researchId(stack)).ifPresent(research ->
                 tooltip.add(

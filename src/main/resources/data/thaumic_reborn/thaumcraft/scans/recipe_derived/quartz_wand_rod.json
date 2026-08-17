@@ -1,0 +1,38 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:quartz_wand_rod",
+  "display": "",
+  "aspects": [
+    {
+      "id": "aer",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 1
+    },
+    {
+      "id": "aqua",
+      "amount": 1
+    },
+    {
+      "id": "terra",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 3
+    },
+    {
+      "id": "perditio",
+      "amount": 1
+    },
+    {
+      "id": "vitreus",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/wand_rod_quartz.json"
+}

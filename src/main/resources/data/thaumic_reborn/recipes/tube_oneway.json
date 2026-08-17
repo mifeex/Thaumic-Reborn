@@ -1,0 +1,20 @@
+{
+  "type": "thaumic_reborn:arcane_shapeless",
+  "research": "tubefilter",
+  "vis": {
+    "aqua": 5,
+    "ordo": 8,
+    "perditio": 8
+  },
+  "ingredients": [
+    {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    {
+      "tag": "forge:dyes/blue"
+    }
+  ],
+  "result": {
+    "item": "thaumic_reborn:one_way_essentia_tube"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "tinyarmor",
+  "legacy_id": "TINYARMOR",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_decoration_armor",
+  "title": "tc.research_name.TINYARMOR",
+  "subtitle": "tc.research_text.TINYARMOR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "scan_aspect",
+    "id": "tutamen"
+  },
+  "x": 168,
+  "y": 264,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TINYARMOR.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:tiny_armor"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "metallum",
+      "amount": 1
+    },
+    {
+      "id": "tutamen",
+      "amount": 2
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 7,
+    "y": 11,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemDecoration, 1, 6)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [
+      "tutamen"
+    ],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 1
+      },
+      {
+        "id": "tutamen",
+        "amount": 2
+      },
+      {
+        "id": "lucrum",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"TINYARMOR\", \"GOLEMANCY\", (new AspectList()).add(Aspect.METAL, 1).add(Aspect.ARMOR, 2).add(Aspect.GREED, 1), 7, 11, 1, new ItemStack(ConfigItems.itemGolemDecoration, 1, 6))).setPages(new ResearchPage(\"tc.research_page.TINYARMOR.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"TinyArmor\"))).setHidden().setSecondary().setAspectTriggers(Aspect.ARMOR).registerResearchItem()"
+  }
+}

@@ -176,7 +176,7 @@ public final class WandItem extends Item {
                 ))
                 .orElse(Component.literal(state.capId()));
         return Component.translatable(
-                "item.thaumcraftmodern.assembled_wand",
+                "item.thaumic_reborn.assembled_wand",
                 cap,
                 rod,
                 Component.translatable(form.translationKey())
@@ -368,44 +368,44 @@ public final class WandItem extends Item {
         WandState state = WandVisService.state(stack).orElse(null);
         if (state == null) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.invalid"
+                            "tooltip.thaumic_reborn.wand.invalid"
                     )
                     .withStyle(ChatFormatting.RED));
             return;
         }
         int capacity = WandVisService.capacity(stack);
         tooltip.add(Component.translatable(
-                        "tooltip.thaumcraftmodern.wand.capacity",
+                        "tooltip.thaumic_reborn.wand.capacity",
                         capacity
                 )
                 .withStyle(ChatFormatting.DARK_PURPLE));
         if (form == WandForm.SCEPTRE) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.sceptre.crafting"
+                            "tooltip.thaumic_reborn.wand.sceptre.crafting"
                     )
                     .withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.sceptre.no_focus"
+                            "tooltip.thaumic_reborn.wand.sceptre.no_focus"
                     )
                     .withStyle(ChatFormatting.DARK_GRAY));
         } else if (form == WandForm.STAFF) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.staff.no_workbench"
+                            "tooltip.thaumic_reborn.wand.staff.no_workbench"
                     )
                     .withStyle(ChatFormatting.RED));
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.staff.focus"
+                            "tooltip.thaumic_reborn.wand.staff.focus"
                     )
                     .withStyle(ChatFormatting.DARK_GRAY));
         }
         WandFocusService.focusStack(stack).ifPresent(focus -> tooltip.add(
-                Component.translatable("tooltip.thaumcraftmodern.wand.focus", focus.getHoverName())
+                Component.translatable("tooltip.thaumic_reborn.wand.focus", focus.getHoverName())
                         .withStyle(ChatFormatting.GOLD)));
         for (PrimalAspect aspect : PrimalAspect.ordered()) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.wand.vis",
+                            "tooltip.thaumic_reborn.wand.vis",
                             Component.translatable(
-                                    "aspect.thaumcraftmodern." + aspect.id()
+                                    "aspect.thaumic_reborn." + aspect.id()
                             ),
                             formatCentivis(state.visCentivis(aspect)),
                             capacity

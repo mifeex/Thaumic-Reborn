@@ -1,0 +1,32 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:taint_spore_swarmer",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 2
+    },
+    {
+      "id": "aer",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.TaintSwarmer",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 2
+      },
+      {
+        "id": "aer",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.TaintSwarmer\", (new AspectList()).add(Aspect.TAINT, 2).add(Aspect.AIR, 2))"
+  }
+}

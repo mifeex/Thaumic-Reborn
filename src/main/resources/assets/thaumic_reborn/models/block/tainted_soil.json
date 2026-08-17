@@ -1,0 +1,6 @@
+{
+  "parent": "thaumic_reborn:block/tainted_cube_all",
+  "textures": {
+    "all": "thaumic_reborn:block/tainted_soil"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phial",
+  "legacy_id": "Phial",
+  "legacy_kind": "crafting_shaped",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:essentia_phial",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemEssence, 8, 0), new Object[]{\" C \", \"G G\", \" G \", 'G', Blocks.field_150359_w, 'C', Items.field_151119_aD})",
+    "source_statement": "ConfigResearch.recipes.put(\"Phial\", GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemEssence, 8, 0), new Object[]{\" C \", \"G G\", \" G \", 'G', Blocks.field_150359_w, 'C', Items.field_151119_aD}))",
+    "unkeyed": false
+  }
+}

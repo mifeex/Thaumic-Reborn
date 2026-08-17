@@ -1,0 +1,10 @@
+{
+  "id": "fabrico",
+  "order": 440,
+  "color": "809D80",
+  "icon": "thaumic_reborn:textures/aspects/fabrico.png",
+  "components": [
+    "humanus",
+    "instrumentum"
+  ]
+}

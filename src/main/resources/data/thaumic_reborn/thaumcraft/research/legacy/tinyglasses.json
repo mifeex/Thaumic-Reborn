@@ -1,0 +1,87 @@
+{
+  "id": "tinyglasses",
+  "legacy_id": "TINYGLASSES",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_decoration_glasses",
+  "title": "tc.research_name.TINYGLASSES",
+  "subtitle": "tc.research_text.TINYGLASSES",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "scan_aspect",
+    "id": "pannus"
+  },
+  "x": 144,
+  "y": 240,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TINYGLASSES.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:tiny_glasses"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "pannus",
+      "amount": 2
+    },
+    {
+      "id": "sensus",
+      "amount": 1
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 6,
+    "y": 10,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemDecoration, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [
+      "new ItemStack(Blocks.field_150325_L, 1, 32767)"
+    ],
+    "entity_triggers": [],
+    "aspect_triggers": [
+      "pannus"
+    ],
+    "research_aspects": [
+      {
+        "id": "pannus",
+        "amount": 2
+      },
+      {
+        "id": "sensus",
+        "amount": 1
+      },
+      {
+        "id": "lucrum",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"TINYGLASSES\", \"GOLEMANCY\", (new AspectList()).add(Aspect.CLOTH, 2).add(Aspect.SENSES, 1).add(Aspect.GREED, 1), 6, 10, 1, new ItemStack(ConfigItems.itemGolemDecoration, 1, 1))).setPages(new ResearchPage(\"tc.research_page.TINYGLASSES.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"TinyGlasses\"))).setHidden().setSecondary().setItemTriggers(new ItemStack(Blocks.field_150325_L, 1, 32767)).setAspectTriggers(Aspect.CLOTH).registerResearchItem()"
+  }
+}

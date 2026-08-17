@@ -1,0 +1,21 @@
+{
+  "id": "thaumium",
+  "legacy_id": "Thaumium",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:thaumium"
+  ],
+  "required_aspects": [
+    {
+      "id": "praecantatio",
+      "amount": 4
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"THAUMIUM\", new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(Items.field_151042_j), (new AspectList()).merge(Aspect.MAGIC, 4))",
+    "source_statement": "ConfigResearch.recipes.put(\"Thaumium\", ThaumcraftApi.addCrucibleRecipe(\"THAUMIUM\", new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(Items.field_151042_j), (new AspectList()).merge(Aspect.MAGIC, 4)))",
+    "unkeyed": false
+  }
+}

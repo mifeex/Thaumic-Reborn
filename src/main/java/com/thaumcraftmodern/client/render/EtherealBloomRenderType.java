@@ -45,7 +45,7 @@ final class EtherealBloomRenderType extends RenderStateShard {
     );
 
     private EtherealBloomRenderType() {
-        super("thaumcraftmodern_ethereal_bloom_render_type", () -> {
+        super("thaumic_reborn_ethereal_bloom_render_type", () -> {
         }, () -> {
         });
     }

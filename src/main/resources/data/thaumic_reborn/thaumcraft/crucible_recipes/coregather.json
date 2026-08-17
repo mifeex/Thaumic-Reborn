@@ -1,0 +1,14 @@
+{
+  "research": "coregather",
+  "catalyst": {
+    "item": "thaumic_reborn:blank_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:gather_golem_core"
+  },
+  "aspects": {
+    "lucrum": 5,
+    "terra": 5
+  },
+  "legacy_id": "CoreGather"
+}

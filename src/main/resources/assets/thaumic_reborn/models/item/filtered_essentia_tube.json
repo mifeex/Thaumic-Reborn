@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/pipe_1",
+    "tube": "thaumic_reborn:block/pipe_1",
+    "filter": "thaumic_reborn:block/pipe_filter",
+    "core": "thaumic_reborn:block/pipe_filter_core"
+  },
+  "elements": [
+    {
+      "from": [7, 0, 7], "to": [9, 16, 9],
+      "faces": {
+        "down": {"uv": [7, 9, 9, 7], "texture": "#tube"},
+        "up": {"uv": [7, 7, 9, 9], "texture": "#tube"},
+        "north": {"uv": [7, 0, 9, 16], "texture": "#tube"},
+        "south": {"uv": [7, 0, 9, 16], "texture": "#tube"},
+        "west": {"uv": [7, 0, 9, 16], "texture": "#tube"},
+        "east": {"uv": [7, 0, 9, 16], "texture": "#tube"}
+      }
+    },
+    {
+      "from": [5.5, 5.5, 5.5], "to": [10.5, 10.5, 10.5],
+      "faces": {
+        "down": {"texture": "#filter"}, "up": {"texture": "#filter"},
+        "north": {"texture": "#filter"}, "south": {"texture": "#filter"},
+        "west": {"texture": "#filter"}, "east": {"texture": "#filter"}
+      }
+    },
+    {
+      "from": [5.49, 5.49, 5.49], "to": [10.51, 10.51, 10.51],
+      "faces": {
+        "down": {"texture": "#core"}, "up": {"texture": "#core"},
+        "north": {"texture": "#core"}, "south": {"texture": "#core"},
+        "west": {"texture": "#core"}, "east": {"texture": "#core"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {"rotation": [30, 225, 0], "scale": [0.625, 0.625, 0.625]},
+    "ground": {"translation": [0, 3, 0], "scale": [0.25, 0.25, 0.25]},
+    "fixed": {"scale": [0.5, 0.5, 0.5]},
+    "thirdperson_righthand": {"rotation": [75, 45, 0], "translation": [0, 2.5, 0], "scale": [0.375, 0.375, 0.375]},
+    "thirdperson_lefthand": {"rotation": [75, 225, 0], "translation": [0, 2.5, 0], "scale": [0.375, 0.375, 0.375]},
+    "firstperson_righthand": {"rotation": [0, 45, 0], "scale": [0.4, 0.4, 0.4]},
+    "firstperson_lefthand": {"rotation": [0, 225, 0], "scale": [0.4, 0.4, 0.4]}
+  }
+}

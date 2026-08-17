@@ -1,0 +1,26 @@
+{
+  "research": "infusionenchantment",
+  "instability": 5,
+  "components": [
+    {
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "item": "minecraft:cobweb"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 16,
+    "instrumentum": 16,
+    "ordo": 16,
+    "messis": 16,
+    "perfodio": 16
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:silk_touch"
+  }
+}

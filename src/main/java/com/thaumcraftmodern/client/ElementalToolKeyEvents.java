@@ -18,8 +18,8 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID, value = Dist.CLIENT)
 public final class ElementalToolKeyEvents {
     private static final KeyMapping CYCLE_SHOVEL = new KeyMapping(
-            "key.thaumcraftmodern.cycle_shovel_orientation",
-            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, "key.categories.thaumcraftmodern");
+            "key.thaumic_reborn.cycle_shovel_orientation",
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, "key.categories.thaumic_reborn");
 
     private ElementalToolKeyEvents() {}
 
@@ -33,7 +33,7 @@ public final class ElementalToolKeyEvents {
             int orientation = ElementalShovelItem.cycleOrientation(minecraft.player.getMainHandItem());
             ModNetwork.sendToServer(new CycleShovelOrientationPacket());
             minecraft.player.displayClientMessage(Component.translatable(
-                    "message.thaumcraftmodern.shovel_orientation." + orientation), true);
+                    "message.thaumic_reborn.shovel_orientation." + orientation), true);
         }
     }
 

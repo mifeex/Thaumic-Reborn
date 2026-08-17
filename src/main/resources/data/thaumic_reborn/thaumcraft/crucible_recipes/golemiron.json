@@ -1,0 +1,16 @@
+{
+  "research": "golemiron",
+  "catalyst": {
+    "item": "minecraft:iron_block"
+  },
+  "output": {
+    "item": "thaumic_reborn:iron_golem"
+  },
+  "aspects": {
+    "humanus": 4,
+    "motus": 4,
+    "spiritus": 4
+  },
+  "legacy_id": "GolemIron",
+  "inactive": false
+}

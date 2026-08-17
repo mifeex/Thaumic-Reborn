@@ -1,0 +1,16 @@
+{
+  "research": "maskgrinningdevil",
+  "instability": 8,
+  "central": { "tag": "thaumic_reborn:fortress_helmets" },
+  "components": [
+    { "item": "minecraft:black_dye" },
+    { "item": "minecraft:iron_ingot" },
+    { "item": "minecraft:leather" },
+    { "item": "thaumic_reborn:shimmerleaf" },
+    { "item": "thaumic_reborn:zombie_brain" },
+    { "item": "minecraft:iron_ingot" }
+  ],
+  "result": { "item": "thaumic_reborn:fortress_helmet_mask_grinning_devil" },
+  "result_modifier": { "type": "item_replacement", "key": "mask", "value": 0 },
+  "essentia": { "cognitio": 64, "sano": 64, "tutamen": 16 }
+}

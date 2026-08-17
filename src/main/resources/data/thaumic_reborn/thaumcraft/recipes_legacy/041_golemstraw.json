@@ -1,0 +1,27 @@
+{
+  "id": "golemstraw",
+  "legacy_id": "GolemStraw",
+  "legacy_kind": "crucible",
+  "modern_recipe": [
+    "thaumic_reborn:golemstraw"
+  ],
+  "required_aspects": [
+    {
+      "id": "humanus",
+      "amount": 4
+    },
+    {
+      "id": "motus",
+      "amount": 4
+    },
+    {
+      "id": "spiritus",
+      "amount": 4
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"GOLEMSTRAW\", new ItemStack(ConfigItems.itemGolemPlacer, 1, 0), new ItemStack(Blocks.field_150407_cf), (new AspectList()).add(Aspect.MAN, 4).add(Aspect.MOTION, 4).add(Aspect.SOUL, 4))",
+    "source_statement": "ConfigResearch.recipes.put(\"GolemStraw\", ThaumcraftApi.addCrucibleRecipe(\"GOLEMSTRAW\", new ItemStack(ConfigItems.itemGolemPlacer, 1, 0), new ItemStack(Blocks.field_150407_cf), (new AspectList()).add(Aspect.MAN, 4).add(Aspect.MOTION, 4).add(Aspect.SOUL, 4)))",
+    "unkeyed": false
+  }
+}

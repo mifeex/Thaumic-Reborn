@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/outer_lands_portal"
+  }
+}

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class TaintMobFidelityTest {
     private static final Path JAVA = Path.of("src/main/java");
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
     private static final Map<String, String> CLASSIC_SOUND_HASHES = Map.of(
             "gore1.ogg",

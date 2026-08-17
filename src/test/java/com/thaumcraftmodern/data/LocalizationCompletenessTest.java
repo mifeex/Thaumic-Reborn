@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LocalizationCompletenessTest {
     private static final Path RESOURCES = Path.of("src/main/resources");
     private static final Path LANG = RESOURCES.resolve(
-            "assets/thaumcraftmodern/lang"
+            "assets/thaumic_reborn/lang"
     );
     private static final Path CONTENT = RESOURCES.resolve(
-            "data/thaumcraftmodern/thaumcraft"
+            "data/thaumic_reborn/thaumcraft"
     );
 
     @Test
@@ -71,7 +71,7 @@ class LocalizationCompletenessTest {
                 String id = definition.get("id").getAsString();
                 String classicName = Character.toUpperCase(id.charAt(0))
                         + id.substring(1);
-                String key = "aspect.thaumcraftmodern." + id;
+                String key = "aspect.thaumic_reborn." + id;
 
                 assertTrue(english.has(key), "Missing English aspect name: " + key);
                 assertTrue(russian.has(key), "Missing Russian aspect name: " + key);
@@ -113,7 +113,7 @@ class LocalizationCompletenessTest {
         }
         String value = element.getAsString();
         if (value.startsWith("tc.")
-                || value.contains(".thaumcraftmodern.")) {
+                || value.contains(".thaumic_reborn.")) {
             result.add(value);
         }
     }

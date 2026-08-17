@@ -1,7 +1,0 @@
-{
-  "id": "infusion_layout_test",
-  "title": "screen.thaumcraftmodern.thaumonomicon.category.infusion_layout_test",
-  "icon": "thaumcraftmodern:runic_matrix",
-  "background": "thaumcraftmodern:textures/gui/gui_researchback.png",
-  "order": 900
-}

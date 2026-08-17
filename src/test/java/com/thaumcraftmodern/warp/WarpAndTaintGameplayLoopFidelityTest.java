@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class WarpAndTaintGameplayLoopFidelityTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
     private static final Path SOURCES = Path.of(
             "src/main/java/com/thaumcraftmodern"

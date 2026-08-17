@@ -1,0 +1,84 @@
+{
+  "id": "golemthaumium",
+  "legacy_id": "GOLEMTHAUMIUM",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:thaumium_golem",
+  "title": "tc.research_name.GOLEMTHAUMIUM",
+  "subtitle": "tc.research_text.GOLEMTHAUMIUM",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemiron",
+    "thaumium"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 48,
+  "y": 240,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMTHAUMIUM.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:thaumium_block"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemthaumium"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 2,
+    "y": 10,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 7)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 10
+      },
+      {
+        "id": "motus",
+        "amount": 10
+      },
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMTHAUMIUM\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 10).add(Aspect.MOTION, 10).add(Aspect.METAL, 3).add(Aspect.MAGIC, 3).add(Aspect.EXCHANGE, 3), 2, 10, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 7))).setPages(new ResearchPage(\"tc.research_page.GOLEMTHAUMIUM.1\"), new ResearchPage((IRecipe)recipes.get(\"BlockThaumium\")), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemThaumium\"))).setConcealed().setParents(\"GOLEMIRON\", \"THAUMIUM\").registerResearchItem()"
+  }
+}

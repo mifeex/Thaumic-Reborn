@@ -1,0 +1,28 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "vischargerelay",
+  "vis": {
+    "ignis": 16,
+    "ordo": 16,
+    "aer": 16
+  },
+  "pattern": [
+    " R ",
+    "W W",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "thaumic_reborn:vis_relay"
+    },
+    "W": {
+      "item": "thaumic_reborn:greatwood_wand_rod"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:vis_charge_relay"
+  }
+}

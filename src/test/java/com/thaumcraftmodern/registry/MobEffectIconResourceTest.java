@@ -85,7 +85,7 @@ final class MobEffectIconResourceTest {
     void effectIconsAreExactNonEmptyTc4AtlasCells() throws Exception {
         MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
         for (Map.Entry<String, String> entry : CLASSIC_ICON_SHA256.entrySet()) {
-            String resourcePath = "/assets/thaumcraftmodern/textures/mob_effect/"
+            String resourcePath = "/assets/thaumic_reborn/textures/mob_effect/"
                     + entry.getKey()
                     + ".png";
             byte[] bytes;

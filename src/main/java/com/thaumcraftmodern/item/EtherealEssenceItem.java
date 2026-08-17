@@ -118,9 +118,9 @@ public final class EtherealEssenceItem extends Item {
     ) {
         aspectId(stack).ifPresent(aspect -> tooltip.add(
                 Component.translatable(
-                                "tooltip.thaumcraftmodern.ethereal_essence",
+                                "tooltip.thaumic_reborn.ethereal_essence",
                                 Component.translatable(
-                                        "aspect.thaumcraftmodern." + aspect
+                                        "aspect.thaumic_reborn." + aspect
                                 ),
                                 amount(stack)
                         )

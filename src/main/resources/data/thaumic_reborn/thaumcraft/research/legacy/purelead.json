@@ -1,0 +1,81 @@
+{
+  "id": "purelead",
+  "legacy_id": "PURELEAD",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:native_lead_cluster",
+  "title": "tc.research_name.PURELEAD",
+  "subtitle": "tc.research_text.PURELEAD",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "pureiron"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -48,
+  "y": 216,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PURELEAD.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:purelead",
+      "legacy_type": "recipe",
+      "legacy_content": "PureLead",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"PureLead\"))"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -2,
+    "y": 9,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemNugget, 1, 20)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "}\n\n      if (Config.foundLeadOre && Config.foundLeadIngot) {\n         (new ResearchItem(\"PURELEAD\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.ORDER, 3), -2, 9, 1, new ItemStack(ConfigItems.itemNugget, 1, 20))).setPages(new ResearchPage(\"tc.research_page.PURELEAD.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"PureLead\"))).setConcealed().setSecondary().setParents(\"PUREIRON\").registerResearchItem()"
+  }
+}

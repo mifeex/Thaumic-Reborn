@@ -10,8 +10,8 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 JAR = ROOT / "reference/original/Thaumcraft_1.7.10_4.2.3.5.jar"
-MODELS = ROOT / "src/main/resources/assets/thaumcraftmodern/models/item"
-TEXTURES = ROOT / "src/main/resources/assets/thaumcraftmodern/textures/item"
+MODELS = ROOT / "src/main/resources/assets/thaumic_reborn/models/item"
+TEXTURES = ROOT / "src/main/resources/assets/thaumic_reborn/textures/item"
 ORIGINAL_PREFIX = "assets/thaumcraft/textures/items/"
 
 ICON_MAP = {
@@ -84,8 +84,8 @@ def main() -> None:
             current = json.loads(model_path.read_text())
             current_texture = current.get("textures", {}).get("layer0")
             if current_texture not in {
-                "thaumcraftmodern:item/knowledgefragment",
-                f"thaumcraftmodern:item/{modern_name}",
+                "thaumic_reborn:item/knowledgefragment",
+                f"thaumic_reborn:item/{modern_name}",
             }:
                 raise RuntimeError(f"Refusing to replace non-placeholder {model_path}")
 
@@ -101,9 +101,9 @@ def main() -> None:
             model_path.write_text(json.dumps({
                 "parent": "minecraft:item/generated",
                 "textures": {
-                    "layer0": f"thaumcraftmodern:item/{modern_name}",
+                    "layer0": f"thaumic_reborn:item/{modern_name}",
                     **({
-                        "layer1": f"thaumcraftmodern:item/{modern_name}_overlay"
+                        "layer1": f"thaumic_reborn:item/{modern_name}_overlay"
                     } if modern_name in ROBE_OVERLAYS else {}),
                 },
             }, indent=2) + "\n")
@@ -114,7 +114,7 @@ def main() -> None:
             )
 
         armor_textures = (
-            ROOT / "src/main/resources/assets/thaumcraftmodern/textures/models"
+            ROOT / "src/main/resources/assets/thaumic_reborn/textures/models"
         )
         for name in ROBE_ARMOR_TEXTURES:
             (armor_textures / f"{name}.png").write_bytes(archive.read(
@@ -140,7 +140,7 @@ def install_arcane_ear(archive: ZipFile) -> None:
         (TEXTURES / f"{modern_name}.png").write_bytes(archive.read(
             f"assets/thaumcraft/textures/blocks/{legacy_name}.png"
         ))
-        textures[face] = f"thaumcraftmodern:item/{modern_name}"
+        textures[face] = f"thaumic_reborn:item/{modern_name}"
 
     horizontal_base = {
         direction: {"texture": "#side"}

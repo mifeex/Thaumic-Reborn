@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:banners",
+    "thaumic_reborn:white_thaumcraft_banner",
+    "thaumic_reborn:orange_thaumcraft_banner",
+    "thaumic_reborn:magenta_thaumcraft_banner",
+    "thaumic_reborn:light_blue_thaumcraft_banner",
+    "thaumic_reborn:yellow_thaumcraft_banner",
+    "thaumic_reborn:lime_thaumcraft_banner",
+    "thaumic_reborn:pink_thaumcraft_banner",
+    "thaumic_reborn:gray_thaumcraft_banner",
+    "thaumic_reborn:light_gray_thaumcraft_banner",
+    "thaumic_reborn:cyan_thaumcraft_banner",
+    "thaumic_reborn:purple_thaumcraft_banner",
+    "thaumic_reborn:blue_thaumcraft_banner",
+    "thaumic_reborn:brown_thaumcraft_banner",
+    "thaumic_reborn:green_thaumcraft_banner",
+    "thaumic_reborn:red_thaumcraft_banner",
+    "thaumic_reborn:black_thaumcraft_banner"
+  ]
+}

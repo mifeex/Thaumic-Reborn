@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CustomBreakParticleModelTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test
@@ -23,10 +23,10 @@ class CustomBreakParticleModelTest {
 
         assertFalse(blockState.contains("minecraft:block/air"));
         assertTrue(blockState.contains(
-                "thaumcraftmodern:block/aura_node_particles"
+                "thaumic_reborn:block/aura_node_particles"
         ));
         assertTrue(model.contains(
-                "thaumcraftmodern:block/aura_node_particle"
+                "thaumic_reborn:block/aura_node_particle"
         ));
     }
 
@@ -38,9 +38,9 @@ class CustomBreakParticleModelTest {
 
         assertFalse(blockState.contains("minecraft:block/air"));
         assertTrue(blockState.contains(
-                "thaumcraftmodern:block/research_table_particles"
+                "thaumic_reborn:block/research_table_particles"
         ));
-        assertTrue(model.contains("thaumcraftmodern:block/woodplain"));
+        assertTrue(model.contains("thaumic_reborn:block/woodplain"));
     }
 
     @Test
@@ -64,10 +64,10 @@ class CustomBreakParticleModelTest {
         assertTrue(blockState.contains("\"part=3\""));
         assertTrue(blockState.contains("\"part=4\""));
         assertTrue(altar.contains(
-                "thaumcraftmodern:block/obelisk_cap_altar"
+                "thaumic_reborn:block/obelisk_cap_altar"
         ));
-        assertTrue(cap.contains("thaumcraftmodern:block/obelisk_cap"));
-        assertTrue(side.contains("thaumcraftmodern:block/obelisk_side"));
+        assertTrue(cap.contains("thaumic_reborn:block/obelisk_cap"));
+        assertTrue(side.contains("thaumic_reborn:block/obelisk_side"));
         assertTrue(Files.exists(
                 ASSETS.resolve("textures/block/obelisk_cap_altar.png")
         ));
@@ -92,8 +92,8 @@ class CustomBreakParticleModelTest {
 
         for (String model : models) {
             String source = read("models/block/" + model);
-            assertFalse(source.contains("thaumcraftmodern:models/"));
-            assertTrue(source.contains("thaumcraftmodern:block/"));
+            assertFalse(source.contains("thaumic_reborn:models/"));
+            assertTrue(source.contains("thaumic_reborn:block/"));
         }
         assertTrue(Files.exists(ASSETS.resolve("textures/block/pillar.png")));
         assertTrue(Files.exists(ASSETS.resolve("textures/block/thaumatorium.png")));
@@ -108,15 +108,15 @@ class CustomBreakParticleModelTest {
         String source = read("models/block/thaumatorium_lower.json");
 
         assertTrue(source.contains(
-                "thaumcraftmodern:textures/models/thaumatorium_block.obj"
+                "thaumic_reborn:textures/models/thaumatorium_block.obj"
         ));
         assertTrue(source.contains(
-                "\"particle\":\"thaumcraftmodern:block/thaumatorium\""
+                "\"particle\":\"thaumic_reborn:block/thaumatorium\""
         ));
         assertTrue(source.contains(
-                "\"texture0\":\"thaumcraftmodern:block/thaumatorium\""
+                "\"texture0\":\"thaumic_reborn:block/thaumatorium\""
         ));
-        assertFalse(source.contains("thaumcraftmodern:models/thaumatorium"));
+        assertFalse(source.contains("thaumic_reborn:models/thaumatorium"));
         assertTrue(Files.exists(ASSETS.resolve(
                 "textures/models/thaumatorium.png"
         )));
@@ -128,9 +128,9 @@ class CustomBreakParticleModelTest {
         )));
         String upper = read("models/block/thaumatorium_upper.json");
         assertTrue(upper.contains(
-                "thaumcraftmodern:block/thaumatorium"
+                "thaumic_reborn:block/thaumatorium"
         ));
-        assertFalse(upper.contains("thaumcraftmodern:models/thaumatorium"));
+        assertFalse(upper.contains("thaumic_reborn:models/thaumatorium"));
     }
 
     @Test
@@ -139,15 +139,15 @@ class CustomBreakParticleModelTest {
         String source = read("models/block/essentia_crystallizer.json");
 
         assertTrue(source.contains(
-                "thaumcraftmodern:textures/models/crystalizer.obj"
+                "thaumic_reborn:textures/models/crystalizer.obj"
         ));
         assertTrue(source.contains(
-                "\"texture0\":\"thaumcraftmodern:block/crystalizer\""
+                "\"texture0\":\"thaumic_reborn:block/crystalizer\""
         ));
         assertTrue(source.contains(
-                "\"particle\":\"thaumcraftmodern:block/crystalizer_particle\""
+                "\"particle\":\"thaumic_reborn:block/crystalizer_particle\""
         ));
-        assertFalse(source.contains("thaumcraftmodern:models/crystalizer"));
+        assertFalse(source.contains("thaumic_reborn:models/crystalizer"));
         assertTrue(Files.exists(ASSETS.resolve(
                 "textures/block/crystalizer.png"
         )));

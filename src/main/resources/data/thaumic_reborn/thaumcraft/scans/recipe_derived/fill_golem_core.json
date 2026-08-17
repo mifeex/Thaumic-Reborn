@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:fill_golem_core",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 2
+    },
+    {
+      "id": "ignis",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    },
+    {
+      "id": "fames",
+      "amount": 2
+    },
+    {
+      "id": "vacuos",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/corefill.json"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "knowfrag",
+  "legacy_id": "KNOWFRAG",
+  "category": "basics",
+  "icon": "thaumic_reborn:knowledge_fragment",
+  "title": "tc.research_name.KNOWFRAG",
+  "subtitle": "tc.research_text.KNOWFRAG",
+  "concealed": true,
+  "auto_unlock": true,
+  "parents": [
+    "research"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 72,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.KNOWFRAG.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:knowledge_fragment"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 3,
+    "y": -2,
+    "complexity": 0,
+    "icon_raw": "new ItemStack(ConfigItems.itemResource, 1, 9)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": true
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"KNOWFRAG\", \"BASICS\", new AspectList(), 3, -2, 0, new ItemStack(ConfigItems.itemResource, 1, 9))).setPages(new ResearchPage(\"tc.research_page.KNOWFRAG.1\"), new ResearchPage((IRecipe)recipes.get(\"KnowFrag\"))).setStub().setRound().setAutoUnlock().setParents(\"RESEARCH\").registerResearchItem()"
+  }
+}

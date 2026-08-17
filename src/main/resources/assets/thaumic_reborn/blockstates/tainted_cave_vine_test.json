@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "when": { "north": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test" }
+    },
+    {
+      "when": { "east": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true" },
+      "apply": { "model": "thaumic_reborn:block/tainted_cave_vine_test", "uvlock": true, "x": 90 }
+    }
+  ]
+}

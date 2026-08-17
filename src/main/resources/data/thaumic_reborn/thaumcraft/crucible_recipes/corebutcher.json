@@ -1,0 +1,14 @@
+{
+  "research": "corebutcher",
+  "catalyst": {
+    "item": "thaumic_reborn:guard_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:butcher_golem_core"
+  },
+  "aspects": {
+    "corpus": 5,
+    "bestia": 5
+  },
+  "legacy_id": "CoreButcher"
+}

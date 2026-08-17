@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:greatwood_log",
-    "thaumcraftmodern:silverwood_log"
+    "thaumic_reborn:greatwood_log",
+    "thaumic_reborn:silverwood_log"
   ]
 }

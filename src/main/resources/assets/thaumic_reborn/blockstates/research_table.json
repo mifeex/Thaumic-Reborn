@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,part=main": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=east,part=main": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=south,part=main": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=west,part=main": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=north,part=companion": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=east,part=companion": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=south,part=companion": {"model": "thaumic_reborn:block/research_table_particles"},
+    "facing=west,part=companion": {"model": "thaumic_reborn:block/research_table_particles"}
+  }
+}

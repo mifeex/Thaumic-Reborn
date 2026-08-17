@@ -11,7 +11,7 @@ import java.util.Objects;
  * unload and server restart.
  */
 public final class NodeJarSavedData extends SavedData {
-    private static final String DATA_NAME = "thaumcraftmodern_node_jars";
+    private static final String DATA_NAME = "thaumic_reborn_node_jars";
     private static final String LEDGER_KEY = "ledger";
 
     private final NodeJarLedger ledger;

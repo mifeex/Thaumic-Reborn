@@ -1,0 +1,23 @@
+{
+  "id": "arcanestone1",
+  "legacy_id": "ArcaneStone1",
+  "legacy_kind": "arcane_shaped",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:arcane_stone",
+  "required_aspects": [
+    {
+      "id": "terra",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 1
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANESTONE\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 9, 6), (new AspectList()).add(Aspect.EARTH, 1).add(Aspect.FIRE, 1), \"SSS\", \"SCS\", \"SSS\", 'S', \"stone\", 'C', new ItemStack(ConfigItems.itemShard, 1, 32767))",
+    "source_statement": "ConfigResearch.recipes.put(\"ArcaneStone1\", ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANESTONE\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 9, 6), (new AspectList()).add(Aspect.EARTH, 1).add(Aspect.FIRE, 1), \"SSS\", \"SCS\", \"SSS\", 'S', \"stone\", 'C', new ItemStack(ConfigItems.itemShard, 1, 32767)))",
+    "unkeyed": false
+  }
+}

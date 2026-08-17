@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 /** Detects actual TC4 structure blocks whenever a full chunk is loaded. */
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID)
 public final class LegacyStructureMarkerDetector {
-    private static final String WISP_ENTITY_ID = "thaumcraftmodern:wisp";
+    private static final String WISP_ENTITY_ID = "thaumic_reborn:wisp";
 
     private LegacyStructureMarkerDetector() {
     }

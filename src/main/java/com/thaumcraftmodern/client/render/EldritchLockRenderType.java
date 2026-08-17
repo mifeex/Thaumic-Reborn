@@ -17,7 +17,7 @@ final class EldritchLockRenderType extends RenderStateShard {
 
     private static final TexturingStateShard REPEAT_TEXTURE =
             new TexturingStateShard(
-                    "thaumcraftmodern_eldritch_lock_repeat",
+                    "thaumic_reborn_eldritch_lock_repeat",
                     () -> {
                         RenderSystem.texParameter(GL11.GL_TEXTURE_2D,
                                 GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
@@ -31,7 +31,7 @@ final class EldritchLockRenderType extends RenderStateShard {
     private static final RenderType STARS = type("eldritch_lock_stars", PARTICLES, true, false, true);
 
     private EldritchLockRenderType() {
-        super("thaumcraftmodern_eldritch_lock_render_type", () -> {}, () -> {});
+        super("thaumic_reborn_eldritch_lock_render_type", () -> {}, () -> {});
     }
 
     private static ResourceLocation texture(String path) {

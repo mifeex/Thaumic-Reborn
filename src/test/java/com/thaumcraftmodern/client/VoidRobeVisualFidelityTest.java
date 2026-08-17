@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class VoidRobeVisualFidelityTest {
-    private static final Path MOD = Path.of("src/main/resources/assets/thaumcraftmodern");
+    private static final Path MOD = Path.of("src/main/resources/assets/thaumic_reborn");
     private static final Path ORIGINAL = Path.of(
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft"
     );

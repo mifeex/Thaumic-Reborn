@@ -1,0 +1,40 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:firebat",
+  "display": "",
+  "aspects": [
+    {
+      "id": "bestia",
+      "amount": 2
+    },
+    {
+      "id": "volatus",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.Firebat",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "bestia",
+        "amount": 2
+      },
+      {
+        "id": "volatus",
+        "amount": 1
+      },
+      {
+        "id": "ignis",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.Firebat\", (new AspectList()).add(Aspect.BEAST, 2).add(Aspect.FLIGHT, 1).add(Aspect.FIRE, 2))"
+  }
+}

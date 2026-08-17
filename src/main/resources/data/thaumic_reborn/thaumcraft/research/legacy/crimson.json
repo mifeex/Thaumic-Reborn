@@ -1,0 +1,54 @@
+{
+  "id": "crimson",
+  "legacy_id": "CRIMSON",
+  "category": "basics",
+  "completion_warp": 3,
+  "icon": "thaumic_reborn:crimson_rites",
+  "title": "tc.research_name.CRIMSON",
+  "subtitle": "tc.research_text.CRIMSON",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "criterion",
+    "id": "thaumic_reborn:legacy_clue/crimson"
+  },
+  "x": 0,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.CRIMSON.1"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": 4,
+    "complexity": 0,
+    "icon_raw": "new ItemStack(ConfigItems.itemEldritchObject, 1, 1)",
+    "flags": {
+      "special": true,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [
+      3
+    ],
+    "source_expression": "(new ResearchItem(\"CRIMSON\", \"BASICS\", new AspectList(), 0, 4, 0, new ItemStack(ConfigItems.itemEldritchObject, 1, 1))).setPages(new ResearchPage(\"tc.research_page.CRIMSON.1\")).setStub().setHidden().setRound().setSpecial().registerResearchItem()"
+  }
+}

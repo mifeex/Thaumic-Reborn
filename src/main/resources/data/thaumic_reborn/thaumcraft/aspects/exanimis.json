@@ -1,0 +1,10 @@
+{
+  "id": "exanimis",
+  "order": 320,
+  "color": "3A4000",
+  "icon": "thaumic_reborn:textures/aspects/exanimis.png",
+  "components": [
+    "motus",
+    "mortuus"
+  ]
+}

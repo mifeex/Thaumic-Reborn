@@ -1,0 +1,79 @@
+{
+  "id": "coreharvest",
+  "legacy_id": "COREHARVEST",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:harvest_golem_core",
+  "title": "tc.research_name.COREHARVEST",
+  "subtitle": "tc.research_text.COREHARVEST",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coregather"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -48,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREHARVEST.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:coreharvest"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEORDER\"",
+      "source_expression": "new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREHARVEST.2\")"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -2,
+    "y": 5,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 3)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "meto",
+        "amount": 6
+      },
+      {
+        "id": "messis",
+        "amount": 3
+      },
+      {
+        "id": "iter",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"COREHARVEST\", \"GOLEMANCY\", (new AspectList()).add(Aspect.HARVEST, 6).add(Aspect.CROP, 3).add(Aspect.TRAVEL, 3), -2, 5, 2, new ItemStack(ConfigItems.itemGolemCore, 1, 3))).setPages(new ResearchPage(\"tc.research_page.COREHARVEST.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"CoreHarvest\")), new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.COREHARVEST.2\")).setConcealed().setParents(\"COREGATHER\").registerResearchItem()"
+  }
+}

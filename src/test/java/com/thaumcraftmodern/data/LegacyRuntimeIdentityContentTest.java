@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class LegacyRuntimeIdentityContentTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path SCAN_ROOT = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
     );
     private static final Path RESEARCH = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research"
     );
     private static final Path REPORT = ROOT.resolve(
             "data/legacy_tc4_4_2_3_5/modern_migration/runtime_ids.json"
@@ -71,7 +71,7 @@ final class LegacyRuntimeIdentityContentTest {
             }
         }
         assertTrue(
-                activeKeys.contains("block:thaumcraftmodern:ancient_stone"),
+                activeKeys.contains("block:thaumic_reborn:ancient_stone"),
                 "the canonical Ancient Stone scan is not active"
         );
         assertTrue(
@@ -85,7 +85,7 @@ final class LegacyRuntimeIdentityContentTest {
                         + "with legacy Blocks.grass is removed"
         );
         assertTrue(
-                activeKeys.contains("block_tag:thaumcraftmodern:sandstone_equivalents"),
+                activeKeys.contains("block_tag:thaumic_reborn:sandstone_equivalents"),
                 "the shared recipe-derived sandstone scan is not active"
         );
         assertEquals(
@@ -138,12 +138,12 @@ final class LegacyRuntimeIdentityContentTest {
             throws IOException {
         JsonObject bellows = json(RESEARCH.resolve("legacy/bellows.json"));
         assertEquals(
-                "thaumcraftmodern:arcane_bellows",
+                "thaumic_reborn:arcane_bellows",
                 bellows.get("icon").getAsString()
         );
         JsonObject focus = json(RESEARCH.resolve("legacy/focusfire.json"));
         assertEquals(
-                "thaumcraftmodern:focus_fire",
+                "thaumic_reborn:focus_fire",
                 focus.get("icon").getAsString()
         );
     }

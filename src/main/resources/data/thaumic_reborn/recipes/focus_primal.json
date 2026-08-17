@@ -1,0 +1,31 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focusprimal",
+  "vis": {
+    "terra": 25,
+    "perditio": 25,
+    "ordo": 25,
+    "aer": 25,
+    "ignis": 25,
+    "aqua": 25
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "item": "thaumic_reborn:primal_charm"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focus_primal"
+  }
+}

@@ -7,655 +7,655 @@
   "recipes": [
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_white",
+      "modern_id": "thaumic_reborn:banner_white",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_orange",
+      "modern_id": "thaumic_reborn:banner_orange",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_magenta",
+      "modern_id": "thaumic_reborn:banner_magenta",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_light_blue",
+      "modern_id": "thaumic_reborn:banner_light_blue",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_yellow",
+      "modern_id": "thaumic_reborn:banner_yellow",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_lime",
+      "modern_id": "thaumic_reborn:banner_lime",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_pink",
+      "modern_id": "thaumic_reborn:banner_pink",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_gray",
+      "modern_id": "thaumic_reborn:banner_gray",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_light_gray",
+      "modern_id": "thaumic_reborn:banner_light_gray",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_cyan",
+      "modern_id": "thaumic_reborn:banner_cyan",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_purple",
+      "modern_id": "thaumic_reborn:banner_purple",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_blue",
+      "modern_id": "thaumic_reborn:banner_blue",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_brown",
+      "modern_id": "thaumic_reborn:banner_brown",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_green",
+      "modern_id": "thaumic_reborn:banner_green",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_red",
+      "modern_id": "thaumic_reborn:banner_red",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "\"Banner_\" + a",
-      "modern_id": "thaumcraftmodern:banner_black",
+      "modern_id": "thaumic_reborn:banner_black",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BANNERS\", banner, (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 5), \"WS\", \"WS\", \"WB\", 'W', new ItemStack(Blocks.field_150325_L, 1, a), 'S', \"stickWood\", 'B', \"slabWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "PrimalCharm",
-      "modern_id": "thaumcraftmodern:primal_charm",
+      "modern_id": "thaumic_reborn:primal_charm",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BASICARTIFACE\", new ItemStack(ConfigItems.itemResource, 1, 15), (new AspectList()).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.AIR, 25).add(Aspect.WATER, 25).add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25), \"123\", \"ISI\", \"456\", 'S', new ItemStack(ConfigItems.itemShard, 1, 6), 'I', Items.field_151043_k, '1', new ItemStack(ConfigItems.itemShard, 1, 0), '2', new ItemStack(ConfigItems.itemShard, 1, 1), '3', new ItemStack(ConfigItems.itemShard, 1, 2), '4', new ItemStack(ConfigItems.itemShard, 1, 3), '5', new ItemStack(ConfigItems.itemShard, 1, 4), '6', new ItemStack(ConfigItems.itemShard, 1, 5))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneDoor",
-      "modern_id": "thaumcraftmodern:arcane_door",
+      "modern_id": "thaumic_reborn:arcane_door",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"WARDEDARCANA\", new ItemStack(ConfigItems.itemArcaneDoor), (new AspectList()).add(Aspect.WATER, 20).add(Aspect.ORDER, 10).add(Aspect.EARTH, 10).add(Aspect.FIRE, 5), \"TDT\", \"DBD\", \"TDT\", 'T', \"ingotThaumium\", 'B', new ItemStack(ConfigItems.itemZombieBrain), 'D', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "WardedGlass",
-      "modern_id": "thaumcraftmodern:warded_glass",
+      "modern_id": "thaumic_reborn:warded_glass",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"WARDEDARCANA\", new ItemStack(ConfigBlocks.blockCosmeticOpaque, 8, 2), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 10).add(Aspect.EARTH, 5).add(Aspect.FIRE, 5), \"GGG\", \"WBW\", \"GGG\", 'B', new ItemStack(ConfigItems.itemZombieBrain), 'G', new ItemStack(Blocks.field_150359_w), 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "IronKey",
-      "modern_id": "thaumcraftmodern:iron_key",
+      "modern_id": "thaumic_reborn:iron_key",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"WARDEDARCANA\", new ItemStack(ConfigItems.itemKey, 2, 0), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \"NNI\", \"N  \", 'I', Items.field_151042_j, 'N', \"nuggetIron\")",
       "status": "runtime"
     },
     {
       "legacy_id": "FluxScrubber",
-      "modern_id": "thaumcraftmodern:flux_scrubber",
+      "modern_id": "thaumic_reborn:flux_scrubber",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FLUXSCRUB\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 14), (new AspectList()).add(Aspect.WATER, 16).add(Aspect.ORDER, 16).add(Aspect.AIR, 8), \" B \", \"GOG\", \"STS\", 'B', new ItemStack(ConfigBlocks.blockWoodenDevice), 'G', new ItemStack(Blocks.field_150411_aY), 'T', new ItemStack(ConfigBlocks.blockTube), 'O', new ItemStack(ConfigItems.itemResource, 1, 8), 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "GoldKey",
-      "modern_id": "thaumcraftmodern:gold_key",
+      "modern_id": "thaumic_reborn:gold_key",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"WARDEDARCANA\", new ItemStack(ConfigItems.itemKey, 2, 1), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \"NNI\", \"N  \", 'I', Items.field_151043_k, 'N', Items.field_151074_bl)",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcanePressurePlate",
-      "modern_id": "thaumcraftmodern:arcane_pressure_plate",
+      "modern_id": "thaumic_reborn:arcane_pressure_plate",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"WARDEDARCANA\", new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 2), (new AspectList()).add(Aspect.WATER, 20).add(Aspect.ORDER, 10).add(Aspect.FIRE, 5).add(Aspect.EARTH, 10), \" B \", \"TDT\", 'T', new ItemStack(ConfigItems.itemResource, 1, 2), 'B', new ItemStack(ConfigItems.itemZombieBrain), 'D', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "NodeStabilizer",
-      "modern_id": "thaumcraftmodern:node_stabilizer",
+      "modern_id": "thaumic_reborn:node_stabilizer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"NODESTABILIZER\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 9), (new AspectList()).add(Aspect.WATER, 32).add(Aspect.EARTH, 32).add(Aspect.ORDER, 32), \" G \", \"QPQ\", \"SNS\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 'G', new ItemStack(Items.field_151043_k), 'P', new ItemStack(Blocks.field_150331_J), 'Q', new ItemStack(Blocks.field_150371_ca), 'N', new ItemStack(ConfigItems.itemResource, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "NodeTransducer",
-      "modern_id": "thaumcraftmodern:node_transducer",
+      "modern_id": "thaumic_reborn:node_transducer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"VISPOWER\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 11), (new AspectList()).add(Aspect.FIRE, 32).add(Aspect.AIR, 32).add(Aspect.ENTROPY, 32), \"RCR\", \"ISI\", \"RAR\", 'S', new ItemStack(ConfigBlocks.blockStoneDevice, 1, 9), 'C', new ItemStack(Items.field_151132_bS), 'I', new ItemStack(Items.field_151042_j), 'R', new ItemStack(Blocks.field_150451_bX), 'A', new ItemStack(ConfigItems.itemResource, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "NodeRelay",
-      "modern_id": "thaumcraftmodern:node_relay",
+      "modern_id": "thaumic_reborn:node_relay",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"VISPOWER\", new ItemStack(ConfigBlocks.blockMetalDevice, 2, 14), (new AspectList()).add(Aspect.FIRE, 8).add(Aspect.ORDER, 8), \" I \", \"ISI\", \" I \", 'I', new ItemStack(Items.field_151042_j), 'S', new ItemStack(ConfigItems.itemShard, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "NodeChargeRelay",
-      "modern_id": "thaumcraftmodern:node_charge_relay",
+      "modern_id": "thaumic_reborn:node_charge_relay",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"VISCHARGERELAY\", new ItemStack(ConfigBlocks.blockMetalDevice, 1, 2), (new AspectList()).add(Aspect.FIRE, 16).add(Aspect.ORDER, 16).add(Aspect.AIR, 16), \" R \", \"W W\", \"I I\", 'I', new ItemStack(Items.field_151042_j), 'R', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 14), 'W', new ItemStack(ConfigItems.itemWandRod, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocalManipulator",
-      "modern_id": "thaumcraftmodern:focal_manipulator",
+      "modern_id": "thaumic_reborn:focal_manipulator",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCALMANIPULATION\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 13), (new AspectList()).add(Aspect.FIRE, 32).add(Aspect.AIR, 32).add(Aspect.ENTROPY, 32).add(Aspect.EARTH, 32).add(Aspect.WATER, 32).add(Aspect.ORDER, 32), \"IQI\", \"SPS\", \"GTG\", 'Q', new ItemStack(ConfigBlocks.blockSlabStone, 1, 0), 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'T', new ItemStack(ConfigBlocks.blockTable), 'I', new ItemStack(Items.field_151042_j), 'G', new ItemStack(Items.field_151043_k), 'P', new ItemStack(ConfigItems.itemResource, 1, 15))",
       "status": "runtime"
     },
     {
       "legacy_id": "GolemFetter",
-      "modern_id": "thaumcraftmodern:golem_fetter",
+      "modern_id": "thaumic_reborn:golem_fetter",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"GOLEMFETTER\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 9), (new AspectList()).add(Aspect.EARTH, 5).add(Aspect.ORDER, 5), \"SSS\", \"IRI\", \"BBB\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'I', new ItemStack(Items.field_151042_j), 'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 'R', new ItemStack(Blocks.field_150451_bX))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneStone1",
-      "modern_id": "thaumcraftmodern:arcane_stone1",
+      "modern_id": "thaumic_reborn:arcane_stone1",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANESTONE\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 9, 6), (new AspectList()).add(Aspect.EARTH, 1).add(Aspect.FIRE, 1), \"SSS\", \"SCS\", \"SSS\", 'S', \"stone\", 'C', new ItemStack(ConfigItems.itemShard, 1, 32767))",
       "status": "runtime"
     },
     {
       "legacy_id": "PaveTravel",
-      "modern_id": "thaumcraftmodern:pave_travel",
+      "modern_id": "thaumic_reborn:pave_travel",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PAVETRAVEL\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 4, 2), (new AspectList()).add(Aspect.EARTH, 10).add(Aspect.AIR, 10), \"SAS\", \"SBS\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 'A', new ItemStack(ConfigItems.itemShard, 1, 0), 'B', new ItemStack(ConfigItems.itemShard, 1, 3))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneLamp",
-      "modern_id": "thaumcraftmodern:arcane_lamp",
+      "modern_id": "thaumic_reborn:arcane_lamp",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANELAMP\", new ItemStack(ConfigBlocks.blockMetalDevice, 1, 7), (new AspectList()).add(Aspect.FIRE, 8).add(Aspect.AIR, 8).add(Aspect.WATER, 4).add(Aspect.ENTROPY, 4), \" S \", \"IAI\", \" N \", 'A', new ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 0), 'S', new ItemStack(Blocks.field_150453_bW), 'N', new ItemStack(ConfigItems.itemResource, 1, 1), 'I', new ItemStack(Items.field_151042_j))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneSpa",
-      "modern_id": "thaumcraftmodern:arcane_spa",
+      "modern_id": "thaumic_reborn:arcane_spa",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANESPA\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 12), (new AspectList()).add(Aspect.WATER, 16).add(Aspect.ORDER, 8).add(Aspect.EARTH, 4), \"QIQ\", \"SJS\", \"SPS\", 'P', new ItemStack(Blocks.field_150331_J), 'J', new ItemStack(ConfigBlocks.blockJar), 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'Q', new ItemStack(Blocks.field_150371_ca), 'I', new ItemStack(Blocks.field_150411_aY))",
       "status": "runtime"
     },
     {
       "legacy_id": "PaveWard",
-      "modern_id": "thaumcraftmodern:pave_ward",
+      "modern_id": "thaumic_reborn:pave_ward",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PAVEWARD\", new ItemStack(ConfigBlocks.blockCosmeticSolid, 4, 3), (new AspectList()).add(Aspect.FIRE, 10).add(Aspect.ORDER, 10), \"SAS\", \"SBS\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 'A', new ItemStack(ConfigItems.itemShard, 1, 1), 'B', new ItemStack(ConfigItems.itemShard, 1, 4))",
       "status": "runtime"
     },
     {
       "legacy_id": "Levitator",
-      "modern_id": "thaumcraftmodern:levitator",
+      "modern_id": "thaumic_reborn:levitator",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"LEVITATOR\", new ItemStack(ConfigBlocks.blockLifter), (new AspectList()).add(Aspect.AIR, 10).add(Aspect.EARTH, 5), \"WEW\", \"BNB\", \"WAW\", 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'E', new ItemStack(ConfigItems.itemShard, 1, 3), 'A', new ItemStack(ConfigItems.itemShard, 1, 0), 'N', new ItemStack(ConfigItems.itemResource, 1, 1), 'B', Items.field_151042_j)",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneEar",
-      "modern_id": "thaumcraftmodern:arcane_ear",
+      "modern_id": "thaumic_reborn:arcane_ear",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANEEAR\", new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 1), (new AspectList()).add(Aspect.AIR, 10).add(Aspect.ORDER, 10), \"GIG\", \"GBG\", \"WRW\", 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'R', Items.field_151137_ax, 'I', Items.field_151042_j, 'G', Items.field_151043_k, 'B', new ItemStack(ConfigItems.itemZombieBrain))",
       "status": "runtime"
     },
     {
       "legacy_id": "MirrorGlass",
-      "modern_id": "thaumcraftmodern:mirror_glass",
+      "modern_id": "thaumic_reborn:mirror_glass",
       "source_expression": "ThaumcraftApi.addShapelessArcaneCraftingRecipe(\"BASICARTIFACE\", new ItemStack(ConfigItems.itemResource, 1, 10), (new AspectList()).add(Aspect.FIRE, 10).add(Aspect.EARTH, 10), new ItemStack(ConfigItems.itemResource, 1, 3), Blocks.field_150410_aZ)",
       "status": "runtime"
     },
     {
       "legacy_id": "BoneBow",
-      "modern_id": "thaumcraftmodern:bone_bow",
+      "modern_id": "thaumic_reborn:bone_bow",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BONEBOW\", new ItemStack(ConfigItems.itemBowBone), (new AspectList()).add(Aspect.AIR, 16).add(Aspect.ENTROPY, 32), \"SB \", \"SEB\", \"SB \", 'E', new ItemStack(ConfigItems.itemShard, 1, 5), 'B', Items.field_151103_aS, 'S', Items.field_151007_F)",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_aer",
+      "modern_id": "thaumic_reborn:primal_arrow_aer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_ignis",
+      "modern_id": "thaumic_reborn:primal_arrow_ignis",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_aqua",
+      "modern_id": "thaumic_reborn:primal_arrow_aqua",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_terra",
+      "modern_id": "thaumic_reborn:primal_arrow_terra",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_ordo",
+      "modern_id": "thaumic_reborn:primal_arrow_ordo",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "\"PrimalArrow_\" + a",
-      "modern_id": "thaumcraftmodern:primal_arrow_perditio",
+      "modern_id": "thaumic_reborn:primal_arrow_perditio",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"PRIMALARROW\", new ItemStack(ConfigItems.itemPrimalArrow, 8, a), (new AspectList()).add(pa[a], 8), \"AAA\", \"ASA\", \"AAA\", 'A', Items.field_151032_g, 'S', new ItemStack(ConfigItems.itemShard, 1, a))",
       "status": "runtime"
     },
     {
       "legacy_id": "InfusionMatrix",
-      "modern_id": "thaumcraftmodern:infusion_matrix",
+      "modern_id": "thaumic_reborn:infusion_matrix",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"INFUSION\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 2), (new AspectList()).add(Aspect.ORDER, 40), \"SBS\", \"BEB\", \"SBS\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'E', Items.field_151079_bi, 'B', new ItemStack(ConfigItems.itemShard, 1, 32767))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcanePedestal",
-      "modern_id": "thaumcraftmodern:arcane_pedestal",
+      "modern_id": "thaumic_reborn:arcane_pedestal",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"INFUSION\", new ItemStack(ConfigBlocks.blockStoneDevice, 2, 1), (new AspectList()).add(Aspect.AIR, 5), \"SSS\", \" S \", \"SSS\", 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "WardedJar",
-      "modern_id": "thaumcraftmodern:warded_jar",
+      "modern_id": "thaumic_reborn:warded_jar",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DISTILESSENTIA\", new ItemStack(ConfigBlocks.blockJar, 1, 0), (new AspectList()).add(Aspect.WATER, 1), \"GWG\", \"G G\", \"GGG\", 'W', \"slabWood\", 'G', Blocks.field_150410_aZ)",
       "status": "runtime"
     },
     {
       "legacy_id": "JarVoid",
-      "modern_id": "thaumcraftmodern:jar_void",
+      "modern_id": "thaumic_reborn:jar_void",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"JARVOID\", new ItemStack(ConfigBlocks.blockJar, 1, 3), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ENTROPY, 15), \"O\", \"J\", \"P\", 'O', Blocks.field_150343_Z, 'P', Items.field_151065_br, 'J', new ItemStack(ConfigBlocks.blockJar, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandCapGold",
-      "modern_id": "thaumcraftmodern:wand_cap_gold",
+      "modern_id": "thaumic_reborn:wand_cap_gold",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CAP_gold\", new ItemStack(ConfigItems.itemWandCap, 1, 1), (new AspectList()).add(Aspect.ORDER, ((WandCap)WandCap.caps.get(\"gold\")).getCraftCost()).add(Aspect.FIRE, ((WandCap)WandCap.caps.get(\"gold\")).getCraftCost()).add(Aspect.AIR, ((WandCap)WandCap.caps.get(\"gold\")).getCraftCost()), \"NNN\", \"N N\", 'N', Items.field_151074_bl)",
       "status": "runtime"
     },
     {
       "legacy_id": "WandCapCopper",
-      "modern_id": "thaumcraftmodern:wand_cap_copper",
+      "modern_id": "thaumic_reborn:wand_cap_copper",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CAP_copper\", new ItemStack(ConfigItems.itemWandCap, 1, 3), (new AspectList()).add(Aspect.ORDER, ((WandCap)WandCap.caps.get(\"copper\")).getCraftCost()).add(Aspect.FIRE, ((WandCap)WandCap.caps.get(\"copper\")).getCraftCost()).add(Aspect.AIR, ((WandCap)WandCap.caps.get(\"copper\")).getCraftCost()), \"NNN\", \"N N\", 'N', \"nuggetCopper\")",
       "status": "runtime"
     },
     {
       "legacy_id": "WandCapSilverInert",
-      "modern_id": "thaumcraftmodern:wand_cap_silver_inert",
+      "modern_id": "thaumic_reborn:wand_cap_silver_inert",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CAP_silver\", new ItemStack(ConfigItems.itemWandCap, 1, 5), (new AspectList()).add(Aspect.ORDER, ((WandCap)WandCap.caps.get(\"silver\")).getCraftCost()).add(Aspect.FIRE, ((WandCap)WandCap.caps.get(\"silver\")).getCraftCost()).add(Aspect.AIR, ((WandCap)WandCap.caps.get(\"silver\")).getCraftCost()), \"NNN\", \"N N\", 'N', \"nuggetSilver\")",
       "status": "runtime"
     },
     {
       "legacy_id": "WandCapThaumiumInert",
-      "modern_id": "thaumcraftmodern:wand_cap_thaumium_inert",
+      "modern_id": "thaumic_reborn:wand_cap_thaumium_inert",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CAP_thaumium\", new ItemStack(ConfigItems.itemWandCap, 1, 6), (new AspectList()).add(Aspect.ORDER, ((WandCap)WandCap.caps.get(\"thaumium\")).getCraftCost()).add(Aspect.FIRE, ((WandCap)WandCap.caps.get(\"thaumium\")).getCraftCost()).add(Aspect.AIR, ((WandCap)WandCap.caps.get(\"thaumium\")).getCraftCost()), \"NNN\", \"N N\", 'N', \"nuggetThaumium\")",
       "status": "runtime"
     },
     {
       "legacy_id": "WandCapVoidInert",
-      "modern_id": "thaumcraftmodern:wand_cap_void_inert",
+      "modern_id": "thaumic_reborn:wand_cap_void_inert",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CAP_void\", new ItemStack(ConfigItems.itemWandCap, 1, 8), (new AspectList()).add(Aspect.ENTROPY, ((WandCap)WandCap.caps.get(\"void\")).getCraftCost() * 3).add(Aspect.ORDER, ((WandCap)WandCap.caps.get(\"void\")).getCraftCost() * 3).add(Aspect.FIRE, ((WandCap)WandCap.caps.get(\"void\")).getCraftCost() * 2).add(Aspect.AIR, ((WandCap)WandCap.caps.get(\"void\")).getCraftCost() * 2), \"NNN\", \"N N\", 'N', \"nuggetVoid\")",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodGreatwood",
-      "modern_id": "thaumcraftmodern:wand_rod_greatwood",
+      "modern_id": "thaumic_reborn:wand_rod_greatwood",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_greatwood\", new ItemStack(ConfigItems.itemWandRod, 1, 0), (new AspectList()).add(Aspect.ENTROPY, ((WandRod)WandRod.rods.get(\"greatwood\")).getCraftCost()), \" G\", \"G \", 'G', new ItemStack(ConfigBlocks.blockMagicalLog, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodGreatwoodStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_greatwood_staff",
+      "modern_id": "thaumic_reborn:wand_rod_greatwood_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_greatwood_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 50), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"greatwood_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodObsidianStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_obsidian_staff",
+      "modern_id": "thaumic_reborn:wand_rod_obsidian_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_obsidian_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 51), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"obsidian_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodSilverwoodStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_silverwood_staff",
+      "modern_id": "thaumic_reborn:wand_rod_silverwood_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_silverwood_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 52), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"silverwood_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 2))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodIceStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_ice_staff",
+      "modern_id": "thaumic_reborn:wand_rod_ice_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_ice_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 53), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"ice_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 3))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodQuartzStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_quartz_staff",
+      "modern_id": "thaumic_reborn:wand_rod_quartz_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_quartz_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 54), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"quartz_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 4))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodReedStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_reed_staff",
+      "modern_id": "thaumic_reborn:wand_rod_reed_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_reed_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 55), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"reed_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 5))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodBlazeStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_blaze_staff",
+      "modern_id": "thaumic_reborn:wand_rod_blaze_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_blaze_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 56), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"blaze_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "WandRodBoneStaff",
-      "modern_id": "thaumcraftmodern:wand_rod_bone_staff",
+      "modern_id": "thaumic_reborn:wand_rod_bone_staff",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ROD_bone_staff\", new ItemStack(ConfigItems.itemWandRod, 1, 57), (new AspectList()).add(Aspect.ORDER, ((WandRod)WandRod.rods.get(\"bone_staff\")).getCraftCost()), \"  S\", \" G \", \"G  \", 'S', new ItemStack(ConfigItems.itemResource, 1, 15), 'G', new ItemStack(ConfigItems.itemWandRod, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusFire",
-      "modern_id": "thaumcraftmodern:focus_fire",
+      "modern_id": "thaumic_reborn:focus_fire",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSFIRE\", new ItemStack(ConfigItems.itemFocusFire), (new AspectList()).add(Aspect.FIRE, 20).add(Aspect.ENTROPY, 10), \"CQC\", \"Q#Q\", \"CQC\", '#', Items.field_151059_bz, 'Q', Items.field_151128_bU, 'C', new ItemStack(ConfigItems.itemShard, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusFrost",
-      "modern_id": "thaumcraftmodern:focus_frost",
+      "modern_id": "thaumic_reborn:focus_frost",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSFROST\", new ItemStack(ConfigItems.itemFocusFrost), (new AspectList()).add(Aspect.WATER, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), \"CQC\", \"Q#Q\", \"CQC\", '#', Items.field_151045_i, 'Q', Items.field_151128_bU, 'C', new ItemStack(ConfigItems.itemShard, 1, 2))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusShock",
-      "modern_id": "thaumcraftmodern:focus_shock",
+      "modern_id": "thaumic_reborn:focus_shock",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSSHOCK\", new ItemStack(ConfigItems.itemFocusShock), (new AspectList()).add(Aspect.AIR, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), \"CQC\", \"Q#Q\", \"CQC\", '#', Items.field_151174_bG, 'Q', Items.field_151128_bU, 'C', new ItemStack(ConfigItems.itemShard, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusTrade",
-      "modern_id": "thaumcraftmodern:focus_trade",
+      "modern_id": "thaumic_reborn:focus_trade",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSTRADE\", new ItemStack(ConfigItems.itemFocusTrade), (new AspectList()).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15).add(Aspect.EARTH, 10), \"CQE\", \"Q#Q\", \"CQE\", '#', new ItemStack(ConfigItems.itemResource, 1, 3), 'Q', Items.field_151128_bU, 'C', new ItemStack(ConfigItems.itemShard, 1, 6), 'E', new ItemStack(ConfigItems.itemShard, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusExcavation",
-      "modern_id": "thaumcraftmodern:focus_excavation",
+      "modern_id": "thaumic_reborn:focus_excavation",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSEXCAVATION\", new ItemStack(ConfigItems.itemFocusExcavation), (new AspectList()).add(Aspect.EARTH, 20).add(Aspect.ENTROPY, 5).add(Aspect.ORDER, 5), \"CQC\", \"Q#Q\", \"CQC\", '#', \"gemEmerald\", 'Q', Items.field_151128_bU, 'C', new ItemStack(ConfigItems.itemShard, 1, 3))",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusPrimal",
-      "modern_id": "thaumcraftmodern:focus_primal",
+      "modern_id": "thaumic_reborn:focus_primal",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSPRIMAL\", new ItemStack(ConfigItems.itemFocusPrimal), (new AspectList()).add(Aspect.EARTH, 25).add(Aspect.ENTROPY, 25).add(Aspect.ORDER, 25).add(Aspect.AIR, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25), \"CQC\", \"Q#Q\", \"CQC\", '#', new ItemStack(ConfigItems.itemResource, 1, 15), 'Q', Items.field_151128_bU, 'C', Items.field_151045_i)",
       "status": "runtime"
     },
     {
       "legacy_id": "FocusPouch",
-      "modern_id": "thaumcraftmodern:focus_pouch",
+      "modern_id": "thaumic_reborn:focus_pouch",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"FOCUSPOUCH\", new ItemStack(ConfigItems.itemFocusPouch), (new AspectList()).add(Aspect.EARTH, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), \"LGL\", \"LBL\", \"LLL\", 'B', new ItemStack(ConfigItems.itemBaubleBlanks, 1, 2), 'L', Items.field_151116_aA, 'G', Items.field_151043_k)",
       "status": "runtime"
     },
     {
       "legacy_id": "Deconstructor",
-      "modern_id": "thaumcraftmodern:deconstructor",
+      "modern_id": "thaumic_reborn:deconstructor",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DECONSTRUCTOR\", new ItemStack(ConfigBlocks.blockTable, 1, 14), (new AspectList()).add(Aspect.ENTROPY, 20), \" S \", \"ATP\", 'T', new ItemStack(ConfigBlocks.blockTable, 1, 0), 'S', new ItemStack(ConfigItems.itemThaumometer), 'P', new ItemStack(Items.field_151005_D), 'A', new ItemStack(Items.field_151006_E))",
       "status": "runtime"
     },
     {
       "legacy_id": "ArcaneBoreBase",
-      "modern_id": "thaumcraftmodern:arcane_bore_base",
+      "modern_id": "thaumic_reborn:arcane_bore_base",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ARCANEBORE\", new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 4), (new AspectList()).add(Aspect.AIR, 10).add(Aspect.ORDER, 10), \"WIW\", \"IDI\", \"WIW\", 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'I', Items.field_151042_j, 'D', Blocks.field_150367_z)",
       "status": "runtime"
     },
     {
       "legacy_id": "EnchantedFabric",
-      "modern_id": "thaumcraftmodern:enchanted_fabric",
+      "modern_id": "thaumic_reborn:enchanted_fabric",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ENCHFABRIC\", new ItemStack(ConfigItems.itemResource, 1, 7), (new AspectList()).add(Aspect.AIR, 1).add(Aspect.EARTH, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), \" S \", \"SCS\", \" S \", 'S', new ItemStack(Items.field_151007_F, 1, 32767), 'C', new ItemStack(Blocks.field_150325_L, 1, 32767))",
       "status": "runtime"
     },
     {
       "legacy_id": "RobeChest",
-      "modern_id": "thaumcraftmodern:robe_chest",
+      "modern_id": "thaumic_reborn:robe_chest",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ENCHFABRIC\", new ItemStack(ConfigItems.itemChestRobe, 1), (new AspectList()).add(Aspect.AIR, 5), \"I I\", \"III\", \"III\", 'I', new ItemStack(ConfigItems.itemResource, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "RobeLegs",
-      "modern_id": "thaumcraftmodern:robe_legs",
+      "modern_id": "thaumic_reborn:robe_legs",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ENCHFABRIC\", new ItemStack(ConfigItems.itemLegsRobe, 1), (new AspectList()).add(Aspect.WATER, 5), \"III\", \"I I\", \"I I\", 'I', new ItemStack(ConfigItems.itemResource, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "RobeBoots",
-      "modern_id": "thaumcraftmodern:robe_boots",
+      "modern_id": "thaumic_reborn:robe_boots",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ENCHFABRIC\", new ItemStack(ConfigItems.itemBootsRobe, 1), (new AspectList()).add(Aspect.EARTH, 3), \"I I\", \"I I\", 'I', new ItemStack(ConfigItems.itemResource, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "Goggles",
-      "modern_id": "thaumcraftmodern:goggles",
+      "modern_id": "thaumic_reborn:goggles",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"GOGGLES\", new ItemStack(ConfigItems.itemGoggles), (new AspectList()).add(Aspect.AIR, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 3).add(Aspect.ORDER, 3), \"LGL\", \"L L\", \"TGT\", 'T', ConfigItems.itemThaumometer, 'G', Items.field_151043_k, 'L', Items.field_151116_aA)",
       "status": "runtime"
     },
     {
       "legacy_id": "HungryChest",
-      "modern_id": "thaumcraftmodern:hungry_chest",
+      "modern_id": "thaumic_reborn:hungry_chest",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"HUNGRYCHEST\", new ItemStack(ConfigBlocks.blockChestHungry), (new AspectList()).add(Aspect.AIR, 5).add(Aspect.ORDER, 3).add(Aspect.ENTROPY, 3), \"WTW\", \"W W\", \"WWW\", 'W', \"plankWood\", 'T', Blocks.field_150415_aT)",
       "status": "runtime"
     },
     {
       "legacy_id": "GolemBell",
-      "modern_id": "thaumcraftmodern:golem_bell",
+      "modern_id": "thaumic_reborn:golem_bell",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"GOLEMBELL\", new ItemStack(ConfigItems.itemGolemBell), (new AspectList()).add(Aspect.ORDER, 5), \" QQ\", \" QQ\", \"S  \", 'S', \"stickWood\", 'Q', Items.field_151128_bU)",
       "status": "runtime"
     },
     {
       "legacy_id": "CoreBlank",
-      "modern_id": "thaumcraftmodern:core_blank",
+      "modern_id": "thaumic_reborn:core_blank",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"COREGATHER\", new ItemStack(ConfigItems.itemGolemCore, 1, 100), (new AspectList()).add(Aspect.ORDER, 5).add(Aspect.FIRE, 5), \" C \", \"CNC\", \" C \", 'C', Items.field_151118_aC, 'N', new ItemStack(ConfigItems.itemResource, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeAir",
-      "modern_id": "thaumcraftmodern:upgrade_air",
+      "modern_id": "thaumic_reborn:upgrade_air",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEAIR\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 0), (new AspectList()).add(Aspect.AIR, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeEarth",
-      "modern_id": "thaumcraftmodern:upgrade_earth",
+      "modern_id": "thaumic_reborn:upgrade_earth",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEEARTH\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 1), (new AspectList()).add(Aspect.EARTH, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 3))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeFire",
-      "modern_id": "thaumcraftmodern:upgrade_fire",
+      "modern_id": "thaumic_reborn:upgrade_fire",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEFIRE\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 2), (new AspectList()).add(Aspect.FIRE, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeWater",
-      "modern_id": "thaumcraftmodern:upgrade_water",
+      "modern_id": "thaumic_reborn:upgrade_water",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEWATER\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 3), (new AspectList()).add(Aspect.WATER, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 2))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeOrder",
-      "modern_id": "thaumcraftmodern:upgrade_order",
+      "modern_id": "thaumic_reborn:upgrade_order",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEORDER\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 4), (new AspectList()).add(Aspect.ORDER, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 4))",
       "status": "runtime"
     },
     {
       "legacy_id": "UpgradeEntropy",
-      "modern_id": "thaumcraftmodern:upgrade_entropy",
+      "modern_id": "thaumic_reborn:upgrade_entropy",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"UPGRADEENTROPY\", new ItemStack(ConfigItems.itemGolemUpgrade, 1, 5), (new AspectList()).add(Aspect.ENTROPY, 10), \"NNN\", \"NCN\", \"NNN\", 'N', Items.field_151074_bl, 'C', new ItemStack(ConfigItems.itemShard, 1, 5))",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyHat",
-      "modern_id": "thaumcraftmodern:tiny_hat",
+      "modern_id": "thaumic_reborn:tiny_hat",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYHAT\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 0), (new AspectList()).add(Aspect.ORDER, 8).add(Aspect.FIRE, 8), \" C \", \" G \", \"CCC\", 'C', new ItemStack(Blocks.field_150325_L, 1, 15), 'G', Items.field_151043_k)",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyFez",
-      "modern_id": "thaumcraftmodern:tiny_fez",
+      "modern_id": "thaumic_reborn:tiny_fez",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYFEZ\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 3), (new AspectList()).add(Aspect.WATER, 4).add(Aspect.EARTH, 4), \"CCS\", \"CCS\", \"  S\", 'C', new ItemStack(Blocks.field_150325_L, 1, 14), 'S', Items.field_151007_F)",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyBowtie",
-      "modern_id": "thaumcraftmodern:tiny_bowtie",
+      "modern_id": "thaumic_reborn:tiny_bowtie",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYBOWTIE\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 2), (new AspectList()).add(Aspect.AIR, 4).add(Aspect.ORDER, 4), \"CSC\", \"C C\", 'C', new ItemStack(Blocks.field_150325_L, 1, 15), 'S', Items.field_151007_F)",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyGlasses",
-      "modern_id": "thaumcraftmodern:tiny_glasses",
+      "modern_id": "thaumic_reborn:tiny_glasses",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYGLASSES\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 1), (new AspectList()).add(Aspect.AIR, 4).add(Aspect.WATER, 4), \"GIG\", 'G', Blocks.field_150359_w, 'I', Items.field_151042_j)",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyDart",
-      "modern_id": "thaumcraftmodern:tiny_dart",
+      "modern_id": "thaumic_reborn:tiny_dart",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYDART\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 4), (new AspectList()).add(Aspect.AIR, 4).add(Aspect.FIRE, 4), \"AIA\", \"ADA\", \"AIA\", 'I', Items.field_151042_j, 'D', Blocks.field_150367_z, 'A', Items.field_151032_g)",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyVisor",
-      "modern_id": "thaumcraftmodern:tiny_visor",
+      "modern_id": "thaumic_reborn:tiny_visor",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYVISOR\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 5), (new AspectList()).add(Aspect.EARTH, 4).add(Aspect.WATER, 4), \"IHI\", 'I', Items.field_151042_j, 'H', new ItemStack(Items.field_151028_Y, 1, 32767))",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyArmor",
-      "modern_id": "thaumcraftmodern:tiny_armor",
+      "modern_id": "thaumic_reborn:tiny_armor",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYARMOR\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 6), (new AspectList()).add(Aspect.EARTH, 8), \"I I\", \"IAI\", 'I', Items.field_151042_j, 'A', new ItemStack(Items.field_151030_Z, 1, 32767))",
       "status": "runtime"
     },
     {
       "legacy_id": "TinyHammer",
-      "modern_id": "thaumcraftmodern:tiny_hammer",
+      "modern_id": "thaumic_reborn:tiny_hammer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TINYHAMMER\", new ItemStack(ConfigItems.itemGolemDecoration, 1, 7), (new AspectList()).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4), \"III\", \"III\", \" I \", 'I', Items.field_151042_j)",
       "status": "runtime"
     },
     {
       "legacy_id": "Filter",
-      "modern_id": "thaumcraftmodern:filter",
+      "modern_id": "thaumic_reborn:filter",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DISTILESSENTIA\", new ItemStack(ConfigItems.itemResource, 2, 8), (new AspectList()).add(Aspect.ORDER, 5).add(Aspect.WATER, 5), \"GWG\", 'G', Items.field_151043_k, 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7))",
       "status": "runtime"
     },
     {
       "legacy_id": "AlchemyFurnace",
-      "modern_id": "thaumcraftmodern:alchemy_furnace",
+      "modern_id": "thaumic_reborn:alchemy_furnace",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DISTILESSENTIA\", new ItemStack(ConfigBlocks.blockStoneDevice, 1, 0), (new AspectList()).add(Aspect.FIRE, 5).add(Aspect.WATER, 5), \"SCS\", \"SFS\", \"SSS\", 'C', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 0), 'F', Blocks.field_150460_al, 'S', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6))",
       "status": "runtime"
     },
     {
       "legacy_id": "Alembic",
-      "modern_id": "thaumcraftmodern:alembic",
+      "modern_id": "thaumic_reborn:alembic",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DISTILESSENTIA\", new ItemStack(ConfigBlocks.blockMetalDevice, 1, 1), (new AspectList()).add(Aspect.AIR, 5).add(Aspect.WATER, 5), \"FIG\", \"IBI\", \"I I\", 'I', Items.field_151042_j, 'B', Items.field_151133_ar, 'G', Items.field_151043_k, 'F', new ItemStack(ConfigItems.itemResource, 1, 8), 'L', new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 1))",
       "status": "runtime"
     },
     {
       "legacy_id": "Bellows",
-      "modern_id": "thaumcraftmodern:bellows",
+      "modern_id": "thaumic_reborn:bellows",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"BELLOWS\", new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 0), (new AspectList()).add(Aspect.AIR, 10).add(Aspect.ORDER, 5), \"WW \", \"LCI\", \"WW \", 'W', \"plankWood\", 'C', new ItemStack(ConfigItems.itemShard, 1, 0), 'I', Items.field_151042_j, 'L', Items.field_151116_aA)",
       "status": "runtime"
     },
     {
       "legacy_id": "Tube",
-      "modern_id": "thaumcraftmodern:tube",
+      "modern_id": "thaumic_reborn:tube",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TUBES\", new ItemStack(ConfigBlocks.blockTube, 8, 0), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \" Q \", \"IGI\", \" B \", 'I', Items.field_151042_j, 'B', Items.field_151074_bl, 'G', Blocks.field_150359_w, 'Q', new ItemStack(ConfigItems.itemNugget, 1, 5))",
       "status": "runtime"
     },
     {
       "legacy_id": "Resonator",
-      "modern_id": "thaumcraftmodern:resonator",
+      "modern_id": "thaumic_reborn:resonator",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"TUBES\", new ItemStack(ConfigItems.itemResonator), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.AIR, 5), \"I I\", \"INI\", \" S \", 'I', Items.field_151042_j, 'N', Items.field_151128_bU, 'S', \"stickWood\")",
       "status": "runtime"
     },
     {
       "legacy_id": "TubeValve",
-      "modern_id": "thaumcraftmodern:tube_valve",
+      "modern_id": "thaumic_reborn:tube_valve",
       "source_expression": "ThaumcraftApi.addShapelessArcaneCraftingRecipe(\"TUBES\", new ItemStack(ConfigBlocks.blockTube, 1, 1), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), new ItemStack(ConfigBlocks.blockTube, 1, 0), new ItemStack(Blocks.field_150442_at))",
       "status": "runtime"
     },
     {
       "legacy_id": "TubeFilter",
-      "modern_id": "thaumcraftmodern:tube_filter",
+      "modern_id": "thaumic_reborn:tube_filter",
       "source_expression": "ThaumcraftApi.addShapelessArcaneCraftingRecipe(\"TUBEFILTER\", new ItemStack(ConfigBlocks.blockTube, 1, 3), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 16), new ItemStack(ConfigBlocks.blockTube, 1, 0), new ItemStack(ConfigItems.itemResource, 1, 8))",
       "status": "runtime"
     },
     {
       "legacy_id": "TubeRestrict",
-      "modern_id": "thaumcraftmodern:tube_restrict",
+      "modern_id": "thaumic_reborn:tube_restrict",
       "source_expression": "ThaumcraftApi.addShapelessArcaneCraftingRecipe(\"TUBEFILTER\", new ItemStack(ConfigBlocks.blockTube, 1, 5), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 16), new ItemStack(ConfigBlocks.blockTube, 1, 0), \"stone\")",
       "status": "runtime"
     },
     {
       "legacy_id": "TubeOneway",
-      "modern_id": "thaumcraftmodern:tube_oneway",
+      "modern_id": "thaumic_reborn:tube_oneway",
       "source_expression": "ThaumcraftApi.addShapelessArcaneCraftingRecipe(\"TUBEFILTER\", new ItemStack(ConfigBlocks.blockTube, 1, 6), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 8).add(Aspect.ENTROPY, 8), new ItemStack(ConfigBlocks.blockTube, 1, 0), \"dyeBlue\")",
       "status": "runtime"
     },
     {
       "legacy_id": "TubeBuffer",
-      "modern_id": "thaumcraftmodern:tube_buffer",
+      "modern_id": "thaumic_reborn:tube_buffer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CENTRIFUGE\", new ItemStack(ConfigBlocks.blockTube, 1, 4), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \"PVP\", \"T T\", \"PRP\", 'T', new ItemStack(ConfigBlocks.blockTube, 1, 0), 'V', new ItemStack(ConfigBlocks.blockTube, 1, 1), 'R', new ItemStack(ConfigBlocks.blockTube, 1, 5), 'P', new ItemStack(ConfigItems.itemEssence, 1, 0))",
       "status": "runtime"
     },
     {
       "legacy_id": "AlchemicalConstruct",
-      "modern_id": "thaumcraftmodern:alchemical_construct",
+      "modern_id": "thaumic_reborn:alchemical_construct",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"DISTILESSENTIA\", new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \"VTF\", \"TWT\", \"FTV\", 'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'V', new ItemStack(ConfigBlocks.blockTube, 1, 1), 'T', new ItemStack(ConfigBlocks.blockTube, 1, 0), 'F', new ItemStack(ConfigItems.itemResource, 1, 8))",
       "status": "runtime"
     },
     {
       "legacy_id": "AdvAlchemyConstruct",
-      "modern_id": "thaumcraftmodern:adv_alchemy_construct",
+      "modern_id": "thaumic_reborn:adv_alchemy_construct",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ADVALCHEMYFURNACE\", new ItemStack(ConfigBlocks.blockMetalDevice, 4, 3), (new AspectList()).add(Aspect.WATER, 10).add(Aspect.ORDER, 30).add(Aspect.EARTH, 10), \"VAV\", \"APA\", \"VAV\", 'A', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9), 'V', new ItemStack(ConfigItems.itemResource, 1, 16), 'P', new ItemStack(ConfigItems.itemEldritchObject, 1, 3))",
       "status": "runtime"
     },
     {
       "legacy_id": "Centrifuge",
-      "modern_id": "thaumcraftmodern:centrifuge",
+      "modern_id": "thaumic_reborn:centrifuge",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"CENTRIFUGE\", new ItemStack(ConfigBlocks.blockTube, 1, 2), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5), \" T \", \"ACP\", \" T \", 'T', new ItemStack(ConfigBlocks.blockTube, 1, 0), 'P', new ItemStack(Blocks.field_150331_J), 'A', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 1), 'C', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9))",
       "status": "runtime"
     },
     {
       "legacy_id": "EssentiaCrystalizer",
-      "modern_id": "thaumcraftmodern:essentia_crystalizer",
+      "modern_id": "thaumic_reborn:essentia_crystalizer",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"ESSENTIACRYSTAL\", new ItemStack(ConfigBlocks.blockTube, 1, 7), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.EARTH, 15).add(Aspect.ORDER, 5), \"IDI\", \"QCQ\", \"WTW\", 'T', new ItemStack(ConfigBlocks.blockTube, 1, 0), 'D', new ItemStack(Blocks.field_150367_z), 'Q', new ItemStack(ConfigItems.itemShard, 1, 6), 'I', \"ingotIron\", 'W', \"plankWood\", 'C', new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9))",
       "status": "runtime"
     },
     {
       "legacy_id": "MnemonicMatrix",
-      "modern_id": "thaumcraftmodern:mnemonic_matrix",
+      "modern_id": "thaumic_reborn:mnemonic_matrix",
       "source_expression": "ThaumcraftApi.addArcaneCraftingRecipe(\"THAUMATORIUM\", new ItemStack(ConfigBlocks.blockMetalDevice, 1, 12), (new AspectList()).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.ORDER, 5), \"IAI\", \"ABA\", \"IAI\", 'B', new ItemStack(ConfigItems.itemZombieBrain), 'A', new ItemStack(ConfigItems.itemResource, 1, 6), 'I', new ItemStack(Items.field_151042_j))",
       "status": "runtime"
     }

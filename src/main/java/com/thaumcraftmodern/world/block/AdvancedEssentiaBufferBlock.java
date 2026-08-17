@@ -59,11 +59,11 @@ public final class AdvancedEssentiaBufferBlock extends BaseEntityBlock {
             if (!level.isClientSide) {
                 buffer.cycleRole(hit.getDirection());
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.advanced_buffer.side",
+                        "message.thaumic_reborn.advanced_buffer.side",
                         Component.translatable("direction.minecraft."
                                 + hit.getDirection().getName()),
                         Component.translatable(
-                                "message.thaumcraftmodern.advanced_buffer.role."
+                                "message.thaumic_reborn.advanced_buffer.role."
                                         + buffer.role(hit.getDirection()).name()
                                                 .toLowerCase())), true);
                 level.playSound(null, pos, ModSounds.TOOL.get(),
@@ -76,9 +76,9 @@ public final class AdvancedEssentiaBufferBlock extends BaseEntityBlock {
         if (player.getItemInHand(hand).isEmpty()) {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.advanced_buffer.status",
+                        "message.thaumic_reborn.advanced_buffer.status",
                         Component.translatable(
-                                "state.thaumcraftmodern.advanced_buffer."
+                                "state.thaumic_reborn.advanced_buffer."
                                         + buffer.flowState().name().toLowerCase()),
                         buffer.totalAmount(),
                         Component.translatable(buffer.diagnosticReasonKey())),
@@ -87,7 +87,7 @@ public final class AdvancedEssentiaBufferBlock extends BaseEntityBlock {
                         == com.thaumcraftmodern.essentia
                                 .AdvancedBufferFlowController.State.BLOCKED) {
                     player.displayClientMessage(Component.translatable(
-                            "message.thaumcraftmodern.advanced_buffer.warning"),
+                            "message.thaumic_reborn.advanced_buffer.warning"),
                             false);
                 }
             }

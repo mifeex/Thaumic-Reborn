@@ -67,7 +67,7 @@ public final class ClassicStructureConstructionEvents {
         if (result == ConstructionResult.MISSING_RESEARCH) {
             player.displayClientMessage(
                     Component.translatable(
-                            "message.thaumcraftmodern.structure.missing_research"
+                            "message.thaumic_reborn.structure.missing_research"
                     ),
                     true
             );
@@ -76,7 +76,7 @@ public final class ClassicStructureConstructionEvents {
         if (result == ConstructionResult.INSUFFICIENT_VIS) {
             player.displayClientMessage(
                     Component.translatable(
-                            "message.thaumcraftmodern.structure.insufficient_vis"
+                            "message.thaumic_reborn.structure.insufficient_vis"
                     ),
                     true
             );
@@ -85,7 +85,7 @@ public final class ClassicStructureConstructionEvents {
         if (result == ConstructionResult.FAILED) {
             player.displayClientMessage(
                     Component.translatable(
-                            "message.thaumcraftmodern.structure.failed"
+                            "message.thaumic_reborn.structure.failed"
                     ),
                     true
             );

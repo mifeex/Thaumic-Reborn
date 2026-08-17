@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "src/main/resources"
-SCANS = RES / "data/thaumcraftmodern/thaumcraft/scans"
+SCANS = RES / "data/thaumic_reborn/thaumcraft/scans"
 
 
 class Tags:
@@ -89,9 +89,9 @@ def output(value: dict) -> tuple[str, int] | None:
 def recipes(tags: Tags) -> list[dict]:
     result: list[dict] = []
     roots = [
-        RES / "data/thaumcraftmodern/recipes",
-        RES / "data/thaumcraftmodern/thaumcraft/crucible_recipes",
-        RES / "data/thaumcraftmodern/thaumcraft/infusion_recipes",
+        RES / "data/thaumic_reborn/recipes",
+        RES / "data/thaumic_reborn/thaumcraft/crucible_recipes",
+        RES / "data/thaumic_reborn/thaumcraft/infusion_recipes",
     ]
     sources: list[tuple[str, dict]] = []
     for root in roots:
@@ -135,8 +135,8 @@ def recipes(tags: Tags) -> list[dict]:
                 "count": target[1],
                 "ingredients": ingredients,
                 "vis": value.get("vis") or value.get("aspects") or {},
-                "magic": "thaumcraftmodern" in source_name or
-                         str(value.get("type", "")).startswith("thaumcraftmodern:"),
+                "magic": "thaumic_reborn" in source_name or
+                         str(value.get("type", "")).startswith("thaumic_reborn:"),
                 "priority": 0 if "crucible_recipes" in source_name else
                             1 if "arcane" in str(value.get("type", "")) else
                             2 if "infusion_recipes" in source_name else 3,
@@ -209,14 +209,14 @@ def main() -> None:
     destination.mkdir(exist_ok=True)
     for stale in destination.glob("*.json"):
         stale_value = json.loads(stale.read_text())
-        if not stale_value.get("target", "").startswith("thaumcraftmodern:"):
+        if not stale_value.get("target", "").startswith("thaumic_reborn:"):
             stale.unlink()
     for target, source in sorted(provenance.items()):
-        if not target.startswith("thaumcraftmodern:") or target in covered:
+        if not target.startswith("thaumic_reborn:") or target in covered:
             continue
         name = re.sub(r"[^a-z0-9_]+", "_", target.split(":", 1)[1]) + ".json"
         value = {
-            "type": "block" if (RES / "assets/thaumcraftmodern/blockstates" /
+            "type": "block" if (RES / "assets/thaumic_reborn/blockstates" /
                                   f"{target.split(':', 1)[1]}.json").is_file() else "item",
             "target": target,
             "display": "",

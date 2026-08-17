@@ -1,0 +1,14 @@
+{
+  "id": "knowfrag",
+  "legacy_id": "KnowFrag",
+  "legacy_kind": "crafting_shaped",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:knowledge_fragment",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemResearchNotes, 1, 42), new Object[]{\"KKK\", \"KKK\", \"KKK\", 'K', new ItemStack(ConfigItems.itemResource, 1, 9)})",
+    "source_statement": "ConfigResearch.recipes.put(\"KnowFrag\", GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemResearchNotes, 1, 42), new Object[]{\"KKK\", \"KKK\", \"KKK\", 'K', new ItemStack(ConfigItems.itemResource, 1, 9)}))",
+    "unkeyed": false
+  }
+}

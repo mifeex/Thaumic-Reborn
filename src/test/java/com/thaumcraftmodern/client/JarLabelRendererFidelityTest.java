@@ -39,7 +39,7 @@ class JarLabelRendererFidelityTest {
     @Test
     void labelMaskRemovesBlackAndKeepsTheFill() throws Exception {
         BufferedImage mask = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/"
+                "src/main/resources/assets/thaumic_reborn/textures/"
                         + "aspects_label/ignis.png").toFile());
 
         assertEquals(0, mask.getRGB(13, 0) >>> 24);

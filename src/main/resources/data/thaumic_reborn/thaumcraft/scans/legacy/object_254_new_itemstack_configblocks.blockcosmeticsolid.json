@@ -1,0 +1,59 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:obsidian_totem",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 4
+    },
+    {
+      "id": "tenebrae",
+      "amount": 2
+    },
+    {
+      "id": "alienis",
+      "amount": 2
+    }
+  ],
+  "inactive": true,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockCosmeticSolid)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "terra",
+        "amount": 4
+      },
+      {
+        "id": "tenebrae",
+        "amount": 2
+      },
+      {
+        "id": "alienis",
+        "amount": 2
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "terra",
+        "amount": 4
+      },
+      {
+        "operation": "add",
+        "id": "tenebrae",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "alienis",
+        "amount": 2
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockCosmeticSolid), (new AspectList()).add(Aspect.EARTH, 4).add(Aspect.DARKNESS, 2).add(Aspect.ELDRITCH, 2))"
+  },
+  "inactive_reason": "multiple legacy registrations collapse to one modern target"
+}

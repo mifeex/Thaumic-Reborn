@@ -1,9 +1,0 @@
-{
-  "multipart": [
-    {"when":{"part":"0"},"apply":{"model":"thaumcraftmodern:block/advanced_alchemical_furnace_core"}},
-    {"when":{"part":"1"},"apply":{"model":"thaumcraftmodern:block/advanced_alchemical_furnace_lower"}},
-    {"when":{"part":"2"},"apply":{"model":"thaumcraftmodern:block/advanced_alchemical_furnace_tank"}},
-    {"when":{"part":"3"},"apply":{"model":"thaumcraftmodern:block/advanced_alchemical_furnace_upper"}},
-    {"when":{"part":"4|5|6|7|8|9|10"},"apply":{"model":"thaumcraftmodern:block/advanced_alchemical_furnace_lower"}}
-  ]
-}

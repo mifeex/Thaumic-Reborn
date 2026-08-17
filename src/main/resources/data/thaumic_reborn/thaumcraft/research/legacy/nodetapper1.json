@@ -1,0 +1,70 @@
+{
+  "id": "nodetapper1",
+  "legacy_id": "NODETAPPER1",
+  "category": "basics",
+  "icon_resource": "thaumic_reborn:textures/misc/r_nodetap1.png",
+  "title": "tc.research_name.NODETAPPER1",
+  "subtitle": "tc.research_text.NODETAPPER1",
+  "concealed": false,
+  "auto_unlock": false,
+  "parents": [
+    "nodes"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.NODETAPPER1.1"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -4,
+    "y": 1,
+    "complexity": 2,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodetap1.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"NODETAPPER1\", \"BASICS\", (new AspectList()).add(Aspect.AURA, 3).add(Aspect.MAGIC, 3).add(Aspect.MOTION, 3).add(Aspect.EXCHANGE, 3), -4, 1, 2, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodetap1.png\"))).setPages(new ResearchPage(\"tc.research_page.NODETAPPER1.1\")).setParents(\"NODES\").setRound().registerResearchItem()"
+  }
+}

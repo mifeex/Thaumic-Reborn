@@ -1,0 +1,10 @@
+{
+  "id": "telum",
+  "order": 400,
+  "color": "C05050",
+  "icon": "thaumic_reborn:textures/aspects/telum.png",
+  "components": [
+    "instrumentum",
+    "ignis"
+  ]
+}

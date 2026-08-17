@@ -23,7 +23,7 @@ public final class ArcaneDoorBlock extends DoorBlock implements EntityBlock {
     private static BlockPos base(BlockState state,BlockPos pos){return state.getValue(HALF)==DoubleBlockHalf.UPPER?pos.below():pos;}
     @Override public InteractionResult use(BlockState state,Level level,BlockPos pos,Player player,InteractionHand hand,BlockHitResult hit){
         BlockPos base=base(state,pos);if(!(level.getBlockEntity(base) instanceof ArcaneDoorBlockEntity door))return InteractionResult.CONSUME;
-        if(!door.canOpen(player.getGameProfile().getName())){if(!level.isClientSide)player.displayClientMessage(Component.translatable("message.thaumcraftmodern.door_refuses"),true);return InteractionResult.sidedSuccess(level.isClientSide);}
+        if(!door.canOpen(player.getGameProfile().getName())){if(!level.isClientSide)player.displayClientMessage(Component.translatable("message.thaumic_reborn.door_refuses"),true);return InteractionResult.sidedSuccess(level.isClientSide);}
         if(!level.isClientSide)setOpen(player,level,level.getBlockState(base),base,!level.getBlockState(base).getValue(OPEN));
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

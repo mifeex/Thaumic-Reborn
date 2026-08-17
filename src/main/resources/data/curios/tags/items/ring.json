@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:mundane_ring",
-    "thaumcraftmodern:apprentice_ring_aer",
-    "thaumcraftmodern:apprentice_ring_terra",
-    "thaumcraftmodern:apprentice_ring_ignis",
-    "thaumcraftmodern:apprentice_ring_aqua",
-    "thaumcraftmodern:apprentice_ring_ordo",
-    "thaumcraftmodern:apprentice_ring_perditio",
-    "thaumcraftmodern:runic_ring_lesser",
-    "thaumcraftmodern:runic_ring",
-    "thaumcraftmodern:runic_ring_charged",
-    "thaumcraftmodern:runic_ring_regen"
+    "thaumic_reborn:mundane_ring",
+    "thaumic_reborn:apprentice_ring_aer",
+    "thaumic_reborn:apprentice_ring_terra",
+    "thaumic_reborn:apprentice_ring_ignis",
+    "thaumic_reborn:apprentice_ring_aqua",
+    "thaumic_reborn:apprentice_ring_ordo",
+    "thaumic_reborn:apprentice_ring_perditio",
+    "thaumic_reborn:runic_ring_lesser",
+    "thaumic_reborn:runic_ring",
+    "thaumic_reborn:runic_ring_charged",
+    "thaumic_reborn:runic_ring_regen"
   ]
 }

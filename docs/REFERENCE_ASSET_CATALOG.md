@@ -16,7 +16,7 @@ SHA-256 JAR:
 Сокращения в таблицах:
 
 - `$TC4/` — `assets/thaumcraft/` внутри reference JAR;
-- `$MOD/` — `src/main/resources/assets/thaumcraftmodern/`.
+- `$MOD/` — `src/main/resources/assets/thaumic_reborn/`.
 
 SHA-256 в таблицах рассчитан для записи внутри JAR. Статус «Да» означает,
 что современный destination сравнивался с результатом извлечения из JAR и

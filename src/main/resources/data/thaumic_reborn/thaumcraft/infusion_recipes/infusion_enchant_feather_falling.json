@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 1,
+  "components": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "aer": 4,
+    "volatus": 4
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:feather_falling"
+  }
+}

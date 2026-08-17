@@ -1,0 +1,7 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "#frame",
+    "frame": "thaumic_reborn:block/mirrorframe"
+  }
+}

@@ -4,7 +4,7 @@
 |---|---|---|
 | Forge 1.20.1 / Java 17 | Регистрации и run-конфигурации клиента, сервера и Forge GameTest | Forge GameTest 7/7 на 2026-07-28; обычный client/dedicated запуск не проверен |
 | Аспекты и знания | 48 аспектов; player capability NBT v3; scans/research/reveal/criteria/warp | Content validator и unit/GameTest; save/reload и multiplayer требуют runtime-проверки |
-| Сканирование | Block/item/entity, `BLOCK_TAG`/`ITEM_TAG` и `PHENOMENON` aura node; 303 active explicit definitions; legacy SRG/Ore Dictionary/entity targets переведены на registry ID и tags Minecraft/Forge 1.20.1 | Полное дерево scan-ресурсов проверяется на уникальность активных `type + target`; Forge GameTest выполнил resource reload, создал/загрузил мир и подтвердил единственный `block:thaumcraftmodern:ancient_stone`, устранив crash Create World/load world; 40 объектов без современного эквивалента остаются inactive |
+| Сканирование | Block/item/entity, `BLOCK_TAG`/`ITEM_TAG` и `PHENOMENON` aura node; 303 active explicit definitions; legacy SRG/Ore Dictionary/entity targets переведены на registry ID и tags Minecraft/Forge 1.20.1 | Полное дерево scan-ресурсов проверяется на уникальность активных `type + target`; Forge GameTest выполнил resource reload, создал/загрузил мир и подтвердил единственный `block:thaumic_reborn:ancient_stone`, устранив crash Create World/load world; 40 объектов без современного эквивалента остаются inactive |
 | Research Table / Thaumonomicon | Собственные Menu/Screen и research completion; legacy flags выбирают оригинальные PRIMARY/ROUND/SECONDARY/HIDDEN/SPECIAL atlas frames, доступные узлы используют пользовательский 800-ms grayscale pulse; Research Notes, Discovery и свиток стола окрашиваются цветом первого research aspect | Resolver/unit и source-fidelity tests; клиентские цвета и рамки остаются `COMPILED_NOT_VISUALLY_VERIFIED` |
 | Жезлы и vis | 6 independent centivis; единый atomic player-aware расход с cap/form, aspect-specific gear, активными Flux Flu/Phage и extension event для warp/других источников | Unit и GameTest; отдельный Silverwood rod скрыт из creative |
 | Aura node | TC4 worldgen (`1/36` чанка), все type/modifier, произвольные primal/compound aspect pools, UUID, v1→v2 persistence/sync, scan, зарядка, регенерация, unstable discharge, fading decay, node bullying в радиусе ±4, Hungry pull/orbit/throw/block-eating и classic break burst/essence drops | 212/212 unit и 18/18 Forge GameTests общего набора; client resource reload без missing texture узла, но Hungry physics, node zap/burst и type rows ещё требуют визуальной Play Mode приёмки |
@@ -17,7 +17,7 @@
 
 Legacy Discovery, в котором есть только `Research` без
 `DiscoveryVersion=1`, совпадающего `ValidatedResearch` и серверного
-`thaumcraftmodern:discovery_ready/<id>` claim, безопасно отклоняется и не
+`thaumic_reborn:discovery_ready/<id>` claim, безопасно отклоняется и не
 расходуется. Автоматическая миграция такого предмета намеренно не реализована:
 нельзя восстановить факт серверного решения Notes из одного доверенного
 клиентом NBT.

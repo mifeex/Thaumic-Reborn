@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "thaumic_reborn:air_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:earth_shard"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:entropy_shard"}
+  ],
+  "result": {"item": "thaumic_reborn:balanced_crystal_cluster"}
+}

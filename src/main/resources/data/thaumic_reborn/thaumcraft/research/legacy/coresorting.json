@@ -1,0 +1,110 @@
+{
+  "id": "coresorting",
+  "legacy_id": "CORESORTING",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:sorting_golem_core",
+  "title": "tc.research_name.CORESORTING",
+  "subtitle": "tc.research_text.CORESORTING",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coreempty",
+    "corefill",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -168,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.CORESORTING.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumic_reborn:core_sorting",
+      "output": "thaumic_reborn:sorting_golem_core",
+      "central": "thaumic_reborn:zombie_brain",
+      "components": [
+        { "item": "thaumic_reborn:fill_golem_core" },
+        { "item": "minecraft:comparator" },
+        { "item": "thaumic_reborn:empty_golem_core" },
+        { "item": "minecraft:paper" }
+      ],
+      "aspect_costs": [
+        { "id": "vacuos", "amount": 16 },
+        { "id": "permutatio", "amount": 16 },
+        { "id": "fames", "amount": 16 },
+        { "id": "lucrum", "amount": 16 }
+      ],
+      "instability": "high"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "vacuos",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    },
+    {
+      "id": "lucrum",
+      "amount": 3
+    },
+    {
+      "id": "fames",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -7,
+    "y": 2,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 10)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "vacuos",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "lucrum",
+        "amount": 3
+      },
+      {
+        "id": "fames",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"CORESORTING\", \"GOLEMANCY\", (new AspectList()).add(Aspect.VOID, 3).add(Aspect.EXCHANGE, 3).add(Aspect.GREED, 3).add(Aspect.HUNGER, 3), -7, 2, 2, new ItemStack(ConfigItems.itemGolemCore, 1, 10))).setPages(new ResearchPage(\"tc.research_page.CORESORTING.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"CoreSorting\"))).setConcealed().setSecondary().setParents(\"COREEMPTY\", \"COREFILL\", \"INFUSION\").registerResearchItem()"
+  }
+}

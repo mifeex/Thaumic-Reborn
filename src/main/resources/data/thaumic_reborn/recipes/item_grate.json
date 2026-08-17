@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"redstone","pattern":["#","T"],"key":{"#":{"item":"minecraft:iron_bars"},"T":{"item":"minecraft:iron_trapdoor"}},"result":{"item":"thaumic_reborn:item_grate"}}

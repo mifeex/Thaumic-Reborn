@@ -1,0 +1,25 @@
+{
+  "id": "transsilver",
+  "legacy_id": "TransSilver",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:transsilver"
+  ],
+  "required_aspects": [
+    {
+      "id": "metallum",
+      "amount": 2
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"TRANSSILVER\", new ItemStack(ConfigItems.itemNugget, 3, 3), \"nuggetSilver\", (new AspectList()).merge(Aspect.METAL, 2).merge(Aspect.GREED, 1))",
+    "source_statement": "}\n\n      if (Config.foundSilverIngot) {\n         ConfigResearch.recipes.put(\"TransSilver\", ThaumcraftApi.addCrucibleRecipe(\"TRANSSILVER\", new ItemStack(ConfigItems.itemNugget, 3, 3), \"nuggetSilver\", (new AspectList()).merge(Aspect.METAL, 2).merge(Aspect.GREED, 1)))",
+    "unkeyed": false
+  }
+}

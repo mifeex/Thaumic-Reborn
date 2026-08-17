@@ -1,0 +1,15 @@
+{
+  "research": "golemstraw",
+  "catalyst": {
+    "item": "minecraft:hay_block"
+  },
+  "output": {
+    "item": "thaumic_reborn:straw_golem"
+  },
+  "aspects": {
+    "humanus": 4,
+    "motus": 4,
+    "spiritus": 4
+  },
+  "legacy_id": "GolemStraw"
+}

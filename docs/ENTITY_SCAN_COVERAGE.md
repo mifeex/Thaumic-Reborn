@@ -1,6 +1,6 @@
 # Entity scan coverage: Thaumcraft 4 → ThaumcraftModern
 
-Аудит выполнен по legacy-файлам `data/thaumcraftmodern/thaumcraft/scans/legacy/entity_*.json` и текущей регистрации `ModEntities`/`LegacyMobKind`.
+Аудит выполнен по legacy-файлам `data/thaumic_reborn/thaumcraft/scans/legacy/entity_*.json` и текущей регистрации `ModEntities`/`LegacyMobKind`.
 
 ## Итоговые числа
 
@@ -56,20 +56,20 @@
 
 После актуализации legacy-вариантов добавлены два mob-скана:
 
-- `thaumcraftmodern:crimson_inquisitor` — отдельный ключ; за основу взят cultist knight (`Alienis 1, Humanus 2, Perditio 1`) с `Telum 2` за боевую специализацию.
-- `thaumcraftmodern:converted_villager` — отдельный ключ, наследующий vanilla villager (`Humanus 3, Aer 2`), пока не найден отдельный source-backed TC4 tag.
+- `thaumic_reborn:crimson_inquisitor` — отдельный ключ; за основу взят cultist knight (`Alienis 1, Humanus 2, Perditio 1`) с `Telum 2` за боевую специализацию.
+- `thaumic_reborn:converted_villager` — отдельный ключ, наследующий vanilla villager (`Humanus 3, Aer 2`), пока не найден отдельный source-backed TC4 tag.
 
 Технические entity-типы без mob-скана:
 
 | Количество | Современный ID | Причина |
 |---:|---|---|
-| 1 | `thaumcraftmodern:alumentum` | отдельная runtime entity, legacy entity-скана нет |
-| 1 | `thaumcraftmodern:bottled_taint` | projectile entity, legacy entity-скана нет |
-| 1 | `thaumcraftmodern:pech_blast` | projectile entity, legacy entity-скана нет |
-| 1 | `thaumcraftmodern:faceless_witness` | современная entity, legacy аналога нет |
-| 1 | `thaumcraftmodern:frost_shard` | projectile entity, legacy entity-скана нет |
-| 1 | `thaumcraftmodern:focus_ember` | projectile entity, legacy entity-скана нет |
-| 1 | `thaumcraftmodern:golem_fishing_bobber` | runtime bobber entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:alumentum` | отдельная runtime entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:bottled_taint` | projectile entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:pech_blast` | projectile entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:faceless_witness` | современная entity, legacy аналога нет |
+| 1 | `thaumic_reborn:frost_shard` | projectile entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:focus_ember` | projectile entity, legacy entity-скана нет |
+| 1 | `thaumic_reborn:golem_fishing_bobber` | runtime bobber entity, legacy entity-скана нет |
 
 Итого в этой актуализации добавлено **2 mob-скана**. Отдельно остаются **7 технических entity**; их не следует считать «мобами» и включать в обязательный список изучаемых существ, пока не будет принято решение сканировать projectile/bobber-объекты.
 

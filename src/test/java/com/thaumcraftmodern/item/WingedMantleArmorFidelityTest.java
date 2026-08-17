@@ -128,7 +128,7 @@ class WingedMantleArmorFidelityTest {
 
     @Test
     void exactPixelAssetsAndAllFourItemsArePackaged() throws Exception {
-        var armor = ImageIO.read(Path.of("src/main/resources/assets/thaumcraftmodern/textures/entity/models/winged_mantle_armor.png").toFile());
+        var armor = ImageIO.read(Path.of("src/main/resources/assets/thaumic_reborn/textures/entity/models/winged_mantle_armor.png").toFile());
         assertEquals(4096, armor.getWidth());
         assertEquals(4096, armor.getHeight());
         for (int u : new int[] {0, 64}) {
@@ -147,17 +147,17 @@ class WingedMantleArmorFidelityTest {
             }
         }
         var elytra = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/entity/winged_mantle_elytra.png").toFile());
+                "src/main/resources/assets/thaumic_reborn/textures/entity/winged_mantle_elytra.png").toFile());
         assertEquals(64, elytra.getWidth());
         assertEquals(32, elytra.getHeight());
         var leggings = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/entity/models/winged_mantle_leggings.png").toFile());
+                "src/main/resources/assets/thaumic_reborn/textures/entity/models/winged_mantle_leggings.png").toFile());
         assertEquals(256, leggings.getWidth());
         assertEquals(128, leggings.getHeight());
         var originalLeggings = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/models/void_robe_armor.png").toFile());
+                "src/main/resources/assets/thaumic_reborn/textures/models/void_robe_armor.png").toFile());
         var originalLeggingsOverlay = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/models/void_robe_armor_overlay.png").toFile());
+                "src/main/resources/assets/thaumic_reborn/textures/models/void_robe_armor_overlay.png").toFile());
         boolean recoloredPixel = false;
         for (int y = 0; y < originalLeggings.getHeight(); y++) {
             for (int x = 0; x < originalLeggings.getWidth(); x++) {
@@ -196,8 +196,8 @@ class WingedMantleArmorFidelityTest {
         assertTrue(hasEmerald, "armor atlas needs an emerald focus");
         assertTrue(hasLavender, "armor atlas needs visible arcane glyphs");
         for (String item : new String[]{"hood", "chestplate", "leggings", "boots"}) {
-            Path texture = Path.of("src/main/resources/assets/thaumcraftmodern/textures/item/winged_mantle_" + item + ".png");
-            Path model = Path.of("src/main/resources/assets/thaumcraftmodern/models/item/winged_mantle_" + item + ".json");
+            Path texture = Path.of("src/main/resources/assets/thaumic_reborn/textures/item/winged_mantle_" + item + ".png");
+            Path model = Path.of("src/main/resources/assets/thaumic_reborn/models/item/winged_mantle_" + item + ".json");
             assertTrue(Files.isRegularFile(texture), texture.toString());
             assertTrue(Files.isRegularFile(model), model.toString());
         }
@@ -208,9 +208,9 @@ class WingedMantleArmorFidelityTest {
                 {"boots", "void_boots"}
         };
         for (String[] iconSource : iconSources) {
-            var icon = ImageIO.read(Path.of("src/main/resources/assets/thaumcraftmodern/textures/item/winged_mantle_"
+            var icon = ImageIO.read(Path.of("src/main/resources/assets/thaumic_reborn/textures/item/winged_mantle_"
                     + iconSource[0] + ".png").toFile());
-            var original = ImageIO.read(Path.of("src/main/resources/assets/thaumcraftmodern/textures/item/"
+            var original = ImageIO.read(Path.of("src/main/resources/assets/thaumic_reborn/textures/item/"
                     + iconSource[1] + ".png").toFile());
             assertEquals(16, icon.getWidth());
             assertEquals(16, icon.getHeight());

@@ -1,0 +1,10 @@
+{
+  "id": "potentia",
+  "order": 140,
+  "color": "C0FFFF",
+  "icon": "thaumic_reborn:textures/aspects/potentia.png",
+  "components": [
+    "ordo",
+    "ignis"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "thaumic_reborn:item/nitor",
+    "particle": "thaumic_reborn:item/nitor"
+  }
+}

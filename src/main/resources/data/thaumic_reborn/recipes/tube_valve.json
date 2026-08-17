@@ -1,0 +1,19 @@
+{
+  "type": "thaumic_reborn:arcane_shapeless",
+  "research": "tubes",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5
+  },
+  "ingredients": [
+    {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    {
+      "item": "minecraft:lever"
+    }
+  ],
+  "result": {
+    "item": "thaumic_reborn:essentia_valve"
+  }
+}

@@ -39,7 +39,7 @@ import net.minecraftforge.registries.MissingMappingsEvent;
 
 @Mod(ThaumcraftModern.MOD_ID)
 public final class ThaumcraftModern {
-    public static final String MOD_ID = "thaumcraftmodern";
+    public static final String MOD_ID = "thaumic_reborn";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ThaumcraftModern(FMLJavaModLoadingContext context) {
@@ -49,12 +49,12 @@ public final class ThaumcraftModern {
         context.registerConfig(
                 ModConfig.Type.CLIENT,
                 ThaumcraftModernClientConfig.SPEC,
-                "thaumcraftmodern-client.toml"
+                "thaumic_reborn-client.toml"
         );
         context.registerConfig(
                 ModConfig.Type.SERVER,
                 ThaumcraftModernServerConfig.SPEC,
-                "thaumcraftmodern-server.toml"
+                "thaumic_reborn-server.toml"
         );
         ModBlocks.register(modBus);
         ModFluids.register(modBus);

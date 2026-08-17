@@ -1,0 +1,16 @@
+{
+  "research": "masksippingfiend",
+  "instability": 8,
+  "central": { "tag": "thaumic_reborn:fortress_helmets" },
+  "components": [
+    { "item": "minecraft:red_dye" },
+    { "item": "minecraft:iron_ingot" },
+    { "item": "minecraft:leather" },
+    { "item": "minecraft:ghast_tear" },
+    { "item": "minecraft:milk_bucket" },
+    { "item": "minecraft:iron_ingot" }
+  ],
+  "result": { "item": "thaumic_reborn:fortress_helmet_mask_sipping_fiend" },
+  "result_modifier": { "type": "item_replacement", "key": "mask", "value": 2 },
+  "essentia": { "exanimis": 64, "victus": 64, "tutamen": 16 }
+}

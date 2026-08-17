@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "primalarrow",
+  "vis": {
+    "ignis": 8
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "S": {
+      "item": "thaumic_reborn:fire_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:ignis_primal_arrow",
+    "count": 8
+  }
+}

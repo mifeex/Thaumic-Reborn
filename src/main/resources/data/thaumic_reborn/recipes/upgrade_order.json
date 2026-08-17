@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "upgradeorder",
+  "vis": {
+    "ordo": 10
+  },
+  "pattern": [
+    "NNN",
+    "NCN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "C": {
+      "item": "thaumic_reborn:order_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_upgrade_ordo"
+  }
+}

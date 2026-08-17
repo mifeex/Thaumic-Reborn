@@ -1,0 +1,14 @@
+{
+  "research": "coreempty",
+  "catalyst": {
+    "item": "thaumic_reborn:blank_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:empty_golem_core"
+  },
+  "aspects": {
+    "lucrum": 5,
+    "vacuos": 5
+  },
+  "legacy_id": "CoreEmpty"
+}

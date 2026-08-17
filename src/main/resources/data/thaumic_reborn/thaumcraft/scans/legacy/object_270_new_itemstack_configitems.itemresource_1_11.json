@@ -1,0 +1,45 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:tainted_goo",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 3
+    },
+    {
+      "id": "limus",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemResource, 1, 11)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 3
+      },
+      {
+        "id": "limus",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "vitium",
+        "amount": 3
+      },
+      {
+        "operation": "add",
+        "id": "limus",
+        "amount": 1
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemResource, 1, 11), (new AspectList()).add(Aspect.TAINT, 3).add(Aspect.SLIME, 1))"
+  }
+}

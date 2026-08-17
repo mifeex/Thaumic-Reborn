@@ -1,0 +1,20 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "telum": 8
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:sharpness"
+  }
+}

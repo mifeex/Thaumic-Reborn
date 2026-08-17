@@ -1,0 +1,71 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:crimson_rites",
+  "display": "",
+  "aspects": [
+    {
+      "id": "cognitio",
+      "amount": 5
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    },
+    {
+      "id": "alienis",
+      "amount": 3
+    },
+    {
+      "id": "spiritus",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemEldritchObject, 1, 1)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "cognitio",
+        "amount": 5
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "alienis",
+        "amount": 3
+      },
+      {
+        "id": "spiritus",
+        "amount": 3
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "cognitio",
+        "amount": 5
+      },
+      {
+        "operation": "add",
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "operation": "add",
+        "id": "alienis",
+        "amount": 3
+      },
+      {
+        "operation": "add",
+        "id": "spiritus",
+        "amount": 3
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemEldritchObject, 1, 1), (new AspectList()).add(Aspect.MIND, 5).add(Aspect.MAGIC, 3).add(Aspect.ELDRITCH, 3).add(Aspect.SOUL, 3))"
+  }
+}

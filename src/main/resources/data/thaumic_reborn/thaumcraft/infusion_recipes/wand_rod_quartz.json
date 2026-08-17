@@ -1,0 +1,18 @@
+{
+  "research": "rod_quartz",
+  "instability": 3,
+  "central": {"item": "minecraft:quartz_block"},
+  "components": [
+    {"item": "thaumic_reborn:balanced_shard"},
+    {"item": "thaumic_reborn:order_shard"}
+  ],
+  "essentia": {
+    "ordo": 12,
+    "praecantatio": 6,
+    "vitreus": 6
+  },
+  "result": {
+    "item": "thaumic_reborn:quartz_wand_rod",
+    "count": 1
+  }
+}

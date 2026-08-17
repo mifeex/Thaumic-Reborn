@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ThaumatoriumModelFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
 
     @Test
     void originalZUpModelIsCenteredAndMadeYUpForForge() throws Exception {
@@ -25,7 +25,7 @@ final class ThaumatoriumModelFidelityTest {
                 ASSETS.resolve("textures/models/thaumatorium.obj"));
 
         assertTrue(model.contains(
-                "thaumcraftmodern:textures/models/thaumatorium_block.obj"));
+                "thaumic_reborn:textures/models/thaumatorium_block.obj"));
         assertTrue(adapted.contains("v 0.062500 0.125000 0.937500"));
         assertTrue(adapted.contains("v 0.500000 2.000000 0.288700"));
         assertTrue(original.contains("v  -0.4375 -0.4375 0.1250"));

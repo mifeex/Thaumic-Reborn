@@ -1,0 +1,66 @@
+{
+  "id": "researcher1",
+  "legacy_id": "RESEARCHER1",
+  "category": "basics",
+  "icon_resource": "thaumic_reborn:textures/misc/r_researcher1.png",
+  "title": "tc.research_name.RESEARCHER1",
+  "subtitle": "tc.research_text.RESEARCHER1",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "research"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCHER1.1"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 4,
+    "y": 1,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_researcher1.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "cognitio",
+        "amount": 3
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"RESEARCHER1\", \"BASICS\", (new AspectList()).add(Aspect.MIND, 3).add(Aspect.SENSES, 3).add(Aspect.ORDER, 3), 4, 1, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_researcher1.png\"))).setPages(new ResearchPage(\"tc.research_page.RESEARCHER1.1\")).setRound().setParents(\"RESEARCH\").registerResearchItem()"
+  }
+}

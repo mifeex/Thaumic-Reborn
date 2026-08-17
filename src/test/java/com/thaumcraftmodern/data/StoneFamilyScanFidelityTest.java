@@ -18,17 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class StoneFamilyScanFidelityTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path SCANS = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans");
     private static final Path TC_TAGS = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/tags/blocks");
+            "src/main/resources/data/thaumic_reborn/tags/blocks");
 
     @Test
     void modernStoneFamiliesDeclareTheirDistinctAspectProfiles() throws IOException {
-        assertScan("vanilla_granite_family.json", "thaumcraftmodern:granite_family",
+        assertScan("vanilla_granite_family.json", "thaumic_reborn:granite_family",
                 Map.of("terra", 2, "ignis", 1));
-        assertScan("vanilla_diorite_family.json", "thaumcraftmodern:diorite_family",
+        assertScan("vanilla_diorite_family.json", "thaumic_reborn:diorite_family",
                 Map.of("terra", 2, "ordo", 1));
-        assertScan("vanilla_andesite_family.json", "thaumcraftmodern:andesite_family",
+        assertScan("vanilla_andesite_family.json", "thaumic_reborn:andesite_family",
                 Map.of("terra", 2, "aer", 1));
 
         assertTag(TC_TAGS.resolve("granite_family.json"),
@@ -68,24 +68,24 @@ final class StoneFamilyScanFidelityTest {
     @Test
     void brickSandstoneNetherAndQuartzFamiliesUseTheirOriginalBases() throws IOException {
         assertScan("legacy/object_075_new_itemstack_blocks.field_150417_av_1_32767.json",
-                "thaumcraftmodern:stone_brick_equivalents", Map.of("terra", 2));
+                "thaumic_reborn:stone_brick_equivalents", Map.of("terra", 2));
         assertScan("legacy/object_076_new_itemstack_blocks.field_150417_av_1_1.json",
-                "thaumcraftmodern:mossy_stone_brick_equivalents",
+                "thaumic_reborn:mossy_stone_brick_equivalents",
                 Map.of("terra", 1, "herba", 1));
         assertScan("legacy/object_079_new_itemstack_blocks.field_150322_a_1_32767.json",
-                "thaumcraftmodern:sandstone_equivalents",
+                "thaumic_reborn:sandstone_equivalents",
                 Map.of("terra", 3, "perditio", 3));
         assertScan("legacy/object_080_new_itemstack_blocks.field_150322_a_1_1.json",
-                "thaumcraftmodern:chiseled_sandstone_equivalents",
+                "thaumic_reborn:chiseled_sandstone_equivalents",
                 Map.of("terra", 2, "perditio", 3, "praecantatio", 1));
         assertScan("legacy/object_081_new_itemstack_blocks.field_150322_a_1_2.json",
-                "thaumcraftmodern:cut_sandstone_equivalents",
+                "thaumic_reborn:cut_sandstone_equivalents",
                 Map.of("terra", 2, "perditio", 3, "ordo", 1));
         assertScan("legacy/object_069_new_itemstack_blocks.field_150385_bj.json",
-                "thaumcraftmodern:nether_brick_equivalents",
+                "thaumic_reborn:nether_brick_equivalents",
                 Map.of("terra", 2, "ignis", 1));
         assertScan("quartz_block_equivalents.json",
-                "thaumcraftmodern:quartz_block_equivalents",
+                "thaumic_reborn:quartz_block_equivalents",
                 Map.of("vitreus", 3, "potentia", 3));
 
         assertTag(TC_TAGS.resolve("stone_brick_equivalents.json"),

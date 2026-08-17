@@ -1,0 +1,25 @@
+{
+  "id": "corefill",
+  "legacy_id": "CoreFill",
+  "legacy_kind": "crucible",
+  "inactive": true,
+  "inactive_reason": "output item or its complete gameplay behavior is not implemented",
+  "modern_recipe": [
+    "thaumic_reborn:corefill"
+  ],
+  "required_aspects": [
+    {
+      "id": "fames",
+      "amount": 5
+    },
+    {
+      "id": "vacuos",
+      "amount": 5
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"COREFILL\", new ItemStack(ConfigItems.itemGolemCore, 1, 0), new ItemStack(ConfigItems.itemGolemCore, 1, 100), (new AspectList()).add(Aspect.HUNGER, 5).add(Aspect.VOID, 5))",
+    "source_statement": "ConfigResearch.recipes.put(\"CoreFill\", ThaumcraftApi.addCrucibleRecipe(\"COREFILL\", new ItemStack(ConfigItems.itemGolemCore, 1, 0), new ItemStack(ConfigItems.itemGolemCore, 1, 100), (new AspectList()).add(Aspect.HUNGER, 5).add(Aspect.VOID, 5)))",
+    "unkeyed": false
+  }
+}

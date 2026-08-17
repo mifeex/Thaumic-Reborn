@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "thaumic_reborn:aer_primal_arrow",
+    "thaumic_reborn:aqua_primal_arrow",
+    "thaumic_reborn:ignis_primal_arrow",
+    "thaumic_reborn:ordo_primal_arrow",
+    "thaumic_reborn:perditio_primal_arrow",
+    "thaumic_reborn:terra_primal_arrow"
+  ]
+}

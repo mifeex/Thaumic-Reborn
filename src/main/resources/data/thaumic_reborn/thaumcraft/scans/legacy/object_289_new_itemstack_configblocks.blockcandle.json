@@ -1,0 +1,58 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:tallow_candle",
+  "display": "",
+  "aspects": [
+    {
+      "id": "lux",
+      "amount": 2
+    },
+    {
+      "id": "corpus",
+      "amount": 1
+    },
+    {
+      "id": "praecantatio",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockCandle)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "lux",
+        "amount": 2
+      },
+      {
+        "id": "corpus",
+        "amount": 1
+      },
+      {
+        "id": "praecantatio",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "lux",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "corpus",
+        "amount": 1
+      },
+      {
+        "operation": "add",
+        "id": "praecantatio",
+        "amount": 1
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockCandle), (new AspectList()).add(Aspect.LIGHT, 2).add(Aspect.FLESH, 1).add(Aspect.MAGIC, 1))"
+  }
+}

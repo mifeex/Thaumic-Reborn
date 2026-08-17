@@ -1,0 +1,89 @@
+{
+  "id": "entropicprocessing",
+  "legacy_id": "ENTROPICPROCESSING",
+  "category": "alchemy",
+  "icon_resource": "thaumic_reborn:textures/misc/r_alchent.png",
+  "title": "tc.research_name.ENTROPICPROCESSING",
+  "subtitle": "tc.research_text.ENTROPICPROCESSING",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "alchemicalduplication"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -144,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ENTROPICPROCESSING.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:altcrackedbrick"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:altbonemeal"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "praecantatio",
+      "amount": 1
+    },
+    {
+      "id": "perditio",
+      "amount": 3
+    },
+    {
+      "id": "fabrico",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -6,
+    "y": 1,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_alchent.png\")",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 1
+      },
+      {
+        "id": "perditio",
+        "amount": 3
+      },
+      {
+        "id": "fabrico",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ENTROPICPROCESSING\", \"ALCHEMY\", (new AspectList()).add(Aspect.MAGIC, 1).add(Aspect.ENTROPY, 3).add(Aspect.CRAFT, 1), -6, 1, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_alchent.png\"))).setPages(new ResearchPage(\"tc.research_page.ENTROPICPROCESSING.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"AltCrackedBrick\")), new ResearchPage((CrucibleRecipe)recipes.get(\"AltBonemeal\"))).setConcealed().setSecondary().setParents(\"ALCHEMICALDUPLICATION\").registerResearchItem()"
+  }
+}

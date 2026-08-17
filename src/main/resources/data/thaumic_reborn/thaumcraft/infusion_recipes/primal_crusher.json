@@ -1,0 +1,40 @@
+{
+  "research": "primalcrusher",
+  "instability": 6,
+  "central": {
+    "item": "thaumic_reborn:primordial_pearl"
+  },
+  "components": [
+    {
+      "item": "thaumic_reborn:primal_charm"
+    },
+    {
+      "item": "thaumic_reborn:void_pickaxe"
+    },
+    {
+      "item": "thaumic_reborn:void_shovel"
+    },
+    {
+      "item": "thaumic_reborn:primal_charm"
+    },
+    {
+      "item": "thaumic_reborn:pickaxe_of_the_core"
+    },
+    {
+      "item": "thaumic_reborn:shovel_of_the_earthmover"
+    }
+  ],
+  "essentia": {
+    "perfodio": 24,
+    "instrumentum": 24,
+    "perditio": 16,
+    "vacuos": 16,
+    "telum": 16,
+    "alienis": 16,
+    "lucrum": 16
+  },
+  "result": {
+    "item": "thaumic_reborn:primal_crusher",
+    "count": 1
+  }
+}

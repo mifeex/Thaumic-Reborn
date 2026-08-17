@@ -1,0 +1,27 @@
+{
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "thaumic_reborn:block/taint_fibres",
+    "fibres": "thaumic_reborn:block/taint_fibres"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0.1],
+      "to": [16, 16, 0.1],
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [16, 0, 0, 16],
+          "texture": "#fibres",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#fibres",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

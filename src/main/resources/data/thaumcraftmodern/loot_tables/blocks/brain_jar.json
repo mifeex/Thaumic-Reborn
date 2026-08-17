@@ -1,1 +1,0 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"thaumcraftmodern:brain_jar"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

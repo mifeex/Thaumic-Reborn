@@ -1,0 +1,31 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focustrade",
+  "vis": {
+    "ordo": 15,
+    "perditio": 15,
+    "terra": 10
+  },
+  "pattern": [
+    "CQE",
+    "Q#Q",
+    "CQE"
+  ],
+  "key": {
+    "#": {
+      "item": "thaumic_reborn:quicksilver"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumic_reborn:balanced_shard"
+    },
+    "E": {
+      "item": "thaumic_reborn:balanced_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focus_trade"
+  }
+}

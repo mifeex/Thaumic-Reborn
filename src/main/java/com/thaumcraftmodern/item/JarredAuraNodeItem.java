@@ -190,7 +190,7 @@ public final class JarredAuraNodeItem extends BlockItem {
             data = NodeJarCodec.read(stack).orElse(null);
         } catch (RuntimeException exception) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.node_jar.invalid"
+                            "tooltip.thaumic_reborn.node_jar.invalid"
                     )
                     .withStyle(ChatFormatting.RED));
             return;
@@ -200,14 +200,14 @@ public final class JarredAuraNodeItem extends BlockItem {
         }
         if (data.origin() == NodeJarData.Origin.CREATIVE_TEMPLATE) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.node_jar.creative_ready"
+                            "tooltip.thaumic_reborn.node_jar.creative_ready"
                     )
                     .withStyle(ChatFormatting.DARK_PURPLE));
         }
         tooltip.add(Component.translatable(
-                        "tooltip.thaumcraftmodern.node_jar.kind",
+                        "tooltip.thaumic_reborn.node_jar.kind",
                         Component.translatable(
-                                "node_type.thaumcraftmodern."
+                                "node_type.thaumic_reborn."
                                         + data.node().type().name().toLowerCase(
                                         java.util.Locale.ROOT
                                 )
@@ -215,9 +215,9 @@ public final class JarredAuraNodeItem extends BlockItem {
                 )
                 .withStyle(ChatFormatting.DARK_PURPLE));
         tooltip.add(Component.translatable(
-                        "tooltip.thaumcraftmodern.node_jar.modifier",
+                        "tooltip.thaumic_reborn.node_jar.modifier",
                         Component.translatable(
-                                "node_modifier.thaumcraftmodern."
+                                "node_modifier.thaumic_reborn."
                                         + data.node().modifier().name()
                                         .toLowerCase(java.util.Locale.ROOT)
                         )
@@ -226,9 +226,9 @@ public final class JarredAuraNodeItem extends BlockItem {
         var snapshot = data.node().snapshot();
         for (var entry : snapshot.aspectsCurrent().entrySet()) {
             tooltip.add(Component.translatable(
-                            "tooltip.thaumcraftmodern.node_jar.vis",
+                            "tooltip.thaumic_reborn.node_jar.vis",
                             Component.translatable(
-                                    "aspect.thaumcraftmodern." + entry.getKey()
+                                    "aspect.thaumic_reborn." + entry.getKey()
                             ),
                             entry.getValue(),
                             snapshot.aspectsMaximum().get(entry.getKey())

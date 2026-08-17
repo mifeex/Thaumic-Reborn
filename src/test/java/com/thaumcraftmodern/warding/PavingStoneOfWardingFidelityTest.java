@@ -17,7 +17,7 @@ final class PavingStoneOfWardingFidelityTest {
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft"
     );
     private static final Path MOD_ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test
@@ -59,7 +59,7 @@ final class PavingStoneOfWardingFidelityTest {
     @Test
     void recipeAndRuntimeContractMatchTc4() throws Exception {
         String recipe = Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/recipes/pave_ward.json"
+                "src/main/resources/data/thaumic_reborn/recipes/pave_ward.json"
         ));
         assertTrue(recipe.contains("\"ignis\": 10"));
         assertTrue(recipe.contains("\"ordo\": 10"));

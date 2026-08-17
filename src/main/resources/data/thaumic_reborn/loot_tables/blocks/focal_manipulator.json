@@ -1,0 +1,4 @@
+{
+  "type":"minecraft:block",
+  "pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"thaumic_reborn:focal_manipulator"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]
+}

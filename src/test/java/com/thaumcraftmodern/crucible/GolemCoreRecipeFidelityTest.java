@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class GolemCoreRecipeFidelityTest {
     private static final Path CRUCIBLE = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/crucible_recipes");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes");
 
     @Test void allSevenOriginalCrucibleCoreRecipesAreActiveAndFaithful()
             throws Exception {
@@ -33,7 +33,7 @@ class GolemCoreRecipeFidelityTest {
     }
 
     @Test void blankAndFiveAdvancedOriginalCoreRecipesArePresent() {
-        Path data = Path.of("src/main/resources/data/thaumcraftmodern");
+        Path data = Path.of("src/main/resources/data/thaumic_reborn");
         assertTrue(Files.isRegularFile(data.resolve("recipes/core_blank.json")));
         for (String id : new String[]{"core_use", "core_alchemy", "core_lumber",
                 "core_sorting", "core_fishing"}) {
@@ -45,7 +45,7 @@ class GolemCoreRecipeFidelityTest {
     @Test void advancedCoreResearchPagesUseTheirInfusionRecipes()
             throws Exception {
         Path research = Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy");
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy");
         for (String id : new String[]{"coreuse", "corealchemy", "corelumber",
                 "coresorting", "corefishing"}) {
             JsonObject json = JsonParser.parseString(Files.readString(
@@ -69,9 +69,9 @@ class GolemCoreRecipeFidelityTest {
             Map<String, Integer> aspects) throws Exception {
         JsonObject json = JsonParser.parseString(
                 Files.readString(CRUCIBLE.resolve(id + ".json"))).getAsJsonObject();
-        assertEquals("thaumcraftmodern:" + catalyst,
+        assertEquals("thaumic_reborn:" + catalyst,
                 json.getAsJsonObject("catalyst").get("item").getAsString(), id);
-        assertEquals("thaumcraftmodern:" + output,
+        assertEquals("thaumic_reborn:" + output,
                 json.getAsJsonObject("output").get("item").getAsString(), id);
         assertTrue(!json.has("inactive") || !json.get("inactive").getAsBoolean(), id);
         for (var entry : aspects.entrySet()) {

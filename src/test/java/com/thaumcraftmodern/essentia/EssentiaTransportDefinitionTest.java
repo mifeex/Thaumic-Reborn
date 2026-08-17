@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class EssentiaTransportDefinitionTest {
     private static final ResourceLocation ALEMBIC = new ResourceLocation(
-            "thaumcraftmodern", "arcane_alembic");
+            "thaumic_reborn", "arcane_alembic");
 
     @Test
     void arcaneAlembicIsDeclaredAsSourceOnly() throws Exception {
-        Path path = Path.of("src/main/resources/data/thaumcraftmodern/thaumcraft/"
+        Path path = Path.of("src/main/resources/data/thaumic_reborn/thaumcraft/"
                 + "essentia_transports/arcane_alembic.json");
         JsonObject json = JsonParser.parseString(Files.readString(path))
                 .getAsJsonObject();
@@ -32,6 +32,6 @@ final class EssentiaTransportDefinitionTest {
                 new EssentiaTransportDefinition(ALEMBIC, false)));
         assertFalse(EssentiaTransportRegistry.canReturnEssentia(ALEMBIC));
         assertTrue(EssentiaTransportRegistry.canReturnEssentia(
-                new ResourceLocation("thaumcraftmodern", "warded_jar")));
+                new ResourceLocation("thaumic_reborn", "warded_jar")));
     }
 }

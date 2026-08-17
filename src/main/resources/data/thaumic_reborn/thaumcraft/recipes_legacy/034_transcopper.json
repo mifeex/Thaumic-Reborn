@@ -1,0 +1,25 @@
+{
+  "id": "transcopper",
+  "legacy_id": "TransCopper",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:transcopper"
+  ],
+  "required_aspects": [
+    {
+      "id": "metallum",
+      "amount": 2
+    },
+    {
+      "id": "permutatio",
+      "amount": 1
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"TRANSCOPPER\", new ItemStack(ConfigItems.itemNugget, 3, 1), \"nuggetCopper\", (new AspectList()).merge(Aspect.METAL, 2).merge(Aspect.EXCHANGE, 1))",
+    "source_statement": "if (Config.foundCopperIngot) {\n         ConfigResearch.recipes.put(\"TransCopper\", ThaumcraftApi.addCrucibleRecipe(\"TRANSCOPPER\", new ItemStack(ConfigItems.itemNugget, 3, 1), \"nuggetCopper\", (new AspectList()).merge(Aspect.METAL, 2).merge(Aspect.EXCHANGE, 1)))",
+    "unkeyed": false
+  }
+}

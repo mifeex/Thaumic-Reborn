@@ -1,0 +1,8 @@
+{
+  "parent":"minecraft:block/block",
+  "textures":{"all":"thaumic_reborn:block/pillar","particle":"thaumic_reborn:block/pillar"},
+  "elements":[
+    {"from":[2,0,2],"to":[14,5,14],"faces":{"down":{"texture":"#all"},"up":{"texture":"#all"},"north":{"texture":"#all"},"south":{"texture":"#all"},"west":{"texture":"#all"},"east":{"texture":"#all"}}},
+    {"from":[4,5,4],"to":[12,16,12],"faces":{"down":{"texture":"#all"},"up":{"texture":"#all"},"north":{"texture":"#all"},"south":{"texture":"#all"},"west":{"texture":"#all"},"east":{"texture":"#all"}}}
+  ]
+}

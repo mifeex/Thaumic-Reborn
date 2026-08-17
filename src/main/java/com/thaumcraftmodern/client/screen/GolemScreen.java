@@ -127,7 +127,7 @@ public final class GolemScreen extends AbstractContainerScreen<GolemMenu> {
         ItemStack icon = menu.filterIcon(view);
         if (!icon.isEmpty()) graphics.renderTooltip(font, icon, mouseX, mouseY);
         else graphics.renderTooltip(font,
-                Component.translatable("gui.thaumcraftmodern.golem.filter_hint"), mouseX, mouseY);
+                Component.translatable("gui.thaumic_reborn.golem.filter_hint"), mouseX, mouseY);
     }
 
     private void drawGuardLabel(GuiGraphics graphics, String key, int y, int color) {
@@ -135,7 +135,7 @@ public final class GolemScreen extends AbstractContainerScreen<GolemMenu> {
     }
 
     private void drawText(GuiGraphics graphics, String key, int x, int y, int color) {
-        graphics.drawString(font, Component.translatable("gui.thaumcraftmodern.golem." + key),
+        graphics.drawString(font, Component.translatable("gui.thaumic_reborn.golem." + key),
                 scaled(x), scaled(y), color, true);
     }
 

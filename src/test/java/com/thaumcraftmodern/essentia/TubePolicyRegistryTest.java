@@ -29,7 +29,7 @@ class TubePolicyRegistryTest {
     @Test
     void customTubePolicyCanBeAddedWithoutChangingNetworkCode() {
         ResourceLocation id = new ResourceLocation(
-                "thaumcraftmodern", "test_custom_policy");
+                "thaumic_reborn", "test_custom_policy");
         TubePolicy policy = new TubePolicy(true, true, true, true);
         TubePolicyRegistry.register(id, policy);
         assertEquals(policy, TubePolicyRegistry.require(id));

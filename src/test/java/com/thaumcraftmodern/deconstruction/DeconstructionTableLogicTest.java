@@ -61,7 +61,7 @@ final class DeconstructionTableLogicTest {
     }
 
     private static AspectDefinition primal(String id) {
-        return new AspectDefinition(id, 0, "thaumcraftmodern:" + id);
+        return new AspectDefinition(id, 0, "thaumic_reborn:" + id);
     }
 
     private static AspectDefinition compound(
@@ -72,7 +72,7 @@ final class DeconstructionTableLogicTest {
         return new AspectDefinition(
                 id,
                 0,
-                "thaumcraftmodern:" + id,
+                "thaumic_reborn:" + id,
                 first,
                 second
         );

@@ -1,0 +1,33 @@
+{
+  "id": "sanesoap",
+  "legacy_id": "SaneSoap",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:sanesoap"
+  ],
+  "required_aspects": [
+    {
+      "id": "cognitio",
+      "amount": 16
+    },
+    {
+      "id": "alienis",
+      "amount": 16
+    },
+    {
+      "id": "ordo",
+      "amount": 16
+    },
+    {
+      "id": "sano",
+      "amount": 16
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"SANESOAP\", new ItemStack(ConfigItems.itemSanitySoap), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 5), (new AspectList()).add(Aspect.MIND, 16).add(Aspect.ELDRITCH, 16).add(Aspect.ORDER, 16).add(Aspect.HEAL, 16))",
+    "source_statement": "ConfigResearch.recipes.put(\"SaneSoap\", ThaumcraftApi.addCrucibleRecipe(\"SANESOAP\", new ItemStack(ConfigItems.itemSanitySoap), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 5), (new AspectList()).add(Aspect.MIND, 16).add(Aspect.ELDRITCH, 16).add(Aspect.ORDER, 16).add(Aspect.HEAL, 16)))",
+    "unkeyed": false
+  }
+}

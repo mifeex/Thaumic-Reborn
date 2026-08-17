@@ -39,14 +39,14 @@ final class ClassicGolemancyFirstVerticalFidelityTest {
     }
 
     @Test void originalTexturesArePresentAtOriginalAtlasSizes() throws IOException {
-        assertImage("assets/thaumcraftmodern/textures/entity/models/chesthungry.png",64,64);
-        assertImage("assets/thaumcraftmodern/textures/block/chesthungry.png",64,64);
-        assertImage("assets/thaumcraftmodern/textures/entity/models/golem_straw.png",128,128);
-        assertImage("assets/thaumcraftmodern/textures/item/golem_straw.png",16,16);
+        assertImage("assets/thaumic_reborn/textures/entity/models/chesthungry.png",64,64);
+        assertImage("assets/thaumic_reborn/textures/block/chesthungry.png",64,64);
+        assertImage("assets/thaumic_reborn/textures/entity/models/golem_straw.png",128,128);
+        assertImage("assets/thaumic_reborn/textures/item/golem_straw.png",16,16);
         assertEquals("192d9c378e49634af120097ee5be84c861491470",
-                sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/entity/models/chesthungry.png")));
+                sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/entity/models/chesthungry.png")));
         assertEquals("192d9c378e49634af120097ee5be84c861491470",
-                sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/block/chesthungry.png")));
+                sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/block/chesthungry.png")));
     }
 
     @Test void hungryChestUsesOriginalModelBoxUvAndExactThreePieceItemModel() throws IOException {
@@ -55,9 +55,9 @@ final class ClassicGolemancyFirstVerticalFidelityTest {
         assertTrue(model.contains("box(poses,out,light,overlay,0,-5,-14,14,5,14,0,0)"));
         assertTrue(model.contains("box(poses,out,light,overlay,-1,-2,-15,2,4,1,0,0)"));
 
-        JsonObject itemModel=json("assets/thaumcraftmodern/models/item/hungry_chest.json");
+        JsonObject itemModel=json("assets/thaumic_reborn/models/item/hungry_chest.json");
         assertEquals(3,itemModel.getAsJsonArray("elements").size());
-        assertEquals("thaumcraftmodern:block/chesthungry",
+        assertEquals("thaumic_reborn:block/chesthungry",
                 itemModel.getAsJsonObject("textures").get("shell").getAsString());
         assertEquals(14,itemModel.getAsJsonArray("elements").get(1).getAsJsonObject()
                 .getAsJsonArray("to").get(1).getAsInt());
@@ -89,57 +89,57 @@ final class ClassicGolemancyFirstVerticalFidelityTest {
                 "f17010cd359aa999d62b40c17a45a9bca3d8607b","63e8670af33ae610e47adda0c98dcda920e36407",
                 "b58150fff142680e4e237f27ca74a84f4c29b0f1","ae027547b66fc5f285a1250d17ba13ac36b39bfc"};
         for(int i=0;i<kinds.length;i++){
-            assertEquals(itemHashes[i],sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/item/golem_"+kinds[i]+".png")));
-            assertEquals(entityHashes[i],sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/entity/models/golem_"+kinds[i]+".png")));
+            assertEquals(itemHashes[i],sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/item/golem_"+kinds[i]+".png")));
+            assertEquals(entityHashes[i],sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/entity/models/golem_"+kinds[i]+".png")));
         }
-        assertEquals("ad4b3f55d1c114861148f384c119cf26bd737916",sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/block/golem_stone_side.png")));
-        assertEquals("afeefc0cbf232e7b59929a2489d6f4871c48f032",sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/block/golem_stone_top.png")));
-        assertEquals("3794132b89df69898e296de3a17574e861725445",sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/block/golem_stone_top_active.png")));
+        assertEquals("ad4b3f55d1c114861148f384c119cf26bd737916",sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/block/golem_stone_side.png")));
+        assertEquals("afeefc0cbf232e7b59929a2489d6f4871c48f032",sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/block/golem_stone_top.png")));
+        assertEquals("3794132b89df69898e296de3a17574e861725445",sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/block/golem_stone_top_active.png")));
     }
 
     @Test void allMaterialResearchAndCrucibleRecipesAreActive() throws IOException {
         for(String kind:new String[]{"wood","tallow","clay","flesh","stone","iron","thaumium"}){
-            JsonObject research=json("data/thaumcraftmodern/thaumcraft/research/legacy/golem"+kind+".json");
+            JsonObject research=json("data/thaumic_reborn/thaumcraft/research/legacy/golem"+kind+".json");
             assertFalse(research.get("inactive").getAsBoolean(),kind);
-            assertEquals("thaumcraftmodern:"+kind+"_golem",research.get("icon").getAsString());
-            JsonObject recipe=json("data/thaumcraftmodern/thaumcraft/crucible_recipes/golem"+kind+".json");
+            assertEquals("thaumic_reborn:"+kind+"_golem",research.get("icon").getAsString());
+            JsonObject recipe=json("data/thaumic_reborn/thaumcraft/crucible_recipes/golem"+kind+".json");
             assertFalse(recipe.get("inactive").getAsBoolean(),kind);
-            assertEquals("thaumcraftmodern:"+kind+"_golem",recipe.getAsJsonObject("output").get("item").getAsString());
+            assertEquals("thaumic_reborn:"+kind+"_golem",recipe.getAsJsonObject("output").get("item").getAsString());
         }
     }
 
     @Test void golemFetterKeepsOriginalPoweredDeactivationContract() throws IOException {
-        JsonObject states=json("assets/thaumcraftmodern/blockstates/golem_fetter.json")
+        JsonObject states=json("assets/thaumic_reborn/blockstates/golem_fetter.json")
                 .getAsJsonObject("variants");
-        assertEquals("thaumcraftmodern:block/golem_fetter",
+        assertEquals("thaumic_reborn:block/golem_fetter",
                 states.getAsJsonObject("active=false").get("model").getAsString());
-        assertEquals("thaumcraftmodern:block/golem_fetter_active",
+        assertEquals("thaumic_reborn:block/golem_fetter_active",
                 states.getAsJsonObject("active=true").get("model").getAsString());
         String block=Files.readString(Path.of("src/main/java/com/thaumcraftmodern/world/block/GolemFetterBlock.java"));
         String entity=Files.readString(Path.of("src/main/java/com/thaumcraftmodern/entity/ClassicGolemEntity.java"));
         assertTrue(block.contains("level.hasNeighborSignal(pos)"));
         assertTrue(entity.contains("blockPosition().below()).is(ModBlocks.GOLEM_FETTER.get())"));
-        JsonObject recipe=json("data/thaumcraftmodern/recipes/golem_fetter.json");
+        JsonObject recipe=json("data/thaumic_reborn/recipes/golem_fetter.json");
         assertEquals("golemfetter",recipe.get("research").getAsString());
         assertEquals(5,recipe.getAsJsonObject("vis").get("terra").getAsInt());
         assertEquals(5,recipe.getAsJsonObject("vis").get("ordo").getAsInt());
     }
 
     @Test void hungryChestAndStrawGolemRecipesAreExecutableResearchPages() throws IOException {
-        JsonObject chest = json("data/thaumcraftmodern/thaumcraft/research/legacy/hungrychest.json");
+        JsonObject chest = json("data/thaumic_reborn/thaumcraft/research/legacy/hungrychest.json");
         assertFalse(chest.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:hungry_chest", chest.get("icon").getAsString());
+        assertEquals("thaumic_reborn:hungry_chest", chest.get("icon").getAsString());
 
-        JsonObject golem = json("data/thaumcraftmodern/thaumcraft/research/legacy/golemstraw.json");
+        JsonObject golem = json("data/thaumic_reborn/thaumcraft/research/legacy/golemstraw.json");
         assertFalse(golem.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:straw_golem",golem.get("icon").getAsString());
+        assertEquals("thaumic_reborn:straw_golem",golem.get("icon").getAsString());
         JsonObject recipePage = golem.getAsJsonArray("pages").get(2).getAsJsonObject();
         assertEquals("recipe",recipePage.get("type").getAsString());
-        assertEquals("thaumcraftmodern:golemstraw",recipePage.get("recipe").getAsString());
+        assertEquals("thaumic_reborn:golemstraw",recipePage.get("recipe").getAsString());
 
-        JsonObject crucible = json("data/thaumcraftmodern/thaumcraft/crucible_recipes/golemstraw.json");
+        JsonObject crucible = json("data/thaumic_reborn/thaumcraft/crucible_recipes/golemstraw.json");
         assertFalse(crucible.has("inactive"));
-        assertEquals("thaumcraftmodern:straw_golem",
+        assertEquals("thaumic_reborn:straw_golem",
                 crucible.getAsJsonObject("output").get("item").getAsString());
     }
 

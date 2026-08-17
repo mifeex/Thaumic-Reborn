@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "banners",
+  "vis": {
+    "aqua": 5,
+    "terra": 5
+  },
+  "pattern": [
+    "WS",
+    "WS",
+    "WB"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:lime_wool"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "B": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:lime_thaumcraft_banner"
+  }
+}

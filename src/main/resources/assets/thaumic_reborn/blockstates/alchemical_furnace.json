@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,lit=false": { "model": "thaumic_reborn:block/alchemical_furnace" },
+    "facing=east,lit=false": { "model": "thaumic_reborn:block/alchemical_furnace", "y": 90 },
+    "facing=south,lit=false": { "model": "thaumic_reborn:block/alchemical_furnace", "y": 180 },
+    "facing=west,lit=false": { "model": "thaumic_reborn:block/alchemical_furnace", "y": 270 },
+    "facing=north,lit=true": { "model": "thaumic_reborn:block/alchemical_furnace_lit" },
+    "facing=east,lit=true": { "model": "thaumic_reborn:block/alchemical_furnace_lit", "y": 90 },
+    "facing=south,lit=true": { "model": "thaumic_reborn:block/alchemical_furnace_lit", "y": 180 },
+    "facing=west,lit=true": { "model": "thaumic_reborn:block/alchemical_furnace_lit", "y": 270 }
+  }
+}

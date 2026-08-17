@@ -57,7 +57,7 @@ class VisTamingVerticalFidelityTest {
                         "2737cd4dcda0d15e79c99a15b134e81f643cfff9235ff1277bc51651263fd0d7")
         );
         for (Map.Entry<String, String> entry : hashes.entrySet()) {
-            Path path = RESOURCES.resolve("assets/thaumcraftmodern")
+            Path path = RESOURCES.resolve("assets/thaumic_reborn")
                     .resolve(entry.getKey());
             assertEquals(entry.getValue(), sha256(path), entry.getKey());
         }
@@ -75,7 +75,7 @@ class VisTamingVerticalFidelityTest {
     void advancedStabilizerResearchIsActiveButRecipeIsHidden()
             throws IOException {
         JsonObject research = json(RESOURCES.resolve(
-                "data/thaumcraftmodern/thaumcraft/research/legacy/"
+                "data/thaumic_reborn/thaumcraft/research/legacy/"
                         + "nodestabilizeradv.json"));
         assertFalse(research.get("inactive").getAsBoolean());
         JsonArray pages = research.getAsJsonArray("pages");
@@ -86,8 +86,8 @@ class VisTamingVerticalFidelityTest {
             assertFalse("unavailable".equals(object.get("type").getAsString()));
         }
         assertFalse(Files.exists(RESOURCES.resolve(
-                "data/thaumcraftmodern/recipes/advanced_node_stabilizer.json")));
-        assertEquals("thaumcraftmodern:node_stabilizer",
+                "data/thaumic_reborn/recipes/advanced_node_stabilizer.json")));
+        assertEquals("thaumic_reborn:node_stabilizer",
                 research.get("icon").getAsString());
     }
 
@@ -98,7 +98,7 @@ class VisTamingVerticalFidelityTest {
                 "node_transducer", "vis_relay", "vis_charge_relay"
         }) {
             JsonObject model = json(RESOURCES.resolve(
-                    "assets/thaumcraftmodern/models/item/" + id + ".json"));
+                    "assets/thaumic_reborn/models/item/" + id + ".json"));
             assertEquals("minecraft:builtin/entity",
                     model.get("parent").getAsString(), id);
             JsonObject gui = model.getAsJsonObject("display")
@@ -149,8 +149,8 @@ class VisTamingVerticalFidelityTest {
     private static void assertRecipeOutput(String recipe, String item)
             throws IOException {
         JsonObject root = json(RESOURCES.resolve(
-                "data/thaumcraftmodern/recipes/" + recipe + ".json"));
-        assertEquals("thaumcraftmodern:" + item,
+                "data/thaumic_reborn/recipes/" + recipe + ".json"));
+        assertEquals("thaumic_reborn:" + item,
                 root.getAsJsonObject("result").get("item").getAsString());
     }
 

@@ -1,0 +1,13 @@
+{
+  "research": "thaumium",
+  "catalyst": {
+    "tag": "forge:ingots/iron"
+  },
+  "output": {
+    "item": "thaumic_reborn:thaumium_ingot"
+  },
+  "aspects": {
+    "praecantatio": 4
+  },
+  "legacy_id": "Thaumium"
+}

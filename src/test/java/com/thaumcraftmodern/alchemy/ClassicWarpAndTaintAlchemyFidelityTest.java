@@ -18,7 +18,7 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
     @Test
     void crucibleRecipesKeepExactTc4CatalystsAndAspectCosts() throws Exception {
         JsonObject bath = crucible("bathsalts");
-        assertEquals("thaumcraftmodern:salis_mundus", catalystItem(bath));
+        assertEquals("thaumic_reborn:salis_mundus", catalystItem(bath));
         for (String aspect : new String[]{"cognitio", "auram", "ordo", "sano"}) {
             assertEquals(6, bath.getAsJsonObject("aspects").get(aspect).getAsInt());
         }
@@ -27,7 +27,7 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
             assertEquals(16, soap.getAsJsonObject("aspects").get(aspect).getAsInt());
         }
         JsonObject taint = crucible("bottletaint");
-        assertEquals("thaumcraftmodern:essentia_phial", catalystItem(taint));
+        assertEquals("thaumic_reborn:essentia_phial", catalystItem(taint));
         assertEquals("vitium", taint.getAsJsonObject("catalyst").get("aspect").getAsString());
         assertEquals(8, taint.getAsJsonObject("aspects").get("vitium").getAsInt());
         assertEquals(8, taint.getAsJsonObject("aspects").get("praecantatio").getAsInt());
@@ -43,19 +43,19 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
         JsonObject bath = research("bathsalts");
         assertEquals(11, bath.getAsJsonObject("reveal_when").get("minimum").getAsInt());
         assertTrue(bath.getAsJsonArray("parents").isEmpty());
-        assertActiveRecipe(bath, "thaumcraftmodern:bathsalts");
+        assertActiveRecipe(bath, "thaumic_reborn:bathsalts");
         assertEquals("bathsalts", research("sanesoap").getAsJsonArray("parents").get(0).getAsString());
 
         JsonObject taint = research("bottletaint");
         assertEquals("entropicprocessing", taint.getAsJsonArray("parents").get(0).getAsString());
         assertEquals("vitium", taint.getAsJsonObject("reveal_when").get("id").getAsString());
         assertEquals(2, taint.get("completion_warp").getAsInt());
-        assertActiveRecipe(taint, "thaumcraftmodern:bottletaint");
+        assertActiveRecipe(taint, "thaumic_reborn:bottletaint");
 
         JsonObject death = research("liquiddeath");
         assertEquals("entropicprocessing", death.getAsJsonArray("parents").get(0).getAsString());
         assertEquals(3, death.get("completion_warp").getAsInt());
-        assertActiveRecipe(death, "thaumcraftmodern:liquiddeath");
+        assertActiveRecipe(death, "thaumic_reborn:liquiddeath");
     }
 
     @Test
@@ -94,7 +94,7 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
     @Test
     void etherealBloomUsesRealIconExactColorsAndOnlyOriginalBiomePurification() throws Exception {
         JsonObject bloom = research("etherealbloom");
-        assertEquals("thaumcraftmodern:ethereal_bloom", bloom.get("icon").getAsString());
+        assertEquals("thaumic_reborn:ethereal_bloom", bloom.get("icon").getAsString());
         assertFalse(bloom.get("inactive").getAsBoolean());
         String renderer = source("client/render/EtherealBloomBlockEntityRenderer.java");
         assertTrue(renderer.contains("NODE_RED = 0xAA"));
@@ -118,11 +118,11 @@ final class ClassicWarpAndTaintAlchemyFidelityTest {
     }
 
     private static JsonObject crucible(String id) throws Exception {
-        return json(RESOURCES.resolve("data/thaumcraftmodern/thaumcraft/crucible_recipes/" + id + ".json"));
+        return json(RESOURCES.resolve("data/thaumic_reborn/thaumcraft/crucible_recipes/" + id + ".json"));
     }
 
     private static JsonObject research(String id) throws Exception {
-        return json(RESOURCES.resolve("data/thaumcraftmodern/thaumcraft/research/legacy/" + id + ".json"));
+        return json(RESOURCES.resolve("data/thaumic_reborn/thaumcraft/research/legacy/" + id + ".json"));
     }
 
     private static JsonObject json(Path path) throws Exception {

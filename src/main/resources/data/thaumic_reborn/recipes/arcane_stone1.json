@@ -1,0 +1,25 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "arcanestone",
+  "vis": {
+    "terra": 1,
+    "ignis": 1
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:stone"
+    },
+    "C": {
+      "tag": "thaumic_reborn:elemental_shards"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_stone",
+    "count": 9
+  }
+}

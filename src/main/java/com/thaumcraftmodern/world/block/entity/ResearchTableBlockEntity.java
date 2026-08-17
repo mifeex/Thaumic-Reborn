@@ -158,7 +158,7 @@ public final class ResearchTableBlockEntity extends BlockEntity implements MenuP
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("container.thaumcraftmodern.research_table");
+        return Component.translatable("container.thaumic_reborn.research_table");
     }
 
     @Override

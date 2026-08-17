@@ -1,0 +1,87 @@
+{
+  "id": "golemstraw",
+  "legacy_id": "GOLEMSTRAW",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:straw_golem",
+  "title": "tc.research_name.GOLEMSTRAW",
+  "subtitle": "tc.research_text.GOLEMSTRAW",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "hungrychest"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMSTRAW.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMSTRAW.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemstraw"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMSTRAW.3"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": 2,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 0)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [
+      "COREGATHER",
+      "GOLEMBELL"
+    ],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 3
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "messis",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMSTRAW\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 3).add(Aspect.MOTION, 3).add(Aspect.CROP, 3).add(Aspect.EXCHANGE, 3), 0, 2, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 0))).setPages(new ResearchPage(\"tc.research_page.GOLEMSTRAW.1\"), new ResearchPage(\"tc.research_page.GOLEMSTRAW.2\"), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemStraw\")), new ResearchPage(\"tc.research_page.GOLEMSTRAW.3\")).setSiblings(\"COREGATHER\", \"GOLEMBELL\").setParents(\"HUNGRYCHEST\").registerResearchItem()"
+  }
+}

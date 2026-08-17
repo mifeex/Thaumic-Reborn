@@ -1,0 +1,16 @@
+{
+  "research": "golemwood",
+  "catalyst": {
+    "item": "thaumic_reborn:greatwood_log"
+  },
+  "output": {
+    "item": "thaumic_reborn:wood_golem"
+  },
+  "aspects": {
+    "humanus": 4,
+    "motus": 4,
+    "spiritus": 4
+  },
+  "legacy_id": "GolemWood",
+  "inactive": false
+}

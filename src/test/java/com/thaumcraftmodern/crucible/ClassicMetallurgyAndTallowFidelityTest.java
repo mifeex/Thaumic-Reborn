@@ -35,7 +35,7 @@ final class ClassicMetallurgyAndTallowFidelityTest {
             assertEquals(1.0F, smelting.get("experience").getAsFloat());
 
             JsonObject blasting = recipe("native_" + metal + "_cluster_blasting");
-            assertEquals("thaumcraftmodern:double_blasting",
+            assertEquals("thaumic_reborn:double_blasting",
                     blasting.get("type").getAsString());
             assertEquals(2, blasting.get("count").getAsInt());
             assertEquals(100, blasting.get("cookingtime").getAsInt());
@@ -65,11 +65,11 @@ final class ClassicMetallurgyAndTallowFidelityTest {
                 "transsilver", "translead"
         }) {
             JsonObject research = json(ROOT.resolve(
-                    "data/thaumcraftmodern/thaumcraft/research/legacy/" + id + ".json"));
+                    "data/thaumic_reborn/thaumcraft/research/legacy/" + id + ".json"));
             assertFalse(research.get("inactive").getAsBoolean(), id);
             assertTrue(research.getAsJsonArray("pages").toString()
-                    .contains("thaumcraftmodern:" + id), id);
-            assertFalse("thaumcraftmodern:thaumonomicon".equals(
+                    .contains("thaumic_reborn:" + id), id);
+            assertFalse("thaumic_reborn:thaumonomicon".equals(
                     research.get("icon").getAsString()), id);
         }
     }
@@ -78,13 +78,13 @@ final class ClassicMetallurgyAndTallowFidelityTest {
     void metallurgyAndTallowResearchUseTheirActualTc4ContentIcons() throws IOException {
         for (String metal : new String[]{"iron", "gold", "copper", "tin", "silver", "lead"}) {
             JsonObject research = json(ROOT.resolve(
-                    "data/thaumcraftmodern/thaumcraft/research/legacy/pure" + metal + ".json"));
-            assertEquals("thaumcraftmodern:native_" + metal + "_cluster",
+                    "data/thaumic_reborn/thaumcraft/research/legacy/pure" + metal + ".json"));
+            assertEquals("thaumic_reborn:native_" + metal + "_cluster",
                     research.get("icon").getAsString());
         }
         JsonObject tallow = json(ROOT.resolve(
-                "data/thaumcraftmodern/thaumcraft/research/legacy/tallow.json"));
-        assertEquals("thaumcraftmodern:thaumic_tallow",
+                "data/thaumic_reborn/thaumcraft/research/legacy/tallow.json"));
+        assertEquals("thaumic_reborn:thaumic_tallow",
                 tallow.get("icon").getAsString());
     }
 
@@ -97,11 +97,11 @@ final class ClassicMetallurgyAndTallowFidelityTest {
     }
 
     private static JsonObject crucible(String id) throws IOException {
-        return json(ROOT.resolve("data/thaumcraftmodern/thaumcraft/crucible_recipes/" + id + ".json"));
+        return json(ROOT.resolve("data/thaumic_reborn/thaumcraft/crucible_recipes/" + id + ".json"));
     }
 
     private static JsonObject recipe(String id) throws IOException {
-        return json(ROOT.resolve("data/thaumcraftmodern/recipes/" + id + ".json"));
+        return json(ROOT.resolve("data/thaumic_reborn/recipes/" + id + ".json"));
     }
 
     private static JsonObject json(Path path) throws IOException {

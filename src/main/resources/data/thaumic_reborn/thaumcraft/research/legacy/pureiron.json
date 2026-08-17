@@ -1,0 +1,71 @@
+{
+  "id": "pureiron",
+  "legacy_id": "PUREIRON",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:native_iron_cluster",
+  "title": "tc.research_name.PUREIRON",
+  "subtitle": "tc.research_text.PUREIRON",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "thaumium"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -48,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PUREIRON.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:pureiron",
+      "legacy_type": "recipe",
+      "legacy_content": "PureIron",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"PureIron\"))"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -2,
+    "y": 5,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemNugget, 1, 16)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"PUREIRON\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.ORDER, 3), -2, 5, 1, new ItemStack(ConfigItems.itemNugget, 1, 16))).setPages(new ResearchPage(\"tc.research_page.PUREIRON.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"PureIron\"))).setConcealed().setParents(\"THAUMIUM\").registerResearchItem()"
+  }
+}

@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class CrystalClusterFidelityTest {
     private static final Path ROOT = Path.of("src/main");
     private static final Path ASSETS = ROOT.resolve(
-            "resources/assets/thaumcraftmodern"
+            "resources/assets/thaumic_reborn"
     );
     private static final Path RECIPES = ROOT.resolve(
-            "resources/data/thaumcraftmodern/recipes"
+            "resources/data/thaumic_reborn/recipes"
     );
     private static final List<String> VARIANTS = List.of(
             "air", "fire", "water", "earth", "order", "entropy"
@@ -89,11 +89,11 @@ final class CrystalClusterFidelityTest {
             JsonArray ingredients = recipe.getAsJsonArray("ingredients");
             assertEquals(6, ingredients.size());
             ingredients.forEach(ingredient -> assertEquals(
-                    "thaumcraftmodern:" + variant + "_shard",
+                    "thaumic_reborn:" + variant + "_shard",
                     ingredient.getAsJsonObject().get("item").getAsString()
             ));
             assertEquals(
-                    "thaumcraftmodern:" + variant + "_crystal_cluster",
+                    "thaumic_reborn:" + variant + "_crystal_cluster",
                     recipe.getAsJsonObject("result").get("item").getAsString()
             );
         }
@@ -107,14 +107,14 @@ final class CrystalClusterFidelityTest {
                         .get("item").getAsString())
                 .toList();
         assertEquals(VARIANTS.stream()
-                .map(id -> "thaumcraftmodern:" + id + "_shard")
+                .map(id -> "thaumic_reborn:" + id + "_shard")
                 .toList(), ingredients);
     }
 
     @Test
     void oreResearchAndCreativeTabExposeAllSevenClusters() throws Exception {
         JsonObject research = json(ROOT.resolve(
-                "resources/data/thaumcraftmodern/thaumcraft/research/legacy/ore.json"
+                "resources/data/thaumic_reborn/thaumcraft/research/legacy/ore.json"
         ));
         List<JsonObject> recipePages = research.getAsJsonArray("pages").asList()
                 .stream()
@@ -124,7 +124,7 @@ final class CrystalClusterFidelityTest {
         assertEquals(1, recipePages.size());
         JsonObject recipePage = recipePages.get(0);
         assertEquals(
-                "thaumcraftmodern:air_crystal_cluster",
+                "thaumic_reborn:air_crystal_cluster",
                 recipePage.get("recipe").getAsString()
         );
         List<String> recipeIds = recipePage.getAsJsonArray("recipes").asList()
@@ -132,13 +132,13 @@ final class CrystalClusterFidelityTest {
                 .map(element -> element.getAsString())
                 .toList();
         assertEquals(List.of(
-                "thaumcraftmodern:air_crystal_cluster",
-                "thaumcraftmodern:fire_crystal_cluster",
-                "thaumcraftmodern:water_crystal_cluster",
-                "thaumcraftmodern:earth_crystal_cluster",
-                "thaumcraftmodern:order_crystal_cluster",
-                "thaumcraftmodern:entropy_crystal_cluster",
-                "thaumcraftmodern:balanced_crystal_cluster"
+                "thaumic_reborn:air_crystal_cluster",
+                "thaumic_reborn:fire_crystal_cluster",
+                "thaumic_reborn:water_crystal_cluster",
+                "thaumic_reborn:earth_crystal_cluster",
+                "thaumic_reborn:order_crystal_cluster",
+                "thaumic_reborn:entropy_crystal_cluster",
+                "thaumic_reborn:balanced_crystal_cluster"
         ), recipeIds);
 
         String screen = source(
@@ -211,7 +211,7 @@ final class CrystalClusterFidelityTest {
                 ASSETS.resolve("models/block/crystal_cluster_particles.json")
         );
         assertEquals(
-                "thaumcraftmodern:block/crystal",
+                "thaumic_reborn:block/crystal",
                 particleModel.getAsJsonObject("textures")
                         .get("particle").getAsString()
         );

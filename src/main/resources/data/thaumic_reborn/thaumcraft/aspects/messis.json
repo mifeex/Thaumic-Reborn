@@ -1,0 +1,10 @@
+{
+  "id": "messis",
+  "order": 360,
+  "color": "E1B371",
+  "icon": "thaumic_reborn:textures/aspects/messis.png",
+  "components": [
+    "herba",
+    "humanus"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focalmanipulation",
+  "vis": {
+    "ignis": 32,
+    "aer": 32,
+    "perditio": 32,
+    "terra": 32,
+    "aqua": 32,
+    "ordo": 32
+  },
+  "pattern": [
+    "IQI",
+    "SPS",
+    "GTG"
+  ],
+  "key": {
+    "Q": {
+      "item": "thaumic_reborn:arcane_stone_slab"
+    },
+    "S": {
+      "item": "thaumic_reborn:arcane_stone"
+    },
+    "T": {
+      "item": "thaumic_reborn:thaumcraft_table"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "thaumic_reborn:primal_charm"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focal_manipulator"
+  }
+}

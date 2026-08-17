@@ -1,9 +1,0 @@
-{
-  "type":"item",
-  "target":"thaumcraftmodern:mana_bean",
-  "display":"item.thaumcraftmodern.mana_bean",
-  "aspects":[
-    {"id":"praecantatio","amount":2},
-    {"id":"herba","amount":1}
-  ]
-}

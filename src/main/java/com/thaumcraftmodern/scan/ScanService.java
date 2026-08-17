@@ -31,19 +31,19 @@ public final class ScanService {
         ScanDefinition definition = ScanRegistry.find(target.type(), target.targetId()).orElse(null);
         if (definition == null) {
             playCameraClack(player, target.effectPosition(player));
-            sendFailure(player, "message.thaumcraftmodern.scan.unknown", "");
+            sendFailure(player, "message.thaumic_reborn.scan.unknown", "");
             return;
         }
         Optional<AuraNodeScanResult> nodeResult = nodeResult(player, target);
         if (target instanceof ScanSessionManager.NodeTarget && nodeResult.isEmpty()) {
             playCameraClack(player, target.effectPosition(player));
-            sendFailure(player, "message.thaumcraftmodern.scan.error.invalid_target", "");
+            sendFailure(player, "message.thaumic_reborn.scan.error.invalid_target", "");
             return;
         }
         ScanDefinition effectiveDefinition = effectiveDefinition(definition, nodeResult);
         if (effectiveDefinition.aspects().isEmpty()) {
             playCameraClack(player, target.effectPosition(player));
-            sendFailure(player, "message.thaumcraftmodern.scan.error.invalid_target", "");
+            sendFailure(player, "message.thaumic_reborn.scan.error.invalid_target", "");
             return;
         }
 
@@ -52,7 +52,7 @@ public final class ScanService {
                 AspectDefinition aspect = AspectRegistryRuntime.find(reward.aspectId()).orElse(null);
                 if (aspect == null) {
                     playCameraClack(player, target.effectPosition(player));
-                    sendFailure(player, "message.thaumcraftmodern.scan.unknown", "");
+                    sendFailure(player, "message.thaumic_reborn.scan.unknown", "");
                     return;
                 }
             }
@@ -65,8 +65,8 @@ public final class ScanService {
                 playCameraClack(player, target.effectPosition(player));
                 sendFailure(
                         player,
-                        "message.thaumcraftmodern.scan.error.missing_parent",
-                        "aspect.thaumcraftmodern." + missingAspect.get()
+                        "message.thaumic_reborn.scan.error.missing_parent",
+                        "aspect.thaumic_reborn." + missingAspect.get()
                 );
                 return;
             }
@@ -101,7 +101,7 @@ public final class ScanService {
             KnowledgeSync.send(player, "scan:" + knowledgeKey);
             ModNetwork.sendTo(player, new ScanFeedbackPacket(
                     true,
-                    "message.thaumcraftmodern.scan.success",
+                    "message.thaumic_reborn.scan.success",
                     displayKey(effectiveDefinition, target),
                     aspectGains,
                     nodeResult.map(ScanFeedbackPacket.NodeData::from)
@@ -122,7 +122,7 @@ public final class ScanService {
                 );
                 playCameraClack(player, position);
             }
-        }, () -> sendFailure(player, "message.thaumcraftmodern.scan.error.no_knowledge", ""));
+        }, () -> sendFailure(player, "message.thaumic_reborn.scan.error.no_knowledge", ""));
     }
 
     private static Optional<AuraNodeScanResult> nodeResult(

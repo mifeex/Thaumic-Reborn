@@ -1,8 +1,0 @@
-{
-  "loader":"thaumcraftmodern:reload_safe_obj",
-  "flip_v":true,
-  "automatic_culling":false,
-  "transform":{"translation":[0.5,0.5,0]},
-  "model":"thaumcraftmodern:textures/models/crystalizer.obj",
-  "textures":{"texture0":"thaumcraftmodern:block/crystalizer","particle":"thaumcraftmodern:block/crystalizer_particle"}
-}

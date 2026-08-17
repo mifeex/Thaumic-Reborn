@@ -1,0 +1,93 @@
+{
+  "id": "distilessentia",
+  "legacy_id": "DISTILESSENTIA",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:alchemical_furnace",
+  "title": "tc.research_name.DISTILESSENTIA",
+  "subtitle": "tc.research_text.DISTILESSENTIA",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "nitor",
+    "alumentum"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 120,
+  "y": -24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.DISTILESSENTIA.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:alchemy_furnace"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.DISTILESSENTIA.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:filter"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:alembic"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:alchemical_construct"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 5,
+    "y": -1,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockMetalDevice, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [
+      "JARLABEL"
+    ],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "limus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"DISTILESSENTIA\", \"ALCHEMY\", (new AspectList()).add(Aspect.MAGIC, 3).add(Aspect.WATER, 3).add(Aspect.SLIME, 3), 5, -1, 1, new ItemStack(ConfigBlocks.blockMetalDevice, 1, 1))).setPages(new ResearchPage(\"tc.research_page.DISTILESSENTIA.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"AlchemyFurnace\")), new ResearchPage(\"tc.research_page.DISTILESSENTIA.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"Filter\")), new ResearchPage((IArcaneRecipe)recipes.get(\"Alembic\")), new ResearchPage((IArcaneRecipe)recipes.get(\"AlchemicalConstruct\"))).setSiblings(\"JARLABEL\").setParents(\"NITOR\", \"ALUMENTUM\").registerResearchItem()"
+  }
+}

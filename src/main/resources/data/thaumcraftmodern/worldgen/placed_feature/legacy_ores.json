@@ -1,8 +1,0 @@
-{
-  "feature": "thaumcraftmodern:legacy_ores",
-  "placement": [
-    {
-      "type": "minecraft:biome"
-    }
-  ]
-}

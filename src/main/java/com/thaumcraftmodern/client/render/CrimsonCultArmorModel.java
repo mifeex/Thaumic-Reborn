@@ -35,7 +35,7 @@ public final class CrimsonCultArmorModel
     public static final ModelLayerLocation BOOTS_LAYER = layer("crimson_boots");
 
     private static final String MODEL_RESOURCE_ROOT =
-            "/assets/thaumcraftmodern/models/entity/";
+            "/assets/thaumic_reborn/models/entity/";
 
     public CrimsonCultArmorModel(ModelPart root) {
         super(root);

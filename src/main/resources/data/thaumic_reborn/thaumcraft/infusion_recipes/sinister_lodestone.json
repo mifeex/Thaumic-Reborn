@@ -1,0 +1,21 @@
+{
+  "research": "sinstone",
+  "instability": 5,
+  "central": {"item": "minecraft:flint"},
+  "components": [
+    {"item": "thaumic_reborn:quicksilver"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:entropy_shard"}
+  ],
+  "essentia": {
+    "sensus": 8,
+    "tenebrae": 8,
+    "alienis": 8,
+    "auram": 8
+  },
+  "result": {
+    "item": "thaumic_reborn:sinister_lodestone",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "research":"focushellbat",
+  "instability":3,
+  "central":{"item":"minecraft:magma_cream"},
+  "components":[
+    {"item":"minecraft:quartz"},{"item":"thaumic_reborn:fire_shard"},
+    {"item":"minecraft:quartz"},{"item":"thaumic_reborn:air_shard"},
+    {"item":"minecraft:quartz"},{"item":"thaumic_reborn:entropy_shard"}
+  ],
+  "result":{"item":"thaumic_reborn:focus_hellbat"},
+  "essentia":{"ignis":25,"aer":15,"bestia":15,"perditio":25}
+}

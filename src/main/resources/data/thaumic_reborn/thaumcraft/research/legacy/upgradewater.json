@@ -1,0 +1,76 @@
+{
+  "id": "upgradewater",
+  "legacy_id": "UPGRADEWATER",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_upgrade_aqua",
+  "title": "tc.research_name.UPGRADEWATER",
+  "subtitle": "tc.research_text.UPGRADEWATER",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golembell"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 120,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.UPGRADEWATER.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:upgrade_water"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "aqua",
+      "amount": 6
+    },
+    {
+      "id": "sensus",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 5,
+    "y": 1,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemUpgrade, 1, 3)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 6
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"UPGRADEWATER\", \"GOLEMANCY\", (new AspectList()).add(Aspect.WATER, 6).add(Aspect.SENSES, 3), 5, 1, 1, new ItemStack(ConfigItems.itemGolemUpgrade, 1, 3))).setPages(new ResearchPage(\"tc.research_page.UPGRADEWATER.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"UpgradeWater\"))).setConcealed().setSecondary().setParents(\"GOLEMBELL\").registerResearchItem()"
+  }
+}

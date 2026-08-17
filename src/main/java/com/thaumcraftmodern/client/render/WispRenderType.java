@@ -40,7 +40,7 @@ final class WispRenderType extends RenderStateShard {
     );
 
     private WispRenderType() {
-        super("thaumcraftmodern_wisp_render_type", () -> {
+        super("thaumic_reborn_wisp_render_type", () -> {
         }, () -> {
         });
     }

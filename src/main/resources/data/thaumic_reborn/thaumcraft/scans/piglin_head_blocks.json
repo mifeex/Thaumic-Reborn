@@ -1,0 +1,12 @@
+{
+  "type":"block_tag",
+  "target":"thaumic_reborn:piglin_head_blocks",
+  "knowledge_key":"thaumic_reborn:piglin_heads",
+  "display":"",
+  "aspects":[
+    {"id":"perditio","amount":2},
+    {"id":"victus","amount":1}
+  ],
+  "inactive":false,
+  "modern_rule":"Piglin head uses the current Piglin entity scan aspects."
+}

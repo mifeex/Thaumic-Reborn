@@ -1,0 +1,13 @@
+{
+  "research": "transcopper",
+  "catalyst": { "tag": "forge:nuggets/copper" },
+  "output": {
+    "item": "thaumic_reborn:copper_nugget",
+    "count": 3
+  },
+  "aspects": {
+    "metallum": 2,
+    "permutatio": 1
+  },
+  "legacy_id": "TransCopper"
+}

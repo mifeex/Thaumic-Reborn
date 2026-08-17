@@ -41,17 +41,17 @@ class AspectCatalogTest {
         assertThrows(IllegalArgumentException.class, () -> new AspectDefinition(
                 "invalid",
                 0x123456,
-                "thaumcraftmodern:textures/aspects/invalid.png",
+                "thaumic_reborn:textures/aspects/invalid.png",
                 List.of("aer")));
 
         AspectDefinition aer = new AspectDefinition(
                 "aer",
                 0xFFFF7E,
-                "thaumcraftmodern:textures/aspects/aer.png");
+                "thaumic_reborn:textures/aspects/aer.png");
         AspectDefinition invalidCompound = new AspectDefinition(
                 "invalid",
                 0x123456,
-                "thaumcraftmodern:textures/aspects/invalid.png",
+                "thaumic_reborn:textures/aspects/invalid.png",
                 "aer",
                 "missing");
 

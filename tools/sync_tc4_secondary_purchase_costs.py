@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(
-    "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+    "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
 )
 
 

@@ -1,0 +1,10 @@
+{
+  "id": "motus",
+  "order": 90,
+  "color": "CDCCF4",
+  "icon": "thaumic_reborn:textures/aspects/motus.png",
+  "components": [
+    "aer",
+    "ordo"
+  ]
+}

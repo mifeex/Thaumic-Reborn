@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "thaumic_reborn:tainted_lands",
+  "spawners": [
+    {
+      "type": "thaumic_reborn:taintacle",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+}

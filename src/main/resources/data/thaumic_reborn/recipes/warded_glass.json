@@ -1,0 +1,30 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "wardedarcana",
+  "vis": {
+    "aqua": 5,
+    "ordo": 10,
+    "terra": 5,
+    "ignis": 5
+  },
+  "pattern": [
+    "GGG",
+    "WBW",
+    "GGG"
+  ],
+  "key": {
+    "B": {
+      "item": "thaumic_reborn:zombie_brain"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "W": {
+      "item": "thaumic_reborn:greatwood_planks"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:warded_glass",
+    "count": 8
+  }
+}

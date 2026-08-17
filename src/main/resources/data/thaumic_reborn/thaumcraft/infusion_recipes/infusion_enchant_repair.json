@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 4,
+  "components": [
+    {
+      "item": "minecraft:anvil"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 8,
+    "fabrico": 10,
+    "ordo": 10
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "thaumic_reborn:repair"
+  }
+}

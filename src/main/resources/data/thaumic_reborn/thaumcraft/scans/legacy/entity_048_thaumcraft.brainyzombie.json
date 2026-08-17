@@ -1,0 +1,48 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:angry_zombie",
+  "display": "",
+  "aspects": [
+    {
+      "id": "exanimis",
+      "amount": 3
+    },
+    {
+      "id": "humanus",
+      "amount": 1
+    },
+    {
+      "id": "cognitio",
+      "amount": 1
+    },
+    {
+      "id": "terra",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.BrainyZombie",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "exanimis",
+        "amount": 3
+      },
+      {
+        "id": "humanus",
+        "amount": 1
+      },
+      {
+        "id": "cognitio",
+        "amount": 1
+      },
+      {
+        "id": "terra",
+        "amount": 1
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.BrainyZombie\", (new AspectList()).add(Aspect.UNDEAD, 3).add(Aspect.MAN, 1).add(Aspect.MIND, 1).add(Aspect.EARTH, 1))"
+  }
+}

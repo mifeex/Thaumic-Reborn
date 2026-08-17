@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "jarvoid",
+  "vis": {
+    "aqua": 5,
+    "perditio": 15
+  },
+  "pattern": [
+    "O",
+    "J",
+    "P"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "J": {
+      "item": "thaumic_reborn:warded_jar"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:void_jar"
+  }
+}

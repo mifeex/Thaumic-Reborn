@@ -1,0 +1,10 @@
+{
+  "id": "vitreus",
+  "order": 110,
+  "color": "80FFFF",
+  "icon": "thaumic_reborn:textures/aspects/vitreus.png",
+  "components": [
+    "terra",
+    "ordo"
+  ]
+}

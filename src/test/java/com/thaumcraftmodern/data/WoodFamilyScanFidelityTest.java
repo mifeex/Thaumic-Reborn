@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class WoodFamilyScanFidelityTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path SCANS = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy"
     );
     private static final Path BLOCK_TAGS = ROOT.resolve(
             "src/main/resources/data/minecraft/tags/blocks"
@@ -31,9 +31,9 @@ final class WoodFamilyScanFidelityTest {
         assertTagContains("logs.json", Set.of(
                 "#minecraft:bamboo_blocks",
                 "minecraft:bamboo",
-                "thaumcraftmodern:greatwood_log",
-                "thaumcraftmodern:silverwood_log",
-                "thaumcraftmodern:silverwood_node"
+                "thaumic_reborn:greatwood_log",
+                "thaumic_reborn:silverwood_log",
+                "thaumic_reborn:silverwood_node"
         ));
     }
 
@@ -48,18 +48,18 @@ final class WoodFamilyScanFidelityTest {
 
         assertTagContains("planks.json", Set.of(
                 "minecraft:bamboo_mosaic",
-                "thaumcraftmodern:greatwood_planks",
-                "thaumcraftmodern:silverwood_planks"
+                "thaumic_reborn:greatwood_planks",
+                "thaumic_reborn:silverwood_planks"
         ));
         assertTagContains("wooden_slabs.json", Set.of(
                 "minecraft:bamboo_mosaic_slab",
-                "thaumcraftmodern:greatwood_slab",
-                "thaumcraftmodern:silverwood_slab"
+                "thaumic_reborn:greatwood_slab",
+                "thaumic_reborn:silverwood_slab"
         ));
         assertTagContains("wooden_stairs.json", Set.of(
                 "minecraft:bamboo_mosaic_stairs",
-                "thaumcraftmodern:greatwood_stairs",
-                "thaumcraftmodern:silverwood_stairs"
+                "thaumic_reborn:greatwood_stairs",
+                "thaumic_reborn:silverwood_stairs"
         ));
     }
 
@@ -68,9 +68,9 @@ final class WoodFamilyScanFidelityTest {
         assertTagScan("object_008_treeleaves.json", "minecraft:leaves",
                 Map.of("herba", 1));
         assertTagContains("leaves.json", Set.of(
-                "thaumcraftmodern:greatwood_leaves",
-                "thaumcraftmodern:silverwood_leaves",
-                "thaumcraftmodern:tainted_leaves"
+                "thaumic_reborn:greatwood_leaves",
+                "thaumic_reborn:silverwood_leaves",
+                "thaumic_reborn:tainted_leaves"
         ));
     }
 
@@ -80,8 +80,8 @@ final class WoodFamilyScanFidelityTest {
                 Map.of("arbor", 1, "herba", 2));
         assertTagContains("saplings.json", Set.of(
                 "minecraft:bamboo_sapling",
-                "thaumcraftmodern:greatwood_sapling",
-                "thaumcraftmodern:silverwood_sapling"
+                "thaumic_reborn:greatwood_sapling",
+                "thaumic_reborn:silverwood_sapling"
         ));
     }
 

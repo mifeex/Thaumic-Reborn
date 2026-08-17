@@ -1,0 +1,50 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:reed_staff_rod",
+  "display": "",
+  "aspects": [
+    {
+      "id": "praecantatio",
+      "amount": 3
+    },
+    {
+      "id": "aer",
+      "amount": 10
+    },
+    {
+      "id": "vitreus",
+      "amount": 5
+    },
+    {
+      "id": "ignis",
+      "amount": 7
+    },
+    {
+      "id": "aqua",
+      "amount": 7
+    },
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "lucrum",
+      "amount": 2
+    },
+    {
+      "id": "terra",
+      "amount": 7
+    },
+    {
+      "id": "ordo",
+      "amount": 10
+    },
+    {
+      "id": "perditio",
+      "amount": 7
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/wand_rod_reed_staff.json"
+}

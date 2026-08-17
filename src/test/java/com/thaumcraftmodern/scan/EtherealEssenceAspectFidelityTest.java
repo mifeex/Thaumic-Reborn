@@ -11,16 +11,16 @@ final class EtherealEssenceAspectFidelityTest {
     @Test
     void eachStoredAspectHasIndependentScanKnowledge() {
         assertEquals(
-                "item:thaumcraftmodern:ethereal_essence#aspect=ignis",
+                "item:thaumic_reborn:ethereal_essence#aspect=ignis",
                 ScanRegistry.etherealEssenceKnowledgeKey(
-                        "item:thaumcraftmodern:ethereal_essence",
+                        "item:thaumic_reborn:ethereal_essence",
                         Optional.of("ignis")
                 )
         );
         assertEquals(
-                "item:thaumcraftmodern:ethereal_essence#aspect=ordo",
+                "item:thaumic_reborn:ethereal_essence#aspect=ordo",
                 ScanRegistry.etherealEssenceKnowledgeKey(
-                        "item:thaumcraftmodern:ethereal_essence",
+                        "item:thaumic_reborn:ethereal_essence",
                         Optional.of("ordo")
                 )
         );
@@ -30,7 +30,7 @@ final class EtherealEssenceAspectFidelityTest {
     void storedAspectIsAddedToRegisteredObjectAspects() {
         ScanDefinition base = new ScanDefinition(
                 ScanTargetType.ITEM,
-                "thaumcraftmodern:ethereal_essence",
+                "thaumic_reborn:ethereal_essence",
                 "",
                 List.of(new AspectReward("auram", 2))
         );
@@ -52,7 +52,7 @@ final class EtherealEssenceAspectFidelityTest {
     void matchingStoredAspectMergesInsteadOfDuplicatingIcon() {
         ScanDefinition base = new ScanDefinition(
                 ScanTargetType.ITEM,
-                "thaumcraftmodern:ethereal_essence",
+                "thaumic_reborn:ethereal_essence",
                 "",
                 List.of(new AspectReward("auram", 2))
         );

@@ -1,0 +1,58 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:alchemical_furnace",
+  "display": "",
+  "aspects": [
+    {
+      "id": "praecantatio",
+      "amount": 8
+    },
+    {
+      "id": "aqua",
+      "amount": 8
+    },
+    {
+      "id": "fabrico",
+      "amount": 8
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockAlchemyFurnace, 1, 32767)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 8
+      },
+      {
+        "id": "aqua",
+        "amount": 8
+      },
+      {
+        "id": "fabrico",
+        "amount": 8
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "praecantatio",
+        "amount": 8
+      },
+      {
+        "operation": "add",
+        "id": "aqua",
+        "amount": 8
+      },
+      {
+        "operation": "add",
+        "id": "fabrico",
+        "amount": 8
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockAlchemyFurnace, 1, 32767), (new AspectList()).add(Aspect.MAGIC, 8).add(Aspect.WATER, 8).add(Aspect.CRAFT, 8))"
+  }
+}

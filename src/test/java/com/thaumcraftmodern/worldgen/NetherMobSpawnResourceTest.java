@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 final class NetherMobSpawnResourceTest {
     private static final Path RESOURCE = Path.of(
-            "src/main/resources/data/thaumcraftmodern/forge/biome_modifier/"
+            "src/main/resources/data/thaumic_reborn/forge/biome_modifier/"
                     + "add_nether_mobs.json"
     );
 
@@ -25,13 +25,13 @@ final class NetherMobSpawnResourceTest {
                 modifier.get("biomes").getAsString());
 
         JsonObject wisp = spawn(modifier.getAsJsonArray("spawners"),
-                "thaumcraftmodern:wisp");
+                "thaumic_reborn:wisp");
         assertEquals(1, wisp.get("weight").getAsInt());
         assertEquals(1, wisp.get("minCount").getAsInt());
         assertEquals(1, wisp.get("maxCount").getAsInt());
 
         JsonObject firebat = spawn(modifier.getAsJsonArray("spawners"),
-                "thaumcraftmodern:firebat");
+                "thaumic_reborn:firebat");
         assertEquals(10, firebat.get("weight").getAsInt());
     }
 

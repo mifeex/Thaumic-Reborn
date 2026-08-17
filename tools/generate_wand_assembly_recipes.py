@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RECIPES = ROOT / "src/main/resources/data/thaumcraftmodern/recipes"
+RECIPES = ROOT / "src/main/resources/data/thaumic_reborn/recipes"
 CAPS = ("iron", "copper", "gold", "silver", "thaumium", "void")
 WAND_RODS = (
     "wood", "greatwood", "obsidian", "silverwood", "ice", "quartz",
@@ -22,7 +22,7 @@ STAFF_RODS = (
 def write_recipe(name: str, recipe_type: str, rod: str, cap: str) -> None:
     path = RECIPES / f"{name}.json"
     path.write_text(json.dumps({
-        "type": f"thaumcraftmodern:{recipe_type}",
+        "type": f"thaumic_reborn:{recipe_type}",
         "rod": rod,
         "cap": cap,
     }, indent=2) + "\n", encoding="utf-8")

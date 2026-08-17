@@ -1,0 +1,24 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:dead_bush"
+    },
+    {
+      "item": "minecraft:quartz"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "telum": 8,
+    "herba": 8
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:thorns"
+  }
+}

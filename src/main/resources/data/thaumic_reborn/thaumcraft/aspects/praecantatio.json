@@ -1,0 +1,10 @@
+{
+  "id": "praecantatio",
+  "order": 240,
+  "color": "9700C0",
+  "icon": "thaumic_reborn:textures/aspects/praecantatio.png",
+  "components": [
+    "vacuos",
+    "potentia"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:essentia_buffer",
+  "display": "block.thaumic_reborn.essentia_buffer",
+  "aspects": [
+    { "id": "aqua", "amount": 5 },
+    { "id": "ordo", "amount": 3 },
+    { "id": "terra", "amount": 3 },
+    { "id": "vacuos", "amount": 3 }
+  ]
+}

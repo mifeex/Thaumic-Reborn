@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CompoundRechargeFocusModelFidelityTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path ASSETS = ROOT.resolve(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
     private static final Path ORIGINAL = ROOT.resolve(
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft");
 
@@ -25,7 +25,7 @@ class CompoundRechargeFocusModelFidelityTest {
         byte[] expected = new String(original, java.nio.charset.StandardCharsets.UTF_8)
                 .replace("\"parent\": \"block/block\"",
                         "\"parent\": \"minecraft:block/block\"")
-                .replace("thaumcraft:blocks/", "thaumcraftmodern:block/")
+                .replace("thaumcraft:blocks/", "thaumic_reborn:block/")
                 .getBytes(java.nio.charset.StandardCharsets.UTF_8);
         assertArrayEquals(expected, Files.readAllBytes(
                 ASSETS.resolve("models/block/compound_recharge_focus.json")));

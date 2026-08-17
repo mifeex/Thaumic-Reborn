@@ -55,7 +55,7 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
     private AdvancedBufferFlowController.Snapshot controller =
             AdvancedBufferFlowController.Snapshot.idle();
     private String blockedReasonKey =
-            "diagnostic.thaumcraftmodern.advanced_buffer.ok";
+            "diagnostic.thaumic_reborn.advanced_buffer.ok";
     private int tickCount;
     private int mainOutputMissTicks;
 
@@ -218,14 +218,14 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
     public String diagnosticReasonKey() {
         if (controller.state() == AdvancedBufferFlowController.State.BLOCKED) {
             if (sideFor(AdvancedBufferSideRole.MAIN_OUTPUT) == null) {
-                return "diagnostic.thaumcraftmodern.advanced_buffer.no_main";
+                return "diagnostic.thaumic_reborn.advanced_buffer.no_main";
             }
             if (sideFor(AdvancedBufferSideRole.RESERVE_OUTPUT) == null) {
-                return "diagnostic.thaumcraftmodern.advanced_buffer.no_reserve";
+                return "diagnostic.thaumic_reborn.advanced_buffer.no_reserve";
             }
             return blockedReasonKey;
         }
-        return "diagnostic.thaumcraftmodern.advanced_buffer.ok";
+        return "diagnostic.thaumic_reborn.advanced_buffer.ok";
     }
 
     @Override
@@ -368,7 +368,7 @@ public final class AdvancedEssentiaBufferBlockEntity extends BlockEntity
         }
         String reason = tag.getString("BlockedReason");
         blockedReasonKey = reason.isBlank()
-                ? "diagnostic.thaumcraftmodern.advanced_buffer.ok" : reason;
+                ? "diagnostic.thaumic_reborn.advanced_buffer.ok" : reason;
     }
 
     private void trimCapacity() {

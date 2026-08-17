@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": {"type": "minecraft:uniform", "min": 1, "max": 3},
+      "conditions": [{"condition": "minecraft:block_state_property", "block": "thaumic_reborn:loot_crate", "properties": {"type": "0"}}],
+      "entries": [{"type": "minecraft:loot_table", "name": "thaumic_reborn:chests/legacy_mound"}]
+    },
+    {
+      "rolls": {"type": "minecraft:uniform", "min": 2, "max": 4},
+      "conditions": [{"condition": "minecraft:block_state_property", "block": "thaumic_reborn:loot_crate", "properties": {"type": "1"}}],
+      "entries": [{"type": "minecraft:loot_table", "name": "thaumic_reborn:chests/legacy_mound"}]
+    },
+    {
+      "rolls": {"type": "minecraft:uniform", "min": 3, "max": 5},
+      "conditions": [{"condition": "minecraft:block_state_property", "block": "thaumic_reborn:loot_crate", "properties": {"type": "2"}}],
+      "entries": [{"type": "minecraft:loot_table", "name": "thaumic_reborn:chests/legacy_mound"}]
+    }
+  ]
+}

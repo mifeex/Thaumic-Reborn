@@ -83,7 +83,7 @@ ClassicScreenBackground.render(graphics, width, height);
 
 Положение самих исследований задаётся без изменения Java-кода в:
 
-`src/main/resources/data/thaumcraftmodern/thaumcraft/research/*.json`
+`src/main/resources/data/thaumic_reborn/thaumcraft/research/*.json`
 
 Поля `x` и `y` считаются от центра дерева:
 

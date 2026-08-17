@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": { "layer0": "thaumic_reborn:item/bauble_ring" }
+}

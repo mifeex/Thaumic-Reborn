@@ -42,14 +42,14 @@ class CuriosAccessoryFidelityTest {
     @Test
     void curiosDefinesClassicPlayerSlotsAndAssignments() throws Exception {
         JsonObject slots = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/curios/entities/players.json"));
+                "src/main/resources/data/thaumic_reborn/curios/entities/players.json"));
         assertTrue(slots.getAsJsonArray("slots").asList().stream()
                 .anyMatch(value -> value.getAsString().equals("necklace")));
         assertTrue(slots.getAsJsonArray("slots").asList().stream()
                 .anyMatch(value -> value.getAsString().equals("belt")));
 
         JsonObject ringSlot = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/curios/slots/ring.json"));
+                "src/main/resources/data/thaumic_reborn/curios/slots/ring.json"));
         assertEquals(2, ringSlot.get("size").getAsInt());
 
         JsonObject rings = json(Path.of(
@@ -60,7 +60,7 @@ class CuriosAccessoryFidelityTest {
                 "src/main/resources/data/curios/tags/items/necklace.json"));
         assertTrue(necklaces.getAsJsonArray("values").asList().stream()
                 .anyMatch(value -> value.getAsString()
-                        .equals("thaumcraftmodern:vis_storage_amulet")));
+                        .equals("thaumic_reborn:vis_storage_amulet")));
     }
 
     @Test
@@ -73,18 +73,18 @@ class CuriosAccessoryFidelityTest {
     void visStorageResearchAndRecipeAreExecutableAndSynchronized()
             throws Exception {
         JsonObject research = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/visamulet.json"));
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/visamulet.json"));
         JsonObject recipe = json(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/vis_storage_amulet.json"));
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/vis_storage_amulet.json"));
 
         assertFalse(research.get("inactive").getAsBoolean());
         JsonObject page = research.getAsJsonArray("pages").get(1)
                 .getAsJsonObject();
         assertEquals("infusion", page.get("type").getAsString());
-        assertEquals("thaumcraftmodern:vis_storage_amulet",
+        assertEquals("thaumic_reborn:vis_storage_amulet",
                 page.get("recipe").getAsString());
         assertEquals(6, recipe.get("instability").getAsInt());
-        assertEquals("thaumcraftmodern:mundane_amulet",
+        assertEquals("thaumic_reborn:mundane_amulet",
                 recipe.getAsJsonObject("central").get("item").getAsString());
         assertEquals(6, recipe.getAsJsonArray("components").size());
         assertEquals(24, recipe.getAsJsonObject("essentia")
@@ -114,7 +114,7 @@ class CuriosAccessoryFidelityTest {
                     expected = stream.readAllBytes();
                 }
                 try (InputStream packaged = getClass().getResourceAsStream(
-                        "/assets/thaumcraftmodern/textures/item/" + texture)) {
+                        "/assets/thaumic_reborn/textures/item/" + texture)) {
                     assertNotNull(packaged, texture);
                     assertArrayEquals(hash(expected), hash(packaged.readAllBytes()),
                             texture);

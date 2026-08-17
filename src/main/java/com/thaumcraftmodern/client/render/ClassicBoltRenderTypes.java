@@ -16,7 +16,7 @@ final class ClassicBoltRenderTypes extends RenderStateShard {
             new ConcurrentHashMap<>();
 
     private ClassicBoltRenderTypes() {
-        super("thaumcraftmodern_classic_bolt_render_types", () -> {}, () -> {});
+        super("thaumic_reborn_classic_bolt_render_types", () -> {}, () -> {});
     }
 
     static RenderType bolt(ResourceLocation texture, boolean additive) {

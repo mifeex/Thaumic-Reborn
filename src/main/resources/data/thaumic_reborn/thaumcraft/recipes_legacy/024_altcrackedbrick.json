@@ -1,0 +1,21 @@
+{
+  "id": "altcrackedbrick",
+  "legacy_id": "AltCrackedBrick",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:altcrackedbrick"
+  ],
+  "required_aspects": [
+    {
+      "id": "perditio",
+      "amount": 2
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"ENTROPICPROCESSING\", new ItemStack(Blocks.field_150417_aV, 1, 2), new ItemStack(Blocks.field_150417_aV), (new AspectList()).merge(Aspect.ENTROPY, 2))",
+    "source_statement": "ConfigResearch.recipes.put(\"AltCrackedBrick\", ThaumcraftApi.addCrucibleRecipe(\"ENTROPICPROCESSING\", new ItemStack(Blocks.field_150417_aV, 1, 2), new ItemStack(Blocks.field_150417_aV), (new AspectList()).merge(Aspect.ENTROPY, 2)))",
+    "unkeyed": false
+  }
+}

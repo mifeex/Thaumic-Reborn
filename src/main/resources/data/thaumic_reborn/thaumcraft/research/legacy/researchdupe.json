@@ -1,0 +1,74 @@
+{
+  "id": "researchdupe",
+  "legacy_id": "RESEARCHDUPE",
+  "category": "basics",
+  "icon": "thaumic_reborn:thaumonomicon",
+  "title": "tc.research_name.RESEARCHDUPE",
+  "subtitle": "tc.research_text.RESEARCHDUPE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "researcher2"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCHDUPE.1"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 4,
+    "y": 5,
+    "complexity": 3,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_resdupe.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "cognitio",
+        "amount": 6
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      },
+      {
+        "id": "lucrum",
+        "amount": 3
+      },
+      {
+        "id": "fabrico",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"RESEARCHDUPE\", \"BASICS\", (new AspectList()).add(Aspect.MIND, 6).add(Aspect.EXCHANGE, 3).add(Aspect.SENSES, 3).add(Aspect.GREED, 3).add(Aspect.CRAFT, 3), 4, 5, 3, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_resdupe.png\"))).setPages(new ResearchPage(\"tc.research_page.RESEARCHDUPE.1\")).setRound().setParents(\"RESEARCHER2\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:mana_pod",
+  "display":"block.thaumic_reborn.mana_pod",
+  "aspects":[
+    {"id":"herba","amount":2},
+    {"id":"praecantatio","amount":2},
+    {"id":"messis","amount":1}
+  ]
+}

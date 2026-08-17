@@ -1,0 +1,89 @@
+{
+  "id": "focusprimal",
+  "legacy_id": "FOCUSPRIMAL",
+  "category": "eldritch",
+  "completion_warp": 2,
+  "icon": "thaumic_reborn:focus_primal",
+  "title": "tc.research_name.FOCUSPRIMAL",
+  "subtitle": "tc.research_text.FOCUSPRIMAL",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "eldritchminor"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.FOCUSPRIMAL.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:focus_primal"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": 1,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemFocusPrimal)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aer",
+        "amount": 6
+      },
+      {
+        "id": "aqua",
+        "amount": 6
+      },
+      {
+        "id": "ignis",
+        "amount": 6
+      },
+      {
+        "id": "terra",
+        "amount": 6
+      },
+      {
+        "id": "ordo",
+        "amount": 6
+      },
+      {
+        "id": "perditio",
+        "amount": 6
+      },
+      {
+        "id": "praecantatio",
+        "amount": 6
+      }
+    ],
+    "warp": [
+      2
+    ],
+    "source_expression": "(new ResearchItem(\"FOCUSPRIMAL\", \"ELDRITCH\", (new AspectList()).add(Aspect.AIR, 6).add(Aspect.WATER, 6).add(Aspect.FIRE, 6).add(Aspect.EARTH, 6).add(Aspect.ORDER, 6).add(Aspect.ENTROPY, 6).add(Aspect.MAGIC, 6), 4, 1, 2, new ItemStack(ConfigItems.itemFocusPrimal))).setPages(new ResearchPage(\"tc.research_page.FOCUSPRIMAL.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"FocusPrimal\"))).setConcealed().setParents(\"ELDRITCHMINOR\").registerResearchItem()"
+  }
+}

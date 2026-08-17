@@ -1,0 +1,16 @@
+{
+  "research": "golemstone",
+  "catalyst": {
+    "item": "minecraft:stone_bricks"
+  },
+  "output": {
+    "item": "thaumic_reborn:stone_golem"
+  },
+  "aspects": {
+    "humanus": 4,
+    "motus": 4,
+    "spiritus": 4
+  },
+  "legacy_id": "GolemStone",
+  "inactive": false
+}

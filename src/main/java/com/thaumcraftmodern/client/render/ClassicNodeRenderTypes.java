@@ -55,7 +55,7 @@ public final class ClassicNodeRenderTypes extends RenderStateShard {
             "vis_power_impact", PARTICLE_TEXTURE, 256);
 
     private ClassicNodeRenderTypes() {
-        super("thaumcraftmodern_classic_node_render_types", () -> {
+        super("thaumic_reborn_classic_node_render_types", () -> {
         }, () -> {
         });
     }

@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 /** TC4 Runic Matrix overlay pass: SRC_ALPHA/ONE, depth-tested, color-only. */
 final class RunicMatrixRenderType extends RenderStateShard {
     private RunicMatrixRenderType() {
-        super("thaumcraftmodern_runic_matrix_render_type", () -> { }, () -> { });
+        super("thaumic_reborn_runic_matrix_render_type", () -> { }, () -> { });
     }
 
     static RenderType additive(ResourceLocation texture) {

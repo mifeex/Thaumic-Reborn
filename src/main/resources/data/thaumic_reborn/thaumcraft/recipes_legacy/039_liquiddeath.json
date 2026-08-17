@@ -1,0 +1,29 @@
+{
+  "id": "liquiddeath",
+  "legacy_id": "LiquidDeath",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:liquiddeath"
+  ],
+  "required_aspects": [
+    {
+      "id": "mortuus",
+      "amount": 32
+    },
+    {
+      "id": "venenum",
+      "amount": 32
+    },
+    {
+      "id": "perditio",
+      "amount": 32
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"LIQUIDDEATH\", new ItemStack(ConfigItems.itemBucketDeath), new ItemStack(Items.field_151133_ar), (new AspectList()).add(Aspect.DEATH, 32).add(Aspect.POISON, 32).add(Aspect.ENTROPY, 32))",
+    "source_statement": "ConfigResearch.recipes.put(\"LiquidDeath\", ThaumcraftApi.addCrucibleRecipe(\"LIQUIDDEATH\", new ItemStack(ConfigItems.itemBucketDeath), new ItemStack(Items.field_151133_ar), (new AspectList()).add(Aspect.DEATH, 32).add(Aspect.POISON, 32).add(Aspect.ENTROPY, 32)))",
+    "unkeyed": false
+  }
+}

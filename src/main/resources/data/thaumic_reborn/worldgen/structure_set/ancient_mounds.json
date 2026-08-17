@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.9276666667,
+    "frequency_reduction_method": "default",
+    "salt": 14298531,
+    "separation": 4,
+    "spacing": 11
+  },
+  "structures": [
+    {
+      "structure": "thaumic_reborn:ancient_mound",
+      "weight": 1
+    }
+  ]
+}

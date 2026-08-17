@@ -34,7 +34,7 @@ TC4 выполнял собственный проход поверх старо
 - координаты Cinnabar адаптированы к отрицательной нижней границе мира;
 - Amber привязан к фактическому `OCEAN_FLOOR_WG`;
 - обычный preset `minecraft:normal` и явный preset
-  `thaumcraftmodern:thaumcraft_modern` оборачивают vanilla multi-noise biome
+  `thaumic_reborn:thaumcraft_modern` оборачивают vanilla multi-noise biome
   source и меняют только поверхностный биом;
 - Lush Caves, Dripstone Caves и Deep Dark ниже Y=0 сохраняются;
 - океаны, реки, Nether и End не перекрашиваются.
@@ -42,7 +42,7 @@ TC4 выполнял собственный проход поверх старо
 Стандартные новые миры получают руды, растительность, структуры и спавны через
 Forge biome modifiers, а TC4 surface-biome patches — через обёртку обычного
 preset `minecraft:normal`. Явный preset
-`thaumcraftmodern:thaumcraft_modern` сохранён для dedicated server и
+`thaumic_reborn:thaumcraft_modern` сохранён для dedicated server и
 совместимости. Уже созданный мир хранит biome source в `level.dat`, поэтому
 после обновления требуется новый мир; существующие чанки намеренно не
 перекрашиваются.
@@ -198,7 +198,7 @@ Uncommon встречаются в Mound/Wizard loot, Rare — у боссов. 
   создание всех 28 типов world-content существ;
 - после исправления найденных runtime-проблем успешно созданы и сохранены
   четыре полностью свежих headless Forge-мира: один с vanilla biome source и
-  три с preset `thaumcraftmodern:thaumcraft_modern` на разных seed;
+  три с preset `thaumic_reborn:thaumcraft_modern` на разных seed;
 - во всех четырёх мирах завершилась подготовка spawn chunks и сохранение
   Overworld, Nether и End без registry/datapack/worldgen exception;
 - обычный интерактивный `runServer` не запускался: для него требуется явное
@@ -208,7 +208,7 @@ Uncommon встречаются в Mound/Wizard loot, Rare — у боссов. 
 
 ## Итоговый артефакт
 
-- файл: `build/libs/thaumcraftmodern-1.5.0.jar`;
+- файл: `build/libs/thaumic_reborn-1.5.0.jar`;
 - встроенная версия в `META-INF/mods.toml` и manifest: `1.5.0`;
 - SHA-256:
   `e7682b09daeb6d523f7ea309fc32340f6d65c5ad04469d0038ca0f96dc3acc92`.

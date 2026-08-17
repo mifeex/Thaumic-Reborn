@@ -24,7 +24,7 @@ public final class VoidRobeArmorModel extends HumanoidModel<LivingEntity> {
     public static final ModelLayerLocation OUTER_LAYER = layer("outer");
     public static final ModelLayerLocation INNER_LAYER = layer("inner");
     private static final String DATA =
-            "/assets/thaumcraftmodern/models/entity/void_robe_armor.csv";
+            "/assets/thaumic_reborn/models/entity/void_robe_armor.csv";
 
     private final ModelPart frontClothR1;
     private final ModelPart frontClothR2;

@@ -187,7 +187,7 @@ final class ThaumonomiconPageRenderer {
             renderFittedText(
                     graphics,
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.content_inactive"
+                            "screen.thaumic_reborn.thaumonomicon.content_inactive"
                     ),
                     x,
                     y + 15,
@@ -340,7 +340,7 @@ final class ThaumonomiconPageRenderer {
         renderAspectTooltip(graphics, hoveredAspect, mouseX, mouseY);
 
         Component instability = classicBookText(Component.translatable(
-                "screen.thaumcraftmodern.thaumonomicon.instability",
+                "screen.thaumic_reborn.thaumonomicon.instability",
                 Component.translatable(
                         displayedInstability.translationKey()
                 )
@@ -489,7 +489,7 @@ final class ThaumonomiconPageRenderer {
         if (recipe == null) {
             graphics.drawString(
                     font,
-                    Component.translatable("screen.thaumcraftmodern.thaumonomicon.recipe_missing"),
+                    Component.translatable("screen.thaumic_reborn.thaumonomicon.recipe_missing"),
                     x,
                     y,
                     0x8A1F1F,
@@ -811,7 +811,7 @@ final class ThaumonomiconPageRenderer {
             graphics.drawString(
                     font,
                     Component.translatable(
-                            "screen.thaumcraftmodern.thaumonomicon.recipe_missing"
+                            "screen.thaumic_reborn.thaumonomicon.recipe_missing"
                     ),
                     x,
                     y,
@@ -996,7 +996,7 @@ final class ThaumonomiconPageRenderer {
                     font,
                     List.of(
                             Component.translatable(
-                                            "aspect.thaumcraftmodern."
+                                            "aspect.thaumic_reborn."
                                                     + aspectId
                                     )
                                     .withStyle(ChatFormatting.AQUA),

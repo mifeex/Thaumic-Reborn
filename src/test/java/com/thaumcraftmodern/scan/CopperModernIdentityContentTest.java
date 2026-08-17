@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class CopperModernIdentityContentTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path SCANS = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy"
     );
 
     @Test
@@ -51,7 +51,7 @@ final class CopperModernIdentityContentTest {
     void copperCapUsesVanillaIngotWhileTc4AlchemyKeepsItsCopperNugget()
             throws IOException {
         JsonObject recipe = json(ROOT.resolve(
-                "src/main/resources/data/thaumcraftmodern/recipes/"
+                "src/main/resources/data/thaumic_reborn/recipes/"
                         + "wand_cap_copper.json"
         ));
         assertEquals(
@@ -64,7 +64,7 @@ final class CopperModernIdentityContentTest {
         assertTrue(Files.exists(ROOT.resolve(
                 "src/main/resources/data/forge/tags/items/nuggets/copper.json")));
         assertTrue(Files.exists(ROOT.resolve(
-                "src/main/resources/assets/thaumcraftmodern/models/item/"
+                "src/main/resources/assets/thaumic_reborn/models/item/"
                         + "copper_nugget.json")));
     }
 

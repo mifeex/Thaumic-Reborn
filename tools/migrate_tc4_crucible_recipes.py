@@ -13,10 +13,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-LEGACY = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/recipes_legacy"
-OUT = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/crucible_recipes"
+LEGACY = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/recipes_legacy"
+OUT = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes"
 MANIFEST = ROOT / "data/legacy_tc4_4_2_3_5/modern_migration/crucible_recipes.json"
-RESEARCH = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+RESEARCH = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
 
 VANILLA = {
     "altgunpowder": ("minecraft:gunpowder", 2, "minecraft:gunpowder"),
@@ -31,49 +31,49 @@ VANILLA = {
     "altbonemeal": ("minecraft:bone_meal", 4, "minecraft:bone"),
     "transiron": ("minecraft:iron_nugget", 3, "#forge:nuggets/iron"),
     "transgold": ("minecraft:gold_nugget", 3, "minecraft:gold_nugget"),
-    "transsilver": ("thaumcraftmodern:silver_nugget", 3, "#forge:nuggets/silver"),
+    "transsilver": ("thaumic_reborn:silver_nugget", 3, "#forge:nuggets/silver"),
 }
 
 SUPPORTED = {
-    "alumentum": ("thaumcraftmodern:alumentum", 1, "#minecraft:coals"),
-    "nitor": ("thaumcraftmodern:nitor", 1, "#forge:dusts/glowstone"),
-    "thaumium": ("thaumcraftmodern:thaumium_ingot", 1, "#forge:ingots/iron"),
-    "voidmetal": ("thaumcraftmodern:void_metal_ingot", 1, "thaumcraftmodern:void_seed"),
-    "voidseed": ("thaumcraftmodern:void_seed", 1, "minecraft:wheat_seeds"),
-    "etherealbloom": ("thaumcraftmodern:ethereal_bloom", 1, "thaumcraftmodern:shimmerleaf"),
+    "alumentum": ("thaumic_reborn:alumentum", 1, "#minecraft:coals"),
+    "nitor": ("thaumic_reborn:nitor", 1, "#forge:dusts/glowstone"),
+    "thaumium": ("thaumic_reborn:thaumium_ingot", 1, "#forge:ingots/iron"),
+    "voidmetal": ("thaumic_reborn:void_metal_ingot", 1, "thaumic_reborn:void_seed"),
+    "voidseed": ("thaumic_reborn:void_seed", 1, "minecraft:wheat_seeds"),
+    "etherealbloom": ("thaumic_reborn:ethereal_bloom", 1, "thaumic_reborn:shimmerleaf"),
     **VANILLA,
 }
 
 UNSUPPORTED = {
-    "tallow": ("thaumcraftmodern:thaumic_tallow", 1, "minecraft:rotten_flesh"),
-    "pureiron": ("thaumcraftmodern:native_iron_cluster", 1, "#forge:ores/iron"),
-    "puregold": ("thaumcraftmodern:native_gold_cluster", 1, "#forge:ores/gold"),
-    "purecopper": ("thaumcraftmodern:native_copper_cluster", 1, "#forge:ores/copper"),
-    "puretin": ("thaumcraftmodern:native_tin_cluster", 1, "#forge:ores/tin"),
-    "puresilver": ("thaumcraftmodern:native_silver_cluster", 1, "#forge:ores/silver"),
-    "purelead": ("thaumcraftmodern:native_lead_cluster", 1, "#forge:ores/lead"),
+    "tallow": ("thaumic_reborn:thaumic_tallow", 1, "minecraft:rotten_flesh"),
+    "pureiron": ("thaumic_reborn:native_iron_cluster", 1, "#forge:ores/iron"),
+    "puregold": ("thaumic_reborn:native_gold_cluster", 1, "#forge:ores/gold"),
+    "purecopper": ("thaumic_reborn:native_copper_cluster", 1, "#forge:ores/copper"),
+    "puretin": ("thaumic_reborn:native_tin_cluster", 1, "#forge:ores/tin"),
+    "puresilver": ("thaumic_reborn:native_silver_cluster", 1, "#forge:ores/silver"),
+    "purelead": ("thaumic_reborn:native_lead_cluster", 1, "#forge:ores/lead"),
     "transcopper": ("minecraft:copper_ingot", 1, "minecraft:copper_ingot"),
-    "transtin": ("thaumcraftmodern:tin_nugget", 3, "#forge:nuggets/tin"),
-    "translead": ("thaumcraftmodern:lead_nugget", 3, "#forge:nuggets/lead"),
-    "liquiddeath": ("thaumcraftmodern:liquid_death_bucket", 1, "minecraft:bucket"),
-    "bottletaint": ("thaumcraftmodern:bottled_taint", 1, "minecraft:glass_bottle"),
-    "golemstraw": ("thaumcraftmodern:straw_golem", 1, "minecraft:hay_block"),
-    "golemwood": ("thaumcraftmodern:wood_golem", 1, "thaumcraftmodern:greatwood_log"),
-    "golemtallow": ("thaumcraftmodern:tallow_golem", 1, "thaumcraftmodern:flesh_block"),
-    "golemclay": ("thaumcraftmodern:clay_golem", 1, "minecraft:clay"),
-    "golemflesh": ("thaumcraftmodern:flesh_golem", 1, "thaumcraftmodern:flesh_block"),
-    "golemstone": ("thaumcraftmodern:stone_golem", 1, "minecraft:stone_bricks"),
-    "golemiron": ("thaumcraftmodern:iron_golem_placer", 1, "minecraft:iron_block"),
-    "golemthaumium": ("thaumcraftmodern:thaumium_golem", 1, "thaumcraftmodern:thaumium_block"),
-    "coregather": ("thaumcraftmodern:gather_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "corefill": ("thaumcraftmodern:fill_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "coreempty": ("thaumcraftmodern:empty_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "coreharvest": ("thaumcraftmodern:harvest_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "coreguard": ("thaumcraftmodern:guard_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "corebutcher": ("thaumcraftmodern:butcher_golem_core", 1, "thaumcraftmodern:guard_golem_core"),
-    "coreliquid": ("thaumcraftmodern:liquid_golem_core", 1, "thaumcraftmodern:blank_golem_core"),
-    "bathsalts": ("thaumcraftmodern:bath_salts", 1, "thaumcraftmodern:salis_mundus"),
-    "sanesoap": ("thaumcraftmodern:sanity_soap", 1, "thaumcraftmodern:flesh_block"),
+    "transtin": ("thaumic_reborn:tin_nugget", 3, "#forge:nuggets/tin"),
+    "translead": ("thaumic_reborn:lead_nugget", 3, "#forge:nuggets/lead"),
+    "liquiddeath": ("thaumic_reborn:liquid_death_bucket", 1, "minecraft:bucket"),
+    "bottletaint": ("thaumic_reborn:bottled_taint", 1, "minecraft:glass_bottle"),
+    "golemstraw": ("thaumic_reborn:straw_golem", 1, "minecraft:hay_block"),
+    "golemwood": ("thaumic_reborn:wood_golem", 1, "thaumic_reborn:greatwood_log"),
+    "golemtallow": ("thaumic_reborn:tallow_golem", 1, "thaumic_reborn:flesh_block"),
+    "golemclay": ("thaumic_reborn:clay_golem", 1, "minecraft:clay"),
+    "golemflesh": ("thaumic_reborn:flesh_golem", 1, "thaumic_reborn:flesh_block"),
+    "golemstone": ("thaumic_reborn:stone_golem", 1, "minecraft:stone_bricks"),
+    "golemiron": ("thaumic_reborn:iron_golem_placer", 1, "minecraft:iron_block"),
+    "golemthaumium": ("thaumic_reborn:thaumium_golem", 1, "thaumic_reborn:thaumium_block"),
+    "coregather": ("thaumic_reborn:gather_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "corefill": ("thaumic_reborn:fill_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "coreempty": ("thaumic_reborn:empty_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "coreharvest": ("thaumic_reborn:harvest_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "coreguard": ("thaumic_reborn:guard_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "corebutcher": ("thaumic_reborn:butcher_golem_core", 1, "thaumic_reborn:guard_golem_core"),
+    "coreliquid": ("thaumic_reborn:liquid_golem_core", 1, "thaumic_reborn:blank_golem_core"),
+    "bathsalts": ("thaumic_reborn:bath_salts", 1, "thaumic_reborn:salis_mundus"),
+    "sanesoap": ("thaumic_reborn:sanity_soap", 1, "thaumic_reborn:flesh_block"),
 }
 
 PAGE_GROUPS = {
@@ -135,8 +135,8 @@ def balanced(entry: dict) -> list[str]:
         recipe_id = f"balanced_{shard_names[catalyst_aspect]}"
         data = {
             "research": "crucible",
-            "catalyst": {"item": f"thaumcraftmodern:{shard_names[catalyst_aspect]}_shard"},
-            "output": {"item": "thaumcraftmodern:balanced_shard"},
+            "catalyst": {"item": f"thaumic_reborn:{shard_names[catalyst_aspect]}_shard"},
+            "output": {"item": "thaumic_reborn:balanced_shard"},
             "aspects": {aspect: 2 for aspect in aspects if aspect != catalyst_aspect},
             "legacy_id": entry["legacy_id"],
         }
@@ -155,7 +155,7 @@ def update_research_pages() -> None:
                 page.clear()
                 page.update({
                     "type": "recipe", "title": "",
-                    "recipe": f"thaumcraftmodern:{recipe_id}",
+                    "recipe": f"thaumic_reborn:{recipe_id}",
                 })
         research["inactive"] = False
         research.pop("inactive_reason", None)
@@ -164,15 +164,15 @@ def update_research_pages() -> None:
     crucible_path = RESEARCH / "crucible.json"
     crucible = json.loads(crucible_path.read_text())
     balanced_groups = {
-        "thaumcraftmodern:balanced_air": [
-            "thaumcraftmodern:balanced_air",
-            "thaumcraftmodern:balanced_fire",
-            "thaumcraftmodern:balanced_water",
+        "thaumic_reborn:balanced_air": [
+            "thaumic_reborn:balanced_air",
+            "thaumic_reborn:balanced_fire",
+            "thaumic_reborn:balanced_water",
         ],
-        "thaumcraftmodern:balanced_entropy": [
-            "thaumcraftmodern:balanced_earth",
-            "thaumcraftmodern:balanced_order",
-            "thaumcraftmodern:balanced_entropy",
+        "thaumic_reborn:balanced_entropy": [
+            "thaumic_reborn:balanced_earth",
+            "thaumic_reborn:balanced_order",
+            "thaumic_reborn:balanced_entropy",
         ],
     }
     for page in crucible["pages"]:
@@ -210,7 +210,7 @@ def main() -> None:
             write_recipe(entry, recipe_id, mapping, active)
             ids = [recipe_id]
 
-        entry["modern_recipe"] = [f"thaumcraftmodern:{value}" for value in ids]
+        entry["modern_recipe"] = [f"thaumic_reborn:{value}" for value in ids]
         entry["inactive"] = not active
         entry["inactive_reason"] = None if active else (
             "output item or its complete gameplay behavior is not implemented"

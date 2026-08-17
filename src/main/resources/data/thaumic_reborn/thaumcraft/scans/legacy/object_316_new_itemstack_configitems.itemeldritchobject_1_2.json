@@ -1,0 +1,59 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:void_seed",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vinculum",
+      "amount": 4
+    },
+    {
+      "id": "cognitio",
+      "amount": 4
+    },
+    {
+      "id": "machina",
+      "amount": 4
+    }
+  ],
+  "inactive": true,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemEldritchObject, 1, 2)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "vinculum",
+        "amount": 4
+      },
+      {
+        "id": "cognitio",
+        "amount": 4
+      },
+      {
+        "id": "machina",
+        "amount": 4
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "vinculum",
+        "amount": 4
+      },
+      {
+        "operation": "add",
+        "id": "cognitio",
+        "amount": 4
+      },
+      {
+        "operation": "add",
+        "id": "machina",
+        "amount": 4
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemEldritchObject, 1, 2), (new AspectList()).add(Aspect.TRAP, 4).add(Aspect.MIND, 4).add(Aspect.MECHANISM, 4))"
+  },
+  "inactive_reason": "multiple legacy registrations collapse to one modern target"
+}

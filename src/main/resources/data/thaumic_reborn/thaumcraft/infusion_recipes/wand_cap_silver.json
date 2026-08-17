@@ -1,0 +1,17 @@
+{
+  "research": "cap_silver",
+  "instability": 4,
+  "central": {"item": "thaumic_reborn:inert_silver_wand_cap"},
+  "components": [
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:salis_mundus"}
+  ],
+  "essentia": {
+    "potentia": 8,
+    "auram": 4
+  },
+  "result": {
+    "item": "thaumic_reborn:silver_wand_cap",
+    "count": 1
+  }
+}

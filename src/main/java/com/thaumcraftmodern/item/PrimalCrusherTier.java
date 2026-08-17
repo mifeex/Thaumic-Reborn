@@ -19,12 +19,12 @@ public enum PrimalCrusherTier implements Tier {
     @Override public int getEnchantmentValue() { return 20; }
     @Override public Ingredient getRepairIngredient() {
         return Ingredient.of(ItemTags.create(
-                new ResourceLocation("thaumcraftmodern", "primal_charms")
+                new ResourceLocation("thaumic_reborn", "primal_charms")
         ));
     }
     @Override public TagKey<Block> getTag() {
         return BlockTags.create(new ResourceLocation(
-                "thaumcraftmodern", "mineable/primal_crusher"
+                "thaumic_reborn", "mineable/primal_crusher"
         ));
     }
 }

@@ -43,11 +43,11 @@ class CrucibleContentFidelityTest {
     private static void assertResearchIcon(String researchId, String fileName)
             throws IOException {
         assertEquals(
-                "thaumcraftmodern:textures/misc/" + fileName,
+                "thaumic_reborn:textures/misc/" + fileName,
                 research(researchId).get("icon_resource").getAsString()
         );
         assertTrue(Files.isRegularFile(ROOT.resolve(
-                "assets/thaumcraftmodern/textures/misc/" + fileName
+                "assets/thaumic_reborn/textures/misc/" + fileName
         )));
     }
 
@@ -56,7 +56,7 @@ class CrucibleContentFidelityTest {
             throws IOException {
         JsonObject alumentum = crucibleRecipe("alumentum");
         assertEquals(
-                "thaumcraftmodern:alumentum",
+                "thaumic_reborn:alumentum",
                 alumentum.getAsJsonObject("output").get("item").getAsString()
         );
         assertEquals(
@@ -70,13 +70,13 @@ class CrucibleContentFidelityTest {
                 nitor.getAsJsonObject("aspects").get("lux").getAsInt()
         );
         assertTrue(Files.isRegularFile(ROOT.resolve(
-                "data/thaumcraftmodern/recipes/salis_mundus.json"
+                "data/thaumic_reborn/recipes/salis_mundus.json"
         )));
 
         JsonObject thaumium = crucibleRecipe("thaumium");
         assertEquals("forge:ingots/iron",
                 thaumium.getAsJsonObject("catalyst").get("tag").getAsString());
-        assertEquals("thaumcraftmodern:thaumium_ingot",
+        assertEquals("thaumic_reborn:thaumium_ingot",
                 thaumium.getAsJsonObject("output").get("item").getAsString());
         assertEquals(4,
                 thaumium.getAsJsonObject("aspects")
@@ -84,7 +84,7 @@ class CrucibleContentFidelityTest {
         JsonObject thaumiumPage = research("thaumium")
                 .getAsJsonArray("pages").get(1).getAsJsonObject();
         assertEquals("recipe", thaumiumPage.get("type").getAsString());
-        assertEquals("thaumcraftmodern:thaumium",
+        assertEquals("thaumic_reborn:thaumium",
                 thaumiumPage.get("recipe").getAsString());
 
         JsonObject duplication = crucibleRecipe("altgunpowder");
@@ -108,7 +108,7 @@ class CrucibleContentFidelityTest {
                 "sounds/bubble1.ogg"
         }) {
             assertTrue(Files.isRegularFile(
-                    ROOT.resolve("assets/thaumcraftmodern").resolve(asset)
+                    ROOT.resolve("assets/thaumic_reborn").resolve(asset)
             ), asset);
         }
     }
@@ -143,10 +143,10 @@ class CrucibleContentFidelityTest {
         };
         for (int index = 0; index < names.length; index++) {
             JsonObject recipe = crucibleRecipe("balanced_" + names[index]);
-            assertEquals("thaumcraftmodern:" + names[index] + "_shard",
+            assertEquals("thaumic_reborn:" + names[index] + "_shard",
                     recipe.getAsJsonObject("catalyst")
                             .get("item").getAsString());
-            assertEquals("thaumcraftmodern:balanced_shard",
+            assertEquals("thaumic_reborn:balanced_shard",
                     recipe.getAsJsonObject("output")
                             .get("item").getAsString());
             assertFalse(recipe.getAsJsonObject("aspects").has(aspects[index]));
@@ -169,7 +169,7 @@ class CrucibleContentFidelityTest {
         JsonArray recipes = page.getAsJsonArray("recipes");
         assertEquals(ids.length, recipes.size());
         for (int index = 0; index < ids.length; index++) {
-            assertEquals("thaumcraftmodern:" + ids[index],
+            assertEquals("thaumic_reborn:" + ids[index],
                     recipes.get(index).getAsString());
         }
     }
@@ -182,14 +182,14 @@ class CrucibleContentFidelityTest {
 
     private static JsonObject research(String id) throws IOException {
         return json(ROOT.resolve(
-                "data/thaumcraftmodern/thaumcraft/research/legacy/"
+                "data/thaumic_reborn/thaumcraft/research/legacy/"
                         + id + ".json"
         ));
     }
 
     private static JsonObject crucibleRecipe(String id) throws IOException {
         return json(ROOT.resolve(
-                "data/thaumcraftmodern/thaumcraft/crucible_recipes/"
+                "data/thaumic_reborn/thaumcraft/crucible_recipes/"
                         + id + ".json"
         ));
     }

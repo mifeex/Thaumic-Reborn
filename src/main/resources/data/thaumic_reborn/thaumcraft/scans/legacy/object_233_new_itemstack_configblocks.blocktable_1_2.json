@@ -1,0 +1,32 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:research_table",
+  "display": "",
+  "aspects": [
+    {
+      "id": "cognitio",
+      "amount": 4
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockTable, 1, 2)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "cognitio",
+        "amount": 4
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "cognitio",
+        "amount": 4
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockTable, 1, 2), (new AspectList(new ItemStack(ConfigBlocks.blockTable))).add(Aspect.MIND, 4))"
+  }
+}

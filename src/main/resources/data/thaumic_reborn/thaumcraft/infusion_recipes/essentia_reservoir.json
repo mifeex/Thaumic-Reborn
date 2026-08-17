@@ -1,0 +1,23 @@
+{
+  "research": "essentiareservoir",
+  "instability": 6,
+  "central": {"item": "thaumic_reborn:essentia_buffer"},
+  "components": [
+    {"item": "thaumic_reborn:void_metal_ingot"},
+    {"item": "thaumic_reborn:warded_jar"},
+    {"item": "thaumic_reborn:warded_jar"},
+    {"item": "thaumic_reborn:void_metal_ingot"},
+    {"item": "thaumic_reborn:warded_jar"},
+    {"item": "thaumic_reborn:warded_jar"}
+  ],
+  "essentia": {
+    "aqua": 8,
+    "vacuos": 8,
+    "praecantatio": 8,
+    "permutatio": 8
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_reservoir",
+    "count": 1
+  }
+}

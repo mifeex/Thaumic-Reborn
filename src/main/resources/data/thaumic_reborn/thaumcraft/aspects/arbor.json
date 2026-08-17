@@ -1,0 +1,10 @@
+{
+  "id": "arbor",
+  "order": 290,
+  "color": "876531",
+  "icon": "thaumic_reborn:textures/aspects/arbor.png",
+  "components": [
+    "aer",
+    "herba"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "eldritch",
+  "title": "tc.research_category.ELDRITCH",
+  "icon_resource": "thaumic_reborn:textures/misc/r_eldritch.png",
+  "background": "thaumic_reborn:textures/gui/gui_researchbackeldritch.png",
+  "order": 105,
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "id": "ELDRITCH",
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_eldritch.png\")",
+    "background_raw": "new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchbackeldritch.png\")",
+    "source_expression": "ResearchCategories.registerCategory(\"ELDRITCH\", new ResourceLocation(\"thaumcraft\", \"textures/misc/r_eldritch.png\"), new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchbackeldritch.png\"))"
+  }
+}

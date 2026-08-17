@@ -1,0 +1,32 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:taintacle",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 3
+    },
+    {
+      "id": "aqua",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.Taintacle",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 3
+      },
+      {
+        "id": "aqua",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.Taintacle\", (new AspectList()).add(Aspect.TAINT, 3).add(Aspect.WATER, 2))"
+  }
+}

@@ -112,7 +112,7 @@ public record InfusionDisplayDefinition(
         }
 
         public String translationKey() {
-            return "screen.thaumcraftmodern.thaumonomicon.instability."
+            return "screen.thaumic_reborn.thaumonomicon.instability."
                     + name().toLowerCase(Locale.ROOT);
         }
 

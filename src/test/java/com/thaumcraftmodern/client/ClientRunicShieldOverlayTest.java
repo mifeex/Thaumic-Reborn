@@ -39,7 +39,7 @@ class ClientRunicShieldOverlayTest {
     @Test
     void classicParticleAtlasIsAvailableAtOriginalResolution() throws IOException {
         try (InputStream stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/textures/misc/particles.png"
+                "/assets/thaumic_reborn/textures/misc/particles.png"
         )) {
             assertNotNull(stream, "Missing original TC4 particle atlas");
             BufferedImage image = ImageIO.read(stream);

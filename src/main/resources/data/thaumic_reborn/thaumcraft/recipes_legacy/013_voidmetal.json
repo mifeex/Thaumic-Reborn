@@ -1,0 +1,21 @@
+{
+  "id": "voidmetal",
+  "legacy_id": "VoidMetal",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:voidmetal"
+  ],
+  "required_aspects": [
+    {
+      "id": "metallum",
+      "amount": 8
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"VOIDMETAL\", new ItemStack(ConfigItems.itemResource, 1, 16), new ItemStack(ConfigItems.itemResource, 1, 17), (new AspectList()).merge(Aspect.METAL, 8))",
+    "source_statement": "ConfigResearch.recipes.put(\"VoidMetal\", ThaumcraftApi.addCrucibleRecipe(\"VOIDMETAL\", new ItemStack(ConfigItems.itemResource, 1, 16), new ItemStack(ConfigItems.itemResource, 1, 17), (new AspectList()).merge(Aspect.METAL, 8)))",
+    "unkeyed": false
+  }
+}

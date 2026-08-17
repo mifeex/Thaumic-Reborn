@@ -1,0 +1,32 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:tainted_crawler",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 1
+    },
+    {
+      "id": "terra",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.TaintSpider",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 1
+      },
+      {
+        "id": "terra",
+        "amount": 1
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.TaintSpider\", (new AspectList()).add(Aspect.TAINT, 1).add(Aspect.EARTH, 1))"
+  }
+}

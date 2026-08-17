@@ -3,7 +3,7 @@
 An unofficial community port of Azanor's Thaumcraft 4.2.3.5 for Minecraft Forge 1.20.1 / Java 17.
 
 For compatibility with existing worlds, the technical mod ID and resource
-namespace remain `thaumcraftmodern`. Distribution artifacts use the
+namespace remain `thaumic_reborn`. Distribution artifacts use the
 `thaumic-reborn` name.
 
 Сейчас реализованы первая вертикаль, следующая gameplay-вертикаль и
@@ -77,7 +77,7 @@ Minecraft EULA в созданном `run/eula.txt`.
 /thaumcraft aspects all
 ```
 
-World preset `thaumcraftmodern:thaumcraft_modern` сохраняет современный
+World preset `thaumic_reborn:thaumcraft_modern` сохраняет современный
 overworld noise generator и пещерные биомы, добавляя только поверхностные
 пятна Magical Forest, Tainted Lands и Eerie. Параметры частоты находятся в
 server config. Полный аудит переноса:

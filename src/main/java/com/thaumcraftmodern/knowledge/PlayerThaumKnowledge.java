@@ -197,7 +197,7 @@ public final class PlayerThaumKnowledge {
 
     /**
      * Records a monotonic custom gameplay criterion. Other systems may use
-     * namespaced ids such as {@code thaumcraftmodern:entered_outer_lands}.
+     * namespaced ids such as {@code thaumic_reborn:entered_outer_lands}.
      */
     public boolean recordResearchCriterion(String criterionId) {
         return researchCriteria.add(requireStableId(criterionId, "criterionId"));

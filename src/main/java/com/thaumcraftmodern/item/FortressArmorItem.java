@@ -68,7 +68,7 @@ public final class FortressArmorItem extends ArmorItem
     @Override
     public String getDescriptionId(ItemStack stack) {
         return builtInMask == null ? super.getDescriptionId(stack)
-                : "item.thaumcraftmodern.fortress_helmet";
+                : "item.thaumic_reborn.fortress_helmet";
     }
 
     @Override
@@ -76,7 +76,7 @@ public final class FortressArmorItem extends ArmorItem
             List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         if (hasGoggles(stack)) tooltip.add(Component.translatable(
-                "item.thaumcraftmodern.goggles_of_revealing")
+                "item.thaumic_reborn.goggles_of_revealing")
                 .withStyle(ChatFormatting.DARK_PURPLE));
         Integer mask = mask(stack);
         if (mask != null) tooltip.add(Component.translatable(

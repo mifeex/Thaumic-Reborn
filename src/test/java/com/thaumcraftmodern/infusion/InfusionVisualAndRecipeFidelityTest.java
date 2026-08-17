@@ -22,21 +22,21 @@ class InfusionVisualAndRecipeFidelityTest {
     @Test
     void originalInfuserAndPedestalTexturesRemainByteIdentical() throws Exception {
         assertJarEntryEquals("assets/thaumcraft/textures/models/infuser.png",
-                Path.of("src/main/resources/assets/thaumcraftmodern/textures/block/infuser.png"));
+                Path.of("src/main/resources/assets/thaumic_reborn/textures/block/infuser.png"));
         assertJarEntryEquals("assets/thaumcraft/textures/blocks/pedestal_side.png",
-                Path.of("src/main/resources/assets/thaumcraftmodern/textures/block/pedestal_side.png"));
+                Path.of("src/main/resources/assets/thaumic_reborn/textures/block/pedestal_side.png"));
         assertJarEntryEquals("assets/thaumcraft/textures/blocks/pedestal_top.png",
-                Path.of("src/main/resources/assets/thaumcraftmodern/textures/block/pedestal_top.png"));
+                Path.of("src/main/resources/assets/thaumic_reborn/textures/block/pedestal_top.png"));
         assertJarEntryEquals("assets/thaumcraft/textures/models/pillar.png",
-                Path.of("src/main/resources/assets/thaumcraftmodern/textures/models/pillar.png"));
+                Path.of("src/main/resources/assets/thaumic_reborn/textures/models/pillar.png"));
         assertJarEntryEquals("assets/thaumcraft/textures/models/pillar.obj",
-                Path.of("src/main/resources/assets/thaumcraftmodern/textures/models/pillar.obj"));
+                Path.of("src/main/resources/assets/thaumic_reborn/textures/models/pillar.obj"));
     }
 
     @Test
     void modelsKeepExactTc4GeometryContracts() throws Exception {
         String pedestal = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/block/arcane_pedestal.json"));
+                "src/main/resources/assets/thaumic_reborn/models/block/arcane_pedestal.json"));
         assertTrue(pedestal.contains("\"from\": [0, 0, 0]")
                 && pedestal.contains("\"to\": [16, 4, 16]")
                 && pedestal.contains("\"from\": [4, 4, 4]")
@@ -153,7 +153,7 @@ class InfusionVisualAndRecipeFidelityTest {
     void executableRodRecipesAndThaumonomiconUseConfirmedOriginalNumbers()
             throws Exception {
         JsonObject reed = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/wand_rod_reed.json")))
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/wand_rod_reed.json")))
                 .getAsJsonObject();
         assertEquals(3, reed.get("instability").getAsInt());
         assertEquals(12, reed.getAsJsonObject("essentia").get("aer").getAsInt());
@@ -163,25 +163,25 @@ class InfusionVisualAndRecipeFidelityTest {
                 reed.getAsJsonObject("central").get("item").getAsString());
 
         JsonObject silverwood = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes/wand_rod_silverwood.json")))
+                "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/wand_rod_silverwood.json")))
                 .getAsJsonObject();
         assertEquals(5, silverwood.get("instability").getAsInt());
-        assertEquals("thaumcraftmodern:silverwood_log",
+        assertEquals("thaumic_reborn:silverwood_log",
                 silverwood.getAsJsonObject("central").get("item").getAsString());
         assertEquals(7, silverwood.getAsJsonArray("components").size());
         assertEquals(7, silverwood.getAsJsonObject("essentia").size());
         silverwood.getAsJsonObject("essentia").entrySet().forEach(
                 entry -> assertEquals(9, entry.getValue().getAsInt(), entry.getKey()));
-        assertEquals("thaumcraftmodern:silverwood_wand_rod",
+        assertEquals("thaumic_reborn:silverwood_wand_rod",
                 silverwood.getAsJsonObject("result").get("item").getAsString());
 
         JsonObject research = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/infusion.json")))
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/infusion.json")))
                 .getAsJsonObject();
         assertTrue(!research.get("inactive").getAsBoolean(),
                 "Executable Infusion research was left inactive");
         JsonObject silverwoodResearch = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/rod_silverwood.json")))
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/rod_silverwood.json")))
                 .getAsJsonObject();
         assertTrue(!silverwoodResearch.get("inactive").getAsBoolean(),
                 "Executable Silverwood rod research was left inactive");

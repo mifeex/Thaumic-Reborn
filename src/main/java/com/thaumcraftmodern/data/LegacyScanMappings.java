@@ -14,28 +14,28 @@ import java.util.Map;
  */
 final class LegacyScanMappings {
     private static final Map<String, String> ENTITIES = Map.ofEntries(
-            Map.entry("Thaumcraft.Firebat", "thaumcraftmodern:firebat"),
-            Map.entry("Thaumcraft.Pech", "thaumcraftmodern:pech"),
-            Map.entry("Thaumcraft.ThaumSlime", "thaumcraftmodern:thaumic_slime"),
-            Map.entry("Thaumcraft.BrainyZombie", "thaumcraftmodern:angry_zombie"),
-            Map.entry("Thaumcraft.GiantBrainyZombie", "thaumcraftmodern:furious_zombie"),
-            Map.entry("Thaumcraft.Taintacle", "thaumcraftmodern:taintacle"),
-            Map.entry("Thaumcraft.TaintacleTiny", "thaumcraftmodern:taint_tendril"),
-            Map.entry("Thaumcraft.TaintSpider", "thaumcraftmodern:tainted_crawler"),
-            Map.entry("Thaumcraft.TaintSpore", "thaumcraftmodern:taint_spore"),
-            Map.entry("Thaumcraft.TaintSwarmer", "thaumcraftmodern:taint_spore_swarmer"),
-            Map.entry("Thaumcraft.TaintSwarm", "thaumcraftmodern:taint_swarm"),
-            Map.entry("Thaumcraft.TaintedPig", "thaumcraftmodern:tainted_pig"),
-            Map.entry("Thaumcraft.TaintedSheep", "thaumcraftmodern:tainted_sheep"),
-            Map.entry("Thaumcraft.TaintedCow", "thaumcraftmodern:tainted_cow"),
-            Map.entry("Thaumcraft.TaintedChicken", "thaumcraftmodern:tainted_chicken"),
-            Map.entry("Thaumcraft.TaintedVillager", "thaumcraftmodern:tainted_villager"),
-            Map.entry("Thaumcraft.TaintedCreeper", "thaumcraftmodern:tainted_creeper"),
-            Map.entry("Thaumcraft.MindSpider", "thaumcraftmodern:mind_spider"),
-            Map.entry("Thaumcraft.EldritchGuardian", "thaumcraftmodern:eldritch_guardian"),
-            Map.entry("Thaumcraft.CultistKnight", "thaumcraftmodern:crimson_knight"),
-            Map.entry("Thaumcraft.CultistCleric", "thaumcraftmodern:crimson_cleric"),
-            Map.entry("Thaumcraft.Wisp", "thaumcraftmodern:wisp")
+            Map.entry("Thaumcraft.Firebat", "thaumic_reborn:firebat"),
+            Map.entry("Thaumcraft.Pech", "thaumic_reborn:pech"),
+            Map.entry("Thaumcraft.ThaumSlime", "thaumic_reborn:thaumic_slime"),
+            Map.entry("Thaumcraft.BrainyZombie", "thaumic_reborn:angry_zombie"),
+            Map.entry("Thaumcraft.GiantBrainyZombie", "thaumic_reborn:furious_zombie"),
+            Map.entry("Thaumcraft.Taintacle", "thaumic_reborn:taintacle"),
+            Map.entry("Thaumcraft.TaintacleTiny", "thaumic_reborn:taint_tendril"),
+            Map.entry("Thaumcraft.TaintSpider", "thaumic_reborn:tainted_crawler"),
+            Map.entry("Thaumcraft.TaintSpore", "thaumic_reborn:taint_spore"),
+            Map.entry("Thaumcraft.TaintSwarmer", "thaumic_reborn:taint_spore_swarmer"),
+            Map.entry("Thaumcraft.TaintSwarm", "thaumic_reborn:taint_swarm"),
+            Map.entry("Thaumcraft.TaintedPig", "thaumic_reborn:tainted_pig"),
+            Map.entry("Thaumcraft.TaintedSheep", "thaumic_reborn:tainted_sheep"),
+            Map.entry("Thaumcraft.TaintedCow", "thaumic_reborn:tainted_cow"),
+            Map.entry("Thaumcraft.TaintedChicken", "thaumic_reborn:tainted_chicken"),
+            Map.entry("Thaumcraft.TaintedVillager", "thaumic_reborn:tainted_villager"),
+            Map.entry("Thaumcraft.TaintedCreeper", "thaumic_reborn:tainted_creeper"),
+            Map.entry("Thaumcraft.MindSpider", "thaumic_reborn:mind_spider"),
+            Map.entry("Thaumcraft.EldritchGuardian", "thaumic_reborn:eldritch_guardian"),
+            Map.entry("Thaumcraft.CultistKnight", "thaumic_reborn:crimson_knight"),
+            Map.entry("Thaumcraft.CultistCleric", "thaumic_reborn:crimson_cleric"),
+            Map.entry("Thaumcraft.Wisp", "thaumic_reborn:wisp")
     );
 
     private static final Map<String, Target> OBJECTS = Map.ofEntries(
@@ -143,7 +143,7 @@ final class LegacyScanMappings {
     ) {
         return Map.entry(
                 legacy,
-                new Target("block", "thaumcraftmodern:" + modern)
+                new Target("block", "thaumic_reborn:" + modern)
         );
     }
 
@@ -153,7 +153,7 @@ final class LegacyScanMappings {
     ) {
         return Map.entry(
                 legacy,
-                new Target("item", "thaumcraftmodern:" + modern)
+                new Target("item", "thaumic_reborn:" + modern)
         );
     }
 

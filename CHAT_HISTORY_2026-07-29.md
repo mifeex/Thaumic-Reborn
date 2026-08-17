@@ -166,7 +166,7 @@
 - [EldritchAltarPartRenderer.java](/Users/evgenii/Documents/ThaumcraftModern/src/main/java/com/thaumcraftmodern/client/render/EldritchAltarPartRenderer.java)
 - [LegacyEldritchCapModel.java](/Users/evgenii/Documents/ThaumcraftModern/src/main/java/com/thaumcraftmodern/client/render/LegacyEldritchCapModel.java)
 - [EldritchAltarPartBlock.java](/Users/evgenii/Documents/ThaumcraftModern/src/main/java/com/thaumcraftmodern/world/block/EldritchAltarPartBlock.java)
-- [obelisk_cap.obj](/Users/evgenii/Documents/ThaumcraftModern/src/main/resources/assets/thaumcraftmodern/textures/models/obelisk_cap.obj)
+- [obelisk_cap.obj](/Users/evgenii/Documents/ThaumcraftModern/src/main/resources/assets/thaumic_reborn/textures/models/obelisk_cap.obj)
 
 `compileJava`, `processResources` и тесты прошли. Новый клиентский скриншот после полного переноса пока не проверен.
 

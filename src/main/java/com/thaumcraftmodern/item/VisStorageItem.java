@@ -82,10 +82,10 @@ public final class VisStorageItem extends CurioAccessoryItem {
     public void appendHoverText(ItemStack stack, @Nullable Level level,
             List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable(
-                "tooltip.thaumcraftmodern.vis_storage_recharge")
+                "tooltip.thaumic_reborn.vis_storage_recharge")
                 .withStyle(ChatFormatting.AQUA));
         tooltip.add(Component.translatable(
-                "tooltip.thaumcraftmodern.vis_storage_capacity",
+                "tooltip.thaumic_reborn.vis_storage_capacity",
                 capacityCentivis / WandVisService.CENTIVIS_PER_VIS)
                 .withStyle(ChatFormatting.GOLD));
         for (PrimalAspect aspect : PrimalAspect.ordered()) {

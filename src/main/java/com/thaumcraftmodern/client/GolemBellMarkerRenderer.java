@@ -65,23 +65,23 @@ public final class GolemBellMarkerRenderer {
         Component status;
         if (selected == null) {
             status = Component.translatable(
-                    "hud.thaumcraftmodern.golem_bell.unlinked");
+                    "hud.thaumic_reborn.golem_bell.unlinked");
         } else if (golem == null) {
             status = Component.translatable(
-                    "hud.thaumcraftmodern.golem_bell.unavailable",
+                    "hud.thaumic_reborn.golem_bell.unavailable",
                     GolemBellItem.markers(bell).size());
         } else {
             Component core = golem.core() == null
                     ? Component.translatable(
-                            "hud.thaumcraftmodern.golem_bell.no_core")
+                            "hud.thaumic_reborn.golem_bell.no_core")
                     : Component.translatable(
                             ModItems.golemCore(golem.core()).get()
                                     .getDescriptionId());
             Component state = Component.translatable(golem.isInactive()
-                    ? "hud.thaumcraftmodern.golem_bell.inactive"
-                    : "hud.thaumcraftmodern.golem_bell.active");
+                    ? "hud.thaumic_reborn.golem_bell.inactive"
+                    : "hud.thaumic_reborn.golem_bell.active");
             status = Component.translatable(
-                    "hud.thaumcraftmodern.golem_bell.linked",
+                    "hud.thaumic_reborn.golem_bell.linked",
                     golem.getDisplayName(), core,
                     GolemBellItem.markers(bell).size(), state);
         }
@@ -91,10 +91,10 @@ public final class GolemBellMarkerRenderer {
         if (minecraft.hitResult instanceof BlockHitResult hit) {
             BlockPos pos = hit.getBlockPos();
             Component face = Component.translatable(
-                    "hud.thaumcraftmodern.golem_bell.direction."
+                    "hud.thaumic_reborn.golem_bell.direction."
                             + hit.getDirection().getName());
             Component target = Component.translatable(
-                    "hud.thaumcraftmodern.golem_bell.target",
+                    "hud.thaumic_reborn.golem_bell.target",
                     pos.getX(), pos.getY(), pos.getZ(), face);
             event.getGuiGraphics().drawString(
                     minecraft.font, target, x, y + 11, 0xB9E7FF, true);

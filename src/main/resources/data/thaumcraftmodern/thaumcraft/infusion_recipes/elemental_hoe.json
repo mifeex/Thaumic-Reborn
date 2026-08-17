@@ -1,7 +1,0 @@
-{
-  "research":"elementalhoe","instability":1,
-  "central":{"item":"thaumcraftmodern:thaumium_hoe"},
-  "components":[{"item":"thaumcraftmodern:order_shard"},{"item":"thaumcraftmodern:entropy_shard"},{"item":"minecraft:diamond"},{"item":"thaumcraftmodern:greatwood_log"}],
-  "essentia":{"meto":8,"herba":8,"terra":8},
-  "result":{"item":"thaumcraftmodern:hoe_of_growth","count":1}
-}

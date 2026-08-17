@@ -45,7 +45,7 @@ class BaseWandFocusFidelityTest {
 
     @Test
     void itemTexturesAreByteExactTc4Assets() throws Exception {
-        Path modern = ROOT.resolve("src/main/resources/assets/thaumcraftmodern/textures/item");
+        Path modern = ROOT.resolve("src/main/resources/assets/thaumic_reborn/textures/item");
         Path original = ROOT.resolve("reference/Thaumcraft-4.2-FOREVA-master/thaumcraft_src/"
                 + "assets/thaumcraft/textures/items");
         for (WandFocusType type : BASE_FOCI) {
@@ -61,7 +61,7 @@ class BaseWandFocusFidelityTest {
         Path original = ROOT.resolve("reference/Thaumcraft-4.2-FOREVA-master/"
                 + "thaumcraft_src/assets/thaumcraft/textures/misc");
         Path modern = ROOT.resolve(
-                "src/main/resources/assets/thaumcraftmodern/textures/misc");
+                "src/main/resources/assets/thaumic_reborn/textures/misc");
         for (String file : new String[]{"radial.png", "radial2.png"}) {
             assertArrayEquals(Files.readAllBytes(original.resolve(file)),
                     Files.readAllBytes(modern.resolve(file)), file);
@@ -88,18 +88,18 @@ class BaseWandFocusFidelityTest {
         Path resources = ROOT.resolve("src/main/resources");
         for (WandFocusType type : BASE_FOCI) {
             String compact = "focus" + type.id();
-            JsonObject recipe = json(resources.resolve("data/thaumcraftmodern/recipes/"
+            JsonObject recipe = json(resources.resolve("data/thaumic_reborn/recipes/"
                     + type.itemId() + ".json"));
-            assertEquals("thaumcraftmodern:arcane_shaped", recipe.get("type").getAsString());
-            assertEquals("thaumcraftmodern:" + type.itemId(),
+            assertEquals("thaumic_reborn:arcane_shaped", recipe.get("type").getAsString());
+            assertEquals("thaumic_reborn:" + type.itemId(),
                     recipe.getAsJsonObject("result").get("item").getAsString());
             JsonObject research = json(resources.resolve(
-                    "data/thaumcraftmodern/thaumcraft/research/legacy/" + compact + ".json"));
+                    "data/thaumic_reborn/thaumcraft/research/legacy/" + compact + ".json"));
             assertFalse(research.get("inactive").getAsBoolean());
             boolean linked = research.getAsJsonArray("pages").asList().stream()
                     .map(element -> element.getAsJsonObject())
                     .anyMatch(page -> page.has("recipe") && page.get("recipe").getAsString()
-                            .equals("thaumcraftmodern:" + type.itemId()));
+                            .equals("thaumic_reborn:" + type.itemId()));
             assertEquals(true, linked, compact);
         }
     }

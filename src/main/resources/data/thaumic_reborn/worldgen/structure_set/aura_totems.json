@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.9231944444,
+    "frequency_reduction_method": "default",
+    "salt": 14298534,
+    "separation": 6,
+    "spacing": 17
+  },
+  "structures": [
+    {
+      "structure": "thaumic_reborn:aura_totem",
+      "weight": 1
+    }
+  ]
+}

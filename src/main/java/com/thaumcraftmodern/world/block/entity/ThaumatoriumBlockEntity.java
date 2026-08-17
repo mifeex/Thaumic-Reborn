@@ -511,7 +511,7 @@ public final class ThaumatoriumBlockEntity extends BlockEntity
         return slot == 0;
     }
     @Override public Component getDisplayName() {
-        return Component.translatable("block.thaumcraftmodern.thaumatorium");
+        return Component.translatable("block.thaumic_reborn.thaumatorium");
     }
     @Override public @Nullable AbstractContainerMenu createMenu(int id,
             Inventory inventory, Player player) {

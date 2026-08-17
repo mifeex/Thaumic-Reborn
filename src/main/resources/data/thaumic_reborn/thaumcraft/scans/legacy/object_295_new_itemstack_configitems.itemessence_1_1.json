@@ -1,0 +1,17 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:ethereal_essence",
+  "display": "",
+  "aspects": [],
+  "inactive": true,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemEssence, 1, 1)",
+    "metadata_group_raw": null,
+    "aspects": [],
+    "aspect_operations": [],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemEssence, 1, 1), new AspectList())"
+  },
+  "inactive_reason": "multiple legacy registrations collapse to the active wisp-essence identity"
+}

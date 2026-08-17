@@ -1,0 +1,17 @@
+{
+  "research": "crucible",
+  "catalyst": {
+    "item": "thaumic_reborn:entropy_shard"
+  },
+  "output": {
+    "item": "thaumic_reborn:balanced_shard"
+  },
+  "aspects": {
+    "aer": 2,
+    "ignis": 2,
+    "aqua": 2,
+    "terra": 2,
+    "ordo": 2
+  },
+  "legacy_id": "\"BalancedShard_\" + a"
+}

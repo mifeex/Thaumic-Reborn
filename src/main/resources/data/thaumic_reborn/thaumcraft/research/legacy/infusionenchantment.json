@@ -1,0 +1,908 @@
+{
+  "id": "infusionenchantment",
+  "legacy_id": "INFUSIONENCHANTMENT",
+  "category": "artifice",
+  "icon": "minecraft:enchanted_book",
+  "title": "tc.research_name.INFUSIONENCHANTMENT",
+  "subtitle": "tc.research_text.INFUSIONENCHANTMENT",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "jarbrain"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -144,
+  "y": 264,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSIONENCHANTMENT.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSIONENCHANTMENT.2"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.INFUSIONENCHANTMENT.3"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:thaumium_pickaxe",
+      "central": "thaumic_reborn:thaumium_pickaxe",
+      "components": [
+        {
+          "item": "minecraft:anvil",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 8
+        },
+        {
+          "id": "fabrico",
+          "amount": 10
+        },
+        {
+          "id": "ordo",
+          "amount": 10
+        }
+      ],
+      "instability": "very_high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:boots_of_the_traveller",
+      "central": "thaumic_reborn:boots_of_the_traveller",
+      "components": [
+        {
+          "item": "thaumic_reborn:nitor",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "iter",
+          "amount": 8
+        },
+        {
+          "id": "volatus",
+          "amount": 8
+        }
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_chestplate",
+      "central": "minecraft:iron_chestplate",
+      "components": [
+        {
+          "item": "minecraft:iron_ingot",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "tutamen",
+          "amount": 8
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_chestplate",
+      "central": "minecraft:iron_chestplate",
+      "components": [
+        {
+          "item": "minecraft:iron_ingot",
+          "count": 1
+        },
+        {
+          "item": "minecraft:magma_cream",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "tutamen",
+          "amount": 4
+        },
+        {
+          "id": "ignis",
+          "amount": 4
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_chestplate",
+      "central": "minecraft:iron_chestplate",
+      "components": [
+        {
+          "item": "minecraft:iron_ingot",
+          "count": 1
+        },
+        {
+          "item": "minecraft:gunpowder",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "tutamen",
+          "amount": 4
+        },
+        {
+          "id": "perditio",
+          "amount": 4
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_chestplate",
+      "central": "minecraft:iron_chestplate",
+      "components": [
+        {
+          "item": "minecraft:iron_ingot",
+          "count": 1
+        },
+        {
+          "item": "minecraft:arrow",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "tutamen",
+          "amount": 4
+        },
+        {
+          "id": "volatus",
+          "amount": 4
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_boots",
+      "central": "minecraft:iron_boots",
+      "components": [
+        {
+          "item": "minecraft:feather",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "aer",
+          "amount": 4
+        },
+        {
+          "id": "volatus",
+          "amount": 4
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_helmet",
+      "central": "minecraft:iron_helmet",
+      "components": [
+        {
+          "item": "minecraft:sugar_cane",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "aer",
+          "amount": 8
+        },
+        {
+          "id": "aqua",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_helmet",
+      "central": "minecraft:iron_helmet",
+      "components": [
+        {
+          "item": "minecraft:sugar_cane",
+          "count": 1
+        },
+        {
+          "item": "minecraft:slime_ball",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "motus",
+          "amount": 8
+        },
+        {
+          "id": "aqua",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_chestplate",
+      "central": "minecraft:iron_chestplate",
+      "components": [
+        {
+          "item": "minecraft:dead_bush",
+          "count": 1
+        },
+        {
+          "item": "minecraft:quartz",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 8
+        },
+        {
+          "id": "herba",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:iron_sword",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:iron_sword",
+          "count": 1
+        },
+        {
+          "item": "minecraft:glowstone_dust",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 4
+        },
+        {
+          "id": "exanimis",
+          "amount": 4
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:iron_sword",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:amber",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 4
+        },
+        {
+          "id": "bestia",
+          "amount": 4
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:piston",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 3
+        },
+        {
+          "id": "motus",
+          "amount": 3
+        }
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:iron_sword",
+          "count": 1
+        },
+        {
+          "item": "minecraft:blaze_powder",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 4
+        },
+        {
+          "id": "ignis",
+          "amount": 8
+        }
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_sword",
+      "central": "minecraft:iron_sword",
+      "components": [
+        {
+          "item": "minecraft:iron_sword",
+          "count": 1
+        },
+        {
+          "item": "minecraft:diamond",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 4
+        },
+        {
+          "id": "lucrum",
+          "amount": 8
+        }
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_pickaxe",
+      "central": "minecraft:iron_pickaxe",
+      "components": [
+        {
+          "item": "minecraft:iron_pickaxe",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "instrumentum",
+          "amount": 4
+        },
+        {
+          "id": "ordo",
+          "amount": 4
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_pickaxe",
+      "central": "minecraft:iron_pickaxe",
+      "components": [
+        {
+          "item": "minecraft:iron_pickaxe",
+          "count": 1
+        },
+        {
+          "item": "minecraft:cobweb",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 16
+        },
+        {
+          "id": "instrumentum",
+          "amount": 16
+        },
+        {
+          "id": "ordo",
+          "amount": 16
+        },
+        {
+          "id": "messis",
+          "amount": 16
+        },
+        {
+          "id": "perfodio",
+          "amount": 16
+        }
+      ],
+      "instability": "very_high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_pickaxe",
+      "central": "minecraft:iron_pickaxe",
+      "components": [
+        {
+          "item": "minecraft:iron_pickaxe",
+          "count": 1
+        },
+        {
+          "item": "minecraft:obsidian",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "instrumentum",
+          "amount": 4
+        },
+        {
+          "id": "ordo",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:iron_pickaxe",
+      "central": "minecraft:iron_pickaxe",
+      "components": [
+        {
+          "item": "minecraft:iron_pickaxe",
+          "count": 1
+        },
+        {
+          "item": "minecraft:diamond",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "instrumentum",
+          "amount": 4
+        },
+        {
+          "id": "lucrum",
+          "amount": 8
+        }
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:bow",
+      "central": "minecraft:bow",
+      "components": [
+        {
+          "item": "minecraft:bow",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 8
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:bow",
+      "central": "minecraft:bow",
+      "components": [
+        {
+          "item": "minecraft:piston",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 3
+        },
+        {
+          "id": "motus",
+          "amount": 3
+        }
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:bow",
+      "central": "minecraft:bow",
+      "components": [
+        {
+          "item": "minecraft:bow",
+          "count": 1
+        },
+        {
+          "item": "minecraft:blaze_powder",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 4
+        },
+        {
+          "id": "telum",
+          "amount": 4
+        },
+        {
+          "id": "ignis",
+          "amount": 8
+        }
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "minecraft:bow",
+      "central": "minecraft:bow",
+      "components": [
+        {
+          "item": "minecraft:bow",
+          "count": 1
+        },
+        {
+          "item": "minecraft:arrow",
+          "count": 1
+        },
+        {
+          "item": "thaumic_reborn:salis_mundus",
+          "count": 1
+        }
+      ],
+      "aspect_costs": [
+        {
+          "id": "praecantatio",
+          "amount": 8
+        },
+        {
+          "id": "telum",
+          "amount": 16
+        },
+        {
+          "id": "vacuos",
+          "amount": 16
+        },
+        {
+          "id": "permutatio",
+          "amount": 16
+        }
+      ],
+      "instability": "very_high",
+      "detail": "tc.research_text.INFUSIONENCHANTMENT"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -6,
+    "y": 11,
+    "complexity": 3,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_enchant.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 6
+      },
+      {
+        "id": "cognitio",
+        "amount": 3
+      },
+      {
+        "id": "telum",
+        "amount": 3
+      },
+      {
+        "id": "tutamen",
+        "amount": 3
+      },
+      {
+        "id": "instrumentum",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"INFUSIONENCHANTMENT\", \"ARTIFICE\", (new AspectList()).add(Aspect.MAGIC, 6).add(Aspect.MIND, 3).add(Aspect.WEAPON, 3).add(Aspect.ARMOR, 3).add(Aspect.TOOL, 3), -6, 11, 3, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_enchant.png\"))).setPages(new ResearchPage(\"tc.research_page.INFUSIONENCHANTMENT.1\"), new ResearchPage(\"tc.research_page.INFUSIONENCHANTMENT.2\"), new ResearchPage(\"tc.research_page.INFUSIONENCHANTMENT.3\"), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnchRepair\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnchHaste\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch0\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch1\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch2\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch3\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch4\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch5\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch6\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch7\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch8\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch9\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch10\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch11\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch12\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch13\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch14\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch15\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch16\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch17\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch18\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch19\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch20\")), new ResearchPage((InfusionEnchantmentRecipe)recipes.get(\"InfEnch21\"))).setConcealed().setParents(\"JARBRAIN\").registerResearchItem()"
+  }
+}

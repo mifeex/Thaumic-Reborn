@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:greatwood_planks",
-    "thaumcraftmodern:silverwood_planks"
+    "thaumic_reborn:greatwood_planks",
+    "thaumic_reborn:silverwood_planks"
   ]
 }

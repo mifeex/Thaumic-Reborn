@@ -33,8 +33,8 @@ metadata, NBT, Ore Dictionary и условные регистрации без 
 Полный каталог аспектов и их оригинальные иконки также генерируется прямо в
 современные каталоги:
 
-- `src/main/resources/data/thaumcraftmodern/thaumcraft/aspects`;
-- `src/main/resources/assets/thaumcraftmodern/textures/aspects`.
+- `src/main/resources/data/thaumic_reborn/thaumcraft/aspects`;
+- `src/main/resources/assets/thaumic_reborn/textures/aspects`.
 
 Исследования и рецепты из `modern_migration` пока не являются активным
 datapack-контентом: большинство ссылается на ещё не перенесённые предметы,
@@ -77,7 +77,7 @@ entry-point исследований TC4, а потом открываются �
 `BATHSALTS`, 26 для `ELDRITCHMINOR` и 51 для `ELDRITCHMAJOR`; временный варп
 не учитывается. Неоднозначные старые предметы не заменяются догадками и
 остаются за явным критерием
-`thaumcraftmodern:legacy_clue/<research_id>`.
+`thaumic_reborn:legacy_clue/<research_id>`.
 
 Семь старых recipe ID сопоставлены с уже существующими современными рецептами;
 каталог `recipes_legacy` сам по себе не регистрирует Forge-рецепты.
@@ -94,13 +94,13 @@ python3 tools/extract_tc4_legacy.py \
   --jar reference/original/Thaumcraft_1.7.10_4.2.3.5.jar \
   --decompiler /path/to/forgeflower.jar \
   --output data/legacy_tc4_4_2_3_5 \
-  --modern-aspects src/main/resources/data/thaumcraftmodern/thaumcraft/aspects \
-  --modern-textures src/main/resources/assets/thaumcraftmodern/textures/aspects
+  --modern-aspects src/main/resources/data/thaumic_reborn/thaumcraft/aspects \
+  --modern-textures src/main/resources/assets/thaumic_reborn/textures/aspects
 
 python3 tools/materialize_tc4_content.py \
   --archive data/legacy_tc4_4_2_3_5/archive \
-  --content-root src/main/resources/data/thaumcraftmodern/thaumcraft \
-  --lang-root src/main/resources/assets/thaumcraftmodern/lang \
+  --content-root src/main/resources/data/thaumic_reborn/thaumcraft \
+  --lang-root src/main/resources/assets/thaumic_reborn/lang \
   --mcp-fields data/legacy_tc4_4_2_3_5/modern_migration/mcp_stable_12_1_7_10_fields.json \
   --minecraft-assets-jar /path/to/minecraft-1.20.1-client-extra.jar
 ```

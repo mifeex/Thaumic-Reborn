@@ -88,7 +88,7 @@ final class AdvancedAlchemicalFurnaceFidelityTest {
     }
 
     @Test void packagedObjAndFourStateTexturesAreUnmodifiedTc4Assets() throws Exception {
-        Path modern = Path.of("src/main/resources/assets/thaumcraftmodern/textures/models");
+        Path modern = Path.of("src/main/resources/assets/thaumic_reborn/textures/models");
         Path original = Path.of("reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/models");
         for (String name : new String[]{"adv_alch_furnace.obj", "alch_furnace.png",
                 "alch_furnace_on.png", "alch_furnace_tank.png", "alch_furnace_tank_on.png"}) {

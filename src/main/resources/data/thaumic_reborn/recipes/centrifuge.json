@@ -1,0 +1,31 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "centrifuge",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5,
+    "perditio": 5
+  },
+  "pattern": [
+    " T ",
+    "ACP",
+    " T "
+  ],
+  "key": {
+    "T": {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "A": {
+      "item": "thaumic_reborn:arcane_alembic"
+    },
+    "C": {
+      "item": "thaumic_reborn:alchemical_construct"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_centrifuge"
+  }
+}

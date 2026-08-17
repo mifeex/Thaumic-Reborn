@@ -1,0 +1,62 @@
+{
+  "id": "eldritchminor",
+  "legacy_id": "ELDRITCHMINOR",
+  "category": "eldritch",
+  "icon_resource": "thaumic_reborn:textures/misc/r_eldritchminor.png",
+  "title": "tc.research_name.ELDRITCHMINOR",
+  "subtitle": "tc.research_text.ELDRITCHMINOR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "warp",
+    "measure": "non_temporary",
+    "minimum": 26
+  },
+  "x": 24,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ELDRITCHMINOR.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:voidseed",
+      "legacy_type": "recipe",
+      "legacy_content": "VoidSeed",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"VoidSeed\"))"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 1,
+    "y": 0,
+    "complexity": 0,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_eldritchminor.png\")",
+    "flags": {
+      "special": true,
+      "secondary": false,
+      "round": true,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "}\n\n   private static void initEldritchResearch() {\n      (new ResearchItem(\"ELDRITCHMINOR\", \"ELDRITCH\", new AspectList(), 1, 0, 0, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_eldritchminor.png\"))).setPages(new ResearchPage(\"tc.research_page.ELDRITCHMINOR.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"VoidSeed\"))).setHidden().setRound().setSpecial().registerResearchItem()"
+  }
+}

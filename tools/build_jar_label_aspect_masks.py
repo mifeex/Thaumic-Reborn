@@ -7,8 +7,8 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "src/main/resources/assets/thaumcraftmodern/textures/aspects"
-TARGET = ROOT / "src/main/resources/assets/thaumcraftmodern/textures/aspects_label"
+SOURCE = ROOT / "src/main/resources/assets/thaumic_reborn/textures/aspects"
+TARGET = ROOT / "src/main/resources/assets/thaumic_reborn/textures/aspects_label"
 
 
 def build_mask(source: Path, target: Path) -> None:

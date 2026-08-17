@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "thaumcraftmodern:block/tainted_glow_berry_vine_lit"
-  }
-}

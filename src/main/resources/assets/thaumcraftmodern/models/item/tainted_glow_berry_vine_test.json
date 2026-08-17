@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "thaumcraftmodern:block/tainted_glow_berry_vine_lit"
-  }
-}

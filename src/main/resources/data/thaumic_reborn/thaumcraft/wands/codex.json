@@ -1,0 +1,8 @@
+{
+  "kind": "rod",
+  "id": "codex",
+  "capacity_vis": 1000,
+  "craft_cost_vis": 1,
+  "research": "rod_wood",
+  "translation_key": "item.thaumic_reborn.codex_rod"
+}

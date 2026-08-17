@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 public final class ResearchCompletionService {
     private static final String DISCOVERY_READY_PREFIX =
-            "thaumcraftmodern:discovery_ready/";
+            "thaumic_reborn:discovery_ready/";
     private static final String RESEARCH_KEY = "Research";
     private static final String PAYLOAD_VERSION_KEY = "DiscoveryVersion";
     private static final String PAYLOAD_RESEARCH_KEY = "ValidatedResearch";

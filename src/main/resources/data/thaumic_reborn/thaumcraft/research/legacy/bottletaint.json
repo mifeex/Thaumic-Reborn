@@ -1,0 +1,85 @@
+{
+  "id": "bottletaint",
+  "legacy_id": "BOTTLETAINT",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:bottled_taint",
+  "completion_warp": 2,
+  "title": "tc.research_name.BOTTLETAINT",
+  "subtitle": "tc.research_text.BOTTLETAINT",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "entropicprocessing"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "scan_aspect",
+    "id": "vitium"
+  },
+  "x": -192,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BOTTLETAINT.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:bottletaint",
+      "legacy_type": "recipe",
+      "legacy_content": "BottleTaint",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"BottleTaint\"))"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -8,
+    "y": 1,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemBottleTaint)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [
+      "vitium"
+    ],
+    "research_aspects": [
+      {
+        "id": "vitium",
+        "amount": 5
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "perditio",
+        "amount": 1
+      },
+      {
+        "id": "aqua",
+        "amount": 1
+      }
+    ],
+    "warp": [
+      2
+    ],
+    "source_expression": "(new ResearchItem(\"BOTTLETAINT\", \"ALCHEMY\", (new AspectList()).add(Aspect.TAINT, 5).add(Aspect.MAGIC, 3).add(Aspect.ENTROPY, 1).add(Aspect.WATER, 1), -8, 1, 2, new ItemStack(ConfigItems.itemBottleTaint))).setPages(new ResearchPage(\"tc.research_page.BOTTLETAINT.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"BottleTaint\"))).setHidden().setAspectTriggers(Aspect.TAINT).setParents(\"ENTROPICPROCESSING\").registerResearchItem()"
+  }
+}

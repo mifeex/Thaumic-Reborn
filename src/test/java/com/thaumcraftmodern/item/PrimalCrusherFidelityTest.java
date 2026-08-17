@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PrimalCrusherFidelityTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
     private static final Path INFUSION = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes"
     );
 
     @Test
@@ -37,7 +37,7 @@ class PrimalCrusherFidelityTest {
     void activeResearchAndInfusionUseOriginalRecipe() throws IOException {
         JsonObject research = read(RESEARCH.resolve("primalcrusher.json"));
         assertFalse(research.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:primal_crusher",
+        assertEquals("thaumic_reborn:primal_crusher",
                 research.get("icon").getAsString());
         JsonObject page = research.getAsJsonArray("pages")
                 .get(1).getAsJsonObject();
@@ -48,7 +48,7 @@ class PrimalCrusherFidelityTest {
         JsonObject recipe = read(INFUSION.resolve("primal_crusher.json"));
         assertEquals("primalcrusher", recipe.get("research").getAsString());
         assertEquals(6, recipe.get("instability").getAsInt());
-        assertEquals("thaumcraftmodern:primordial_pearl",
+        assertEquals("thaumic_reborn:primordial_pearl",
                 recipe.getAsJsonObject("central").get("item").getAsString());
         assertComponents(recipe.getAsJsonArray("components"));
         JsonObject essentia = recipe.getAsJsonObject("essentia");
@@ -68,7 +68,7 @@ class PrimalCrusherFidelityTest {
                         + "assets/thaumcraft/textures"
         );
         Path modern = Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures"
+                "src/main/resources/assets/thaumic_reborn/textures"
         );
         assertArrayEquals(
                 Files.readAllBytes(classic.resolve("items/primal_crusher.png")),
@@ -88,7 +88,7 @@ class PrimalCrusherFidelityTest {
         JsonObject primnode = read(RESEARCH.resolve("primnode.json"));
         assertFalse(primnode.get("inactive").getAsBoolean());
         assertFalse(primnode.has("icon"));
-        assertEquals("thaumcraftmodern:textures/misc/r_nodes_2.png",
+        assertEquals("thaumic_reborn:textures/misc/r_nodes_2.png",
                 primnode.get("icon_resource").getAsString());
     }
 
@@ -115,12 +115,12 @@ class PrimalCrusherFidelityTest {
 
     private static void assertComponents(JsonArray components) {
         List<String> expected = List.of(
-                "thaumcraftmodern:primal_charm",
-                "thaumcraftmodern:void_pickaxe",
-                "thaumcraftmodern:void_shovel",
-                "thaumcraftmodern:primal_charm",
-                "thaumcraftmodern:pickaxe_of_the_core",
-                "thaumcraftmodern:shovel_of_the_earthmover"
+                "thaumic_reborn:primal_charm",
+                "thaumic_reborn:void_pickaxe",
+                "thaumic_reborn:void_shovel",
+                "thaumic_reborn:primal_charm",
+                "thaumic_reborn:pickaxe_of_the_core",
+                "thaumic_reborn:shovel_of_the_earthmover"
         );
         assertEquals(expected.size(), components.size());
         for (int index = 0; index < expected.size(); index++) {

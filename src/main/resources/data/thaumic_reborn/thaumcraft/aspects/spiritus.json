@@ -1,0 +1,10 @@
+{
+  "id": "spiritus",
+  "order": 200,
+  "color": "EBEBFB",
+  "icon": "thaumic_reborn:textures/aspects/spiritus.png",
+  "components": [
+    "victus",
+    "mortuus"
+  ]
+}

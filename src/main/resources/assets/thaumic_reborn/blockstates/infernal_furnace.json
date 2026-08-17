@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "part=0": {"model":"thaumic_reborn:block/infernal_furnace_core"},
+    "part=1": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=2": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=3": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=4": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=5": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=6": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=7": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=8": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=9": {"model":"thaumic_reborn:block/infernal_furnace_shell"},
+    "part=10": {"model":"thaumic_reborn:block/infernal_furnace_grate"}
+  }
+}

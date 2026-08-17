@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "thaumic_reborn:block/obsidian_tile",
+    "up": "thaumic_reborn:block/obsidian_tile",
+    "north": "thaumic_reborn:block/obsidian_totem_base",
+    "south": "thaumic_reborn:block/obsidian_totem_base",
+    "west": "thaumic_reborn:block/obsidian_totem_base",
+    "east": "thaumic_reborn:block/obsidian_totem_base",
+    "particle": "thaumic_reborn:block/obsidian_totem_base"
+  }
+}

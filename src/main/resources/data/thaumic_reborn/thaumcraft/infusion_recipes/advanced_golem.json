@@ -1,0 +1,14 @@
+{
+  "research": "advancedgolem",
+  "instability": 3,
+  "central": { "tag": "thaumic_reborn:golem_placers" },
+  "components": [
+    { "item": "minecraft:redstone" },
+    { "item": "minecraft:glowstone_dust" },
+    { "item": "minecraft:gunpowder" },
+    { "item": "thaumic_reborn:warded_jar" },
+    { "item": "thaumic_reborn:zombie_brain" }
+  ],
+  "essentia": { "cognitio": 8, "sensus": 8, "victus": 8 },
+  "result_modifier": { "type": "tag_boolean", "key": "Advanced", "value": 1 }
+}

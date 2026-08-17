@@ -10,7 +10,7 @@ class ThaumatoriumResearchRecipeTest {
         ThaumatoriumResearchRecipe.Snapshot recipe =
                 ThaumatoriumResearchRecipe.snapshot();
 
-        assertEquals("thaumcraftmodern:thaumatorium_construct",
+        assertEquals("thaumic_reborn:thaumatorium_construct",
                 ThaumatoriumResearchRecipe.ID.toString());
         assertEquals(1, recipe.width());
         assertEquals(3, recipe.height());

@@ -1,7 +1,0 @@
-{
-  "parent": "thaumcraftmodern:block/lamp_shell",
-  "textures": {
-    "side": "thaumcraftmodern:block/lamp_fert_side_off",
-    "top": "thaumcraftmodern:block/lamp_fert_top_off"
-  }
-}

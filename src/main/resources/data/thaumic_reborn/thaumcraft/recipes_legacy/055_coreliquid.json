@@ -1,0 +1,25 @@
+{
+  "id": "coreliquid",
+  "legacy_id": "CoreLiquid",
+  "legacy_kind": "crucible",
+  "inactive": true,
+  "inactive_reason": "output item or its complete gameplay behavior is not implemented",
+  "modern_recipe": [
+    "thaumic_reborn:coreliquid"
+  ],
+  "required_aspects": [
+    {
+      "id": "aqua",
+      "amount": 5
+    },
+    {
+      "id": "vacuos",
+      "amount": 5
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"CORELIQUID\", new ItemStack(ConfigItems.itemGolemCore, 1, 5), new ItemStack(ConfigItems.itemGolemCore, 1, 100), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.VOID, 5))",
+    "source_statement": "ConfigResearch.recipes.put(\"CoreLiquid\", ThaumcraftApi.addCrucibleRecipe(\"CORELIQUID\", new ItemStack(ConfigItems.itemGolemCore, 1, 5), new ItemStack(ConfigItems.itemGolemCore, 1, 100), (new AspectList()).add(Aspect.WATER, 5).add(Aspect.VOID, 5)))",
+    "unkeyed": false
+  }
+}

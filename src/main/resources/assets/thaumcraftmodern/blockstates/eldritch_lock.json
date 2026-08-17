@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": {"model":"thaumcraftmodern:block/eldritch_lock"},
-    "facing=east": {"model":"thaumcraftmodern:block/eldritch_lock","y":90},
-    "facing=south": {"model":"thaumcraftmodern:block/eldritch_lock","y":180},
-    "facing=west": {"model":"thaumcraftmodern:block/eldritch_lock","y":270}
-  }
-}

@@ -96,9 +96,9 @@ final class ThaumatoriumRuntimeStateFidelityTest {
         assertNull(ThaumatoriumBlockEntity.storedRecipeId("minecraft:"));
         assertEquals(
                 ResourceLocation.fromNamespaceAndPath(
-                        "thaumcraftmodern", "alumentum"),
+                        "thaumic_reborn", "alumentum"),
                 ThaumatoriumBlockEntity.storedRecipeId(
-                        "thaumcraftmodern:alumentum"));
+                        "thaumic_reborn:alumentum"));
     }
 
     @Test

@@ -1,0 +1,16 @@
+{
+  "research": "golemtallow",
+  "catalyst": {
+    "item": "thaumic_reborn:tallow_block"
+  },
+  "output": {
+    "item": "thaumic_reborn:tallow_golem"
+  },
+  "aspects": {
+    "humanus": 8,
+    "motus": 8,
+    "spiritus": 8
+  },
+  "legacy_id": "GolemTallow",
+  "inactive": false
+}

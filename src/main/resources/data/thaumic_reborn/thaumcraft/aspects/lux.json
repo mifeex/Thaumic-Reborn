@@ -1,0 +1,10 @@
+{
+  "id": "lux",
+  "order": 70,
+  "color": "FFF663",
+  "icon": "thaumic_reborn:textures/aspects/lux.png",
+  "components": [
+    "aer",
+    "ignis"
+  ]
+}

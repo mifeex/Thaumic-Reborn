@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/pipe_buffer",
+    "tube": "thaumic_reborn:block/pipe_buffer",
+    "indicator": "thaumic_reborn:block/advanced_buffer_indicator"
+  },
+  "elements": [
+    {
+      "from": [4, 4, 4], "to": [12, 12, 12],
+      "faces": {
+        "down": {"texture": "#tube"}, "up": {"texture": "#tube"},
+        "north": {"texture": "#tube"}, "south": {"texture": "#tube"},
+        "west": {"texture": "#tube"}, "east": {"texture": "#tube"}
+      }
+    },
+    {"from": [7, 7, 3.99], "to": [9, 9, 4], "faces": {"north": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 2}}},
+    {"from": [7, 7, 12], "to": [9, 9, 12.01], "faces": {"south": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 3}}},
+    {"from": [3.99, 7, 7], "to": [4, 9, 9], "faces": {"west": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 4}}},
+    {"from": [12, 7, 7], "to": [12.01, 9, 9], "faces": {"east": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 5}}},
+    {"from": [7, 12, 7], "to": [9, 12.01, 9], "faces": {"up": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 1}}},
+    {"from": [7, 3.99, 7], "to": [9, 4, 9], "faces": {"down": {"uv": [0, 0, 16, 16], "texture": "#indicator", "tintindex": 0}}}
+  ]
+}

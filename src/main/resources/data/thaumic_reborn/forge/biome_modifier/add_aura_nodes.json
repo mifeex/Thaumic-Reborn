@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#thaumic_reborn:has_aura_nodes",
+  "features": "thaumic_reborn:aura_node",
+  "step": "top_layer_modification"
+}

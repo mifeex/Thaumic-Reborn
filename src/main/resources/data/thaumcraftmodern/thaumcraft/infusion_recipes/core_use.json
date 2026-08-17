@@ -1,7 +1,0 @@
-{
-  "research":"coreuse","instability":3,
-  "central":{"item":"thaumcraftmodern:empty_golem_core"},
-  "components":[{"item":"minecraft:comparator"},{"item":"minecraft:flint_and_steel"},{"item":"minecraft:shears"},{"item":"minecraft:lever"}],
-  "essentia":{"instrumentum":20,"machina":20,"humanus":20},
-  "result":{"item":"thaumcraftmodern:use_golem_core","count":1}
-}

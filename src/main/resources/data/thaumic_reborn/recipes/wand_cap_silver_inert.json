@@ -1,0 +1,21 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "cap_silver",
+  "vis": {
+    "ordo": 4,
+    "ignis": 4,
+    "aer": 4
+  },
+  "pattern": [
+    "NNN",
+    "N N"
+  ],
+  "key": {
+    "N": {
+      "tag": "forge:nuggets/silver"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:inert_silver_wand_cap"
+  }
+}

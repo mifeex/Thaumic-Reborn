@@ -93,7 +93,7 @@ final class AdvancedEssentiaBufferFlowTest {
                 .directional());
         assertThrows(IllegalArgumentException.class, () ->
                 TubePolicyRegistry.require(new net.minecraft.resources.ResourceLocation(
-                        "thaumcraftmodern", "emergency_vent")));
+                        "thaumic_reborn", "emergency_vent")));
         assertFalse(TubePolicyRegistry.require(TubePolicyRegistry.PLAIN)
                 .reversibleController());
         for (int value = -20; value <= 20; value++) {

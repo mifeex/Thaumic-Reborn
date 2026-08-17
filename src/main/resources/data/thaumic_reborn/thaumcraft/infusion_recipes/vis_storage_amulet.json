@@ -1,0 +1,20 @@
+{
+  "research": "visamulet",
+  "instability": 6,
+  "central": {"item": "thaumic_reborn:mundane_amulet"},
+  "components": [
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:balanced_crystal_cluster"},
+    {"item": "thaumic_reborn:balanced_crystal_cluster"},
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:balanced_crystal_cluster"},
+    {"item": "thaumic_reborn:balanced_crystal_cluster"}
+  ],
+  "result": {"item": "thaumic_reborn:vis_storage_amulet"},
+  "essentia": {
+    "auram": 24,
+    "potentia": 64,
+    "praecantatio": 64,
+    "vacuos": 24
+  }
+}

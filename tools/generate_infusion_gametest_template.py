@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET = ROOT / "src/main/resources/data/thaumcraftmodern/structures/infusion_empty.nbt"
+TARGET = ROOT / "src/main/resources/data/thaumic_reborn/structures/infusion_empty.nbt"
 
 
 def named_tag(tag_type: int, name: str, payload: bytes) -> bytes:

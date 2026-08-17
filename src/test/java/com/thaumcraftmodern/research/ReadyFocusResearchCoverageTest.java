@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ReadyFocusResearchCoverageTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
 
     @Test
@@ -36,13 +36,13 @@ final class ReadyFocusResearchCoverageTest {
             throws Exception {
         Map<String, ExpectedInfusion> expected = Map.of(
                 "focushellbat", new ExpectedInfusion(
-                        "thaumcraftmodern:focus_hellbat",
+                        "thaumic_reborn:focus_hellbat",
                         "minecraft:magma_cream", 6, "minor"),
                 "focusportablehole", new ExpectedInfusion(
-                        "thaumcraftmodern:focus_portable_hole",
+                        "thaumic_reborn:focus_portable_hole",
                         "minecraft:ender_pearl", 6, "minor"),
                 "focuswarding", new ExpectedInfusion(
-                        "thaumcraftmodern:focus_warding",
+                        "thaumic_reborn:focus_warding",
                         "minecraft:nether_star", 8, "moderate")
         );
         for (var entry : expected.entrySet()) {

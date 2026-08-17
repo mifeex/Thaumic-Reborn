@@ -1,0 +1,30 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "bellows",
+  "vis": {
+    "aer": 10,
+    "ordo": 5
+  },
+  "pattern": [
+    "WW ",
+    "LCI",
+    "WW "
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "thaumic_reborn:air_shard"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_bellows"
+  }
+}

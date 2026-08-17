@@ -1,0 +1,15 @@
+{
+  "research": "translead",
+  "catalyst": {
+    "tag": "forge:nuggets/lead"
+  },
+  "output": {
+    "item": "thaumic_reborn:lead_nugget",
+    "count": 3
+  },
+  "aspects": {
+    "metallum": 2,
+    "ordo": 1
+  },
+  "legacy_id": "TransLead"
+}

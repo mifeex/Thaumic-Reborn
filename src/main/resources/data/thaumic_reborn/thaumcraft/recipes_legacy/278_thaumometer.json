@@ -1,0 +1,14 @@
+{
+  "id": "thaumometer",
+  "legacy_id": "Thaumometer",
+  "legacy_kind": "crafting_shaped_ore",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:thaumometer",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "oreDictRecipe(new ItemStack(ConfigItems.itemThaumometer), new Object[]{\" 1 \", \"IGI\", \" 1 \", 'I', Items.field_151043_k, 'G', Blocks.field_150359_w, '1', new ItemStack(ConfigItems.itemShard, 1, 32767)})",
+    "source_statement": "ConfigResearch.recipes.put(\"Thaumometer\", oreDictRecipe(new ItemStack(ConfigItems.itemThaumometer), new Object[]{\" 1 \", \"IGI\", \" 1 \", 'I', Items.field_151043_k, 'G', Blocks.field_150359_w, '1', new ItemStack(ConfigItems.itemShard, 1, 32767)}))",
+    "unkeyed": false
+  }
+}

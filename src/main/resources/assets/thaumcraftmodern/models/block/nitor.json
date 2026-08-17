@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "thaumcraftmodern:item/nitor",
-    "particle": "thaumcraftmodern:item/nitor"
-  }
-}

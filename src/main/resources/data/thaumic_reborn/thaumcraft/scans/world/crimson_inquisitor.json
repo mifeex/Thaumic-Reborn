@@ -1,0 +1,15 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:crimson_inquisitor",
+  "display": "entity.thaumic_reborn.crimson_inquisitor",
+  "aspects": [
+    {"id": "alienis", "amount": 1},
+    {"id": "humanus", "amount": 2},
+    {"id": "perditio", "amount": 1},
+    {"id": "telum", "amount": 2}
+  ],
+  "legacy": {
+    "source": "modern_variant_of_cultist_knight",
+    "note": "No separate TC4 entity tag was present; retain the cultist baseline and add Telum for the inquisitor weapon role."
+  }
+}

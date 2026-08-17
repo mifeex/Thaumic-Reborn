@@ -1,0 +1,21 @@
+{
+  "id": "balancedshard__a",
+  "legacy_id": "\"BalancedShard_\" + a",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:balanced_air",
+    "thaumic_reborn:balanced_fire",
+    "thaumic_reborn:balanced_water",
+    "thaumic_reborn:balanced_earth",
+    "thaumic_reborn:balanced_order",
+    "thaumic_reborn:balanced_entropy"
+  ],
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"CRUCIBLE\", new ItemStack(ConfigItems.itemShard, 1, 6), new ItemStack(ConfigItems.itemShard, 1, a), al)",
+    "source_statement": "}\n         }\n\n         ConfigResearch.recipes.put(\"BalancedShard_\" + a, ThaumcraftApi.addCrucibleRecipe(\"CRUCIBLE\", new ItemStack(ConfigItems.itemShard, 1, 6), new ItemStack(ConfigItems.itemShard, 1, a), al))",
+    "unkeyed": false
+  }
+}

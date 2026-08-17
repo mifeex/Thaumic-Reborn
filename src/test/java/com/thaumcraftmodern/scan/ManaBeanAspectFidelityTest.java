@@ -11,7 +11,7 @@ final class ManaBeanAspectFidelityTest {
     void storedBeanAspectIsAddedToItsRegisteredObjectAspects() {
         ScanDefinition base = new ScanDefinition(
                 ScanTargetType.ITEM,
-                "thaumcraftmodern:mana_bean",
+                "thaumic_reborn:mana_bean",
                 "",
                 List.of(
                         new AspectReward("praecantatio", 2),
@@ -36,7 +36,7 @@ final class ManaBeanAspectFidelityTest {
     void matchingBeanAspectMergesIntoTheExistingIcon() {
         ScanDefinition base = new ScanDefinition(
                 ScanTargetType.ITEM,
-                "thaumcraftmodern:mana_bean",
+                "thaumic_reborn:mana_bean",
                 "",
                 List.of(
                         new AspectReward("praecantatio", 2),

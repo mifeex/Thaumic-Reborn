@@ -1,4 +1,0 @@
-{
-  "parent":"thaumcraftmodern:block/jarred_aura_node",
-  "textures":{"bottom":"thaumcraftmodern:block/jar_bottom","side":"thaumcraftmodern:block/jar_side_void","top":"thaumcraftmodern:block/jar_top_void","particle":"thaumcraftmodern:block/jar_side_void"}
-}

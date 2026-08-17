@@ -58,7 +58,7 @@ SHA-256:
 
 Собранный JAR:
 
-`build/libs/thaumcraftmodern-1.4.19.jar`
+`build/libs/thaumic_reborn-1.4.19.jar`
 
 SHA-256:
 
@@ -66,7 +66,7 @@ SHA-256:
 
 Метаданные внутри JAR:
 
-- `modId = thaumcraftmodern`;
+- `modId = thaumic_reborn`;
 - `version = 1.4.19`;
 - `displayName = Thaumcraft Modern`.
 

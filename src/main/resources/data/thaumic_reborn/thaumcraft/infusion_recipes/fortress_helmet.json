@@ -1,0 +1,14 @@
+{
+  "research": "armorfortress",
+  "instability": 3,
+  "central": { "item": "thaumic_reborn:thaumium_helmet" },
+  "components": [
+    { "item": "thaumic_reborn:thaumium_ingot" },
+    { "item": "thaumic_reborn:thaumium_ingot" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:emerald" }
+  ],
+  "result": { "item": "thaumic_reborn:fortress_helmet" },
+  "essentia": { "metallum": 24, "tutamen": 16, "praecantatio": 16 }
+}

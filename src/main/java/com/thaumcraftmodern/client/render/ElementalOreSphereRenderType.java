@@ -13,7 +13,7 @@ public final class ElementalOreSphereRenderType extends RenderStateShard {
     private static final RenderType[] MARKERS = createMarkers();
 
     private ElementalOreSphereRenderType() {
-        super("thaumcraftmodern_elemental_ore_spheres", () -> {}, () -> {});
+        super("thaumic_reborn_elemental_ore_spheres", () -> {}, () -> {});
     }
 
     public static RenderType markers() {

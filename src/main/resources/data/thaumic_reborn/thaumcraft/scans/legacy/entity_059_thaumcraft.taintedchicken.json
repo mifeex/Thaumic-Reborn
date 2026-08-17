@@ -1,0 +1,40 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:tainted_chicken",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 2
+    },
+    {
+      "id": "volatus",
+      "amount": 2
+    },
+    {
+      "id": "aer",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.TaintedChicken",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 2
+      },
+      {
+        "id": "volatus",
+        "amount": 2
+      },
+      {
+        "id": "aer",
+        "amount": 1
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.TaintedChicken\", (new AspectList()).add(Aspect.TAINT, 2).add(Aspect.FLIGHT, 2).add(Aspect.AIR, 1))"
+  }
+}

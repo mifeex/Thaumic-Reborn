@@ -1,0 +1,29 @@
+{
+  "id": "alumentum",
+  "legacy_id": "Alumentum",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:alumentum"
+  ],
+  "required_aspects": [
+    {
+      "id": "potentia",
+      "amount": 3
+    },
+    {
+      "id": "ignis",
+      "amount": 3
+    },
+    {
+      "id": "perditio",
+      "amount": 3
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"ALUMENTUM\", new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack(Items.field_151044_h, 1, 32767), (new AspectList()).merge(Aspect.ENERGY, 3).merge(Aspect.FIRE, 3).merge(Aspect.ENTROPY, 3))",
+    "source_statement": "}\n\n      ConfigResearch.recipes.put(\"Alumentum\", ThaumcraftApi.addCrucibleRecipe(\"ALUMENTUM\", new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack(Items.field_151044_h, 1, 32767), (new AspectList()).merge(Aspect.ENERGY, 3).merge(Aspect.FIRE, 3).merge(Aspect.ENTROPY, 3)))",
+    "unkeyed": false
+  }
+}

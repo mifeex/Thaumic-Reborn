@@ -128,7 +128,7 @@ public final class EldritchWardenRenderer extends MobRenderer<
                             .setWriteMaskState(COLOR_WRITE)
                             .createCompositeState(false);
             return RenderType.create(
-                    "thaumcraftmodern_warden_eyes",
+                    "thaumic_reborn_warden_eyes",
                     DefaultVertexFormat.NEW_ENTITY,
                     VertexFormat.Mode.QUADS,
                     256,

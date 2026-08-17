@@ -1,0 +1,11 @@
+{
+  "research": "helmgoggles",
+  "instability": 5,
+  "central": { "tag": "thaumic_reborn:fortress_helmets" },
+  "components": [
+    { "item": "minecraft:slime_ball" },
+    { "item": "thaumic_reborn:goggles_of_revealing" }
+  ],
+  "result_modifier": { "type": "tag_boolean", "key": "goggles", "value": 1 },
+  "essentia": { "sensus": 32, "auram": 16, "tutamen": 16 }
+}

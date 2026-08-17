@@ -1,0 +1,11 @@
+{
+  "type":"entity",
+  "target":"thaumic_reborn:inhabited_zombie",
+  "display":"entity.thaumic_reborn.inhabited_zombie",
+  "aspects":[
+    {"id":"exanimis","amount":4},
+    {"id":"humanus","amount":1},
+    {"id":"alienis","amount":2},
+    {"id":"terra","amount":1}
+  ]
+}

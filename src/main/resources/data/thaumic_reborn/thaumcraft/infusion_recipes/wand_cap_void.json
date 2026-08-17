@@ -1,0 +1,21 @@
+{
+  "research": "cap_void",
+  "instability": 8,
+  "central": {"item": "thaumic_reborn:inert_void_wand_cap"},
+  "components": [
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:salis_mundus"},
+    {"item": "thaumic_reborn:salis_mundus"}
+  ],
+  "essentia": {
+    "potentia": 18,
+    "vacuos": 18,
+    "alienis": 18,
+    "auram": 18
+  },
+  "result": {
+    "item": "thaumic_reborn:void_wand_cap",
+    "count": 1
+  }
+}

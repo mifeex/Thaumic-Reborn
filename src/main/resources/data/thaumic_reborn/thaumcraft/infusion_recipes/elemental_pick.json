@@ -1,0 +1,7 @@
+{
+  "research":"elementalpick","instability":1,
+  "central":{"item":"thaumic_reborn:thaumium_pickaxe"},
+  "components":[{"item":"thaumic_reborn:fire_shard"},{"item":"thaumic_reborn:fire_shard"},{"item":"minecraft:diamond"},{"item":"thaumic_reborn:greatwood_log"}],
+  "essentia":{"ignis":8,"perfodio":8,"sensus":8},
+  "result":{"item":"thaumic_reborn:pickaxe_of_the_core","count":1}
+}

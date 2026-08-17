@@ -1,0 +1,21 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/chesthungry",
+    "shell": "thaumic_reborn:block/chesthungry"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 10, 15],
+      "faces": {
+        "down": { "texture": "#shell", "uv": [7, 4.75, 10.5, 8.25] },
+        "up": { "texture": "#shell", "uv": [3.5, 4.75, 7, 8.25] },
+        "north": { "texture": "#shell", "uv": [3.5, 8.25, 7, 10.75] },
+        "south": { "texture": "#shell", "uv": [10.5, 8.25, 14, 10.75] },
+        "west": { "texture": "#shell", "uv": [0, 8.25, 3.5, 10.75] },
+        "east": { "texture": "#shell", "uv": [7, 8.25, 10.5, 10.75] }
+      }
+    }
+  ]
+}

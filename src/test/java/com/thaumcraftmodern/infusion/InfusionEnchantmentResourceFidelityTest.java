@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class InfusionEnchantmentResourceFidelityTest {
     private static final Path RECIPES = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes");
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/infusionenchantment.json");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/infusionenchantment.json");
 
     @Test
     void allTwentyFourTc4InfusionEnchantmentsAreExecutableAndInTheBook()

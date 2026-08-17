@@ -1,0 +1,25 @@
+{
+  "id": "altgunpowder",
+  "legacy_id": "AltGunpowder",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:altgunpowder"
+  ],
+  "required_aspects": [
+    {
+      "id": "ignis",
+      "amount": 4
+    },
+    {
+      "id": "perditio",
+      "amount": 4
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"ALCHEMICALDUPLICATION\", new ItemStack(Items.field_151016_H, 2, 0), new ItemStack(Items.field_151016_H), (new AspectList()).merge(Aspect.FIRE, 4).merge(Aspect.ENTROPY, 4))",
+    "source_statement": "ConfigResearch.recipes.put(\"AltGunpowder\", ThaumcraftApi.addCrucibleRecipe(\"ALCHEMICALDUPLICATION\", new ItemStack(Items.field_151016_H, 2, 0), new ItemStack(Items.field_151016_H), (new AspectList()).merge(Aspect.FIRE, 4).merge(Aspect.ENTROPY, 4)))",
+    "unkeyed": false
+  }
+}

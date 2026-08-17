@@ -1,0 +1,38 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:void_jar",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 3
+    },
+    {
+      "id": "vitreus",
+      "amount": 3
+    },
+    {
+      "id": "aqua",
+      "amount": 2
+    },
+    {
+      "id": "herba",
+      "amount": 2
+    },
+    {
+      "id": "praecantatio",
+      "amount": 2
+    },
+    {
+      "id": "perditio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/jar_void.json"
+}

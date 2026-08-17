@@ -37,17 +37,17 @@ public final class ClientScanOverlay {
     private static final float NODE_COUNT_TEXT_SCALE = 0.65F;
     private static final ResourceLocation CLASSIC_PARTICLES =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "textures/misc/particles.png"
             );
     private static final ResourceLocation CLASSIC_THAUMONOMICON =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "textures/item/thaumonomicon.png"
             );
     private static final ResourceLocation UNKNOWN_ASPECT =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "textures/aspects/_unknown.png"
             );
     private static ScanFeedbackPacket current;
@@ -234,7 +234,7 @@ public final class ClientScanOverlay {
                 ? Component.empty()
                 : notification.displayKey().isBlank()
                 ? Component.translatable(
-                        "message.thaumcraftmodern.scan.success_generic"
+                        "message.thaumic_reborn.scan.success_generic"
                 )
                 : Component.translatable(
                         notification.messageKey(),
@@ -454,22 +454,22 @@ public final class ClientScanOverlay {
                 ).isPresent())
                 .map(gain -> {
                     Component aspectName = Component.translatable(
-                            "aspect.thaumcraftmodern." + gain.aspectId()
+                            "aspect.thaumic_reborn." + gain.aspectId()
                     );
                     Component text = classicAspectPool
                             ? Component.translatable(
-                                    "message.thaumcraftmodern.knowledge_fragment.aspect_pool",
+                                    "message.thaumic_reborn.knowledge_fragment.aspect_pool",
                                     gain.amount(),
                                     aspectName
                             )
                             : gain.newlyDiscovered()
                             ? Component.translatable(
-                                    "message.thaumcraftmodern.scan.aspect_discovered_amount",
+                                    "message.thaumic_reborn.scan.aspect_discovered_amount",
                                     aspectName,
                                     gain.amount()
                             )
                             : Component.translatable(
-                                    "message.thaumcraftmodern.scan.aspect_added",
+                                    "message.thaumic_reborn.scan.aspect_added",
                                     aspectName,
                                     gain.amount(),
                                     gain.total()
@@ -937,12 +937,12 @@ public final class ClientScanOverlay {
     }
 
     private static boolean isStudyFailure(String messageKey) {
-        return messageKey.equals("message.thaumcraftmodern.scan.unknown")
+        return messageKey.equals("message.thaumic_reborn.scan.unknown")
                 || messageKey.equals(
-                        "message.thaumcraftmodern.scan.error.target_not_registered"
+                        "message.thaumic_reborn.scan.error.target_not_registered"
                 )
                 || messageKey.equals(
-                        "message.thaumcraftmodern.scan.error.missing_parent"
+                        "message.thaumic_reborn.scan.error.missing_parent"
                 );
     }
 

@@ -123,6 +123,6 @@ class ClassicHarvestLevelFidelityTest {
     }
 
     private static String id(String path) {
-        return "thaumcraftmodern:" + path;
+        return "thaumic_reborn:" + path;
     }
 }

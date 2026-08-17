@@ -24,7 +24,7 @@ public final class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> MAIN = TABS.register(
             "thaumcraft",
             () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.thaumcraftmodern"))
+                    .title(Component.translatable("itemGroup.thaumic_reborn"))
                     .icon(() -> ModItems.THAUMONOMICON.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.THAUMONOMICON.get());

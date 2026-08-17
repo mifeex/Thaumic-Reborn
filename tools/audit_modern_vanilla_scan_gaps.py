@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCAN_ROOT = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+SCAN_ROOT = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
 
 RENAMES = {
     "brick_block": "bricks", "deadbush": "dead_bush",

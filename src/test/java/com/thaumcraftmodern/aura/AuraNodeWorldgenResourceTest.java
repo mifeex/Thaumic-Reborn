@@ -18,15 +18,15 @@ class AuraNodeWorldgenResourceTest {
     void auraNodesUseTheCustomFeatureAndConfiguredDimensionBiomeTag()
             throws IOException {
         JsonObject configured = read(
-                "/data/thaumcraftmodern/worldgen/configured_feature/aura_node.json"
+                "/data/thaumic_reborn/worldgen/configured_feature/aura_node.json"
         );
-        assertEquals("thaumcraftmodern:aura_node", configured.get("type").getAsString());
+        assertEquals("thaumic_reborn:aura_node", configured.get("type").getAsString());
         assertEquals(0, configured.getAsJsonObject("config").size());
 
         JsonObject placed = read(
-                "/data/thaumcraftmodern/worldgen/placed_feature/aura_node.json"
+                "/data/thaumic_reborn/worldgen/placed_feature/aura_node.json"
         );
-        assertEquals("thaumcraftmodern:aura_node", placed.get("feature").getAsString());
+        assertEquals("thaumic_reborn:aura_node", placed.get("feature").getAsString());
         JsonArray placement = placed.getAsJsonArray("placement");
         assertEquals(2, placement.size());
         assertEquals("minecraft:in_square", placement.get(0)
@@ -35,15 +35,15 @@ class AuraNodeWorldgenResourceTest {
                 .getAsJsonObject().get("type").getAsString());
 
         JsonObject biomeModifier = read(
-                "/data/thaumcraftmodern/forge/biome_modifier/add_aura_nodes.json"
+                "/data/thaumic_reborn/forge/biome_modifier/add_aura_nodes.json"
         );
         assertEquals("forge:add_features", biomeModifier.get("type").getAsString());
         assertEquals(
-                "#thaumcraftmodern:has_aura_nodes",
+                "#thaumic_reborn:has_aura_nodes",
                 biomeModifier.get("biomes").getAsString()
         );
         assertEquals(
-                "thaumcraftmodern:aura_node",
+                "thaumic_reborn:aura_node",
                 biomeModifier.get("features").getAsString()
         );
         assertEquals(
@@ -52,7 +52,7 @@ class AuraNodeWorldgenResourceTest {
         );
 
         JsonObject biomeTag = read(
-                "/data/thaumcraftmodern/tags/worldgen/biome/has_aura_nodes.json"
+                "/data/thaumic_reborn/tags/worldgen/biome/has_aura_nodes.json"
         );
         assertEquals(false, biomeTag.get("replace").getAsBoolean());
         JsonArray biomes = biomeTag.getAsJsonArray("values");
@@ -65,10 +65,10 @@ class AuraNodeWorldgenResourceTest {
     void nodeUsesPhenomenonScanDefinitionWithRuntimeDerivedAspects()
             throws IOException {
         JsonObject scan = read(
-                "/data/thaumcraftmodern/thaumcraft/scans/aura_node.json"
+                "/data/thaumic_reborn/thaumcraft/scans/aura_node.json"
         );
         assertEquals("phenomenon", scan.get("type").getAsString());
-        assertEquals("thaumcraftmodern:aura_node", scan.get("target").getAsString());
+        assertEquals("thaumic_reborn:aura_node", scan.get("target").getAsString());
         assertEquals(0, scan.getAsJsonArray("aspects").size());
     }
 

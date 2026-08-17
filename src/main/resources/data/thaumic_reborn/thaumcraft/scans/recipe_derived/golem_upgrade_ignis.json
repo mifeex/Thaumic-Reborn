@@ -1,0 +1,18 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:golem_upgrade_ignis",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 6
+    },
+    {
+      "id": "ignis",
+      "amount": 4
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/upgrade_fire.json"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "deconstructor",
+  "vis": {
+    "perditio": 20
+  },
+  "pattern": [
+    " S ",
+    "ATP"
+  ],
+  "key": {
+    "T": {
+      "item": "thaumic_reborn:thaumcraft_table"
+    },
+    "S": {
+      "item": "thaumic_reborn:thaumometer"
+    },
+    "P": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "A": {
+      "item": "minecraft:golden_axe"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:deconstruction_table"
+  }
+}

@@ -16,7 +16,7 @@ class InfusedOreLightingFidelityTest {
     @Test
     void coloredOreLayerUsesWeakForgeEmissivity() throws IOException {
         JsonObject model = JsonParser.parseString(Files.readString(ROOT.resolve(
-                "assets/thaumcraftmodern/models/block/infused_stone.json"
+                "assets/thaumic_reborn/models/block/infused_stone.json"
         ))).getAsJsonObject();
         JsonObject faces = model.getAsJsonArray("elements")
                 .get(1).getAsJsonObject().getAsJsonObject("faces");

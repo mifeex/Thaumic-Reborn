@@ -1,9 +1,0 @@
-{
-  "variants": {
-    "part=0": {"model": "thaumcraftmodern:block/eldritch_altar_cap_particles"},
-    "part=1": {"model": "thaumcraftmodern:block/eldritch_obelisk_side_particles"},
-    "part=2": {"model": "thaumcraftmodern:block/eldritch_obelisk_side_particles"},
-    "part=3": {"model": "thaumcraftmodern:block/eldritch_obelisk_cap_particles"},
-    "part=4": {"model": "thaumcraftmodern:block/eldritch_obelisk_cap_particles"}
-  }
-}

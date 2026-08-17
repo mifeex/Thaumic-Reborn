@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "src/main/resources/assets/thaumcraftmodern/textures"
+ASSETS = ROOT / "src/main/resources/assets/thaumic_reborn/textures"
 SCALE = 16
 
 INK = (12, 6, 26, 255)

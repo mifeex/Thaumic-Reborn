@@ -1,0 +1,29 @@
+{
+  "id": "voidseed",
+  "legacy_id": "VoidSeed",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:voidseed"
+  ],
+  "required_aspects": [
+    {
+      "id": "tenebrae",
+      "amount": 8
+    },
+    {
+      "id": "vacuos",
+      "amount": 8
+    },
+    {
+      "id": "alienis",
+      "amount": 2
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"VOIDMETAL\", new ItemStack(ConfigItems.itemResource, 1, 17), new ItemStack(Items.field_151014_N), (new AspectList()).merge(Aspect.DARKNESS, 8).merge(Aspect.VOID, 8).merge(Aspect.ELDRITCH, 2))",
+    "source_statement": "ConfigResearch.recipes.put(\"VoidSeed\", ThaumcraftApi.addCrucibleRecipe(\"VOIDMETAL\", new ItemStack(ConfigItems.itemResource, 1, 17), new ItemStack(Items.field_151014_N), (new AspectList()).merge(Aspect.DARKNESS, 8).merge(Aspect.VOID, 8).merge(Aspect.ELDRITCH, 2)))",
+    "unkeyed": false
+  }
+}

@@ -39,13 +39,13 @@ final class ObsidianBaseCreativeInventoryTest {
         assertFalse(registration.contains(".noLootTable()"));
 
         JsonObject loot = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/loot_tables/blocks/obsidian_tile.json"
+                "src/main/resources/data/thaumic_reborn/loot_tables/blocks/obsidian_tile.json"
         ))).getAsJsonObject();
-        assertTrue(loot.toString().contains("thaumcraftmodern:obsidian_tile"));
+        assertTrue(loot.toString().contains("thaumic_reborn:obsidian_tile"));
 
         JsonObject diamondTag = JsonParser.parseString(Files.readString(Path.of(
                 "src/main/resources/data/minecraft/tags/blocks/needs_diamond_tool.json"
         ))).getAsJsonObject();
-        assertTrue(diamondTag.toString().contains("thaumcraftmodern:obsidian_tile"));
+        assertTrue(diamondTag.toString().contains("thaumic_reborn:obsidian_tile"));
     }
 }

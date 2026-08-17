@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "KKK"
+  ],
+  "key": {
+    "K": {
+      "item": "thaumic_reborn:arcane_stone_brick"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_stone_slab",
+    "count": 6
+  }
+}

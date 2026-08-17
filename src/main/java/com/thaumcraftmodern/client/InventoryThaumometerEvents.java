@@ -104,7 +104,7 @@ public final class InventoryThaumometerEvents {
                     && hoverTicks < ScanSessionManager.REQUIRED_TICKS) {
                 float scale = 0.65F;
                 Component text = Component.translatable(
-                        "screen.thaumcraftmodern.thaumometer.inventory_scanning");
+                        "screen.thaumic_reborn.thaumometer.inventory_scanning");
                 event.getGuiGraphics().pose().pushPose();
                 event.getGuiGraphics().pose().translate(event.getMouseX() + 12,
                         event.getMouseY() - 9, 500.0F);
@@ -135,7 +135,7 @@ public final class InventoryThaumometerEvents {
                 .stream().map(reward -> AspectRegistryRuntime.find(reward.aspectId())
                         .map(aspect -> new AspectTooltipComponent.Entry(
                                 ResourceLocation.tryParse(aspect.icon()), aspect.color(),
-                                Component.translatable("aspect.thaumcraftmodern."
+                                Component.translatable("aspect.thaumic_reborn."
                                         + reward.aspectId()), reward.amount()))
                         .orElse(null)).filter(java.util.Objects::nonNull).toList();
         if (!aspects.isEmpty()) {

@@ -1,0 +1,102 @@
+{
+  "id": "essentiareservoir",
+  "legacy_id": "ESSENTIARESERVOIR",
+  "category": "eldritch",
+  "icon": "thaumic_reborn:essentia_reservoir",
+  "title": "tc.research_name.ESSENTIARESERVOIR",
+  "subtitle": "tc.research_text.ESSENTIARESERVOIR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "voidmetal",
+    "centrifuge",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": -72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ESSENTIARESERVOIR.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:essentia_reservoir",
+      "central": "thaumic_reborn:essentia_buffer",
+      "components": [
+        {"item": "thaumic_reborn:void_metal_ingot", "count": 1},
+        {"item": "thaumic_reborn:warded_jar", "count": 1},
+        {"item": "thaumic_reborn:warded_jar", "count": 1},
+        {"item": "thaumic_reborn:void_metal_ingot", "count": 1},
+        {"item": "thaumic_reborn:warded_jar", "count": 1},
+        {"item": "thaumic_reborn:warded_jar", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "aqua", "amount": 8},
+        {"id": "vacuos", "amount": 8},
+        {"id": "praecantatio", "amount": 8},
+        {"id": "permutatio", "amount": 8}
+      ],
+      "instability": "high",
+      "detail": "tc.research_text.ESSENTIARESERVOIR"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ESSENTIARESERVOIR.2"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": -3,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockEssentiaReservoir)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 5
+      },
+      {
+        "id": "vacuos",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 5
+      },
+      {
+        "id": "vacuos",
+        "amount": 5
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ESSENTIARESERVOIR\", \"ELDRITCH\", (new AspectList()).add(Aspect.WATER, 5).add(Aspect.VOID, 3).add(Aspect.EXCHANGE, 3).add(Aspect.MAGIC, 5).add(Aspect.VOID, 5), 4, -3, 2, new ItemStack(ConfigBlocks.blockEssentiaReservoir))).setPages(new ResearchPage(\"tc.research_page.ESSENTIARESERVOIR.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"EssentiaReservoir\")), new ResearchPage(\"tc.research_page.ESSENTIARESERVOIR.2\")).setParents(\"VOIDMETAL\", \"CENTRIFUGE\", \"INFUSION\").registerResearchItem()"
+  }
+}

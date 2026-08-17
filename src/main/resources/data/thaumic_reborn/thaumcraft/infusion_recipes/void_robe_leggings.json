@@ -1,0 +1,11 @@
+{
+  "research":"armorvoidfortress","instability":6,
+  "central":{"item":"thaumic_reborn:void_leggings"},
+  "components":[
+    {"item":"thaumic_reborn:thaumaturge_leggings"},{"item":"thaumic_reborn:void_metal_ingot"},
+    {"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:salis_mundus"},
+    {"item":"thaumic_reborn:enchanted_fabric"},{"item":"minecraft:leather"}
+  ],
+  "result":{"item":"thaumic_reborn:void_robe_leggings"},
+  "essentia":{"metallum":20,"tutamen":20,"pannus":20,"praecantatio":16,"alienis":16,"vacuos":20}
+}

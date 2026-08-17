@@ -37,7 +37,7 @@ final class ClassicJarLiquidRenderType extends RenderStateShard {
     );
 
     private ClassicJarLiquidRenderType() {
-        super("thaumcraftmodern_classic_jar_liquid", () -> {
+        super("thaumic_reborn_classic_jar_liquid", () -> {
         }, () -> {
         });
     }

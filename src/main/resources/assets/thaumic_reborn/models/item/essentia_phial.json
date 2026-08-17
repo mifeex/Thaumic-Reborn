@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thaumic_reborn:item/phial"
+  },
+  "overrides": [
+    {
+      "predicate": {"thaumic_reborn:filled": 1.0},
+      "model": "thaumic_reborn:item/essentia_phial_filled"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ class ModernResearchCostFidelityTest {
                 "src/main/java/com/thaumcraftmodern/data/ResearchReloadListener.java"
         ));
         JsonObject research = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/"
                         + "reversible_essentia_tube.json"
         ))).getAsJsonObject();
 

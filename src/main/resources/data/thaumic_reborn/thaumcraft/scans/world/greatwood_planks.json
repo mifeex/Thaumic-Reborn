@@ -1,0 +1,9 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:greatwood_planks",
+  "display":"block.thaumic_reborn.greatwood_planks",
+  "aspects":[
+    {"id":"arbor","amount":2},
+    {"id":"praecantatio","amount":1}
+  ]
+}

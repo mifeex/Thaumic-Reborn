@@ -1,0 +1,18 @@
+{
+  "research": "rod_reed",
+  "instability": 3,
+  "central": {"item": "minecraft:sugar_cane"},
+  "components": [
+    {"item": "thaumic_reborn:balanced_shard"},
+    {"item": "thaumic_reborn:air_shard"}
+  ],
+  "essentia": {
+    "aer": 12,
+    "praecantatio": 6,
+    "motus": 6
+  },
+  "result": {
+    "item": "thaumic_reborn:reed_wand_rod",
+    "count": 1
+  }
+}

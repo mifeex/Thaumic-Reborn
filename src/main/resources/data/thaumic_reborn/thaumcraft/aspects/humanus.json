@@ -1,0 +1,10 @@
+{
+  "id": "humanus",
+  "order": 350,
+  "color": "FFD7C0",
+  "icon": "thaumic_reborn:textures/aspects/humanus.png",
+  "components": [
+    "bestia",
+    "cognitio"
+  ]
+}

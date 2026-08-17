@@ -1,0 +1,25 @@
+{
+  "research": "nodestabilizeradv",
+  "instability": 10,
+  "central": {"item": "thaumic_reborn:node_stabilizer"},
+  "components": [
+    {"item": "thaumic_reborn:nitor"},
+    {"item": "minecraft:redstone_block"},
+    {"item": "thaumic_reborn:alumentum"},
+    {"item": "minecraft:redstone_block"},
+    {"item": "thaumic_reborn:nitor"},
+    {"item": "minecraft:redstone_block"},
+    {"item": "thaumic_reborn:alumentum"},
+    {"item": "minecraft:redstone_block"}
+  ],
+  "essentia": {
+    "auram": 32,
+    "praecantatio": 16,
+    "ordo": 16,
+    "potentia": 16
+  },
+  "result": {
+    "item": "thaumic_reborn:advanced_node_stabilizer",
+    "count": 1
+  }
+}

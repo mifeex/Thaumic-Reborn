@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "thaumic_reborn:legacy_vegetation",
+  "step": "vegetal_decoration"
+}

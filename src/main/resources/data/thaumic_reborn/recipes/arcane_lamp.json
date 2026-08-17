@@ -1,0 +1,32 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "arcanelamp",
+  "vis": {
+    "ignis": 8,
+    "aer": 8,
+    "aqua": 4,
+    "perditio": 4
+  },
+  "pattern": [
+    " S ",
+    "IAI",
+    " N "
+  ],
+  "key": {
+    "A": {
+      "item": "thaumic_reborn:amber"
+    },
+    "S": {
+      "item": "minecraft:daylight_detector"
+    },
+    "N": {
+      "item": "thaumic_reborn:nitor"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_lamp"
+  }
+}

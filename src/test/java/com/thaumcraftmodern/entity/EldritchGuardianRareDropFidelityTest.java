@@ -14,7 +14,7 @@ final class EldritchGuardianRareDropFidelityTest {
     void eldritchEyeUsesClassicRareDropChanceAndLootingIncrease()
             throws Exception {
         JsonObject root = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/loot_tables/entities/"
+                "src/main/resources/data/thaumic_reborn/loot_tables/entities/"
                         + "legacy/eldritch_guardian.json"
         ))).getAsJsonObject();
         JsonObject condition = root.getAsJsonArray("pools").get(0)

@@ -1,0 +1,93 @@
+{
+  "id": "sinstone",
+  "legacy_id": "SINSTONE",
+  "category": "artifice",
+  "completion_warp": 2,
+  "icon": "thaumic_reborn:sinister_lodestone",
+  "icon_resource": "thaumic_reborn:textures/item/sinister_stone_active.png",
+  "title": "tc.research_name.SINSTONE",
+  "subtitle": "tc.research_text.SINSTONE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "goggles"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 144,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.SINSTONE.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:sinister_lodestone",
+      "central": "minecraft:flint",
+      "components": [
+        {"item": "thaumic_reborn:quicksilver", "count": 1},
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:salis_mundus", "count": 1},
+        {"item": "thaumic_reborn:entropy_shard", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "sensus", "amount": 8},
+        {"id": "tenebrae", "amount": 8},
+        {"id": "alienis", "amount": 8},
+        {"id": "auram", "amount": 8}
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.SINSTONE"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 6,
+    "y": 2,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemCompassStone, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "sensus",
+        "amount": 3
+      },
+      {
+        "id": "tenebrae",
+        "amount": 3
+      },
+      {
+        "id": "alienis",
+        "amount": 3
+      },
+      {
+        "id": "auram",
+        "amount": 3
+      }
+    ],
+    "warp": [
+      2
+    ],
+    "source_expression": "(new ResearchItem(\"SINSTONE\", \"ARTIFICE\", (new AspectList()).add(Aspect.SENSES, 3).add(Aspect.DARKNESS, 3).add(Aspect.ELDRITCH, 3).add(Aspect.AURA, 3), 6, 2, 1, new ItemStack(ConfigItems.itemCompassStone, 1, 1))).setPages(new ResearchPage(\"tc.research_page.SINSTONE.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"SinStone\"))).setParents(\"GOGGLES\").setConcealed().registerResearchItem()"
+  }
+}

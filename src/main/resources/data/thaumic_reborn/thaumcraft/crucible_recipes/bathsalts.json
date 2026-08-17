@@ -1,0 +1,16 @@
+{
+  "research": "bathsalts",
+  "catalyst": {
+    "item": "thaumic_reborn:salis_mundus"
+  },
+  "output": {
+    "item": "thaumic_reborn:bath_salts"
+  },
+  "aspects": {
+    "cognitio": 6,
+    "auram": 6,
+    "ordo": 6,
+    "sano": 6
+  },
+  "legacy_id": "BathSalts"
+}

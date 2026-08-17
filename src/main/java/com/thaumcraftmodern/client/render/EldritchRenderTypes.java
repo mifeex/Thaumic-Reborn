@@ -35,7 +35,7 @@ final class EldritchRenderTypes extends RenderStateShard {
             new ConcurrentHashMap<>();
 
     private EldritchRenderTypes() {
-        super("thaumcraftmodern_eldritch_render_types", () -> {}, () -> {});
+        super("thaumic_reborn_eldritch_render_types", () -> {}, () -> {});
     }
 
     static RenderType tunnel() {

@@ -1,0 +1,24 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "telum": 4,
+    "exanimis": 4
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:smite"
+  }
+}

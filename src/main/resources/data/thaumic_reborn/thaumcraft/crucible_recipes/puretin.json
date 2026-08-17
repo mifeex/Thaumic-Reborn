@@ -1,0 +1,14 @@
+{
+  "research": "puretin",
+  "catalyst": {
+    "tag": "forge:ores/tin"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_tin_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureTin"
+}

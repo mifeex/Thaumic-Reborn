@@ -1,0 +1,10 @@
+{
+  "id": "permutatio",
+  "order": 150,
+  "color": "578357",
+  "icon": "thaumic_reborn:textures/aspects/permutatio.png",
+  "components": [
+    "perditio",
+    "ordo"
+  ]
+}

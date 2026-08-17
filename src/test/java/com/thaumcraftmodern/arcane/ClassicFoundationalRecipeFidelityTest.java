@@ -16,17 +16,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ClassicFoundationalRecipeFidelityTest {
     private static final Path RECIPES = Path.of(
-            "src/main/resources/data/thaumcraftmodern/recipes");
+            "src/main/resources/data/thaumic_reborn/recipes");
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
     private static final Path SCANS = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/legacy");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans/legacy");
 
     @Test
     void filterAndTubeUseTheOriginalTc4IngredientsAndCounts() throws Exception {
         JsonObject filter = recipe("filter");
         assertEquals(List.of("GWG"), pattern(filter));
-        assertEquals("thaumcraftmodern:silverwood_planks",
+        assertEquals("thaumic_reborn:silverwood_planks",
                 filter.getAsJsonObject("key").getAsJsonObject("W")
                         .get("item").getAsString());
         assertEquals(2, filter.getAsJsonObject("result").get("count").getAsInt());
@@ -35,7 +35,7 @@ final class ClassicFoundationalRecipeFidelityTest {
 
         JsonObject tube = recipe("tube");
         assertEquals(List.of(" Q ", "IGI", " B "), pattern(tube));
-        assertEquals("thaumcraftmodern:quicksilver_nugget",
+        assertEquals("thaumic_reborn:quicksilver_nugget",
                 tube.getAsJsonObject("key").getAsJsonObject("Q")
                         .get("item").getAsString());
         assertEquals(8, tube.getAsJsonObject("result").get("count").getAsInt());
@@ -44,26 +44,26 @@ final class ClassicFoundationalRecipeFidelityTest {
     @Test
     void classicFoundationalMaterialsHaveReachableConversionRecipes()
             throws Exception {
-        assertConversion("quicksilver", "thaumcraftmodern:quicksilver",
-                "thaumcraftmodern:quicksilver_nugget");
-        assertConversion("thaumium", "thaumcraftmodern:thaumium_ingot",
-                "thaumcraftmodern:thaumium_nugget");
-        assertConversion("void", "thaumcraftmodern:void_metal_ingot",
-                "thaumcraftmodern:void_nugget");
+        assertConversion("quicksilver", "thaumic_reborn:quicksilver",
+                "thaumic_reborn:quicksilver_nugget");
+        assertConversion("thaumium", "thaumic_reborn:thaumium_ingot",
+                "thaumic_reborn:thaumium_nugget");
+        assertConversion("void", "thaumic_reborn:void_metal_ingot",
+                "thaumic_reborn:void_nugget");
 
         JsonObject leaf = recipe("quicksilver_from_shimmerleaf");
         assertEquals(List.of("#"), pattern(leaf));
-        assertEquals("thaumcraftmodern:quicksilver",
+        assertEquals("thaumic_reborn:quicksilver",
                 leaf.getAsJsonObject("result").get("item").getAsString());
 
         JsonObject belt = recipe("mundane_belt");
         assertEquals(List.of(" L ", "L L", " I "), pattern(belt));
-        assertEquals("thaumcraftmodern:blank_belt",
+        assertEquals("thaumic_reborn:blank_belt",
                 belt.getAsJsonObject("result").get("item").getAsString());
 
         JsonObject slab = recipe("arcane_stone_slab");
         assertEquals(List.of("KKK"), pattern(slab));
-        assertEquals("thaumcraftmodern:arcane_stone_brick",
+        assertEquals("thaumic_reborn:arcane_stone_brick",
                 slab.getAsJsonObject("key").getAsJsonObject("K")
                         .get("item").getAsString());
         assertEquals(6, slab.getAsJsonObject("result").get("count").getAsInt());
@@ -75,9 +75,9 @@ final class ClassicFoundationalRecipeFidelityTest {
                 "object_237_new_itemstack_configitems.itemnugget_1_5.json"));
         JsonObject quicksilver = json(SCANS.resolve(
                 "object_266_new_itemstack_configitems.itemresource_1_3.json"));
-        assertEquals("thaumcraftmodern:quicksilver_nugget",
+        assertEquals("thaumic_reborn:quicksilver_nugget",
                 drop.get("target").getAsString());
-        assertEquals("thaumcraftmodern:quicksilver",
+        assertEquals("thaumic_reborn:quicksilver",
                 quicksilver.get("target").getAsString());
         assertFalse(drop.get("inactive").getAsBoolean());
         assertFalse(quicksilver.get("inactive").getAsBoolean());
@@ -110,7 +110,7 @@ final class ClassicFoundationalRecipeFidelityTest {
     void arcaneEarUsesItsOriginalBlockTexturesInsteadOfRecipePlaceholder()
             throws Exception {
         JsonObject item = json(ASSETS.resolve("models/item/arcane_ear.json"));
-        assertEquals("thaumcraftmodern:block/arcane_ear_on",
+        assertEquals("thaumic_reborn:block/arcane_ear_on",
                 item.get("parent").getAsString());
         JsonObject model = json(ASSETS.resolve(
                 "models/block/arcane_ear_base.json"));
@@ -156,7 +156,7 @@ final class ClassicFoundationalRecipeFidelityTest {
 
     private static void assertModelTexture(String item) throws Exception {
         JsonObject model = json(ASSETS.resolve("models/item/" + item + ".json"));
-        assertEquals("thaumcraftmodern:item/" + item,
+        assertEquals("thaumic_reborn:item/" + item,
                 model.getAsJsonObject("textures").get("layer0").getAsString());
         assertTrue(Files.isRegularFile(
                 ASSETS.resolve("textures/item/" + item + ".png")));

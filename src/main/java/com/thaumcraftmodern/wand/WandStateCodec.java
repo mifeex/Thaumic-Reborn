@@ -18,7 +18,7 @@ import java.util.Set;
  */
 public final class WandStateCodec {
     public static final int SERIAL_VERSION = 1;
-    public static final String ROOT_KEY = "thaumcraftmodern_wand";
+    public static final String ROOT_KEY = "thaumic_reborn_wand";
 
     private static final String VERSION_KEY = "version";
     private static final String ROD_KEY = "rod";

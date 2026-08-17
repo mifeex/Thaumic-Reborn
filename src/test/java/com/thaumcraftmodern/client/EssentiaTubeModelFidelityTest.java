@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class EssentiaTubeModelFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
     private static final List<String> BLOCK_MODELS = List.of(
             "essentia_tube", "essentia_tube_arm",
             "filtered_essentia_tube", "restricted_essentia_tube",
@@ -70,9 +70,9 @@ final class EssentiaTubeModelFidelityTest {
     @Test
     void valveItemUsesTheOriginalThinWheelProportions() throws Exception {
         JsonObject valve = read("models/item/essentia_valve.json");
-        assertEquals("thaumcraftmodern:block/pipe_2",
+        assertEquals("thaumic_reborn:block/pipe_2",
                 valve.getAsJsonObject("textures").get("rod").getAsString());
-        assertEquals("thaumcraftmodern:block/pipe_valve",
+        assertEquals("thaumic_reborn:block/pipe_valve",
                 valve.getAsJsonObject("textures").get("wheel").getAsString());
         JsonArray elements = valve.getAsJsonArray("elements");
         assertEquals(4, elements.size());
@@ -213,10 +213,10 @@ final class EssentiaTubeModelFidelityTest {
     @Test
     void ventingRestoresOriginalColoredFxAndTubeSounds() throws Exception {
         JsonObject sounds = read("sounds.json");
-        assertEquals(List.of("thaumcraftmodern:creak1", "thaumcraftmodern:creak2"),
+        assertEquals(List.of("thaumic_reborn:creak1", "thaumic_reborn:creak2"),
                 sounds.getAsJsonObject("creak").getAsJsonArray("sounds")
                         .asList().stream().map(JsonElement::getAsString).toList());
-        assertEquals(List.of("thaumcraftmodern:tool1", "thaumcraftmodern:tool2"),
+        assertEquals(List.of("thaumic_reborn:tool1", "thaumic_reborn:tool2"),
                 sounds.getAsJsonObject("tool").getAsJsonArray("sounds")
                         .asList().stream().map(JsonElement::getAsString).toList());
         assertEquals("39aae2eab75446cf6d1aa716b5b03e75ed291b0c9ce35b02e0ff676903e9744c",

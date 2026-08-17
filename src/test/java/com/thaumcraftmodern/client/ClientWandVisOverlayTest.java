@@ -15,7 +15,7 @@ class ClientWandVisOverlayTest {
     @Test
     void classicHudTextureIsPresentAtOriginalResolution() throws IOException {
         try (InputStream stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/textures/gui/hud.png"
+                "/assets/thaumic_reborn/textures/gui/hud.png"
         )) {
             assertNotNull(stream, "Missing original TC4 HUD texture");
             BufferedImage image = ImageIO.read(stream);

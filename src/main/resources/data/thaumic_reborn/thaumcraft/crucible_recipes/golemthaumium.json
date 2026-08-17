@@ -1,0 +1,16 @@
+{
+  "research": "golemthaumium",
+  "catalyst": {
+    "item": "thaumic_reborn:thaumium_block"
+  },
+  "output": {
+    "item": "thaumic_reborn:thaumium_golem"
+  },
+  "aspects": {
+    "humanus": 8,
+    "motus": 8,
+    "spiritus": 8
+  },
+  "legacy_id": "GolemThaumium",
+  "inactive": false
+}

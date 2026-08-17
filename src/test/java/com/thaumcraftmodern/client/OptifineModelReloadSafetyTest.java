@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OptifineModelReloadSafetyTest {
     private static final Path MODELS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/models"
+            "src/main/resources/assets/thaumic_reborn/models"
     );
 
     @Test
@@ -49,7 +49,7 @@ class OptifineModelReloadSafetyTest {
     @Test
     void scannerDocumentsItsTwoCoplanarScreenFaces() throws IOException {
         List<String> lines = Files.readAllLines(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/"
+                "src/main/resources/assets/thaumic_reborn/"
                         + "textures/models/scanner.obj"
         ));
         int screenGroup = lines.indexOf("g scanscreen");
@@ -65,7 +65,7 @@ class OptifineModelReloadSafetyTest {
             throws IOException {
         JsonObject model = read(relativePath);
         assertEquals(
-                "thaumcraftmodern:reload_safe_obj",
+                "thaumic_reborn:reload_safe_obj",
                 model.get("loader").getAsString()
         );
     }

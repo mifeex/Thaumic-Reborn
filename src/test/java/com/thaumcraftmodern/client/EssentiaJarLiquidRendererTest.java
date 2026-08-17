@@ -46,7 +46,7 @@ class EssentiaJarLiquidRendererTest {
     private static void assertAspectColor(String aspect, String color)
             throws Exception {
         String definition = Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/aspects/"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/aspects/"
                         + aspect + ".json"));
         assertTrue(definition.contains("\"color\": \"" + color + "\""));
     }

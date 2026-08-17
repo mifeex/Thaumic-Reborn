@@ -1,0 +1,14 @@
+{
+  "id": "wandcapiron",
+  "legacy_id": "WandCapIron",
+  "legacy_kind": "crafting_shaped_ore",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:iron_wand_cap",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "oreDictRecipe(new ItemStack(ConfigItems.itemWandCap, 1, 0), new Object[]{\"NNN\", \"N N\", 'N', \"nuggetIron\"})",
+    "source_statement": "ConfigResearch.recipes.put(\"WandCapIron\", oreDictRecipe(new ItemStack(ConfigItems.itemWandCap, 1, 0), new Object[]{\"NNN\", \"N N\", 'N', \"nuggetIron\"}))",
+    "unkeyed": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "distilessentia",
+  "vis": {
+    "ordo": 5,
+    "aqua": 5
+  },
+  "pattern": [
+    "GWG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "W": {
+      "item": "thaumic_reborn:silverwood_planks"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:vis_filter",
+    "count": 2
+  }
+}

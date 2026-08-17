@@ -36,8 +36,8 @@ def main() -> None:
     parser.add_argument("--resources", required=True, type=Path)
     args = parser.parse_args()
     resources = args.resources.resolve()
-    root = resources / "data/thaumcraftmodern/thaumcraft"
-    recipe_root = resources / "data/thaumcraftmodern/recipes"
+    root = resources / "data/thaumic_reborn/thaumcraft"
+    recipe_root = resources / "data/thaumic_reborn/recipes"
 
     for file in resources.rglob("*.json"):
         load(file)
@@ -72,13 +72,13 @@ def main() -> None:
             if page["type"] == "recipe":
                 namespace, path = page["recipe"].split(":", 1)
                 if (
-                    namespace == "thaumcraftmodern"
+                    namespace == "thaumic_reborn"
                     and not (recipe_root / f"{path}.json").exists()
                 ):
                     raise ValueError(f"{file} requests missing modern recipe {page['recipe']}")
             if (
                     page["type"] == "compound_crafting"
-                    and page.get("recipe") != "thaumcraftmodern:node_jar_capture"
+                    and page.get("recipe") != "thaumic_reborn:node_jar_capture"
             ):
                 raise ValueError(
                     f"{file} requests unsupported compound crafting recipe "

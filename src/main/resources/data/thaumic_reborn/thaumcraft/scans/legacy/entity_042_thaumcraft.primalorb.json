@@ -1,0 +1,48 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:primal_orb",
+  "display": "",
+  "aspects": [
+    {
+      "id": "aer",
+      "amount": 5
+    },
+    {
+      "id": "perditio",
+      "amount": 10
+    },
+    {
+      "id": "praecantatio",
+      "amount": 10
+    },
+    {
+      "id": "potentia",
+      "amount": 10
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.PrimalOrb",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "aer",
+        "amount": 5
+      },
+      {
+        "id": "perditio",
+        "amount": 10
+      },
+      {
+        "id": "praecantatio",
+        "amount": 10
+      },
+      {
+        "id": "potentia",
+        "amount": 10
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.PrimalOrb\", (new AspectList()).add(Aspect.AIR, 5).add(Aspect.ENTROPY, 10).add(Aspect.MAGIC, 10).add(Aspect.ENERGY, 10))"
+  }
+}

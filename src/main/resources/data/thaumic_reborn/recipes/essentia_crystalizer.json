@@ -1,0 +1,37 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "essentiacrystal",
+  "vis": {
+    "aqua": 5,
+    "terra": 15,
+    "ordo": 5
+  },
+  "pattern": [
+    "IDI",
+    "QCQ",
+    "WTW"
+  ],
+  "key": {
+    "T": {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    "D": {
+      "item": "minecraft:dispenser"
+    },
+    "Q": {
+      "item": "thaumic_reborn:balanced_shard"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "thaumic_reborn:alchemical_construct"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_crystallizer"
+  }
+}

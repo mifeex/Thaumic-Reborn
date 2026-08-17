@@ -1,0 +1,146 @@
+{
+  "id": "traveltrunk",
+  "legacy_id": "TRAVELTRUNK",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:traveling_trunk",
+  "title": "tc.research_name.TRAVELTRUNK",
+  "subtitle": "tc.research_text.TRAVELTRUNK",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "infusion",
+    "golemwood"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumic_reborn:traveling_trunk",
+      "output": "thaumic_reborn:traveling_trunk",
+      "central": "thaumic_reborn:hungry_chest",
+      "components": [
+        {"item":"minecraft:iron_ingot"},
+        {"item":"thaumic_reborn:greatwood_planks"},
+        {"item":"thaumic_reborn:wood_golem"},
+        {"item":"thaumic_reborn:greatwood_planks"}
+      ],
+      "aspect_costs": [
+        {"id":"motus","amount":4},
+        {"id":"spiritus","amount":4},
+        {"id":"iter","amount":4},
+        {"id":"vacuos","amount":16}
+      ],
+      "instability": "high",
+      "legacy_type": "recipe",
+      "legacy_content": "TravelTrunk",
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"TravelTrunk\"))"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.2"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UAI",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEAIR\"",
+      "source_expression": "new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.TRAVELTRUNK.UAI\")"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UEA",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEEARTH\"",
+      "source_expression": "new ResearchPage(\"UPGRADEEARTH\", \"tc.research_page.TRAVELTRUNK.UEA\")"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UFI",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEFIRE\"",
+      "source_expression": "new ResearchPage(\"UPGRADEFIRE\", \"tc.research_page.TRAVELTRUNK.UFI\")"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UWA",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEWATER\"",
+      "source_expression": "new ResearchPage(\"UPGRADEWATER\", \"tc.research_page.TRAVELTRUNK.UWA\")"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UOR",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEORDER\"",
+      "source_expression": "new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.TRAVELTRUNK.UOR\")"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRAVELTRUNK.UEN",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEENTROPY\"",
+      "source_expression": "new ResearchPage(\"UPGRADEENTROPY\", \"tc.research_page.TRAVELTRUNK.UEN\")"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 0,
+    "y": 4,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemTrunkSpawner)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 3
+      },
+      {
+        "id": "iter",
+        "amount": 3
+      },
+      {
+        "id": "arbor",
+        "amount": 3
+      },
+      {
+        "id": "vacuos",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"TRAVELTRUNK\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 3).add(Aspect.TRAVEL, 3).add(Aspect.TREE, 3).add(Aspect.VOID, 3), 0, 4, 2, new ItemStack(ConfigItems.itemTrunkSpawner))).setPages(new ResearchPage(\"tc.research_page.TRAVELTRUNK.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"TravelTrunk\")), new ResearchPage(\"tc.research_page.TRAVELTRUNK.2\"), new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.TRAVELTRUNK.UAI\"), new ResearchPage(\"UPGRADEEARTH\", \"tc.research_page.TRAVELTRUNK.UEA\"), new ResearchPage(\"UPGRADEFIRE\", \"tc.research_page.TRAVELTRUNK.UFI\"), new ResearchPage(\"UPGRADEWATER\", \"tc.research_page.TRAVELTRUNK.UWA\"), new ResearchPage(\"UPGRADEORDER\", \"tc.research_page.TRAVELTRUNK.UOR\"), new ResearchPage(\"UPGRADEENTROPY\", \"tc.research_page.TRAVELTRUNK.UEN\")).setConcealed().setParents(\"INFUSION\", \"GOLEMWOOD\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "aer": 8,
+    "aqua": 8
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:respiration"
+  }
+}

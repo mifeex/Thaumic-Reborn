@@ -1,0 +1,29 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "advalchemyfurnace",
+  "vis": {
+    "aqua": 10,
+    "ordo": 30,
+    "terra": 10
+  },
+  "pattern": [
+    "VAV",
+    "APA",
+    "VAV"
+  ],
+  "key": {
+    "A": {
+      "item": "thaumic_reborn:alchemical_construct"
+    },
+    "V": {
+      "item": "thaumic_reborn:void_metal_ingot"
+    },
+    "P": {
+      "item": "thaumic_reborn:primordial_pearl"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:advanced_alchemical_construct",
+    "count": 4
+  }
+}

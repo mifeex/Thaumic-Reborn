@@ -1,0 +1,14 @@
+{
+  "research": "purelead",
+  "catalyst": {
+    "tag": "forge:ores/lead"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_lead_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureLead"
+}

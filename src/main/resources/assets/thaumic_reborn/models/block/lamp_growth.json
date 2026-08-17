@@ -1,0 +1,7 @@
+{
+  "parent": "thaumic_reborn:block/lamp_shell",
+  "textures": {
+    "side": "thaumic_reborn:block/lamp_grow_side",
+    "top": "thaumic_reborn:block/lamp_grow_top"
+  }
+}

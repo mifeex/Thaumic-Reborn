@@ -73,7 +73,7 @@ public final class DiscoveryItem extends Item {
                     ResearchCompletionService.complete(knowledge, stack);
             if (result == ResearchCompletionService.Result.ALREADY_COMPLETED) {
                 serverPlayer.displayClientMessage(
-                        Component.translatable("message.thaumcraftmodern.research.already_known"),
+                        Component.translatable("message.thaumic_reborn.research.already_known"),
                         true
                 );
                 return;
@@ -81,7 +81,7 @@ public final class DiscoveryItem extends Item {
             if (result != ResearchCompletionService.Result.COMPLETED) {
                 serverPlayer.displayClientMessage(
                         Component.translatable(
-                                "message.thaumcraftmodern.research.completion_rejected",
+                                "message.thaumic_reborn.research.completion_rejected",
                                 result.name().toLowerCase(java.util.Locale.ROOT)
                         ),
                         true
@@ -130,7 +130,7 @@ public final class DiscoveryItem extends Item {
                     1.0F
             );
             serverPlayer.displayClientMessage(
-                    Component.translatable("message.thaumcraftmodern.research.completed"),
+                    Component.translatable("message.thaumic_reborn.research.completed"),
                     false
             );
             if (!serverPlayer.getAbilities().instabuild) {
@@ -147,6 +147,6 @@ public final class DiscoveryItem extends Item {
             List<Component> tooltip,
             TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.thaumcraftmodern.discovery"));
+        tooltip.add(Component.translatable("tooltip.thaumic_reborn.discovery"));
     }
 }

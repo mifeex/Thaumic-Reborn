@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 3,
+  "components": [
+    {
+      "item": "thaumic_reborn:nitor"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "iter": 8,
+    "volatus": 8
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "thaumic_reborn:haste"
+  }
+}

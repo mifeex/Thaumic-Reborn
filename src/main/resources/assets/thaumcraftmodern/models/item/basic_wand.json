@@ -1,7 +1,0 @@
-{
-  "parent": "thaumcraftmodern:item/classic_wand_base",
-  "textures": {
-    "rod": "thaumcraftmodern:item/wand_rod_wood_model",
-    "cap": "thaumcraftmodern:item/wand_cap_iron_model"
-  }
-}

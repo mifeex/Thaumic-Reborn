@@ -1,0 +1,91 @@
+{
+  "id": "wandped",
+  "legacy_id": "WANDPED",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:wand_recharge_pedestal",
+  "title": "tc.research_name.WANDPED",
+  "subtitle": "tc.research_text.WANDPED",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "infusion",
+    "nodepreserve",
+    "nodestabilizer"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -216,
+  "y": -144,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WANDPED.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:wand_recharge_pedestal",
+      "central": "thaumic_reborn:arcane_pedestal",
+      "components": [
+        {"item": "minecraft:gold_ingot", "count": 1},
+        {"item": "minecraft:diamond", "count": 1},
+        {"item": "thaumic_reborn:primal_charm", "count": 1},
+        {"item": "minecraft:diamond", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "auram", "amount": 10},
+        {"id": "praecantatio", "amount": 15},
+        {"id": "permutatio", "amount": 15}
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.WANDPED"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -9,
+    "y": -6,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 6
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"WANDPED\", \"THAUMATURGY\", (new AspectList()).add(Aspect.AURA, 6).add(Aspect.MAGIC, 3).add(Aspect.EXCHANGE, 3).add(Aspect.ENERGY, 3), -9, -6, 2, new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5))).setPages(new ResearchPage(\"tc.research_page.WANDPED.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"WandPed\"))).setConcealed().setParents(\"INFUSION\", \"NODEPRESERVE\", \"NODESTABILIZER\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "pavetravel",
+  "vis": {
+    "terra": 10,
+    "aer": 10
+  },
+  "pattern": [
+    "SAS",
+    "SBS"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:arcane_stone_brick"
+    },
+    "A": {
+      "item": "thaumic_reborn:air_shard"
+    },
+    "B": {
+      "item": "thaumic_reborn:earth_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:paving_stone_of_travel",
+    "count": 4
+  }
+}

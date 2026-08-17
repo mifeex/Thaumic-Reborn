@@ -65,16 +65,16 @@ final class VoidResearchVerticalFidelityTest {
     void allVoidEquipmentRecipesAreExecutable() throws Exception {
         for (String id : List.of("void_sword", "void_pickaxe", "void_axe", "void_shovel",
                 "void_hoe", "void_helmet", "void_chestplate", "void_leggings", "void_boots")) {
-            JsonObject recipe = json(ROOT.resolve("data/thaumcraftmodern/recipes/" + id + ".json"));
-            assertEquals("thaumcraftmodern:" + id,
+            JsonObject recipe = json(ROOT.resolve("data/thaumic_reborn/recipes/" + id + ".json"));
+            assertEquals("thaumic_reborn:" + id,
                     recipe.getAsJsonObject("result").get("item").getAsString(), id);
         }
         for (String id : List.of("void_robe_hood", "void_robe_chestplate", "void_robe_leggings")) {
             JsonObject recipe = json(ROOT.resolve(
-                    "data/thaumcraftmodern/thaumcraft/infusion_recipes/" + id + ".json"));
+                    "data/thaumic_reborn/thaumcraft/infusion_recipes/" + id + ".json"));
             assertEquals("armorvoidfortress", recipe.get("research").getAsString());
             assertEquals(6, recipe.get("instability").getAsInt());
-            assertEquals("thaumcraftmodern:" + id,
+            assertEquals("thaumic_reborn:" + id,
                     recipe.getAsJsonObject("result").get("item").getAsString());
         }
     }
@@ -95,7 +95,7 @@ final class VoidResearchVerticalFidelityTest {
                 java.util.Map.entry("void_robe_chestplate", "voidrobechest"),
                 java.util.Map.entry("void_robe_leggings", "voidrobelegs"));
         Path original = Path.of("reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/items");
-        Path modern = ROOT.resolve("assets/thaumcraftmodern/textures/item");
+        Path modern = ROOT.resolve("assets/thaumic_reborn/textures/item");
         for (var entry : mapping.entrySet()) {
             assertEquals(hash(original.resolve(entry.getValue() + ".png")),
                     hash(modern.resolve(entry.getKey() + ".png")), entry.getKey());
@@ -103,7 +103,7 @@ final class VoidResearchVerticalFidelityTest {
     }
 
     private static JsonObject research(String id) throws Exception {
-        return json(ROOT.resolve("data/thaumcraftmodern/thaumcraft/research/legacy/" + id + ".json"));
+        return json(ROOT.resolve("data/thaumic_reborn/thaumcraft/research/legacy/" + id + ".json"));
     }
     private static JsonObject json(Path path) throws Exception {
         return JsonParser.parseString(Files.readString(path)).getAsJsonObject();

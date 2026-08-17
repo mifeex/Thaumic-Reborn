@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thaumic_reborn:item/golem_decoration_top_hat"
+  }
+}

@@ -39,7 +39,7 @@ final class ThaumometerForegroundDepthTest {
         assertTrue(renderer.contains("GL11.glDepthMask(previousDepthMask);"));
 
         String model = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/models/"
+                "src/main/resources/assets/thaumic_reborn/textures/models/"
                         + "scanner.obj"
         ));
         assertTrue(model.contains("v  -1.2500 0.1950 -1.2500"));

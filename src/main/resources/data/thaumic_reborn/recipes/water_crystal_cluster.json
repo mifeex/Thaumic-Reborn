@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:water_shard"}
+  ],
+  "result": {"item": "thaumic_reborn:water_crystal_cluster"}
+}

@@ -1,0 +1,16 @@
+{
+  "research": "sanesoap",
+  "catalyst": {
+    "item": "thaumic_reborn:flesh_block"
+  },
+  "output": {
+    "item": "thaumic_reborn:sanity_soap"
+  },
+  "aspects": {
+    "cognitio": 16,
+    "alienis": 16,
+    "ordo": 16,
+    "sano": 16
+  },
+  "legacy_id": "SaneSoap"
+}

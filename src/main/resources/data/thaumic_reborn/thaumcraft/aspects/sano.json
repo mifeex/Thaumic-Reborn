@@ -1,0 +1,10 @@
+{
+  "id": "sano",
+  "order": 210,
+  "color": "FF2F34",
+  "icon": "thaumic_reborn:textures/aspects/sano.png",
+  "components": [
+    "victus",
+    "ordo"
+  ]
+}

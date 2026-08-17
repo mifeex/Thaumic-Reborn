@@ -1,0 +1,81 @@
+{
+  "id": "transgold",
+  "legacy_id": "TRANSGOLD",
+  "category": "alchemy",
+  "icon": "minecraft:gold_nugget",
+  "title": "tc.research_name.TRANSGOLD",
+  "subtitle": "tc.research_text.TRANSGOLD",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "transiron"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 48,
+  "y": 72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRANSGOLD.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:transgold",
+      "legacy_type": "recipe",
+      "legacy_content": "TransGold",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"TransGold\"))"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 2,
+    "y": 3,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(Items.field_151074_bl)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"TRANSGOLD\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.EXCHANGE, 3), 2, 3, 1, new ItemStack(Items.field_151074_bl))).setPages(new ResearchPage(\"tc.research_page.TRANSGOLD.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"TransGold\"))).setConcealed().setSecondary().setParents(\"TRANSIRON\").registerResearchItem()"
+  }
+}

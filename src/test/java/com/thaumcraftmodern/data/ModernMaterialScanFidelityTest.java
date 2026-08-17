@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class ModernMaterialScanFidelityTest {
     private static final Path SCANS = Path.of("").toAbsolutePath().resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
     );
 
     @Test

@@ -1,0 +1,10 @@
+{
+  "type":"entity",
+  "target":"thaumic_reborn:eldritch_crab",
+  "display":"entity.thaumic_reborn.eldritch_crab",
+  "aspects":[
+    {"id":"alienis","amount":3},
+    {"id":"bestia","amount":3},
+    {"id":"tutamen","amount":2}
+  ]
+}

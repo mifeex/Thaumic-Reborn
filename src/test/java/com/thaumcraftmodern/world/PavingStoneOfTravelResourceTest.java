@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class PavingStoneOfTravelResourceTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test
@@ -23,7 +23,7 @@ final class PavingStoneOfTravelResourceTest {
         ));
         assertEquals("minecraft:block/cube_all",
                 blockModel.get("parent").getAsString());
-        assertEquals("thaumcraftmodern:block/paving_stone_of_travel",
+        assertEquals("thaumic_reborn:block/paving_stone_of_travel",
                 blockModel.getAsJsonObject("textures")
                         .get("all").getAsString());
         assertEquals(
@@ -32,7 +32,7 @@ final class PavingStoneOfTravelResourceTest {
                         "textures/block/paving_stone_of_travel.png"
                 ))
         );
-        assertEquals("thaumcraftmodern:block/paving_stone_of_travel",
+        assertEquals("thaumic_reborn:block/paving_stone_of_travel",
                 json(ASSETS.resolve(
                         "models/item/paving_stone_of_travel.json"
                 )).get("parent").getAsString());

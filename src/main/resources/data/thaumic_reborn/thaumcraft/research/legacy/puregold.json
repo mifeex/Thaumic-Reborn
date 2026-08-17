@@ -1,0 +1,89 @@
+{
+  "id": "puregold",
+  "legacy_id": "PUREGOLD",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:native_gold_cluster",
+  "title": "tc.research_name.PUREGOLD",
+  "subtitle": "tc.research_text.PUREGOLD",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "pureiron"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": 72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PUREGOLD.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:puregold",
+      "legacy_type": "recipe",
+      "legacy_content": "PureGold",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"PureGold\"))"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 2
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -4,
+    "y": 3,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemNugget, 1, 31)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 2
+      },
+      {
+        "id": "lucrum",
+        "amount": 1
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"PUREGOLD\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.ORDER, 2).add(Aspect.GREED, 1), -4, 3, 1, new ItemStack(ConfigItems.itemNugget, 1, 31))).setPages(new ResearchPage(\"tc.research_page.PUREGOLD.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"PureGold\"))).setConcealed().setSecondary().setParents(\"PUREIRON\").registerResearchItem()"
+  }
+}

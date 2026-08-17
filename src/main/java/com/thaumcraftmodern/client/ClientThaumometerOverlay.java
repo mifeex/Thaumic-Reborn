@@ -166,7 +166,7 @@ public final class ClientThaumometerOverlay {
                 0.0F,
                 elapsed / (float) ScanSessionManager.REQUIRED_TICKS
         ));
-        Component scanning = Component.translatable("screen.thaumcraftmodern.thaumometer.scanning");
+        Component scanning = Component.translatable("screen.thaumic_reborn.thaumometer.scanning");
         graphics.drawCenteredString(
                 minecraft.font,
                 scanning,

@@ -1,0 +1,85 @@
+{
+  "id": "coreempty",
+  "legacy_id": "COREEMPTY",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:empty_golem_core",
+  "title": "tc.research_name.COREEMPTY",
+  "subtitle": "tc.research_text.COREEMPTY",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coregather"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -120,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREEMPTY.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:coreempty"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "vacuos",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    },
+    {
+      "id": "lucrum",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -5,
+    "y": 1,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 1)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "vacuos",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "lucrum",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"COREEMPTY\", \"GOLEMANCY\", (new AspectList()).add(Aspect.VOID, 3).add(Aspect.EXCHANGE, 3).add(Aspect.GREED, 3), -5, 1, 2, new ItemStack(ConfigItems.itemGolemCore, 1, 1))).setPages(new ResearchPage(\"tc.research_page.COREEMPTY.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"CoreEmpty\"))).setConcealed().setSecondary().setParents(\"COREGATHER\").registerResearchItem()"
+  }
+}

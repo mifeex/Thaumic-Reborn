@@ -1,0 +1,15 @@
+{
+  "research": "nitor",
+  "catalyst": {
+    "tag": "forge:dusts/glowstone"
+  },
+  "output": {
+    "item": "thaumic_reborn:nitor"
+  },
+  "aspects": {
+    "potentia": 3,
+    "ignis": 3,
+    "lux": 3
+  },
+  "legacy_id": "Nitor"
+}

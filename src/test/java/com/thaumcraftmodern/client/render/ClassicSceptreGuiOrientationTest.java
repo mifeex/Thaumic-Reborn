@@ -13,7 +13,7 @@ final class ClassicSceptreGuiOrientationTest {
     @Test
     void sceptreKeepsItsConfiguredGuiRotation() throws Exception {
         JsonObject model = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/item/"
+                "src/main/resources/assets/thaumic_reborn/models/item/"
                         + "classic_sceptre_base.json"
         ))).getAsJsonObject();
         JsonArray rotation = model.getAsJsonObject("display")

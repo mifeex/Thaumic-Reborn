@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "thaumic_reborn:block/tainted_glow_berry_vine_lit"
+  }
+}

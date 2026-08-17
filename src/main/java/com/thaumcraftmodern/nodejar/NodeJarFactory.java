@@ -14,7 +14,7 @@ import java.util.UUID;
  */
 public final class NodeJarFactory {
     private static final UUID CREATIVE_PAYLOAD_ID = UUID.nameUUIDFromBytes(
-            "thaumcraftmodern:creative_node_jar_payload:v1"
+            "thaumic_reborn:creative_node_jar_payload:v1"
                     .getBytes(StandardCharsets.UTF_8)
     );
 

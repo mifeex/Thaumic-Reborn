@@ -174,7 +174,7 @@ public final class FirstDiscoveryGameTests {
         );
         helper.assertTrue(
                 EntityScanIdentity.targetId(restored).equals(
-                        "thaumcraftmodern:pech/stalker"
+                        "thaumic_reborn:pech/stalker"
                 ),
                 "Pech variant did not expose its distinct scan identity"
         );
@@ -810,7 +810,7 @@ public final class FirstDiscoveryGameTests {
         helper.assertTrue(
                 ScanRegistry.find(
                         ScanTargetType.BLOCK,
-                        "thaumcraftmodern:ancient_stone"
+                        "thaumic_reborn:ancient_stone"
                 ).isPresent(),
                 "Ancient Stone scan was not loaded after the resource reload"
         );
@@ -818,7 +818,7 @@ public final class FirstDiscoveryGameTests {
                 .filter(definition ->
                         definition.type() == ScanTargetType.BLOCK
                                 && definition.targetId().equals(
-                                        "thaumcraftmodern:ancient_stone"
+                                        "thaumic_reborn:ancient_stone"
                                 ))
                 .count();
         helper.assertTrue(
@@ -930,7 +930,7 @@ public final class FirstDiscoveryGameTests {
                 ConstructionRegistry.find(
                         ConstructionDefinition.Handler.RESEARCH_TABLE_PAIR
                 ).orElseThrow().trigger().item().toString()
-                        .equals("thaumcraftmodern:scribing_tools"),
+                        .equals("thaumic_reborn:scribing_tools"),
                 "Research Table construction did not load its explicit item trigger"
         );
         helper.assertTrue(
@@ -3890,7 +3890,7 @@ public final class FirstDiscoveryGameTests {
 
     private static ServerPlayer fakePlayer(GameTestHelper helper, String testId) {
         UUID id = UUID.nameUUIDFromBytes(
-                ("thaumcraftmodern:gametest:" + testId)
+                ("thaumic_reborn:gametest:" + testId)
                         .getBytes(java.nio.charset.StandardCharsets.UTF_8)
         );
         return FakePlayerFactory.get(

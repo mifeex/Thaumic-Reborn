@@ -354,8 +354,8 @@ class ResearchRegistryTest {
     @Test
     void networkSerializationPreservesCyclingRecipePage() {
         List<String> recipes = List.of(
-                "thaumcraftmodern:air_crystal_cluster",
-                "thaumcraftmodern:balanced_crystal_cluster"
+                "thaumic_reborn:air_crystal_cluster",
+                "thaumic_reborn:balanced_crystal_cluster"
         );
         ResearchPageDefinition page = new ResearchPageDefinition(
                 ResearchPageDefinition.Type.RECIPE,
@@ -369,7 +369,7 @@ class ResearchRegistryTest {
         ResearchDefinition definition = new ResearchDefinition(
                 "cluster_recipes",
                 "basics",
-                "thaumcraftmodern:air_crystal_cluster",
+                "thaumic_reborn:air_crystal_cluster",
                 "research.cluster_recipes",
                 "",
                 false,
@@ -424,7 +424,7 @@ class ResearchRegistryTest {
         ResearchDefinition definition = new ResearchDefinition(
                 "infusion_preview",
                 "infusion_layout_test",
-                "thaumcraftmodern:runic_matrix",
+                "thaumic_reborn:runic_matrix",
                 "research.infusion_preview",
                 "",
                 false,

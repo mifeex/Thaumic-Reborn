@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "primalarrow",
+  "vis": {
+    "ordo": 8
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "S": {
+      "item": "thaumic_reborn:order_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:ordo_primal_arrow",
+    "count": 8
+  }
+}

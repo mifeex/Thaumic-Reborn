@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model":"thaumic_reborn:block/greatwood_log_horizontal","x":90,"y":90},
+    "axis=y": {"model":"thaumic_reborn:block/greatwood_log"},
+    "axis=z": {"model":"thaumic_reborn:block/greatwood_log_horizontal","x":90}
+  }
+}

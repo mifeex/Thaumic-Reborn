@@ -1,0 +1,10 @@
+{
+  "id": "pannus",
+  "order": 450,
+  "color": "EAEAC2",
+  "icon": "thaumic_reborn:textures/aspects/pannus.png",
+  "components": [
+    "instrumentum",
+    "bestia"
+  ]
+}

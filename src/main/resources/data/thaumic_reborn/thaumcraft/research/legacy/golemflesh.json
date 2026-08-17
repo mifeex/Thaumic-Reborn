@@ -1,0 +1,82 @@
+{
+  "id": "golemflesh",
+  "legacy_id": "GOLEMFLESH",
+  "category": "golemancy",
+  "completion_warp": 3,
+  "icon": "thaumic_reborn:flesh_golem",
+  "title": "tc.research_name.GOLEMFLESH",
+  "subtitle": "tc.research_text.GOLEMFLESH",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemwood"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMFLESH.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:flesh_block"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemflesh"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": 4,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 4)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 7
+      },
+      {
+        "id": "motus",
+        "amount": 7
+      },
+      {
+        "id": "corpus",
+        "amount": 6
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [
+      3
+    ],
+    "source_expression": "(new ResearchItem(\"GOLEMFLESH\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 7).add(Aspect.MOTION, 7).add(Aspect.FLESH, 6).add(Aspect.EXCHANGE, 3), 4, 4, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 4))).setPages(new ResearchPage(\"tc.research_page.GOLEMFLESH.1\"), new ResearchPage((IRecipe)recipes.get(\"BlockFlesh\")), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemFlesh\"))).setConcealed().setParents(\"GOLEMWOOD\").registerResearchItem()"
+  }
+}

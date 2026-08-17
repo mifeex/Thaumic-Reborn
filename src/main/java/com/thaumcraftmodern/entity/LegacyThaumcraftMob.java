@@ -270,10 +270,10 @@ public final class LegacyThaumcraftMob extends Monster
         if (kind == LegacyMobKind.PECH && !hasCustomName()) {
             return Component.translatable(switch (pechType()) {
                 case PechBehavior.MAGE ->
-                        "entity.thaumcraftmodern.pech_mage";
+                        "entity.thaumic_reborn.pech_mage";
                 case PechBehavior.STALKER ->
-                        "entity.thaumcraftmodern.pech_stalker";
-                default -> "entity.thaumcraftmodern.pech_forager";
+                        "entity.thaumic_reborn.pech_stalker";
+                default -> "entity.thaumic_reborn.pech_forager";
             });
         }
         return super.getName();
@@ -2579,7 +2579,7 @@ public final class LegacyThaumcraftMob extends Monster
             case MIND_SPIDER -> "mind_spider";
         };
         return new ResourceLocation(
-                "thaumcraftmodern",
+                "thaumic_reborn",
                 "entities/legacy/" + table
         );
     }

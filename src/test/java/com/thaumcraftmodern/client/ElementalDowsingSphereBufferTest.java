@@ -52,11 +52,11 @@ class ElementalDowsingSphereBufferTest {
     void eachAnimationFrameIsOneExactCellOfTheOriginalAtlas()
             throws Exception {
         BufferedImage atlas = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/"
+                "src/main/resources/assets/thaumic_reborn/textures/"
                         + "entity/misc/wisp.png").toFile());
         for (int frame = 0; frame < 16; frame++) {
             BufferedImage image = ImageIO.read(Path.of(
-                    "src/main/resources/assets/thaumcraftmodern/textures/"
+                    "src/main/resources/assets/thaumic_reborn/textures/"
                             + "entity/misc/wisp_frames/wisp_%02d.png"
                             .formatted(frame)).toFile());
             assertEquals(64, image.getWidth());

@@ -1,0 +1,29 @@
+{
+  "id": "golemwood",
+  "legacy_id": "GolemWood",
+  "legacy_kind": "crucible",
+  "inactive": true,
+  "inactive_reason": "output item or its complete gameplay behavior is not implemented",
+  "modern_recipe": [
+    "thaumic_reborn:golemwood"
+  ],
+  "required_aspects": [
+    {
+      "id": "humanus",
+      "amount": 4
+    },
+    {
+      "id": "motus",
+      "amount": 4
+    },
+    {
+      "id": "spiritus",
+      "amount": 4
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"GOLEMWOOD\", new ItemStack(ConfigItems.itemGolemPlacer, 1, 1), new ItemStack(ConfigBlocks.blockMagicalLog, 1, 0), (new AspectList()).add(Aspect.MAN, 4).add(Aspect.MOTION, 4).add(Aspect.SOUL, 4))",
+    "source_statement": "ConfigResearch.recipes.put(\"GolemWood\", ThaumcraftApi.addCrucibleRecipe(\"GOLEMWOOD\", new ItemStack(ConfigItems.itemGolemPlacer, 1, 1), new ItemStack(ConfigBlocks.blockMagicalLog, 1, 0), (new AspectList()).add(Aspect.MAN, 4).add(Aspect.MOTION, 4).add(Aspect.SOUL, 4)))",
+    "unkeyed": false
+  }
+}

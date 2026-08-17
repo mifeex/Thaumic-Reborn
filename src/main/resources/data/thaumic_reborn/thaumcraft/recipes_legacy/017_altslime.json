@@ -1,0 +1,25 @@
+{
+  "id": "altslime",
+  "legacy_id": "AltSlime",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:altslime"
+  ],
+  "required_aspects": [
+    {
+      "id": "aqua",
+      "amount": 2
+    },
+    {
+      "id": "victus",
+      "amount": 2
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"ALCHEMICALDUPLICATION\", new ItemStack(Items.field_151123_aH, 2, 0), new ItemStack(Items.field_151123_aH), (new AspectList()).merge(Aspect.WATER, 2).merge(Aspect.LIFE, 2))",
+    "source_statement": "ConfigResearch.recipes.put(\"AltSlime\", ThaumcraftApi.addCrucibleRecipe(\"ALCHEMICALDUPLICATION\", new ItemStack(Items.field_151123_aH, 2, 0), new ItemStack(Items.field_151123_aH), (new AspectList()).merge(Aspect.WATER, 2).merge(Aspect.LIFE, 2)))",
+    "unkeyed": false
+  }
+}

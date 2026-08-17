@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class AdvancedEssentiaAutomationAssetTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
 
     @Test
     void reversibleControllerTextureIsATransparentGameSizedPng()
@@ -45,10 +45,10 @@ final class AdvancedEssentiaAutomationAssetTest {
         assertEquals("minecraft:block/block",
                 reverseItem.get("parent").getAsString());
         assertEquals(6, reverseItem.getAsJsonArray("elements").size());
-        assertEquals("thaumcraftmodern:block/pipe_3",
+        assertEquals("thaumic_reborn:block/pipe_3",
                 reverseItem.getAsJsonObject("textures")
                         .get("joint").getAsString());
-        assertEquals("thaumcraftmodern:block/pipe_reverse_arrow",
+        assertEquals("thaumic_reborn:block/pipe_reverse_arrow",
                 reverseItem.getAsJsonObject("textures")
                         .get("arrow").getAsString());
         for (int element = 2; element < 6; element++) {
@@ -73,7 +73,7 @@ final class AdvancedEssentiaAutomationAssetTest {
                 reverseJoint.getAsJsonArray("from").toString());
         assertEquals("[9.5,9.5,9.5]",
                 reverseJoint.getAsJsonArray("to").toString());
-        assertEquals("thaumcraftmodern:block/pipe_3",
+        assertEquals("thaumic_reborn:block/pipe_3",
                 reverseBlock.getAsJsonObject("textures")
                         .get("joint").getAsString());
         BufferedImage reverseArrow = ImageIO.read(ASSETS.resolve(
@@ -87,7 +87,7 @@ final class AdvancedEssentiaAutomationAssetTest {
         JsonObject buffer = read(
                 "models/block/advanced_essentia_buffer.json");
         assertEquals(7, buffer.getAsJsonArray("elements").size());
-        assertEquals("thaumcraftmodern:block/advanced_buffer_indicator",
+        assertEquals("thaumic_reborn:block/advanced_buffer_indicator",
                 buffer.getAsJsonObject("textures")
                         .get("indicator").getAsString());
         JsonObject body = buffer.getAsJsonArray("elements").get(0)

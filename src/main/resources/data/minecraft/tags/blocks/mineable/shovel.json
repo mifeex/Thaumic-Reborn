@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:crusted_taint",
-    "thaumcraftmodern:tainted_soil"
+    "thaumic_reborn:crusted_taint",
+    "thaumic_reborn:tainted_soil"
   ]
 }

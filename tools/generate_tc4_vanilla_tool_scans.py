@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/scans/vanilla_tools"
+OUT = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/scans/vanilla_tools"
 
 # Explicit TC4 ingredient tags registered by ConfigAspects.
 MATERIALS = {

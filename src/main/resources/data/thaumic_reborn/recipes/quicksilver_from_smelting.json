@@ -1,0 +1,8 @@
+{
+  "type":"minecraft:smelting",
+  "category":"misc",
+  "ingredient":{"item":"thaumic_reborn:cinnabar_ore"},
+  "result":"thaumic_reborn:quicksilver",
+  "experience":0.7,
+  "cookingtime":200
+}

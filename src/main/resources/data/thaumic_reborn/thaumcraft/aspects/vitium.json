@@ -1,0 +1,10 @@
+{
+  "id": "vitium",
+  "order": 260,
+  "color": "800080",
+  "icon": "thaumic_reborn:textures/aspects/vitium.png",
+  "components": [
+    "praecantatio",
+    "perditio"
+  ]
+}

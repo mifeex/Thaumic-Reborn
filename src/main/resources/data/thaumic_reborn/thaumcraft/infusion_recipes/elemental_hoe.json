@@ -1,0 +1,7 @@
+{
+  "research":"elementalhoe","instability":1,
+  "central":{"item":"thaumic_reborn:thaumium_hoe"},
+  "components":[{"item":"thaumic_reborn:order_shard"},{"item":"thaumic_reborn:entropy_shard"},{"item":"minecraft:diamond"},{"item":"thaumic_reborn:greatwood_log"}],
+  "essentia":{"meto":8,"herba":8,"terra":8},
+  "result":{"item":"thaumic_reborn:hoe_of_growth","count":1}
+}

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ImplementedAlchemyResearchPagesTest {
     private static final Path ROOT = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
 
     @Test
@@ -26,10 +26,10 @@ class ImplementedAlchemyResearchPagesTest {
         assertFalse(jarLabel.get("inactive").getAsBoolean());
         assertFalse(thaumatorium.get("inactive").getAsBoolean());
         assertTrue(hasPage(jarLabel.getAsJsonArray("pages"), "recipe",
-                "thaumcraftmodern:jar_label"));
+                "thaumic_reborn:jar_label"));
         assertTrue(hasPage(thaumatorium.getAsJsonArray("pages"),
                 "compound_crafting",
-                "thaumcraftmodern:thaumatorium_construct"));
+                "thaumic_reborn:thaumatorium_construct"));
         assertFalse(hasUnavailablePage(jarLabel.getAsJsonArray("pages")));
         assertFalse(hasUnavailablePage(thaumatorium.getAsJsonArray("pages")));
     }

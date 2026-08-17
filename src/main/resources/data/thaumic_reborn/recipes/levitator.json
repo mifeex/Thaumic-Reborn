@@ -1,0 +1,33 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "levitator",
+  "vis": {
+    "aer": 10,
+    "terra": 5
+  },
+  "pattern": [
+    "WEW",
+    "BNB",
+    "WAW"
+  ],
+  "key": {
+    "W": {
+      "item": "thaumic_reborn:greatwood_planks"
+    },
+    "E": {
+      "item": "thaumic_reborn:earth_shard"
+    },
+    "A": {
+      "item": "thaumic_reborn:air_shard"
+    },
+    "N": {
+      "item": "thaumic_reborn:nitor"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_levitator"
+  }
+}

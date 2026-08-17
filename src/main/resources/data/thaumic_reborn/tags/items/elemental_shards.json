@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "thaumic_reborn:air_shard",
+    "thaumic_reborn:fire_shard",
+    "thaumic_reborn:water_shard",
+    "thaumic_reborn:earth_shard",
+    "thaumic_reborn:order_shard",
+    "thaumic_reborn:entropy_shard"
+  ]
+}

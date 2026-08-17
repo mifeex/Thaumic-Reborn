@@ -1,0 +1,71 @@
+{
+  "id": "transiron",
+  "legacy_id": "TRANSIRON",
+  "category": "alchemy",
+  "icon": "minecraft:iron_nugget",
+  "title": "tc.research_name.TRANSIRON",
+  "subtitle": "tc.research_text.TRANSIRON",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "thaumium"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 0,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TRANSIRON.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:transiron",
+      "legacy_type": "recipe",
+      "legacy_content": "TransIron",
+      "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"TransIron\"))"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 0,
+    "y": 5,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemNugget, 1, 0)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "metallum",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "}\n\n      (new ResearchItem(\"TRANSIRON\", \"ALCHEMY\", (new AspectList()).add(Aspect.METAL, 3).add(Aspect.EXCHANGE, 3), 0, 5, 1, new ItemStack(ConfigItems.itemNugget, 1, 0))).setPages(new ResearchPage(\"tc.research_page.TRANSIRON.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"TransIron\"))).setConcealed().setParents(\"THAUMIUM\").registerResearchItem()"
+  }
+}

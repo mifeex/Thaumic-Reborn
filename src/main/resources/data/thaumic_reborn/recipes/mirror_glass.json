@@ -1,0 +1,19 @@
+{
+  "type": "thaumic_reborn:arcane_shapeless",
+  "research": "basicartiface",
+  "vis": {
+    "ignis": 10,
+    "terra": 10
+  },
+  "ingredients": [
+    {
+      "item": "thaumic_reborn:quicksilver"
+    },
+    {
+      "item": "minecraft:glass_pane"
+    }
+  ],
+  "result": {
+    "item": "thaumic_reborn:mirrored_glass"
+  }
+}

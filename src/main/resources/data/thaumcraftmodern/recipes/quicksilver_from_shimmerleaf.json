@@ -1,6 +1,0 @@
-{
-  "type": "minecraft:crafting_shaped",
-  "pattern": ["#"],
-  "key": {"#": {"item": "thaumcraftmodern:shimmerleaf"}},
-  "result": {"item": "thaumcraftmodern:quicksilver", "count": 1}
-}

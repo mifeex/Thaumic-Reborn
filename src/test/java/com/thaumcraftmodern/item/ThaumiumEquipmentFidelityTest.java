@@ -40,15 +40,15 @@ final class ThaumiumEquipmentFidelityTest {
         List<String> equipment = List.of("axe", "sword", "pickaxe", "shovel",
                 "hoe", "helmet", "chestplate", "leggings", "boots");
         JsonObject research = json(ROOT.resolve(
-                "data/thaumcraftmodern/thaumcraft/research/legacy/thaumium.json"));
+                "data/thaumic_reborn/thaumcraft/research/legacy/thaumium.json"));
         assertFalse(research.get("inactive").getAsBoolean());
         String pages = research.getAsJsonArray("pages").toString();
         for (String name : equipment) {
-            Path recipe = ROOT.resolve("data/thaumcraftmodern/recipes/thaumium_"
+            Path recipe = ROOT.resolve("data/thaumic_reborn/recipes/thaumium_"
                     + name + ".json");
-            assertEquals("thaumcraftmodern:thaumium_" + name,
+            assertEquals("thaumic_reborn:thaumium_" + name,
                     json(recipe).getAsJsonObject("result").get("item").getAsString());
-            assertEquals(true, pages.contains("thaumcraftmodern:thaumium_" + name));
+            assertEquals(true, pages.contains("thaumic_reborn:thaumium_" + name));
         }
     }
 
@@ -70,7 +70,7 @@ final class ThaumiumEquipmentFidelityTest {
 
     private static void assertHash(String relative, String expected) throws Exception {
         byte[] data = Files.readAllBytes(ROOT.resolve(
-                "assets/thaumcraftmodern").resolve(relative));
+                "assets/thaumic_reborn").resolve(relative));
         assertEquals(expected, HexFormat.of().formatHex(
                 MessageDigest.getInstance("SHA-256").digest(data)));
     }

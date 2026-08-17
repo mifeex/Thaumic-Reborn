@@ -1,0 +1,106 @@
+{
+  "id": "rod_reed",
+  "legacy_id": "ROD_reed",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:reed_wand_rod",
+  "title": "tc.research_name.ROD_reed",
+  "subtitle": "tc.research_text.ROD_reed",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "rod_greatwood",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -120,
+  "y": -24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_reed.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:reed_wand_rod",
+      "central": "minecraft:sugar_cane",
+      "components": [
+        {"item": "thaumic_reborn:balanced_shard", "count": 1},
+        {"item": "thaumic_reborn:air_shard", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "aer", "amount": 12},
+        {"id": "praecantatio", "amount": 6},
+        {"id": "motus", "amount": 6}
+      ],
+      "instability": "minor",
+      "detail": "tc.research_text.ROD_reed"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "instrumentum",
+      "amount": 3
+    },
+    {
+      "id": "aer",
+      "amount": 6
+    },
+    {
+      "id": "herba",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -5,
+    "y": -1,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemWandRod, 1, 5)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "aer",
+        "amount": 6
+      },
+      {
+        "id": "herba",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ROD_reed\", \"THAUMATURGY\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.AIR, 6).add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3), -5, -1, 2, new ItemStack(ConfigItems.itemWandRod, 1, 5))).setPages(new ResearchPage(\"tc.research_page.ROD_reed.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"WandRodReed\"))).setSecondary().setConcealed().setParents(\"ROD_greatwood\", \"INFUSION\").registerResearchItem()"
+  }
+}

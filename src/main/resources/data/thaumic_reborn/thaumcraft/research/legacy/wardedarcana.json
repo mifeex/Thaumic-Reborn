@@ -1,0 +1,109 @@
+{
+  "id": "wardedarcana",
+  "legacy_id": "WARDEDARCANA",
+  "category": "artifice",
+  "icon": "thaumic_reborn:arcane_door",
+  "title": "tc.research_name.WARDEDARCANA",
+  "subtitle": "tc.research_text.WARDEDARCANA",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "thaumium"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -120,
+  "y": -96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARDEDARCANA.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:arcane_door"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARDEDARCANA.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:iron_key"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:gold_key"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARDEDARCANA.3"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:arcane_pressure_plate"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARDEDARCANA.4"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:warded_glass"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -5,
+    "y": -4,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemArcaneDoor)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 6
+      },
+      {
+        "id": "cognitio",
+        "amount": 3
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      },
+      {
+        "id": "tutamen",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "if (Config.wardedStone) {\n         (new ResearchItem(\"WARDEDARCANA\", \"ARTIFICE\", (new AspectList()).add(Aspect.TOOL, 6).add(Aspect.MIND, 3).add(Aspect.MECHANISM, 3).add(Aspect.ARMOR, 3), -5, -4, 2, new ItemStack(ConfigItems.itemArcaneDoor))).setPages(new ResearchPage(\"tc.research_page.WARDEDARCANA.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"ArcaneDoor\")), new ResearchPage(\"tc.research_page.WARDEDARCANA.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"IronKey\")), new ResearchPage((IArcaneRecipe)recipes.get(\"GoldKey\")), new ResearchPage(\"tc.research_page.WARDEDARCANA.3\"), new ResearchPage((IArcaneRecipe)recipes.get(\"ArcanePressurePlate\")), new ResearchPage(\"tc.research_page.WARDEDARCANA.4\"), new ResearchPage((IArcaneRecipe)recipes.get(\"WardedGlass\"))).setParents(\"THAUMIUM\").registerResearchItem()"
+  }
+}

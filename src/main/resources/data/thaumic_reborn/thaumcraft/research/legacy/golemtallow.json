@@ -1,0 +1,84 @@
+{
+  "id": "golemtallow",
+  "legacy_id": "GOLEMTALLOW",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:tallow_golem",
+  "title": "tc.research_name.GOLEMTALLOW",
+  "subtitle": "tc.research_text.GOLEMTALLOW",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golemclay",
+    "tallow"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 96,
+  "y": 144,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMTALLOW.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:tallow_block"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golemtallow"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 4,
+    "y": 6,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemPlacer, 1, 2)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "spiritus",
+        "amount": 3
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "corpus",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMTALLOW\", \"GOLEMANCY\", (new AspectList()).add(Aspect.SOUL, 3).add(Aspect.MOTION, 3).add(Aspect.FLESH, 3).add(Aspect.MAGIC, 3).add(Aspect.EXCHANGE, 3), 4, 6, 2, new ItemStack(ConfigItems.itemGolemPlacer, 1, 2))).setPages(new ResearchPage(\"tc.research_page.GOLEMTALLOW.1\"), new ResearchPage((IRecipe)recipes.get(\"BlockTallow\")), new ResearchPage((CrucibleRecipe)recipes.get(\"GolemTallow\"))).setConcealed().setParents(\"GOLEMCLAY\", \"TALLOW\").registerResearchItem()"
+  }
+}

@@ -4,13 +4,13 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes"
-SALIS = "thaumcraftmodern:salis_mundus"
+OUT = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes"
+SALIS = "thaumic_reborn:salis_mundus"
 
 # id, enchantment, instability, aspects, exact TC4 pedestal components
 RECIPES = [
- ("repair", "thaumcraftmodern:repair", 4, {"praecantatio":8,"fabrico":10,"ordo":10}, ["minecraft:anvil",SALIS]),
- ("haste", "thaumcraftmodern:haste", 3, {"praecantatio":4,"iter":8,"volatus":8}, ["thaumcraftmodern:nitor",SALIS]),
+ ("repair", "thaumic_reborn:repair", 4, {"praecantatio":8,"fabrico":10,"ordo":10}, ["minecraft:anvil",SALIS]),
+ ("haste", "thaumic_reborn:haste", 3, {"praecantatio":4,"iter":8,"volatus":8}, ["thaumic_reborn:nitor",SALIS]),
  ("protection", "minecraft:protection", 1, {"praecantatio":4,"tutamen":8}, ["minecraft:iron_ingot",SALIS]),
  ("fire_protection", "minecraft:fire_protection", 1, {"praecantatio":4,"tutamen":4,"ignis":4}, ["minecraft:iron_ingot","minecraft:magma_cream",SALIS]),
  ("blast_protection", "minecraft:blast_protection", 1, {"praecantatio":4,"tutamen":4,"perditio":4}, ["minecraft:iron_ingot","minecraft:gunpowder",SALIS]),
@@ -21,7 +21,7 @@ RECIPES = [
  ("thorns", "minecraft:thorns", 2, {"praecantatio":4,"telum":8,"herba":8}, ["minecraft:dead_bush","minecraft:quartz",SALIS]),
  ("sharpness", "minecraft:sharpness", 2, {"praecantatio":4,"telum":8}, ["minecraft:iron_sword",SALIS]),
  ("smite", "minecraft:smite", 2, {"praecantatio":4,"telum":4,"exanimis":4}, ["minecraft:iron_sword","minecraft:glowstone_dust",SALIS]),
- ("bane_of_arthropods", "minecraft:bane_of_arthropods", 2, {"praecantatio":4,"telum":4,"bestia":4}, ["minecraft:iron_sword","thaumcraftmodern:amber",SALIS]),
+ ("bane_of_arthropods", "minecraft:bane_of_arthropods", 2, {"praecantatio":4,"telum":4,"bestia":4}, ["minecraft:iron_sword","thaumic_reborn:amber",SALIS]),
  ("knockback", "minecraft:knockback", 1, {"praecantatio":4,"telum":3,"motus":3}, ["minecraft:piston",SALIS]),
  ("fire_aspect", "minecraft:fire_aspect", 3, {"praecantatio":4,"telum":4,"ignis":8}, ["minecraft:iron_sword","minecraft:blaze_powder",SALIS]),
  ("looting", "minecraft:looting", 3, {"praecantatio":4,"telum":4,"lucrum":8}, ["minecraft:iron_sword","minecraft:diamond",SALIS]),

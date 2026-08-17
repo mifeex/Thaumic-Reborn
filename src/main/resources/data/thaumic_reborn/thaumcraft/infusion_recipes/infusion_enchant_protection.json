@@ -1,0 +1,20 @@
+{
+  "research": "infusionenchantment",
+  "instability": 1,
+  "components": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "tutamen": 8
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:protection"
+  }
+}

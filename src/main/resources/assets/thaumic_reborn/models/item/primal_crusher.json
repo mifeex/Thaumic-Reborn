@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "thaumic_reborn:item/primal_crusher"
+  }
+}

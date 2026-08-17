@@ -112,7 +112,7 @@ public final class ArcaneWorkbenchBlockEntity extends BlockEntity implements Men
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("container.thaumcraftmodern.arcane_workbench");
+        return Component.translatable("container.thaumic_reborn.arcane_workbench");
     }
 
     @Override

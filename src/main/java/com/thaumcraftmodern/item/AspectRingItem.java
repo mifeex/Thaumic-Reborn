@@ -34,7 +34,7 @@ public final class AspectRingItem extends CurioAccessoryItem
     @Override
     public Component getName(ItemStack stack) {
         return Component.translatable(
-                "item.thaumcraftmodern.apprentice_ring",
+                "item.thaumic_reborn.apprentice_ring",
                 Component.translatable("tc.aspect." + aspect.id())
         );
     }
@@ -43,7 +43,7 @@ public final class AspectRingItem extends CurioAccessoryItem
     public void appendHoverText(ItemStack stack, @Nullable Level level,
             List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable(
-                "tooltip.thaumcraftmodern.aspect_ring_discount",
+                "tooltip.thaumic_reborn.aspect_ring_discount",
                 Component.translatable("tc.aspect." + aspect.id())
         ).withStyle(ChatFormatting.DARK_PURPLE));
     }

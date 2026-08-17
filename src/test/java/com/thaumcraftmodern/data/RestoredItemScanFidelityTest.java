@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class RestoredItemScanFidelityTest {
     private static final Path ROOT = Path.of("").toAbsolutePath();
     private static final Path SCANS = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
     );
 
     @Test
@@ -54,17 +54,17 @@ final class RestoredItemScanFidelityTest {
     @Test
     void directlyRegisteredThaumcraftObjectsMatchOriginalAspects()
             throws IOException {
-        assertScan("thaumometer.json", "item", "thaumcraftmodern:thaumometer",
+        assertScan("thaumometer.json", "item", "thaumic_reborn:thaumometer",
                 Map.of("sensus", 3, "metallum", 2, "vitreus", 1,
                         "praecantatio", 1));
         assertScan("scribing_tools.json", "item",
-                "thaumcraftmodern:scribing_tools",
+                "thaumic_reborn:scribing_tools",
                 Map.of("aqua", 1, "tenebrae", 1, "instrumentum", 1));
         assertScan("thaumium_block.json", "block",
-                "thaumcraftmodern:thaumium_block",
+                "thaumic_reborn:thaumium_block",
                 Map.of("metallum", 8, "praecantatio", 2));
         assertScan("flesh_block.json", "block",
-                "thaumcraftmodern:flesh_block",
+                "thaumic_reborn:flesh_block",
                 Map.of("corpus", 4, "lux", 1, "praecantatio", 1));
     }
 
@@ -210,34 +210,34 @@ final class RestoredItemScanFidelityTest {
         }
 
         List<String> restored = List.of(
-                "block:thaumcraftmodern:tallow_candle",
-                "item:thaumcraftmodern:quicksilver_nugget",
-                "item:thaumcraftmodern:cultist_knight_helmet",
-                "item:thaumcraftmodern:cultist_knight_chestplate",
-                "item:thaumcraftmodern:cultist_knight_leggings",
-                "item:thaumcraftmodern:cultist_cleric_hood",
-                "item:thaumcraftmodern:cultist_cleric_robe",
-                "item:thaumcraftmodern:cultist_cleric_leggings",
-                "item:thaumcraftmodern:cultist_praetor_helmet",
-                "item:thaumcraftmodern:cultist_praetor_chestplate",
-                "item:thaumcraftmodern:cultist_praetor_leggings",
-                "item:thaumcraftmodern:cultist_boots",
-                "item:thaumcraftmodern:native_iron_cluster",
-                "item:thaumcraftmodern:native_copper_cluster",
-                "item:thaumcraftmodern:native_tin_cluster",
-                "item:thaumcraftmodern:native_silver_cluster",
-                "item:thaumcraftmodern:native_lead_cluster",
-                "item:thaumcraftmodern:native_gold_cluster",
-                "item:thaumcraftmodern:beef_nugget",
-                "item:thaumcraftmodern:chicken_nugget",
-                "item:thaumcraftmodern:pork_nugget",
-                "item:thaumcraftmodern:fish_nugget",
-                "item:thaumcraftmodern:apprentice_ring_aer",
-                "block:thaumcraftmodern:arcane_ear",
-                "entity:thaumcraftmodern:primal_orb",
-                "entity:thaumcraftmodern:straw_golem",
-                "item_tag:thaumcraftmodern:thaumcraft_banners",
-                "block_tag:thaumcraftmodern:eldritch_structure_blocks"
+                "block:thaumic_reborn:tallow_candle",
+                "item:thaumic_reborn:quicksilver_nugget",
+                "item:thaumic_reborn:cultist_knight_helmet",
+                "item:thaumic_reborn:cultist_knight_chestplate",
+                "item:thaumic_reborn:cultist_knight_leggings",
+                "item:thaumic_reborn:cultist_cleric_hood",
+                "item:thaumic_reborn:cultist_cleric_robe",
+                "item:thaumic_reborn:cultist_cleric_leggings",
+                "item:thaumic_reborn:cultist_praetor_helmet",
+                "item:thaumic_reborn:cultist_praetor_chestplate",
+                "item:thaumic_reborn:cultist_praetor_leggings",
+                "item:thaumic_reborn:cultist_boots",
+                "item:thaumic_reborn:native_iron_cluster",
+                "item:thaumic_reborn:native_copper_cluster",
+                "item:thaumic_reborn:native_tin_cluster",
+                "item:thaumic_reborn:native_silver_cluster",
+                "item:thaumic_reborn:native_lead_cluster",
+                "item:thaumic_reborn:native_gold_cluster",
+                "item:thaumic_reborn:beef_nugget",
+                "item:thaumic_reborn:chicken_nugget",
+                "item:thaumic_reborn:pork_nugget",
+                "item:thaumic_reborn:fish_nugget",
+                "item:thaumic_reborn:apprentice_ring_aer",
+                "block:thaumic_reborn:arcane_ear",
+                "entity:thaumic_reborn:primal_orb",
+                "entity:thaumic_reborn:straw_golem",
+                "item_tag:thaumic_reborn:thaumcraft_banners",
+                "block_tag:thaumic_reborn:eldritch_structure_blocks"
         );
         restored.forEach(key -> assertTrue(active.containsKey(key),
                 () -> "missing restored original scan: " + key));

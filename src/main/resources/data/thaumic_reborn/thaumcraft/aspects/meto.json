@@ -1,0 +1,10 @@
+{
+  "id": "meto",
+  "order": 390,
+  "color": "EEAD82",
+  "icon": "thaumic_reborn:textures/aspects/meto.png",
+  "components": [
+    "messis",
+    "instrumentum"
+  ]
+}

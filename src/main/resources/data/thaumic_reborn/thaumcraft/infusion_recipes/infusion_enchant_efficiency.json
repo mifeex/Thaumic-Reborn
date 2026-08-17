@@ -1,0 +1,21 @@
+{
+  "research": "infusionenchantment",
+  "instability": 2,
+  "components": [
+    {
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "item": "thaumic_reborn:salis_mundus"
+    }
+  ],
+  "essentia": {
+    "praecantatio": 4,
+    "instrumentum": 4,
+    "ordo": 4
+  },
+  "result_modifier": {
+    "type": "enchantment",
+    "key": "minecraft:efficiency"
+  }
+}

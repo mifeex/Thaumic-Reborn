@@ -1,0 +1,96 @@
+{
+  "id": "rod_reed_staff",
+  "legacy_id": "ROD_reed_staff",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:reed_staff_rod",
+  "title": "tc.research_name.ROD_reed_staff",
+  "subtitle": "tc.research_text.ROD_reed_staff",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "rod_reed"
+  ],
+  "hidden_parents": [
+    "rod_greatwood_staff"
+  ],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -120,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_reed_staff.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:wand_rod_reed_staff"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "instrumentum",
+      "amount": 3
+    },
+    {
+      "id": "aer",
+      "amount": 6
+    },
+    {
+      "id": "herba",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -5,
+    "y": -2,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemWandRod, 1, 55)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [
+      "ROD_greatwood_staff"
+    ],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "aer",
+        "amount": 6
+      },
+      {
+        "id": "herba",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ROD_reed_staff\", \"THAUMATURGY\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.AIR, 6).add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3), -5, -2, 2, new ItemStack(ConfigItems.itemWandRod, 1, 55))).setPages(new ResearchPage(\"tc.research_page.ROD_reed_staff.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"WandRodReedStaff\"))).setSecondary().setConcealed().setParents(\"ROD_reed\").setParentsHidden(\"ROD_greatwood_staff\").registerResearchItem()"
+  }
+}

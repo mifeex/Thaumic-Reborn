@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "bonebow",
+  "vis": {
+    "aer": 16,
+    "perditio": 32
+  },
+  "pattern": [
+    "SB ",
+    "SEB",
+    "SB "
+  ],
+  "key": {
+    "E": {
+      "item": "thaumic_reborn:entropy_shard"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:bone_bow"
+  }
+}

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class MirrorFortressFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
 
     @Test
     void fortressMaterialRetainsTc4Values() {
@@ -98,9 +98,9 @@ final class MirrorFortressFidelityTest {
                         "e9c3f14e32cdd298523f5dda4baff7785a0386be62c62b577f186e5f12511cf0"),
                 new Mask("sipping_fiend", "masksippingfiend", 2,
                         "c1a0523e3666b779251d9e4dbf6d4e98c9c56550b84fe1fa7d22b2166471f20e"));
-        Path data = Path.of("src/main/resources/data/thaumcraftmodern/thaumcraft");
+        Path data = Path.of("src/main/resources/data/thaumic_reborn/thaumcraft");
         for (Mask mask : masks) {
-            String itemId = "thaumcraftmodern:fortress_helmet_mask_" + mask.id();
+            String itemId = "thaumic_reborn:fortress_helmet_mask_" + mask.id();
             JsonObject recipe = JsonParser.parseString(Files.readString(data.resolve(
                     "infusion_recipes/fortress_mask_" + mask.id() + ".json")))
                     .getAsJsonObject();
@@ -113,7 +113,7 @@ final class MirrorFortressFidelityTest {
             JsonObject research = JsonParser.parseString(Files.readString(data.resolve(
                     "research/legacy/" + mask.research() + ".json")))
                     .getAsJsonObject();
-            assertEquals("thaumcraftmodern:textures/misc/r_mask"
+            assertEquals("thaumic_reborn:textures/misc/r_mask"
                     + mask.value() + ".png",
                     research.get("icon_resource").getAsString());
             assertEquals(itemId, research.getAsJsonArray("pages").get(1)
@@ -121,7 +121,7 @@ final class MirrorFortressFidelityTest {
             JsonObject itemModel = JsonParser.parseString(Files.readString(
                     ASSETS.resolve("models/item/fortress_helmet_mask_"
                             + mask.id() + ".json"))).getAsJsonObject();
-            assertEquals("thaumcraftmodern:item/fortress_helmet",
+            assertEquals("thaumic_reborn:item/fortress_helmet",
                     itemModel.getAsJsonObject("textures")
                             .get("layer0").getAsString());
             hash("textures/misc/r_mask" + mask.value() + ".png", mask.hash());
@@ -137,14 +137,14 @@ final class MirrorFortressFidelityTest {
     @Test
     void gogglesAndEveryMaskAcceptEveryFortressHelmetVariant()
             throws Exception {
-        Path data = Path.of("src/main/resources/data/thaumcraftmodern");
+        Path data = Path.of("src/main/resources/data/thaumic_reborn");
         JsonObject tag = JsonParser.parseString(Files.readString(data.resolve(
                 "tags/items/fortress_helmets.json"))).getAsJsonObject();
         assertEquals(java.util.List.of(
-                "thaumcraftmodern:fortress_helmet",
-                "thaumcraftmodern:fortress_helmet_mask_grinning_devil",
-                "thaumcraftmodern:fortress_helmet_mask_angry_ghost",
-                "thaumcraftmodern:fortress_helmet_mask_sipping_fiend"
+                "thaumic_reborn:fortress_helmet",
+                "thaumic_reborn:fortress_helmet_mask_grinning_devil",
+                "thaumic_reborn:fortress_helmet_mask_angry_ghost",
+                "thaumic_reborn:fortress_helmet_mask_sipping_fiend"
         ), tag.getAsJsonArray("values").asList().stream()
                 .map(value -> value.getAsString())
                 .toList());
@@ -158,7 +158,7 @@ final class MirrorFortressFidelityTest {
             JsonObject recipe = JsonParser.parseString(Files.readString(
                     data.resolve("thaumcraft/infusion_recipes/"
                             + recipeName + ".json"))).getAsJsonObject();
-            assertEquals("thaumcraftmodern:fortress_helmets",
+            assertEquals("thaumic_reborn:fortress_helmets",
                     recipe.getAsJsonObject("central").get("tag").getAsString(),
                     recipeName);
         }

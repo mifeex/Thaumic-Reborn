@@ -159,8 +159,8 @@ public final class ScanSessionManager {
         if (!facts.stableTarget() || (!expectedResult && !completedWithoutDefinition)) {
             String key = !facts.stableTarget()
                     && reason == ScanValidation.Reason.STABLE_DURATION_NOT_REACHED
-                    ? "message.thaumcraftmodern.scan.error.invalid_target"
-                    : "message.thaumcraftmodern.scan.error."
+                    ? "message.thaumic_reborn.scan.error.invalid_target"
+                    : "message.thaumic_reborn.scan.error."
                     + reason.name().toLowerCase(Locale.ROOT);
             interrupt(player, key);
             return;

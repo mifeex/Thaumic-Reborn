@@ -25,7 +25,7 @@ public final class ResearchNoteAcquisitionService {
                     player,
                     researchId,
                     Result.UNKNOWN_RESEARCH,
-                    Component.translatable("screen.thaumcraftmodern.thaumonomicon.locked")
+                    Component.translatable("screen.thaumic_reborn.thaumonomicon.locked")
             );
         }
 
@@ -37,7 +37,7 @@ public final class ResearchNoteAcquisitionService {
                                 research.id(),
                                 Result.ALREADY_COMPLETED,
                                 Component.translatable(
-                                        "message.thaumcraftmodern.research.already_known"
+                                        "message.thaumic_reborn.research.already_known"
                                 )
                         );
                     }
@@ -47,7 +47,7 @@ public final class ResearchNoteAcquisitionService {
                                 research.id(),
                                 Result.UNAVAILABLE,
                                 Component.translatable(
-                                        "screen.thaumcraftmodern.thaumonomicon.locked"
+                                        "screen.thaumic_reborn.thaumonomicon.locked"
                                 )
                         );
                     }
@@ -111,7 +111,7 @@ public final class ResearchNoteAcquisitionService {
                         research.id(),
                         Result.MISSING_KNOWLEDGE,
                         Component.translatable(
-                                "screen.thaumcraftmodern.thaumonomicon.locked"
+                                "screen.thaumic_reborn.thaumonomicon.locked"
                         )
                 ));
     }

@@ -1,0 +1,15 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:scribing_tools",
+  "display": "item.thaumic_reborn.scribing_tools",
+  "aspects": [
+    { "id": "aqua", "amount": 1 },
+    { "id": "tenebrae", "amount": 1 },
+    { "id": "instrumentum", "amount": 1 }
+  ],
+  "legacy": {
+    "registration_mode": "explicit",
+    "legacy_target": "new ItemStack(ConfigItems.itemInkwell)",
+    "source": "ConfigAspects.registerThaumcraftAlchemyBaseline"
+  }
+}

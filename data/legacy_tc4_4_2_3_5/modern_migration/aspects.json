@@ -3,7 +3,7 @@
     "id": "aer",
     "order": 0,
     "color": "FFFF7E",
-    "icon": "thaumcraftmodern:textures/aspects/aer.png",
+    "icon": "thaumic_reborn:textures/aspects/aer.png",
     "components": [],
     "migration_status": "active"
   },
@@ -11,7 +11,7 @@
     "id": "terra",
     "order": 10,
     "color": "56C000",
-    "icon": "thaumcraftmodern:textures/aspects/terra.png",
+    "icon": "thaumic_reborn:textures/aspects/terra.png",
     "components": [],
     "migration_status": "active"
   },
@@ -19,7 +19,7 @@
     "id": "ignis",
     "order": 20,
     "color": "FF5A01",
-    "icon": "thaumcraftmodern:textures/aspects/ignis.png",
+    "icon": "thaumic_reborn:textures/aspects/ignis.png",
     "components": [],
     "migration_status": "active"
   },
@@ -27,7 +27,7 @@
     "id": "aqua",
     "order": 30,
     "color": "3CD4FC",
-    "icon": "thaumcraftmodern:textures/aspects/aqua.png",
+    "icon": "thaumic_reborn:textures/aspects/aqua.png",
     "components": [],
     "migration_status": "active"
   },
@@ -35,7 +35,7 @@
     "id": "ordo",
     "order": 40,
     "color": "D5D4EC",
-    "icon": "thaumcraftmodern:textures/aspects/ordo.png",
+    "icon": "thaumic_reborn:textures/aspects/ordo.png",
     "components": [],
     "migration_status": "active"
   },
@@ -43,7 +43,7 @@
     "id": "perditio",
     "order": 50,
     "color": "404040",
-    "icon": "thaumcraftmodern:textures/aspects/perditio.png",
+    "icon": "thaumic_reborn:textures/aspects/perditio.png",
     "components": [],
     "migration_status": "active"
   },
@@ -51,7 +51,7 @@
     "id": "vacuos",
     "order": 60,
     "color": "888888",
-    "icon": "thaumcraftmodern:textures/aspects/vacuos.png",
+    "icon": "thaumic_reborn:textures/aspects/vacuos.png",
     "components": [
       "aer",
       "perditio"
@@ -62,7 +62,7 @@
     "id": "lux",
     "order": 70,
     "color": "FFF663",
-    "icon": "thaumcraftmodern:textures/aspects/lux.png",
+    "icon": "thaumic_reborn:textures/aspects/lux.png",
     "components": [
       "aer",
       "ignis"
@@ -73,7 +73,7 @@
     "id": "tempestas",
     "order": 80,
     "color": "FFFFFF",
-    "icon": "thaumcraftmodern:textures/aspects/tempestas.png",
+    "icon": "thaumic_reborn:textures/aspects/tempestas.png",
     "components": [
       "aer",
       "aqua"
@@ -84,7 +84,7 @@
     "id": "motus",
     "order": 90,
     "color": "CDCCF4",
-    "icon": "thaumcraftmodern:textures/aspects/motus.png",
+    "icon": "thaumic_reborn:textures/aspects/motus.png",
     "components": [
       "aer",
       "ordo"
@@ -95,7 +95,7 @@
     "id": "gelum",
     "order": 100,
     "color": "E1FFFF",
-    "icon": "thaumcraftmodern:textures/aspects/gelum.png",
+    "icon": "thaumic_reborn:textures/aspects/gelum.png",
     "components": [
       "ignis",
       "perditio"
@@ -106,7 +106,7 @@
     "id": "vitreus",
     "order": 110,
     "color": "80FFFF",
-    "icon": "thaumcraftmodern:textures/aspects/vitreus.png",
+    "icon": "thaumic_reborn:textures/aspects/vitreus.png",
     "components": [
       "terra",
       "ordo"
@@ -117,7 +117,7 @@
     "id": "victus",
     "order": 120,
     "color": "DE0005",
-    "icon": "thaumcraftmodern:textures/aspects/victus.png",
+    "icon": "thaumic_reborn:textures/aspects/victus.png",
     "components": [
       "aqua",
       "terra"
@@ -128,7 +128,7 @@
     "id": "venenum",
     "order": 130,
     "color": "89F000",
-    "icon": "thaumcraftmodern:textures/aspects/venenum.png",
+    "icon": "thaumic_reborn:textures/aspects/venenum.png",
     "components": [
       "aqua",
       "perditio"
@@ -139,7 +139,7 @@
     "id": "potentia",
     "order": 140,
     "color": "C0FFFF",
-    "icon": "thaumcraftmodern:textures/aspects/potentia.png",
+    "icon": "thaumic_reborn:textures/aspects/potentia.png",
     "components": [
       "ordo",
       "ignis"
@@ -150,7 +150,7 @@
     "id": "permutatio",
     "order": 150,
     "color": "578357",
-    "icon": "thaumcraftmodern:textures/aspects/permutatio.png",
+    "icon": "thaumic_reborn:textures/aspects/permutatio.png",
     "components": [
       "perditio",
       "ordo"
@@ -161,7 +161,7 @@
     "id": "metallum",
     "order": 160,
     "color": "B5B5CD",
-    "icon": "thaumcraftmodern:textures/aspects/metallum.png",
+    "icon": "thaumic_reborn:textures/aspects/metallum.png",
     "components": [
       "terra",
       "vitreus"
@@ -172,7 +172,7 @@
     "id": "mortuus",
     "order": 170,
     "color": "887788",
-    "icon": "thaumcraftmodern:textures/aspects/mortuus.png",
+    "icon": "thaumic_reborn:textures/aspects/mortuus.png",
     "components": [
       "victus",
       "perditio"
@@ -183,7 +183,7 @@
     "id": "volatus",
     "order": 180,
     "color": "E7E7D7",
-    "icon": "thaumcraftmodern:textures/aspects/volatus.png",
+    "icon": "thaumic_reborn:textures/aspects/volatus.png",
     "components": [
       "aer",
       "motus"
@@ -194,7 +194,7 @@
     "id": "tenebrae",
     "order": 190,
     "color": "222222",
-    "icon": "thaumcraftmodern:textures/aspects/tenebrae.png",
+    "icon": "thaumic_reborn:textures/aspects/tenebrae.png",
     "components": [
       "vacuos",
       "lux"
@@ -205,7 +205,7 @@
     "id": "spiritus",
     "order": 200,
     "color": "EBEBFB",
-    "icon": "thaumcraftmodern:textures/aspects/spiritus.png",
+    "icon": "thaumic_reborn:textures/aspects/spiritus.png",
     "components": [
       "victus",
       "mortuus"
@@ -216,7 +216,7 @@
     "id": "sano",
     "order": 210,
     "color": "FF2F34",
-    "icon": "thaumcraftmodern:textures/aspects/sano.png",
+    "icon": "thaumic_reborn:textures/aspects/sano.png",
     "components": [
       "victus",
       "ordo"
@@ -227,7 +227,7 @@
     "id": "iter",
     "order": 220,
     "color": "E0585B",
-    "icon": "thaumcraftmodern:textures/aspects/iter.png",
+    "icon": "thaumic_reborn:textures/aspects/iter.png",
     "components": [
       "motus",
       "terra"
@@ -238,7 +238,7 @@
     "id": "alienis",
     "order": 230,
     "color": "805080",
-    "icon": "thaumcraftmodern:textures/aspects/alienis.png",
+    "icon": "thaumic_reborn:textures/aspects/alienis.png",
     "components": [
       "vacuos",
       "tenebrae"
@@ -249,7 +249,7 @@
     "id": "praecantatio",
     "order": 240,
     "color": "9700C0",
-    "icon": "thaumcraftmodern:textures/aspects/praecantatio.png",
+    "icon": "thaumic_reborn:textures/aspects/praecantatio.png",
     "components": [
       "vacuos",
       "potentia"
@@ -260,7 +260,7 @@
     "id": "auram",
     "order": 250,
     "color": "FFC0FF",
-    "icon": "thaumcraftmodern:textures/aspects/auram.png",
+    "icon": "thaumic_reborn:textures/aspects/auram.png",
     "components": [
       "praecantatio",
       "aer"
@@ -271,7 +271,7 @@
     "id": "vitium",
     "order": 260,
     "color": "800080",
-    "icon": "thaumcraftmodern:textures/aspects/vitium.png",
+    "icon": "thaumic_reborn:textures/aspects/vitium.png",
     "components": [
       "praecantatio",
       "perditio"
@@ -282,7 +282,7 @@
     "id": "limus",
     "order": 270,
     "color": "01F800",
-    "icon": "thaumcraftmodern:textures/aspects/limus.png",
+    "icon": "thaumic_reborn:textures/aspects/limus.png",
     "components": [
       "victus",
       "aqua"
@@ -293,7 +293,7 @@
     "id": "herba",
     "order": 280,
     "color": "01AC00",
-    "icon": "thaumcraftmodern:textures/aspects/herba.png",
+    "icon": "thaumic_reborn:textures/aspects/herba.png",
     "components": [
       "victus",
       "terra"
@@ -304,7 +304,7 @@
     "id": "arbor",
     "order": 290,
     "color": "876531",
-    "icon": "thaumcraftmodern:textures/aspects/arbor.png",
+    "icon": "thaumic_reborn:textures/aspects/arbor.png",
     "components": [
       "aer",
       "herba"
@@ -315,7 +315,7 @@
     "id": "bestia",
     "order": 300,
     "color": "9F6409",
-    "icon": "thaumcraftmodern:textures/aspects/bestia.png",
+    "icon": "thaumic_reborn:textures/aspects/bestia.png",
     "components": [
       "motus",
       "victus"
@@ -326,7 +326,7 @@
     "id": "corpus",
     "order": 310,
     "color": "EE478D",
-    "icon": "thaumcraftmodern:textures/aspects/corpus.png",
+    "icon": "thaumic_reborn:textures/aspects/corpus.png",
     "components": [
       "mortuus",
       "bestia"
@@ -337,7 +337,7 @@
     "id": "exanimis",
     "order": 320,
     "color": "3A4000",
-    "icon": "thaumcraftmodern:textures/aspects/exanimis.png",
+    "icon": "thaumic_reborn:textures/aspects/exanimis.png",
     "components": [
       "motus",
       "mortuus"
@@ -348,7 +348,7 @@
     "id": "cognitio",
     "order": 330,
     "color": "FFC2B3",
-    "icon": "thaumcraftmodern:textures/aspects/cognitio.png",
+    "icon": "thaumic_reborn:textures/aspects/cognitio.png",
     "components": [
       "ignis",
       "spiritus"
@@ -359,7 +359,7 @@
     "id": "sensus",
     "order": 340,
     "color": "0FD9FF",
-    "icon": "thaumcraftmodern:textures/aspects/sensus.png",
+    "icon": "thaumic_reborn:textures/aspects/sensus.png",
     "components": [
       "aer",
       "spiritus"
@@ -370,7 +370,7 @@
     "id": "humanus",
     "order": 350,
     "color": "FFD7C0",
-    "icon": "thaumcraftmodern:textures/aspects/humanus.png",
+    "icon": "thaumic_reborn:textures/aspects/humanus.png",
     "components": [
       "bestia",
       "cognitio"
@@ -381,7 +381,7 @@
     "id": "messis",
     "order": 360,
     "color": "E1B371",
-    "icon": "thaumcraftmodern:textures/aspects/messis.png",
+    "icon": "thaumic_reborn:textures/aspects/messis.png",
     "components": [
       "herba",
       "humanus"
@@ -392,7 +392,7 @@
     "id": "perfodio",
     "order": 370,
     "color": "DCD2D8",
-    "icon": "thaumcraftmodern:textures/aspects/perfodio.png",
+    "icon": "thaumic_reborn:textures/aspects/perfodio.png",
     "components": [
       "humanus",
       "terra"
@@ -403,7 +403,7 @@
     "id": "instrumentum",
     "order": 380,
     "color": "4040EE",
-    "icon": "thaumcraftmodern:textures/aspects/instrumentum.png",
+    "icon": "thaumic_reborn:textures/aspects/instrumentum.png",
     "components": [
       "humanus",
       "ordo"
@@ -414,7 +414,7 @@
     "id": "meto",
     "order": 390,
     "color": "EEAD82",
-    "icon": "thaumcraftmodern:textures/aspects/meto.png",
+    "icon": "thaumic_reborn:textures/aspects/meto.png",
     "components": [
       "messis",
       "instrumentum"
@@ -425,7 +425,7 @@
     "id": "telum",
     "order": 400,
     "color": "C05050",
-    "icon": "thaumcraftmodern:textures/aspects/telum.png",
+    "icon": "thaumic_reborn:textures/aspects/telum.png",
     "components": [
       "instrumentum",
       "ignis"
@@ -436,7 +436,7 @@
     "id": "tutamen",
     "order": 410,
     "color": "00C0C0",
-    "icon": "thaumcraftmodern:textures/aspects/tutamen.png",
+    "icon": "thaumic_reborn:textures/aspects/tutamen.png",
     "components": [
       "instrumentum",
       "terra"
@@ -447,7 +447,7 @@
     "id": "fames",
     "order": 420,
     "color": "9A0305",
-    "icon": "thaumcraftmodern:textures/aspects/fames.png",
+    "icon": "thaumic_reborn:textures/aspects/fames.png",
     "components": [
       "victus",
       "vacuos"
@@ -458,7 +458,7 @@
     "id": "lucrum",
     "order": 430,
     "color": "E6BE44",
-    "icon": "thaumcraftmodern:textures/aspects/lucrum.png",
+    "icon": "thaumic_reborn:textures/aspects/lucrum.png",
     "components": [
       "humanus",
       "fames"
@@ -469,7 +469,7 @@
     "id": "fabrico",
     "order": 440,
     "color": "809D80",
-    "icon": "thaumcraftmodern:textures/aspects/fabrico.png",
+    "icon": "thaumic_reborn:textures/aspects/fabrico.png",
     "components": [
       "humanus",
       "instrumentum"
@@ -480,7 +480,7 @@
     "id": "pannus",
     "order": 450,
     "color": "EAEAC2",
-    "icon": "thaumcraftmodern:textures/aspects/pannus.png",
+    "icon": "thaumic_reborn:textures/aspects/pannus.png",
     "components": [
       "instrumentum",
       "bestia"
@@ -491,7 +491,7 @@
     "id": "machina",
     "order": 460,
     "color": "8080A0",
-    "icon": "thaumcraftmodern:textures/aspects/machina.png",
+    "icon": "thaumic_reborn:textures/aspects/machina.png",
     "components": [
       "motus",
       "instrumentum"
@@ -502,7 +502,7 @@
     "id": "vinculum",
     "order": 470,
     "color": "9A8080",
-    "icon": "thaumcraftmodern:textures/aspects/vinculum.png",
+    "icon": "thaumic_reborn:textures/aspects/vinculum.png",
     "components": [
       "motus",
       "perditio"

@@ -1,0 +1,15 @@
+{
+  "id": "alchemy",
+  "title": "tc.research_category.ALCHEMY",
+  "icon_resource": "thaumic_reborn:textures/misc/r_crucible.png",
+  "background": "thaumic_reborn:textures/gui/gui_researchback.png",
+  "order": 102,
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "id": "ALCHEMY",
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_crucible.png\")",
+    "background_raw": "new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\")",
+    "source_expression": "ResearchCategories.registerCategory(\"ALCHEMY\", new ResourceLocation(\"thaumcraft\", \"textures/misc/r_crucible.png\"), new ResourceLocation(\"thaumcraft\", \"textures/gui/gui_researchback.png\"))"
+  }
+}

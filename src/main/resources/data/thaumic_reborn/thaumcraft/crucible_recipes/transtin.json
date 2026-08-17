@@ -1,0 +1,15 @@
+{
+  "research": "transtin",
+  "catalyst": {
+    "tag": "forge:nuggets/tin"
+  },
+  "output": {
+    "item": "thaumic_reborn:tin_nugget",
+    "count": 3
+  },
+  "aspects": {
+    "metallum": 2,
+    "vitreus": 1
+  },
+  "legacy_id": "TransTin"
+}

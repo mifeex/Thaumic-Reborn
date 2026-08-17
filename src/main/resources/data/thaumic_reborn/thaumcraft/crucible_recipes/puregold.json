@@ -1,0 +1,14 @@
+{
+  "research": "puregold",
+  "catalyst": {
+    "tag": "forge:ores/gold"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_gold_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureGold"
+}

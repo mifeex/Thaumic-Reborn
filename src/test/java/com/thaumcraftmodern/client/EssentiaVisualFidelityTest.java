@@ -13,24 +13,24 @@ class EssentiaVisualFidelityTest {
     void phialUsesClassicBottleAndAnimatedTintedEssenceLayers()
             throws Exception {
         String model = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/item/"
+                "src/main/resources/assets/thaumic_reborn/models/item/"
                         + "essentia_phial.json"));
         String filledModel = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/item/"
+                "src/main/resources/assets/thaumic_reborn/models/item/"
                         + "essentia_phial_filled.json"));
         String animation = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/item/"
+                "src/main/resources/assets/thaumic_reborn/textures/item/"
                         + "essence.png.mcmeta"));
         String clientRegistration = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/client/"
                         + "ClientModEvents.java"));
 
-        assertTrue(model.contains("thaumcraftmodern:item/phial"));
+        assertTrue(model.contains("thaumic_reborn:item/phial"));
         assertFalse(model.contains("\"layer1\""));
-        assertTrue(model.contains("thaumcraftmodern:filled"));
+        assertTrue(model.contains("thaumic_reborn:filled"));
         assertTrue(model.contains("essentia_phial_filled"));
-        assertTrue(filledModel.contains("thaumcraftmodern:item/phial"));
-        assertTrue(filledModel.contains("thaumcraftmodern:item/essence"));
+        assertTrue(filledModel.contains("thaumic_reborn:item/phial"));
+        assertTrue(filledModel.contains("thaumic_reborn:item/essence"));
         assertTrue(clientRegistration.contains("ItemProperties.register("));
         assertTrue(clientRegistration.contains(
                 "EssentiaPhialItem.aspect(stack).isPresent()"
@@ -53,7 +53,7 @@ class EssentiaVisualFidelityTest {
                 "src/main/java/com/thaumcraftmodern/client/render/"
                         + "WardedJarItemRenderer.java"));
         String itemModel = Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/item/"
+                "src/main/resources/assets/thaumic_reborn/models/item/"
                         + "warded_jar.json"));
 
         assertTrue(renderer.contains("renderLiquid(jar.aspect(), jar.amount()"));

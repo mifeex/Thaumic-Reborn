@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.71875,
+    "frequency_reduction_method": "default",
+    "salt": 14298533,
+    "separation": 2,
+    "spacing": 5
+  },
+  "structures": [
+    {
+      "structure": "thaumic_reborn:hilltop_stones",
+      "weight": 1
+    }
+  ]
+}

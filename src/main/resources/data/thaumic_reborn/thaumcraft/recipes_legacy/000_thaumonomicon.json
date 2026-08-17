@@ -1,0 +1,14 @@
+{
+  "id": "thaumonomicon",
+  "legacy_id": "Thaumonomicon",
+  "legacy_kind": "multiblock",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": "thaumic_reborn:thaumonomicon_conversion",
+  "required_aspects": [],
+  "legacy": {
+    "source_expression": "Arrays.asList(new AspectList(), 1, 2, 1, Arrays.asList(basicWand, new ItemStack(Blocks.field_150342_X)))",
+    "source_statement": "ConfigResearch.recipes.put(\"Thaumonomicon\", Arrays.asList(new AspectList(), 1, 2, 1, Arrays.asList(basicWand, new ItemStack(Blocks.field_150342_X))))",
+    "unkeyed": false
+  }
+}

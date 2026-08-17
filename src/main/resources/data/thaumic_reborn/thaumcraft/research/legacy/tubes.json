@@ -1,0 +1,109 @@
+{
+  "id": "tubes",
+  "legacy_id": "TUBES",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:essentia_tube",
+  "title": "tc.research_name.TUBES",
+  "subtitle": "tc.research_text.TUBES",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "distilessentia"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 168,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TUBES.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:tube"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TUBES.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:tube_valve"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TUBES.3"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:resonator"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.TUBES.4"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "aqua",
+      "amount": 3
+    },
+    {
+      "id": "praecantatio",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 7,
+    "y": 0,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockTube, 1, 0)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"TUBES\", \"ALCHEMY\", (new AspectList()).add(Aspect.WATER, 3).add(Aspect.MAGIC, 3).add(Aspect.EXCHANGE, 3), 7, 0, 1, new ItemStack(ConfigBlocks.blockTube, 1, 0))).setPages(new ResearchPage(\"tc.research_page.TUBES.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"Tube\")), new ResearchPage(\"tc.research_page.TUBES.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"TubeValve\")), new ResearchPage(\"tc.research_page.TUBES.3\"), new ResearchPage((IArcaneRecipe)recipes.get(\"Resonator\")), new ResearchPage(\"tc.research_page.TUBES.4\")).setParents(\"DISTILESSENTIA\").setSecondary().setConcealed().registerResearchItem()"
+  }
+}

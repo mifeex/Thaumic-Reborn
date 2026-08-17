@@ -8,14 +8,14 @@ Java-код или экран Таумономикона.
 Каждое исследование хранится отдельным файлом:
 
 ```text
-src/main/resources/data/thaumcraftmodern/thaumcraft/research/<имя>.json
+src/main/resources/data/thaumic_reborn/thaumcraft/research/<имя>.json
 ```
 
 Переводы заголовков, описаний и страниц находятся здесь:
 
 ```text
-src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json
-src/main/resources/assets/thaumcraftmodern/lang/en_us.json
+src/main/resources/assets/thaumic_reborn/lang/ru_ru.json
+src/main/resources/assets/thaumic_reborn/lang/en_us.json
 ```
 
 Production-примеры:
@@ -38,8 +38,8 @@ datapack или содержательные production ID, не возвращ�
   "id": "my_first_research",
   "category": "basics",
   "icon": "minecraft:paper",
-  "title": "research.thaumcraftmodern.my_first_research.title",
-  "subtitle": "research.thaumcraftmodern.my_first_research.subtitle",
+  "title": "research.thaumic_reborn.my_first_research.title",
+  "subtitle": "research.thaumic_reborn.my_first_research.subtitle",
   "completion_warp": 0,
   "concealed": false,
   "auto_unlock": false,
@@ -49,8 +49,8 @@ datapack или содержательные production ID, не возвращ�
   "pages": [
     {
       "type": "text",
-      "title": "research.thaumcraftmodern.my_first_research.page.title",
-      "body": "research.thaumcraftmodern.my_first_research.page.body"
+      "title": "research.thaumic_reborn.my_first_research.page.title",
+      "body": "research.thaumic_reborn.my_first_research.page.body"
     }
   ]
 }
@@ -59,10 +59,10 @@ datapack или содержательные production ID, не возвращ�
 Для него нужно добавить четыре строки в оба файла локализации:
 
 ```json
-"research.thaumcraftmodern.my_first_research.title": "Название",
-"research.thaumcraftmodern.my_first_research.subtitle": "Короткое описание",
-"research.thaumcraftmodern.my_first_research.page.title": "Заголовок страницы",
-"research.thaumcraftmodern.my_first_research.page.body": "Текст страницы"
+"research.thaumic_reborn.my_first_research.title": "Название",
+"research.thaumic_reborn.my_first_research.subtitle": "Короткое описание",
+"research.thaumic_reborn.my_first_research.page.title": "Заголовок страницы",
+"research.thaumic_reborn.my_first_research.page.body": "Текст страницы"
 ```
 
 Следите за запятыми: JSON должен оставаться валидным.
@@ -173,7 +173,7 @@ datapack или содержательные production ID, не возвращ�
 
 Для временного просмотра всего дерева не меняйте сотни JSON. Используйте
 `research.debugShowAllResearch = true` в
-`config/thaumcraftmodern-client.toml`. Debug-параметр меняет только
+`config/thaumic_reborn-client.toml`. Debug-параметр меняет только
 отображение и ничего не открывает игроку.
 
 ## Координаты
@@ -204,8 +204,8 @@ datapack или содержательные production ID, не возвращ�
 ```json
 {
   "type": "text",
-  "title": "research.thaumcraftmodern.example.page.title",
-  "body": "research.thaumcraftmodern.example.page.body"
+  "title": "research.thaumic_reborn.example.page.title",
+  "body": "research.thaumic_reborn.example.page.body"
 }
 ```
 
@@ -214,7 +214,7 @@ datapack или содержательные production ID, не возвращ�
 ```json
 {
   "type": "recipe",
-  "title": "research.thaumcraftmodern.example.recipe.title",
+  "title": "research.thaumic_reborn.example.recipe.title",
   "recipe": "minecraft:book"
 }
 ```
@@ -227,7 +227,7 @@ datapack или содержательные production ID, не возвращ�
 {
   "type": "compound_crafting",
   "title": "",
-  "recipe": "thaumcraftmodern:node_jar_capture"
+  "recipe": "thaumic_reborn:node_jar_capture"
 }
 ```
 

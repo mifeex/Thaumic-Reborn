@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class JarRedstoneResearchTextTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy");
     private static final Path LANG = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/lang");
+            "src/main/resources/assets/thaumic_reborn/lang");
 
     @Test
     void jarResearchIncludesEnglishAndRussianRedstonePages() throws IOException {
@@ -42,10 +42,10 @@ final class JarRedstoneResearchTextTest {
         String imageMarkup = english.get(
                 "tc.research_page.JARLABEL.REDSTONE_IMAGE").getAsString();
         assertTrue(imageMarkup.contains(
-                "thaumcraftmodern:textures/misc/jar_redstone_comparator.png"));
+                "thaumic_reborn:textures/misc/jar_redstone_comparator.png"));
         assertTrue(russian.has("tc.research_page.JARLABEL.REDSTONE_IMAGE"));
         var image = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/misc/"
+                "src/main/resources/assets/thaumic_reborn/textures/misc/"
                         + "jar_redstone_comparator.png").toFile());
         assertTrue(image != null && image.getWidth() == 256
                 && image.getHeight() == 256);

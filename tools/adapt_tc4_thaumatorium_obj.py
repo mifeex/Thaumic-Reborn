@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = (
     ROOT
-    / "src/main/resources/assets/thaumcraftmodern/textures/models"
+    / "src/main/resources/assets/thaumic_reborn/textures/models"
     / "thaumatorium.obj"
 )
 OUTPUT = SOURCE.with_name("thaumatorium_block.obj")

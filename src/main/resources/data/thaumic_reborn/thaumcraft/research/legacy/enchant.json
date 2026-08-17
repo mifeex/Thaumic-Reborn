@@ -1,0 +1,56 @@
+{
+  "id": "enchant",
+  "legacy_id": "ENCHANT",
+  "category": "basics",
+  "icon": "thaumic_reborn:thaumonomicon",
+  "title": "tc.research_name.ENCHANT",
+  "subtitle": "tc.research_text.ENCHANT",
+  "concealed": false,
+  "auto_unlock": true,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -96,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ENCHANT.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ENCHANT.2"
+    }
+  ],
+  "inactive": true,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -4,
+    "y": -2,
+    "complexity": 0,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_enchant.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": true
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ENCHANT\", \"BASICS\", new AspectList(), -4, -2, 0, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_enchant.png\"))).setPages(new ResearchPage(\"tc.research_page.ENCHANT.1\"), new ResearchPage(\"tc.research_page.ENCHANT.2\")).setStub().setRound().setAutoUnlock().registerResearchItem()"
+  }
+}

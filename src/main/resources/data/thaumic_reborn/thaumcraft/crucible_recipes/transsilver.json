@@ -1,0 +1,15 @@
+{
+  "research": "transsilver",
+  "catalyst": {
+    "tag": "forge:nuggets/silver"
+  },
+  "output": {
+    "item": "thaumic_reborn:silver_nugget",
+    "count": 3
+  },
+  "aspects": {
+    "metallum": 2,
+    "lucrum": 1
+  },
+  "legacy_id": "TransSilver"
+}

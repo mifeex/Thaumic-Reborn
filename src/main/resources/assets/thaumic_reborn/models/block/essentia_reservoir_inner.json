@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/essentiareservoir",
+    "core": "thaumic_reborn:block/essentiareservoir"
+  },
+  "elements": [
+    {
+      "from": [2, 2, 2],
+      "to": [14, 14, 14],
+      "faces": {
+        "down": {"texture": "#core"},
+        "up": {"texture": "#core"},
+        "north": {"texture": "#core"},
+        "south": {"texture": "#core"},
+        "west": {"texture": "#core"},
+        "east": {"texture": "#core"}
+      }
+    }
+  ]
+}

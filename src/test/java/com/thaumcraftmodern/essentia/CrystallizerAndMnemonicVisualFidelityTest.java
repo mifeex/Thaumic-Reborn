@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class CrystallizerAndMnemonicVisualFidelityTest {
     @Test
     void crystallizerUsesCenteredClassicObjAndItemTransforms() throws Exception {
-        String block = read("src/main/resources/assets/thaumcraftmodern/models/block/essentia_crystallizer.json");
-        String item = read("src/main/resources/assets/thaumcraftmodern/models/item/essentia_crystallizer.json");
+        String block = read("src/main/resources/assets/thaumic_reborn/models/block/essentia_crystallizer.json");
+        String item = read("src/main/resources/assets/thaumic_reborn/models/item/essentia_crystallizer.json");
         String implementation = read("src/main/java/com/thaumcraftmodern/world/block/EssentiaCrystallizerBlock.java");
         String machine = read("src/main/java/com/thaumcraftmodern/world/block/entity/EssentiaCrystallizerBlockEntity.java");
         String renderer = read("src/main/java/com/thaumcraftmodern/client/render/EssentiaCrystallizerBlockEntityRenderer.java");
-        String state = read("src/main/resources/assets/thaumcraftmodern/blockstates/essentia_crystallizer.json");
-        String animatedCrystal = read("src/main/resources/assets/thaumcraftmodern/models/block/crystallizer_crystal.json");
+        String state = read("src/main/resources/assets/thaumic_reborn/blockstates/essentia_crystallizer.json");
+        String animatedCrystal = read("src/main/resources/assets/thaumic_reborn/models/block/crystallizer_crystal.json");
         assertTrue(block.contains("crystalizer.obj"));
         assertTrue(block.contains("[0.5,0.5,0]"));
-        assertTrue(state.contains("\"facing=north\": {\"model\": \"thaumcraftmodern:block/essentia_crystallizer\"}"));
-        assertTrue(state.contains("\"facing=down\": {\"model\": \"thaumcraftmodern:block/essentia_crystallizer\", \"x\": 90}"));
-        assertTrue(state.contains("\"facing=up\": {\"model\": \"thaumcraftmodern:block/essentia_crystallizer\", \"x\": 270}"));
+        assertTrue(state.contains("\"facing=north\": {\"model\": \"thaumic_reborn:block/essentia_crystallizer\"}"));
+        assertTrue(state.contains("\"facing=down\": {\"model\": \"thaumic_reborn:block/essentia_crystallizer\", \"x\": 90}"));
+        assertTrue(state.contains("\"facing=up\": {\"model\": \"thaumic_reborn:block/essentia_crystallizer\", \"x\": 270}"));
         assertTrue(item.contains("\"gui\""));
         assertTrue(item.contains("[30, 225, 0]"));
         assertTrue(implementation.contains("findConnectedInput"));
@@ -40,14 +40,14 @@ class CrystallizerAndMnemonicVisualFidelityTest {
         assertTrue(animatedCrystal.contains("\"RingFloat\": false"));
         assertTrue(Arrays.equals(
                 Files.readAllBytes(Path.of("reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/models/crystalizer.obj")),
-                Files.readAllBytes(Path.of("src/main/resources/assets/thaumcraftmodern/textures/models/crystalizer.obj"))));
+                Files.readAllBytes(Path.of("src/main/resources/assets/thaumic_reborn/textures/models/crystalizer.obj"))));
     }
 
     @Test
     void mnemonicMatrixIsClassicPlaceableBrainboxNotKnowledgeFragment() throws Exception {
-        String item = read("src/main/resources/assets/thaumcraftmodern/models/item/mnemonic_matrix.json");
-        String block = read("src/main/resources/assets/thaumcraftmodern/models/block/mnemonic_matrix.json");
-        String blockstate = read("src/main/resources/assets/thaumcraftmodern/blockstates/mnemonic_matrix.json");
+        String item = read("src/main/resources/assets/thaumic_reborn/models/item/mnemonic_matrix.json");
+        String block = read("src/main/resources/assets/thaumic_reborn/models/block/mnemonic_matrix.json");
+        String blockstate = read("src/main/resources/assets/thaumic_reborn/blockstates/mnemonic_matrix.json");
         String registration = read("src/main/java/com/thaumcraftmodern/registry/ModItems.java");
         String implementation = read("src/main/java/com/thaumcraftmodern/world/block/MnemonicMatrixBlock.java");
         assertFalse(item.contains("knowledgefragment"));
@@ -58,10 +58,10 @@ class CrystallizerAndMnemonicVisualFidelityTest {
         assertTrue(block.contains("[13, 13, 13]"));
         assertTrue(block.contains("[6, 6, 0]"));
         assertTrue(blockstate.contains(
-                "\"facing=down\": {\"model\": \"thaumcraftmodern:block/mnemonic_matrix\", \"x\": 90}"
+                "\"facing=down\": {\"model\": \"thaumic_reborn:block/mnemonic_matrix\", \"x\": 90}"
         ));
         assertTrue(blockstate.contains(
-                "\"facing=up\": {\"model\": \"thaumcraftmodern:block/mnemonic_matrix\", \"x\": 270}"
+                "\"facing=up\": {\"model\": \"thaumic_reborn:block/mnemonic_matrix\", \"x\": 270}"
         ));
         assertTrue(registration.contains("blockItem(name, ModBlocks.MNEMONIC_MATRIX)"));
         assertTrue(implementation.contains("adjacentConnector"));

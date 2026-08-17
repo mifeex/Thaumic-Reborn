@@ -7,7 +7,7 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "reference/original/Thaumcraft_1.7.10_4.2.3.5.jar"
-ASSETS = ROOT / "src/main/resources/assets/thaumcraftmodern/textures"
+ASSETS = ROOT / "src/main/resources/assets/thaumic_reborn/textures"
 FILES = {
     "assets/thaumcraft/textures/gui/gui_decontable.png":
         ASSETS / "gui/gui_decontable.png",

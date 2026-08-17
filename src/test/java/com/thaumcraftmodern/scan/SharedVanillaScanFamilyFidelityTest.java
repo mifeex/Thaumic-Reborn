@@ -15,9 +15,9 @@ import org.junit.jupiter.api.Test;
 
 class SharedVanillaScanFamilyFidelityTest {
     private static final Path SCANS = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/scans");
+            "src/main/resources/data/thaumic_reborn/thaumcraft/scans");
     private static final Path TAGS = Path.of(
-            "src/main/resources/data/thaumcraftmodern/tags/blocks");
+            "src/main/resources/data/thaumic_reborn/tags/blocks");
 
     @Test
     void sharedFamiliesCarryRequestedAspects() throws IOException {
@@ -27,13 +27,13 @@ class SharedVanillaScanFamilyFidelityTest {
                 aspects("pannus", 9, "fabrico", 2, "arbor", 2));
         assertScan("vanilla_cauldron_family.json", "minecraft:cauldrons",
                 aspects("metallum", 21));
-        assertScan("vanilla_candle_family.json", "thaumcraftmodern:candles_and_cakes",
+        assertScan("vanilla_candle_family.json", "thaumic_reborn:candles_and_cakes",
                 aspects("sensus", 1, "lux", 2));
-        assertScan("vanilla_concrete_family.json", "thaumcraftmodern:concrete",
+        assertScan("vanilla_concrete_family.json", "thaumic_reborn:concrete",
                 aspects("fabrico", 2, "terra", 4, "aqua", 4));
-        assertScan("vanilla_concrete_powder_family.json", "thaumcraftmodern:concrete_powder",
+        assertScan("vanilla_concrete_powder_family.json", "thaumic_reborn:concrete_powder",
                 aspects("fabrico", 2, "perditio", 2, "terra", 4));
-        assertScan("vanilla_glazed_terracotta_family.json", "thaumcraftmodern:glazed_terracotta",
+        assertScan("vanilla_glazed_terracotta_family.json", "thaumic_reborn:glazed_terracotta",
                 aspects("perfodio", 1, "ordo", 4));
     }
 
@@ -48,12 +48,12 @@ class SharedVanillaScanFamilyFidelityTest {
     void thaumcraftPennantsShareVanillaBannerKnowledgeKey() throws IOException {
         JsonObject pennants = json(SCANS.resolve(
                 "legacy/object_313_new_itemstack_configblocks.blockwoodendevice_1_8.json"));
-        assertEquals("thaumcraftmodern:vanilla_banners",
+        assertEquals("thaumic_reborn:vanilla_banners",
                 pennants.get("knowledge_key").getAsString());
-        assertEquals("thaumcraftmodern:vanilla_banners",
+        assertEquals("thaumic_reborn:vanilla_banners",
                 json(SCANS.resolve("vanilla_banner_family.json"))
                         .get("knowledge_key").getAsString());
-        assertTrue(json(Path.of("src/main/resources/data/thaumcraftmodern/tags/items/thaumcraft_banners.json"))
+        assertTrue(json(Path.of("src/main/resources/data/thaumic_reborn/tags/items/thaumcraft_banners.json"))
                 .getAsJsonArray("values").toString().contains("#minecraft:banners"));
     }
 

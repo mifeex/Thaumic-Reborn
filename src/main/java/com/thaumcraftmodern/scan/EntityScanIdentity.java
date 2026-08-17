@@ -10,7 +10,7 @@ import net.minecraft.world.entity.Entity;
 import java.util.Set;
 
 public final class EntityScanIdentity {
-    private static final String PECH_PREFIX = "thaumcraftmodern:pech/";
+    private static final String PECH_PREFIX = "thaumic_reborn:pech/";
     private static final Set<String> PECH_VARIANTS = Set.of(
             PECH_PREFIX + "forager",
             PECH_PREFIX + "mage",
@@ -38,7 +38,7 @@ public final class EntityScanIdentity {
     public static boolean isRegisteredTarget(String targetId) {
         if (PECH_VARIANTS.contains(targetId)) {
             return BuiltInRegistries.ENTITY_TYPE.containsKey(
-                    new ResourceLocation("thaumcraftmodern", "pech")
+                    new ResourceLocation("thaumic_reborn", "pech")
             );
         }
         ResourceLocation id = ResourceLocation.tryParse(targetId);

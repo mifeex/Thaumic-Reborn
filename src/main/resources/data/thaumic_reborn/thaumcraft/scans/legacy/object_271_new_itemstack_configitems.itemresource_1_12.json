@@ -1,0 +1,58 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:taint_tendril",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 2
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    },
+    {
+      "id": "fames",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemResource, 1, 12)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 2
+      },
+      {
+        "id": "lucrum",
+        "amount": 1
+      },
+      {
+        "id": "fames",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "vitium",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "lucrum",
+        "amount": 1
+      },
+      {
+        "operation": "add",
+        "id": "fames",
+        "amount": 1
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemResource, 1, 12), (new AspectList()).add(Aspect.TAINT, 2).add(Aspect.GREED, 1).add(Aspect.HUNGER, 1))"
+  }
+}

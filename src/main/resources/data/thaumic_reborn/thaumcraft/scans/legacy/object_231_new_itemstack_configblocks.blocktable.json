@@ -1,0 +1,37 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:thaumcraft_table",
+  "display": "",
+  "aspects": [
+    {
+      "id": "arbor",
+      "amount": 3
+    },
+    {
+      "id": "instrumentum",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "recipe_derived_modifier",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockTable)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 1
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "instrumentum",
+        "amount": 1
+      }
+    ],
+    "source_expression": "}\n\n      ThaumcraftApi.registerComplexObjectTag(new ItemStack(ConfigBlocks.blockTable), (new AspectList()).add(Aspect.TOOL, 1))"
+  },
+  "recipe_derivation": "TC4 generateTags base plus the original registered complex-object modifier."
+}

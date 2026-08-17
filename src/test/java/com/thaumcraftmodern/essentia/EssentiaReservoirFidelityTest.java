@@ -38,7 +38,7 @@ class EssentiaReservoirFidelityTest {
     @Test
     void reservoirUsesUnmodifiedClassicShellAndTextures() throws Exception {
         Path original = Path.of("reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures");
-        Path port = Path.of("src/main/resources/assets/thaumcraftmodern/textures");
+        Path port = Path.of("src/main/resources/assets/thaumic_reborn/textures");
         assertArrayEquals(Files.readAllBytes(original.resolve("models/reservoir.obj")),
                 Files.readAllBytes(port.resolve("models/reservoir.obj")));
         assertTrue(Files.size(port.resolve("models/reservoir.png")) > 0);
@@ -50,16 +50,16 @@ class EssentiaReservoirFidelityTest {
         assertArrayEquals(Files.readAllBytes(original.resolve("blocks/essentiareservoir.png")),
                 Files.readAllBytes(port.resolve("block/essentiareservoir.png")));
 
-        String state = read("src/main/resources/assets/thaumcraftmodern/blockstates/essentia_reservoir.json");
-        String shell = read("src/main/resources/assets/thaumcraftmodern/models/block/essentia_reservoir_shell.json");
+        String state = read("src/main/resources/assets/thaumic_reborn/blockstates/essentia_reservoir.json");
+        String shell = read("src/main/resources/assets/thaumic_reborn/models/block/essentia_reservoir_shell.json");
         assertTrue(shell.contains("reservoir.obj"));
-        assertTrue(shell.contains("thaumcraftmodern:block/reservoir"));
+        assertTrue(shell.contains("thaumic_reborn:block/reservoir"));
         assertTrue(shell.contains("[0.5, 0.5, 0]"));
         assertTrue(state.contains("\"facing\": \"north\""));
         assertTrue(state.contains("\"facing\": \"down\""));
         assertTrue(state.contains("\"x\": 90"));
 
-        String item = read("src/main/resources/assets/thaumcraftmodern/models/item/essentia_reservoir.json");
+        String item = read("src/main/resources/assets/thaumic_reborn/models/item/essentia_reservoir.json");
         String renderer = read("src/main/java/com/thaumcraftmodern/client/render/EssentiaReservoirItemRenderer.java");
         String registration = read("src/main/java/com/thaumcraftmodern/registry/ModItems.java");
         assertTrue(item.contains("minecraft:builtin/entity"));

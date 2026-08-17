@@ -16,7 +16,7 @@ final class ResearchColorResolverTest {
         Map<String, AspectDefinition> aspects = Map.of(
                 "cognitio", new AspectDefinition(
                         "cognitio", 0xF9967A,
-                        "thaumcraftmodern:aspects/cognitio")
+                        "thaumic_reborn:aspects/cognitio")
         );
         assertEquals(0xF9967A, ResearchColorResolver.color(
                 List.of(new AspectCost("cognitio", 6)),

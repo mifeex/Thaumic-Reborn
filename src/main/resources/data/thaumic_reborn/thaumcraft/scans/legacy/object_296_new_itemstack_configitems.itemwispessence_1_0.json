@@ -1,0 +1,32 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:ethereal_essence",
+  "display": "",
+  "aspects": [
+    {
+      "id": "auram",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigItems.itemWispEssence, 1, 0)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "auram",
+        "amount": 2
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "auram",
+        "amount": 2
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigItems.itemWispEssence, 1, 0), (new AspectList()).add(Aspect.AURA, 2))"
+  }
+}

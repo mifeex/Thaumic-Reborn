@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class WandAssemblyRecipeVariantsTest {
     private static final Path RECIPES = Path.of(
-            "src/main/resources/data/thaumcraftmodern/recipes"
+            "src/main/resources/data/thaumic_reborn/recipes"
     );
 
     @Test
@@ -26,19 +26,19 @@ final class WandAssemblyRecipeVariantsTest {
         }
         assertVariant(
                 "wand_greatwood_gold.json",
-                "thaumcraftmodern:arcane_wand_assembly",
+                "thaumic_reborn:arcane_wand_assembly",
                 "greatwood",
                 "gold"
         );
         assertVariant(
                 "staff_silverwood_staff_thaumium.json",
-                "thaumcraftmodern:arcane_wand_assembly",
+                "thaumic_reborn:arcane_wand_assembly",
                 "silverwood_staff",
                 "thaumium"
         );
         assertVariant(
                 "sceptre_greatwood_gold.json",
-                "thaumcraftmodern:arcane_sceptre_assembly",
+                "thaumic_reborn:arcane_sceptre_assembly",
                 "greatwood",
                 "gold"
         );

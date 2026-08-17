@@ -1,0 +1,42 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:arcane_ear",
+  "display": "",
+  "aspects": [
+    { "id": "arbor", "amount": 1 },
+    { "id": "metallum", "amount": 12 },
+    { "id": "lucrum", "amount": 6 },
+    { "id": "corpus", "amount": 1 },
+    { "id": "cognitio", "amount": 3 },
+    { "id": "exanimis", "amount": 1 },
+    { "id": "potentia", "amount": 1 },
+    { "id": "aer", "amount": 3 },
+    { "id": "ordo", "amount": 3 },
+    {
+      "id": "sensus",
+      "amount": 4
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 ArcaneEar recipe ingredients scaled by 0.75 plus sqrt(vis), then the registered Sensus modifier",
+  "legacy": {
+    "registration_mode": "recipe_derived_modifier",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 1)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "sensus",
+        "amount": 4
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "sensus",
+        "amount": 4
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerComplexObjectTag(new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 1), (new AspectList()).add(Aspect.SENSES, 4))"
+  }
+}

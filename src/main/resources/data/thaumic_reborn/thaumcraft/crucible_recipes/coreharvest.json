@@ -1,0 +1,14 @@
+{
+  "research": "coreharvest",
+  "catalyst": {
+    "item": "thaumic_reborn:blank_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:harvest_golem_core"
+  },
+  "aspects": {
+    "meto": 5,
+    "messis": 5
+  },
+  "legacy_id": "CoreHarvest"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "thaumic_reborn:outer_lands",
+  "generator": {
+    "type": "thaumic_reborn:outer_lands",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "thaumic_reborn:eldritch"
+    }
+  }
+}

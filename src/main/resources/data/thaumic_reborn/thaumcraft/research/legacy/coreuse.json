@@ -1,0 +1,103 @@
+{
+  "id": "coreuse",
+  "legacy_id": "COREUSE",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:use_golem_core",
+  "title": "tc.research_name.COREUSE",
+  "subtitle": "tc.research_text.COREUSE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "coreempty",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -168,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREUSE.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.COREUSE.2"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "recipe": "thaumic_reborn:core_use",
+      "output": "thaumic_reborn:use_golem_core",
+      "central": "thaumic_reborn:empty_golem_core",
+      "components": [
+        { "item": "minecraft:comparator" },
+        { "item": "minecraft:flint_and_steel" },
+        { "item": "minecraft:shears" },
+        { "item": "minecraft:lever" }
+      ],
+      "aspect_costs": [
+        { "id": "instrumentum", "amount": 20 },
+        { "id": "machina", "amount": 20 },
+        { "id": "humanus", "amount": 20 }
+      ],
+      "instability": "high"
+    },
+    {
+      "type": "unavailable",
+      "title": "",
+      "body": "",
+      "legacy_type": "recipe",
+      "legacy_content": "\"UPGRADEAIR\"",
+      "source_expression": "new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.COREUSE.3\")"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": "referenced gameplay content is not implemented",
+  "legacy": {
+    "x": -7,
+    "y": 0,
+    "complexity": 3,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemCore, 1, 8)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "machina",
+        "amount": 3
+      },
+      {
+        "id": "humanus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"COREUSE\", \"GOLEMANCY\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.EXCHANGE, 3).add(Aspect.MECHANISM, 3).add(Aspect.MAN, 3), -7, 0, 3, new ItemStack(ConfigItems.itemGolemCore, 1, 8))).setPages(new ResearchPage(\"tc.research_page.COREUSE.1\"), new ResearchPage(\"tc.research_page.COREUSE.2\"), new ResearchPage((InfusionRecipe)recipes.get(\"CoreUse\")), new ResearchPage(\"UPGRADEAIR\", \"tc.research_page.COREUSE.3\")).setConcealed().setParents(\"COREEMPTY\", \"INFUSION\").registerResearchItem()"
+  }
+}

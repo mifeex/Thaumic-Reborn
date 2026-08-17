@@ -82,7 +82,7 @@ public final class WandFocusItem extends Item implements FocusItem {
         tooltip.add(Component.translatable(type.perTickCost()
                 ? "item.Focus.cost2" : "item.Focus.cost1").withStyle(ChatFormatting.DARK_PURPLE));
         type.centivisCost().forEach((aspect, amount) -> tooltip.add(Component.literal(
-                "  " + Component.translatable("aspect.thaumcraftmodern." + aspect).getString()
+                "  " + Component.translatable("aspect.thaumic_reborn." + aspect).getString()
                         + " x " + String.format(Locale.ROOT, "%.2f", amount / 100.0D))
                 .withStyle(ChatFormatting.GRAY)));
         java.util.LinkedHashMap<FocusUpgradeType, Integer> upgrades =

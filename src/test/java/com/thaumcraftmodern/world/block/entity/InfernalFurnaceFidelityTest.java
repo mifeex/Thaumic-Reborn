@@ -114,10 +114,10 @@ final class InfernalFurnaceFidelityTest {
     @Test
     void researchIsActiveAndUsesTheExecutableCompoundPage() throws Exception {
         JsonObject research = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/infernalfurnace.json"),
+                "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/infernalfurnace.json"),
                 StandardCharsets.UTF_8)).getAsJsonObject();
         assertFalse(research.get("inactive").getAsBoolean());
-        assertEquals("thaumcraftmodern:textures/misc/r_infernalfurnace.png",
+        assertEquals("thaumic_reborn:textures/misc/r_infernalfurnace.png",
                 research.get("icon_resource").getAsString());
         assertEquals("compound_crafting", research.getAsJsonArray("pages")
                 .get(1).getAsJsonObject().get("type").getAsString());
@@ -133,7 +133,7 @@ final class InfernalFurnaceFidelityTest {
                         "assets/thaumcraft/textures/blocks/furnace" + index + ".png"))
                         .readAllBytes();
                 byte[] actual = Files.readAllBytes(Path.of(
-                        "build/resources/main/assets/thaumcraftmodern/textures/block/furnace"
+                        "build/resources/main/assets/thaumic_reborn/textures/block/furnace"
                                 + index + ".png"));
                 assertEquals(sha(expected), sha(actual), "furnace" + index);
             }

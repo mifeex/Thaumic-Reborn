@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TaintacleModelFidelityTest {
     private static final Path JAVA = Path.of("src/main/java");
     private static final Path TEXTURE = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/entity/"
+            "src/main/resources/assets/thaumic_reborn/textures/entity/"
                     + "models/taintacle.png"
     );
 

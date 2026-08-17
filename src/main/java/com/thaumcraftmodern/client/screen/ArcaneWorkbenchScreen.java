@@ -98,7 +98,7 @@ public final class ArcaneWorkbenchScreen extends AbstractContainerScreen<ArcaneW
                 && WandVisService.isWand(wand)
                 && !menu.hasEnoughVis(minecraft.player)) {
             Component message = Component.translatable(
-                    "screen.thaumcraftmodern.arcane_workbench.insufficient_vis"
+                    "screen.thaumic_reborn.arcane_workbench.insufficient_vis"
             ).withStyle(ChatFormatting.RED);
             graphics.pose().pushPose();
             graphics.pose().translate(leftPos + 168, topPos + 46, 0.0F);

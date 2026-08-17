@@ -24,11 +24,11 @@ public final class ArcaneDoorKeyItem extends Item {
         ItemStack stack=context.getItemInHand();String name=context.getPlayer()==null?"":context.getPlayer().getGameProfile().getName();String location=base.getX()+","+base.getY()+","+base.getZ();CompoundTag tag=stack.getTag();
         if(tag==null||!tag.contains("location")){
             if(level.isClientSide)return InteractionResult.SUCCESS;
-            if(name.equals(door.owner())||(!gold&&door.canMintIron(name))){ItemStack linked=new ItemStack(this);linked.getOrCreateTag().putString("location",location);if(!context.getPlayer().getInventory().add(linked))context.getPlayer().drop(linked,false);if(!context.getPlayer().getAbilities().instabuild)stack.shrink(1);context.getPlayer().displayClientMessage(Component.translatable("message.thaumcraftmodern.key_linked"),true);}
+            if(name.equals(door.owner())||(!gold&&door.canMintIron(name))){ItemStack linked=new ItemStack(this);linked.getOrCreateTag().putString("location",location);if(!context.getPlayer().getInventory().add(linked))context.getPlayer().drop(linked,false);if(!context.getPlayer().getAbilities().instabuild)stack.shrink(1);context.getPlayer().displayClientMessage(Component.translatable("message.thaumic_reborn.key_linked"),true);}
             return InteractionResult.CONSUME;
         }
-        if(!location.equals(tag.getString("location"))){if(!level.isClientSide&&context.getPlayer()!=null)context.getPlayer().displayClientMessage(Component.translatable("message.thaumcraftmodern.key_wrong"),true);return InteractionResult.sidedSuccess(level.isClientSide);}
-        if(!level.isClientSide&&!door.canOpen(name)){door.grant(name,gold);if(level.getBlockEntity(base.above()) instanceof ArcaneDoorBlockEntity upper)upper.grant(name,gold);door.setChanged();if(!context.getPlayer().getAbilities().instabuild)stack.shrink(1);context.getPlayer().displayClientMessage(Component.translatable("message.thaumcraftmodern.key_granted"),true);}
+        if(!location.equals(tag.getString("location"))){if(!level.isClientSide&&context.getPlayer()!=null)context.getPlayer().displayClientMessage(Component.translatable("message.thaumic_reborn.key_wrong"),true);return InteractionResult.sidedSuccess(level.isClientSide);}
+        if(!level.isClientSide&&!door.canOpen(name)){door.grant(name,gold);if(level.getBlockEntity(base.above()) instanceof ArcaneDoorBlockEntity upper)upper.grant(name,gold);door.setChanged();if(!context.getPlayer().getAbilities().instabuild)stack.shrink(1);context.getPlayer().displayClientMessage(Component.translatable("message.thaumic_reborn.key_granted"),true);}
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }

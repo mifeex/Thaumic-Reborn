@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thaumic_reborn:item/magic_mirror_frame",
+    "layer1": "thaumic_reborn:block/mirrorpane"
+  }
+}

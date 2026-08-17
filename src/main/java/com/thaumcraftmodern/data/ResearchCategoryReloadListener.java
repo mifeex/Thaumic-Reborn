@@ -20,7 +20,7 @@ import java.util.Map;
 public final class ResearchCategoryReloadListener extends SimpleJsonResourceReloadListener {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final String DEFAULT_BACKGROUND =
-            "thaumcraftmodern:textures/gui/gui_researchback.png";
+            "thaumic_reborn:textures/gui/gui_researchback.png";
 
     public ResearchCategoryReloadListener() {
         super(GSON, "thaumcraft/categories");

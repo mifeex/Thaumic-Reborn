@@ -34,6 +34,6 @@ public final class AspectFixtures {
     }
 
     private static String icon(String id) {
-        return "thaumcraftmodern:textures/aspects/" + id + ".png";
+        return "thaumic_reborn:textures/aspects/" + id + ".png";
     }
 }

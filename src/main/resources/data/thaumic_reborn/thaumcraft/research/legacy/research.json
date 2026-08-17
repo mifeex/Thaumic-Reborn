@@ -1,0 +1,126 @@
+{
+  "id": "research",
+  "legacy_id": "RESEARCH",
+  "category": "basics",
+  "icon": "thaumic_reborn:scribing_tools",
+  "title": "tc.research_name.RESEARCH",
+  "subtitle": "tc.research_text.RESEARCH",
+  "concealed": false,
+  "auto_unlock": true,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 48,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:thaumometer"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.3"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.4"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:scribing_tools_from_phial"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:scribing_tools"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:scribing_tools_refill"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.5"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.6"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.7"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.8"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.9"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.10"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.11"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.RESEARCH.12"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 2,
+    "y": 0,
+    "complexity": 0,
+    "icon_raw": "new ItemStack(ConfigItems.itemInkwell)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": true
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"RESEARCH\", \"BASICS\", new AspectList(), 2, 0, 0, new ItemStack(ConfigItems.itemInkwell))).setPages(new ResearchPage(\"tc.research_page.RESEARCH.1\"), new ResearchPage(\"tc.research_page.RESEARCH.2\"), new ResearchPage((IRecipe)recipes.get(\"Thaumometer\")), new ResearchPage(\"tc.research_page.RESEARCH.3\"), new ResearchPage(\"tc.research_page.RESEARCH.4\"), new ResearchPage((IRecipe)recipes.get(\"Scribe1\")), new ResearchPage((IRecipe)recipes.get(\"Scribe2\")), new ResearchPage((IRecipe)recipes.get(\"Scribe3\")), new ResearchPage(\"tc.research_page.RESEARCH.5\"), new ResearchPage(\"tc.research_page.RESEARCH.6\"), new ResearchPage(\"tc.research_page.RESEARCH.7\"), new ResearchPage(\"tc.research_page.RESEARCH.8\"), new ResearchPage(\"tc.research_page.RESEARCH.9\"), new ResearchPage(\"tc.research_page.RESEARCH.10\"), new ResearchPage(\"tc.research_page.RESEARCH.11\"), new ResearchPage(\"tc.research_page.RESEARCH.12\")).setAutoUnlock().setStub().setRound().registerResearchItem()"
+  }
+}

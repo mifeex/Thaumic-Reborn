@@ -1,0 +1,62 @@
+{
+  "id": "golembell",
+  "legacy_id": "GOLEMBELL",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_bell",
+  "title": "tc.research_name.GOLEMBELL",
+  "subtitle": "tc.research_text.GOLEMBELL",
+  "concealed": true,
+  "auto_unlock": true,
+  "parents": [
+    "golemstraw"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 72,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMBELL.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.GOLEMBELL.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:golem_bell"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 3,
+    "y": 0,
+    "complexity": 0,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemBell)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"GOLEMBELL\", \"GOLEMANCY\", new AspectList(), 3, 0, 0, new ItemStack(ConfigItems.itemGolemBell))).setPages(new ResearchPage(\"tc.research_page.GOLEMBELL.1\"), new ResearchPage(\"tc.research_page.GOLEMBELL.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"GolemBell\"))).setParents(\"GOLEMSTRAW\").setStub().registerResearchItem()"
+  }
+}

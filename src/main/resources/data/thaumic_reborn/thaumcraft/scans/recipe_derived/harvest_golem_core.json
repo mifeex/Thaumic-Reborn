@@ -1,0 +1,30 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:harvest_golem_core",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 2
+    },
+    {
+      "id": "ignis",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    },
+    {
+      "id": "meto",
+      "amount": 2
+    },
+    {
+      "id": "messis",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/coreharvest.json"
+}

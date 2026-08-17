@@ -48,7 +48,7 @@ public final class ResearchPurchaseService {
                     );
                     player.displayClientMessage(
                             Component.translatable(
-                                    "message.thaumcraftmodern.research.purchased",
+                                    "message.thaumic_reborn.research.purchased",
                                     Component.translatable(definition.titleKey())
                             ),
                             true
@@ -151,7 +151,7 @@ public final class ResearchPurchaseService {
                 Component.translatable(
                         result == Result.INSUFFICIENT_ASPECTS
                                 ? "tc.research.short"
-                                : "message.thaumcraftmodern.research.purchase_rejected",
+                                : "message.thaumic_reborn.research.purchase_rejected",
                         result.name().toLowerCase(java.util.Locale.ROOT)
                 ),
                 true

@@ -1,0 +1,13 @@
+{
+  "type":"block_tag",
+  "target":"thaumic_reborn:dragon_head_blocks",
+  "knowledge_key":"thaumic_reborn:dragon_heads",
+  "display":"",
+  "aspects":[
+    {"id":"alienis","amount":20},
+    {"id":"bestia","amount":20},
+    {"id":"perditio","amount":20}
+  ],
+  "inactive":false,
+  "modern_rule":"Dragon head uses the original Ender Dragon entity aspects."
+}

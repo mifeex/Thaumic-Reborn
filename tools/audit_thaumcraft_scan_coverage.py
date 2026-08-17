@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCAN_ROOT = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/scans"
+SCAN_ROOT = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/scans"
 RESOURCE_ROOT = ROOT / "src/main/resources"
 
 
@@ -23,7 +23,7 @@ def source_inventory() -> dict[str, list[str]]:
     """
     import re
 
-    assets = RESOURCE_ROOT / "assets/thaumcraftmodern"
+    assets = RESOURCE_ROOT / "assets/thaumic_reborn"
     item_models = {path.stem for path in (assets / "models/item").glob("*.json")}
     block_states = {path.stem for path in (assets / "blockstates").glob("*.json")}
     block_source = (ROOT / "src/main/java/com/thaumcraftmodern/registry/ModBlocks.java") \
@@ -59,8 +59,8 @@ def source_inventory() -> dict[str, list[str]]:
     items.update(name for name in item_models if name.endswith("_spawn_egg"))
     items.update(name for name in item_models if name.endswith("_golem_core"))
     return {
-        "blocks": sorted(f"thaumcraftmodern:{name}" for name in blocks),
-        "items": sorted(f"thaumcraftmodern:{name}" for name in items),
+        "blocks": sorted(f"thaumic_reborn:{name}" for name in blocks),
+        "items": sorted(f"thaumic_reborn:{name}" for name in items),
     }
 
 

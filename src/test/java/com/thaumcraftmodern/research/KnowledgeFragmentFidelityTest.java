@@ -27,16 +27,16 @@ final class KnowledgeFragmentFidelityTest {
                 "src/main/java/com/thaumcraftmodern/client/ClientScanOverlay.java"
         ));
         assertTrue(overlay.contains(
-                "message.thaumcraftmodern.knowledge_fragment.aspect_pool"
+                "message.thaumic_reborn.knowledge_fragment.aspect_pool"
         ));
 
         JsonObject english = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/lang/en_us.json"
+                "src/main/resources/assets/thaumic_reborn/lang/en_us.json"
         ))).getAsJsonObject();
         JsonObject russian = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/lang/ru_ru.json"
+                "src/main/resources/assets/thaumic_reborn/lang/ru_ru.json"
         ))).getAsJsonObject();
-        String key = "message.thaumcraftmodern.knowledge_fragment.aspect_pool";
+        String key = "message.thaumic_reborn.knowledge_fragment.aspect_pool";
         assertEquals("Gained %s research point(s) for %s",
                 english.get(key).getAsString());
         assertEquals("Получено %s очка(ов) исследования для %s",
@@ -46,9 +46,9 @@ final class KnowledgeFragmentFidelityTest {
     @Test
     void nineFragmentsCraftTheOriginalUnknownResearchNote() throws Exception {
         JsonObject recipe = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/data/thaumcraftmodern/recipes/knowledge_fragment.json"
+                "src/main/resources/data/thaumic_reborn/recipes/knowledge_fragment.json"
         ))).getAsJsonObject();
-        assertEquals("thaumcraftmodern:knowledge_fragment_research",
+        assertEquals("thaumic_reborn:knowledge_fragment_research",
                 recipe.get("type").getAsString());
 
         String source = Files.readString(Path.of(

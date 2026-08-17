@@ -282,8 +282,8 @@ public final class EssentiaTubeBlock extends BaseEntityBlock
                     }
                     player.displayClientMessage(Component.translatable(
                             tube.returnEnabled()
-                                    ? "message.thaumcraftmodern.reverse.return"
-                                    : "message.thaumcraftmodern.reverse.switching",
+                                    ? "message.thaumic_reborn.reverse.return"
+                                    : "message.thaumic_reborn.reverse.switching",
                             tube.reverseSwitchTicks()), true);
                 } else if (core && tube.policy().redstoneValve()) {
                     tube.setFacing(TubeFacingRules.toggleFacing(
@@ -383,7 +383,7 @@ public final class EssentiaTubeBlock extends BaseEntityBlock
         }
         if (!WandVisService.consumeCentivis(player, wand, baseCost)) {
             player.displayClientMessage(Component.translatable(
-                    "message.thaumcraftmodern.tube_release.no_vis",
+                    "message.thaumic_reborn.tube_release.no_vis",
                     formatVisRange(adjustedCost)), true);
             return;
         }
@@ -393,8 +393,8 @@ public final class EssentiaTubeBlock extends BaseEntityBlock
         TubeEssentiaReleaseRisk.commit(player, release);
         player.displayClientMessage(Component.translatable(
                 release.createsFlux()
-                        ? "message.thaumcraftmodern.tube_release.flux"
-                        : "message.thaumcraftmodern.tube_release.released",
+                        ? "message.thaumic_reborn.tube_release.flux"
+                        : "message.thaumic_reborn.tube_release.released",
                 Component.translatable("tc.aspect." + aspect),
                 complexity.risk(),
                 release.createsFlux() ? 0 : release.accumulatedRisk(),

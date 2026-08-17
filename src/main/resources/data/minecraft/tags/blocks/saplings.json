@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:bamboo_sapling",
-    "thaumcraftmodern:greatwood_sapling",
-    "thaumcraftmodern:silverwood_sapling"
+    "thaumic_reborn:greatwood_sapling",
+    "thaumic_reborn:silverwood_sapling"
   ]
 }

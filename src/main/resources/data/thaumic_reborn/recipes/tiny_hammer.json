@@ -1,0 +1,21 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyhammer",
+  "vis": {
+    "terra": 4,
+    "ignis": 4
+  },
+  "pattern": [
+    "III",
+    "III",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_hammer"
+  }
+}

@@ -283,8 +283,8 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
             sendFeedback(serverPlayer,
                     Component.translatable(
                             tools.getItem() instanceof ScribingToolsItem
-                                    ? "screen.thaumcraftmodern.research_table.no_notes"
-                                    : "screen.thaumcraftmodern.research_table.no_ink"
+                                    ? "screen.thaumic_reborn.research_table.no_notes"
+                                    : "screen.thaumic_reborn.research_table.no_ink"
                     ), false
             );
             return false;
@@ -371,7 +371,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
                     sendFeedback(
                             serverPlayer,
                             Component.translatable(
-                                    "puzzle.thaumcraftmodern.first_discovery.complete"
+                                    "puzzle.thaumic_reborn.first_discovery.complete"
                             ),
                             true
                     );
@@ -511,9 +511,9 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
         if (result.newlyDiscovered()) {
             player.displayClientMessage(
                     Component.translatable(
-                            "message.thaumcraftmodern.scan.aspect_discovered",
+                            "message.thaumic_reborn.scan.aspect_discovered",
                             Component.translatable(
-                                    "aspect.thaumcraftmodern."
+                                    "aspect.thaumic_reborn."
                                             + result.resultAspectId()
                             )
                     ),
@@ -555,7 +555,7 @@ public final class ResearchTableMenu extends AbstractContainerMenu {
     private static void sendPuzzleResult(ServerPlayer player, String resultName) {
         sendFeedback(player,
                 Component.translatable(
-                        "puzzle.thaumcraftmodern.first_discovery.error."
+                        "puzzle.thaumic_reborn.first_discovery.error."
                                 + resultName.toLowerCase(Locale.ROOT)
                 ), false
         );

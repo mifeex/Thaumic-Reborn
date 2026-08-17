@@ -1,0 +1,10 @@
+{
+  "id": "victus",
+  "order": 120,
+  "color": "DE0005",
+  "icon": "thaumic_reborn:textures/aspects/victus.png",
+  "components": [
+    "aqua",
+    "terra"
+  ]
+}

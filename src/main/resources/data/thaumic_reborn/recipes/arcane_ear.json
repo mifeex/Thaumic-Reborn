@@ -1,0 +1,33 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "arcaneear",
+  "vis": {
+    "aer": 10,
+    "ordo": 10
+  },
+  "pattern": [
+    "GIG",
+    "GBG",
+    "WRW"
+  ],
+  "key": {
+    "W": {
+      "item": "thaumic_reborn:greatwood_planks"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "thaumic_reborn:zombie_brain"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_ear"
+  }
+}

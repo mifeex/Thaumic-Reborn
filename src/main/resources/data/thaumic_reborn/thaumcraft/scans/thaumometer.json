@@ -1,0 +1,16 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:thaumometer",
+  "display": "item.thaumic_reborn.thaumometer",
+  "aspects": [
+    { "id": "sensus", "amount": 3 },
+    { "id": "metallum", "amount": 2 },
+    { "id": "vitreus", "amount": 1 },
+    { "id": "praecantatio", "amount": 1 }
+  ],
+  "legacy": {
+    "registration_mode": "explicit",
+    "legacy_target": "new ItemStack(ConfigItems.itemThaumometer)",
+    "source": "ConfigAspects.registerThaumcraftAlchemyBaseline"
+  }
+}

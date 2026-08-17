@@ -137,7 +137,7 @@ public final class OuterLandsPortalBlock extends BaseEntityBlock {
         } else {
             KnowledgeAccess.mutate(player, knowledge -> {
                 knowledge.recordResearchCriterion(
-                        "thaumcraftmodern:legacy_clue/enterouter"
+                        "thaumic_reborn:legacy_clue/enterouter"
                 );
                 knowledge.completeResearch("enterouter");
             });

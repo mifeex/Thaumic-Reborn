@@ -1,0 +1,59 @@
+{
+  "type": "item_tag",
+  "target": "thaumic_reborn:thaumcraft_banners",
+  "knowledge_key": "thaumic_reborn:vanilla_banners",
+  "display": "",
+  "aspects": [
+    {
+      "id": "alienis",
+      "amount": 1
+    },
+    {
+      "id": "arbor",
+      "amount": 2
+    },
+    {
+      "id": "pannus",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 8)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "alienis",
+        "amount": 1
+      },
+      {
+        "id": "arbor",
+        "amount": 2
+      },
+      {
+        "id": "pannus",
+        "amount": 3
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "alienis",
+        "amount": 1
+      },
+      {
+        "operation": "add",
+        "id": "arbor",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "pannus",
+        "amount": 3
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 8), (new AspectList()).add(Aspect.ELDRITCH, 1).add(Aspect.TREE, 2).add(Aspect.CLOTH, 3))"
+  }
+}

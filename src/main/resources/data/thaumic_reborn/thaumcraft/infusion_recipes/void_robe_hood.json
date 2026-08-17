@@ -1,0 +1,12 @@
+{
+  "research":"armorvoidfortress","instability":6,
+  "central":{"item":"thaumic_reborn:void_helmet"},
+  "components":[
+    {"item":"thaumic_reborn:goggles_of_revealing"},
+    {"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:enchanted_fabric"},
+    {"item":"thaumic_reborn:salis_mundus"},
+    {"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:enchanted_fabric"}
+  ],
+  "result":{"item":"thaumic_reborn:void_robe_hood"},
+  "essentia":{"metallum":16,"sensus":16,"tutamen":16,"pannus":16,"praecantatio":16,"alienis":16,"vacuos":16}
+}

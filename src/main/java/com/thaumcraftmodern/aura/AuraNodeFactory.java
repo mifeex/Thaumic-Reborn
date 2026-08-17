@@ -19,7 +19,7 @@ import java.util.UUID;
 public final class AuraNodeFactory {
     public static final int SAFE_PRIMAL_VIS = 100;
     private static final UUID CREATIVE_NODE_ID = UUID.nameUUIDFromBytes(
-            "thaumcraftmodern:creative_jarred_aura_node:v1"
+            "thaumic_reborn:creative_jarred_aura_node:v1"
                     .getBytes(StandardCharsets.UTF_8)
     );
 

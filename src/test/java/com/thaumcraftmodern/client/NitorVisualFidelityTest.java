@@ -49,10 +49,10 @@ final class NitorVisualFidelityTest {
     @Test
     void particleSpriteIsExactTc4AtlasCrop() throws Exception {
         BufferedImage atlas = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/misc/"
+                "src/main/resources/assets/thaumic_reborn/textures/misc/"
                         + "particles.png").toFile());
         BufferedImage sprite = ImageIO.read(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/particle/"
+                "src/main/resources/assets/thaumic_reborn/textures/particle/"
                         + "nitor_wisp.png").toFile());
         assertEquals(32, sprite.getWidth());
         assertEquals(32, sprite.getHeight());
@@ -64,15 +64,15 @@ final class NitorVisualFidelityTest {
 
         JsonObject large = particleJson("nitor_wisp_large");
         JsonObject small = particleJson("nitor_wisp_small");
-        assertEquals("thaumcraftmodern:nitor_wisp",
+        assertEquals("thaumic_reborn:nitor_wisp",
                 large.getAsJsonArray("textures").get(0).getAsString());
-        assertEquals("thaumcraftmodern:nitor_wisp",
+        assertEquals("thaumic_reborn:nitor_wisp",
                 small.getAsJsonArray("textures").get(0).getAsString());
     }
 
     private static JsonObject particleJson(String name) throws Exception {
         return JsonParser.parseString(read(
-                "src/main/resources/assets/thaumcraftmodern/particles/"
+                "src/main/resources/assets/thaumic_reborn/particles/"
                         + name + ".json")).getAsJsonObject();
     }
 

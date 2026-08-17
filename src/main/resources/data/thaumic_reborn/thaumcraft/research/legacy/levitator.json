@@ -1,0 +1,70 @@
+{
+  "id": "levitator",
+  "legacy_id": "LEVITATOR",
+  "category": "artifice",
+  "icon": "thaumic_reborn:arcane_levitator",
+  "title": "tc.research_name.LEVITATOR",
+  "subtitle": "tc.research_text.LEVITATOR",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "nitor"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -72,
+  "y": -72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.LEVITATOR.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:levitator"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -3,
+    "y": -3,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigBlocks.blockLifter)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "motus",
+        "amount": 3
+      },
+      {
+        "id": "volatus",
+        "amount": 3
+      },
+      {
+        "id": "aer",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"LEVITATOR\", \"ARTIFICE\", (new AspectList()).add(Aspect.MOTION, 3).add(Aspect.FLIGHT, 3).add(Aspect.AIR, 3), -3, -3, 1, new ItemStack(ConfigBlocks.blockLifter))).setPages(new ResearchPage(\"tc.research_page.LEVITATOR.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"Levitator\"))).setConcealed().setParents(\"NITOR\").registerResearchItem()"
+  }
+}

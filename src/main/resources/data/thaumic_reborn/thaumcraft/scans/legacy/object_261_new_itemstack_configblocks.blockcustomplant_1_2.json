@@ -1,0 +1,58 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:shimmerleaf",
+  "display": "",
+  "aspects": [
+    {
+      "id": "herba",
+      "amount": 2
+    },
+    {
+      "id": "permutatio",
+      "amount": 2
+    },
+    {
+      "id": "praecantatio",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "registration_mode": "explicit",
+    "target_kind": "item_stack",
+    "legacy_target": "new ItemStack(ConfigBlocks.blockCustomPlant, 1, 2)",
+    "metadata_group_raw": null,
+    "aspects": [
+      {
+        "id": "herba",
+        "amount": 2
+      },
+      {
+        "id": "permutatio",
+        "amount": 2
+      },
+      {
+        "id": "praecantatio",
+        "amount": 2
+      }
+    ],
+    "aspect_operations": [
+      {
+        "operation": "add",
+        "id": "herba",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "permutatio",
+        "amount": 2
+      },
+      {
+        "operation": "add",
+        "id": "praecantatio",
+        "amount": 2
+      }
+    ],
+    "source_expression": "ThaumcraftApi.registerObjectTag(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 2), (new AspectList()).add(Aspect.PLANT, 2).add(Aspect.EXCHANGE, 2).add(Aspect.MAGIC, 2))"
+  }
+}

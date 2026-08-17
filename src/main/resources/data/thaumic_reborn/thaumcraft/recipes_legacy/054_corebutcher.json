@@ -1,0 +1,25 @@
+{
+  "id": "corebutcher",
+  "legacy_id": "CoreButcher",
+  "legacy_kind": "crucible",
+  "inactive": true,
+  "inactive_reason": "output item or its complete gameplay behavior is not implemented",
+  "modern_recipe": [
+    "thaumic_reborn:corebutcher"
+  ],
+  "required_aspects": [
+    {
+      "id": "corpus",
+      "amount": 5
+    },
+    {
+      "id": "bestia",
+      "amount": 5
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"COREBUTCHER\", new ItemStack(ConfigItems.itemGolemCore, 1, 9), new ItemStack(ConfigItems.itemGolemCore, 1, 4), (new AspectList()).add(Aspect.FLESH, 5).add(Aspect.BEAST, 5))",
+    "source_statement": "ConfigResearch.recipes.put(\"CoreButcher\", ThaumcraftApi.addCrucibleRecipe(\"COREBUTCHER\", new ItemStack(ConfigItems.itemGolemCore, 1, 9), new ItemStack(ConfigItems.itemGolemCore, 1, 4), (new AspectList()).add(Aspect.FLESH, 5).add(Aspect.BEAST, 5)))",
+    "unkeyed": false
+  }
+}

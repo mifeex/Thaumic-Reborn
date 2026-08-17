@@ -1,0 +1,10 @@
+{
+  "id": "tutamen",
+  "order": 410,
+  "color": "00C0C0",
+  "icon": "thaumic_reborn:textures/aspects/tutamen.png",
+  "components": [
+    "instrumentum",
+    "terra"
+  ]
+}

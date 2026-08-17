@@ -6,7 +6,7 @@ import shutil
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "src/main/resources/assets/thaumcraftmodern/textures"
+ASSETS = ROOT / "src/main/resources/assets/thaumic_reborn/textures"
 OUTPUTS = {
     0: "fortress_helmet_mask_grinning_devil.png",
     1: "fortress_helmet_mask_angry_ghost.png",

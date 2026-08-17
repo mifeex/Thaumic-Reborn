@@ -1,0 +1,75 @@
+{
+  "id": "rod_greatwood_staff",
+  "legacy_id": "ROD_greatwood_staff",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:greatwood_staff_rod",
+  "title": "tc.research_name.ROD_greatwood_staff",
+  "subtitle": "tc.research_text.ROD_greatwood_staff",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "rod_silverwood"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -24,
+  "y": 168,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_greatwood_staff.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_greatwood_staff.2"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:wand_rod_greatwood_staff"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -1,
+    "y": 7,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemWandRod, 1, 50)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "arbor",
+        "amount": 6
+      },
+      {
+        "id": "praecantatio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ROD_greatwood_staff\", \"THAUMATURGY\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.TREE, 6).add(Aspect.MAGIC, 3), -1, 7, 1, new ItemStack(ConfigItems.itemWandRod, 1, 50))).setPages(new ResearchPage(\"tc.research_page.ROD_greatwood_staff.1\"), new ResearchPage(\"tc.research_page.ROD_greatwood_staff.2\"), new ResearchPage((IArcaneRecipe)recipes.get(\"WandRodGreatwoodStaff\"))).setParents(\"ROD_silverwood\").registerResearchItem()"
+  }
+}

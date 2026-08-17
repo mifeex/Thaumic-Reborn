@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ArcaneAlembicModelFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
 
     @Test
     void westFacingObjPanelIsRotatedToEachBlockFacing() throws Exception {

@@ -1,0 +1,21 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "infusion",
+  "vis": {
+    "aer": 5
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:arcane_stone"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_pedestal",
+    "count": 2
+  }
+}

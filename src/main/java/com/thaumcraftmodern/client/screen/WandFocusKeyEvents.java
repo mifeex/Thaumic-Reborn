@@ -17,8 +17,8 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID, value = Dist.CLIENT)
 public final class WandFocusKeyEvents {
     private static final KeyMapping CHANGE_FOCUS = new KeyMapping(
-            "key.thaumcraftmodern.change_focus", InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_F, "key.categories.thaumcraftmodern");
+            "key.thaumic_reborn.change_focus", InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_F, "key.categories.thaumic_reborn");
     private static boolean previousDown;
 
     private WandFocusKeyEvents() {}

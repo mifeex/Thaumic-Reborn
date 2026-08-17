@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ClassicMagicalWoodCraftingFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern");
+            "src/main/resources/assets/thaumic_reborn");
     private static final Path DATA = Path.of(
-            "src/main/resources/data/thaumcraftmodern");
+            "src/main/resources/data/thaumic_reborn");
 
     @Test
     void originalTc4235WoodRecipesKeepTheirShapesAndCounts() throws Exception {
@@ -56,7 +56,7 @@ final class ClassicMagicalWoodCraftingFidelityTest {
                 String source = Files.readString(ASSETS.resolve(
                         "models/block/" + model + ".json"));
                 assertTrue(source.contains(
-                        "thaumcraftmodern:block/" + wood + "_planks"));
+                        "thaumic_reborn:block/" + wood + "_planks"));
             }
             for (String item : List.of(wood + "_stairs", wood + "_slab")) {
                 assertTrue(Files.exists(ASSETS.resolve(
@@ -85,9 +85,9 @@ final class ClassicMagicalWoodCraftingFidelityTest {
                     .getAsJsonArray("values");
             String shape = tag.endsWith("stairs") ? "stairs" : "slab";
             assertTrue(values.asList().stream().anyMatch(value -> value.getAsString()
-                    .equals("thaumcraftmodern:greatwood_" + shape)));
+                    .equals("thaumic_reborn:greatwood_" + shape)));
             assertTrue(values.asList().stream().anyMatch(value -> value.getAsString()
-                    .equals("thaumcraftmodern:silverwood_" + shape)));
+                    .equals("thaumic_reborn:silverwood_" + shape)));
         }
     }
 

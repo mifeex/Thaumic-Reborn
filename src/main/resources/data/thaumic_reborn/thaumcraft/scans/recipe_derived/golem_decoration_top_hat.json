@@ -1,0 +1,34 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:golem_decoration_top_hat",
+  "display": "",
+  "aspects": [
+    {
+      "id": "pannus",
+      "amount": 12
+    },
+    {
+      "id": "fabrico",
+      "amount": 3
+    },
+    {
+      "id": "metallum",
+      "amount": 2
+    },
+    {
+      "id": "lucrum",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 2
+    },
+    {
+      "id": "ignis",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/tiny_hat.json"
+}

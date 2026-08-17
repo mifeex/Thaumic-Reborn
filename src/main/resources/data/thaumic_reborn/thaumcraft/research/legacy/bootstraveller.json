@@ -1,0 +1,75 @@
+{
+  "id": "bootstraveller",
+  "legacy_id": "BOOTSTRAVELLER",
+  "category": "artifice",
+  "icon": "thaumic_reborn:boots_of_the_traveller",
+  "title": "tc.research_name.BOOTSTRAVELLER",
+  "subtitle": "tc.research_text.BOOTSTRAVELLER",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "enchfabric",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -24,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BOOTSTRAVELLER.1"
+    },
+    {
+      "type":"infusion","title":"recipe.type.infusion","output":"thaumic_reborn:boots_of_the_traveller","central":"minecraft:leather_boots",
+      "components":[{"item":"thaumic_reborn:air_shard","count":1},{"item":"thaumic_reborn:air_shard","count":1},{"item":"thaumic_reborn:enchanted_fabric","count":1},{"item":"thaumic_reborn:enchanted_fabric","count":1},{"item":"minecraft:feather","count":1},{"tag":"thaumic_reborn:raw_fishes","count":1}],
+      "aspect_costs":[{"id":"volatus","amount":25},{"id":"iter","amount":25}],"instability":"minor","detail":"tc.research_text.BOOTSTRAVELLER"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -1,
+    "y": 5,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemBootsTraveller)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "iter",
+        "amount": 3
+      },
+      {
+        "id": "terra",
+        "amount": 3
+      },
+      {
+        "id": "volatus",
+        "amount": 3
+      },
+      {
+        "id": "aqua",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"BOOTSTRAVELLER\", \"ARTIFICE\", (new AspectList()).add(Aspect.TRAVEL, 3).add(Aspect.EARTH, 3).add(Aspect.FLIGHT, 3).add(Aspect.WATER, 3), -1, 5, 2, new ItemStack(ConfigItems.itemBootsTraveller))).setPages(new ResearchPage(\"tc.research_page.BOOTSTRAVELLER.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"BootsTraveller\"))).setParents(\"ENCHFABRIC\", \"INFUSION\").setConcealed().registerResearchItem()"
+  }
+}

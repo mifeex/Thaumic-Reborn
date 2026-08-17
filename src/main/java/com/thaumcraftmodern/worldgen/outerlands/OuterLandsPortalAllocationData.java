@@ -7,7 +7,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 /** Allocates one persistent, non-overlapping maze region to each opened portal. */
 public final class OuterLandsPortalAllocationData extends SavedData {
     private static final String DATA_NAME =
-            "thaumcraftmodern_outer_lands_portal_allocations";
+            "thaumic_reborn_outer_lands_portal_allocations";
     private static final String NEXT_ID_KEY = "NextId";
     private static final int FIRST_DEDICATED_REGION_X = 256;
     private static final int REGION_COLUMNS = 256;

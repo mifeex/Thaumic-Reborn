@@ -1,0 +1,15 @@
+{
+  "research": "bottletaint",
+  "catalyst": {
+    "item": "thaumic_reborn:essentia_phial",
+    "aspect": "vitium"
+  },
+  "output": {
+    "item": "thaumic_reborn:bottled_taint"
+  },
+  "aspects": {
+    "vitium": 8,
+    "praecantatio": 8
+  },
+  "legacy_id": "BottleTaint"
+}

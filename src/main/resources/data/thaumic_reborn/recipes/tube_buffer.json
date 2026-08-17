@@ -1,0 +1,30 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "centrifuge",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "PVP",
+    "T T",
+    "PRP"
+  ],
+  "key": {
+    "T": {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    "V": {
+      "item": "thaumic_reborn:essentia_valve"
+    },
+    "R": {
+      "item": "thaumic_reborn:restricted_essentia_tube"
+    },
+    "P": {
+      "item": "thaumic_reborn:essentia_phial"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_buffer"
+  }
+}

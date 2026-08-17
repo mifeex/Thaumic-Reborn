@@ -260,6 +260,6 @@ public final class ThaumometerItem extends Item {
             List<Component> tooltip,
             TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.thaumcraftmodern.thaumometer"));
+        tooltip.add(Component.translatable("tooltip.thaumic_reborn.thaumometer"));
     }
 }

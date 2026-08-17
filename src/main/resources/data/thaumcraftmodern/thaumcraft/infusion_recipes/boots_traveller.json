@@ -1,7 +1,0 @@
-{
-  "research":"bootstraveller","instability":1,
-  "central":{"item":"minecraft:leather_boots"},
-  "components":[{"item":"thaumcraftmodern:air_shard"},{"item":"thaumcraftmodern:air_shard"},{"item":"thaumcraftmodern:enchanted_fabric"},{"item":"thaumcraftmodern:enchanted_fabric"},{"item":"minecraft:feather"},{"tag":"thaumcraftmodern:raw_fishes"}],
-  "essentia":{"volatus":25,"iter":25},
-  "result":{"item":"thaumcraftmodern:boots_of_the_traveller","count":1}
-}

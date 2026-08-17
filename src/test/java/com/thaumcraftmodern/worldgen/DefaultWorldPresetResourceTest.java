@@ -25,19 +25,19 @@ class DefaultWorldPresetResourceTest {
                 .getAsJsonObject("biome_source");
 
         assertEquals(
-                "thaumcraftmodern:legacy_overworld",
+                "thaumic_reborn:legacy_overworld",
                 biomeSource.get("type").getAsString()
         );
         assertEquals(
-                "thaumcraftmodern:magical_forest",
+                "thaumic_reborn:magical_forest",
                 biomeSource.get("magical_forest").getAsString()
         );
         assertEquals(
-                "thaumcraftmodern:tainted_lands",
+                "thaumic_reborn:tainted_lands",
                 biomeSource.get("tainted_lands").getAsString()
         );
         assertEquals(
-                "thaumcraftmodern:eerie",
+                "thaumic_reborn:eerie",
                 biomeSource.get("eerie").getAsString()
         );
     }

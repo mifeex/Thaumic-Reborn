@@ -2,7 +2,7 @@
 
 The active node-draining animation is selected in:
 
-`src/main/resources/assets/thaumcraftmodern/config/wand_casting_render.json`
+`src/main/resources/assets/thaumic_reborn/config/wand_casting_render.json`
 
 Use the top-level field:
 

@@ -1,8 +1,0 @@
-{
-  "feature": "thaumcraftmodern:legacy_vegetation",
-  "placement": [
-    {
-      "type": "minecraft:biome"
-    }
-  ]
-}

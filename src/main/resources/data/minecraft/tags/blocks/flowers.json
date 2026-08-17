@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:shimmerleaf",
-    "thaumcraftmodern:cinderpearl",
-    "thaumcraftmodern:ethereal_bloom"
+    "thaumic_reborn:shimmerleaf",
+    "thaumic_reborn:cinderpearl",
+    "thaumic_reborn:ethereal_bloom"
   ]
 }

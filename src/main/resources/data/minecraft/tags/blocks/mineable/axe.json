@@ -1,21 +1,21 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:arcane_bellows",
-    "thaumcraftmodern:research_table",
-    "thaumcraftmodern:thaumcraft_table",
-    "thaumcraftmodern:arcane_workbench",
-    "thaumcraftmodern:deconstruction_table",
-    "thaumcraftmodern:arcane_ear",
-    "thaumcraftmodern:loot_crate",
-    "thaumcraftmodern:greatwood_log",
-    "thaumcraftmodern:silverwood_log",
-    "thaumcraftmodern:silverwood_node",
-    "thaumcraftmodern:greatwood_planks",
-    "thaumcraftmodern:silverwood_planks",
-    "thaumcraftmodern:greatwood_stairs",
-    "thaumcraftmodern:silverwood_stairs",
-    "thaumcraftmodern:greatwood_slab",
-    "thaumcraftmodern:silverwood_slab"
+    "thaumic_reborn:arcane_bellows",
+    "thaumic_reborn:research_table",
+    "thaumic_reborn:thaumcraft_table",
+    "thaumic_reborn:arcane_workbench",
+    "thaumic_reborn:deconstruction_table",
+    "thaumic_reborn:arcane_ear",
+    "thaumic_reborn:loot_crate",
+    "thaumic_reborn:greatwood_log",
+    "thaumic_reborn:silverwood_log",
+    "thaumic_reborn:silverwood_node",
+    "thaumic_reborn:greatwood_planks",
+    "thaumic_reborn:silverwood_planks",
+    "thaumic_reborn:greatwood_stairs",
+    "thaumic_reborn:silverwood_stairs",
+    "thaumic_reborn:greatwood_slab",
+    "thaumic_reborn:silverwood_slab"
   ]
 }

@@ -25,19 +25,19 @@ class OuterLandsResourceFidelityTest {
     void dimensionUsesVoidGeneratorAndEldritchBiome() throws IOException {
         JsonObject dimension = JsonParser.parseString(Files.readString(
                 RESOURCES.resolve(
-                        "data/thaumcraftmodern/dimension/outer_lands.json"
+                        "data/thaumic_reborn/dimension/outer_lands.json"
                 )
         )).getAsJsonObject();
         JsonObject generator = dimension.getAsJsonObject("generator");
         assertTrue(generator.get("type").getAsString()
-                .equals("thaumcraftmodern:outer_lands"));
+                .equals("thaumic_reborn:outer_lands"));
         assertTrue(generator.getAsJsonObject("biome_source")
                 .get("biome").getAsString()
-                .equals("thaumcraftmodern:eldritch"));
+                .equals("thaumic_reborn:eldritch"));
 
         JsonObject type = JsonParser.parseString(Files.readString(
                 RESOURCES.resolve(
-                        "data/thaumcraftmodern/dimension_type/outer_lands.json"
+                        "data/thaumic_reborn/dimension_type/outer_lands.json"
                 )
         )).getAsJsonObject();
         assertFalse(type.get("has_skylight").getAsBoolean());
@@ -50,7 +50,7 @@ class OuterLandsResourceFidelityTest {
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/es_1.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/ancient_stone.png"
+                        "assets/thaumic_reborn/textures/block/ancient_stone.png"
                 ))
         );
         for (int index = 2; index <= 8; index++) {
@@ -59,7 +59,7 @@ class OuterLandsResourceFidelityTest {
                             "blocks/es_" + index + ".png"
                     )),
                     Files.readAllBytes(RESOURCES.resolve(
-                            "assets/thaumcraftmodern/textures/block/"
+                            "assets/thaumic_reborn/textures/block/"
                                     + "ancient_stone_" + index + ".png"
                     ))
             );
@@ -69,12 +69,12 @@ class OuterLandsResourceFidelityTest {
                         "misc/eldritch_portal.png"
                 )),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/"
+                        "assets/thaumic_reborn/textures/block/"
                                 + "outer_lands_portal.png"
                 ))
         );
         BufferedImage portal = ImageIO.read(RESOURCES.resolve(
-                "assets/thaumcraftmodern/textures/block/"
+                "assets/thaumic_reborn/textures/block/"
                         + "outer_lands_portal.png"
         ).toFile());
         assertEquals(2048, portal.getWidth());
@@ -83,31 +83,31 @@ class OuterLandsResourceFidelityTest {
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/deco_2.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/eldritch_lock_center.png"
+                        "assets/thaumic_reborn/textures/block/eldritch_lock_center.png"
                 ))
         );
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/deco_3.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/eldritch_door.png"
+                        "assets/thaumic_reborn/textures/block/eldritch_door.png"
                 ))
         );
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("models/eldritch_cube.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/models/eldritch_cube.png"
+                        "assets/thaumic_reborn/textures/models/eldritch_cube.png"
                 ))
         );
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/es_5.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/ancient_rock_classic.png"
+                        "assets/thaumic_reborn/textures/block/ancient_rock_classic.png"
                 ))
         );
         assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/es_6.png")),
                 Files.readAllBytes(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/ancient_nospawn_classic.png"
+                        "assets/thaumic_reborn/textures/block/ancient_nospawn_classic.png"
                 ))
         );
     }
@@ -130,7 +130,7 @@ class OuterLandsResourceFidelityTest {
         assertTrue(generator.contains("wallDirection.getOpposite()"));
         assertTrue(generator.contains("generateClassicConnections(level, chunk, cell, random, 3, true)"));
         assertTrue(Files.exists(RESOURCES.resolve(
-                "assets/thaumcraftmodern/blockstates/eldritch_nothing.json"
+                "assets/thaumic_reborn/blockstates/eldritch_nothing.json"
         )));
     }
 
@@ -184,7 +184,7 @@ class OuterLandsResourceFidelityTest {
         ));
         assertTrue(block.contains("return RenderShape.INVISIBLE"));
         String model = Files.readString(RESOURCES.resolve(
-                "assets/thaumcraftmodern/models/block/"
+                "assets/thaumic_reborn/models/block/"
                         + "outer_lands_portal.json"
         ));
         assertFalse(model.contains("\"elements\""));
@@ -246,7 +246,7 @@ class OuterLandsResourceFidelityTest {
         for (String name : new String[]{"enterouter", "outerrev"}) {
             JsonObject research = JsonParser.parseString(Files.readString(
                     RESOURCES.resolve(
-                            "data/thaumcraftmodern/thaumcraft/research/legacy/"
+                            "data/thaumic_reborn/thaumcraft/research/legacy/"
                                     + name + ".json"
                     )
             )).getAsJsonObject();

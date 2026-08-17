@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyhat",
+  "vis": {
+    "ordo": 8,
+    "ignis": 8
+  },
+  "pattern": [
+    " C ",
+    " G ",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:white_wool"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_top_hat"
+  }
+}

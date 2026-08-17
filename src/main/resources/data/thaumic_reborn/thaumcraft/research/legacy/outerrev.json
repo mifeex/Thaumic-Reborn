@@ -1,0 +1,75 @@
+{
+  "id": "outerrev",
+  "legacy_id": "OUTERREV",
+  "category": "eldritch",
+  "icon": "thaumic_reborn:thaumonomicon",
+  "title": "tc.research_name.OUTERREV",
+  "subtitle": "tc.research_text.OUTERREV",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "enterouter"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "criterion",
+    "id": "thaumic_reborn:legacy_clue/outerrev"
+  },
+  "x": -120,
+  "y": 72,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.OUTERREV.1"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "alienis",
+      "amount": 4
+    },
+    {
+      "id": "cognitio",
+      "amount": 4
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -5,
+    "y": 3,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_outerrev.png\")",
+    "flags": {
+      "special": true,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": true,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [
+      "new ItemStack(ConfigBlocks.blockEldritch, 1, 5)",
+      "new ItemStack(ConfigBlocks.blockEldritch, 1, 10)"
+    ],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "alienis",
+        "amount": 4
+      },
+      {
+        "id": "cognitio",
+        "amount": 4
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"OUTERREV\", \"ELDRITCH\", (new AspectList()).add(Aspect.ELDRITCH, 4).add(Aspect.MIND, 4), -5, 3, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_outerrev.png\"))).setPages(new ResearchPage(\"tc.research_page.OUTERREV.1\")).setItemTriggers(new ItemStack(ConfigBlocks.blockEldritch, 1, 5), new ItemStack(ConfigBlocks.blockEldritch, 1, 10)).setLost().setSecondary().setSpecial().setParents(\"ENTEROUTER\").registerResearchItem()"
+  }
+}

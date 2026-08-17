@@ -13,22 +13,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 final class RecipeIngredientAlternativesFidelityTest {
     private static final Path RECIPES = Path.of(
-            "src/main/resources/data/thaumcraftmodern/recipes"
+            "src/main/resources/data/thaumic_reborn/recipes"
     );
     private static final Path ELEMENTAL_SHARDS = Path.of(
-            "src/main/resources/data/thaumcraftmodern/tags/items/elemental_shards.json"
+            "src/main/resources/data/thaumic_reborn/tags/items/elemental_shards.json"
     );
 
     @Test
     void everyClassicWildcardShardSlotUsesAllSixPrimalShards()
             throws Exception {
         List<String> expected = List.of(
-                "thaumcraftmodern:air_shard",
-                "thaumcraftmodern:fire_shard",
-                "thaumcraftmodern:water_shard",
-                "thaumcraftmodern:earth_shard",
-                "thaumcraftmodern:order_shard",
-                "thaumcraftmodern:entropy_shard"
+                "thaumic_reborn:air_shard",
+                "thaumic_reborn:fire_shard",
+                "thaumic_reborn:water_shard",
+                "thaumic_reborn:earth_shard",
+                "thaumic_reborn:order_shard",
+                "thaumic_reborn:entropy_shard"
         );
         JsonObject tag = json(ELEMENTAL_SHARDS);
         assertEquals(expected, tag.getAsJsonArray("values").asList().stream()
@@ -53,7 +53,7 @@ final class RecipeIngredientAlternativesFidelityTest {
         for (Map.Entry<String, String> variant : variants.entrySet()) {
             JsonObject recipe = recipe("primal_arrow_" + variant.getKey());
             assertEquals(
-                    "thaumcraftmodern:" + variant.getValue() + "_shard",
+                    "thaumic_reborn:" + variant.getValue() + "_shard",
                     recipe.getAsJsonObject("key").getAsJsonObject("S")
                             .get("item").getAsString(),
                     variant.getKey()
@@ -64,7 +64,7 @@ final class RecipeIngredientAlternativesFidelityTest {
     private static void assertIngredientTag(String recipeId, String symbol)
             throws Exception {
         assertEquals(
-                "thaumcraftmodern:elemental_shards",
+                "thaumic_reborn:elemental_shards",
                 recipe(recipeId).getAsJsonObject("key")
                         .getAsJsonObject(symbol).get("tag").getAsString(),
                 recipeId

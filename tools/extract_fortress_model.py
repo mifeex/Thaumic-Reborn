@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 source = (ROOT / "reference/Thaumcraft-4.2-FOREVA-master/src/main/java/thaumcraft/client/renderers/models/gear/ModelFortressArmor.java").read_text()
-target = ROOT / "src/main/resources/assets/thaumcraftmodern/models/entity/fortress_armor.csv"
+target = ROOT / "src/main/resources/assets/thaumic_reborn/models/entity/fortress_armor.csv"
 
 created = {}
 for match in re.finditer(r"this\.(\w+) = new ModelRenderer\(this,\s*(\d+),\s*(\d+)\);", source):

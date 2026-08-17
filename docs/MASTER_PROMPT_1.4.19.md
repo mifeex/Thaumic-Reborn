@@ -9,9 +9,9 @@
 - Minecraft 1.20.1;
 - Forge 47.4.10;
 - Java 17;
-- modid `thaumcraftmodern`;
+- modid `thaumic_reborn`;
 - snapshot `1.4.19`;
-- JAR `build/libs/thaumcraftmodern-1.4.19.jar`;
+- JAR `build/libs/thaumic_reborn-1.4.19.jar`;
 - SHA-256
   `2d59b47cfc12ec147e1c1ce4386ea56ae3a96d0ef894a0e15b82ed74f1fea80a`.
 

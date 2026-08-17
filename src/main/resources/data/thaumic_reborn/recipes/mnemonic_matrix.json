@@ -1,0 +1,28 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "thaumatorium",
+  "vis": {
+    "ignis": 5,
+    "aqua": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "IAI",
+    "ABA",
+    "IAI"
+  ],
+  "key": {
+    "B": {
+      "item": "thaumic_reborn:zombie_brain"
+    },
+    "A": {
+      "item": "thaumic_reborn:amber"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:mnemonic_matrix"
+  }
+}

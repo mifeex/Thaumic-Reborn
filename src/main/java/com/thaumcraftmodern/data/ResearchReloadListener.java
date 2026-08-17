@@ -137,7 +137,7 @@ public final class ResearchReloadListener extends SimpleJsonResourceReloadListen
                         ? GsonHelper.getAsString(
                                 json,
                                 "icon",
-                                "thaumcraftmodern:thaumonomicon"
+                                "thaumic_reborn:thaumonomicon"
                         )
                         : "";
                 NodeStyle nodeStyle = readNodeStyle(json);

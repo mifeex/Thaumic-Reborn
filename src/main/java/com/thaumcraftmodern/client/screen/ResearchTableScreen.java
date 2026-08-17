@@ -268,8 +268,8 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
             for (var line : font.split(
                     Component.translatable(
                             hasResearchNotes()
-                                    ? "screen.thaumcraftmodern.research_table.no_ink"
-                                    : "screen.thaumcraftmodern.research_table.no_notes"
+                                    ? "screen.thaumic_reborn.research_table.no_ink"
+                                    : "screen.thaumic_reborn.research_table.no_notes"
                     ),
                     126
             )) {
@@ -509,7 +509,7 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
                     font,
                     List.of(
                             Component.translatable(
-                                            "aspect.thaumcraftmodern."
+                                            "aspect.thaumic_reborn."
                                                     + hoveredAspect.id()
                                     )
                                     .withStyle(ChatFormatting.AQUA),
@@ -677,7 +677,7 @@ public final class ResearchTableScreen extends AbstractContainerScreen<ResearchT
         if (hovered) {
             graphics.renderTooltip(
                     font,
-                    Component.translatable("screen.thaumcraftmodern.research_table.combine"),
+                    Component.translatable("screen.thaumic_reborn.research_table.combine"),
                     mouseX,
                     mouseY
             );

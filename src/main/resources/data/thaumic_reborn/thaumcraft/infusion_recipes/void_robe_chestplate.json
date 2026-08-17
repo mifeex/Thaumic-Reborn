@@ -1,0 +1,11 @@
+{
+  "research":"armorvoidfortress","instability":6,
+  "central":{"item":"thaumic_reborn:void_chestplate"},
+  "components":[
+    {"item":"thaumic_reborn:thaumaturge_robe"},{"item":"thaumic_reborn:void_metal_ingot"},
+    {"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:salis_mundus"},
+    {"item":"thaumic_reborn:enchanted_fabric"},{"item":"minecraft:leather"}
+  ],
+  "result":{"item":"thaumic_reborn:void_robe_chestplate"},
+  "essentia":{"metallum":24,"tutamen":24,"pannus":24,"praecantatio":16,"alienis":16,"vacuos":24}
+}

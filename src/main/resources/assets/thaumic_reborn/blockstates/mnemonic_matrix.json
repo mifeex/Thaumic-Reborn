@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=down": {"model": "thaumic_reborn:block/mnemonic_matrix", "x": 90},
+    "facing=up": {"model": "thaumic_reborn:block/mnemonic_matrix", "x": 270},
+    "facing=north": {"model": "thaumic_reborn:block/mnemonic_matrix"},
+    "facing=south": {"model": "thaumic_reborn:block/mnemonic_matrix", "y": 180},
+    "facing=west": {"model": "thaumic_reborn:block/mnemonic_matrix", "y": 270},
+    "facing=east": {"model": "thaumic_reborn:block/mnemonic_matrix", "y": 90}
+  }
+}

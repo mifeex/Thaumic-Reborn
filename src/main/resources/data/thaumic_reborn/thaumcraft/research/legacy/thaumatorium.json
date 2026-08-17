@@ -1,0 +1,89 @@
+{
+  "id": "thaumatorium",
+  "legacy_id": "THAUMATORIUM",
+  "category": "alchemy",
+  "icon": "thaumic_reborn:mnemonic_matrix",
+  "title": "tc.research_name.THAUMATORIUM",
+  "subtitle": "tc.research_text.THAUMATORIUM",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "centrifuge"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 240,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.THAUMATORIUM.1"
+    },
+    {
+      "type": "compound_crafting",
+      "title": "",
+      "recipe": "thaumic_reborn:thaumatorium_construct"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.THAUMATORIUM.2"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.THAUMATORIUM.3"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:mnemonic_matrix"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 10,
+    "y": -2,
+    "complexity": 3,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/blocks/alchemyblock.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "praecantatio",
+        "amount": 6
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "fabrico",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"THAUMATORIUM\", \"ALCHEMY\", (new AspectList()).add(Aspect.WATER, 3).add(Aspect.MAGIC, 6).add(Aspect.EXCHANGE, 3).add(Aspect.CRAFT, 3), 10, -2, 3, new ResourceLocation(\"thaumcraft\", \"textures/blocks/alchemyblock.png\"))).setPages(new ResearchPage(\"tc.research_page.THAUMATORIUM.1\"), new ResearchPage((List)recipes.get(\"Thaumatorium\")), new ResearchPage(\"tc.research_page.THAUMATORIUM.2\"), new ResearchPage(\"tc.research_page.THAUMATORIUM.3\"), new ResearchPage((IArcaneRecipe)recipes.get(\"MnemonicMatrix\"))).setParents(\"CENTRIFUGE\").setConcealed().registerResearchItem()"
+  }
+}

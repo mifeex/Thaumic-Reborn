@@ -1,0 +1,7 @@
+{
+  "research":"elementalsword","instability":1,
+  "central":{"item":"thaumic_reborn:thaumium_sword"},
+  "components":[{"item":"thaumic_reborn:air_shard"},{"item":"thaumic_reborn:air_shard"},{"item":"minecraft:diamond"},{"item":"thaumic_reborn:greatwood_log"}],
+  "essentia":{"aer":8,"motus":8,"potentia":8},
+  "result":{"item":"thaumic_reborn:sword_of_the_zephyr","count":1}
+}

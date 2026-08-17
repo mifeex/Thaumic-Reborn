@@ -1,0 +1,53 @@
+{
+  "id": "enterouter",
+  "legacy_id": "ENTEROUTER",
+  "category": "eldritch",
+  "icon": "thaumic_reborn:thaumonomicon",
+  "title": "tc.research_name.ENTEROUTER",
+  "subtitle": "tc.research_text.ENTEROUTER",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "oculus"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "criterion",
+    "id": "thaumic_reborn:legacy_clue/enterouter"
+  },
+  "x": -72,
+  "y": 96,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ENTEROUTER.1"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -3,
+    "y": 4,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_outer.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ENTEROUTER\", \"ELDRITCH\", new AspectList(), -3, 4, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_outer.png\"))).setPages(new ResearchPage(\"tc.research_page.ENTEROUTER.1\")).setStub().setHidden().setRound().setParents(\"OCULUS\").registerResearchItem()"
+  }
+}

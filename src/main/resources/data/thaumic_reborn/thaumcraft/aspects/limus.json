@@ -1,0 +1,10 @@
+{
+  "id": "limus",
+  "order": 270,
+  "color": "01F800",
+  "icon": "thaumic_reborn:textures/aspects/limus.png",
+  "components": [
+    "victus",
+    "aqua"
+  ]
+}

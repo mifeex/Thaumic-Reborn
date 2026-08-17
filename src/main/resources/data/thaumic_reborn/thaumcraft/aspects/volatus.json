@@ -1,0 +1,10 @@
+{
+  "id": "volatus",
+  "order": 180,
+  "color": "E7E7D7",
+  "icon": "thaumic_reborn:textures/aspects/volatus.png",
+  "components": [
+    "aer",
+    "motus"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "id": "primalarrow",
+  "legacy_id": "PRIMALARROW",
+  "category": "artifice",
+  "icon": "thaumic_reborn:aer_primal_arrow",
+  "title": "tc.research_name.PRIMALARROW",
+  "subtitle": "tc.research_text.PRIMALARROW",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "bonebow"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -216,
+  "y": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PRIMALARROW.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_aer"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_ignis"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_aqua"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_terra"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_ordo"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:primal_arrow_perditio"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PRIMALARROW.2"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.PRIMALARROW.3"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -9,
+    "y": 0,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemPrimalArrow, 1, 32767)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "telum",
+        "amount": 3
+      },
+      {
+        "id": "aer",
+        "amount": 3
+      },
+      {
+        "id": "ignis",
+        "amount": 3
+      },
+      {
+        "id": "aqua",
+        "amount": 3
+      },
+      {
+        "id": "terra",
+        "amount": 3
+      },
+      {
+        "id": "ordo",
+        "amount": 3
+      },
+      {
+        "id": "perditio",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "}\n\n      (new ResearchItem(\"PRIMALARROW\", \"ARTIFICE\", (new AspectList()).add(Aspect.WEAPON, 3).add(Aspect.AIR, 3).add(Aspect.FIRE, 3).add(Aspect.WATER, 3).add(Aspect.EARTH, 3).add(Aspect.ORDER, 3).add(Aspect.ENTROPY, 3), -9, 0, 2, new ItemStack(ConfigItems.itemPrimalArrow, 1, 32767))).setPages(new ResearchPage(\"tc.research_page.PRIMALARROW.1\"), new ResearchPage((IArcaneRecipe[])rcbb.toArray(new IArcaneRecipe[0])), new ResearchPage(\"tc.research_page.PRIMALARROW.2\"), new ResearchPage(\"tc.research_page.PRIMALARROW.3\")).setConcealed().setParents(\"BONEBOW\").registerResearchItem()"
+  }
+}

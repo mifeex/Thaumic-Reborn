@@ -1,0 +1,6 @@
+{
+  "type": "phenomenon",
+  "target": "thaumic_reborn:aura_node",
+  "display": "block.thaumic_reborn.aura_node",
+  "aspects": []
+}

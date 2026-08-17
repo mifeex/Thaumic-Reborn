@@ -37,7 +37,7 @@ final class ItemAspectRegistryTest {
         assertTrue(!source.contains("ItemAspectDefinition"));
 
         Path legacyDirectory = Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/item_aspects"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/item_aspects"
         );
         if (Files.isDirectory(legacyDirectory)) {
             try (Stream<Path> files = Files.list(legacyDirectory)) {

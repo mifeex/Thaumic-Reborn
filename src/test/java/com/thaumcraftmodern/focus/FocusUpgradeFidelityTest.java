@@ -26,7 +26,7 @@ class FocusUpgradeFidelityTest {
     }
 
     @Test void remainingFocusAssetsAndInfusionVerticalsArePresent() {
-        Path assets = Path.of("src/main/resources/assets/thaumcraftmodern");
+        Path assets = Path.of("src/main/resources/assets/thaumic_reborn");
         assertTrue(Files.isRegularFile(assets.resolve("textures/item/focus_hellbat.png")));
         assertTrue(Files.isRegularFile(assets.resolve("textures/item/focus_portablehole.png")));
         assertTrue(Files.isRegularFile(assets.resolve("textures/item/focus_warding.png")));
@@ -34,11 +34,11 @@ class FocusUpgradeFidelityTest {
         assertTrue(Files.isRegularFile(assets.resolve("textures/block/wandtable_inventory.png")));
         try {
             String model = Files.readString(assets.resolve("models/block/focal_manipulator.json"));
-            assertTrue(model.contains("thaumcraftmodern:block/wandtable_inventory"));
+            assertTrue(model.contains("thaumic_reborn:block/wandtable_inventory"));
         } catch (java.io.IOException exception) {
             throw new AssertionError(exception);
         }
-        Path infusion = Path.of("src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes");
+        Path infusion = Path.of("src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes");
         assertTrue(Files.isRegularFile(infusion.resolve("focus_hellbat.json")));
         assertTrue(Files.isRegularFile(infusion.resolve("focus_portable_hole.json")));
         assertTrue(Files.isRegularFile(infusion.resolve("focus_warding.json")));

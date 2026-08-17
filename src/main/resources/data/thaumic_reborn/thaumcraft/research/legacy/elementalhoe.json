@@ -1,0 +1,71 @@
+{
+  "id": "elementalhoe",
+  "legacy_id": "ELEMENTALHOE",
+  "category": "artifice",
+  "icon": "thaumic_reborn:hoe_of_growth",
+  "title": "tc.research_name.ELEMENTALHOE",
+  "subtitle": "tc.research_text.ELEMENTALHOE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "thaumium",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -168,
+  "y": 168,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ELEMENTALHOE.1"
+    },
+    {
+      "type":"infusion","title":"recipe.type.infusion","output":"thaumic_reborn:hoe_of_growth","central":"thaumic_reborn:thaumium_hoe",
+      "components":[{"item":"thaumic_reborn:order_shard","count":1},{"item":"thaumic_reborn:entropy_shard","count":1},{"item":"minecraft:diamond","count":1},{"item":"thaumic_reborn:greatwood_log","count":1}],
+      "aspect_costs":[{"id":"meto","amount":8},{"id":"herba","amount":8},{"id":"terra","amount":8}],"instability":"minor","detail":"tc.research_text.ELEMENTALHOE"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -7,
+    "y": 7,
+    "complexity": 2,
+    "icon_raw": "new ItemStack(ConfigItems.itemHoeElemental)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 3
+      },
+      {
+        "id": "victus",
+        "amount": 3
+      },
+      {
+        "id": "messis",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ELEMENTALHOE\", \"ARTIFICE\", (new AspectList()).add(Aspect.TOOL, 3).add(Aspect.LIFE, 3).add(Aspect.CROP, 3), -7, 7, 2, new ItemStack(ConfigItems.itemHoeElemental))).setPages(new ResearchPage(\"tc.research_page.ELEMENTALHOE.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"ElementalHoe\"))).setParents(\"THAUMIUM\", \"INFUSION\").setConcealed().registerResearchItem()"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "wardedarcana",
+  "vis": {
+    "aqua": 20,
+    "ordo": 10,
+    "terra": 10,
+    "ignis": 5
+  },
+  "pattern": [
+    "TDT",
+    "DBD",
+    "TDT"
+  ],
+  "key": {
+    "T": {
+      "tag": "forge:ingots/thaumium"
+    },
+    "B": {
+      "item": "thaumic_reborn:zombie_brain"
+    },
+    "D": {
+      "item": "thaumic_reborn:greatwood_planks"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:arcane_door"
+  }
+}

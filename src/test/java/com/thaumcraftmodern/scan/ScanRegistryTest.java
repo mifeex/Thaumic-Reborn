@@ -34,17 +34,17 @@ class ScanRegistryTest {
     void serializedDefinitionsPreserveSharedKnowledgeKey() {
         ScanDefinition pennant = new ScanDefinition(
                 ScanTargetType.ITEM_TAG,
-                "thaumcraftmodern:thaumcraft_banners",
+                "thaumic_reborn:thaumcraft_banners",
                 "",
                 List.of(new AspectReward("pannus", 3)),
-                "thaumcraftmodern:vanilla_banners"
+                "thaumic_reborn:vanilla_banners"
         );
         ScanRegistry.replace(List.of(pennant));
 
         ScanDefinition restored = ScanRegistry.deserialize(ScanRegistry.serialize()).get(0);
 
-        assertEquals("item_tag:thaumcraftmodern:thaumcraft_banners", restored.scanKey());
-        assertEquals("thaumcraftmodern:vanilla_banners", restored.knowledgeKey());
+        assertEquals("item_tag:thaumic_reborn:thaumcraft_banners", restored.scanKey());
+        assertEquals("thaumic_reborn:vanilla_banners", restored.knowledgeKey());
     }
 
     @Test
@@ -54,12 +54,12 @@ class ScanRegistryTest {
                 "minecraft:andesite_slab",
                 "",
                 List.of(new AspectReward("terra", 2)),
-                "block_tag:thaumcraftmodern:andesite_family"
+                "block_tag:thaumic_reborn:andesite_family"
         );
         ScanRegistry.replace(List.of(familyMember));
 
         assertEquals(
-                "block_tag:thaumcraftmodern:andesite_family",
+                "block_tag:thaumic_reborn:andesite_family",
                 ScanRegistry.knowledgeKey(
                         ScanTargetType.BLOCK,
                         "minecraft:andesite_slab"
@@ -96,7 +96,7 @@ class ScanRegistryTest {
         );
         ScanDefinition graniteFamily = new ScanDefinition(
                 ScanTargetType.BLOCK_TAG,
-                "thaumcraftmodern:granite_family",
+                "thaumic_reborn:granite_family",
                 "",
                 List.of(new AspectReward("terra", 2), new AspectReward("ignis", 2))
         );
@@ -116,11 +116,11 @@ class ScanRegistryTest {
                 "minecraft:beds",
                 "",
                 List.of(new AspectReward("pannus", 9)),
-                "thaumcraftmodern:vanilla_beds"
+                "thaumic_reborn:vanilla_beds"
         );
 
         assertEquals(
-                "thaumcraftmodern:vanilla_beds",
+                "thaumic_reborn:vanilla_beds",
                 ScanRegistry.resolvedKnowledgeKey(
                         beds,
                         ScanTargetType.BLOCK,
@@ -168,8 +168,8 @@ class ScanRegistryTest {
     void phenomenonDefinitionKeepsStableNodeScanKeyAcrossSync() {
         ScanDefinition node = new ScanDefinition(
                 ScanTargetType.PHENOMENON,
-                "thaumcraftmodern:aura_node",
-                "block.thaumcraftmodern.aura_node",
+                "thaumic_reborn:aura_node",
+                "block.thaumic_reborn.aura_node",
                 List.of()
         );
         ScanRegistry.replace(List.of(node));
@@ -179,7 +179,7 @@ class ScanRegistryTest {
 
         assertEquals(node, restored);
         assertEquals(
-                "phenomenon:thaumcraftmodern:aura_node",
+                "phenomenon:thaumic_reborn:aura_node",
                 restored.scanKey()
         );
     }
@@ -235,15 +235,15 @@ class ScanRegistryTest {
     @Test
     void deepslateInfusedStoneUsesTheOrdinaryOreScanKey() {
         assertEquals(
-                "thaumcraftmodern:air_infused_stone",
+                "thaumic_reborn:air_infused_stone",
                 ScanRegistry.canonicalBlockId(
-                        "thaumcraftmodern:deepslate_air_infused_stone"
+                        "thaumic_reborn:deepslate_air_infused_stone"
                 )
         );
         assertEquals(
-                "thaumcraftmodern:entropy_infused_stone",
+                "thaumic_reborn:entropy_infused_stone",
                 ScanRegistry.canonicalBlockId(
-                        "thaumcraftmodern:deepslate_entropy_infused_stone"
+                        "thaumic_reborn:deepslate_entropy_infused_stone"
                 )
         );
     }

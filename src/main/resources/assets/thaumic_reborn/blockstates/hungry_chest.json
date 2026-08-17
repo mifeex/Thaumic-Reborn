@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "thaumic_reborn:block/hungry_chest", "y": 180 },
+    "facing=south": { "model": "thaumic_reborn:block/hungry_chest" },
+    "facing=west": { "model": "thaumic_reborn:block/hungry_chest", "y": 90 },
+    "facing=east": { "model": "thaumic_reborn:block/hungry_chest", "y": 270 }
+  }
+}

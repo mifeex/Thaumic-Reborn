@@ -1,0 +1,20 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "enchfabric",
+  "vis": {
+    "aqua": 5
+  },
+  "pattern": [
+    "III",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumic_reborn:enchanted_fabric"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:thaumaturge_leggings"
+  }
+}

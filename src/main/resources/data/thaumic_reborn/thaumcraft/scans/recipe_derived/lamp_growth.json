@@ -1,0 +1,34 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:lamp_growth",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 4
+    },
+    {
+      "id": "lucrum",
+      "amount": 3
+    },
+    {
+      "id": "sensus",
+      "amount": 1
+    },
+    {
+      "id": "praecantatio",
+      "amount": 1
+    },
+    {
+      "id": "terra",
+      "amount": 3
+    },
+    {
+      "id": "vitreus",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/lamp_growth.json"
+}

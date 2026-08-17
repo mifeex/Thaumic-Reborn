@@ -1,6 +1,0 @@
-{
-  "type": "minecraft:crafting_shaped",
-  "pattern": ["#", "#"],
-  "key": {"#": {"item": "thaumcraftmodern:cinderpearl"}},
-  "result": {"item": "minecraft:blaze_powder", "count": 1}
-}

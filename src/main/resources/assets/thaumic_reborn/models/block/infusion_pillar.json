@@ -1,0 +1,7 @@
+{
+  "parent":"minecraft:block/block",
+  "textures":{"all":"thaumic_reborn:block/pillar","particle":"thaumic_reborn:block/pillar"},
+  "elements":[
+    {"from":[3,0,3],"to":[13,16,13],"faces":{"down":{"texture":"#all"},"up":{"texture":"#all"},"north":{"texture":"#all"},"south":{"texture":"#all"},"west":{"texture":"#all"},"east":{"texture":"#all"}}}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "thaumic_reborn:block/arcane_ear_off"
+    },
+    "powered=true": {
+      "model": "thaumic_reborn:block/arcane_ear_on"
+    }
+  }
+}

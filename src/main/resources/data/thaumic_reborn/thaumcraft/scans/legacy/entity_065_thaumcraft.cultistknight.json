@@ -1,0 +1,40 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:crimson_knight",
+  "display": "",
+  "aspects": [
+    {
+      "id": "alienis",
+      "amount": 1
+    },
+    {
+      "id": "humanus",
+      "amount": 2
+    },
+    {
+      "id": "perditio",
+      "amount": 1
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.CultistKnight",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "alienis",
+        "amount": 1
+      },
+      {
+        "id": "humanus",
+        "amount": 2
+      },
+      {
+        "id": "perditio",
+        "amount": 1
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.CultistKnight\", (new AspectList()).add(Aspect.ELDRITCH, 1).add(Aspect.MAN, 2).add(Aspect.ENTROPY, 1))"
+  }
+}

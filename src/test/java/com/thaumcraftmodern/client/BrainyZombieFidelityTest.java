@@ -17,7 +17,7 @@ class BrainyZombieFidelityTest {
     @Test
     void dedicatedRendererUsesExactClassicBrainyTexture() throws Exception {
         Path texture = Path.of(
-                "src/main/resources/assets/thaumcraftmodern/textures/entity/"
+                "src/main/resources/assets/thaumic_reborn/textures/entity/"
                         + "models/bzombie.png"
         );
         byte[] digest = MessageDigest.getInstance("SHA-256")
@@ -72,11 +72,11 @@ class BrainyZombieFidelityTest {
         );
         assertTrue(mappings.contains(
                 "\"Thaumcraft.BrainyZombie\", "
-                        + "\"thaumcraftmodern:angry_zombie\""
+                        + "\"thaumic_reborn:angry_zombie\""
         ));
         assertTrue(mappings.contains(
                 "\"Thaumcraft.GiantBrainyZombie\", "
-                        + "\"thaumcraftmodern:furious_zombie\""
+                        + "\"thaumic_reborn:furious_zombie\""
         ));
     }
 

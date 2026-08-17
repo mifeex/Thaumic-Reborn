@@ -1,0 +1,10 @@
+{
+  "id": "lucrum",
+  "order": 430,
+  "color": "E6BE44",
+  "icon": "thaumic_reborn:textures/aspects/lucrum.png",
+  "components": [
+    "humanus",
+    "fames"
+  ]
+}

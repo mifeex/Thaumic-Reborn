@@ -1,0 +1,88 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": true,
+  "textures": {
+    "worktable": "thaumic_reborn:block/worktable",
+    "particle": "thaumic_reborn:block/worktable"
+  },
+  "elements": [
+    {
+      "name": "top",
+      "from": [0, 8, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "west": {"uv": [0, 4, 2, 6], "texture": "#worktable"},
+        "north": {"uv": [2, 4, 4, 6], "texture": "#worktable"},
+        "east": {"uv": [4, 4, 6, 6], "texture": "#worktable"},
+        "south": {"uv": [6, 4, 8, 6], "texture": "#worktable"},
+        "up": {"uv": [2, 0, 4, 4], "texture": "#worktable"},
+        "down": {"uv": [4, 0, 6, 4], "texture": "#worktable"}
+      }
+    },
+    {
+      "name": "base",
+      "from": [0, 0, 0],
+      "to": [16, 4, 16],
+      "faces": {
+        "west": {"uv": [0, 12, 2, 13], "texture": "#worktable"},
+        "north": {"uv": [2, 12, 4, 13], "texture": "#worktable"},
+        "east": {"uv": [4, 12, 6, 13], "texture": "#worktable"},
+        "south": {"uv": [6, 12, 8, 13], "texture": "#worktable"},
+        "up": {"uv": [2, 8, 4, 12], "texture": "#worktable"},
+        "down": {"uv": [4, 8, 6, 12], "texture": "#worktable"}
+      }
+    },
+    {
+      "name": "north_west_leg",
+      "from": [1, 4, 1],
+      "to": [5, 8, 5],
+      "faces": {
+        "west": {"uv": [9, 1, 9.5, 2], "texture": "#worktable"},
+        "north": {"uv": [9.5, 1, 10, 2], "texture": "#worktable"},
+        "east": {"uv": [10, 1, 10.5, 2], "texture": "#worktable"},
+        "south": {"uv": [10.5, 1, 11, 2], "texture": "#worktable"},
+        "up": {"uv": [9.5, 0, 10, 1], "texture": "#worktable"},
+        "down": {"uv": [10, 0, 10.5, 1], "texture": "#worktable"}
+      }
+    },
+    {
+      "name": "north_east_leg",
+      "from": [11, 4, 1],
+      "to": [15, 8, 5],
+      "faces": {
+        "west": {"uv": [9, 1, 9.5, 2], "texture": "#worktable"},
+        "north": {"uv": [9.5, 1, 10, 2], "texture": "#worktable"},
+        "east": {"uv": [10, 1, 10.5, 2], "texture": "#worktable"},
+        "south": {"uv": [10.5, 1, 11, 2], "texture": "#worktable"},
+        "up": {"uv": [9.5, 0, 10, 1], "texture": "#worktable"},
+        "down": {"uv": [10, 0, 10.5, 1], "texture": "#worktable"}
+      }
+    },
+    {
+      "name": "south_west_leg",
+      "from": [1, 4, 11],
+      "to": [5, 8, 15],
+      "faces": {
+        "west": {"uv": [9, 1, 9.5, 2], "texture": "#worktable"},
+        "north": {"uv": [9.5, 1, 10, 2], "texture": "#worktable"},
+        "east": {"uv": [10, 1, 10.5, 2], "texture": "#worktable"},
+        "south": {"uv": [10.5, 1, 11, 2], "texture": "#worktable"},
+        "up": {"uv": [9.5, 0, 10, 1], "texture": "#worktable"},
+        "down": {"uv": [10, 0, 10.5, 1], "texture": "#worktable"}
+      }
+    },
+    {
+      "name": "south_east_leg",
+      "from": [11, 4, 11],
+      "to": [15, 8, 15],
+      "faces": {
+        "west": {"uv": [9, 1, 9.5, 2], "texture": "#worktable"},
+        "north": {"uv": [9.5, 1, 10, 2], "texture": "#worktable"},
+        "east": {"uv": [10, 1, 10.5, 2], "texture": "#worktable"},
+        "south": {"uv": [10.5, 1, 11, 2], "texture": "#worktable"},
+        "up": {"uv": [9.5, 0, 10, 1], "texture": "#worktable"},
+        "down": {"uv": [10, 0, 10.5, 1], "texture": "#worktable"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "research": "purecopper",
+  "catalyst": {
+    "tag": "forge:ores/copper"
+  },
+  "output": {
+    "item": "thaumic_reborn:native_copper_cluster"
+  },
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "legacy_id": "PureCopper"
+}

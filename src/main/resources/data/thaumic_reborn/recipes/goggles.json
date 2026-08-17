@@ -1,0 +1,31 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "goggles",
+  "vis": {
+    "aer": 5,
+    "ignis": 5,
+    "aqua": 5,
+    "terra": 5,
+    "perditio": 3,
+    "ordo": 3
+  },
+  "pattern": [
+    "LGL",
+    "L L",
+    "TGT"
+  ],
+  "key": {
+    "T": {
+      "item": "thaumic_reborn:thaumometer"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:goggles_of_revealing"
+  }
+}

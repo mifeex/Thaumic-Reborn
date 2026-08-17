@@ -14,14 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 final class RequestedClassicResearchIconFidelityTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
     );
     private static final Path ORIGINAL_TEXTURES = Path.of(
             "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/"
                     + "assets/thaumcraft/textures"
     );
     private static final Path MODERN_TEXTURES = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures"
+            "src/main/resources/assets/thaumic_reborn/textures"
     );
 
     @Test
@@ -36,7 +36,7 @@ final class RequestedClassicResearchIconFidelityTest {
             JsonObject research = read(entry.getKey());
             assertFalse(research.has("icon"), entry.getKey());
             assertEquals(
-                    "thaumcraftmodern:textures/" + entry.getValue(),
+                    "thaumic_reborn:textures/" + entry.getValue(),
                     research.get("icon_resource").getAsString(),
                     entry.getKey()
             );
@@ -52,7 +52,7 @@ final class RequestedClassicResearchIconFidelityTest {
     void researchTableKeepsOriginalBlockTableMetadataOneEquivalent()
             throws Exception {
         JsonObject research = read("restable");
-        assertEquals("thaumcraftmodern:research_table",
+        assertEquals("thaumic_reborn:research_table",
                 research.get("icon").getAsString());
         assertEquals("new ItemStack(ConfigBlocks.blockTable, 1, 1)",
                 research.getAsJsonObject("legacy")

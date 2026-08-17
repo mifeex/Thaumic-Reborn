@@ -42,7 +42,7 @@ final class ResearchTableClassicAspectOrderTest {
                 "volatus"
         );
         Path aspects = Path.of(
-                "src/main/resources/data/thaumcraftmodern/thaumcraft/aspects"
+                "src/main/resources/data/thaumic_reborn/thaumcraft/aspects"
         );
         List<String> actual;
         try (var files = Files.list(aspects)) {

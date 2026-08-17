@@ -21,10 +21,10 @@ final class LegacyArcaneRecipeContentTest {
             "data/legacy_tc4_4_2_3_5/modern_migration/arcane_recipes.json"
     );
     private static final Path RECIPES = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/recipes"
+            "src/main/resources/data/thaumic_reborn/recipes"
     );
     private static final Path RESEARCH = ROOT.resolve(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research"
     );
 
     @Test

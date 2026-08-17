@@ -29,9 +29,9 @@ public final class EssentiaResonatorItem extends Item {
                         .findFirst().orElseGet(() -> buffer.supplyContents()
                                 .keySet().stream().findFirst().orElse(""));
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.resonator.advanced",
+                        "message.thaumic_reborn.resonator.advanced",
                         Component.translatable(
-                                "state.thaumcraftmodern.advanced_buffer."
+                                "state.thaumic_reborn.advanced_buffer."
                                         + buffer.flowState().name().toLowerCase()),
                         buffer.totalAmount(),
                         aspect.isBlank()
@@ -41,11 +41,11 @@ public final class EssentiaResonatorItem extends Item {
                         false);
                 Direction clickedSide = context.getClickedFace();
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.resonator.advanced_side",
+                        "message.thaumic_reborn.resonator.advanced_side",
                         Component.translatable("direction.minecraft."
                                 + clickedSide.getName()),
                         Component.translatable(
-                                "message.thaumcraftmodern.advanced_buffer.role."
+                                "message.thaumic_reborn.advanced_buffer.role."
                                         + buffer.role(clickedSide).name()
                                                 .toLowerCase()),
                         buffer.suctionAmount(clickedSide),
@@ -62,7 +62,7 @@ public final class EssentiaResonatorItem extends Item {
                 String aspect = transport.essentiaType(side);
                 String suction = transport.suctionType(side);
                 player.displayClientMessage(Component.translatable(
-                        "message.thaumcraftmodern.resonator.transport",
+                        "message.thaumic_reborn.resonator.transport",
                         transport.essentiaAmount(side),
                         aspect == null
                                 ? Component.translatable("tc.resonator3")

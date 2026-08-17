@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "thaumcraftmodern:item/thaumaturge_robe",
-    "layer1": "thaumcraftmodern:item/thaumaturge_robe_overlay"
-  }
-}

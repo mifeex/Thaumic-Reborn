@@ -1,7 +1,0 @@
-{
-  "research":"elementalshovel","instability":1,
-  "central":{"item":"thaumcraftmodern:thaumium_shovel"},
-  "components":[{"item":"thaumcraftmodern:earth_shard"},{"item":"thaumcraftmodern:earth_shard"},{"item":"minecraft:diamond"},{"item":"thaumcraftmodern:greatwood_log"}],
-  "essentia":{"terra":16,"fabrico":8},
-  "result":{"item":"thaumcraftmodern:shovel_of_the_earthmover","count":1}
-}

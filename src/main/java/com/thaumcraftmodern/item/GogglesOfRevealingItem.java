@@ -57,6 +57,6 @@ public final class GogglesOfRevealingItem extends ArmorItem
             EquipmentSlot slot,
             String type
     ) {
-        return "thaumcraftmodern:textures/models/goggles.png";
+        return "thaumic_reborn:textures/models/goggles.png";
     }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "coregather",
+  "vis": {
+    "ordo": 5,
+    "ignis": 5
+  },
+  "pattern": [
+    " C ",
+    "CNC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:brick"
+    },
+    "N": {
+      "item": "thaumic_reborn:nitor"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:blank_golem_core"
+  }
+}

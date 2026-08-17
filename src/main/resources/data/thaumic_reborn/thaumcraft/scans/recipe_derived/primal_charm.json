@@ -1,0 +1,50 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:primal_charm",
+  "display": "",
+  "aspects": [
+    {
+      "id": "praecantatio",
+      "amount": 4
+    },
+    {
+      "id": "aer",
+      "amount": 8
+    },
+    {
+      "id": "vitreus",
+      "amount": 5
+    },
+    {
+      "id": "ignis",
+      "amount": 8
+    },
+    {
+      "id": "aqua",
+      "amount": 8
+    },
+    {
+      "id": "metallum",
+      "amount": 4
+    },
+    {
+      "id": "lucrum",
+      "amount": 3
+    },
+    {
+      "id": "terra",
+      "amount": 8
+    },
+    {
+      "id": "ordo",
+      "amount": 8
+    },
+    {
+      "id": "perditio",
+      "amount": 8
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/primal_charm.json"
+}

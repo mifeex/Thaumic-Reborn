@@ -1,0 +1,42 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:sanity_checker",
+  "display": "",
+  "aspects": [
+    {
+      "id": "metallum",
+      "amount": 1
+    },
+    {
+      "id": "ignis",
+      "amount": 2
+    },
+    {
+      "id": "terra",
+      "amount": 2
+    },
+    {
+      "id": "corpus",
+      "amount": 1
+    },
+    {
+      "id": "cognitio",
+      "amount": 3
+    },
+    {
+      "id": "exanimis",
+      "amount": 1
+    },
+    {
+      "id": "vitreus",
+      "amount": 3
+    },
+    {
+      "id": "lucrum",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/sanity_checker.json"
+}

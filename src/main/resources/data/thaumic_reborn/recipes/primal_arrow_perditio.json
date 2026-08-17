@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "primalarrow",
+  "vis": {
+    "perditio": 8
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "S": {
+      "item": "thaumic_reborn:entropy_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:perditio_primal_arrow",
+    "count": 8
+  }
+}

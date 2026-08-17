@@ -1,0 +1,11 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:arcane_stone_slab",
+  "display": "",
+  "aspects": [
+    { "id": "terra", "amount": 1 },
+    { "id": "praecantatio", "amount": 1 }
+  ],
+  "inactive": false,
+  "legacy_equivalent": "ConfigBlocks.blockSlabStone metadata 0"
+}

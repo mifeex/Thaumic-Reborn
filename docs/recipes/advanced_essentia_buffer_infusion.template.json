@@ -1,10 +1,10 @@
 {
   "status": "ingredients_pending_user_selection",
   "executable": false,
-  "machine": "thaumcraftmodern:runic_matrix",
-  "central": "thaumcraftmodern:essentia_buffer",
+  "machine": "thaumic_reborn:runic_matrix",
+  "central": "thaumic_reborn:essentia_buffer",
   "output": {
-    "item": "thaumcraftmodern:advanced_essentia_buffer",
+    "item": "thaumic_reborn:advanced_essentia_buffer",
     "count": 1
   },
   "components": [],

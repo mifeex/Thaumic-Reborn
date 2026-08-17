@@ -1,0 +1,15 @@
+{
+  "research": "alumentum",
+  "catalyst": {
+    "tag": "minecraft:coals"
+  },
+  "output": {
+    "item": "thaumic_reborn:alumentum"
+  },
+  "aspects": {
+    "potentia": 3,
+    "ignis": 3,
+    "perditio": 3
+  },
+  "legacy_id": "Alumentum"
+}

@@ -16,7 +16,7 @@ final class WispZapRendererFidelityTest {
                     + "ClientWispZapRenderer.java"
     );
     private static final Path TEXTURES = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/misc"
+            "src/main/resources/assets/thaumic_reborn/textures/misc"
     );
 
     @Test

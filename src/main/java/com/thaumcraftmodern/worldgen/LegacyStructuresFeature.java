@@ -43,12 +43,12 @@ public final class LegacyStructuresFeature
         extends Feature<NoneFeatureConfiguration> {
     private static final ResourceLocation TOWER_LOOT =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "chests/wizard_tower"
             );
     private static final ResourceLocation HILLTOP_STONES_LOOT =
             new ResourceLocation(
-                    "thaumcraftmodern",
+                    "thaumic_reborn",
                     "chests/hilltop_stones"
             );
 

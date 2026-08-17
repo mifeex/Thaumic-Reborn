@@ -36,8 +36,8 @@ final class ClientThaumometerNodeDisclosureTest {
         Component description =
                 ClientThaumometerTarget.nodeDescription(node, true);
         assertEquals(
-                "node_type.thaumcraftmodern.dark, "
-                        + "node_modifier.thaumcraftmodern.pale",
+                "node_type.thaumic_reborn.dark, "
+                        + "node_modifier.thaumic_reborn.pale",
                 description.getString()
         );
     }
@@ -49,7 +49,7 @@ final class ClientThaumometerNodeDisclosureTest {
         ).snapshot();
 
         assertEquals(
-                "node_type.thaumcraftmodern.normal",
+                "node_type.thaumic_reborn.normal",
                 ClientThaumometerTarget.nodeDescription(node, true).getString()
         );
     }

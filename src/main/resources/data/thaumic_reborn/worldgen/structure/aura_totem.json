@@ -1,0 +1,7 @@
+{
+  "type": "thaumic_reborn:legacy_world_structure",
+  "biomes": "#thaumic_reborn:has_legacy_structures",
+  "kind": "aura_totem",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public record AuraNodeScanIdentity(UUID nodeId) {
     public static final ResourceLocation TARGET_ID = new ResourceLocation(
-            "thaumcraftmodern",
+            "thaumic_reborn",
             "aura_node"
     );
     public static final String SCAN_KEY = "phenomenon:" + TARGET_ID;

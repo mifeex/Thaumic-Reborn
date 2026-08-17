@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 final class InfusionAltarResearchRecipeTest {
     private static final Path RESEARCH = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy/infusion.json"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy/infusion.json"
     );
 
     @Test
@@ -22,7 +22,7 @@ final class InfusionAltarResearchRecipeTest {
         InfusionAltarResearchRecipe.Snapshot recipe =
                 InfusionAltarResearchRecipe.snapshot();
 
-        assertEquals("thaumcraftmodern:infusion_altar_construct",
+        assertEquals("thaumic_reborn:infusion_altar_construct",
                 InfusionAltarResearchRecipe.ID.toString());
         assertEquals(3, recipe.width());
         assertEquals(3, recipe.height());
@@ -57,7 +57,7 @@ final class InfusionAltarResearchRecipeTest {
         assertEquals("recipe", type(pages, 2));
         assertEquals("text", type(pages, 3));
         assertEquals("compound_crafting", type(pages, 4));
-        assertEquals("thaumcraftmodern:infusion_altar_construct",
+        assertEquals("thaumic_reborn:infusion_altar_construct",
                 pages.get(4).getAsJsonObject().get("recipe").getAsString());
         assertEquals("text", type(pages, 5));
         assertEquals("text", type(pages, 6));

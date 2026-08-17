@@ -18,7 +18,7 @@ final class ArcanePedestalShapeTest {
                 "src/main/java/com/thaumcraftmodern/world/block/ArcanePedestalBlock.java"
         ));
         JsonObject model = JsonParser.parseString(Files.readString(Path.of(
-                "src/main/resources/assets/thaumcraftmodern/models/block/arcane_pedestal.json"
+                "src/main/resources/assets/thaumic_reborn/models/block/arcane_pedestal.json"
         ))).getAsJsonObject();
         JsonArray elements = model.getAsJsonArray("elements");
 

@@ -1,0 +1,7 @@
+{
+  "research":"bootstraveller","instability":1,
+  "central":{"item":"minecraft:leather_boots"},
+  "components":[{"item":"thaumic_reborn:air_shard"},{"item":"thaumic_reborn:air_shard"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"minecraft:feather"},{"tag":"thaumic_reborn:raw_fishes"}],
+  "essentia":{"volatus":25,"iter":25},
+  "result":{"item":"thaumic_reborn:boots_of_the_traveller","count":1}
+}

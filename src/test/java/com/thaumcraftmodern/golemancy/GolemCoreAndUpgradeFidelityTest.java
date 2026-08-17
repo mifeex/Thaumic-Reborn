@@ -40,10 +40,10 @@ final class GolemCoreAndUpgradeFidelityTest {
         for (GolemCoreType core : GolemCoreType.values()) {
             String texture = "golem_core_" + core.textureId() + ".png";
             assertEquals(sha1(ORIGINAL.resolve(texture)),
-                    sha1(RESOURCES.resolve("assets/thaumcraftmodern/textures/item/" + texture)), core.id());
+                    sha1(RESOURCES.resolve("assets/thaumic_reborn/textures/item/" + texture)), core.id());
             assertEquals(Files.readString(ORIGINAL.resolve(texture + ".mcmeta")).replaceAll("\\s", ""),
                     Files.readString(RESOURCES.resolve(
-                            "assets/thaumcraftmodern/textures/item/" + texture + ".mcmeta")).replaceAll("\\s", ""),
+                            "assets/thaumic_reborn/textures/item/" + texture + ".mcmeta")).replaceAll("\\s", ""),
                     core.id() + " animation metadata");
         }
     }
@@ -51,9 +51,9 @@ final class GolemCoreAndUpgradeFidelityTest {
     @Test void everyCoreResearchIsActiveAndShowsExecutableRecipe() throws IOException {
         for (GolemCoreType core : GolemCoreType.values()) {
             String researchId = "core" + core.id();
-            JsonObject research = json("data/thaumcraftmodern/thaumcraft/research/legacy/" + researchId + ".json");
+            JsonObject research = json("data/thaumic_reborn/thaumcraft/research/legacy/" + researchId + ".json");
             assertFalse(research.get("inactive").getAsBoolean(), researchId);
-            assertEquals("thaumcraftmodern:" + core.id() + "_golem_core", research.get("icon").getAsString());
+            assertEquals("thaumic_reborn:" + core.id() + "_golem_core", research.get("icon").getAsString());
             assertTrue(research.getAsJsonArray("pages").asList().stream()
                     .map(element -> element.getAsJsonObject())
                     .anyMatch(page -> {
@@ -136,7 +136,7 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(screen.contains("hoveredFilterView")),
                 () -> assertTrue(screen.contains("graphics.renderTooltip(font, icon")),
                 () -> assertEquals(sha1(ORIGINAL_GUI), sha1(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/gui/guigolem.png"))));
+                        "assets/thaumic_reborn/textures/gui/guigolem.png"))));
     }
 
     @Test void golemBellKeepsOriginalMarkerContractAndWorldUi() throws Exception {
@@ -148,8 +148,8 @@ final class GolemCoreAndUpgradeFidelityTest {
                 "src/main/java/com/thaumcraftmodern/client/GolemBellRenderTypes.java"));
         String creative = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/registry/ModCreativeTabs.java"));
-        JsonObject research = json("data/thaumcraftmodern/thaumcraft/research/legacy/golembell.json");
-        JsonObject recipe = json("data/thaumcraftmodern/recipes/golem_bell.json");
+        JsonObject research = json("data/thaumic_reborn/thaumcraft/research/legacy/golembell.json");
+        JsonObject recipe = json("data/thaumic_reborn/recipes/golem_bell.json");
         Path originalAssets = Path.of(
                 "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures");
         assertAll(
@@ -192,14 +192,14 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(renderer.contains("renderBellStatus(RenderGuiEvent.Post event)")),
                 () -> assertTrue(creative.contains("get(\"golem_bell\").get()")),
                 () -> assertFalse(research.get("inactive").getAsBoolean()),
-                () -> assertEquals("thaumcraftmodern:golem_bell",
+                () -> assertEquals("thaumic_reborn:golem_bell",
                         recipe.getAsJsonObject("result").get("item").getAsString()),
                 () -> assertEquals(sha1(originalAssets.resolve("misc/mark.png")), sha1(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/misc/mark.png"))),
+                        "assets/thaumic_reborn/textures/misc/mark.png"))),
                 () -> assertEquals(sha1(originalAssets.resolve("misc/home.png")), sha1(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/misc/home.png"))),
+                        "assets/thaumic_reborn/textures/misc/home.png"))),
                 () -> assertEquals(sha1(originalAssets.resolve("blocks/empty.png")), sha1(RESOURCES.resolve(
-                        "assets/thaumcraftmodern/textures/block/empty.png"))));
+                        "assets/thaumic_reborn/textures/block/empty.png"))));
     }
 
     private static JsonObject json(String path) throws IOException {

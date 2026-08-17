@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL12;
 final class GolemBellRenderTypes extends RenderStateShard {
     private static final TexturingStateShard REPEATING_SCRIPT =
             new TexturingStateShard(
-                    "thaumcraftmodern_repeating_golem_script",
+                    "thaumic_reborn_repeating_golem_script",
                     () -> RenderSystem.texParameter(
                             GL11.GL_TEXTURE_2D,
                             GL11.GL_TEXTURE_WRAP_S,
@@ -28,7 +28,7 @@ final class GolemBellRenderTypes extends RenderStateShard {
             );
 
     private GolemBellRenderTypes() {
-        super("thaumcraftmodern_golem_bell_render_types", () -> { }, () -> { });
+        super("thaumic_reborn_golem_bell_render_types", () -> { }, () -> { });
     }
 
     static RenderType overlay(String name, ResourceLocation texture) {

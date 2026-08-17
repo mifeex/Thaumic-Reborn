@@ -2,7 +2,7 @@
 
 Дата экспорта: 2026-07-28  
 Корень проекта: `/Users/evgenii/Documents/ThaumcraftModern`  
-Текущая workspace-версия: `thaumcraftmodern-1.4.24`  
+Текущая workspace-версия: `thaumic_reborn-1.4.24`  
 Minecraft: `1.20.1`  
 Forge: `47.4.10`  
 Java: `17`
@@ -272,19 +272,19 @@ Thaumcraft 4.2.3.5 для Minecraft 1.7.10.
 
 Категории:
 
-`src/main/resources/data/thaumcraftmodern/thaumcraft/categories`
+`src/main/resources/data/thaumic_reborn/thaumcraft/categories`
 
 Исследования:
 
-`src/main/resources/data/thaumcraftmodern/thaumcraft/research`
+`src/main/resources/data/thaumic_reborn/thaumcraft/research`
 
 Классические импортированные исследования:
 
-`src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy`
+`src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy`
 
 Рецепты:
 
-`src/main/resources/data/thaumcraftmodern/recipes`
+`src/main/resources/data/thaumic_reborn/recipes`
 
 Аспекты и scan definitions находятся в data-разделе ThaumcraftModern; точные
 пути и JSON-поля перечислены в `docs/CONTENT_EDITING_GUIDE_RU.md`.
@@ -293,10 +293,10 @@ Thaumcraft 4.2.3.5 для Minecraft 1.7.10.
 
 Собранный JAR:
 
-`/Users/evgenii/Documents/ThaumcraftModern/build/libs/thaumcraftmodern-1.4.24.jar`
+`/Users/evgenii/Documents/ThaumcraftModern/build/libs/thaumic_reborn-1.4.24.jar`
 
 Новая версия не устанавливалась вне workspace. Последней ранее установленной
-сборкой остаётся `thaumcraftmodern-1.4.22.jar`.
+сборкой остаётся `thaumic_reborn-1.4.22.jar`.
 
 SHA-256 на момент экспорта:
 

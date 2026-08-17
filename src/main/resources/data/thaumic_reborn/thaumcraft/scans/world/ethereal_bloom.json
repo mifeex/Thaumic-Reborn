@@ -1,0 +1,10 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:ethereal_bloom",
+  "display":"block.thaumic_reborn.ethereal_bloom",
+  "aspects":[
+    {"id":"herba","amount":2},
+    {"id":"sano","amount":2},
+    {"id":"praecantatio","amount":2}
+  ]
+}

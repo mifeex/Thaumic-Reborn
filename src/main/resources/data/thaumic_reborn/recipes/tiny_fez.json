@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyfez",
+  "vis": {
+    "aqua": 4,
+    "terra": 4
+  },
+  "pattern": [
+    "CCS",
+    "CCS",
+    "  S"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:white_wool"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_fez"
+  }
+}

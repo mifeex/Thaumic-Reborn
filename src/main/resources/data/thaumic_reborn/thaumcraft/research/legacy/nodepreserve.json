@@ -1,0 +1,66 @@
+{
+  "id": "nodepreserve",
+  "legacy_id": "NODEPRESERVE",
+  "category": "basics",
+  "icon_resource": "thaumic_reborn:textures/misc/r_nodepreserve.png",
+  "title": "tc.research_name.NODEPRESERVE",
+  "subtitle": "tc.research_text.NODEPRESERVE",
+  "concealed": false,
+  "auto_unlock": false,
+  "parents": [
+    "nodetapper1"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -144,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.NODEPRESERVE"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -6,
+    "y": 2,
+    "complexity": 2,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodepreserve.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "auram",
+        "amount": 3
+      },
+      {
+        "id": "lucrum",
+        "amount": 3
+      },
+      {
+        "id": "sensus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"NODEPRESERVE\", \"BASICS\", (new AspectList()).add(Aspect.AURA, 3).add(Aspect.GREED, 3).add(Aspect.SENSES, 3), -6, 2, 2, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_nodepreserve.png\"))).setPages(new ResearchPage(\"tc.research_page.NODEPRESERVE\")).setParents(\"NODETAPPER1\").setRound().registerResearchItem()"
+  }
+}

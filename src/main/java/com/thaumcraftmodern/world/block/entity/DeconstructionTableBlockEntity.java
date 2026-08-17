@@ -308,7 +308,7 @@ public final class DeconstructionTableBlockEntity extends BlockEntity
     @Override
     public Component getDisplayName() {
         return Component.translatable(
-                "container.thaumcraftmodern.deconstruction_table"
+                "container.thaumic_reborn.deconstruction_table"
         );
     }
 

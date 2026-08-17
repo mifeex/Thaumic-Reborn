@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ThaumaturgeRobeResourceFidelityTest {
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test
@@ -52,10 +52,10 @@ final class ThaumaturgeRobeResourceFidelityTest {
                     ASSETS.resolve("models/item/" + item + ".json")
             );
             assertTrue(model.contains(
-                    "\"layer0\": \"thaumcraftmodern:item/" + item + "\""
+                    "\"layer0\": \"thaumic_reborn:item/" + item + "\""
             ));
             assertTrue(model.contains(
-                    "\"layer1\": \"thaumcraftmodern:item/"
+                    "\"layer1\": \"thaumic_reborn:item/"
                             + item + "_overlay\""
             ));
         }

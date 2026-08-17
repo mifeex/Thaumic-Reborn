@@ -1,0 +1,76 @@
+{
+  "id": "upgradefire",
+  "legacy_id": "UPGRADEFIRE",
+  "category": "golemancy",
+  "icon": "thaumic_reborn:golem_upgrade_ignis",
+  "title": "tc.research_name.UPGRADEFIRE",
+  "subtitle": "tc.research_text.UPGRADEFIRE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "golembell"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 120,
+  "y": -24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.UPGRADEFIRE.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:upgrade_fire"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "ignis",
+      "amount": 6
+    },
+    {
+      "id": "potentia",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": 5,
+    "y": -1,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemGolemUpgrade, 1, 2)",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "ignis",
+        "amount": 6
+      },
+      {
+        "id": "potentia",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"UPGRADEFIRE\", \"GOLEMANCY\", (new AspectList()).add(Aspect.FIRE, 6).add(Aspect.ENERGY, 3), 5, -1, 1, new ItemStack(ConfigItems.itemGolemUpgrade, 1, 2))).setPages(new ResearchPage(\"tc.research_page.UPGRADEFIRE.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"UpgradeFire\"))).setConcealed().setSecondary().setParents(\"GOLEMBELL\").registerResearchItem()"
+  }
+}

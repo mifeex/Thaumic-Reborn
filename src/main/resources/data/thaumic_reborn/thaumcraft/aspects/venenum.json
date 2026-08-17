@@ -1,0 +1,10 @@
+{
+  "id": "venenum",
+  "order": 130,
+  "color": "89F000",
+  "icon": "thaumic_reborn:textures/aspects/venenum.png",
+  "components": [
+    "aqua",
+    "perditio"
+  ]
+}

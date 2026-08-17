@@ -40,7 +40,7 @@ final class ThaumonomiconTransformationRecipeLayoutTest {
     void salisMundusPageRoutesThroughTheSmeltingTransformation()
             throws Exception {
         try (InputStream stream = getClass().getResourceAsStream(
-                "/data/thaumcraftmodern/recipes/salis_mundus.json"
+                "/data/thaumic_reborn/recipes/salis_mundus.json"
         )) {
             assertNotNull(stream);
             JsonObject recipe = JsonParser.parseReader(
@@ -51,7 +51,7 @@ final class ThaumonomiconTransformationRecipeLayoutTest {
                     recipe.get("type").getAsString()
             );
             assertEquals(
-                    "thaumcraftmodern:salis_mundus",
+                    "thaumic_reborn:salis_mundus",
                     recipe.get("result").getAsString()
             );
         }

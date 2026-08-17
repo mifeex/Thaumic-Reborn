@@ -40,7 +40,7 @@ final class ThaumonomiconWarpPresentationFidelityTest {
                 "RESEARCH_WARP_AURA_FRAMES - 1 - animationFrame"
         ));
         assertTrue(source.contains(
-                "tooltip.thaumcraftmodern.research_completion_warp"
+                "tooltip.thaumic_reborn.research_completion_warp"
         ));
         assertTrue(source.contains("research.completionWarp()"));
         assertTrue(source.contains(

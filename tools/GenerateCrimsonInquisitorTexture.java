@@ -8,10 +8,10 @@ import java.nio.file.Path;
  */
 public final class GenerateCrimsonInquisitorTexture {
     private static final Path SOURCE = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/entity/models/cultist_plate_armor.png"
+            "src/main/resources/assets/thaumic_reborn/textures/entity/models/cultist_plate_armor.png"
     );
     private static final Path OUTPUT = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/entity/models/inquisitor_plate_armor.png"
+            "src/main/resources/assets/thaumic_reborn/textures/entity/models/inquisitor_plate_armor.png"
     );
 
     private GenerateCrimsonInquisitorTexture() {

@@ -1,0 +1,7 @@
+{
+  "research":"elementalaxe","instability":1,
+  "central":{"item":"thaumic_reborn:thaumium_axe"},
+  "components":[{"item":"thaumic_reborn:water_shard"},{"item":"thaumic_reborn:water_shard"},{"item":"minecraft:diamond"},{"item":"thaumic_reborn:greatwood_log"}],
+  "essentia":{"aqua":16,"arbor":8},
+  "result":{"item":"thaumic_reborn:axe_of_the_stream","count":1}
+}

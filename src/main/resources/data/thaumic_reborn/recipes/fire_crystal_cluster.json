@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:fire_shard"}
+  ],
+  "result": {"item": "thaumic_reborn:fire_crystal_cluster"}
+}

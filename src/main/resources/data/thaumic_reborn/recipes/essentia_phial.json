@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "G G",
+    " G "
+  ],
+  "key": {
+    "C": { "item": "minecraft:clay_ball" },
+    "G": { "item": "minecraft:glass" }
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_phial",
+    "count": 8
+  }
+}

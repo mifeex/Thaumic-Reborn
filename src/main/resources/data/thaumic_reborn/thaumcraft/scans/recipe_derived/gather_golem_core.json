@@ -1,0 +1,26 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:gather_golem_core",
+  "display": "",
+  "aspects": [
+    {
+      "id": "terra",
+      "amount": 4
+    },
+    {
+      "id": "ignis",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    },
+    {
+      "id": "lucrum",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/coregather.json"
+}

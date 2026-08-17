@@ -73,7 +73,7 @@ sourceSets.main.resources {
 tasks.named('processResources', ProcessResources).configure {
     from('reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/items') {
         include 'phial.png', 'essence.png'
-        into 'assets/thaumcraftmodern/textures/item'
+        into 'assets/thaumic_reborn/textures/item'
     }
     from(zipTree('reference/original/Thaumcraft_1.7.10_4.2.3.5.jar')) {
         include 'assets/thaumcraft/textures/items/bauble_amulet.png',
@@ -88,7 +88,7 @@ tasks.named('processResources', ProcessResources).configure {
         eachFile { details ->
             details.path = details.path.replace(
                     'assets/thaumcraft/textures/items/',
-                    'assets/thaumcraftmodern/textures/item/')
+                    'assets/thaumic_reborn/textures/item/')
         }
         includeEmptyDirs = false
     }
@@ -104,13 +104,13 @@ tasks.named('processResources', ProcessResources).configure {
         eachFile { details ->
             details.path = details.path
                     .replace('assets/thaumcraft/textures/models/',
-                            'assets/thaumcraftmodern/textures/models/')
+                            'assets/thaumic_reborn/textures/models/')
                     .replace('assets/thaumcraft/textures/misc/',
-                            'assets/thaumcraftmodern/textures/misc/')
+                            'assets/thaumic_reborn/textures/misc/')
                     .replace('assets/thaumcraft/sounds/runicShieldEffect.ogg',
-                            'assets/thaumcraftmodern/sounds/runic_shield_effect.ogg')
+                            'assets/thaumic_reborn/sounds/runic_shield_effect.ogg')
                     .replace('assets/thaumcraft/sounds/runicShieldCharge.ogg',
-                            'assets/thaumcraftmodern/sounds/runic_shield_charge.ogg')
+                            'assets/thaumic_reborn/sounds/runic_shield_charge.ogg')
         }
         includeEmptyDirs = false
     }
@@ -125,14 +125,14 @@ tasks.named('processResources', ProcessResources).configure {
         eachFile { details ->
             details.path = details.path.replace(
                     'assets/thaumcraft/textures/blocks/',
-                    'assets/thaumcraftmodern/textures/block/')
+                    'assets/thaumic_reborn/textures/block/')
         }
         includeEmptyDirs = false
     }
     from(zipTree('reference/original/Thaumcraft_1.7.10_4.2.3.5.jar')) {
         include 'assets/thaumcraft/textures/misc/r_infernalfurnace.png'
         eachFile { details ->
-            details.path = 'assets/thaumcraftmodern/textures/misc/r_infernalfurnace.png'
+            details.path = 'assets/thaumic_reborn/textures/misc/r_infernalfurnace.png'
         }
         includeEmptyDirs = false
     }
@@ -144,14 +144,14 @@ tasks.named('processResources', ProcessResources).configure {
         eachFile { details ->
             details.path = details.path.replace(
                     'assets/thaumcraft/textures/items/nugget',
-                    'assets/thaumcraftmodern/textures/item/')
+                    'assets/thaumic_reborn/textures/item/')
         }
         includeEmptyDirs = false
     }
     from(zipTree('reference/original/Thaumcraft_1.7.10_4.2.3.5.jar')) {
         include 'assets/thaumcraft/textures/models/bellows.png'
         eachFile { details ->
-            details.path = 'assets/thaumcraftmodern/textures/block/bellows.png'
+            details.path = 'assets/thaumic_reborn/textures/block/bellows.png'
         }
         includeEmptyDirs = false
     }
@@ -163,14 +163,14 @@ tasks.named('processResources', ProcessResources).configure {
                 'assets/thaumcraft/textures/blocks/adoortop.png'
         eachFile { details -> details.path = details.path.replace(
                 'assets/thaumcraft/textures/blocks/',
-                'assets/thaumcraftmodern/textures/block/') }
+                'assets/thaumic_reborn/textures/block/') }
         includeEmptyDirs = false
     }
     from(zipTree('reference/original/Thaumcraft_1.7.10_4.2.3.5.jar')) {
         include 'assets/thaumcraft/textures/items/arcanedoor.png'
         eachFile { details -> details.path = details.path.replace(
                 'assets/thaumcraft/textures/items/',
-                'assets/thaumcraftmodern/textures/item/') }
+                'assets/thaumic_reborn/textures/item/') }
         includeEmptyDirs = false
     }
     from(zipTree('reference/original/Thaumcraft_1.7.10_4.2.3.5.jar')) {
@@ -180,7 +180,7 @@ tasks.named('processResources', ProcessResources).configure {
                 'assets/thaumcraft/textures/models/jarbrine.png'
         eachFile { details -> details.path = details.path.replace(
                 'assets/thaumcraft/textures/models/',
-                'assets/thaumcraftmodern/textures/block/') }
+                'assets/thaumic_reborn/textures/block/') }
         includeEmptyDirs = false
     }
 }
@@ -189,15 +189,15 @@ tasks.named('processResources', ProcessResources).configure {
     from('reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/items') {
         include 'elementalpick.png', 'elementalaxe.png', 'elementalsword.png',
                 'elementalshovel.png', 'elementalhoe.png', 'bootstraveler.png'
-        into 'assets/thaumcraftmodern/textures/item'
+        into 'assets/thaumic_reborn/textures/item'
     }
     from('reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/models') {
         include 'bootstraveler.png'
-        into 'assets/thaumcraftmodern/textures/models'
+        into 'assets/thaumic_reborn/textures/models'
     }
     from('reference/Thaumcraft-4.2-FOREVA-master/thaumcraft_src/assets/thaumcraft/sounds') {
         include 'wandfail.ogg', 'wind1.ogg', 'wind2.ogg', 'swing1.ogg', 'swing2.ogg'
-        into 'assets/thaumcraftmodern/sounds'
+        into 'assets/thaumic_reborn/sounds'
     }
 }
 
@@ -266,7 +266,7 @@ tasks.named('processResources', ProcessResources).configure {
 
     from('reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/assets/thaumcraft/textures/blocks') {
         include 'urn_*.png', 'crate_*.png'
-        into 'assets/thaumcraftmodern/textures/block'
+        into 'assets/thaumic_reborn/textures/block'
     }
 }
 

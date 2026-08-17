@@ -1,0 +1,93 @@
+{
+  "id": "rod_silverwood",
+  "legacy_id": "ROD_silverwood",
+  "category": "thaumaturgy",
+  "icon": "thaumic_reborn:silverwood_wand_rod",
+  "title": "tc.research_name.ROD_silverwood",
+  "subtitle": "tc.research_text.ROD_silverwood",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "rod_greatwood",
+    "infusion"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -48,
+  "y": 120,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ROD_silverwood.1"
+    },
+    {
+      "type": "infusion",
+      "title": "recipe.type.infusion",
+      "output": "thaumic_reborn:silverwood_wand_rod",
+      "central": "thaumic_reborn:silverwood_log",
+      "components": [
+        {"item": "thaumic_reborn:balanced_shard", "count": 1},
+        {"item": "thaumic_reborn:air_shard", "count": 1},
+        {"item": "thaumic_reborn:fire_shard", "count": 1},
+        {"item": "thaumic_reborn:water_shard", "count": 1},
+        {"item": "thaumic_reborn:earth_shard", "count": 1},
+        {"item": "thaumic_reborn:order_shard", "count": 1},
+        {"item": "thaumic_reborn:entropy_shard", "count": 1}
+      ],
+      "aspect_costs": [
+        {"id": "aer", "amount": 9},
+        {"id": "ignis", "amount": 9},
+        {"id": "aqua", "amount": 9},
+        {"id": "terra", "amount": 9},
+        {"id": "ordo", "amount": 9},
+        {"id": "perditio", "amount": 9},
+        {"id": "praecantatio", "amount": 9}
+      ],
+      "instability": "moderate",
+      "detail": "tc.research_text.ROD_silverwood"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": -2,
+    "y": 5,
+    "complexity": 3,
+    "icon_raw": "new ItemStack(ConfigItems.itemWandRod, 1, 2)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "instrumentum",
+        "amount": 6
+      },
+      {
+        "id": "arbor",
+        "amount": 6
+      },
+      {
+        "id": "praecantatio",
+        "amount": 9
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ROD_silverwood\", \"THAUMATURGY\", (new AspectList()).add(Aspect.TOOL, 6).add(Aspect.TREE, 6).add(Aspect.MAGIC, 9), -2, 5, 3, new ItemStack(ConfigItems.itemWandRod, 1, 2))).setPages(new ResearchPage(\"tc.research_page.ROD_silverwood.1\"), new ResearchPage((InfusionRecipe)recipes.get(\"WandRodSilverwood\"))).setParents(\"ROD_greatwood\", \"INFUSION\").registerResearchItem()"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "rod_blaze_staff",
+  "vis": {
+    "ordo": 14
+  },
+  "pattern": [
+    "  S",
+    " G ",
+    "G  "
+  ],
+  "key": {
+    "S": {
+      "item": "thaumic_reborn:primal_charm"
+    },
+    "G": {
+      "item": "thaumic_reborn:blaze_wand_rod"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:blaze_staff_rod"
+  }
+}

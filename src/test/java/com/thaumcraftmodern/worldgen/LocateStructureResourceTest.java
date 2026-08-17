@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class LocateStructureResourceTest {
     private static final Path DATA = Path.of(
-            "src/main/resources/data/thaumcraftmodern"
+            "src/main/resources/data/thaumic_reborn"
     );
 
     @Test
@@ -28,7 +28,7 @@ class LocateStructureResourceTest {
             String structureJson = Files.readString(structure);
             assertTrue(
                     structureJson.contains(
-                            "\"type\": \"thaumcraftmodern:"
+                            "\"type\": \"thaumic_reborn:"
                                     + "legacy_world_structure\""
                     ),
                     name
@@ -57,7 +57,7 @@ class LocateStructureResourceTest {
             if (kind.isVillageBuilding()) {
                 assertFalse(
                         allSets.contains(
-                                "\"structure\": \"thaumcraftmodern:"
+                                "\"structure\": \"thaumic_reborn:"
                                         + kind.serializedName() + "\""
                         ),
                         kind.serializedName()
@@ -66,7 +66,7 @@ class LocateStructureResourceTest {
             }
             assertTrue(
                     allSets.contains(
-                            "\"structure\": \"thaumcraftmodern:"
+                            "\"structure\": \"thaumic_reborn:"
                                     + kind.serializedName() + "\""
                     ),
                     kind.serializedName()
@@ -239,7 +239,7 @@ class LocateStructureResourceTest {
                 "worldgen/structure/ancient_mound.json"
         ));
         assertTrue(structure.contains(
-                "\"biomes\": \"#thaumcraftmodern:has_ancient_mounds\""
+                "\"biomes\": \"#thaumic_reborn:has_ancient_mounds\""
         ));
         assertTrue(Files.isRegularFile(DATA.resolve(
                 "tags/worldgen/biome/has_ancient_mounds.json"

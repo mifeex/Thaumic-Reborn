@@ -1,0 +1,34 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "fluxscrub",
+  "vis": {
+    "aqua": 16,
+    "ordo": 16,
+    "aer": 8
+  },
+  "pattern": [
+    " B ",
+    "GOG",
+    "STS"
+  ],
+  "key": {
+    "B": {
+      "item": "thaumic_reborn:arcane_bellows"
+    },
+    "G": {
+      "item": "minecraft:iron_bars"
+    },
+    "T": {
+      "item": "thaumic_reborn:essentia_tube"
+    },
+    "O": {
+      "item": "thaumic_reborn:vis_filter"
+    },
+    "S": {
+      "item": "thaumic_reborn:arcane_stone_brick"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:flux_scrubber"
+  }
+}

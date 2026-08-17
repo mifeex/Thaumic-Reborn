@@ -1,0 +1,18 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:bottled_taint",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 2
+    },
+    {
+      "id": "praecantatio",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes/bottletaint.json"
+}

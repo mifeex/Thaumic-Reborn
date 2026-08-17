@@ -20,7 +20,7 @@ class InhabitedZombieFidelityTest {
                                 + "czombie.png"
                 )),
                 Files.readAllBytes(Path.of(
-                        "src/main/resources/assets/thaumcraftmodern/textures/"
+                        "src/main/resources/assets/thaumic_reborn/textures/"
                                 + "entity/models/czombie.png"
                 ))
         );

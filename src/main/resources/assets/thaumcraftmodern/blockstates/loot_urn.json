@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "type=0": {"model": "thaumcraftmodern:block/loot_urn_0"},
-    "type=1": {"model": "thaumcraftmodern:block/loot_urn_1"},
-    "type=2": {"model": "thaumcraftmodern:block/loot_urn_2"}
-  }
-}

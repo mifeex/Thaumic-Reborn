@@ -27,7 +27,7 @@ public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
             new ResourceLocation(ThaumcraftModern.MOD_ID,
                     "fortress_armor"), "main");
     private static final String DATA =
-            "/assets/thaumcraftmodern/models/entity/fortress_armor.csv";
+            "/assets/thaumic_reborn/models/entity/fortress_armor.csv";
 
     public FortressArmorModel(ModelPart root) { super(root); }
 

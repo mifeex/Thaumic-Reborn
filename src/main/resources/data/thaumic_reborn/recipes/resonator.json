@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tubes",
+  "vis": {
+    "aqua": 5,
+    "aer": 5
+  },
+  "pattern": [
+    "I I",
+    "INI",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "item": "minecraft:quartz"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:essentia_resonator"
+  }
+}

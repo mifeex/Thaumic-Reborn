@@ -20,8 +20,8 @@ public final class AddonFocusRegistry {
     public static void register(FocusDefinition definition, FocusBehavior behavior) {
         Objects.requireNonNull(definition, "definition");
         Objects.requireNonNull(behavior, "behavior");
-        if (definition.id().getNamespace().equals("thaumcraftmodern")) {
-            throw new IllegalArgumentException("The thaumcraftmodern focus namespace is reserved");
+        if (definition.id().getNamespace().equals("thaumic_reborn")) {
+            throw new IllegalArgumentException("The thaumic_reborn focus namespace is reserved");
         }
         Entry previous = ENTRIES.putIfAbsent(definition.id(), new Entry(definition, behavior));
         if (previous != null) {

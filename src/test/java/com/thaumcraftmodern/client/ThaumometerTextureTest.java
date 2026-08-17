@@ -15,12 +15,12 @@ class ThaumometerTextureTest {
     @Test
     void scannerModelTextureKeepsTheClassicResolutionAndAlpha() throws IOException {
         assertTexture(
-                "/assets/thaumcraftmodern/textures/models/scanner.png",
+                "/assets/thaumic_reborn/textures/models/scanner.png",
                 256,
                 256
         );
         assertTexture(
-                "/assets/thaumcraftmodern/textures/item/scanner.png",
+                "/assets/thaumic_reborn/textures/item/scanner.png",
                 256,
                 256
         );
@@ -29,12 +29,12 @@ class ThaumometerTextureTest {
     @Test
     void scanScreenKeepsTheClassicResolutionAndAlpha() throws IOException {
         assertTexture(
-                "/assets/thaumcraftmodern/textures/models/scanscreen.png",
+                "/assets/thaumic_reborn/textures/models/scanscreen.png",
                 128,
                 128
         );
         assertTexture(
-                "/assets/thaumcraftmodern/textures/item/scanscreen.png",
+                "/assets/thaumic_reborn/textures/item/scanscreen.png",
                 128,
                 128
         );

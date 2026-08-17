@@ -1,0 +1,24 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "wardedarcana",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "NNI",
+    "N  "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:gold_key",
+    "count": 2
+  }
+}

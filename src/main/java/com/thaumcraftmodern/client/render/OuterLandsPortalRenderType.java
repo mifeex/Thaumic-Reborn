@@ -38,7 +38,7 @@ final class OuterLandsPortalRenderType extends RenderStateShard {
     );
 
     private OuterLandsPortalRenderType() {
-        super("thaumcraftmodern_outer_lands_portal_render_type", () -> {
+        super("thaumic_reborn_outer_lands_portal_render_type", () -> {
         }, () -> {
         });
     }

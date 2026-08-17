@@ -15,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class CrucibleLegacyRecipeCoverageTest {
     private static final Path LEGACY = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/recipes_legacy"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/recipes_legacy"
     );
     private static final Path RUNTIME = Path.of(
-            "src/main/resources/data/thaumcraftmodern/thaumcraft/crucible_recipes"
+            "src/main/resources/data/thaumic_reborn/thaumcraft/crucible_recipes"
     );
 
     @Test

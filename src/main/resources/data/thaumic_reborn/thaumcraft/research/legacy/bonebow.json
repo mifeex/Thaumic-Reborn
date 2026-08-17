@@ -1,0 +1,81 @@
+{
+  "id": "bonebow",
+  "legacy_id": "BONEBOW",
+  "category": "artifice",
+  "icon": "thaumic_reborn:bone_bow",
+  "title": "tc.research_name.BONEBOW",
+  "subtitle": "tc.research_text.BONEBOW",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "any_of",
+    "conditions": [
+      {
+        "type": "scan",
+        "id": "item:minecraft:bow"
+      },
+      {
+        "type": "scan",
+        "id": "item:minecraft:bone"
+      }
+    ]
+  },
+  "x": -168,
+  "y": 24,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.BONEBOW.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:bone_bow"
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -7,
+    "y": 1,
+    "complexity": 1,
+    "icon_raw": "new ItemStack(ConfigItems.itemBowBone)",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": false,
+      "hidden": true,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [
+      "new ItemStack(Items.field_151031_f, 1, 32767)",
+      "new ItemStack(Items.field_151103_aS)"
+    ],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "telum",
+        "amount": 3
+      },
+      {
+        "id": "aer",
+        "amount": 3
+      },
+      {
+        "id": "motus",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"BONEBOW\", \"ARTIFICE\", (new AspectList()).add(Aspect.WEAPON, 3).add(Aspect.AIR, 3).add(Aspect.MOTION, 3), -7, 1, 1, new ItemStack(ConfigItems.itemBowBone))).setPages(new ResearchPage(\"tc.research_page.BONEBOW.1\"), new ResearchPage((IArcaneRecipe)recipes.get(\"BoneBow\"))).setHidden().setItemTriggers(new ItemStack(Items.field_151031_f, 1, 32767), new ItemStack(Items.field_151103_aS)).registerResearchItem()"
+  }
+}

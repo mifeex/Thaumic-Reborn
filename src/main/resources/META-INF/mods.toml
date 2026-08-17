@@ -7,7 +7,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-logoFile="thaumcraftmodern-icon.png"
+logoFile="thaumic_reborn-icon.png"
 displayTest="MATCH_VERSION"
 description='''${mod_description}'''
 

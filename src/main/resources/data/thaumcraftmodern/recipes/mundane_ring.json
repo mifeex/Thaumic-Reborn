@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "pattern": [" N ", "N N", " N "],
-  "key": {"N": {"item": "minecraft:gold_nugget"}},
-  "result": {"item": "thaumcraftmodern:mundane_ring"}
-}

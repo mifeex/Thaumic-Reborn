@@ -58,8 +58,8 @@ class ResearchCategoryRegistryTest {
                 "alchemy",
                 "category.alchemy",
                 "",
-                "thaumcraftmodern:textures/misc/r_crucible.png",
-                "thaumcraftmodern:textures/gui/gui_researchback.png",
+                "thaumic_reborn:textures/misc/r_crucible.png",
+                "thaumic_reborn:textures/gui/gui_researchback.png",
                 2
         );
         ResearchCategoryRegistry.replace(List.of(original));

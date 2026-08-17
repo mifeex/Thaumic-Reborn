@@ -1,0 +1,25 @@
+{
+  "id": "puresilver",
+  "legacy_id": "PureSilver",
+  "legacy_kind": "crucible",
+  "inactive": false,
+  "inactive_reason": null,
+  "modern_recipe": [
+    "thaumic_reborn:puresilver"
+  ],
+  "required_aspects": [
+    {
+      "id": "metallum",
+      "amount": 1
+    },
+    {
+      "id": "ordo",
+      "amount": 1
+    }
+  ],
+  "legacy": {
+    "source_expression": "ThaumcraftApi.addCrucibleRecipe(\"PURESILVER\", new ItemStack(ConfigItems.itemNugget, 1, 19), \"oreSilver\", (new AspectList()).merge(Aspect.METAL, 1).merge(Aspect.ORDER, 1))",
+    "source_statement": "}\n\n      if (Config.foundSilverIngot) {\n         ConfigResearch.recipes.put(\"PureSilver\", ThaumcraftApi.addCrucibleRecipe(\"PURESILVER\", new ItemStack(ConfigItems.itemNugget, 1, 19), \"oreSilver\", (new AspectList()).merge(Aspect.METAL, 1).merge(Aspect.ORDER, 1)))",
+    "unkeyed": false
+  }
+}

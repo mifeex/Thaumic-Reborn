@@ -66,7 +66,7 @@ final class ClientThaumometerTarget {
                 instanceof AuraNodeBlockEntity node) {
             nodeSnapshot = node.snapshotState().snapshot();
             nodeDisplayName = Component.translatable(
-                    "block.thaumcraftmodern.aura_node"
+                    "block.thaumic_reborn.aura_node"
             );
         } else if (minecraft.level.getBlockEntity(position)
                 instanceof JarredAuraNodeBlockEntity jar) {
@@ -74,7 +74,7 @@ final class ClientThaumometerTarget {
                     .map(data -> data.node().snapshot())
                     .orElse(null);
             nodeDisplayName = Component.translatable(
-                    "block.thaumcraftmodern.jarred_aura_node"
+                    "block.thaumic_reborn.jarred_aura_node"
             );
         } else if (minecraft.level.getBlockEntity(position)
                 instanceof EnergizedAuraNodeBlockEntity energized) {
@@ -83,7 +83,7 @@ final class ClientThaumometerTarget {
                     ClientAspectContainerReadout.energizedNodeContents(
                             energized.visBase());
             nodeDisplayName = Component.translatable(
-                    "block.thaumcraftmodern.energized_aura_node"
+                    "block.thaumic_reborn.energized_aura_node"
             );
         }
         if (nodeSnapshot != null) {
@@ -272,7 +272,7 @@ final class ClientThaumometerTarget {
             return Component.empty();
         }
         Component type = Component.translatable(
-                "node_type.thaumcraftmodern."
+                "node_type.thaumic_reborn."
                         + snapshot.type().name().toLowerCase(Locale.ROOT)
         );
         if (snapshot.modifier() == AuraNodeModifier.NORMAL) {
@@ -282,7 +282,7 @@ final class ClientThaumometerTarget {
                 .append(type)
                 .append(", ")
                 .append(Component.translatable(
-                        "node_modifier.thaumcraftmodern."
+                        "node_modifier.thaumic_reborn."
                                 + snapshot.modifier()
                                 .name()
                                 .toLowerCase(Locale.ROOT)

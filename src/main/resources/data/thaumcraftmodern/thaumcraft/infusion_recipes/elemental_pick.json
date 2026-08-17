@@ -1,7 +1,0 @@
-{
-  "research":"elementalpick","instability":1,
-  "central":{"item":"thaumcraftmodern:thaumium_pickaxe"},
-  "components":[{"item":"thaumcraftmodern:fire_shard"},{"item":"thaumcraftmodern:fire_shard"},{"item":"minecraft:diamond"},{"item":"thaumcraftmodern:greatwood_log"}],
-  "essentia":{"ignis":8,"perfodio":8,"sensus":8},
-  "result":{"item":"thaumcraftmodern:pickaxe_of_the_core","count":1}
-}

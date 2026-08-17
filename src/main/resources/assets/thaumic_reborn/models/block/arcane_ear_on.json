@@ -1,0 +1,11 @@
+{
+  "parent": "thaumic_reborn:block/arcane_ear_base",
+  "textures": {
+    "particle": "thaumic_reborn:item/arcane_ear_side_on",
+    "top": "thaumic_reborn:item/arcane_ear_top_on",
+    "bottom": "thaumic_reborn:item/arcane_ear_bottom",
+    "side": "thaumic_reborn:item/arcane_ear_side_on",
+    "belltop": "thaumic_reborn:item/arcane_ear_bell_top",
+    "bellside": "thaumic_reborn:item/arcane_ear_bell_side"
+  }
+}

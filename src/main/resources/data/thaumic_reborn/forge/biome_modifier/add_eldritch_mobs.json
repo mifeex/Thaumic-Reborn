@@ -1,0 +1,18 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "thaumic_reborn:eldritch",
+  "spawners": [
+    {
+      "type": "thaumic_reborn:inhabited_zombie",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:eldritch_guardian",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+}

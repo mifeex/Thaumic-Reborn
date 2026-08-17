@@ -1,0 +1,10 @@
+{
+  "id": "cognitio",
+  "order": 330,
+  "color": "FFC2B3",
+  "icon": "thaumic_reborn:textures/aspects/cognitio.png",
+  "components": [
+    "ignis",
+    "spiritus"
+  ]
+}

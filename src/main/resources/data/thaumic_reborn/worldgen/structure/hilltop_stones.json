@@ -1,0 +1,7 @@
+{
+  "type": "thaumic_reborn:legacy_world_structure",
+  "biomes": "#thaumic_reborn:has_hilltop_stones",
+  "kind": "hilltop_stones",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

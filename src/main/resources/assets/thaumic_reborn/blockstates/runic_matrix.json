@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "active=false": {"model": "thaumic_reborn:block/runic_matrix"},
+    "active=true": {"model": "thaumic_reborn:block/runic_matrix_active"}
+  }
+}

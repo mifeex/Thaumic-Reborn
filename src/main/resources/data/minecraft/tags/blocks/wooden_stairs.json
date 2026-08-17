@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:bamboo_mosaic_stairs",
-    "thaumcraftmodern:greatwood_stairs",
-    "thaumcraftmodern:silverwood_stairs"
+    "thaumic_reborn:greatwood_stairs",
+    "thaumic_reborn:silverwood_stairs"
   ]
 }

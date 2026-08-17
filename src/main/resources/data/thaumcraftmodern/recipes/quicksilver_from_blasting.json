@@ -1,8 +1,0 @@
-{
-  "type":"minecraft:blasting",
-  "category":"misc",
-  "ingredient":{"item":"thaumcraftmodern:cinnabar_ore"},
-  "result":"thaumcraftmodern:quicksilver",
-  "experience":0.7,
-  "cookingtime":100
-}

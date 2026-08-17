@@ -1,0 +1,94 @@
+{
+  "id": "alchemicalmanufacture",
+  "legacy_id": "ALCHEMICALMANUFACTURE",
+  "category": "alchemy",
+  "icon_resource": "thaumic_reborn:textures/misc/r_alchman.png",
+  "title": "tc.research_name.ALCHEMICALMANUFACTURE",
+  "subtitle": "tc.research_text.ALCHEMICALMANUFACTURE",
+  "concealed": true,
+  "auto_unlock": false,
+  "parents": [
+    "alchemicalduplication"
+  ],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": -120,
+  "y": -48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.ALCHEMICALMANUFACTURE.1"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:altweb"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:altmossycobble"
+    },
+    {
+      "type": "recipe",
+      "title": "",
+      "recipe": "thaumic_reborn:altice"
+    }
+  ],
+  "purchase_cost": [
+    {
+      "id": "praecantatio",
+      "amount": 3
+    },
+    {
+      "id": "permutatio",
+      "amount": 3
+    },
+    {
+      "id": "fabrico",
+      "amount": 3
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "x": -5,
+    "y": -2,
+    "complexity": 1,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_alchman.png\")",
+    "flags": {
+      "special": false,
+      "secondary": true,
+      "round": false,
+      "stub": false,
+      "virtual": false,
+      "concealed": true,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": false
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [
+      {
+        "id": "praecantatio",
+        "amount": 3
+      },
+      {
+        "id": "permutatio",
+        "amount": 3
+      },
+      {
+        "id": "fabrico",
+        "amount": 3
+      }
+    ],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"ALCHEMICALMANUFACTURE\", \"ALCHEMY\", (new AspectList()).add(Aspect.MAGIC, 3).add(Aspect.EXCHANGE, 3).add(Aspect.CRAFT, 3), -5, -2, 1, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_alchman.png\"))).setPages(new ResearchPage(\"tc.research_page.ALCHEMICALMANUFACTURE.1\"), new ResearchPage((CrucibleRecipe)recipes.get(\"AltWeb\")), new ResearchPage((CrucibleRecipe)recipes.get(\"AltMossyCobble\")), new ResearchPage((CrucibleRecipe)recipes.get(\"AltIce\"))).setConcealed().setSecondary().setParents(\"ALCHEMICALDUPLICATION\").registerResearchItem()"
+  }
+}

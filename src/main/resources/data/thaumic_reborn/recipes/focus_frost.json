@@ -1,0 +1,28 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focusfrost",
+  "vis": {
+    "aqua": 10,
+    "ordo": 10,
+    "perditio": 10
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumic_reborn:water_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focus_frost"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "herba",
+  "order": 280,
+  "color": "01AC00",
+  "icon": "thaumic_reborn:textures/aspects/herba.png",
+  "components": [
+    "victus",
+    "terra"
+  ]
+}

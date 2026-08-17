@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:magical_forest",
-    "thaumcraftmodern:tainted_lands",
-    "thaumcraftmodern:eerie"
+    "thaumic_reborn:magical_forest",
+    "thaumic_reborn:tainted_lands",
+    "thaumic_reborn:eerie"
   ]
 }

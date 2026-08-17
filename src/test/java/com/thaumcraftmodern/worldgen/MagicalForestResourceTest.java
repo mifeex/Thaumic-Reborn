@@ -20,7 +20,7 @@ class MagicalForestResourceTest {
     void biomeDoesNotInstallTheVanillaBirchAndSmallOakFeature()
             throws IOException {
         JsonObject biome = read(
-                "/data/thaumcraftmodern/worldgen/biome/magical_forest.json"
+                "/data/thaumic_reborn/worldgen/biome/magical_forest.json"
         );
         assertEquals(0.6D, biome.get("temperature").getAsDouble());
         assertEquals(0.7D, biome.get("downfall").getAsDouble());
@@ -41,20 +41,20 @@ class MagicalForestResourceTest {
     void magicalForestKeepsClassicPechAndWispSpawns()
             throws IOException {
         JsonObject modifier = read(
-                "/data/thaumcraftmodern/forge/biome_modifier/"
+                "/data/thaumic_reborn/forge/biome_modifier/"
                         + "add_magical_forest_mobs.json"
         );
         assertEquals(
-                "thaumcraftmodern:magical_forest",
+                "thaumic_reborn:magical_forest",
                 modifier.get("biomes").getAsString()
         );
         JsonArray spawners = modifier.getAsJsonArray("spawners");
         assertEquals(2, spawners.size());
-        assertTrue(hasSpawn(spawners, "thaumcraftmodern:pech", 10, 1, 2));
-        assertTrue(hasSpawn(spawners, "thaumcraftmodern:wisp", 10, 1, 2));
+        assertTrue(hasSpawn(spawners, "thaumic_reborn:pech", 10, 1, 2));
+        assertTrue(hasSpawn(spawners, "thaumic_reborn:wisp", 10, 1, 2));
 
         JsonObject biome = read(
-                "/data/thaumcraftmodern/worldgen/biome/magical_forest.json"
+                "/data/thaumic_reborn/worldgen/biome/magical_forest.json"
         );
         JsonObject biomeSpawners = biome.getAsJsonObject("spawners");
         JsonArray creatures = biomeSpawners.getAsJsonArray("creature");

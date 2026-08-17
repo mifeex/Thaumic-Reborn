@@ -1,0 +1,32 @@
+{
+  "type": "entity",
+  "target": "thaumic_reborn:tainted_pig",
+  "display": "",
+  "aspects": [
+    {
+      "id": "vitium",
+      "amount": 2
+    },
+    {
+      "id": "terra",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "legacy": {
+    "legacy_entity_id": "Thaumcraft.TaintedPig",
+    "modern_target": null,
+    "aspects": [
+      {
+        "id": "vitium",
+        "amount": 2
+      },
+      {
+        "id": "terra",
+        "amount": 2
+      }
+    ],
+    "nbt_conditions_raw": [],
+    "source_expression": "ThaumcraftApi.registerEntityTag(\"Thaumcraft.TaintedPig\", (new AspectList()).add(Aspect.TAINT, 2).add(Aspect.EARTH, 2))"
+  }
+}

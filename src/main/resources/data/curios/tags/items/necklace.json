@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "thaumcraftmodern:mundane_amulet",
-    "thaumcraftmodern:vis_stone",
-    "thaumcraftmodern:vis_storage_amulet",
-    "thaumcraftmodern:runic_amulet",
-    "thaumcraftmodern:runic_amulet_emergency"
+    "thaumic_reborn:mundane_amulet",
+    "thaumic_reborn:vis_stone",
+    "thaumic_reborn:vis_storage_amulet",
+    "thaumic_reborn:runic_amulet",
+    "thaumic_reborn:runic_amulet_emergency"
   ]
 }

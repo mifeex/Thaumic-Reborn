@@ -1,0 +1,8 @@
+{
+  "parent":"minecraft:block/orientable",
+  "textures":{
+    "front":"thaumic_reborn:block/al_furnace_front_off",
+    "side":"thaumic_reborn:block/al_furnace_side",
+    "top":"thaumic_reborn:block/al_furnace_top"
+  }
+}

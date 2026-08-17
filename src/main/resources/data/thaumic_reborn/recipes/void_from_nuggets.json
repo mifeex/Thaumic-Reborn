@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["###", "###", "###"],
+  "key": {
+    "#": {"item": "thaumic_reborn:void_nugget"}
+  },
+  "result": {"item": "thaumic_reborn:void_metal_ingot"}
+}

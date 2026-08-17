@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "thaumcraftmodern:block/silverwood_node_side",
-    "end": "thaumcraftmodern:block/silverwood_node_top"
-  }
-}

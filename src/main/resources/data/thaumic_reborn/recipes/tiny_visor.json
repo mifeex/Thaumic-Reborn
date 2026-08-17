@@ -1,0 +1,22 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "tinyvisor",
+  "vis": {
+    "terra": 4,
+    "aqua": 4
+  },
+  "pattern": [
+    "IHI"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "H": {
+      "item": "minecraft:iron_helmet"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:golem_decoration_visor"
+  }
+}

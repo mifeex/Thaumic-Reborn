@@ -1,0 +1,20 @@
+{
+  "research": "wandped",
+  "instability": 3,
+  "central": {"item": "thaumic_reborn:arcane_pedestal"},
+  "components": [
+    {"item": "minecraft:gold_ingot"},
+    {"item": "minecraft:diamond"},
+    {"item": "thaumic_reborn:primal_charm"},
+    {"item": "minecraft:diamond"}
+  ],
+  "essentia": {
+    "auram": 10,
+    "praecantatio": 15,
+    "permutatio": 15
+  },
+  "result": {
+    "item": "thaumic_reborn:wand_recharge_pedestal",
+    "count": 1
+  }
+}

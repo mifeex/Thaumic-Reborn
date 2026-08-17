@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class CrucibleParticleFidelityTest {
     private static final Path ASSET_ROOT = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
     private static final Path CRUCIBLE = Path.of(
             "src/main/java/com/thaumcraftmodern/world/block/entity/"

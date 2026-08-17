@@ -473,7 +473,7 @@ def modern_research_entry(entry: dict[str, object]) -> dict[str, object]:
         "id": str(entry["id"]).lower(),
         "legacy_id": entry["id"],
         "category": str(entry["category"]).lower(),
-        "icon": "thaumcraftmodern:thaumonomicon",
+        "icon": "thaumic_reborn:thaumonomicon",
         "title": f"tc.research_name.{entry['id']}",
         "subtitle": f"tc.research_text.{entry['id']}",
         "concealed": entry["flags"]["concealed"],
@@ -537,7 +537,7 @@ def main() -> None:
         raise RuntimeError(f"extraction count mismatch: expected {expected}, got {counts}")
 
     manifest = {
-        "format": "thaumcraftmodern.tc4-legacy-export",
+        "format": "thaumic_reborn.tc4-legacy-export",
         "format_version": 1,
         "source": jar.name,
         "source_sha256": source_hash,
@@ -561,7 +561,7 @@ def main() -> None:
             "id": aspect["id"],
             "order": int(aspect["order"]) * 10,
             "color": aspect["color"],
-            "icon": f"thaumcraftmodern:textures/aspects/{aspect['id']}.png",
+            "icon": f"thaumic_reborn:textures/aspects/{aspect['id']}.png",
             "components": aspect["components"],
             "migration_status": "active",
         }
@@ -611,7 +611,7 @@ def main() -> None:
                 "id": aspect["id"],
                 "order": int(aspect["order"]) * 10,
                 "color": aspect["color"],
-                "icon": f"thaumcraftmodern:textures/aspects/{aspect['id']}.png",
+                "icon": f"thaumic_reborn:textures/aspects/{aspect['id']}.png",
                 "components": aspect["components"],
             })
 

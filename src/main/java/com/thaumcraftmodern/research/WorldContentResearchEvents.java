@@ -24,7 +24,7 @@ public final class WorldContentResearchEvents {
                 && event.getItem().getItem().is(ModItems.PRIMORDIAL_PEARL.get())) {
             ResearchProgressService.recordCriterion(
                     player,
-                    "thaumcraftmodern:legacy_clue/primpearl",
+                    "thaumic_reborn:legacy_clue/primpearl",
                     "primordial_pearl_pickup"
             );
         }

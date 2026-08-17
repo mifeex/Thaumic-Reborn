@@ -1,0 +1,27 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "focusfire",
+  "vis": {
+    "ignis": 20,
+    "perditio": 10
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fire_charge"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumic_reborn:fire_shard"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:focus_fire"
+  }
+}

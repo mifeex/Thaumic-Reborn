@@ -1,0 +1,7 @@
+{
+  "parent": "thaumic_reborn:block/magic_mirror",
+  "textures": {
+    "particle": "#frame",
+    "frame": "thaumic_reborn:block/mirrorframe2"
+  }
+}

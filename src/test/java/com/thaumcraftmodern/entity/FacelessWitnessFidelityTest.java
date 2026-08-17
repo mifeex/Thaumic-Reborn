@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class FacelessWitnessFidelityTest {
     private static final Path JAVA = Path.of("src/main/java");
     private static final Path ASSETS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern"
+            "src/main/resources/assets/thaumic_reborn"
     );
 
     @Test

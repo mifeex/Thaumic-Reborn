@@ -16,7 +16,7 @@ final class WorldContentBlockPresentationTest {
     @Test
     void ancientStoneUsesOriginalSquareStoneSprite() throws Exception {
         try (InputStream stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/textures/block/ancient_stone.png"
+                "/assets/thaumic_reborn/textures/block/ancient_stone.png"
         )) {
             assertNotNull(stream);
             var image = ImageIO.read(stream);
@@ -37,14 +37,14 @@ final class WorldContentBlockPresentationTest {
     @Test
     void obsidianBaseHasAnInventoryModel() {
         assertNotNull(getClass().getResource(
-                "/assets/thaumcraftmodern/models/item/obsidian_tile.json"
+                "/assets/thaumic_reborn/models/item/obsidian_tile.json"
         ));
     }
 
     @Test
     void silverwoodAuraNodeUsesClassicKnotTextures() throws Exception {
         String modelPath =
-                "/assets/thaumcraftmodern/models/block/silverwood_node.json";
+                "/assets/thaumic_reborn/models/block/silverwood_node.json";
         try (InputStream stream = getClass().getResourceAsStream(modelPath)) {
             assertNotNull(stream);
             String model = new String(
@@ -52,22 +52,22 @@ final class WorldContentBlockPresentationTest {
                     StandardCharsets.UTF_8
             );
             assertTrue(model.contains(
-                    "thaumcraftmodern:block/silverwood_node_side"
+                    "thaumic_reborn:block/silverwood_node_side"
             ));
             assertTrue(model.contains(
-                    "thaumcraftmodern:block/silverwood_node_top"
+                    "thaumic_reborn:block/silverwood_node_top"
             ));
             assertTrue(!model.contains(
-                    "thaumcraftmodern:block/silverwood_log\""
+                    "thaumic_reborn:block/silverwood_log\""
             ));
         }
 
         assertClassicSprite(
-                "/assets/thaumcraftmodern/textures/block/"
+                "/assets/thaumic_reborn/textures/block/"
                         + "silverwood_node_side.png"
         );
         assertClassicSprite(
-                "/assets/thaumcraftmodern/textures/block/"
+                "/assets/thaumic_reborn/textures/block/"
                         + "silverwood_node_top.png"
         );
     }
@@ -75,7 +75,7 @@ final class WorldContentBlockPresentationTest {
     @Test
     void infusedStoneMasksHaveAnOpaqueStoneBacking() throws Exception {
         String modelPath =
-                "/assets/thaumcraftmodern/models/block/infused_stone.json";
+                "/assets/thaumic_reborn/models/block/infused_stone.json";
         try (InputStream stream = getClass().getResourceAsStream(modelPath)) {
             assertNotNull(stream);
             JsonObject model = JsonParser.parseReader(

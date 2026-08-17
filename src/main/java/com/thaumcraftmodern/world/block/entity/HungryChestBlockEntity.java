@@ -178,7 +178,7 @@ public final class HungryChestBlockEntity extends RandomizableContainerBlockEnti
         );
     }
     private void syncOpeners() { if (level != null) level.blockEvent(worldPosition, getBlockState().getBlock(), 1, openers); }
-    @Override protected Component getDefaultName() { return Component.translatable("container.thaumcraftmodern.hungry_chest"); }
+    @Override protected Component getDefaultName() { return Component.translatable("container.thaumic_reborn.hungry_chest"); }
     @Override protected AbstractContainerMenu createMenu(int id, Inventory inventory) { return ChestMenu.threeRows(id, inventory, this); }
     @Override public int getContainerSize() { return items.size(); }
     @Override protected NonNullList<ItemStack> getItems() { return items; }

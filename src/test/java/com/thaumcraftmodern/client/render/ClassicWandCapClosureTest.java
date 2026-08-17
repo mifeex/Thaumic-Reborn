@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ClassicWandCapClosureTest {
     private static final Path TEXTURES = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/item");
+            "src/main/resources/assets/thaumic_reborn/textures/item");
 
     @Test
     void everyClassicCapHasAnOpaquePatchForTheClosingPlate()

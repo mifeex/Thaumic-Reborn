@@ -1,0 +1,16 @@
+{
+  "research": "etherealbloom",
+  "catalyst": {
+    "item": "thaumic_reborn:shimmerleaf"
+  },
+  "output": {
+    "item": "thaumic_reborn:ethereal_bloom"
+  },
+  "aspects": {
+    "praecantatio": 16,
+    "herba": 16,
+    "sano": 16,
+    "vitium": 8
+  },
+  "legacy_id": "EtherealBloom"
+}

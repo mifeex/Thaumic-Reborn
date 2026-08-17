@@ -16,7 +16,7 @@ final class ClassicWandRenderCalibrationTest {
     void resourceDefinesIndependentCapTipsForEveryForm()
             throws Exception {
         try (var stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/config/"
+                "/assets/thaumic_reborn/config/"
                         + "wand_casting_render.json"
         )) {
             assertNotNull(stream);
@@ -86,7 +86,7 @@ final class ClassicWandRenderCalibrationTest {
     void resourceSwitchAcceptsClassicComparisonMode()
             throws Exception {
         try (var stream = getClass().getResourceAsStream(
-                "/assets/thaumcraftmodern/config/"
+                "/assets/thaumic_reborn/config/"
                         + "wand_casting_render.json"
         )) {
             assertNotNull(stream);

@@ -1,0 +1,30 @@
+{
+  "type": "block",
+  "target": "thaumic_reborn:arcane_bellows",
+  "display": "",
+  "aspects": [
+    {
+      "id": "arbor",
+      "amount": 3
+    },
+    {
+      "id": "pannus",
+      "amount": 1
+    },
+    {
+      "id": "aer",
+      "amount": 4
+    },
+    {
+      "id": "metallum",
+      "amount": 3
+    },
+    {
+      "id": "ordo",
+      "amount": 2
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/recipes/bellows.json"
+}

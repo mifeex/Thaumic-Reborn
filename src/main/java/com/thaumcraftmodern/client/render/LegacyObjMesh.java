@@ -158,7 +158,7 @@ public final class LegacyObjMesh {
 
     private static ResourceLocation mesh(String fileName) {
         return new ResourceLocation(
-                "thaumcraftmodern",
+                "thaumic_reborn",
                 "textures/models/" + fileName
         );
     }

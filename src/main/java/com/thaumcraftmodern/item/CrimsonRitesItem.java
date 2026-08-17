@@ -34,12 +34,12 @@ public final class CrimsonRitesItem extends Item {
                     return;
                 }
                 knowledge.recordResearchCriterion(
-                        "thaumcraftmodern:legacy_clue/crimson"
+                        "thaumic_reborn:legacy_clue/crimson"
                 );
                 KnowledgeSync.send(serverPlayer, "crimson_rites");
                 serverPlayer.displayClientMessage(
                         Component.translatable(
-                                "message.thaumcraftmodern.research.crimson"
+                                "message.thaumic_reborn.research.crimson"
                         ),
                         true
                 );

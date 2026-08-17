@@ -1,0 +1,21 @@
+{
+  "type": "thaumic_reborn:arcane_shaped",
+  "research": "cap_gold",
+  "vis": {
+    "ordo": 3,
+    "ignis": 3,
+    "aer": 3
+  },
+  "pattern": [
+    "NNN",
+    "N N"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "thaumic_reborn:gold_wand_cap"
+  }
+}

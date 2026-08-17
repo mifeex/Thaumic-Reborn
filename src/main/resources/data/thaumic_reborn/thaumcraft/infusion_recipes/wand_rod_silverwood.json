@@ -1,0 +1,27 @@
+{
+  "research": "rod_silverwood",
+  "instability": 5,
+  "central": {"item": "thaumic_reborn:silverwood_log"},
+  "components": [
+    {"item": "thaumic_reborn:balanced_shard"},
+    {"item": "thaumic_reborn:air_shard"},
+    {"item": "thaumic_reborn:fire_shard"},
+    {"item": "thaumic_reborn:water_shard"},
+    {"item": "thaumic_reborn:earth_shard"},
+    {"item": "thaumic_reborn:order_shard"},
+    {"item": "thaumic_reborn:entropy_shard"}
+  ],
+  "essentia": {
+    "aer": 9,
+    "ignis": 9,
+    "aqua": 9,
+    "terra": 9,
+    "ordo": 9,
+    "perditio": 9,
+    "praecantatio": 9
+  },
+  "result": {
+    "item": "thaumic_reborn:silverwood_wand_rod",
+    "count": 1
+  }
+}

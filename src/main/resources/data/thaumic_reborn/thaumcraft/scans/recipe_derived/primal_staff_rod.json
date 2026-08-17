@@ -1,0 +1,50 @@
+{
+  "type": "item",
+  "target": "thaumic_reborn:primal_staff_rod",
+  "display": "",
+  "aspects": [
+    {
+      "id": "praecantatio",
+      "amount": 6
+    },
+    {
+      "id": "aer",
+      "amount": 18
+    },
+    {
+      "id": "vitreus",
+      "amount": 12
+    },
+    {
+      "id": "ignis",
+      "amount": 18
+    },
+    {
+      "id": "aqua",
+      "amount": 18
+    },
+    {
+      "id": "metallum",
+      "amount": 6
+    },
+    {
+      "id": "lucrum",
+      "amount": 4
+    },
+    {
+      "id": "terra",
+      "amount": 18
+    },
+    {
+      "id": "ordo",
+      "amount": 18
+    },
+    {
+      "id": "perditio",
+      "amount": 18
+    }
+  ],
+  "inactive": false,
+  "recipe_derivation": "TC4 generateTags: 0.75 of ingredient aspects plus floor(sqrt(vis)), divided by output count.",
+  "derivation_source": "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes/wand_rod_primal_staff.json"
+}

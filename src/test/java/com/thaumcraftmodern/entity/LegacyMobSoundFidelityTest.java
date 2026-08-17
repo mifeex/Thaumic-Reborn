@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LegacyMobSoundFidelityTest {
     private static final Path SOUNDS = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/sounds"
+            "src/main/resources/assets/thaumic_reborn/sounds"
     );
     private static final Map<String, String> CLASSIC_HASHES = Map.of(
             "egidle1.ogg",
@@ -56,7 +56,7 @@ class LegacyMobSoundFidelityTest {
     void soundGroupsMatchTc4RandomVariants() throws Exception {
         JsonObject sounds = JsonParser.parseString(Files.readString(
                 Path.of(
-                        "src/main/resources/assets/thaumcraftmodern/"
+                        "src/main/resources/assets/thaumic_reborn/"
                                 + "sounds.json"
                 )
         )).getAsJsonObject();

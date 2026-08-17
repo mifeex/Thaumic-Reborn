@@ -187,7 +187,7 @@ Thaumonomicon, Research Table, Arcane Workbench и другие ключевые
 ### 5.1 Data-driven research
 
 Исследования находятся в
-`src/main/resources/data/thaumcraftmodern/thaumcraft/research`.
+`src/main/resources/data/thaumic_reborn/thaumcraft/research`.
 
 Для них используются `parents`, `hidden_parents`, `revealed_by`,
 `reveal_when`, `unlock_when`, `concealed`, `auto_unlock`, `inactive`, `x`, `y`

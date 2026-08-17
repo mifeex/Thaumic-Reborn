@@ -18,7 +18,7 @@ final class WandFocusTextureFidelityTest {
                     + "assets/thaumcraft/textures/models/wand.png"
     );
     private static final Path PORT_TEXTURE = Path.of(
-            "src/main/resources/assets/thaumcraftmodern/textures/models/wand.png"
+            "src/main/resources/assets/thaumic_reborn/textures/models/wand.png"
     );
 
     @Test

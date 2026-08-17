@@ -43,13 +43,13 @@ final class PortableHoleFidelityTest {
     void originalTunnelTextureAndSoundsDriveTheOpening() throws Exception {
         Path original = Path.of("reference/Thaumcraft-4.2-FOREVA-master/"
                 + "src/main/resources/assets/thaumcraft/textures/misc/tunnel.png");
-        Path port = ROOT.resolve("resources/assets/thaumcraftmodern/"
+        Path port = ROOT.resolve("resources/assets/thaumic_reborn/"
                 + "textures/misc/tunnel.png");
         assertArrayEquals(Files.readAllBytes(original), Files.readAllBytes(port));
         Path originalField = Path.of("reference/Thaumcraft-4.2-FOREVA-master/"
                 + "src/main/resources/assets/thaumcraft/textures/misc/"
                 + "particlefield.png");
-        Path portField = ROOT.resolve("resources/assets/thaumcraftmodern/"
+        Path portField = ROOT.resolve("resources/assets/thaumic_reborn/"
                 + "textures/misc/particlefield.png");
         assertArrayEquals(
                 Files.readAllBytes(originalField),

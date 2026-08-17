@@ -39,14 +39,14 @@ public final class WandComponentItem extends Item {
         switch (kind) {
             case ROD -> WandComponentRegistry.rod(componentId).ifPresent(rod ->
                     tooltip.add(Component.translatable(
-                                    "tooltip.thaumcraftmodern.wand_rod.capacity",
+                                    "tooltip.thaumic_reborn.wand_rod.capacity",
                                     rod.capacityVis()
                             )
                             .withStyle(ChatFormatting.DARK_PURPLE))
             );
             case CAP -> WandComponentRegistry.cap(componentId).ifPresent(cap ->
                     tooltip.add(Component.translatable(
-                                    "tooltip.thaumcraftmodern.wand_cap.cost",
+                                    "tooltip.thaumic_reborn.wand_cap.cost",
                                     Math.round(cap.costModifier() * 100.0F)
                             )
                             .withStyle(ChatFormatting.DARK_PURPLE))

@@ -180,7 +180,7 @@ public final class FocalManipulatorBlockEntity extends BlockEntity
     }
 
     @Override public Component getDisplayName() {
-        return Component.translatable("container.thaumcraftmodern.focal_manipulator");
+        return Component.translatable("container.thaumic_reborn.focal_manipulator");
     }
     @Override public @Nullable AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
         return new FocalManipulatorMenu(id, inventory, this, data);

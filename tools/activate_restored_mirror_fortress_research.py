@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RESEARCH = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/research/legacy"
-RECIPES = ROOT / "src/main/resources/data/thaumcraftmodern/thaumcraft/infusion_recipes"
+RESEARCH = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/research/legacy"
+RECIPES = ROOT / "src/main/resources/data/thaumic_reborn/thaumcraft/infusion_recipes"
 
 mapping = {
     "Mirror": "magic_mirror", "MirrorHand": "hand_mirror",
@@ -36,8 +36,8 @@ representative = {
     **{name: "minecraft:iron_sword" for name in enchant_order[10:16]},
     **{name: "minecraft:iron_pickaxe" for name in enchant_order[16:20]},
     **{name: "minecraft:bow" for name in enchant_order[20:]},
-    "repair": "thaumcraftmodern:thaumium_pickaxe",
-    "haste": "thaumcraftmodern:boots_of_the_traveller",
+    "repair": "thaumic_reborn:thaumium_pickaxe",
+    "haste": "thaumic_reborn:boots_of_the_traveller",
 }
 
 def instability(value):
@@ -76,11 +76,11 @@ files = ["mirror", "mirrorhand", "mirroressentia", "infusionenchantment",
          "armorfortress", "helmgoggles", "maskgrinningdevil",
          "maskangryghost", "masksippingfiend"]
 icons = {
-    "mirror": "thaumcraftmodern:magic_mirror",
-    "mirrorhand": "thaumcraftmodern:hand_mirror",
-    "mirroressentia": "thaumcraftmodern:essentia_mirror",
-    "armorfortress": "thaumcraftmodern:fortress_helmet",
-    "helmgoggles": "thaumcraftmodern:fortress_helmet",
+    "mirror": "thaumic_reborn:magic_mirror",
+    "mirrorhand": "thaumic_reborn:hand_mirror",
+    "mirroressentia": "thaumic_reborn:essentia_mirror",
+    "armorfortress": "thaumic_reborn:fortress_helmet",
+    "helmgoggles": "thaumic_reborn:fortress_helmet",
 }
 for name in files:
     path = RESEARCH / f"{name}.json"

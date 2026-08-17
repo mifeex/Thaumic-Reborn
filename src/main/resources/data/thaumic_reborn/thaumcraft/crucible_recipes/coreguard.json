@@ -1,0 +1,14 @@
+{
+  "research": "coreguard",
+  "catalyst": {
+    "item": "thaumic_reborn:blank_golem_core"
+  },
+  "output": {
+    "item": "thaumic_reborn:guard_golem_core"
+  },
+  "aspects": {
+    "telum": 5,
+    "vinculum": 5
+  },
+  "legacy_id": "CoreGuard"
+}

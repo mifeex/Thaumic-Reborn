@@ -1,0 +1,10 @@
+{
+  "type":"block",
+  "target":"thaumic_reborn:ancient_stone",
+  "display":"block.thaumic_reborn.ancient_stone",
+  "aspects":[
+    {"id":"terra","amount":4},
+    {"id":"alienis","amount":2},
+    {"id":"tenebrae","amount":1}
+  ]
+}

@@ -142,7 +142,7 @@ public final class PrimalAncientKnowledgeGameTests {
             String testId
     ) {
         UUID id = UUID.nameUUIDFromBytes(
-                ("thaumcraftmodern:gametest:" + testId)
+                ("thaumic_reborn:gametest:" + testId)
                         .getBytes(StandardCharsets.UTF_8)
         );
         return FakePlayerFactory.get(

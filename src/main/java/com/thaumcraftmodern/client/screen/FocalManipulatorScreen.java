@@ -119,7 +119,7 @@ public final class FocalManipulatorScreen extends AbstractContainerScreen<FocalM
             AspectDefinition aspect = AspectRegistryRuntime.find(primal.id()).orElse(null);
             if (aspect == null) continue;
             ClassicUiRender.drawAspectVisRow(graphics, font,
-                    Component.translatable("aspect.thaumcraftmodern." + primal.id()),
+                    Component.translatable("aspect.thaumic_reborn." + primal.id()),
                     amount, leftPos + 49, y + row * 5, aspect.color());
             row++;
         }

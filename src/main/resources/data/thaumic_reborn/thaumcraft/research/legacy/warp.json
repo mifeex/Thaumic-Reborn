@@ -1,0 +1,61 @@
+{
+  "id": "warp",
+  "legacy_id": "WARP",
+  "category": "basics",
+  "icon_resource": "thaumic_reborn:textures/misc/r_warp.png",
+  "title": "tc.research_name.WARP",
+  "subtitle": "tc.research_text.WARP",
+  "concealed": false,
+  "auto_unlock": true,
+  "parents": [],
+  "hidden_parents": [],
+  "reveal_when": {
+    "type": "always"
+  },
+  "x": 24,
+  "y": 48,
+  "pages": [
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARP.1"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARP.2"
+    },
+    {
+      "type": "text",
+      "title": "",
+      "body": "tc.research_page.WARP.3"
+    }
+  ],
+  "inactive": false,
+  "inactive_reason": null,
+  "legacy": {
+    "x": 0,
+    "y": 2,
+    "complexity": 0,
+    "icon_raw": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_warp.png\")",
+    "flags": {
+      "special": false,
+      "secondary": false,
+      "round": true,
+      "stub": true,
+      "virtual": false,
+      "concealed": false,
+      "hidden": false,
+      "lost": false,
+      "auto_unlock": true
+    },
+    "hidden_parents": [],
+    "siblings": [],
+    "item_triggers_raw": [],
+    "entity_triggers": [],
+    "aspect_triggers": [],
+    "research_aspects": [],
+    "warp": [],
+    "source_expression": "(new ResearchItem(\"WARP\", \"BASICS\", new AspectList(), 0, 2, 0, new ResourceLocation(\"thaumcraft\", \"textures/misc/r_warp.png\"))).setPages(new ResearchPage(\"tc.research_page.WARP.1\"), new ResearchPage(\"tc.research_page.WARP.2\"), new ResearchPage(\"tc.research_page.WARP.3\")).setStub().setRound().setAutoUnlock().registerResearchItem()"
+  }
+}
