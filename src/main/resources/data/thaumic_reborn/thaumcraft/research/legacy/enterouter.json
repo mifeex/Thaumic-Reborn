@@ -2,7 +2,7 @@
   "id": "enterouter",
   "legacy_id": "ENTEROUTER",
   "category": "eldritch",
-  "icon": "thaumic_reborn:thaumonomicon",
+  "icon_resource": "thaumic_reborn:textures/misc/r_outer.png",
   "title": "tc.research_name.ENTEROUTER",
   "subtitle": "tc.research_text.ENTEROUTER",
   "concealed": true,

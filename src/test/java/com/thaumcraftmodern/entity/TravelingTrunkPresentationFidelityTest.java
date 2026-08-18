@@ -10,6 +10,17 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 final class TravelingTrunkPresentationFidelityTest {
     @Test
+    void inventoryIconUsesCompactGuiScale() throws Exception {
+        String itemModel = Files.readString(Path.of(
+                "src/main/resources/assets/thaumic_reborn/models/item/"
+                        + "traveling_trunk.json"
+        ));
+        assertTrue(itemModel.contains(
+                "\"scale\":[0.625,0.625,0.625]"
+        ));
+    }
+
+    @Test
     void rendererSeatsSixteenPixelModelOnModernGroundPlane()
             throws Exception {
         String renderer = Files.readString(Path.of(

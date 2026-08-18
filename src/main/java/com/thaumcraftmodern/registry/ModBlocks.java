@@ -10,6 +10,9 @@ import com.thaumcraftmodern.world.block.ArcaneDoorBlock;
 import com.thaumcraftmodern.world.block.ArcaneLevitatorBlock;
 import com.thaumcraftmodern.world.block.ArcaneLampBlock;
 import com.thaumcraftmodern.world.block.ArcaneLampLightBlock;
+import com.thaumcraftmodern.world.block.ArcaneSpaBlock;
+import com.thaumcraftmodern.world.block.ArcaneBoreBlock;
+import com.thaumcraftmodern.world.block.ArcaneBoreBaseBlock;
 import com.thaumcraftmodern.world.block.BrainJarBlock;
 import com.thaumcraftmodern.world.block.HungryChestBlock;
 import com.thaumcraftmodern.world.block.GolemFetterBlock;
@@ -32,9 +35,13 @@ import com.thaumcraftmodern.world.block.ClassicCrystalSoundType;
 import com.thaumcraftmodern.world.block.ClassicJarSoundType;
 import com.thaumcraftmodern.world.block.DeconstructionTableBlock;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
+import com.thaumcraftmodern.world.block.EldritchCapstoneBlock;
 import com.thaumcraftmodern.world.block.EldritchLockBlock;
+import com.thaumcraftmodern.world.block.EldritchCrabVentBlock;
+import com.thaumcraftmodern.world.block.EldritchRunedStoneBlock;
 import com.thaumcraftmodern.world.block.EldritchBarrierBlock;
 import com.thaumcraftmodern.world.block.EldritchNothingBlock;
+import com.thaumcraftmodern.world.block.EldritchNothingAnchorBlock;
 import com.thaumcraftmodern.world.block.OuterLandsPortalBlock;
 import com.thaumcraftmodern.world.block.AncientStoneBlock;
 import com.thaumcraftmodern.world.block.EtherealBloomBlock;
@@ -151,6 +158,22 @@ public final class ModBlocks {
                     BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                             .strength(2.0F, 10.0F).requiresCorrectToolForDrops()
                             .sound(SoundType.STONE).noOcclusion()));
+    public static final RegistryObject<Block> ARCANE_SPA = BLOCKS.register(
+            "arcane_spa", () -> new ArcaneSpaBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.STONE)
+                            .strength(3.0F, 25.0F)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE)
+                            .noOcclusion()));
+    public static final RegistryObject<Block> ARCANE_BORE_BASE = BLOCKS.register(
+            "arcane_bore_base", () -> new ArcaneBoreBaseBlock(
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
+                            .strength(2.0F).noOcclusion()));
+    public static final RegistryObject<Block> ARCANE_BORE = BLOCKS.register(
+            "arcane_bore", () -> new ArcaneBoreBlock(
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
+                            .strength(2.0F).noOcclusion()));
     public static final RegistryObject<Block> TEMPORARY_HOLE = BLOCKS.register(
             "temporary_hole", () -> new TemporaryHoleBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NONE).noCollission().noOcclusion().noLootTable()
@@ -881,6 +904,27 @@ public final class ModBlocks {
                                     .noLootTable()
                     )
             );
+    public static final RegistryObject<Block> ELDRITCH_CAPSTONE =
+            BLOCKS.register(
+                    "eldritch_capstone",
+                    () -> new EldritchCapstoneBlock(
+                            BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)
+                                    .strength(50.0F, 20000.0F)
+                                    .noOcclusion()
+                                    .noLootTable()
+                    )
+            );
+    /** TC4 blockCosmeticSolid:15, used as the library's solid supports. */
+    public static final RegistryObject<Block> ELDRITCH_PEDESTAL =
+            BLOCKS.register(
+                    "eldritch_pedestal",
+                    () -> new Block(
+                            BlockBehaviour.Properties.copy(
+                                            Blocks.DEEPSLATE_BRICKS)
+                                    .strength(2.0F, 10.0F)
+                                    .noLootTable()
+                    )
+            );
     public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register(
             "ancient_stone",
             () -> new AncientStoneBlock(
@@ -891,6 +935,16 @@ public final class ModBlocks {
                             ) == 3 ? 11 : 0)
             )
     );
+    public static final RegistryObject<Block> ELDRITCH_RUNED_STONE =
+            BLOCKS.register(
+                    "eldritch_runed_stone",
+                    () -> new EldritchRunedStoneBlock(
+                            BlockBehaviour.Properties.copy(
+                                            Blocks.DEEPSLATE_BRICKS)
+                                    .strength(15.0F, 30.0F)
+                                    .noLootTable()
+                    )
+            );
     public static final RegistryObject<Block> ANCIENT_ROCK = BLOCKS.register(
             "ancient_rock",
             () -> new AncientStoneBlock(
@@ -931,12 +985,27 @@ public final class ModBlocks {
             "eldritch_nothing",
             () -> new EldritchNothingBlock(
                     BlockBehaviour.Properties.of()
-                            .noCollission()
+                            .mapColor(MapColor.NONE)
                             .noOcclusion()
                             .noLootTable()
-                            .replaceable()
+                            .strength(-1.0F, 6000000.0F)
+                            .sound(SoundType.STONE)
+                            .lightLevel(state -> 3)
             )
     );
+    public static final RegistryObject<Block> ELDRITCH_NOTHING_ANCHOR =
+            BLOCKS.register(
+                    "eldritch_nothing_anchor",
+                    () -> new EldritchNothingAnchorBlock(
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(MapColor.NONE)
+                                    .noOcclusion()
+                                    .noLootTable()
+                                    .strength(-1.0F, 6000000.0F)
+                                    .sound(SoundType.STONE)
+                                    .lightLevel(state -> 3)
+                    )
+            );
     public static final RegistryObject<Block> ELDRITCH_DOOR = BLOCKS.register(
             "eldritch_door",
             () -> new Block(
@@ -959,6 +1028,14 @@ public final class ModBlocks {
                     BlockBehaviour.Properties.copy(Blocks.BEDROCK)
                             .noLootTable()
                             .lightLevel(state -> 7)
+                            .noOcclusion()
+            )
+    );
+    public static final RegistryObject<Block> ELDRITCH_CRAB_VENT = BLOCKS.register(
+            "eldritch_crab_vent",
+            () -> new EldritchCrabVentBlock(
+                    BlockBehaviour.Properties.copy(Blocks.BEDROCK)
+                            .noLootTable()
                             .noOcclusion()
             )
     );

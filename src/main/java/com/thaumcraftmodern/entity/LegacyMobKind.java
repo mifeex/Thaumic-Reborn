@@ -117,7 +117,9 @@ public enum LegacyMobKind {
     }
 
     public boolean tainted() {
-        return name().startsWith("TAINT") || this == GIANT_TAINTACLE;
+        return name().startsWith("TAINT")
+                || this == THAUMIC_SLIME
+                || this == GIANT_TAINTACLE;
     }
 
     public boolean eldritch() {

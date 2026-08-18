@@ -22,7 +22,10 @@ public final class OuterLandsSpawnerMigrationEvents {
                 || !(event.getChunk() instanceof LevelChunk chunk)) {
             return;
         }
-        level.getServer().execute(() -> repairLoadedChunk(level, chunk));
+        OuterLandsChunkMigrationScheduler.nextTick(
+                level.getServer(),
+                () -> repairLoadedChunk(level, chunk)
+        );
     }
 
     static boolean repairLoadedChunk(ServerLevel level, LevelChunk chunk) {

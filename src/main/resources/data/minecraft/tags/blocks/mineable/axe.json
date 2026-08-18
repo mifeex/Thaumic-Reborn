@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "thaumic_reborn:arcane_bellows",
+    "thaumic_reborn:arcane_bore_base",
+    "thaumic_reborn:arcane_bore",
     "thaumic_reborn:research_table",
     "thaumic_reborn:thaumcraft_table",
     "thaumic_reborn:arcane_workbench",

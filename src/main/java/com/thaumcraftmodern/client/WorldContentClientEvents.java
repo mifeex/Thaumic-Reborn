@@ -28,6 +28,14 @@ import com.thaumcraftmodern.client.render.TaintSporeRenderer;
 import com.thaumcraftmodern.client.render.TaintSporeSwarmerModel;
 import com.thaumcraftmodern.client.render.TaintSporeSwarmerRenderer;
 import com.thaumcraftmodern.client.render.TaintedCrawlerRenderer;
+import com.thaumcraftmodern.client.render.TaintedChickenRenderer;
+import com.thaumcraftmodern.client.render.TaintedCowRenderer;
+import com.thaumcraftmodern.client.render.TaintedCreeperRenderer;
+import com.thaumcraftmodern.client.render.TaintedPigRenderer;
+import com.thaumcraftmodern.client.render.TaintedSheepModel;
+import com.thaumcraftmodern.client.render.TaintedSheepRenderer;
+import com.thaumcraftmodern.client.render.TaintedVillagerRenderer;
+import com.thaumcraftmodern.client.render.TaintedVillagerModel;
 import com.thaumcraftmodern.client.render.TaintSwarmRenderer;
 import com.thaumcraftmodern.client.render.WispRenderer;
 import com.thaumcraftmodern.client.render.TemporaryHoleBlockEntityRenderer;
@@ -167,6 +175,36 @@ public final class WorldContentClientEvents {
                         entry.getValue().get(),
                         TaintedCrawlerRenderer::new
                 );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_CHICKEN) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedChickenRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_COW) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedCowRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_CREEPER) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedCreeperRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_PIG) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedPigRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_SHEEP) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedSheepRenderer::new
+                );
+            } else if (entry.getKey() == LegacyMobKind.TAINTED_VILLAGER) {
+                event.registerEntityRenderer(
+                        entry.getValue().get(),
+                        TaintedVillagerRenderer::new
+                );
             } else if (entry.getKey() == LegacyMobKind.TAINT_SPORE) {
                 event.registerEntityRenderer(
                         entry.getValue().get(),
@@ -213,6 +251,18 @@ public final class WorldContentClientEvents {
     public static void registerLayerDefinitions(
             EntityRenderersEvent.RegisterLayerDefinitions event
     ) {
+        event.registerLayerDefinition(
+                TaintedVillagerModel.LAYER,
+                TaintedVillagerModel::createBodyLayer
+        );
+        event.registerLayerDefinition(
+                TaintedSheepModel.BASE_LAYER,
+                TaintedSheepModel::createBaseLayer
+        );
+        event.registerLayerDefinition(
+                TaintedSheepModel.FUR_LAYER,
+                TaintedSheepModel::createFurLayer
+        );
         event.registerLayerDefinition(
                 FacelessWitnessModel.LAYER,
                 FacelessWitnessModel::createBodyLayer

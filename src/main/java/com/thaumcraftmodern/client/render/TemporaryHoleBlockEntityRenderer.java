@@ -46,7 +46,7 @@ public final class TemporaryHoleBlockEntityRenderer
                     )) {
                 continue;
             }
-            drawWall(
+            drawFieldFace(
                     poses,
                     buffers,
                     towardWall,
@@ -56,7 +56,7 @@ public final class TemporaryHoleBlockEntityRenderer
         }
     }
 
-    private static void drawWall(
+    static void drawFieldFace(
             PoseStack poses,
             MultiBufferSource buffers,
             Direction wall,

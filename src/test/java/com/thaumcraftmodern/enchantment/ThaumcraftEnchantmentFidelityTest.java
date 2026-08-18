@@ -1,5 +1,7 @@
 package com.thaumcraftmodern.enchantment;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.thaumcraftmodern.aspect.AspectDefinition;
 import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import org.junit.jupiter.api.Test;
@@ -10,9 +12,29 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ThaumcraftEnchantmentFidelityTest {
+    @Test
+    void implementedEnchantmentsAreActiveInTheThaumonomicon()
+            throws Exception {
+        JsonObject research = JsonParser.parseString(Files.readString(Path.of(
+                "src/main/resources/data/thaumic_reborn/thaumcraft/"
+                        + "research/legacy/enchant.json"
+        ))).getAsJsonObject();
+
+        assertFalse(research.get("inactive").getAsBoolean());
+        assertEquals(
+                "thaumic_reborn:textures/misc/r_enchant.png",
+                research.get("icon_resource").getAsString()
+        );
+        assertTrue(Files.isRegularFile(Path.of(
+                "src/main/resources/assets/thaumic_reborn/textures/misc/"
+                        + "r_enchant.png"
+        )));
+    }
+
     @Test
     void hasteKeepsOriginalLevelsCostsAndBootRestriction() throws Exception {
         String haste = source("HasteEnchantment.java");

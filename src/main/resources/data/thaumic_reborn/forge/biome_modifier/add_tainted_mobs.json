@@ -4,7 +4,73 @@
   "spawners": [
     {
       "type": "thaumic_reborn:taintacle",
-      "weight": 1,
+      "weight": 10,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:taint_spore_swarmer",
+      "weight": 15,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:taint_swarm",
+      "weight": 20,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "thaumic_reborn:taint_spore",
+      "weight": 5,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "thaumic_reborn:tainted_crawler",
+      "weight": 10,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "thaumic_reborn:thaumic_slime",
+      "weight": 15,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "thaumic_reborn:tainted_sheep",
+      "weight": 12,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "thaumic_reborn:tainted_pig",
+      "weight": 10,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "thaumic_reborn:tainted_chicken",
+      "weight": 10,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "thaumic_reborn:tainted_cow",
+      "weight": 8,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "thaumic_reborn:tainted_creeper",
+      "weight": 10,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "thaumic_reborn:tainted_villager",
+      "weight": 2,
       "minCount": 1,
       "maxCount": 1
     }

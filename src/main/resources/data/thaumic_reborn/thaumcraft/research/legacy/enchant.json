@@ -2,7 +2,7 @@
   "id": "enchant",
   "legacy_id": "ENCHANT",
   "category": "basics",
-  "icon": "thaumic_reborn:thaumonomicon",
+  "icon_resource": "thaumic_reborn:textures/misc/r_enchant.png",
   "title": "tc.research_name.ENCHANT",
   "subtitle": "tc.research_text.ENCHANT",
   "concealed": false,
@@ -26,8 +26,8 @@
       "body": "tc.research_page.ENCHANT.2"
     }
   ],
-  "inactive": true,
-  "inactive_reason": "referenced gameplay content is not implemented",
+  "inactive": false,
+  "inactive_reason": null,
   "legacy": {
     "x": -4,
     "y": -2,

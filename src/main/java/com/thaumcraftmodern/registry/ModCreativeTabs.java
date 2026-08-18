@@ -174,6 +174,9 @@ public final class ModCreativeTabs {
                         ));
                         output.accept(ModItems.THAUMCRAFT_TABLE.get());
                         output.accept(ModItems.ARCANE_WORKBENCH.get());
+                        output.accept(ModItems.ARCANE_SPA.get());
+                        output.accept(ModItems.ARCANE_BORE_BASE.get());
+                        output.accept(ModItems.ARCANE_BORE.get());
                         output.accept(ModItems.NODE_STABILIZER.get());
                         output.accept(ModItems.ADVANCED_NODE_STABILIZER.get());
                         output.accept(ModItems.NODE_TRANSDUCER.get());

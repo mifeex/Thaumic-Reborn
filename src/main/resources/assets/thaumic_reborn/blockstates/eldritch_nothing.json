@@ -1,1 +1,1 @@
-{"variants":{"":{"model":"thaumic_reborn:block/eldritch_nothing"}}}
+{"variants":{"exposed=false":{"model":"thaumic_reborn:block/eldritch_nothing"},"exposed=true":{"model":"thaumic_reborn:block/eldritch_nothing"}}}

@@ -145,32 +145,15 @@ class WandClassicContentTest {
     }
 
     @Test
-    void infusionLayoutResearchProvidesSixIncreasingDensityPreviews()
-            throws IOException {
-        JsonObject research = json(
+    void developmentInfusionLayoutCategoryIsNotPublished() {
+        assertTrue(resource(
                 "/data/thaumic_reborn/thaumcraft/research/"
                         + "infusion_layout_test.json"
-        );
-        assertTrue(research.get("auto_unlock").getAsBoolean());
-        assertEquals(
-                "thaumic_reborn:runic_matrix",
-                research.get("icon").getAsString()
-        );
-        long infusionPages = research.getAsJsonArray("pages").asList().stream()
-                .filter(element -> element.getAsJsonObject()
-                        .get("type")
-                        .getAsString()
-                        .equals("infusion"))
-                .count();
-        assertEquals(6, infusionPages);
-        assertEquals(
-                12,
-                research.getAsJsonArray("pages")
-                        .get(8)
-                        .getAsJsonObject()
-                        .getAsJsonArray("components")
-                        .size()
-        );
+        ) == null);
+        assertTrue(resource(
+                "/data/thaumic_reborn/thaumcraft/categories/"
+                        + "infusion_layout_test.json"
+        ) == null);
     }
 
     @Test

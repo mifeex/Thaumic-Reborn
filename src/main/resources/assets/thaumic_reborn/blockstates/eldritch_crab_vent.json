@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "crusted=false,facing=down": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=false,facing=up": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=false,facing=north": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=false,facing=south": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=false,facing=west": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=false,facing=east": {"model":"thaumic_reborn:block/eldritch_crab_vent"},
+    "crusted=true,facing=down": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"},
+    "crusted=true,facing=up": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"},
+    "crusted=true,facing=north": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"},
+    "crusted=true,facing=south": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"},
+    "crusted=true,facing=west": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"},
+    "crusted=true,facing=east": {"model":"thaumic_reborn:block/eldritch_crab_vent_crusted"}
+  }
+}

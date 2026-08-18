@@ -8,6 +8,10 @@ import com.thaumcraftmodern.client.render.InfusionPillarBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.RunicMatrixCubeModel;
 import com.thaumcraftmodern.client.render.ArcaneBellowsBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ArcaneBellowsModel;
+import com.thaumcraftmodern.client.render.ArcaneBoreModel;
+import com.thaumcraftmodern.client.render.ArcaneBoreJarCoreModel;
+import com.thaumcraftmodern.client.render.ArcaneBoreBlockEntityRenderer;
+import com.thaumcraftmodern.client.render.ArcaneBoreBaseBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.FluxScrubberBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.BrainJarBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ClassicBrainJarModel;
@@ -33,6 +37,8 @@ import com.thaumcraftmodern.client.render.ReloadSafeObjLoader;
 import com.thaumcraftmodern.client.render.EldritchAltarPartRenderer;
 import com.thaumcraftmodern.client.render.OuterLandsPortalRenderer;
 import com.thaumcraftmodern.client.render.EldritchLockRenderer;
+import com.thaumcraftmodern.client.render.EldritchCrabVentRenderer;
+import com.thaumcraftmodern.client.render.EldritchNothingBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EtherealBloomBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EssentiaJarBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EssentiaBufferBlockEntityRenderer;
@@ -59,6 +65,8 @@ import com.thaumcraftmodern.client.render.ArcaneAlembicBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.AdvancedAlchemicalFurnaceBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EtherealBloomCrystalModel;
 import com.thaumcraftmodern.client.screen.ArcaneWorkbenchScreen;
+import com.thaumcraftmodern.client.screen.ArcaneSpaScreen;
+import com.thaumcraftmodern.client.screen.ArcaneBoreScreen;
 import com.thaumcraftmodern.client.screen.AlchemicalFurnaceScreen;
 import com.thaumcraftmodern.client.screen.DeconstructionTableScreen;
 import com.thaumcraftmodern.client.screen.ResearchTableScreen;
@@ -139,6 +147,8 @@ public final class ClientModEvents {
             ClientSinisterNodeTracker.installLifecycleListener();
             MenuScreens.register(ModMenus.RESEARCH_TABLE.get(), ResearchTableScreen::new);
             MenuScreens.register(ModMenus.ARCANE_WORKBENCH.get(), ArcaneWorkbenchScreen::new);
+            MenuScreens.register(ModMenus.ARCANE_SPA.get(), ArcaneSpaScreen::new);
+            MenuScreens.register(ModMenus.ARCANE_BORE.get(), ArcaneBoreScreen::new);
             MenuScreens.register(
                     ModMenus.DECONSTRUCTION_TABLE.get(),
                     DeconstructionTableScreen::new
@@ -389,6 +399,10 @@ public final class ClientModEvents {
                 ModBlockEntities.ARCANE_BELLOWS.get(),
                 ArcaneBellowsBlockEntityRenderer::new
         );
+        event.registerBlockEntityRenderer(ModBlockEntities.ARCANE_BORE_BASE.get(),
+                ArcaneBoreBaseBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ARCANE_BORE.get(),
+                ArcaneBoreBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FLUX_SCRUBBER.get(),
                 FluxScrubberBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BRAIN_JAR.get(),BrainJarBlockEntityRenderer::new);
@@ -468,6 +482,14 @@ public final class ClientModEvents {
                 EldritchLockRenderer::new
         );
         event.registerBlockEntityRenderer(
+                ModBlockEntities.ELDRITCH_CRAB_VENT.get(),
+                EldritchCrabVentRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.ELDRITCH_NOTHING.get(),
+                EldritchNothingBlockEntityRenderer::new
+        );
+        event.registerBlockEntityRenderer(
                 ModBlockEntities.ETHEREAL_BLOOM.get(),
                 EtherealBloomBlockEntityRenderer::new
         );
@@ -497,6 +519,10 @@ public final class ClientModEvents {
                 ArcaneBellowsModel.LAYER,
                 ArcaneBellowsModel::createBodyLayer
         );
+        event.registerLayerDefinition(ArcaneBoreModel.LAYER,
+                ArcaneBoreModel::createBodyLayer);
+        event.registerLayerDefinition(ArcaneBoreJarCoreModel.LAYER,
+                ArcaneBoreJarCoreModel::createBodyLayer);
         event.registerLayerDefinition(ClassicBrainJarModel.LAYER,ClassicBrainJarModel::createBodyLayer);
         event.registerLayerDefinition(HungryChestModel.LAYER,HungryChestModel::createBodyLayer);
         event.registerLayerDefinition(StrawGolemModel.LAYER,StrawGolemModel::createBodyLayer);

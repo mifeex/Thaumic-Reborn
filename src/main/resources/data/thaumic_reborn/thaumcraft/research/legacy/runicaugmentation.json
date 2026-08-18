@@ -2,7 +2,7 @@
   "id": "runicaugmentation",
   "legacy_id": "RUNICAUGMENTATION",
   "category": "artifice",
-  "icon": "thaumic_reborn:textures/misc/r_runicupg.png",
+  "icon_resource": "thaumic_reborn:textures/misc/r_runicupg.png",
   "title": "tc.research_name.RUNICAUGMENTATION",
   "subtitle": "tc.research_text.RUNICAUGMENTATION",
   "concealed": true,

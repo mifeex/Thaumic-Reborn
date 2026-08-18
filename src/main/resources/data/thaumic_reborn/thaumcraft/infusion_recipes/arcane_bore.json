@@ -1,0 +1,17 @@
+{
+  "research":"arcanebore",
+  "instability":4,
+  "central":{"item":"minecraft:diamond_block"},
+  "components":[
+    {"item":"thaumic_reborn:greatwood_planks"},
+    {"item":"thaumic_reborn:greatwood_planks"},
+    {"item":"minecraft:gold_ingot"},
+    {"item":"minecraft:gold_ingot"},
+    {"item":"minecraft:iron_axe"},
+    {"item":"minecraft:iron_pickaxe"},
+    {"item":"thaumic_reborn:air_shard"},
+    {"item":"thaumic_reborn:earth_shard"}
+  ],
+  "result":{"item":"thaumic_reborn:arcane_bore"},
+  "essentia":{"potentia":16,"perfodio":32,"machina":32,"vacuos":16,"motus":16}
+}

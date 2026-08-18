@@ -49,16 +49,39 @@ class TaintedLandsResourceTest {
                         + "add_tainted_mobs.json"
         );
         JsonArray spawners = modifier.getAsJsonArray("spawners");
-        // TC4 BiomeTaint registers only the taintacle directly. Spores,
-        // swarmers and swarms enter through the taint ecology lifecycle.
-        assertEquals(1, spawners.size());
+        // The original ecology creates most of these through taint blocks and
+        // Flux Taint conversion. Until every random-tick conversion source is
+        // present, the biome list must keep the generated biome populated.
+        assertEquals(12, spawners.size());
         assertTrue(hasSpawn(
                 spawners,
                 "thaumic_reborn:taintacle",
-                1,
+                10,
                 1,
                 1
         ));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:taint_spore_swarmer", 15, 1, 1));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:taint_swarm", 20, 1, 2));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:taint_spore", 5, 1, 1));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_crawler", 10, 1, 2));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:thaumic_slime", 15, 1, 2));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_sheep", 12, 2, 4));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_pig", 10, 2, 4));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_chicken", 10, 2, 4));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_cow", 8, 2, 4));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_creeper", 10, 1, 2));
+        assertTrue(hasSpawn(spawners,
+                "thaumic_reborn:tainted_villager", 2, 1, 1));
     }
 
     @Test

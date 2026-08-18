@@ -55,6 +55,34 @@ final class TaintMobFidelityTest {
     @Test
     void originalTexturesRemainByteExact() throws Exception {
         assertHash(
+                ASSETS.resolve("textures/entity/models/chicken.png"),
+                "c0f7cb5ac0cc62b130bd87ceb2d90b7d1227fda1de637f401371c7404e0210d8"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/cow.png"),
+                "9aa12f95d71d39f369043c45be49370e509eebb57becf2925de4cec9ee2b5086"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/creeper.png"),
+                "ac55f40649e6d20f74d3fd8f90c4031d335a20c1af12fb93776302f2972fb5b4"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/pig.png"),
+                "a4c55ac16a5abdcd5390a1387bbfc8ec79c8347e45747484524226c448b143d5"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/sheep.png"),
+                "efb840c68a8015480ee6129a31f7def5c959fadeb50d22420f86e4bf77c2474e"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/sheep_fur.png"),
+                "c9ce724eb092301dd1c4eca2e7e06ad321e502bb1a596e97dbd7c301a7a96459"
+        );
+        assertHash(
+                ASSETS.resolve("textures/entity/models/villager.png"),
+                "859429bdba57690a28da296045b3148bb030b6beecc20de0a89d89dbeb397b8a"
+        );
+        assertHash(
                 ASSETS.resolve("textures/entity/models/taint_spider.png"),
                 "900311dfe5e143c8e0e3f2f6700ce081d303fb9235cec945bb575ca92859272c"
         );
@@ -94,6 +122,12 @@ final class TaintMobFidelityTest {
                 "com/thaumcraftmodern/client/WorldContentClientEvents.java"
         ));
         assertTrue(registration.contains("TaintedCrawlerRenderer::new"));
+        assertTrue(registration.contains("TaintedChickenRenderer::new"));
+        assertTrue(registration.contains("TaintedCowRenderer::new"));
+        assertTrue(registration.contains("TaintedCreeperRenderer::new"));
+        assertTrue(registration.contains("TaintedPigRenderer::new"));
+        assertTrue(registration.contains("TaintedSheepRenderer::new"));
+        assertTrue(registration.contains("TaintedVillagerRenderer::new"));
         assertTrue(registration.contains("TaintSporeRenderer::new"));
         assertTrue(registration.contains("TaintSporeSwarmerRenderer::new"));
 
@@ -101,6 +135,62 @@ final class TaintMobFidelityTest {
         assertTrue(crawler.contains("ModelLayers.SPIDER"));
         assertTrue(crawler.contains("pose.scale(0.4F, 0.5F, 0.4F)"));
         assertTrue(crawler.contains("RenderType.eyes(EYES)"));
+
+        String chicken = renderer("TaintedChickenRenderer.java");
+        assertTrue(chicken.contains("ModelLayers.CHICKEN"));
+        assertTrue(chicken.contains("ChickenModel<LegacyThaumcraftMob>"));
+        assertTrue(chicken.contains("0.3F"));
+        assertTrue(chicken.contains("taintedChickenWingBob(partialTick)"));
+        assertFalse(chicken.contains("entity.tickCount"));
+        assertFalse(chicken.contains("HumanoidModel"));
+
+        String cow = renderer("TaintedCowRenderer.java");
+        assertTrue(cow.contains("ModelLayers.COW"));
+        assertTrue(cow.contains("CowModel<LegacyThaumcraftMob>"));
+        assertTrue(cow.contains("0.7F"));
+        assertFalse(cow.contains("HumanoidModel"));
+
+        String creeper = renderer("TaintedCreeperRenderer.java");
+        assertTrue(creeper.contains("ModelLayers.CREEPER"));
+        assertTrue(creeper.contains("CreeperModel<LegacyThaumcraftMob>"));
+        assertTrue(creeper.contains("0.5F"));
+        assertFalse(creeper.contains("HumanoidModel"));
+
+        String pig = renderer("TaintedPigRenderer.java");
+        assertTrue(pig.contains("ModelLayers.PIG"));
+        assertTrue(pig.contains("PigModel<LegacyThaumcraftMob>"));
+        assertTrue(pig.contains("0.5F"));
+        assertFalse(pig.contains("HumanoidModel"));
+
+        String sheep = renderer("TaintedSheepModel.java");
+        assertTrue(sheep.contains("fur ? -4.0F : -6.0F"));
+        assertTrue(sheep.contains("fur ? 6.0F : 8.0F"));
+        assertTrue(sheep.contains("new CubeDeformation(fur ? 1.75F : 0.0F)"));
+        assertTrue(sheep.contains("new CubeDeformation(fur ? 0.5F : 0.0F)"));
+        assertTrue(sheep.contains("float legHeight = fur ? 6.0F : 12.0F"));
+        assertTrue(sheep.contains("4.0F, height, 4.0F"));
+        assertTrue(sheep.contains("LayerDefinition.create(mesh, 64, 32)"));
+        String sheepRenderer = renderer("TaintedSheepRenderer.java");
+        assertTrue(sheepRenderer.contains("sheep_fur.png"));
+        assertTrue(sheepRenderer.contains("0.7F"));
+        assertFalse(sheepRenderer.contains("HumanoidModel"));
+
+        String villager = renderer("TaintedVillagerRenderer.java");
+        assertTrue(villager.contains("TaintedVillagerModel.LAYER"));
+        assertFalse(villager.contains("ModelLayers.VILLAGER"));
+        assertTrue(villager.contains("0.9375F"));
+        assertTrue(villager.contains("0.5F"));
+        assertFalse(villager.contains("HumanoidModel"));
+
+        String villagerModel = renderer("TaintedVillagerModel.java");
+        assertTrue(villagerModel.contains("-4.0F, -10.0F, -4.0F"));
+        assertTrue(villagerModel.contains("8.0F, 10.0F, 8.0F"));
+        assertTrue(villagerModel.contains(".texOffs(24, 0).addBox"));
+        assertTrue(villagerModel.contains("8.0F, 18.0F, 6.0F"));
+        assertTrue(villagerModel.contains("new CubeDeformation(0.5F)"));
+        assertTrue(villagerModel.contains("PartPose.offsetAndRotation("));
+        assertTrue(villagerModel.contains("-0.75F, 0.0F, 0.0F"));
+        assertTrue(villagerModel.contains("LayerDefinition.create(mesh, 64, 64)"));
 
         String spore = renderer("TaintSporeModel.java");
         assertTrue(spore.contains(

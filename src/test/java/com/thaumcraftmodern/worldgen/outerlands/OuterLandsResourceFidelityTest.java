@@ -99,6 +99,30 @@ class OuterLandsResourceFidelityTest {
                 ))
         );
         assertArrayEquals(
+                Files.readAllBytes(ORIGINAL.resolve("models/crabvent.png")),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/models/crabvent.png"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(ORIGINAL.resolve("models/crabvent.obj")),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/models/crabvent.obj"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(ORIGINAL.resolve("models/obelisk_cap_2.png")),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/models/obelisk_cap_2.png"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(ORIGINAL.resolve("blocks/es_p.png")),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/block/eldritch_pedestal.png"
+                ))
+        );
+        assertArrayEquals(
                 Files.readAllBytes(ORIGINAL.resolve("blocks/es_5.png")),
                 Files.readAllBytes(RESOURCES.resolve(
                         "assets/thaumic_reborn/textures/block/ancient_rock_classic.png"
@@ -110,6 +134,16 @@ class OuterLandsResourceFidelityTest {
                         "assets/thaumic_reborn/textures/block/ancient_nospawn_classic.png"
                 ))
         );
+        String rockOneModel = Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/ancient_rock_1.json"
+        ));
+        String rockTwoModel = Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/ancient_rock_2.json"
+        ));
+        assertTrue(rockOneModel.contains("thaumic_reborn:block/ancient_rock_1"));
+        assertTrue(rockTwoModel.contains("thaumic_reborn:block/ancient_rock_2"));
+        assertFalse(rockOneModel.contains("ancient_rock_classic"));
+        assertFalse(rockTwoModel.contains("ancient_nospawn_classic"));
     }
 
     @Test
@@ -127,10 +161,310 @@ class OuterLandsResourceFidelityTest {
         assertTrue(generator.contains("generateClassicLibraryRoom(level"));
         assertTrue(generator.contains("case 14 -> generateWebRoom(level"));
         assertTrue(generator.contains("OuterLandsMindSpiderSpawners.configure(level, center)"));
-        assertTrue(generator.contains("wallDirection.getOpposite()"));
+        assertTrue(generator.contains("OuterLandsCrabVents.populate(level, chunk, worldSeed, cell)"));
+        assertTrue(generator.contains(
+                "ModBlocks.ELDRITCH_CAPSTONE.get().defaultBlockState()"
+        ));
+        assertTrue(generator.contains(
+                "ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState()"
+        ));
+        assertFalse(generator.contains(
+                "ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState()"
+        ));
+        assertTrue(generator.contains("StairBlock.FACING, wallDirection"));
+        assertTrue(generator.contains("placeClassicPassageCornerStairs(level"));
+        assertTrue(generator.contains("passageCornerPair(level, x + 5, z + 5"));
+        assertTrue(generator.contains("Block.UPDATE_ALL"));
+        assertFalse(generator.contains(
+                "for (int across : new int[]{4, 12})"
+        ));
+        assertTrue(generator.contains(
+                "for (int across = 4; across <= 12; across++)"
+        ));
+        assertTrue(generator.contains(
+                "ModBlocks.ELDRITCH_NOTHING.get().defaultBlockState()"
+        ));
+        assertFalse(generator.contains(
+                "across == 4 || across == 12"
+        ));
+        assertTrue(generator.contains(
+                "TC4 sandwich: masonry, one void layer, outer seal."
+        ));
+        assertTrue(generator.contains(
+                "passageSidePos(x, z, side, w + 3, y, 0)"
+        ));
+        assertTrue(generator.contains(
+                "passageSidePos(x, z, side, w + 3, y, 1)"
+        ));
+        assertTrue(generator.contains(
+                "passageSidePos(x, z, side, w + 3, y, 2)"
+        ));
+        assertTrue(generator.contains("boolean[][] stairBlocked"));
+        assertTrue(generator.contains(
+                "OuterLandsStairTopology.isAncientWall("
+        ));
+        assertTrue(generator.contains("makePreviousConnectionStairCorner("));
+        assertTrue(generator.contains("repairClassicConnectionStairTips("));
+        assertTrue(generator.contains("blocksConnectionStair("));
+        assertTrue(generator.contains(
+                "hasStairBacking(level, target, stair)"
+        ));
+        assertFalse(generator.contains("classicState(10, side.getOpposite()"));
+        assertFalse(generator.contains("classicState(11, side.getOpposite()"));
+        assertFalse(generator.contains("wallDirection.getOpposite()"));
+        assertTrue(generator.contains(
+                "case 19 -> ModBlocks.ANCIENT_STONE.get().defaultBlockState()"
+        ));
+        assertTrue(generator.contains(
+                "if (inset && (a == 8 || b == 8) && c == 6)"
+        ));
+        String keyRoomMigration = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsKeyRoomMigrationEvents.java"
+        ));
+        assertTrue(keyRoomMigration.contains("located.cell().feature() != 6"));
+        assertTrue(keyRoomMigration.contains("!cell.north()"));
+        assertTrue(keyRoomMigration.contains(
+                "boolean centerWindow = height == 6 && across == 8"
+        ));
+        assertTrue(keyRoomMigration.contains("repairVoidBacking("));
+        assertTrue(keyRoomMigration.contains("isReplaceableStructureState"));
+        assertTrue(keyRoomMigration.contains("chunk.setUnsaved(true)"));
+        String stairMigration = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsStairMigrationEvents.java"
+        ));
+        assertTrue(stairMigration.contains("OuterLandsDimensions.OUTER_LANDS"));
+        assertTrue(stairMigration.contains("current.getOpposite()"));
+        assertTrue(stairMigration.contains("repairClassicPassageCornerStairs"));
+        assertTrue(stairMigration.contains("repairClassicClosedPassageEdges"));
+        assertTrue(stairMigration.contains(
+                "repairClassicConnectionStairTips"
+        ));
+        assertTrue(stairMigration.contains("OuterLandsStairTopology.refresh"));
+        assertTrue(stairMigration.contains("chunk.setUnsaved(true)"));
+        String topology = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsStairTopology.java"
+        ));
+        assertFalse(topology.contains("repairInnerCorners"));
+        assertTrue(topology.contains("setValue(StairBlock.FACING"));
+        assertTrue(topology.contains(
+                "wallOnLeft ? StairsShape.INNER_LEFT"
+        ));
+        assertTrue(topology.contains(
+                "setValue(StairBlock.SHAPE, StairsShape.STRAIGHT)"
+        ));
+        assertTrue(topology.contains("fillMissingCorners(level, chunk)"));
+        assertTrue(topology.contains(
+                "fillMissingStraightStairs(level, chunk)"
+        ));
+        assertTrue(topology.contains("formsStraightRunGap("));
+        assertTrue(topology.contains(
+                "trimStairsTouchingNothing(level, chunk)"
+        ));
+        assertTrue(topology.contains("touchesNothingHorizontally("));
+        assertTrue(topology.contains(
+                "ordinaryAncientWall(level, removal)"
+        ));
+        assertTrue(topology.contains("formsMissingCorner("));
+        assertTrue(topology.contains("touchingPerpendicularCorner("));
+        assertTrue(topology.contains("isPerpendicularStair("));
+        assertTrue(topology.contains("Block.UPDATE_ALL"));
+        assertFalse(topology.contains("resolved.updateShape("));
+        assertTrue(topology.contains("isAncientWall(BlockState state)"));
+        String pedestalMigration = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsPedestalMigrationEvents.java"
+        ));
+        assertTrue(pedestalMigration.contains("case 1, 6 -> replaceCapstone"));
+        assertTrue(pedestalMigration.contains(
+                "case 2, 3, 4, 5 -> replaceBossPedestals"
+        ));
+        assertTrue(pedestalMigration.contains("case 8 -> replaceLibraryPedestals"));
+        assertTrue(pedestalMigration.contains("removeItemNoUpdate(0)"));
+        assertTrue(pedestalMigration.contains("newPedestal.setItem(0, stored)"));
         assertTrue(generator.contains("generateClassicConnections(level, chunk, cell, random, 3, true)"));
         assertTrue(Files.exists(RESOURCES.resolve(
                 "assets/thaumic_reborn/blockstates/eldritch_nothing.json"
+        )));
+    }
+
+    @Test
+    void classicCrabVentsGenerateMigrateRenderAndSpawn() throws IOException {
+        Path java = Path.of("src/main/java/com/thaumcraftmodern");
+        String vents = Files.readString(java.resolve(
+                "worldgen/outerlands/OuterLandsCrabVents.java"
+        ));
+        assertTrue(vents.contains("case 7 -> 25"));
+        assertTrue(vents.contains("case 12 -> 50"));
+        assertTrue(vents.contains("case 0 -> 1250"));
+        assertTrue(vents.contains("singleOpening(level, cursor)"));
+        assertTrue(vents.contains(
+                "position.relative(direction)).isAir()"
+        ));
+        assertFalse(vents.contains("EldritchNothingBlock.isNothing"));
+        assertTrue(vents.contains("ELDRITCH_CRAB_VENT"));
+        assertTrue(vents.contains("EldritchCrabVentBlock.CRUSTED"));
+        assertTrue(vents.contains("cell.feature() == 7 && !existingVent"));
+        assertTrue(vents.contains("state.is(ModBlocks.ANCIENT_STONE.get())"));
+        assertTrue(vents.contains("state.is(ModBlocks.ANCIENT_CRUST.get())"));
+
+        String blockEntity = Files.readString(java.resolve(
+                "world/block/entity/EldritchCrabVentBlockEntity.java"
+        ));
+        assertTrue(blockEntity.contains("countdown == 15"));
+        assertTrue(blockEntity.contains("16.0D"));
+        assertTrue(blockEntity.contains(".inflate(32.0D)"));
+        assertTrue(blockEntity.contains(".size() > 5"));
+        assertTrue(blockEntity.contains("ModEntities.ELDRITCH_CRAB"));
+        assertTrue(blockEntity.contains("MobSpawnType.STRUCTURE"));
+
+        String migration = Files.readString(java.resolve(
+                "worldgen/outerlands/OuterLandsCrabVentMigrationEvents.java"
+        ));
+        assertTrue(migration.contains("OuterLandsDimensions.OUTER_LANDS"));
+        assertTrue(migration.contains("chunk.setUnsaved(true)"));
+
+        String renderer = Files.readString(java.resolve(
+                "client/render/EldritchCrabVentRenderer.java"
+        ));
+        assertTrue(renderer.contains("crabvent.obj"));
+        assertTrue(renderer.contains("crabvent.png"));
+        assertTrue(renderer.contains("LegacyObjMesh.get(MODEL)"));
+        assertTrue(renderer.contains("RenderType.entityCutoutNoCull(TEXTURE)"));
+
+        String ventBlock = Files.readString(java.resolve(
+                "world/block/EldritchCrabVentBlock.java"
+        ));
+        assertTrue(ventBlock.contains("RenderShape.MODEL"));
+        assertTrue(ventBlock.contains("BooleanProperty CRUSTED"));
+        String ventState = Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/blockstates/eldritch_crab_vent.json"
+        ));
+        assertTrue(ventState.contains("crusted=false,facing=north"));
+        assertTrue(ventState.contains("crusted=true,facing=north"));
+        assertTrue(Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/eldritch_crab_vent.json"
+        )).contains("thaumic_reborn:block/ancient_stone"));
+        assertTrue(Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/"
+                        + "eldritch_crab_vent_crusted.json"
+        )).contains("thaumic_reborn:block/ancient_crust"));
+    }
+
+    @Test
+    void runedAncientStoneUsesOriginalRateTexturesAndTrapBehavior()
+            throws IOException {
+        Path java = Path.of("src/main/java/com/thaumcraftmodern");
+        String placement = Files.readString(java.resolve(
+                "worldgen/outerlands/OuterLandsRunedStones.java"
+        ));
+        assertTrue(placement.contains("CANDIDATE_SALT, 25"));
+        assertTrue(placement.contains("CRAB_SALT, 50"));
+        assertTrue(placement.contains("DECO_BRANCH_SALT, 3"));
+        assertTrue(placement.contains("RUNED_SALT, 8"));
+        assertTrue(placement.contains("cell.feature() == 7"));
+        assertTrue(placement.contains("ELDRITCH_RUNED_STONE"));
+
+        String trap = Files.readString(java.resolve(
+                "world/block/entity/EldritchRunedStoneBlockEntity.java"
+        ));
+        assertTrue(trap.contains("private int count = 20"));
+        assertTrue(trap.contains("10 + level.random.nextInt(25)"));
+        assertTrue(trap.contains("3.0D"));
+        assertTrue(trap.contains("damageSources().magic(), 2.0F"));
+        assertTrue(trap.contains("level.random.nextBoolean()"));
+        assertTrue(trap.contains("1 + level.random.nextInt(2)"));
+        assertTrue(trap.contains("WarpType.TEMPORARY"));
+        assertTrue(trap.contains("new NodeZapPacket("));
+
+        JsonObject variants = JsonParser.parseString(Files.readString(
+                RESOURCES.resolve(
+                        "assets/thaumic_reborn/blockstates/"
+                                + "eldritch_runed_stone.json"
+                )
+        )).getAsJsonObject().getAsJsonObject("variants");
+        assertEquals(4, variants.size());
+        for (int index = 0; index < 4; index++) {
+            String suffix = index == 0 ? "" : "_" + (index + 1);
+            String model = Files.readString(RESOURCES.resolve(
+                    "assets/thaumic_reborn/models/block/"
+                            + "eldritch_runed_stone" + suffix + ".json"
+            ));
+            assertTrue(model.contains(
+                    "thaumic_reborn:block/ancient_stone_" + (index + 5)
+            ));
+        }
+
+        String migration = Files.readString(java.resolve(
+                "worldgen/outerlands/"
+                        + "OuterLandsRunedStoneMigrationEvents.java"
+        ));
+        assertTrue(migration.contains("OuterLandsDimensions.OUTER_LANDS"));
+        assertTrue(migration.contains("chunk.setUnsaved(true)"));
+    }
+
+    @Test
+    void eldritchNothingUsesTc4StarFieldCollisionAndDamage() throws IOException {
+        Path java = Path.of("src/main/java/com/thaumcraftmodern");
+        String block = Files.readString(java.resolve(
+                "world/block/EldritchNothingBlock.java"
+        ));
+        assertTrue(block.contains("Block.box(2, 2, 2, 14, 14, 14)"));
+        assertTrue(block.contains("entity.tickCount > 20"));
+        assertTrue(block.contains("player.getAbilities().flying"));
+        assertTrue(block.contains("damageSources().fellOutOfWorld()"));
+        assertTrue(block.contains("8.0F"));
+        assertTrue(block.contains("BooleanProperty.create(\"exposed\")"));
+        assertTrue(block.contains("extends Block"));
+        assertFalse(block.contains("extends BaseEntityBlock"));
+
+        String anchorBlock = Files.readString(java.resolve(
+                "world/block/EldritchNothingAnchorBlock.java"
+        ));
+        assertTrue(anchorBlock.contains("extends BaseEntityBlock"));
+        assertTrue(anchorBlock.contains(
+                "new EldritchNothingBlockEntity(pos, state)"
+        ));
+
+        String registry = Files.readString(java.resolve(
+                "registry/ModBlocks.java"
+        ));
+        assertTrue(registry.contains(".strength(-1.0F, 6000000.0F)"));
+        assertTrue(registry.contains(".lightLevel(state -> 3)"));
+
+        String renderer = Files.readString(java.resolve(
+                "client/render/EldritchNothingBlockEntityRenderer.java"
+        ));
+        String portableHole = Files.readString(java.resolve(
+                "client/render/TemporaryHoleBlockEntityRenderer.java"
+        ));
+        assertTrue(renderer.contains(
+                "TemporaryHoleBlockEntityRenderer.drawFieldFace("
+        ));
+        assertTrue(portableHole.contains("static void drawFieldFace("));
+
+        String migration = Files.readString(java.resolve(
+                "worldgen/outerlands/"
+                        + "OuterLandsEldritchNothingMigrationEvents.java"
+        ));
+        assertTrue(migration.contains("OuterLandsDimensions.OUTER_LANDS"));
+        assertTrue(migration.contains(
+                "OuterLandsEldritchNothingExposure.refresh("
+        ));
+        assertTrue(migration.contains("chunk.setUnsaved(true)"));
+
+        JsonObject variants = JsonParser.parseString(Files.readString(
+                RESOURCES.resolve(
+                        "assets/thaumic_reborn/blockstates/eldritch_nothing.json"
+                )
+        )).getAsJsonObject().getAsJsonObject("variants");
+        assertTrue(variants.has("exposed=false"));
+        assertTrue(variants.has("exposed=true"));
+        assertTrue(Files.exists(RESOURCES.resolve(
+                "assets/thaumic_reborn/blockstates/"
+                        + "eldritch_nothing_anchor.json"
         )));
     }
 
@@ -158,6 +492,7 @@ class OuterLandsResourceFidelityTest {
         assertTrue(renderer.contains("0.25F,0.25F,0.50F,0.50F"));
         assertTrue(renderer.contains("0.75F,0.25F,1.00F,0.50F"));
         assertTrue(renderer.contains("float parallaxScale = scale * (0.75F + depth * 0.015625F)"));
+        assertTrue(renderer.contains("BACKGROUND_SHADE = 0.015F"));
         assertFalse(renderer.contains("brightness * 1.55F"));
 
         String renderType = Files.readString(java.resolve(
@@ -166,6 +501,8 @@ class OuterLandsResourceFidelityTest {
         assertTrue(renderType.contains("GL11.GL_REPEAT"));
         assertTrue(renderType.contains("REPEAT_TEXTURE"));
         assertTrue(renderType.contains("repeat ? REPEAT_TEXTURE : DEFAULT_TEXTURING"));
+        assertTrue(renderType.contains("RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER"));
+        assertTrue(renderType.contains("new TextureStateShard(texture, false, false)"));
 
         String lock = Files.readString(java.resolve(
                 "world/block/entity/EldritchLockBlockEntity.java"
@@ -204,7 +541,7 @@ class OuterLandsResourceFidelityTest {
         assertTrue(altarRenderer.contains("side * 90.0F"));
         assertTrue(altarRenderer.contains("ModItems.ELDRITCH_EYE"));
         assertTrue(altarRenderer.contains(
-                "EYE_VERTICAL_OFFSET = 0.2F + 5.0F / 16.0F"
+                "EYE_VERTICAL_OFFSET = 0.2F + 2.0F / 16.0F"
         ));
 
         String altar = Files.readString(java.resolve(
@@ -223,11 +560,24 @@ class OuterLandsResourceFidelityTest {
         assertTrue(portalEntity.contains("List.copyOf(server.players())"));
         assertTrue(portalEntity.contains("OuterLandsPortalBlock.transferPlayer"));
         assertTrue(portalEntity.contains("HasMazeDestination"));
-        assertTrue(portalEntity.contains("OuterLandsPortalAllocationData.get(source).allocate()"));
 
         String portalBlock = Files.readString(java.resolve(
                 "world/block/OuterLandsPortalBlock.java"
         ));
+        assertTrue(portalBlock.contains("TicketType.PORTAL"));
+        assertTrue(portalBlock.contains(
+                "DESTINATION_PRELOAD_RADIUS = 0"
+        ));
+        assertTrue(portalBlock.contains("addRegionTicket("));
+        assertTrue(portalBlock.contains("getChunkNow("));
+        assertFalse(portalBlock.contains(
+                "target.getChunk(targetChunkX, targetChunkZ)"
+        ));
+        assertTrue(
+                portalBlock.indexOf("getChunkNow(")
+                        < portalBlock.indexOf("KnowledgeAccess.mutate(")
+        );
+        assertTrue(portalEntity.contains("OuterLandsPortalAllocationData.get(source).allocate()"));
         assertTrue(portalBlock.contains("portal.destination(source)"));
         assertFalse(portalBlock.contains(
                 "Math.floorDiv(player.blockPosition().getX(), 16)"
@@ -243,15 +593,57 @@ class OuterLandsResourceFidelityTest {
 
     @Test
     void outerResearchIsNoLongerPublishedAsInactive() throws IOException {
-        for (String name : new String[]{"enterouter", "outerrev"}) {
+        for (String[] entry : new String[][]{
+                {"enterouter", "r_outer.png"},
+                {"outerrev", "r_outerrev.png"}
+        }) {
             JsonObject research = JsonParser.parseString(Files.readString(
                     RESOURCES.resolve(
                             "data/thaumic_reborn/thaumcraft/research/legacy/"
-                                    + name + ".json"
+                                    + entry[0] + ".json"
                     )
             )).getAsJsonObject();
             assertFalse(research.has("inactive")
                     && research.get("inactive").getAsBoolean());
+            assertEquals(
+                    "thaumic_reborn:textures/misc/" + entry[1],
+                    research.get("icon_resource").getAsString()
+            );
+            assertArrayEquals(
+                    Files.readAllBytes(ORIGINAL.resolve("misc/" + entry[1])),
+                    Files.readAllBytes(RESOURCES.resolve(
+                            "assets/thaumic_reborn/textures/misc/" + entry[1]
+                    ))
+            );
+        }
+    }
+
+    @Test
+    void outerLandsChunkMigrationsCannotRunReentrantlyDuringChunkLoad()
+            throws IOException {
+        Path outerLands = Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands"
+        );
+        String scheduler = Files.readString(outerLands.resolve(
+                "OuterLandsChunkMigrationScheduler.java"
+        ));
+        assertTrue(scheduler.contains("new TickTask("));
+        assertTrue(scheduler.contains("server.getTickCount() + 1"));
+
+        for (String migration : new String[]{
+                "OuterLandsPedestalMigrationEvents.java",
+                "OuterLandsKeyRoomMigrationEvents.java",
+                "OuterLandsStairMigrationEvents.java",
+                "OuterLandsSpawnerMigrationEvents.java",
+                "OuterLandsCrabVentMigrationEvents.java",
+                "OuterLandsRunedStoneMigrationEvents.java",
+                "OuterLandsEldritchNothingMigrationEvents.java"
+        }) {
+            String source = Files.readString(outerLands.resolve(migration));
+            assertTrue(source.contains(
+                    "OuterLandsChunkMigrationScheduler.nextTick("
+            ));
+            assertFalse(source.contains("getServer().execute("));
         }
     }
 }

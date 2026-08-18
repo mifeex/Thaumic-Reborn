@@ -27,6 +27,10 @@ final class ArcanePedestalRendererFidelityTest {
                         + "                ArcanePedestalBlockEntityRenderer::new"
         ));
         assertTrue(renderer.contains("1.15D + bob"));
+        assertTrue(renderer.contains("1.5D + bob"));
+        assertTrue(renderer.contains("obelisk_cap_2.png"));
+        assertTrue(renderer.contains("OUTER_CAP_MODEL.renderClosedShell("));
+        assertFalse(renderer.contains("OUTER_CAP_MODEL.render("));
         assertTrue(renderer.contains("/ 16.0F) * 0.05F"));
         assertTrue(renderer.contains("ticks % 360.0F"));
         assertTrue(renderer.contains("float scale = 1.0F"));

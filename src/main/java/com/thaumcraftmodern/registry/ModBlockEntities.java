@@ -7,6 +7,9 @@ import com.thaumcraftmodern.world.block.entity.ArcaneWorkbenchBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneBellowsBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneLevitatorBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneLampBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcaneSpaBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcaneBoreBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcaneBoreBaseBlockEntity;
 import com.thaumcraftmodern.world.block.entity.GrowthLampBlockEntity;
 import com.thaumcraftmodern.world.block.entity.FertilityLampBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ItemGrateBlockEntity;
@@ -40,6 +43,9 @@ import com.thaumcraftmodern.world.block.entity.ThaumatoriumBlockEntity;
 import com.thaumcraftmodern.world.block.entity.VoidJarBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EldritchAltarPartBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
+import com.thaumcraftmodern.world.block.entity.EldritchCrabVentBlockEntity;
+import com.thaumcraftmodern.world.block.entity.EldritchRunedStoneBlockEntity;
+import com.thaumcraftmodern.world.block.entity.EldritchNothingBlockEntity;
 import com.thaumcraftmodern.world.block.entity.OuterLandsPortalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EtherealBloomBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ManaPodBlockEntity;
@@ -140,6 +146,17 @@ public final class ModBlockEntities {
             FOCAL_MANIPULATOR = BLOCK_ENTITIES.register("focal_manipulator",
                     () -> BlockEntityType.Builder.of(FocalManipulatorBlockEntity::new,
                             ModBlocks.FOCAL_MANIPULATOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ArcaneSpaBlockEntity>> ARCANE_SPA =
+            BLOCK_ENTITIES.register("arcane_spa", () -> BlockEntityType.Builder.of(
+                    ArcaneSpaBlockEntity::new, ModBlocks.ARCANE_SPA.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ArcaneBoreBaseBlockEntity>>
+            ARCANE_BORE_BASE = BLOCK_ENTITIES.register("arcane_bore_base",
+                    () -> BlockEntityType.Builder.of(ArcaneBoreBaseBlockEntity::new,
+                            ModBlocks.ARCANE_BORE_BASE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ArcaneBoreBlockEntity>>
+            ARCANE_BORE = BLOCK_ENTITIES.register("arcane_bore",
+                    () -> BlockEntityType.Builder.of(ArcaneBoreBlockEntity::new,
+                            ModBlocks.ARCANE_BORE.get()).build(null));
     public static final RegistryObject<BlockEntityType<TemporaryHoleBlockEntity>> TEMPORARY_HOLE =
             BLOCK_ENTITIES.register("temporary_hole", () -> BlockEntityType.Builder.of(
                     TemporaryHoleBlockEntity::new, ModBlocks.TEMPORARY_HOLE.get()).build(null));
@@ -173,7 +190,8 @@ public final class ModBlockEntities {
                     "arcane_pedestal",
                     () -> BlockEntityType.Builder.of(
                             ArcanePedestalBlockEntity::new,
-                            ModBlocks.ARCANE_PEDESTAL.get()
+                            ModBlocks.ARCANE_PEDESTAL.get(),
+                            ModBlocks.ELDRITCH_CAPSTONE.get()
                     ).build(null)
             );
     public static final RegistryObject<BlockEntityType<WandRechargePedestalBlockEntity>>
@@ -399,6 +417,31 @@ public final class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             EldritchLockBlockEntity::new,
                             ModBlocks.ELDRITCH_LOCK.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<BlockEntityType<EldritchCrabVentBlockEntity>>
+            ELDRITCH_CRAB_VENT = BLOCK_ENTITIES.register(
+                    "eldritch_crab_vent",
+                    () -> BlockEntityType.Builder.of(
+                            EldritchCrabVentBlockEntity::new,
+                            ModBlocks.ELDRITCH_CRAB_VENT.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<
+            BlockEntityType<EldritchRunedStoneBlockEntity>>
+            ELDRITCH_RUNED_STONE = BLOCK_ENTITIES.register(
+                    "eldritch_runed_stone",
+                    () -> BlockEntityType.Builder.of(
+                            EldritchRunedStoneBlockEntity::new,
+                            ModBlocks.ELDRITCH_RUNED_STONE.get()
+                    ).build(null)
+            );
+    public static final RegistryObject<BlockEntityType<EldritchNothingBlockEntity>>
+            ELDRITCH_NOTHING = BLOCK_ENTITIES.register(
+                    "eldritch_nothing",
+                    () -> BlockEntityType.Builder.of(
+                            EldritchNothingBlockEntity::new,
+                            ModBlocks.ELDRITCH_NOTHING_ANCHOR.get()
                     ).build(null)
             );
     public static final RegistryObject<BlockEntityType<OuterLandsPortalBlockEntity>>

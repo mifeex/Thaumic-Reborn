@@ -29,7 +29,8 @@ public final class LegacyObjMesh {
             mesh("vis_relay.obj"),
             mesh("node_stabilizer.obj"),
             mesh("pillar.obj"),
-            mesh("adv_alch_furnace.obj")
+            mesh("adv_alch_furnace.obj"),
+            mesh("crabvent.obj")
     );
     private static volatile Map<ResourceLocation, LegacyObjMesh> loadedMeshes =
             Map.of();

@@ -33,6 +33,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -216,6 +217,8 @@ public final class LegacyThaumcraftMob extends Monster
     private int taintSporeSize;
     private int taintSporeGrowth;
     private int taintSwarmSpawnCounter = 500;
+    private final TaintedChickenFlapAnimation taintedChickenFlap =
+            new TaintedChickenFlapAnimation();
 
     public LegacyThaumcraftMob(
             EntityType<? extends Monster> entityType,
@@ -856,6 +859,9 @@ public final class LegacyThaumcraftMob extends Monster
     @Override
     public void aiStep() {
         super.aiStep();
+        if (kind == LegacyMobKind.TAINTED_CHICKEN) {
+            taintedChickenFlap.tick(onGround());
+        }
         if (!level().isClientSide && constructBossEvent != null) {
             constructBossEvent.setProgress(Mth.clamp(
                     getHealth() / getMaxHealth(),
@@ -886,6 +892,14 @@ public final class LegacyThaumcraftMob extends Monster
                 altar,
                 kind == LegacyMobKind.CRIMSON_CLERIC
         ));
+    }
+
+    /**
+     * Interpolated TC4 wing roll input. On the ground its spread decays to
+     * zero, so a resting tainted chicken does not flap forever.
+     */
+    public float taintedChickenWingBob(float partialTick) {
+        return taintedChickenFlap.sample(partialTick);
     }
 
     private void tickPech() {
@@ -2873,6 +2887,14 @@ public final class LegacyThaumcraftMob extends Monster
                 ModWorldgenKeys.TAINTED_LANDS
         );
         if (sample.kind.tainted() && taintedBiome) {
+            if (TaintedBiomeSpawnPolicy.requiresNearbyVillage(sample.kind)
+                    && !level.getLevel().isCloseToVillage(
+                            position,
+                            TaintedBiomeSpawnPolicy
+                                    .VILLAGE_PROXIMITY_SECTIONS
+                    )) {
+                return false;
+            }
             boolean sturdyGround = sample.kind == LegacyMobKind.TAINTACLE
                     ? TaintedBiomeSpawnPolicy.validTaintacleGround(
                             level.getBlockState(position),
@@ -2884,13 +2906,18 @@ public final class LegacyThaumcraftMob extends Monster
             return TaintedBiomeSpawnPolicy.allows(
                     sample.kind,
                     true,
-                    Monster.checkMonsterSpawnRules(
-                            type,
-                            level,
-                            reason,
-                            position,
-                            random
-                    ),
+                    TaintedBiomeSpawnPolicy.usesEcologyLifecycleRules(
+                            sample.kind
+                    )
+                            ? level.getLevel().getDifficulty()
+                                    != Difficulty.PEACEFUL
+                            : Monster.checkMonsterSpawnRules(
+                                    type,
+                                    level,
+                                    reason,
+                                    position,
+                                    random
+                            ),
                     sturdyGround
             );
         }

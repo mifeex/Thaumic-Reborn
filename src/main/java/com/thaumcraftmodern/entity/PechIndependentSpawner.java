@@ -3,18 +3,15 @@ package com.thaumcraftmodern.entity;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
 import com.thaumcraftmodern.registry.ModEntities;
+import com.thaumcraftmodern.worldgen.ModWorldgenKeys;
 import java.util.List;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,10 +24,6 @@ import net.minecraftforge.fml.common.Mod;
  */
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID)
 public final class PechIndependentSpawner {
-    private static final TagKey<Biome> MAGICAL_BIOMES = TagKey.create(
-            Registries.BIOME,
-            new ResourceLocation("forge", "is_magical")
-    );
     private static final int PLAYER_DISTANCE_SQUARED =
             PechIndependentSpawnPolicy.MIN_PLAYER_DISTANCE
                     * PechIndependentSpawnPolicy.MIN_PLAYER_DISTANCE;
@@ -69,8 +62,16 @@ public final class PechIndependentSpawner {
         for (int attempt = 0;
                 attempt < PechIndependentSpawnPolicy.POSITION_ATTEMPTS;
                 attempt++) {
-            int x = player.getBlockX() + signedDistance(level);
-            int z = player.getBlockZ() + signedDistance(level);
+            int offsetX = randomOffset(level);
+            int offsetZ = randomOffset(level);
+            if (!PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                    offsetX,
+                    offsetZ
+            )) {
+                continue;
+            }
+            int x = player.getBlockX() + offsetX;
+            int z = player.getBlockZ() + offsetZ;
             BlockPos column = new BlockPos(x, player.getBlockY(), z);
             if (!level.hasChunkAt(column)) {
                 continue;
@@ -81,7 +82,7 @@ public final class PechIndependentSpawner {
                     z
             );
             BlockPos origin = new BlockPos(x, y, z);
-            if (!level.getBiome(origin).is(MAGICAL_BIOMES)
+            if (!level.getBiome(origin).is(ModWorldgenKeys.MAGICAL_FOREST)
                     || !farEnoughFromPlayersAndWorldSpawn(level, origin)) {
                 continue;
             }
@@ -90,14 +91,9 @@ public final class PechIndependentSpawner {
         }
     }
 
-    private static int signedDistance(ServerLevel level) {
-        int distance = PechIndependentSpawnPolicy.MIN_PLAYER_DISTANCE
-                + level.getRandom().nextInt(
-                        PechIndependentSpawnPolicy.MAX_PLAYER_DISTANCE
-                                - PechIndependentSpawnPolicy.MIN_PLAYER_DISTANCE
-                                + 1
-                );
-        return level.getRandom().nextBoolean() ? distance : -distance;
+    private static int randomOffset(ServerLevel level) {
+        int radius = PechIndependentSpawnPolicy.MAX_PLAYER_DISTANCE;
+        return level.getRandom().nextInt(radius * 2 + 1) - radius;
     }
 
     private static boolean farEnoughFromPlayersAndWorldSpawn(
@@ -128,7 +124,9 @@ public final class PechIndependentSpawner {
                     ? origin
                     : nearbySurfacePosition(level, origin);
             if (position == null
-                    || !level.getBiome(position).is(MAGICAL_BIOMES)
+                    || !level.getBiome(position).is(
+                            ModWorldgenKeys.MAGICAL_FOREST
+                    )
                     || !hasOrdinarySurface(level, position)
                     || !SpawnPlacements.checkSpawnRules(
                             ModEntities.PECH.get(),

@@ -73,6 +73,7 @@ import com.thaumcraftmodern.item.VisStorageItem;
 import com.thaumcraftmodern.item.RunicAccessoryItem;
 import com.thaumcraftmodern.item.WandComponentItem;
 import com.thaumcraftmodern.item.WandItem;
+import com.thaumcraftmodern.item.ArcaneBoreItem;
 import com.thaumcraftmodern.item.WandFocusItem;
 import com.thaumcraftmodern.focus.WandFocusType;
 import com.thaumcraftmodern.item.WardedJarItem;
@@ -556,6 +557,16 @@ public final class ModItems {
                             new Item.Properties()
                     )
             );
+    public static final RegistryObject<Item> ARCANE_SPA =
+            blockItem("arcane_spa", ModBlocks.ARCANE_SPA);
+    public static final RegistryObject<Item> ARCANE_BORE_BASE = ITEMS.register(
+            "arcane_bore_base", () -> new ArcaneBoreItem(
+                    ModBlocks.ARCANE_BORE_BASE.get(), ArcaneBoreItem.Kind.BASE,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> ARCANE_BORE = ITEMS.register(
+            "arcane_bore", () -> new ArcaneBoreItem(
+                    ModBlocks.ARCANE_BORE.get(), ArcaneBoreItem.Kind.BORE,
+                    new Item.Properties()));
     public static final RegistryObject<Item> DECONSTRUCTION_TABLE =
             ITEMS.register(
                     "deconstruction_table",
@@ -985,10 +996,10 @@ public final class ModItems {
         List<String> names = List.of(
                 "aer_primal_arrow", "aqua_primal_arrow", "ignis_primal_arrow",
                 "ordo_primal_arrow", "perditio_primal_arrow", "terra_primal_arrow",
-                "arcane_bellows", "arcane_bore_base", "arcane_ear",
+                "arcane_bellows", "arcane_ear",
                 "chicken_nugget", "beef_nugget", "pork_nugget", "fish_nugget",
                 "arcane_lamp", "lamp_growth", "lamp_fertility", "item_grate",
-                "arcane_pressure_plate", "arcane_spa",
+                "arcane_pressure_plate",
                 "arcane_stone_slab", "blank_belt", "blank_golem_core",
                 "bone_bow", "deconstruction_table", "enchanted_fabric", "essentia_buffer",
                 "essentia_centrifuge", "essentia_crystallizer", "essentia_reservoir",

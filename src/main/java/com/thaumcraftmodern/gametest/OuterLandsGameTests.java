@@ -7,9 +7,12 @@ import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.registry.ModEntities;
 import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
+import com.thaumcraftmodern.world.block.EldritchCrabVentBlock;
+import com.thaumcraftmodern.world.block.entity.EldritchCrabVentBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.OuterLandsPortalBlockEntity;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsDimensions;
+import com.thaumcraftmodern.worldgen.outerlands.OuterLandsCell;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsLabyrinthGenerator;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsMaze;
 import com.thaumcraftmodern.worldgen.outerlands.OuterLandsMindSpiderSpawners;
@@ -19,6 +22,8 @@ import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.gametest.GameTestHolder;
@@ -63,6 +68,140 @@ public final class OuterLandsGameTests {
     @GameTest(
             template = "empty",
             batch = "outerLands",
+            timeoutTicks = 40
+    )
+    public static void crabVentActuallyReleasesCrab(GameTestHelper helper) {
+        BlockPos ventPosition = new BlockPos(2, 2, 2);
+        helper.setBlock(ventPosition, ModBlocks.ELDRITCH_CRAB_VENT.get()
+                .defaultBlockState().setValue(
+                        EldritchCrabVentBlock.FACING, Direction.EAST
+                ));
+        EldritchCrabVentBlockEntity vent =
+                (EldritchCrabVentBlockEntity) helper.getBlockEntity(
+                        ventPosition
+                );
+        helper.assertTrue(vent.releaseCrab(
+                helper.getLevel(), Direction.EAST
+        ), "Crab vent could not add its crab to the server level");
+        helper.assertTrue(helper.getLevel().getEntitiesOfClass(
+                LegacyThaumcraftMob.class,
+                new AABB(helper.absolutePos(ventPosition)).inflate(4.0D),
+                mob -> mob.kind() == LegacyMobKind.ELDRITCH_CRAB
+        ).size() == 1, "Crab vent did not release an eldritch crab");
+        helper.succeed();
+    }
+
+    @GameTest(
+            template = "empty",
+            batch = "outerLands",
+            timeoutTicks = 300
+    )
+    public static void generatedNestRoomContainsCrabVents(
+            GameTestHelper helper
+    ) {
+        ServerLevel outer = helper.getLevel().getServer().getLevel(
+                OuterLandsDimensions.OUTER_LANDS
+        );
+        helper.assertTrue(outer != null,
+                "Outer Lands dimension was not registered");
+        int regionX = 302;
+        int regionZ = 302;
+        OuterLandsMaze maze = OuterLandsMaze.forRegion(
+                outer.getSeed(), regionX, regionZ
+        );
+        int centerChunkX = regionX * OuterLandsMaze.REGION_SIZE_CHUNKS
+                + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
+        int centerChunkZ = regionZ * OuterLandsMaze.REGION_SIZE_CHUNKS
+                + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
+        int originChunkX = centerChunkX - (1 + maze.width() / 2);
+        int originChunkZ = centerChunkZ - (1 + maze.height() / 2);
+        ChunkPos nestChunk = null;
+        for (int row = 0; row < maze.height() && nestChunk == null; row++) {
+            for (int column = 0; column < maze.width(); column++) {
+                if (maze.cell(column, row) != null
+                        && maze.cell(column, row).feature() == 7) {
+                    nestChunk = new ChunkPos(
+                            originChunkX + column,
+                            originChunkZ + row
+                    );
+                    break;
+                }
+            }
+        }
+        helper.assertTrue(nestChunk != null,
+                "Generated maze has no crab-nest room");
+        ChunkPos target = nestChunk;
+        OuterLandsCell targetCell = OuterLandsMaze.at(
+                outer.getSeed(), target.x, target.z
+        ).cell();
+        outer.getChunk(target.x, target.z);
+        helper.runAfterDelay(20, () -> {
+            int vents = 0;
+            for (int y = OuterLandsLabyrinthGenerator.BASE_Y + 1;
+                    y <= OuterLandsLabyrinthGenerator.BASE_Y + 11; y++) {
+                for (int x = target.getMinBlockX();
+                        x <= target.getMaxBlockX(); x++) {
+                    for (int z = target.getMinBlockZ();
+                            z <= target.getMaxBlockZ(); z++) {
+                        if (outer.getBlockState(new BlockPos(x, y, z))
+                                .is(ModBlocks.ELDRITCH_CRAB_VENT.get())) {
+                            vents++;
+                        }
+                    }
+                }
+            }
+            helper.assertTrue(vents >= 3,
+                    "Generated crab-nest room contains fewer than three crab vents: "
+                            + vents);
+            assertConnectionTipStairs(helper, outer, target, targetCell);
+            helper.succeed();
+        });
+    }
+
+    private static void assertConnectionTipStairs(
+            GameTestHelper helper,
+            ServerLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell
+    ) {
+        for (Direction side : Direction.Plane.HORIZONTAL) {
+            boolean connected = switch (side) {
+                case NORTH -> cell.north();
+                case SOUTH -> cell.south();
+                case WEST -> cell.west();
+                case EAST -> cell.east();
+                default -> false;
+            };
+            if (!connected) {
+                continue;
+            }
+            for (int width : new int[]{3, 7}) {
+                for (int y : new int[]{
+                        OuterLandsLabyrinthGenerator.BASE_Y + 3,
+                        OuterLandsLabyrinthGenerator.BASE_Y + 7
+                }) {
+                    int x = side.getAxis() == Direction.Axis.Z
+                            ? chunk.getMinBlockX() + 3 + width
+                            : side == Direction.WEST
+                                    ? chunk.getMinBlockX() + 3
+                                    : chunk.getMinBlockX() + 13;
+                    int z = side.getAxis() == Direction.Axis.X
+                            ? chunk.getMinBlockZ() + 3 + width
+                            : side == Direction.NORTH
+                                    ? chunk.getMinBlockZ() + 3
+                                    : chunk.getMinBlockZ() + 13;
+                    BlockPos position = new BlockPos(x, y, z);
+                    helper.assertTrue(level.getBlockState(position)
+                                    .is(ModBlocks.ANCIENT_STAIRS.get()),
+                            "Room connection tip lost its stair at " + position);
+                }
+            }
+        }
+    }
+
+    @GameTest(
+            template = "empty",
+            batch = "outerLands",
             timeoutTicks = 200
     )
     public static void dimensionBuildsPortalCellInsideRealVoid(
@@ -81,7 +220,7 @@ public final class OuterLandsGameTests {
                         centerX,
                         OuterLandsLabyrinthGenerator.BASE_Y + 2,
                         centerZ
-                )).is(ModBlocks.ARCANE_PEDESTAL.get()),
+                )).is(ModBlocks.ELDRITCH_CAPSTONE.get()),
                 "Center portal room did not generate its pedestal");
         helper.assertTrue(outer.getBlockState(new BlockPos(
                         centerX,
@@ -156,7 +295,7 @@ public final class OuterLandsGameTests {
                                     == ModEntities.ELDRITCH_GUARDIAN.get()),
                     "Eldritch biome has no natural guardian spawn");
             helper.assertTrue(outer.getBlockState(roomCenter).is(
-                            ModBlocks.ARCANE_PEDESTAL.get()),
+                            ModBlocks.ELDRITCH_CAPSTONE.get()),
                     "Runed-tablet room did not generate its center pedestal");
             helper.assertTrue(outer.getBlockEntity(roomCenter)
                             instanceof ArcanePedestalBlockEntity pedestal

@@ -21,7 +21,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public final class ArcanePedestalBlock extends BaseEntityBlock {
+public class ArcanePedestalBlock extends BaseEntityBlock {
     /** Selection follows every visible section of the pedestal model. */
     private static final VoxelShape OUTLINE = Shapes.or(
             box(0, 0, 0, 16, 4, 16),

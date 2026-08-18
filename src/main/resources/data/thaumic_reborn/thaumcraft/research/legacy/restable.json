@@ -2,7 +2,7 @@
   "id": "restable",
   "legacy_id": "RESTABLE",
   "category": "artifice",
-  "icon": "thaumic_reborn:research_table",
+  "icon": "thaumic_reborn:scribing_tools",
   "title": "tc.research_name.RESTABLE",
   "subtitle": "tc.research_text.RESTABLE",
   "concealed": false,

@@ -21,4 +21,32 @@ class PechIndependentSpawnPolicyTest {
         assertEquals(2, PechIndependentSpawnPolicy.groupSize(1));
         assertEquals(1, PechIndependentSpawnPolicy.groupSize(2));
     }
+
+    @Test
+    void candidateOffsetsCoverTheWholeVanillaPlayerSpawnAnnulus() {
+        assertFalse(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                23,
+                0
+        ));
+        assertTrue(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                24,
+                0
+        ));
+        assertTrue(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                0,
+                24
+        ));
+        assertTrue(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                45,
+                45
+        ));
+        assertFalse(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                46,
+                46
+        ));
+        assertFalse(PechIndependentSpawnPolicy.isWithinPlayerSpawnAnnulus(
+                65,
+                0
+        ));
+    }
 }

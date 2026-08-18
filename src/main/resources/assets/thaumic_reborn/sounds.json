@@ -317,6 +317,10 @@
       "thaumic_reborn:tool2"
     ]
   },
+  "rumble": {
+    "category": "block",
+    "sounds": [{"name":"thaumic_reborn:rumble","stream":false}]
+  },
   "pump": {
     "category": "block",
     "sounds": [

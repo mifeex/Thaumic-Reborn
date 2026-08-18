@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.block.state.properties.StairsShape;
 
 /** Builds one original-scale labyrinth cell in an otherwise absolute void. */
 public final class OuterLandsLabyrinthGenerator {
@@ -78,6 +79,8 @@ public final class OuterLandsLabyrinthGenerator {
             if (cell.exitCount() > 0) {
                 generateBossDoor(level, chunk, located, cell);
             }
+            OuterLandsStairTopology.refresh(level, chunk);
+            OuterLandsEldritchNothingExposure.refresh(level, chunk);
             return;
         }
 
@@ -97,6 +100,10 @@ public final class OuterLandsLabyrinthGenerator {
                 }
             }
         }
+        OuterLandsCrabVents.populate(level, chunk, worldSeed, cell);
+        OuterLandsRunedStones.populate(level, chunk, worldSeed, cell);
+        OuterLandsStairTopology.refresh(level, chunk);
+        OuterLandsEldritchNothingExposure.refresh(level, chunk);
     }
 
     /** Literal modern translation of TC4 GenPassage.generateDefaultPassage. */
@@ -127,6 +134,190 @@ public final class OuterLandsLabyrinthGenerator {
         buildClassicPassageSide(level, chunk, cell, random, Direction.SOUTH, cell.south(), cross);
         buildClassicPassageSide(level, chunk, cell, random, Direction.WEST, cell.west(), cross);
         buildClassicPassageSide(level, chunk, cell, random, Direction.EAST, cell.east(), cross);
+        placeClassicPassageCornerStairs(level, chunk, cell, cross);
+    }
+
+    /** Exact corner trim from TC4 GenPassage, including four-way crossings. */
+    private static int placeClassicPassageCornerStairs(
+            WorldGenLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell,
+            boolean cross
+    ) {
+        int x = chunk.getMinBlockX();
+        int z = chunk.getMinBlockZ();
+        int changed = 0;
+        if (cross) {
+            changed += passageCornerPair(level, x + 5, z + 5, 3, Direction.EAST);
+            changed += passageCornerPair(level, x + 5, z + 6, 3, Direction.NORTH);
+            changed += passageCornerPair(level, x + 11, z + 5, 3, Direction.EAST);
+            changed += passageCornerPair(level, x + 11, z + 6, 4, Direction.NORTH);
+            changed += passageCornerPair(level, x + 5, z + 11, 3, Direction.NORTH);
+            changed += passageCornerPair(level, x + 6, z + 11, 4, Direction.EAST);
+            changed += passageCornerPair(level, x + 11, z + 11, 4, Direction.NORTH);
+            changed += passageCornerPair(level, x + 10, z + 11, 4, Direction.EAST);
+            return changed;
+        }
+
+        /* Preserve TC4's N, S, E, W write order at shared corner positions. */
+        if (cell.north() && cell.west()) {
+            changed += passageCornerPair(level, x + 6, z + 6, 3, Direction.EAST);
+        }
+        if (cell.north() && cell.east()) {
+            changed += passageCornerPair(level, x + 10, z + 6, 3, Direction.EAST);
+        }
+        if (cell.south() && cell.west()) {
+            changed += passageCornerPair(level, x + 6, z + 10, 4, Direction.EAST);
+        }
+        if (cell.south() && cell.east()) {
+            changed += passageCornerPair(level, x + 10, z + 10, 4, Direction.EAST);
+        }
+        if (cell.east() && cell.north()) {
+            changed += passageCornerPair(level, x + 10, z + 6, 4, Direction.NORTH);
+        }
+        if (cell.east() && cell.south()) {
+            changed += passageCornerPair(level, x + 10, z + 10, 4, Direction.NORTH);
+        }
+        if (cell.west() && cell.north()) {
+            changed += passageCornerPair(level, x + 6, z + 6, 3, Direction.NORTH);
+        }
+        if (cell.west() && cell.south()) {
+            changed += passageCornerPair(level, x + 6, z + 10, 3, Direction.NORTH);
+        }
+        return changed;
+    }
+
+    private static int passageCornerPair(WorldGenLevel level, int x, int z,
+            int lowerCode, Direction metadataDirection) {
+        int changed = placePassageCornerStair(level, x, BASE_Y + 3, z,
+                classicConnectionStair(metadataDirection, lowerCode));
+        return changed + placePassageCornerStair(level, x, BASE_Y + 7, z,
+                classicConnectionStair(metadataDirection, lowerCode + 2));
+    }
+
+    private static int placePassageCornerStair(WorldGenLevel level,
+            int x, int y, int z, BlockState expected) {
+        if (level.getBlockState(new BlockPos(x, y, z)).equals(expected)) {
+            return 0;
+        }
+        set(level, x, y, z, expected);
+        return 1;
+    }
+
+    static int repairClassicPassageCornerStairs(
+            WorldGenLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell,
+            long worldSeed
+    ) {
+        int feature = cell.feature();
+        if (feature >= 1 && feature <= 8) {
+            return 0;
+        }
+        boolean cross = cell.north() && cell.south() && cell.west()
+                && cell.east() && new Random(
+                        worldSeed ^ chunk.x * 341873128712L
+                                ^ chunk.z * 132897987541L
+                ).nextBoolean();
+        return placeClassicPassageCornerStairs(level, chunk, cell, cross);
+    }
+
+    static int repairClassicClosedPassageEdges(
+            WorldGenLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell
+    ) {
+        if (cell.feature() >= 1 && cell.feature() <= 8) {
+            return 0;
+        }
+        int x = chunk.getMinBlockX();
+        int z = chunk.getMinBlockZ();
+        int changed = 0;
+        for (Direction side : Direction.Plane.HORIZONTAL) {
+            boolean open = switch (side) {
+                case NORTH -> cell.north();
+                case SOUTH -> cell.south();
+                case WEST -> cell.west();
+                case EAST -> cell.east();
+                default -> false;
+            };
+            if (open) {
+                continue;
+            }
+            for (int h = 1; h < 8; h++) {
+                int y = BASE_Y + 9 - h;
+                for (int across = 4; across <= 12; across++) {
+                    BlockPos edge = passageSidePos(x, z, side, across, y, 1);
+                    BlockState expected = ModBlocks.ELDRITCH_NOTHING.get()
+                            .defaultBlockState();
+                    if (!level.getBlockState(edge).is(expected.getBlock())) {
+                        set(level, edge.getX(), edge.getY(), edge.getZ(),
+                                expected);
+                        changed++;
+                    }
+                }
+            }
+        }
+        return changed;
+    }
+
+    static int repairClassicConnectionStairTips(
+            WorldGenLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell
+    ) {
+        if (cell.feature() != 1 && cell.feature() != 6
+                && cell.feature() != 7 && cell.feature() != 8) {
+            return 0;
+        }
+        BlockState wall = switch (cell.feature()) {
+            case 6 -> ModBlocks.ANCIENT_ROCK.get().defaultBlockState();
+            case 7 -> ModBlocks.ANCIENT_CRUST.get().defaultBlockState();
+            default -> ModBlocks.ANCIENT_STONE.get().defaultBlockState();
+        };
+        int changed = 0;
+        for (Direction side : Direction.Plane.HORIZONTAL) {
+            boolean connected = switch (side) {
+                case NORTH -> cell.north();
+                case SOUTH -> cell.south();
+                case WEST -> cell.west();
+                case EAST -> cell.east();
+                default -> false;
+            };
+            if (!connected) {
+                continue;
+            }
+            for (int w = 2; w < 9; w++) {
+                for (int h = 2; h < 9; h++) {
+                    int code = CONNECTION[h][w];
+                    if (code < 3 || code > 6) {
+                        continue;
+                    }
+                    BlockPos target = classicConnectionPos(
+                            chunk, side, 3, w, BASE_Y + 10 - h
+                    );
+                    BlockState expected = classicConnectionStair(side, code);
+                    BlockState current = level.getBlockState(target);
+                    if (!hasStairBacking(level, target, expected)) {
+                        if (!current.is(ModBlocks.ANCIENT_STAIRS.get())) {
+                            continue;
+                        }
+                        set(level, target.getX(), target.getY(), target.getZ(), wall);
+                        makePreviousConnectionStairCorner(
+                                level, target, side, expected
+                        );
+                        changed++;
+                        continue;
+                    }
+                    if (current.equals(expected)) {
+                        continue;
+                    }
+                    set(level, target.getX(), target.getY(), target.getZ(), expected);
+                    changed++;
+                }
+            }
+        }
+        return changed;
     }
 
     private static void buildClassicPassageSide(WorldGenLevel level, ChunkPos chunk,
@@ -152,6 +343,7 @@ public final class OuterLandsLabyrinthGenerator {
                 BlockPos wall = passageSidePos(x, z, side, w + 3, y, 0);
                 BlockPos nothing = passageSidePos(x, z, side, w + 3, y, 1);
                 BlockPos shell = passageSidePos(x, z, side, w + 3, y, 2);
+                /* TC4 sandwich: masonry, one void layer, outer seal. */
                 set(level, wall.getX(), y, wall.getZ(), classicState(2, side, cell, random));
                 set(level, nothing.getX(), y, nothing.getZ(), classicState(8, side, cell, random));
                 set(level, shell.getX(), y, shell.getZ(), classicState(1, side, cell, random));
@@ -167,9 +359,9 @@ public final class OuterLandsLabyrinthGenerator {
             BlockPos lower = passageSidePos(x, z, side, w + 3, BASE_Y + 3, -1);
             BlockPos upper = passageSidePos(x, z, side, w + 3, BASE_Y + 7, -1);
             set(level, lower.getX(), lower.getY(), lower.getZ(),
-                    classicState(10, side.getOpposite(), cell, random));
+                    classicState(10, side, cell, random));
             set(level, upper.getX(), upper.getY(), upper.getZ(),
-                    classicState(11, side.getOpposite(), cell, random));
+                    classicState(11, side, cell, random));
         }
     }
 
@@ -194,6 +386,7 @@ public final class OuterLandsLabyrinthGenerator {
                 default -> false;
             };
             if (!connected) continue;
+            boolean[][] stairBlocked = new boolean[11][11];
             for (int d = 0; d <= depth; d++) {
                 int start = justTip && d == depth ? 2
                         : justTip && d == depth - 1 ? 1 : 0;
@@ -203,26 +396,126 @@ public final class OuterLandsLabyrinthGenerator {
                     for (int h = start; h < end; h++) {
                         int code = CONNECTION[h][w];
                         if (d == depth && justTip && code == 8) continue;
-                        int px = chunk.getMinBlockX();
-                        int pz = chunk.getMinBlockZ();
-                        int bx = switch (side) {
-                            case NORTH, SOUTH -> px + 3 + w;
-                            case WEST -> px + d;
-                            case EAST -> px + 16 - d;
-                            default -> px;
-                        };
-                        int bz = switch (side) {
-                            case WEST, EAST -> pz + 3 + w;
-                            case NORTH -> pz + d;
-                            case SOUTH -> pz + 16 - d;
-                            default -> pz;
-                        };
-                        set(level, bx, BASE_Y + 10 - h, bz,
-                                classicState(code, side, cell, random));
+                        int by = BASE_Y + 10 - h;
+                        BlockPos target = classicConnectionPos(
+                                chunk, side, d, w, by
+                        );
+                        BlockState state = classicState(
+                                code, side, cell, random
+                        );
+                        if (state.is(ModBlocks.ANCIENT_STAIRS.get())) {
+                            if (stairBlocked[h][w]) {
+                                continue;
+                            }
+                            if (blocksConnectionStair(
+                                    level,
+                                    target,
+                                    state
+                            )) {
+                                stairBlocked[h][w] = true;
+                                makePreviousConnectionStairCorner(
+                                        level, target, side, state
+                                );
+                                continue;
+                            }
+                        }
+                        set(level, target.getX(), by, target.getZ(), state);
                     }
                 }
             }
         }
+    }
+
+    static boolean blocksConnectionStair(
+            WorldGenLevel level,
+            BlockPos target,
+            BlockState stair
+    ) {
+        return blocksConnectionStair(
+                OuterLandsStairTopology.isAncientWall(
+                        level.getBlockState(target)
+                ),
+                hasStairBacking(level, target, stair)
+        );
+    }
+
+    static boolean blocksConnectionStair(
+            boolean ancientWall,
+            boolean ancientBacking
+    ) {
+        /*
+         * A stair may replace masonry only when another masonry block remains
+         * behind its high face.  Without that backing, the stair cutout exposes
+         * Eldritch Nothing through the room's main wall.
+         */
+        return ancientWall && !ancientBacking;
+    }
+
+    private static boolean hasStairBacking(
+            WorldGenLevel level,
+            BlockPos position,
+            BlockState stair
+    ) {
+        Direction facing = stair.getValue(StairBlock.FACING);
+        return OuterLandsStairTopology.isAncientWall(
+                level.getBlockState(position.relative(facing))
+        );
+    }
+
+    private static BlockPos classicConnectionPos(
+            ChunkPos chunk,
+            Direction side,
+            int depth,
+            int width,
+            int y
+    ) {
+        int x = switch (side) {
+            case NORTH, SOUTH -> chunk.getMinBlockX() + 3 + width;
+            case WEST -> chunk.getMinBlockX() + depth;
+            case EAST -> chunk.getMinBlockX() + 16 - depth;
+            default -> throw new IllegalArgumentException(
+                    "Horizontal side required"
+            );
+        };
+        int z = switch (side) {
+            case WEST, EAST -> chunk.getMinBlockZ() + 3 + width;
+            case NORTH -> chunk.getMinBlockZ() + depth;
+            case SOUTH -> chunk.getMinBlockZ() + 16 - depth;
+            default -> throw new IllegalArgumentException(
+                    "Horizontal side required"
+            );
+        };
+        return new BlockPos(x, y, z);
+    }
+
+    private static void makePreviousConnectionStairCorner(
+            WorldGenLevel level,
+            BlockPos wall,
+            Direction side,
+            BlockState attempted
+    ) {
+        Direction path = switch (side) {
+            case NORTH -> Direction.SOUTH;
+            case SOUTH -> Direction.NORTH;
+            case WEST -> Direction.EAST;
+            case EAST -> Direction.WEST;
+            default -> throw new IllegalArgumentException(
+                    "Horizontal side required"
+            );
+        };
+        BlockPos previous = wall.relative(path.getOpposite());
+        BlockState stair = level.getBlockState(previous);
+        if (!stair.is(ModBlocks.ANCIENT_STAIRS.get())
+                || stair.getValue(StairBlock.HALF)
+                != attempted.getValue(StairBlock.HALF)) {
+            return;
+        }
+        Direction facing = stair.getValue(StairBlock.FACING);
+        StairsShape corner = path == facing.getCounterClockWise()
+                ? StairsShape.INNER_LEFT
+                : StairsShape.INNER_RIGHT;
+        set(level, previous.getX(), previous.getY(), previous.getZ(),
+                stair.setValue(StairBlock.SHAPE, corner));
     }
 
     private static BlockState classicState(int code, Direction direction,
@@ -244,8 +537,9 @@ public final class OuterLandsLabyrinthGenerator {
                     .setValue(StairBlock.HALF, Half.TOP);
             case 12 -> ModBlocks.ANCIENT_SLAB.get().defaultBlockState();
             case 18 -> ModBlocks.ANCIENT_ROCK.get().defaultBlockState();
-            case 19 -> ModBlocks.ANCIENT_ROCK.get().defaultBlockState()
-                    .setValue(AncientStoneBlock.VARIANT, 1);
+            // TC4 meta 13 used the same es_1..es_4 masonry family as
+            // ordinary eldritch stone; only its spawn rule differed.
+            case 19 -> ModBlocks.ANCIENT_STONE.get().defaultBlockState();
             case 21 -> ModBlocks.ANCIENT_CRUST.get().defaultBlockState();
             default -> Blocks.AIR.defaultBlockState();
         };
@@ -534,7 +828,10 @@ public final class OuterLandsLabyrinthGenerator {
                     if (roomKind == 1) {
                         boolean inset = (c > 3 && c < 9 && (a == 8 || b == 8))
                                 || (c > 4 && c < 8 && (a == 7 || b == 7 || a == 9 || b == 9));
-                        if (inset && (a == 8 || b == 8) && c == 6) continue;
+                        if (inset && (a == 8 || b == 8) && c == 6) {
+                            /* TC4 leaves the centre open to the VOID layer. */
+                            continue;
+                        }
                         code = inset ? 19 : 18;
                     }
                     set(level, x + a, BASE_Y + c, z + b, classicState(code, Direction.UP, cell, random));
@@ -628,7 +925,7 @@ public final class OuterLandsLabyrinthGenerator {
         int x = chunk.getMinBlockX() + 8;
         int z = chunk.getMinBlockZ() + 8;
         set(level, x, BASE_Y + 2, z,
-                ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                ModBlocks.ELDRITCH_CAPSTONE.get().defaultBlockState());
         set(level, x, BASE_Y + 3, z,
                 ModBlocks.OUTER_LANDS_PORTAL.get().defaultBlockState());
         // Part 1 owns the complete four-block-tall animated obelisk renderer.
@@ -645,7 +942,7 @@ public final class OuterLandsLabyrinthGenerator {
         int centerX = chunk.getMinBlockX() + 8;
         int centerZ = chunk.getMinBlockZ() + 8;
         set(level, centerX, BASE_Y + 2, centerZ,
-                ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                ModBlocks.ELDRITCH_CAPSTONE.get().defaultBlockState());
         BlockPos pedestalPosition = new BlockPos(
                 centerX, BASE_Y + 2, centerZ
         );
@@ -715,13 +1012,13 @@ public final class OuterLandsLabyrinthGenerator {
         }
         for (int[] corner : corners) {
             set(level, x + corner[0], BASE_Y + 3, z + corner[1],
-                    ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                    ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 4, z + corner[1],
                     ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 5, z + corner[1],
                     ModBlocks.ANCIENT_SLAB.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 8, z + corner[1],
-                    ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                    ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 7, z + corner[1],
                     ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 6, z + corner[1],
@@ -729,13 +1026,13 @@ public final class OuterLandsLabyrinthGenerator {
                             .setValue(SlabBlock.TYPE, SlabType.TOP));
         }
         set(level, x + 8, BASE_Y + 2, z + 8,
-                ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 3, z + 8,
                 ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 4, z + 8,
                 ModBlocks.ANCIENT_SLAB.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 9, z + 8,
-                ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState());
+                ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 8, z + 8,
                 ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 7, z + 8,
@@ -1012,16 +1309,14 @@ public final class OuterLandsLabyrinthGenerator {
             Half half
     ) {
         /*
-         * Call sites describe the wall the trim belongs to. StairBlock.FACING
-         * describes the direction of the staircase itself, so the visible
-         * slope must point back into the room, away from that wall.
+         * Call sites describe the wall the trim belongs to.  Vanilla stair
+         * facing points towards the high/back edge, so it must point at that
+         * wall.  The low/open face then looks into the passage at the player,
+         * matching TC4's legacy metadata mapping.
          */
-        set(level, x, y, z,
+                set(level, x, y, z,
                 ModBlocks.ANCIENT_STAIRS.get().defaultBlockState()
-                        .setValue(
-                                StairBlock.FACING,
-                                wallDirection.getOpposite()
-                        )
+                        .setValue(StairBlock.FACING, wallDirection)
                         .setValue(StairBlock.HALF, half));
     }
 
@@ -1047,6 +1342,9 @@ public final class OuterLandsLabyrinthGenerator {
             int z,
             BlockState state
     ) {
-        level.setBlock(new BlockPos(x, y, z), state, 2);
+        int flags = state.is(ModBlocks.ANCIENT_STAIRS.get())
+                ? net.minecraft.world.level.block.Block.UPDATE_ALL
+                : net.minecraft.world.level.block.Block.UPDATE_CLIENTS;
+        level.setBlock(new BlockPos(x, y, z), state, flags);
     }
 }

@@ -950,9 +950,9 @@ public final class FirstDiscoveryGameTests {
                 "The development-only research category leaked into production"
         );
         helper.assertTrue(
-                ResearchCategoryRegistry.find("infusion_layout_test").isPresent()
-                        && ResearchRegistry.find("infusion_layout_test").isPresent(),
-                "The requested infusion layout test category was not loaded"
+                ResearchCategoryRegistry.find("infusion_layout_test").isEmpty()
+                        && ResearchRegistry.find("infusion_layout_test").isEmpty(),
+                "The development-only infusion layout category leaked into production"
         );
         helper.assertTrue(
                 ResearchRegistry.find("first_discovery").isPresent(),
@@ -969,8 +969,7 @@ public final class FirstDiscoveryGameTests {
                 "basics",
                 "first_discovery",
                 "world_structures",
-                "world_inhabitants",
-                "infusion_layout_test"
+                "world_inhabitants"
         }) {
             helper.assertTrue(
                     ResearchRegistry.find(productionResearch).isPresent(),

@@ -49,10 +49,10 @@ final class RequestedClassicResearchIconFidelityTest {
     }
 
     @Test
-    void researchTableKeepsOriginalBlockTableMetadataOneEquivalent()
+    void researchTableUsesTheRequestedScribingToolsIcon()
             throws Exception {
         JsonObject research = read("restable");
-        assertEquals("thaumic_reborn:research_table",
+        assertEquals("thaumic_reborn:scribing_tools",
                 research.get("icon").getAsString());
         assertEquals("new ItemStack(ConfigBlocks.blockTable, 1, 1)",
                 research.getAsJsonObject("legacy")

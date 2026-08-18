@@ -281,7 +281,7 @@ public final class EldritchLockBlockEntity extends BlockEntity {
                 if (x == 0 && z == 0) {
                     level.setBlockAndUpdate(
                             center.offset(x, -1, z),
-                            ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState()
+                            ModBlocks.ANCIENT_CRUST.get().defaultBlockState()
                     );
                 } else {
                     level.setBlockAndUpdate(
@@ -296,7 +296,7 @@ public final class EldritchLockBlockEntity extends BlockEntity {
     private void placeObelisk(ServerLevel level, BlockPos base) {
         level.setBlockAndUpdate(
                 base,
-                ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState()
+                ModBlocks.ELDRITCH_CAPSTONE.get().defaultBlockState()
         );
         level.setBlockAndUpdate(
                 base.above(),

@@ -82,6 +82,8 @@ class ClassicHarvestLevelFidelityTest {
                 id("silverwood_slab")
                 , id("arcane_bellows")
                 , id("arcane_ear")
+                , id("arcane_bore_base")
+                , id("arcane_bore")
         ), values("mineable/axe.json"));
     }
 

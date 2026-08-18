@@ -10,10 +10,12 @@ import com.thaumcraftmodern.worldgen.outerlands.OuterLandsPortalAllocationData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.TicketType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -30,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 /** Bidirectional, server-authoritative gate between an altar and its maze. */
 public final class OuterLandsPortalBlock extends BaseEntityBlock {
+    private static final int DESTINATION_PRELOAD_RADIUS = 0;
     private static final String RETURN_X = "OuterLandsReturnX";
     private static final String RETURN_Y = "OuterLandsReturnY";
     private static final String RETURN_Z = "OuterLandsReturnZ";
@@ -135,15 +138,6 @@ public final class OuterLandsPortalBlock extends BaseEntityBlock {
                     )
                     : Vec3.atBottomCenterOf(target.getSharedSpawnPos());
         } else {
-            KnowledgeAccess.mutate(player, knowledge -> {
-                knowledge.recordResearchCriterion(
-                        "thaumic_reborn:legacy_clue/enterouter"
-                );
-                knowledge.completeResearch("enterouter");
-            });
-            persistent.putDouble(RETURN_X, player.getX());
-            persistent.putDouble(RETURN_Y, player.getY());
-            persistent.putDouble(RETURN_Z, player.getZ());
             if (!(source.getBlockEntity(position)
                     instanceof OuterLandsPortalBlockEntity portal)) {
                 return;
@@ -156,7 +150,48 @@ public final class OuterLandsPortalBlock extends BaseEntityBlock {
                     + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
             int targetChunkZ = regionZ * OuterLandsMaze.REGION_SIZE_CHUNKS
                     + OuterLandsMaze.REGION_SIZE_CHUNKS / 2;
-            target.getChunk(targetChunkX, targetChunkZ);
+            ChunkPos destinationChunk = new ChunkPos(
+                    targetChunkX,
+                    targetChunkZ
+            );
+            BlockPos ticketKey = new BlockPos(
+                    targetChunkX * 16 + 8,
+                    OuterLandsLabyrinthGenerator.BASE_Y + 4,
+                    targetChunkZ * 16 + 8
+            );
+            /*
+             * A direct ServerLevel#getChunk call blocks the integrated server
+             * while Minecraft creates the complete dependency neighbourhood
+             * for a fresh, distant maze. Request it through the chunk ticket
+             * system and leave this tick immediately; the portal retries once
+             * the fully decorated destination chunk is available. Radius zero
+             * is deliberate: the Outer Lands feature pass builds thousands of
+             * blocks per chunk, so vanilla's radius-three portal warm-up would
+             * synchronously decorate dozens of labyrinth rooms before the next
+             * server tick. The player's own ticket loads the surroundings after
+             * transfer.
+             */
+            target.getChunkSource().addRegionTicket(
+                    TicketType.PORTAL,
+                    destinationChunk,
+                    DESTINATION_PRELOAD_RADIUS,
+                    ticketKey
+            );
+            if (target.getChunkSource().getChunkNow(
+                    targetChunkX,
+                    targetChunkZ
+            ) == null) {
+                return;
+            }
+            KnowledgeAccess.mutate(player, knowledge -> {
+                knowledge.recordResearchCriterion(
+                        "thaumic_reborn:legacy_clue/enterouter"
+                );
+                knowledge.completeResearch("enterouter");
+            });
+            persistent.putDouble(RETURN_X, player.getX());
+            persistent.putDouble(RETURN_Y, player.getY());
+            persistent.putDouble(RETURN_Z, player.getZ());
             arrival = new Vec3(
                     targetChunkX * 16 + 8.5D,
                     OuterLandsLabyrinthGenerator.BASE_Y + 4.0D,

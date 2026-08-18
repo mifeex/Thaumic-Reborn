@@ -28,6 +28,15 @@ public final class EldritchLockRenderer
         implements BlockEntityRenderer<EldritchLockBlockEntity> {
     private static final float FIELD_MIN = -2.0F;
     private static final float FIELD_MAX = 3.0F;
+    /*
+     * TC4 multiplied tunnel.png by 0.1 in the fixed-function pipeline.  The
+     * modern entity shader performs the multiplication in linear colour
+     * space, where that value displays several times brighter and turns the
+     * field into a flat magenta wall.  This is the perceptual equivalent of
+     * the classic shade: almost black, with the additive particle layers
+     * carrying the visible purple/blue stars.
+     */
+    private static final float BACKGROUND_SHADE = 0.015F;
     private final ItemRenderer items;
 
     public EldritchLockRenderer(BlockEntityRendererProvider.Context context) {
@@ -91,7 +100,8 @@ public final class EldritchLockRenderer
         float time = (ticks % 1400.0F) / 500.0F;
         drawFieldLayer(lock, buffers.getBuffer(EldritchLockRenderType.background()),
                 pose.last(), facing, time * 0.125F, time * 0.125F,
-                0.125F, 0.1F, 0.1F, 0.1F, 1.0F);
+                0.125F, BACKGROUND_SHADE, BACKGROUND_SHADE,
+                BACKGROUND_SHADE, 1.0F);
         Random random = new Random(31100L);
         Vec3 camera = Minecraft.getInstance().gameRenderer
                 .getMainCamera().getPosition();

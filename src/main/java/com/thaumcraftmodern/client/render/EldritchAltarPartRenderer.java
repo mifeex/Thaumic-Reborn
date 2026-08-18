@@ -37,7 +37,7 @@ public final class EldritchAltarPartRenderer
     private static final ResourceLocation FIELD_BACKING =
             texture("textures/misc/particlefield32.png");
     private static final int FULL_BRIGHT = 0x00F000F0;
-    private static final float EYE_VERTICAL_OFFSET = 0.2F + 5.0F / 16.0F;
+    private static final float EYE_VERTICAL_OFFSET = 0.2F + 2.0F / 16.0F;
     private static final LegacyEldritchCapModel CAP_MODEL =
             new LegacyEldritchCapModel();
     private final ItemRenderer items;

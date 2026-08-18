@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-/** Colour-only TC4 lock passes: solid cubes, translucent tunnel and additive stars. */
+/** TC4 lock passes: solid cubes, a dark tunnel and crisp additive stars. */
 final class EldritchLockRenderType extends RenderStateShard {
     static final ResourceLocation CUBE = texture("textures/models/eldritch_cube.png");
     static final ResourceLocation TUNNEL = texture("textures/misc/tunnel.png");
@@ -48,8 +48,14 @@ final class EldritchLockRenderType extends RenderStateShard {
                 false,
                 true,
                 RenderType.CompositeState.builder()
-                        .setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_SHADER)
-                        .setTextureState(new TextureStateShard(texture, true, false))
+                        .setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER)
+                        /*
+                         * These are pixel-art field textures.  Linear filtering
+                         * averages the tiny white particle streaks into the
+                         * purple tunnel and recreates the flat magenta wall seen
+                         * in game, so retain TC4's crisp sampling.
+                         */
+                        .setTextureState(new TextureStateShard(texture, false, false))
                         .setTransparencyState(additive
                                 ? ADDITIVE_TRANSPARENCY
                                 : TRANSLUCENT_TRANSPARENCY)

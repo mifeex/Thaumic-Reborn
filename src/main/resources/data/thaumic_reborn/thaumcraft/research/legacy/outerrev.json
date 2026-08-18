@@ -2,7 +2,7 @@
   "id": "outerrev",
   "legacy_id": "OUTERREV",
   "category": "eldritch",
-  "icon": "thaumic_reborn:thaumonomicon",
+  "icon_resource": "thaumic_reborn:textures/misc/r_outerrev.png",
   "title": "tc.research_name.OUTERREV",
   "subtitle": "tc.research_text.OUTERREV",
   "concealed": true,

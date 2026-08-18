@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "pattern=0": {"model": "thaumic_reborn:block/eldritch_runed_stone"},
+    "pattern=1": {"model": "thaumic_reborn:block/eldritch_runed_stone_2"},
+    "pattern=2": {"model": "thaumic_reborn:block/eldritch_runed_stone_3"},
+    "pattern=3": {"model": "thaumic_reborn:block/eldritch_runed_stone_4"}
+  }
+}
