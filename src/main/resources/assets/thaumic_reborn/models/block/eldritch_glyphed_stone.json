@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumic_reborn:block/eldritch_glyphed_stone",
+    "all": "thaumic_reborn:block/eldritch_glyphed_stone"
+  },
+  "elements": [
+    {
+      "from": [2, 2, 2],
+      "to": [14, 14, 14],
+      "faces": {
+        "down": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "east": {"texture": "#all"}
+      }
+    }
+  ]
+}

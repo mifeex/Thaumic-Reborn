@@ -96,8 +96,8 @@ public final class OuterLandsStairTopologyGameTests {
             helper.assertTrue(previous.is(ModBlocks.ANCIENT_STAIRS.get()),
                     "Previous stair in the run was removed");
             helper.assertTrue(previous.getValue(StairBlock.SHAPE)
-                            == StairsShape.INNER_LEFT,
-                    "Previous stair was not converted to an inner corner");
+                            == StairsShape.STRAIGHT,
+                    "A removed leaking stair left a fake corner behind");
         }
         helper.succeed();
     }
@@ -143,13 +143,13 @@ public final class OuterLandsStairTopologyGameTests {
         helper.assertTrue(previous.is(ModBlocks.ANCIENT_STAIRS.get()),
                 "Previous boundary stair was removed");
         helper.assertTrue(previous.getValue(StairBlock.SHAPE)
-                        == StairsShape.INNER_RIGHT,
-                "Previous boundary stair was not converted to a corner");
+                        == StairsShape.STRAIGHT,
+                "Removed boundary stair left a fake corner behind");
         helper.succeed();
     }
 
     @GameTest(template = "empty", batch = "outerLands", timeoutTicks = 40)
-    public static void turnsUpperAndLowerStairTipsAtSolidWall(
+    public static void keepsUpperAndLowerStairTipsStraightWithoutAJoin(
             GameTestHelper helper
     ) {
         BlockPos origin = helper.absolutePos(new BlockPos(6, 2, 6));
@@ -172,8 +172,8 @@ public final class OuterLandsStairTopologyGameTests {
                     "Wall-bound stair tip was replaced");
             helper.assertTrue(
                     state.getValue(StairBlock.SHAPE)
-                            == StairsShape.INNER_LEFT,
-                    "Wall-bound stair tip stayed straight instead of turning"
+                            == StairsShape.STRAIGHT,
+                    "A wall beside the run created a fake stair corner"
             );
         }
         helper.succeed();
@@ -200,10 +200,10 @@ public final class OuterLandsStairTopologyGameTests {
         for (BlockPos first : new BlockPos[]{lower, upper}) {
             BlockState firstState = helper.getLevel().getBlockState(first);
             BlockState secondState = helper.getLevel().getBlockState(
-                    first.east()
+                    first.south()
             );
             helper.assertTrue(firstState.getValue(StairBlock.SHAPE)
-                            == StairsShape.INNER_RIGHT,
+                            == StairsShape.INNER_LEFT,
                     "First touching stair stayed straight");
             helper.assertTrue(secondState.getValue(StairBlock.SHAPE)
                             == StairsShape.STRAIGHT,
@@ -320,8 +320,8 @@ public final class OuterLandsStairTopologyGameTests {
                 Block.UPDATE_ALL
         );
         helper.getLevel().setBlock(
-                first.east(),
-                stair.setValue(StairBlock.FACING, Direction.EAST),
+                first.south(),
+                stair.setValue(StairBlock.FACING, Direction.WEST),
                 Block.UPDATE_ALL
         );
         helper.getLevel().setBlock(
@@ -330,7 +330,7 @@ public final class OuterLandsStairTopologyGameTests {
                 Block.UPDATE_ALL
         );
         helper.getLevel().setBlock(
-                first.east(2),
+                first.south().west(),
                 ModBlocks.ANCIENT_STONE.get().defaultBlockState(),
                 Block.UPDATE_ALL
         );

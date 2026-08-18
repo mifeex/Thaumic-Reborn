@@ -1,1 +1,8 @@
-{"replace":false,"values":["thaumic_reborn:dissolve"]}
+{
+  "replace": false,
+  "values": [
+    "thaumic_reborn:dissolve",
+    "thaumic_reborn:air_arrow",
+    "thaumic_reborn:order_arrow"
+  ]
+}

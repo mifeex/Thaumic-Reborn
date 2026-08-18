@@ -9,6 +9,7 @@ import com.thaumcraftmodern.world.block.ArcaneBellowsBlock;
 import com.thaumcraftmodern.world.block.ArcaneDoorBlock;
 import com.thaumcraftmodern.world.block.ArcaneLevitatorBlock;
 import com.thaumcraftmodern.world.block.ArcaneLampBlock;
+import com.thaumcraftmodern.world.block.ArcanePressurePlateBlock;
 import com.thaumcraftmodern.world.block.ArcaneLampLightBlock;
 import com.thaumcraftmodern.world.block.ArcaneSpaBlock;
 import com.thaumcraftmodern.world.block.ArcaneBoreBlock;
@@ -38,6 +39,7 @@ import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
 import com.thaumcraftmodern.world.block.EldritchCapstoneBlock;
 import com.thaumcraftmodern.world.block.EldritchLockBlock;
 import com.thaumcraftmodern.world.block.EldritchCrabVentBlock;
+import com.thaumcraftmodern.world.block.EldritchCrystalBlock;
 import com.thaumcraftmodern.world.block.EldritchRunedStoneBlock;
 import com.thaumcraftmodern.world.block.EldritchBarrierBlock;
 import com.thaumcraftmodern.world.block.EldritchNothingBlock;
@@ -142,6 +144,11 @@ public final class ModBlocks {
                     .sound(SoundType.WOOD)
                     .noOcclusion())
     );
+    public static final RegistryObject<Block> ARCANE_PRESSURE_PLATE = BLOCKS.register(
+            "arcane_pressure_plate",
+            () -> new ArcanePressurePlateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
+                    .strength(2.0F, 999.0F).noOcclusion())
+    );
     public static final RegistryObject<Block> DECONSTRUCTION_TABLE =
             BLOCKS.register(
                     "deconstruction_table",
@@ -199,6 +206,19 @@ public final class ModBlocks {
             crystalCluster(
                     "balanced_crystal_cluster",
                     CrystalClusterVariant.BALANCED
+            );
+    public static final RegistryObject<Block> ELDRITCH_CRYSTAL_CLUSTER =
+            BLOCKS.register(
+                    "eldritch_crystal_cluster",
+                    () -> new EldritchCrystalBlock(
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
+                                    .strength(0.7F, 1.0F)
+                                    .requiresCorrectToolForDrops()
+                                    .sound(ClassicCrystalSoundType.INSTANCE)
+                                    .lightLevel(state -> 8)
+                                    .noOcclusion()
+                    )
             );
     public static final RegistryObject<Block> ARCANE_STONE = BLOCKS.register(
             "arcane_stone",
@@ -912,6 +932,29 @@ public final class ModBlocks {
                                     .strength(50.0F, 20000.0F)
                                     .noOcclusion()
                                     .noLootTable()
+                    )
+            );
+    /** TC4 blockEldritch:5, the luminous glyphed library-room stone. */
+    public static final RegistryObject<Block> ELDRITCH_GLYPHED_STONE =
+            BLOCKS.register(
+                    "eldritch_glyphed_stone",
+                    () -> new DropExperienceBlock(
+                            BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)
+                                    .strength(50.0F, 20000.0F)
+                                    .lightLevel(state -> 12)
+                                    .noOcclusion(),
+                            UniformInt.of(1, 4)
+                    )
+            );
+    /** TC4 blockEldritch:4, the animated luminous Outer Lands crust. */
+    public static final RegistryObject<Block> ELDRITCH_GLOWING_CRUST =
+            BLOCKS.register(
+                    "eldritch_glowing_crust",
+                    () -> new Block(
+                            BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)
+                                    .strength(2.0F, 30.0F)
+                                    .lightLevel(state -> 12)
+                                    .noOcclusion()
                     )
             );
     /** TC4 blockCosmeticSolid:15, used as the library's solid supports. */

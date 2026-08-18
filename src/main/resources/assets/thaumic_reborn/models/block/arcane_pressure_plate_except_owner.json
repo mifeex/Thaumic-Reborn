@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": { "texture": "thaumic_reborn:block/arcane_pressure_plate_except_owner" }
+}

@@ -7,10 +7,9 @@ import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.registry.ModBlocks;
 import com.thaumcraftmodern.world.block.EldritchLockBlock;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
-import java.util.Random;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -19,24 +18,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 /** Modern port of TC4's TileEldritchLockRenderer and its 100-tick opening. */
 public final class EldritchLockRenderer
         implements BlockEntityRenderer<EldritchLockBlockEntity> {
-    private static final float FIELD_MIN = -2.0F;
-    private static final float FIELD_MAX = 3.0F;
-    /*
-     * TC4 multiplied tunnel.png by 0.1 in the fixed-function pipeline.  The
-     * modern entity shader performs the multiplication in linear colour
-     * space, where that value displays several times brighter and turns the
-     * field into a flat magenta wall.  This is the perceptual equivalent of
-     * the classic shade: almost black, with the additive particle layers
-     * carrying the visible purple/blue stars.
-     */
-    private static final float BACKGROUND_SHADE = 0.015F;
     private final ItemRenderer items;
 
     public EldritchLockRenderer(BlockEntityRendererProvider.Context context) {
@@ -49,7 +36,7 @@ public final class EldritchLockRenderer
         if (lock.getLevel() == null) return;
         Direction facing = lock.getBlockState().getValue(EldritchLockBlock.FACING);
         float ticks = lock.getLevel().getGameTime() + partialTick;
-        renderField(lock, facing, ticks, pose, buffers);
+        renderField(lock, facing, pose, buffers);
         renderRings(lock.countdown(), ticks, facing, pose, buffers);
         renderInsertedTablet(lock, facing, pose, buffers, light, overlay);
     }
@@ -83,7 +70,7 @@ public final class EldritchLockRenderer
         pose.pushPose();
         pose.translate(
                 0.5D + facing.getStepX() * 0.526D,
-                0.285D,
+                0.3475D,
                 0.5D + facing.getStepZ() * 0.526D
         );
         pose.mulPose(Axis.YP.rotationDegrees(180.0F - facing.toYRot()));
@@ -95,44 +82,14 @@ public final class EldritchLockRenderer
     }
 
     private static void renderField(EldritchLockBlockEntity lock,
-            Direction facing, float ticks,
+            Direction facing,
             PoseStack pose, MultiBufferSource buffers) {
-        float time = (ticks % 1400.0F) / 500.0F;
-        drawFieldLayer(lock, buffers.getBuffer(EldritchLockRenderType.background()),
-                pose.last(), facing, time * 0.125F, time * 0.125F,
-                0.125F, BACKGROUND_SHADE, BACKGROUND_SHADE,
-                BACKGROUND_SHADE, 1.0F);
-        Random random = new Random(31100L);
-        Vec3 camera = Minecraft.getInstance().gameRenderer
-                .getMainCamera().getPosition();
-        for (int layer = 1; layer < 16; layer++) {
-            float depth = 16.0F - layer;
-            float brightness = 1.0F / (depth + 1.0F);
-            float scale = layer == 1 ? 0.5F : 0.0625F;
-            float shift = (time + (layer * layer * 4321 + layer * 9) * 2.0F) * scale;
-            float parallaxScale = scale * (0.75F + depth * 0.015625F);
-            float parallaxU = (float) (facing.getAxis() == Direction.Axis.Z
-                    ? camera.x : camera.z) * parallaxScale;
-            float parallaxV = (float) camera.y * parallaxScale;
-            float red = (random.nextFloat() * 0.5F + 0.1F) * brightness;
-            float green = (random.nextFloat() * 0.5F + 0.4F) * brightness;
-            float blue = (random.nextFloat() * 0.5F + 0.5F) * brightness;
-            drawFieldLayer(lock, buffers.getBuffer(EldritchLockRenderType.stars()),
-                    pose.last(), facing, shift + parallaxU,
-                    shift + parallaxV, scale,
-                    red, green, blue, 1.0F);
-        }
-    }
-
-    private static void drawFieldLayer(EldritchLockBlockEntity lock,
-            VertexConsumer vertices, PoseStack.Pose pose,
-            Direction facing, float u, float v, float scale,
-            float red, float green, float blue, float alpha) {
+        VertexConsumer vertices = buffers.getBuffer(RenderType.endPortal());
         for (int horizontal = -2; horizontal <= 2; horizontal++) {
             for (int vertical = -2; vertical <= 2; vertical++) {
                 if (!isBarrierCell(lock, facing, horizontal, vertical)) continue;
-                drawFieldCell(vertices, pose, facing, horizontal, vertical,
-                        u, v, scale, red, green, blue, alpha);
+                drawFieldCell(vertices, pose.last().pose(), facing,
+                        horizontal, vertical);
             }
         }
     }
@@ -146,32 +103,38 @@ public final class EldritchLockRenderer
                 dx, vertical, dz)).is(ModBlocks.ELDRITCH_BARRIER.get());
     }
 
-    private static void drawFieldCell(VertexConsumer vertices, PoseStack.Pose pose,
-            Direction facing, int horizontal, int vertical,
-            float u, float v, float scale,
-            float red, float green, float blue, float alpha) {
+    private static void drawFieldCell(VertexConsumer vertices, Matrix4f pose,
+            Direction facing, int horizontal, int vertical) {
         float minHorizontal = horizontal;
         float maxHorizontal = horizontal + 1.0F;
         float minVertical = vertical;
         float maxVertical = vertical + 1.0F;
-        float cellScale = scale / (FIELD_MAX - FIELD_MIN);
-        float u0 = u + (minHorizontal - FIELD_MIN) * cellScale;
-        float u1 = u + (maxHorizontal - FIELD_MIN) * cellScale;
-        float v0 = v + (minVertical - FIELD_MIN) * cellScale;
-        float v1 = v + (maxVertical - FIELD_MIN) * cellScale;
         if (facing.getAxis() == Direction.Axis.Z) {
             float z = 0.5F - facing.getStepZ() * 0.02F;
-            vertex(vertices, pose, minHorizontal, minVertical, z, u0, v1, red, green, blue, alpha, 0, 0, 1);
-            vertex(vertices, pose, maxHorizontal, minVertical, z, u1, v1, red, green, blue, alpha, 0, 0, 1);
-            vertex(vertices, pose, maxHorizontal, maxVertical, z, u1, v0, red, green, blue, alpha, 0, 0, 1);
-            vertex(vertices, pose, minHorizontal, maxVertical, z, u0, v0, red, green, blue, alpha, 0, 0, 1);
+            fieldVertex(vertices, pose, minHorizontal, minVertical, z);
+            fieldVertex(vertices, pose, maxHorizontal, minVertical, z);
+            fieldVertex(vertices, pose, maxHorizontal, maxVertical, z);
+            fieldVertex(vertices, pose, minHorizontal, maxVertical, z);
+            fieldVertex(vertices, pose, minHorizontal, maxVertical, z);
+            fieldVertex(vertices, pose, maxHorizontal, maxVertical, z);
+            fieldVertex(vertices, pose, maxHorizontal, minVertical, z);
+            fieldVertex(vertices, pose, minHorizontal, minVertical, z);
         } else {
             float x = 0.5F - facing.getStepX() * 0.02F;
-            vertex(vertices, pose, x, minVertical, minHorizontal, u0, v1, red, green, blue, alpha, 1, 0, 0);
-            vertex(vertices, pose, x, minVertical, maxHorizontal, u1, v1, red, green, blue, alpha, 1, 0, 0);
-            vertex(vertices, pose, x, maxVertical, maxHorizontal, u1, v0, red, green, blue, alpha, 1, 0, 0);
-            vertex(vertices, pose, x, maxVertical, minHorizontal, u0, v0, red, green, blue, alpha, 1, 0, 0);
+            fieldVertex(vertices, pose, x, minVertical, minHorizontal);
+            fieldVertex(vertices, pose, x, minVertical, maxHorizontal);
+            fieldVertex(vertices, pose, x, maxVertical, maxHorizontal);
+            fieldVertex(vertices, pose, x, maxVertical, minHorizontal);
+            fieldVertex(vertices, pose, x, maxVertical, minHorizontal);
+            fieldVertex(vertices, pose, x, maxVertical, maxHorizontal);
+            fieldVertex(vertices, pose, x, minVertical, maxHorizontal);
+            fieldVertex(vertices, pose, x, minVertical, minHorizontal);
         }
+    }
+
+    private static void fieldVertex(VertexConsumer vertices, Matrix4f pose,
+            float x, float y, float z) {
+        vertices.vertex(pose, x, y, z).endVertex();
     }
 
     private static void drawCube(VertexConsumer vertices, PoseStack.Pose pose) {

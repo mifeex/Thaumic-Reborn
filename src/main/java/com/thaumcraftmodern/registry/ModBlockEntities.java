@@ -20,6 +20,7 @@ import com.thaumcraftmodern.world.block.entity.FocalManipulatorBlockEntity;
 import com.thaumcraftmodern.world.block.entity.TemporaryHoleBlockEntity;
 import com.thaumcraftmodern.world.block.entity.WardedBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneDoorBlockEntity;
+import com.thaumcraftmodern.world.block.entity.ArcanePressurePlateBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.WandRechargePedestalBlockEntity;
 import com.thaumcraftmodern.world.block.entity.RunicMatrixBlockEntity;
@@ -103,6 +104,9 @@ public final class ModBlockEntities {
                     FluxScrubberBlockEntity::new, ModBlocks.FLUX_SCRUBBER.get()).build(null));
     public static final RegistryObject<BlockEntityType<ArcaneDoorBlockEntity>> ARCANE_DOOR=
             BLOCK_ENTITIES.register("arcane_door",()->BlockEntityType.Builder.of(ArcaneDoorBlockEntity::new,ModBlocks.ARCANE_DOOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ArcanePressurePlateBlockEntity>> ARCANE_PRESSURE_PLATE =
+            BLOCK_ENTITIES.register("arcane_pressure_plate", () -> BlockEntityType.Builder.of(
+                    ArcanePressurePlateBlockEntity::new, ModBlocks.ARCANE_PRESSURE_PLATE.get()).build(null));
     public static final RegistryObject<BlockEntityType<MagicMirrorBlockEntity>>
             MAGIC_MIRROR = BLOCK_ENTITIES.register("magic_mirror",
                     () -> BlockEntityType.Builder.of(MagicMirrorBlockEntity::new,
@@ -174,7 +178,8 @@ public final class ModBlockEntities {
                             ModBlocks.EARTH_CRYSTAL_CLUSTER.get(),
                             ModBlocks.ORDER_CRYSTAL_CLUSTER.get(),
                             ModBlocks.ENTROPY_CRYSTAL_CLUSTER.get(),
-                            ModBlocks.BALANCED_CRYSTAL_CLUSTER.get()
+                            ModBlocks.BALANCED_CRYSTAL_CLUSTER.get(),
+                            ModBlocks.ELDRITCH_CRYSTAL_CLUSTER.get()
                     ).build(null)
             );
     public static final RegistryObject<BlockEntityType<CrucibleBlockEntity>>

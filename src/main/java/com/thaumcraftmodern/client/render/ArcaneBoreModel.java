@@ -13,8 +13,12 @@ import net.minecraft.resources.ResourceLocation;
 
 /** Verbatim cuboids, pivots and UV offsets from TC4 ModelBore/Base/Emit. */
 public final class ArcaneBoreModel {
-    public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            new ResourceLocation(ThaumcraftModern.MOD_ID, "arcane_bore"), "main");
+    public static final ModelLayerLocation BORE_LAYER = new ModelLayerLocation(
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "arcane_bore"), "bore");
+    public static final ModelLayerLocation EMITTER_LAYER = new ModelLayerLocation(
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "arcane_bore"), "emitter");
+    public static final ModelLayerLocation SUPPORT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "arcane_bore"), "support");
     private final ModelPart boreBase;
     private final ModelPart boreNozzle;
     private final ModelPart emitter;
@@ -22,16 +26,21 @@ public final class ArcaneBoreModel {
     private final ModelPart support;
     private final ModelPart supportNozzle;
 
-    public ArcaneBoreModel(ModelPart root) {
-        boreBase = root.getChild("bore_base");
-        boreNozzle = root.getChild("bore_nozzle");
-        emitter = root.getChild("emitter");
-        emitterKnob = root.getChild("emitter_knob");
-        support = root.getChild("support");
-        supportNozzle = root.getChild("support_nozzle");
+    public ArcaneBoreModel(
+            ModelPart boreRoot,
+            ModelPart emitterRoot,
+            ModelPart supportRoot
+    ) {
+        boreBase = boreRoot.getChild("bore_base");
+        boreNozzle = boreRoot.getChild("bore_nozzle");
+        emitter = emitterRoot.getChild("emitter");
+        emitterKnob = emitterRoot.getChild("emitter_knob");
+        support = supportRoot.getChild("support");
+        supportNozzle = supportRoot.getChild("support_nozzle");
     }
 
-    public static LayerDefinition createBodyLayer() {
+    /** The bundled byte-exact Bore.png is the original atlas at 2x size. */
+    public static LayerDefinition createBoreLayer() {
         MeshDefinition mesh = new MeshDefinition();
         var root = mesh.getRoot();
         var boreBase = root.addOrReplaceChild("bore_base", CubeListBuilder.create()
@@ -45,6 +54,13 @@ public final class ArcaneBoreModel {
                 .texOffs(30, 14).mirror().addBox(4, -2.5F, -2.5F, 4, 5, 5)
                 .texOffs(0, 14).mirror().addBox(-2, -4, -4, 6, 8, 8),
                 PartPose.offset(0, 8, 0));
+        return LayerDefinition.create(mesh, 128, 64);
+    }
+
+    /** TC4 ModelBoreEmit assigns every part a 128x64 UV grid. */
+    public static LayerDefinition createEmitterLayer() {
+        MeshDefinition mesh = new MeshDefinition();
+        var root = mesh.getRoot();
         root.addOrReplaceChild("emitter", CubeListBuilder.create()
                 .texOffs(56, 16).mirror().addBox(-2, 0, -2, 4, 1, 4)
                 .texOffs(56, 16).mirror().addBox(-2, -8, -2, 4, 1, 4)
@@ -54,6 +70,13 @@ public final class ArcaneBoreModel {
         root.addOrReplaceChild("emitter_knob", CubeListBuilder.create()
                 .texOffs(66, 0).mirror().addBox(-2, -4, -2, 4, 4, 4),
                 PartPose.offset(0, 16, 0));
+        return LayerDefinition.create(mesh, 128, 64);
+    }
+
+    /** TC4 ModelBoreBase assigns every part a 128x64 UV grid. */
+    public static LayerDefinition createSupportLayer() {
+        MeshDefinition mesh = new MeshDefinition();
+        var root = mesh.getRoot();
         root.addOrReplaceChild("support", CubeListBuilder.create()
                 .texOffs(64, 24).mirror().addBox(-8, 0, -8, 16, 2, 16)
                 .texOffs(64, 24).mirror().addBox(-8, 14, -8, 16, 2, 16)

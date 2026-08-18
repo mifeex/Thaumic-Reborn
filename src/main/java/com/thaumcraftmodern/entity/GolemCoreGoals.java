@@ -42,6 +42,7 @@ public final class GolemCoreGoals {
     public static void register(ClassicGolemEntity golem) {
         golem.goalSelector.addGoal(0, new FloatGoal(golem));
         golem.goalSelector.addGoal(0, new AvoidSwellGoal(golem));
+        golem.goalSelector.addGoal(1, new DartAttackGoal(golem));
         golem.goalSelector.addGoal(1, new CoreMeleeGoal(golem));
         golem.goalSelector.addGoal(2, new WorkGoal(golem));
         golem.goalSelector.addGoal(5, new net.minecraft.world.entity.ai.goal.OpenDoorGoal(golem, true));
@@ -57,8 +58,54 @@ public final class GolemCoreGoals {
     private static final class CoreMeleeGoal extends MeleeAttackGoal {
         private final ClassicGolemEntity golem;
         CoreMeleeGoal(ClassicGolemEntity golem) { super(golem, 1D, true); this.golem = golem; }
-        @Override public boolean canUse() { return combatCore(golem) && golem.isOperational() && super.canUse(); }
+        @Override public boolean canUse() {
+            return combatCore(golem) && golem.isOperational()
+                    && (!golem.hasDecoration(GolemDecorationType.DART_LAUNCHER)
+                            || golem.getTarget() == null || golem.distanceToSqr(golem.getTarget()) < 9D)
+                    && super.canUse();
+        }
         @Override public boolean canContinueToUse() { return combatCore(golem) && golem.isOperational() && super.canContinueToUse(); }
+    }
+
+    /** TC4 dart launcher: engages combat targets beyond three blocks and fires every 30-Aer*8 ticks. */
+    private static final class DartAttackGoal extends Goal {
+        private final ClassicGolemEntity golem;
+        private int cooldown;
+
+        DartAttackGoal(ClassicGolemEntity golem) {
+            this.golem = golem;
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override public boolean canUse() { return validTarget(); }
+        @Override public boolean canContinueToUse() { return validTarget(); }
+        @Override public void start() { cooldown = maxCooldown() / 2; }
+        @Override public void stop() { cooldown = maxCooldown() / 2; }
+
+        @Override public void tick() {
+            LivingEntity target = golem.getTarget();
+            if (target == null) return;
+            golem.getNavigation().moveTo(target, 1D);
+            if (!golem.hasLineOfSight(target)) return;
+            golem.getLookControl().setLookAt(target, 30F, 30F);
+            if (cooldown > 0) cooldown--;
+            if (cooldown <= 0 && golem.distanceToSqr(target) <= golem.workRange() * golem.workRange()) {
+                golem.shootDart(target);
+                cooldown = maxCooldown();
+            }
+        }
+
+        private boolean validTarget() {
+            LivingEntity target = golem.getTarget();
+            double range = golem.workRange();
+            return combatCore(golem) && golem.isOperational()
+                    && golem.hasDecoration(GolemDecorationType.DART_LAUNCHER)
+                    && target != null && target.isAlive() && golem.distanceToSqr(target) >= 9D
+                    && target.distanceToSqr(golem.homePos().getX() + .5D,
+                            golem.homePos().getY() + .5D, golem.homePos().getZ() + .5D) <= range * range;
+        }
+
+        private int maxCooldown() { return 30 - golem.upgradeAmount(GolemUpgradeType.AER) * 8; }
     }
 
     private static final class CoreHurtByTargetGoal extends HurtByTargetGoal {

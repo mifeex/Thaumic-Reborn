@@ -10,6 +10,7 @@ import com.thaumcraftmodern.nodejar.NodeJarFactory;
 import com.thaumcraftmodern.item.WandItem;
 import com.thaumcraftmodern.wand.WandComponentRegistry;
 import com.thaumcraftmodern.entity.GolemCoreType;
+import com.thaumcraftmodern.entity.LegacyMobKind;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -50,6 +51,10 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("golem_upgrade_aqua").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("golem_upgrade_ordo").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("golem_upgrade_perditio").get());
+                        for (com.thaumcraftmodern.entity.GolemDecorationType decoration
+                                : com.thaumcraftmodern.entity.GolemDecorationType.values()) {
+                            output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get(decoration.itemId()).get());
+                        }
                         output.accept(ModItems.TALLOW_BLOCK.get());
                         output.accept(ModItems.FLESH_BLOCK.get());
                         output.accept(ModItems.GOLEM_FETTER.get());
@@ -165,17 +170,12 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.CULTIST_PRAETOR_CHESTPLATE.get());
                         output.accept(ModItems.CULTIST_PRAETOR_LEGGINGS.get());
                         output.accept(ModItems.CULTIST_BOOTS.get());
-                        output.accept(ModItems.WINGED_MANTLE_HOOD.get());
-                        output.accept(ModItems.WINGED_MANTLE_CHESTPLATE.get());
-                        output.accept(ModItems.WINGED_MANTLE_LEGGINGS.get());
-                        output.accept(ModItems.WINGED_MANTLE_BOOTS.get());
                         output.accept(NodeJarFactory.deterministicCreativeStack(
                                 ModItems.JARRED_AURA_NODE.get()
                         ));
                         output.accept(ModItems.THAUMCRAFT_TABLE.get());
                         output.accept(ModItems.ARCANE_WORKBENCH.get());
                         output.accept(ModItems.ARCANE_SPA.get());
-                        output.accept(ModItems.ARCANE_BORE_BASE.get());
                         output.accept(ModItems.ARCANE_BORE.get());
                         output.accept(ModItems.NODE_STABILIZER.get());
                         output.accept(ModItems.ADVANCED_NODE_STABILIZER.get());
@@ -365,26 +365,26 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.CRUSTED_TAINT.get());
                         output.accept(ModItems.TAINTED_SOIL.get());
                         output.accept(ModItems.TAINT_FIBRES.get());
-                        output.accept(ModItems.TAINTED_CAVE_MOSS_TEST.get());
-                        output.accept(ModItems.TAINTED_CAVE_VINE_TEST.get());
-                        output.accept(ModItems.TAINTED_GLOW_BERRY_VINE_TEST.get());
                         output.accept(ModItems.SHORT_TAINTED_GRASS.get());
                         output.accept(ModItems.TALL_TAINTED_GRASS.get());
                         output.accept(ModItems.SPORE_STALK.get());
-                        output.accept(ModItems.MATURE_SPORE_STALK.get());
                         output.accept(ModItems.FLUX_GOO.get());
                         output.accept(ModItems.FLUX_GAS.get());
                         output.accept(ModItems.OBSIDIAN_TOTEM.get());
                         output.accept(ModItems.OBSIDIAN_TILE.get());
                         output.accept(ModItems.ANCIENT_STONE.get());
+                        output.accept(ModItems.ELDRITCH_GLOWING_CRUST.get());
                         output.accept(ModItems.ANCIENT_ROCK.get());
                         output.accept(ModItems.ANCIENT_STAIRS.get());
                         output.accept(ModItems.ANCIENT_SLAB.get());
                         output.accept(ModItems.ANCIENT_CRUST.get());
-                        for (var spawnEgg : ModItems.SPAWN_EGGS.values()) {
-                            output.accept(spawnEgg.get());
+                        for (LegacyMobKind mob : LegacyMobKind.values()) {
+                            if (mob == LegacyMobKind.CONVERTED_VILLAGER
+                                    || mob == LegacyMobKind.CRIMSON_INQUISITOR) {
+                                continue;
+                            }
+                            output.accept(ModItems.SPAWN_EGGS.get(mob).get());
                         }
-                        output.accept(ModItems.FACELESS_WITNESS_SPAWN_EGG.get());
                     })
                     .build()
     );

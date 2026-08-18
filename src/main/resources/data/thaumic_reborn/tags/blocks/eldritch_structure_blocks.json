@@ -4,6 +4,8 @@
     "thaumic_reborn:obsidian_tile",
     "thaumic_reborn:eldritch_altar_part",
     "thaumic_reborn:eldritch_capstone",
+    "thaumic_reborn:eldritch_glyphed_stone",
+    "thaumic_reborn:eldritch_glowing_crust",
     "thaumic_reborn:eldritch_pedestal",
     "thaumic_reborn:ancient_stone",
     "thaumic_reborn:ancient_rock",
@@ -12,6 +14,7 @@
     "thaumic_reborn:ancient_crust",
     "thaumic_reborn:ancient_seal",
     "thaumic_reborn:eldritch_lock",
-    "thaumic_reborn:eldritch_crab_vent"
+    "thaumic_reborn:eldritch_crab_vent",
+    "thaumic_reborn:eldritch_crystal_cluster"
   ]
 }

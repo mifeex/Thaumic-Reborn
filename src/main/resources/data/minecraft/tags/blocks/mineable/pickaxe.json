@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "thaumic_reborn:arcane_stone",
+    "thaumic_reborn:eldritch_glyphed_stone",
+    "thaumic_reborn:eldritch_glowing_crust",
     "thaumic_reborn:arcane_stone_brick",
     "thaumic_reborn:arcane_stone_slab",
     "thaumic_reborn:thaumium_block",
@@ -52,6 +54,7 @@
     "thaumic_reborn:order_crystal_cluster",
     "thaumic_reborn:entropy_crystal_cluster",
     "thaumic_reborn:balanced_crystal_cluster",
+    "thaumic_reborn:eldritch_crystal_cluster",
     "thaumic_reborn:amber_ore",
     "thaumic_reborn:obsidian_totem",
     "thaumic_reborn:obsidian_totem_node",

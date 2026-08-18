@@ -23,8 +23,10 @@ public final class ClientWarpOverlay {
             ThaumcraftModern.MOD_ID,
             "textures/gui/hud.png"
     );
-    private static long vignetteUntil;
-    private static long mistUntil;
+    static final int MIST_DURATION_TICKS = 2_400;
+    static final int MIST_FADE_TICKS = 100;
+    private static int mistTicks;
+    private static int mistAgeTicks;
 
     private ClientWarpOverlay() {
     }
@@ -61,9 +63,7 @@ public final class ClientWarpOverlay {
                 );
             }
         }
-        long now = System.currentTimeMillis();
         if (packet.visual() == WarpFeedbackPacket.VISUAL_EVENT) {
-            vignetteUntil = now + 5_000L;
             minecraft.level.playLocalSound(
                     minecraft.player.getX(),
                     minecraft.player.getY(),
@@ -75,8 +75,31 @@ public final class ClientWarpOverlay {
                     false
             );
         } else if (packet.visual() == WarpFeedbackPacket.VISUAL_MIST) {
-            mistUntil = Math.max(mistUntil, now + 120_000L);
+            mistTicks = Math.max(mistTicks, MIST_DURATION_TICKS);
+            mistAgeTicks = 0;
         }
+    }
+
+    static void tickMist() {
+        if (mistTicks <= 0) {
+            mistTicks = 0;
+            mistAgeTicks = 0;
+            return;
+        }
+        mistTicks--;
+        mistAgeTicks++;
+    }
+
+    static float mistStrength(float partialTick) {
+        if (mistTicks <= 0) {
+            return 0.0F;
+        }
+        float age = mistAgeTicks + partialTick;
+        float remaining = mistTicks - partialTick;
+        return Math.min(
+                1.0F,
+                Math.min(age, remaining) / MIST_FADE_TICKS
+        );
     }
 
     public static void render(
@@ -103,20 +126,6 @@ public final class ClientWarpOverlay {
         }
         if (minecraft.player.hasEffect(ModEffects.DEATH_GAZE.get())) {
             graphics.fill(0, 0, screenWidth, screenHeight, 0x30400040);
-        }
-        if (mistUntil > now) {
-            graphics.fill(0, 0, screenWidth, screenHeight, 0x351F1633);
-        }
-        if (vignetteUntil > now) {
-            float remaining = (vignetteUntil - now) / 5000.0F;
-            int alpha = Math.min(120, 24 + (int) (remaining * 96.0F));
-            graphics.fill(
-                    0,
-                    0,
-                    screenWidth,
-                    screenHeight,
-                    (alpha << 24) | 0x430044
-            );
         }
         if (!minecraft.player.getMainHandItem().is(ModItems.SANITY_CHECKER.get())) {
             return;

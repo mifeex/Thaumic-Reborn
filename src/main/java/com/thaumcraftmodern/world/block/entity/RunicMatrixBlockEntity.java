@@ -19,6 +19,7 @@ import com.thaumcraftmodern.registry.ModEffects;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.research.ResearchProgressService;
 import com.thaumcraftmodern.world.block.CrystalClusterBlock;
+import com.thaumcraftmodern.world.block.EldritchCrystalBlock;
 import com.thaumcraftmodern.world.block.RunicMatrixBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -640,7 +641,8 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
         BlockState state = level.getBlockState(position);
         return state.is(BlockTags.CANDLES)
                 || state.getBlock() instanceof AbstractSkullBlock
-                || state.getBlock() instanceof CrystalClusterBlock;
+                || state.getBlock() instanceof CrystalClusterBlock
+                || state.getBlock() instanceof EldritchCrystalBlock;
     }
 
     private List<ArcanePedestalBlockEntity> surroundingPedestals() {

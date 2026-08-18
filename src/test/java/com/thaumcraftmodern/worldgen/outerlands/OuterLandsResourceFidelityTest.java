@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.zip.ZipFile;
 import javax.imageio.ImageIO;
 import org.junit.jupiter.api.Test;
 
@@ -250,7 +251,10 @@ class OuterLandsResourceFidelityTest {
         assertFalse(topology.contains("repairInnerCorners"));
         assertTrue(topology.contains("setValue(StairBlock.FACING"));
         assertTrue(topology.contains(
-                "wallOnLeft ? StairsShape.INNER_LEFT"
+                "frontFacing == facing.getCounterClockWise()"
+        ));
+        assertTrue(topology.contains(
+                "behindFacing == facing.getCounterClockWise()"
         ));
         assertTrue(topology.contains(
                 "setValue(StairBlock.SHAPE, StairsShape.STRAIGHT)"
@@ -268,7 +272,7 @@ class OuterLandsResourceFidelityTest {
                 "ordinaryAncientWall(level, removal)"
         ));
         assertTrue(topology.contains("formsMissingCorner("));
-        assertTrue(topology.contains("touchingPerpendicularCorner("));
+        assertTrue(topology.contains("canTakeShape("));
         assertTrue(topology.contains("isPerpendicularStair("));
         assertTrue(topology.contains("Block.UPDATE_ALL"));
         assertFalse(topology.contains("resolved.updateShape("));
@@ -406,6 +410,170 @@ class OuterLandsResourceFidelityTest {
     }
 
     @Test
+    void libraryGlyphedStoneUsesExactTc4ModelTextureAndDrop()
+            throws IOException {
+        assertArrayEquals(
+                Files.readAllBytes(ORIGINAL.resolve("blocks/es_i_2.png")),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/block/"
+                                + "eldritch_glyphed_stone.png"
+                ))
+        );
+
+        String model = Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/"
+                        + "eldritch_glyphed_stone.json"
+        ));
+        assertTrue(model.contains("\"ambientocclusion\": false"));
+        assertTrue(model.contains("\"from\": [2, 2, 2]"));
+        assertTrue(model.contains("\"to\": [14, 14, 14]"));
+
+        String blocks = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/registry/ModBlocks.java"
+        ));
+        assertTrue(blocks.contains("ELDRITCH_GLYPHED_STONE"));
+        assertTrue(blocks.contains("UniformInt.of(1, 4)"));
+        assertTrue(blocks.contains(".lightLevel(state -> 12)"));
+
+        String loot = Files.readString(RESOURCES.resolve(
+                "data/thaumic_reborn/loot_tables/blocks/"
+                        + "eldritch_glyphed_stone.json"
+        ));
+        assertTrue(loot.contains("thaumic_reborn:knowledge_fragment"));
+
+        String generator = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsLabyrinthGenerator.java"
+        ));
+        assertTrue(generator.contains("ModBlocks.ELDRITCH_GLYPHED_STONE"));
+
+        String migration = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsPedestalMigrationEvents.java"
+        ));
+        assertTrue(migration.contains("LIBRARY_GLYPHED_STONES"));
+        assertTrue(migration.contains("replaceLibraryGlyphedStones"));
+        assertTrue(migration.contains("ModBlocks.ANCIENT_ROCK"));
+        assertTrue(migration.contains("ModBlocks.ELDRITCH_GLYPHED_STONE"));
+    }
+
+    @Test
+    void glowingCrustUsesByteExactTc4AssetsAndDecorationRules()
+            throws IOException {
+        Path originalAssets = Path.of(
+                "reference/Thaumcraft-4.2-FOREVA-master/src/main/resources/"
+                        + "assets/thaumcraft"
+        );
+        Path portedAssets = RESOURCES.resolve("assets/thaumcraft");
+        assertArrayEquals(
+                Files.readAllBytes(originalAssets.resolve(
+                        "models/block/blockeldritch_4.json"
+                )),
+                Files.readAllBytes(portedAssets.resolve(
+                        "models/block/blockeldritch_4.json"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(originalAssets.resolve(
+                        "textures/blocks/es_i_1.png"
+                )),
+                Files.readAllBytes(portedAssets.resolve(
+                        "textures/blocks/es_i_1.png"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(originalAssets.resolve(
+                        "textures/blocks/es_i_1.png.mcmeta"
+                )),
+                Files.readAllBytes(portedAssets.resolve(
+                        "textures/blocks/es_i_1.png.mcmeta"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(originalAssets.resolve(
+                        "textures/blocks/es_i_1.png"
+                )),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/block/"
+                                + "eldritch_glowing_crust.png"
+                ))
+        );
+        assertArrayEquals(
+                Files.readAllBytes(originalAssets.resolve(
+                        "textures/blocks/es_i_1.png.mcmeta"
+                )),
+                Files.readAllBytes(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/block/"
+                                + "eldritch_glowing_crust.png.mcmeta"
+                ))
+        );
+
+        String glowingCrustModel = Files.readString(RESOURCES.resolve(
+                "assets/thaumic_reborn/models/block/"
+                        + "eldritch_glowing_crust.json"
+        ));
+        assertTrue(glowingCrustModel.contains(
+                "thaumic_reborn:block/eldritch_glowing_crust"
+        ));
+
+        String connectedModel = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/render/"
+                        + "EldritchCrustBakedModel.java"
+        ));
+        assertTrue(connectedModel.contains("eldritch_glowing_crust"));
+        assertTrue(connectedModel.contains("eldritch_glyphed_stone"));
+        assertTrue(connectedModel.contains("neighbour.isFaceSturdy"));
+        assertTrue(connectedModel.contains(
+                "hasNeighbour(mask, Direction.UP) ? 16.0F : 14.0F"
+        ));
+        assertTrue(connectedModel.contains(
+                "hasNeighbour(mask, Direction.DOWN) ? 0.0F : 2.0F"
+        ));
+
+        String blocks = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/registry/ModBlocks.java"
+        ));
+        assertTrue(blocks.contains("ELDRITCH_GLOWING_CRUST"));
+        assertTrue(blocks.contains(".strength(2.0F, 30.0F)"));
+        assertTrue(blocks.contains(".lightLevel(state -> 12)"));
+
+        String decorations = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsRunedStones.java"
+        ));
+        assertTrue(decorations.contains("CANDIDATE_SALT, 25"));
+        assertTrue(decorations.contains("CRUST_GLOW_SALT, 25"));
+        assertTrue(decorations.contains("DECO_BRANCH_SALT, 3"));
+        assertTrue(decorations.contains("RUNED_SALT, 8"));
+        assertTrue(decorations.contains("CRYSTAL_SALT, 12"));
+        assertTrue(decorations.contains("ELDRITCH_GLOWING_CRUST"));
+        assertTrue(decorations.contains("ELDRITCH_GLYPHED_STONE"));
+        assertTrue(decorations.contains("ELDRITCH_CRYSTAL_CLUSTER"));
+        assertTrue(decorations.contains("replaceLegacyCrystalPlaceholders"));
+        assertTrue(decorations.contains("BALANCED_CRYSTAL_CLUSTER"));
+        assertTrue(decorations.contains("isBedrockShowing"));
+        assertTrue(decorations.contains("position.offset(x, y, z)"));
+        assertTrue(decorations.contains("replaceLegacyCrossLights"));
+        assertTrue(decorations.contains(
+                "state.getValue(AncientStoneBlock.VARIANT) != 3"
+        ));
+
+        String generator = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/worldgen/outerlands/"
+                        + "OuterLandsLabyrinthGenerator.java"
+        ));
+        assertTrue(generator.contains(
+                "case 7 -> ModBlocks.ELDRITCH_GLOWING_CRUST"
+        ));
+
+        String loot = Files.readString(RESOURCES.resolve(
+                "data/thaumic_reborn/loot_tables/blocks/"
+                        + "eldritch_glowing_crust.json"
+        ));
+        assertTrue(loot.contains("thaumic_reborn:eldritch_glowing_crust"));
+    }
+
+    @Test
     void eldritchNothingUsesTc4StarFieldCollisionAndDamage() throws IOException {
         Path java = Path.of("src/main/java/com/thaumcraftmodern");
         String block = Files.readString(java.resolve(
@@ -469,7 +637,7 @@ class OuterLandsResourceFidelityTest {
     }
 
     @Test
-    void bossDoorUsesTc4PatternFieldTabletAndOpeningSequence() throws IOException {
+    void bossDoorUsesEndPortalFieldTabletAndOpeningSequence() throws IOException {
         Path java = Path.of("src/main/java/com/thaumcraftmodern");
         String generator = Files.readString(java.resolve(
                 "worldgen/outerlands/OuterLandsLabyrinthGenerator.java"
@@ -482,18 +650,18 @@ class OuterLandsResourceFidelityTest {
         String renderer = Files.readString(java.resolve(
                 "client/render/EldritchLockRenderer.java"
         ));
-        assertTrue(renderer.contains("FIELD_MIN = -2.0F"));
-        assertTrue(renderer.contains("FIELD_MAX = 3.0F"));
-        assertTrue(renderer.contains("layer < 16"));
+        assertTrue(renderer.contains("RenderType.endPortal()"));
+        assertFalse(renderer.contains("getMainCamera()"));
+        assertFalse(renderer.contains("layer < 16"));
         assertTrue(renderer.contains("5 - (count + arm * 5) / 20"));
         assertTrue(renderer.contains("ModItems.RUNED_TABLET"));
+        assertTrue(renderer.contains("0.3475D"));
         assertTrue(renderer.contains("isBarrierCell"));
         assertTrue(renderer.contains("0.5F - facing.getStepZ() * 0.02F"));
         assertTrue(renderer.contains("0.25F,0.25F,0.50F,0.50F"));
         assertTrue(renderer.contains("0.75F,0.25F,1.00F,0.50F"));
-        assertTrue(renderer.contains("float parallaxScale = scale * (0.75F + depth * 0.015625F)"));
-        assertTrue(renderer.contains("BACKGROUND_SHADE = 0.015F"));
-        assertFalse(renderer.contains("brightness * 1.55F"));
+        assertTrue(renderer.contains("fieldVertex"));
+        assertFalse(renderer.contains("BACKGROUND_SHADE"));
 
         String renderType = Files.readString(java.resolve(
                 "client/render/EldritchLockRenderType.java"
@@ -645,5 +813,58 @@ class OuterLandsResourceFidelityTest {
             ));
             assertFalse(source.contains("getServer().execute("));
         }
+    }
+
+    @Test
+    void strangeCrystalUsesExactTc4AssetsAndMetadataSevenBehavior()
+            throws IOException {
+        Path originalJar = Path.of(
+                "reference/original/Thaumcraft_1.7.10_4.2.3.5.jar"
+        );
+        try (ZipFile jar = new ZipFile(originalJar.toFile())) {
+            for (String asset : new String[]{
+                    "textures/models/vcrystal.obj",
+                    "textures/models/vcrystal.png",
+                    "textures/blocks/crust.png"
+            }) {
+                String entryName = "assets/thaumcraft/" + asset;
+                var entry = jar.getEntry(entryName);
+                assertTrue(entry != null, "Missing TC4 asset " + entryName);
+                assertArrayEquals(
+                        jar.getInputStream(entry).readAllBytes(),
+                        Files.readAllBytes(RESOURCES.resolve(entryName))
+                );
+            }
+        }
+
+        String mesh = Files.readString(RESOURCES.resolve(
+                "assets/thaumcraft/textures/models/vcrystal.obj"
+        ));
+        assertTrue(mesh.contains("g Crystal"));
+        assertTrue(mesh.contains("g Base"));
+
+        String block = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/world/block/"
+                        + "EldritchCrystalBlock.java"
+        ));
+        assertTrue(block.contains("BALANCED_SHARD"));
+        assertTrue(block.contains("isFaceSturdy"));
+
+        String renderer = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/render/"
+                        + "EldritchCrystalRenderer.java"
+        ));
+        assertTrue(renderer.contains("vcrystal.obj"));
+        assertTrue(renderer.contains("vcrystal.png"));
+        assertTrue(renderer.contains("crust.png"));
+        assertTrue(renderer.contains("Math.floorMod(crystal.hashCode(), 4)"));
+        assertTrue(renderer.contains("Mth.sin(ticks / 6.0F) * 0.075F + 0.925F"));
+        assertTrue(renderer.contains("1.0F, 1.0F, 1.0F, 0.7F"));
+
+        String creative = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/registry/"
+                        + "ModCreativeTabs.java"
+        ));
+        assertFalse(creative.contains("ELDRITCH_CRYSTAL_CLUSTER"));
     }
 }

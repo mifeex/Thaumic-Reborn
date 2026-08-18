@@ -14,6 +14,7 @@ public final class StrawGolemRenderer<T extends ClassicGolemEntity>
         super(context,new StrawGolemModel<>(context.bakeLayer(StrawGolemModel.LAYER)),.25F);
         addLayer(new GolemCoreRenderLayer<>(this, context.getItemRenderer()));
         addLayer(new GolemHeldItemRenderLayer<>(this, context.getItemRenderer()));
+        addLayer(new GolemAccessoriesLayer<>(this, context.bakeLayer(GolemAccessoriesLayer.LAYER)));
         addLayer(new AdvancedGolemLayer<>(this, context.bakeLayer(AdvancedGolemLayer.LAYER)));
     }
     @Override protected void setupRotations(T golem, PoseStack poses, float age, float yaw, float partial) {

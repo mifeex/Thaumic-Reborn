@@ -5,6 +5,7 @@ import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.crystal.CrystalClusterVariant;
 import com.thaumcraftmodern.world.block.CrystalClusterBlock;
+import com.thaumcraftmodern.world.block.EldritchCrystalBlock;
 import com.thaumcraftmodern.world.block.entity.CrystalClusterBlockEntity;
 import java.util.Random;
 import net.minecraft.client.renderer.LightTexture;
@@ -39,6 +40,17 @@ public final class CrystalClusterRenderer
             int packedLight,
             int packedOverlay
     ) {
+        if (cluster.getBlockState().getBlock()
+                instanceof EldritchCrystalBlock) {
+            EldritchCrystalRenderer.renderBlock(
+                    cluster,
+                    partialTick,
+                    poses,
+                    buffers,
+                    packedLight
+            );
+            return;
+        }
         if (!(cluster.getBlockState().getBlock()
                 instanceof CrystalClusterBlock block)) {
             return;

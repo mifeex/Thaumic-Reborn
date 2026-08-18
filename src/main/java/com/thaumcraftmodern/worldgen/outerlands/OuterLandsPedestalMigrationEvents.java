@@ -22,6 +22,13 @@ public final class OuterLandsPedestalMigrationEvents {
             {11, 3, 11}, {11, 8, 11},
             {8, 2, 8}, {8, 9, 8}
     };
+    private static final int[][] LIBRARY_GLYPHED_STONES = {
+            {5, 4, 5}, {5, 7, 5},
+            {5, 4, 11}, {5, 7, 11},
+            {11, 4, 5}, {11, 7, 5},
+            {11, 4, 11}, {11, 7, 11},
+            {8, 3, 8}, {8, 8, 8}
+    };
 
     private OuterLandsPedestalMigrationEvents() {
     }
@@ -55,7 +62,8 @@ public final class OuterLandsPedestalMigrationEvents {
         int repaired = switch (located.cell().feature()) {
             case 1, 6 -> replaceCapstone(level, chunk);
             case 2, 3, 4, 5 -> replaceBossPedestals(level, chunk);
-            case 8 -> replaceLibraryPedestals(level, chunk);
+            case 8 -> replaceLibraryPedestals(level, chunk)
+                    + replaceLibraryGlyphedStones(level, chunk);
             default -> 0;
         };
         if (repaired > 0) {
@@ -103,6 +111,28 @@ public final class OuterLandsPedestalMigrationEvents {
             level.setBlock(
                     position,
                     ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState(),
+                    Block.UPDATE_ALL
+            );
+            repaired++;
+        }
+        return repaired;
+    }
+
+    private static int replaceLibraryGlyphedStones(
+            ServerLevel level,
+            LevelChunk chunk
+    ) {
+        int repaired = 0;
+        for (int[] offset : LIBRARY_GLYPHED_STONES) {
+            BlockPos position = local(
+                    chunk, offset[0], offset[1], offset[2]
+            );
+            if (!level.getBlockState(position).is(ModBlocks.ANCIENT_ROCK.get())) {
+                continue;
+            }
+            level.setBlock(
+                    position,
+                    ModBlocks.ELDRITCH_GLYPHED_STONE.get().defaultBlockState(),
                     Block.UPDATE_ALL
             );
             repaired++;

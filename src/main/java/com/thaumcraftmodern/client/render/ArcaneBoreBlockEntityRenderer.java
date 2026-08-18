@@ -23,7 +23,11 @@ public final class ArcaneBoreBlockEntityRenderer
     private final ArcaneBoreModel model;
     private final ArcaneBoreJarCoreModel jar;
     public ArcaneBoreBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        model = new ArcaneBoreModel(context.bakeLayer(ArcaneBoreModel.LAYER));
+        model = new ArcaneBoreModel(
+                context.bakeLayer(ArcaneBoreModel.BORE_LAYER),
+                context.bakeLayer(ArcaneBoreModel.EMITTER_LAYER),
+                context.bakeLayer(ArcaneBoreModel.SUPPORT_LAYER)
+        );
         jar = new ArcaneBoreJarCoreModel(context.bakeLayer(ArcaneBoreJarCoreModel.LAYER));
     }
     @Override public void render(ArcaneBoreBlockEntity bore, float partialTick,

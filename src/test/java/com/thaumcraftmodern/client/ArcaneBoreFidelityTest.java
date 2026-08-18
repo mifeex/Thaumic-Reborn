@@ -12,6 +12,7 @@ import java.util.zip.ZipFile;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ArcaneBoreFidelityTest {
@@ -51,6 +52,24 @@ final class ArcaneBoreFidelityTest {
         assertTrue(model.contains("texOffs(0, 32).mirror().addBox(-6, 0, -6, 12, 2, 12)"));
         assertTrue(model.contains("texOffs(30, 14).mirror().addBox(4, -2.5F, -2.5F, 4, 5, 5)"));
         assertTrue(model.contains("texOffs(66, 0).mirror().addBox(-2, -4, -2, 4, 4, 4)"));
+        assertTrue(model.contains("createBoreLayer()"));
+        assertTrue(model.contains("LayerDefinition.create(mesh, 128, 64)"));
+        assertTrue(model.contains("createEmitterLayer()"));
+        assertTrue(model.contains("createSupportLayer()"));
+    }
+
+    @Test void itemKeepsThePreviouslyWorkingGuiTransform() throws Exception {
+        String renderer = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/client/render/ArcaneBoreItemRenderer.java"));
+        assertFalse(renderer.contains("GUI_SCALE"));
+        assertFalse(renderer.contains("context == ItemDisplayContext.GUI"));
+
+        JsonObject model = JsonParser.parseString(Files.readString(ROOT.resolve(
+                "assets/thaumic_reborn/models/item/arcane_bore.json")))
+                .getAsJsonObject();
+        JsonObject gui = model.getAsJsonObject("display").getAsJsonObject("gui");
+        assertFalse(gui.has("translation"));
+        assertEquals(0.625F, gui.getAsJsonArray("scale").get(0).getAsFloat());
     }
 
     @Test void miningAndPowerConstantsMatchTc4() throws Exception {
@@ -75,6 +94,17 @@ final class ArcaneBoreFidelityTest {
         assertEquals(8, recipe.getAsJsonArray("components").size());
         assertEquals(32, recipe.getAsJsonObject("essentia").get("perfodio").getAsInt());
         assertEquals(32, recipe.getAsJsonObject("essentia").get("machina").getAsInt());
+    }
+
+    @Test void researchShowsTheImplementedInfusionRecipe() throws Exception {
+        JsonObject research = JsonParser.parseString(Files.readString(ROOT.resolve(
+                "data/thaumic_reborn/thaumcraft/research/legacy/arcanebore.json")))
+                .getAsJsonObject();
+        JsonObject page = research.getAsJsonArray("pages").get(1).getAsJsonObject();
+        assertEquals("infusion", page.get("type").getAsString());
+        assertEquals("thaumic_reborn:arcane_bore", page.get("recipe").getAsString());
+        assertEquals("thaumic_reborn:arcane_bore", page.get("output").getAsString());
+        assertEquals(8, page.getAsJsonArray("components").size());
     }
 
     private static String sha(String path) throws Exception {

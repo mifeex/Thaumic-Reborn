@@ -1,5 +1,6 @@
 package com.thaumcraftmodern.focus;
 
+import com.thaumcraftmodern.item.FocusPouchItem;
 import com.thaumcraftmodern.item.WandFocusItem;
 import com.thaumcraftmodern.item.WandItem;
 import com.thaumcraftmodern.integration.api.AddonFocusRegistry;
@@ -99,32 +100,86 @@ public final class WandFocusService {
         if (!(wand.getItem() instanceof WandItem item) || !item.form().acceptsFocus()) return;
         ItemStack previous = focusStack(wand).orElse(ItemStack.EMPTY);
         if (requestedId.equals("remove")) {
-            if (!previous.isEmpty()) giveOrDrop(player, previous);
+            if (!previous.isEmpty() && !addToFocusPouch(player, previous)) giveOrDrop(player, previous);
             clearFocus(wand);
             player.getInventory().setChanged();
             playEquip(player, 0.9F);
             return;
         }
-        int selectedSlot = -1;
+        FocusSource selected = null;
         for (int slot = 0; slot < player.getInventory().items.size(); slot++) {
             ItemStack candidate = player.getInventory().items.get(slot);
-            ResourceLocation key = ForgeRegistries.ITEMS.getKey(candidate.getItem());
-            if (candidate.getItem() instanceof FocusItem focusItem && key != null
-                    && (key.toString().equals(requestedId)
-                    || key.getPath().equals(requestedId)
-                    || focusItem.focusId().toString().equals(requestedId))) {
-                selectedSlot = slot;
+            if (matchesFocus(candidate, requestedId)) {
+                selected = FocusSource.inventory(slot);
                 break;
             }
+            if (candidate.getItem() instanceof FocusPouchItem) {
+                List<ItemStack> contents = FocusPouchItem.loadInventory(candidate);
+                for (int pouchSlot = 0; pouchSlot < contents.size(); pouchSlot++) {
+                    if (matchesFocus(contents.get(pouchSlot), requestedId)) {
+                        selected = FocusSource.pouch(slot, pouchSlot);
+                        break;
+                    }
+                }
+                if (selected != null) break;
+            }
         }
-        if (selectedSlot < 0) return;
-        ItemStack selected = player.getInventory().items.get(selectedSlot).split(1);
-        if (!previous.isEmpty() && !player.getInventory().add(previous.copy())) {
-            player.drop(previous.copy(), false);
+        if (selected == null) return;
+        ItemStack chosen = takeFocus(player, selected);
+        if (chosen.isEmpty()) return;
+        if (!previous.isEmpty() && !addToFocusPouch(player, previous)
+                && !player.getInventory().add(previous.copy())) {
+            restoreFocus(player, selected, chosen);
+            return;
         }
-        setFocus(wand, selected);
+        setFocus(wand, chosen);
         player.getInventory().setChanged();
         playEquip(player, 1.0F);
+    }
+
+    private static boolean matchesFocus(ItemStack candidate, String requestedId) {
+        ResourceLocation key = ForgeRegistries.ITEMS.getKey(candidate.getItem());
+        return candidate.getItem() instanceof FocusItem focusItem && key != null
+                && (key.toString().equals(requestedId)
+                || key.getPath().equals(requestedId)
+                || focusItem.focusId().toString().equals(requestedId));
+    }
+
+    private static ItemStack takeFocus(ServerPlayer player, FocusSource source) {
+        if (source.pouchSlot < 0) return player.getInventory().items.get(source.inventorySlot).split(1);
+        ItemStack pouch = player.getInventory().items.get(source.inventorySlot);
+        List<ItemStack> contents = FocusPouchItem.loadInventory(pouch);
+        ItemStack selected = contents.get(source.pouchSlot);
+        contents.set(source.pouchSlot, ItemStack.EMPTY);
+        FocusPouchItem.saveInventory(pouch, contents);
+        return selected.copyWithCount(1);
+    }
+
+    private static void restoreFocus(ServerPlayer player, FocusSource source, ItemStack focus) {
+        if (source.pouchSlot < 0) {
+            player.getInventory().items.set(source.inventorySlot, focus);
+            return;
+        }
+        ItemStack pouch = player.getInventory().items.get(source.inventorySlot);
+        List<ItemStack> contents = FocusPouchItem.loadInventory(pouch);
+        if (contents.get(source.pouchSlot).isEmpty()) {
+            contents.set(source.pouchSlot, focus);
+            FocusPouchItem.saveInventory(pouch, contents);
+        }
+    }
+
+    private static boolean addToFocusPouch(ServerPlayer player, ItemStack focus) {
+        for (ItemStack pouch : player.getInventory().items) {
+            if (!(pouch.getItem() instanceof FocusPouchItem)) continue;
+            List<ItemStack> contents = FocusPouchItem.loadInventory(pouch);
+            for (int slot = 0; slot < contents.size(); slot++) {
+                if (!contents.get(slot).isEmpty()) continue;
+                contents.set(slot, focus.copyWithCount(1));
+                FocusPouchItem.saveInventory(pouch, contents);
+                return true;
+            }
+        }
+        return false;
     }
 
     public static InteractionResult cast(ItemStack wand, Level level, ServerPlayer player,
@@ -714,4 +769,10 @@ public final class WandFocusService {
     }
 
     private record ExcavationProgress(BlockPos position, float progress) {}
+    private record FocusSource(int inventorySlot, int pouchSlot) {
+        private static FocusSource inventory(int slot) { return new FocusSource(slot, -1); }
+        private static FocusSource pouch(int inventorySlot, int pouchSlot) {
+            return new FocusSource(inventorySlot, pouchSlot);
+        }
+    }
 }

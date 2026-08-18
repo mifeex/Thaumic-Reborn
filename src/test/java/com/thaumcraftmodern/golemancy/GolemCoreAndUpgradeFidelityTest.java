@@ -63,7 +63,7 @@ final class GolemCoreAndUpgradeFidelityTest {
         }
     }
 
-    @Test void classicInteractionStateAndModernGoalContractsArePresent() throws IOException {
+    @Test void classicInteractionStateAndModernGoalContractsArePresent() throws Exception {
         String entity = Files.readString(Path.of("src/main/java/com/thaumcraftmodern/entity/ClassicGolemEntity.java"));
         String goals = Files.readString(Path.of("src/main/java/com/thaumcraftmodern/entity/GolemCoreGoals.java"));
         String renderer = Files.readString(Path.of("src/main/java/com/thaumcraftmodern/client/render/GolemCoreRenderLayer.java"));
@@ -84,6 +84,10 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(goals.contains("case HARVEST")),
                 () -> assertTrue(renderer.contains("translateToBody")),
                 () -> assertTrue(renderer.contains("ModItems.golemCore(core)")),
+                () -> assertTrue(renderer.contains("golem_upgrade_empty.png")),
+                () -> assertTrue(renderer.contains("renderEmptySlot(")),
+                () -> assertFalse(renderer.contains("if (core == null) return"),
+                        "TC4 renders installed upgrades independently of an empty core"),
                 () -> assertTrue(entity.contains("EntityDataSerializers.ITEM_STACK")),
                 () -> assertTrue(entity.contains("carriedForDisplay()")),
                 () -> assertTrue(heldRenderer.contains("renderBetweenHands")),
@@ -106,6 +110,18 @@ final class GolemCoreAndUpgradeFidelityTest {
                 () -> assertTrue(goals.contains("dryFishingCatchLanding()")),
                 () -> assertTrue(goals.contains("landing.x, landing.y, landing.z")),
                 () -> assertTrue(entity.contains("FluidUtil.getFilledBucket")));
+
+        assertEquals(
+                sha1(Path.of(
+                        "reference/Thaumcraft-4.2-FOREVA-master/src/main/"
+                                + "resources/assets/thaumcraft/textures/items/"
+                                + "golem_upgrade_empty.png"
+                )),
+                sha1(RESOURCES.resolve(
+                        "assets/thaumic_reborn/textures/item/"
+                                + "golem_upgrade_empty.png"
+                ))
+        );
     }
 
     @Test void originalBootAnimationAiAndMaterialGuiContractsArePresent() throws Exception {

@@ -48,6 +48,8 @@ class ClassicHarvestLevelFidelityTest {
                 id("entropy_infused_stone"),
                 id("amber_ore"),
                 id("eldritch_altar_part"),
+                id("eldritch_glyphed_stone"),
+                id("eldritch_glowing_crust"),
                 id("ancient_stone"),
                 id("ancient_rock"),
                 id("ancient_stairs"),
@@ -82,6 +84,7 @@ class ClassicHarvestLevelFidelityTest {
                 id("silverwood_slab")
                 , id("arcane_bellows")
                 , id("arcane_ear")
+                , id("arcane_pressure_plate")
                 , id("arcane_bore_base")
                 , id("arcane_bore")
         ), values("mineable/axe.json"));

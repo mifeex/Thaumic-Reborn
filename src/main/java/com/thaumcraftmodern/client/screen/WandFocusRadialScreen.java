@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.math.Axis;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.focus.WandFocusService;
+import com.thaumcraftmodern.item.FocusPouchItem;
 import com.thaumicreborn.api.focus.FocusItem;
 import com.thaumcraftmodern.item.WandItem;
 import com.thaumcraftmodern.network.ModNetwork;
@@ -54,6 +55,9 @@ public final class WandFocusRadialScreen extends Screen {
         currentFocus = WandFocusService.focusStack(held)
                 .map(stack -> stack.copyWithCount(1)).orElse(ItemStack.EMPTY);
         minecraft.player.getInventory().items.stream()
+                .flatMap(stack -> stack.getItem() instanceof FocusPouchItem
+                        ? FocusPouchItem.loadInventory(stack).stream()
+                        : java.util.stream.Stream.of(stack))
                 .filter(stack -> stack.getItem() instanceof FocusItem)
                 .sorted(Comparator.comparingInt(WandFocusRadialScreen::sortIndex))
                 .forEach(stack -> {

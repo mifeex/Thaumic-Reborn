@@ -79,6 +79,8 @@ public final class OuterLandsLabyrinthGenerator {
             if (cell.exitCount() > 0) {
                 generateBossDoor(level, chunk, located, cell);
             }
+            OuterLandsRunedStones.populate(level, chunk, worldSeed, cell);
+            OuterLandsCrabVents.populate(level, chunk, worldSeed, cell);
             OuterLandsStairTopology.refresh(level, chunk);
             OuterLandsEldritchNothingExposure.refresh(level, chunk);
             return;
@@ -100,8 +102,8 @@ public final class OuterLandsLabyrinthGenerator {
                 }
             }
         }
-        OuterLandsCrabVents.populate(level, chunk, worldSeed, cell);
         OuterLandsRunedStones.populate(level, chunk, worldSeed, cell);
+        OuterLandsCrabVents.populate(level, chunk, worldSeed, cell);
         OuterLandsStairTopology.refresh(level, chunk);
         OuterLandsEldritchNothingExposure.refresh(level, chunk);
     }
@@ -525,8 +527,8 @@ public final class OuterLandsLabyrinthGenerator {
             case 1, 99 -> ModBlocks.ANCIENT_SEAL.get().defaultBlockState();
             case 2 -> ModBlocks.ANCIENT_STONE.get().defaultBlockState();
             case 3, 4, 5, 6 -> classicConnectionStair(direction, code);
-            case 7 -> ModBlocks.ANCIENT_STONE.get().defaultBlockState()
-                    .setValue(AncientStoneBlock.VARIANT, 3);
+            case 7 -> ModBlocks.ELDRITCH_GLOWING_CRUST.get()
+                    .defaultBlockState();
             case 8 -> ModBlocks.ELDRITCH_NOTHING.get().defaultBlockState();
             case 9 -> Blocks.AIR.defaultBlockState();
             case 10 -> ModBlocks.ANCIENT_STAIRS.get().defaultBlockState()
@@ -1014,13 +1016,13 @@ public final class OuterLandsLabyrinthGenerator {
             set(level, x + corner[0], BASE_Y + 3, z + corner[1],
                     ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 4, z + corner[1],
-                    ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
+                    ModBlocks.ELDRITCH_GLYPHED_STONE.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 5, z + corner[1],
                     ModBlocks.ANCIENT_SLAB.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 8, z + corner[1],
                     ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 7, z + corner[1],
-                    ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
+                    ModBlocks.ELDRITCH_GLYPHED_STONE.get().defaultBlockState());
             set(level, x + corner[0], BASE_Y + 6, z + corner[1],
                     ModBlocks.ANCIENT_SLAB.get().defaultBlockState()
                             .setValue(SlabBlock.TYPE, SlabType.TOP));
@@ -1028,13 +1030,13 @@ public final class OuterLandsLabyrinthGenerator {
         set(level, x + 8, BASE_Y + 2, z + 8,
                 ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 3, z + 8,
-                ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
+                ModBlocks.ELDRITCH_GLYPHED_STONE.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 4, z + 8,
                 ModBlocks.ANCIENT_SLAB.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 9, z + 8,
                 ModBlocks.ELDRITCH_PEDESTAL.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 8, z + 8,
-                ModBlocks.ANCIENT_ROCK.get().defaultBlockState());
+                ModBlocks.ELDRITCH_GLYPHED_STONE.get().defaultBlockState());
         set(level, x + 8, BASE_Y + 7, z + 8,
                 ModBlocks.ANCIENT_SLAB.get().defaultBlockState()
                         .setValue(SlabBlock.TYPE, SlabType.TOP));

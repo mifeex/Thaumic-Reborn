@@ -5,6 +5,7 @@ import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.item.GolemCoreItem;
 import com.thaumcraftmodern.item.GolemUpgradeItem;
+import com.thaumcraftmodern.item.GolemDecorationItem;
 import com.thaumcraftmodern.item.WardedJarItem;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -67,6 +68,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             ClassicGolemEntity.class, EntityDataSerializers.ITEM_STACK);
     private static final EntityDataAccessor<Boolean> ADVANCED = SynchedEntityData.defineId(
             ClassicGolemEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<String> DECORATIONS = SynchedEntityData.defineId(
+            ClassicGolemEntity.class, EntityDataSerializers.STRING);
     private final GolemMaterial material;
     private byte[] upgrades;
     private SimpleContainer inventory;
@@ -127,6 +130,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         entityData.define(CARRYING, false);
         entityData.define(CARRIED_DISPLAY, ItemStack.EMPTY);
         entityData.define(ADVANCED, false);
+        entityData.define(DECORATIONS, "");
     }
 
     @Override protected void registerGoals() { GolemCoreGoals.register(this); }
@@ -178,7 +182,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             }
             if (regenerationTimer > 0) regenerationTimer--;
             else {
-                regenerationTimer = material.regenerationDelay();
+                regenerationTimer = effectiveRegenerationDelay();
                 if (getHealth() < getMaxHealth()) heal(1F);
             }
         }
@@ -202,6 +206,15 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             if (!canInstall(upgradeItem.type())) return InteractionResult.FAIL;
             if (!level().isClientSide) {
                 installUpgrade(upgradeItem.type());
+                consumeUnlessCreative(player, held);
+                playUpgradeSound();
+            }
+            return InteractionResult.sidedSuccess(level().isClientSide);
+        }
+        if (held.getItem() instanceof GolemDecorationItem decorationItem) {
+            if (!canInstallDecoration(decorationItem.type())) return InteractionResult.FAIL;
+            if (!level().isClientSide) {
+                installDecoration(decorationItem.type());
                 consumeUnlessCreative(player, held);
                 playUpgradeSound();
             }
@@ -245,7 +258,28 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         if (hit && upgradeAmount(GolemUpgradeType.IGNIS) > 0) {
             target.setSecondsOnFire(upgradeAmount(GolemUpgradeType.IGNIS) * 4);
         }
+        if (hit && hasDecoration(GolemDecorationType.VISOR)
+                && target instanceof net.minecraft.world.entity.LivingEntity living
+                && level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            owner().map(serverLevel::getPlayerByUUID).ifPresent(living::setLastHurtByPlayer);
+        }
         return hit;
+    }
+
+    public void shootDart(net.minecraft.world.entity.LivingEntity target) {
+        if (level().isClientSide || !hasDecoration(GolemDecorationType.DART_LAUNCHER)) return;
+        net.minecraft.world.entity.projectile.Arrow dart =
+                new net.minecraft.world.entity.projectile.Arrow(level(), this);
+        double dx = target.getX() - getX();
+        double dy = target.getBoundingBox().minY + target.getBbHeight() / 3D - dart.getY();
+        double dz = target.getZ() - getZ();
+        float inaccuracy = 7F - upgradeAmount(GolemUpgradeType.AQUA) * 1.75F;
+        dart.shoot(dx, dy, dz, 1.6F, inaccuracy);
+        dart.setBaseDamage(getAttributeValue(Attributes.ATTACK_DAMAGE) * .4D);
+        dart.pickup = net.minecraft.world.entity.projectile.AbstractArrow.Pickup.DISALLOWED;
+        level().addFreshEntity(dart);
+        playSound(SoundEvents.ARROW_SHOOT, .5F, 1F / (random.nextFloat() * .4F + .6F));
+        startLeftArmAnimation();
     }
 
     @Override protected int decreaseAirSupply(int air) { return air; }
@@ -269,6 +303,23 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     }
     public int upgradeSlots() { return material.upgradeSlots() + (isAdvanced() ? 1 : 0); }
     public boolean isAdvanced() { return entityData.get(ADVANCED); }
+    public String decorations() { return entityData.get(DECORATIONS); }
+    public boolean hasDecoration(GolemDecorationType type) {
+        return decorations().indexOf(type.legacyCode()) >= 0;
+    }
+    public boolean canInstallDecoration(GolemDecorationType type) {
+        if (type == null || hasDecoration(type)) return false;
+        for (GolemDecorationType installed : GolemDecorationType.values()) {
+            if (installed.mount() == type.mount() && hasDecoration(installed)) return false;
+        }
+        return true;
+    }
+    public boolean installDecoration(GolemDecorationType type) {
+        if (!canInstallDecoration(type)) return false;
+        entityData.set(DECORATIONS, decorations() + type.legacyCode());
+        applyUpgradeAttributes();
+        return true;
+    }
     public void setAdvanced(boolean advanced) {
         if (isAdvanced() == advanced && upgrades != null && upgrades.length == upgradeSlots()) return;
         byte[] previous = upgrades == null ? new byte[0] : upgrades;
@@ -448,6 +499,9 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     }
     public int workRange() {
         int range = 16 + upgradeAmount(GolemUpgradeType.AQUA) * 4;
+        if (hasDecoration(GolemDecorationType.GLASSES)) {
+            range += Math.max((int) Math.ceil(range * .1D), 1);
+        }
         return isAdvanced() ? range + Math.max((int) (range * .2F), 2) : range;
     }
     public int workDelay() { return 20 - (isAdvanced() ? 2 : 0); }
@@ -502,6 +556,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
         tag.putInt("Core", entityData.get(CORE));
         tag.putByte("Toggles", entityData.get(TOGGLES));
         tag.putByteArray("Upgrades", upgrades);
+        tag.putString("Decoration", decorations());
+        tag.putString("deco", decorations());
         tag.putFloat("Health", getHealth());
         CompoundTag inventoryTag = new CompoundTag();
         NonNullList<ItemStack> savedInventory = NonNullList.withSize(inventory.getContainerSize(), ItemStack.EMPTY);
@@ -529,6 +585,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
 
     public void loadPortableData(CompoundTag tag) {
         setAdvanced(tag.getBoolean("advanced") || tag.getBoolean("Advanced"));
+        entityData.set(DECORATIONS, tag.contains("Decoration")
+                ? tag.getString("Decoration") : tag.getString("deco"));
         entityData.set(CORE, tag.getInt("Core"));
         entityData.set(TOGGLES, tag.getByte("Toggles"));
         byte[] restored = tag.getByteArray("Upgrades");
@@ -584,6 +642,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             }
             if (filters != null) rebuildFilters(filters);
         }
+        if (DECORATIONS.equals(key) && material != null) applyUpgradeAttributes();
     }
 
     @Override
@@ -627,6 +686,7 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             tag.putInt("GolemHomeRadius", persistentHomeRadius);
         }
         tag.putByteArray("Upgrades", upgrades);
+        tag.putString("Decoration", decorations());
         if (!fluidCarried.isEmpty()) {
             CompoundTag fluidTag = new CompoundTag();
             fluidCarried.writeToNBT(fluidTag);
@@ -660,7 +720,8 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         setOwner(tag.hasUUID("Owner") ? tag.getUUID("Owner") : null);
-        regenerationTimer = Math.max(0, Math.min(material.regenerationDelay(), tag.getInt("RegenTimer")));
+        entityData.set(DECORATIONS, tag.getString("Decoration"));
+        regenerationTimer = Math.max(0, Math.min(effectiveRegenerationDelay(), tag.getInt("RegenTimer")));
         entityData.set(ADVANCED, tag.getBoolean("advanced") || tag.getBoolean("Advanced"));
         byte[] savedUpgrades = tag.getByteArray("Upgrades");
         upgrades = new byte[upgradeSlots()];
@@ -716,6 +777,11 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
             GolemUpgradeType type = GolemUpgradeType.byLegacyId(value);
             if (type != null) spawnAtLocation(upgradeItem(type));
         }
+        for (GolemDecorationType decoration : GolemDecorationType.values()) {
+            if (hasDecoration(decoration)) {
+                spawnAtLocation(ModItems.ARCANE_RECIPE_COMPONENTS.get(decoration.itemId()).get());
+            }
+        }
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
             ItemStack stack = inventory.getItem(slot);
             if (!stack.isEmpty()) spawnAtLocation(stack);
@@ -740,18 +806,36 @@ public class ClassicGolemEntity extends AbstractGolem implements MenuProvider {
     }
     private void applyUpgradeAttributes() {
         if (getAttribute(Attributes.MOVEMENT_SPEED) != null) {
-            getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(
-                    material.speed() * (isAdvanced() ? 1.1D : 1D)
-                            * (1D + upgradeAmount(GolemUpgradeType.AER) * .15D));
+            double speed = material.speed() * (isAdvanced() ? 1.1D : 1D)
+                    * (1D + upgradeAmount(GolemUpgradeType.AER) * .15D);
+            if (hasDecoration(GolemDecorationType.BOW_TIE)) speed *= 1.1D;
+            if (hasDecoration(GolemDecorationType.ARMOR)) speed *= .88D;
+            getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(speed);
         }
         if (getAttribute(Attributes.ATTACK_DAMAGE) != null) {
             int earth = upgradeAmount(GolemUpgradeType.TERRA);
-            getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(2D + material.strength() + earth * 2D);
+            getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(2D + material.strength() + earth * 2D
+                    + (hasDecoration(GolemDecorationType.HAMMER) ? 2D : 0D));
+        }
+        if (getAttribute(Attributes.MAX_HEALTH) != null) {
+            getAttribute(Attributes.MAX_HEALTH).setBaseValue(material.health()
+                    + (hasDecoration(GolemDecorationType.TOP_HAT) ? 5D : 0D));
+        }
+        if (getAttribute(Attributes.ARMOR) != null) {
+            double armor = material.armor();
+            if (hasDecoration(GolemDecorationType.VISOR)) armor += 1D;
+            if (hasDecoration(GolemDecorationType.ARMOR)) armor += 4D;
+            getAttribute(Attributes.ARMOR).setBaseValue(Math.min(armor, 20D));
         }
         if (getAttribute(Attributes.FOLLOW_RANGE) != null) {
             getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(
                     32D + upgradeAmount(GolemUpgradeType.ORDO) * 8D);
         }
+    }
+    private int effectiveRegenerationDelay() {
+        return hasDecoration(GolemDecorationType.FEZ)
+                ? Math.max(1, (int) (material.regenerationDelay() * .66F))
+                : material.regenerationDelay();
     }
     private void rebuildInventory(@Nullable SimpleContainer previous) {
         // TC4 transports one item stack; Terra changes its count limit, not slot count.

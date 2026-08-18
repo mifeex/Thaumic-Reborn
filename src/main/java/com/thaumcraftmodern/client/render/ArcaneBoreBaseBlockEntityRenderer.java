@@ -18,7 +18,11 @@ public final class ArcaneBoreBaseBlockEntityRenderer
             ThaumcraftModern.MOD_ID, "textures/models/bore.png");
     private final ArcaneBoreModel model;
     public ArcaneBoreBaseBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        model = new ArcaneBoreModel(context.bakeLayer(ArcaneBoreModel.LAYER));
+        model = new ArcaneBoreModel(
+                context.bakeLayer(ArcaneBoreModel.BORE_LAYER),
+                context.bakeLayer(ArcaneBoreModel.EMITTER_LAYER),
+                context.bakeLayer(ArcaneBoreModel.SUPPORT_LAYER)
+        );
     }
     @Override public void render(ArcaneBoreBaseBlockEntity base, float partialTick,
             PoseStack pose, MultiBufferSource buffers, int light, int overlay) {

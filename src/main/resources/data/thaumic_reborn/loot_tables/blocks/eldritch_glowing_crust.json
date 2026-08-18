@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "thaumic_reborn:eldritch_glowing_crust"
+        }
+      ],
+      "conditions": [
+        {"condition": "minecraft:survives_explosion"}
+      ]
+    }
+  ]
+}

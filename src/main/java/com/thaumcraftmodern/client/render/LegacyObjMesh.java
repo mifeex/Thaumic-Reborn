@@ -30,7 +30,8 @@ public final class LegacyObjMesh {
             mesh("node_stabilizer.obj"),
             mesh("pillar.obj"),
             mesh("adv_alch_furnace.obj"),
-            mesh("crabvent.obj")
+            mesh("crabvent.obj"),
+            new ResourceLocation("thaumcraft", "textures/models/vcrystal.obj")
     );
     private static volatile Map<ResourceLocation, LegacyObjMesh> loadedMeshes =
             Map.of();

@@ -27,6 +27,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 /** Server-authoritative delayed unlock and random original boss encounter. */
 public final class EldritchLockBlockEntity extends BlockEntity {
@@ -61,6 +62,27 @@ public final class EldritchLockBlockEntity extends BlockEntity {
 
     public int countdown() {
         return countdown;
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        return renderBoundingBox(
+                worldPosition,
+                getBlockState().getValue(EldritchLockBlock.FACING)
+        );
+    }
+
+    static AABB renderBoundingBox(BlockPos position, Direction facing) {
+        if (facing.getAxis() == Direction.Axis.Z) {
+            return new AABB(
+                    position.offset(-2, -2, 0),
+                    position.offset(3, 3, 1)
+            );
+        }
+        return new AABB(
+                position.offset(0, -2, -2),
+                position.offset(1, 3, 3)
+        );
     }
 
     public static void clientTick(

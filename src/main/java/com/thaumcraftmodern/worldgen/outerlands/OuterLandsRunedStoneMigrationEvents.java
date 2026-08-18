@@ -7,7 +7,7 @@ import net.minecraftforge.event.level.ChunkEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/** Adds original runed traps to already generated Outer Lands chunks. */
+/** Adds original common decorations to already generated Outer Lands chunks. */
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID)
 public final class OuterLandsRunedStoneMigrationEvents {
     private OuterLandsRunedStoneMigrationEvents() {

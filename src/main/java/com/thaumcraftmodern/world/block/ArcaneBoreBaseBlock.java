@@ -2,6 +2,7 @@ package com.thaumcraftmodern.world.block;
 
 import com.thaumcraftmodern.item.WandItem;
 import com.thaumcraftmodern.registry.ModBlockEntities;
+import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.entity.ArcaneBoreBaseBlockEntity;
 import com.thaumcraftmodern.wand.WandInteractable;
 import net.minecraft.core.BlockPos;
@@ -44,8 +45,10 @@ public final class ArcaneBoreBaseBlock extends BaseEntityBlock implements WandIn
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hit) {
-        return player.getItemInHand(hand).getItem() instanceof WandItem
-                ? InteractionResult.PASS : InteractionResult.sidedSuccess(level.isClientSide);
+        ItemStack held = player.getItemInHand(hand);
+        return held.getItem() instanceof WandItem || held.is(ModItems.ARCANE_BORE.get())
+                ? InteractionResult.PASS
+                : InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.thaumcraftmodern.entity.PechBlastEntity;
 import com.thaumcraftmodern.entity.FacelessWitnessEntity;
 import com.thaumcraftmodern.entity.FrostShardEntity;
 import com.thaumcraftmodern.entity.PrimalOrbEntity;
+import com.thaumcraftmodern.entity.PrimalArrowEntity;
 import com.thaumcraftmodern.entity.FocusEmberEntity;
 import com.thaumcraftmodern.entity.StrawGolemEntity;
 import com.thaumcraftmodern.entity.ClassicGolemEntity;
@@ -116,6 +117,11 @@ public final class ModEntities {
                     .<PrimalOrbEntity>of(PrimalOrbEntity::new, MobCategory.MISC)
                     .sized(0.35F, 0.35F).clientTrackingRange(10).updateInterval(2)
                     .build(ThaumcraftModern.MOD_ID + ":primal_orb"));
+    public static final RegistryObject<EntityType<PrimalArrowEntity>> PRIMAL_ARROW =
+            ENTITY_TYPES.register("primal_arrow", () -> EntityType.Builder
+                    .<PrimalArrowEntity>of(PrimalArrowEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(1)
+                    .build(ThaumcraftModern.MOD_ID + ":primal_arrow"));
     public static final RegistryObject<EntityType<FocusEmberEntity>> FOCUS_EMBER =
             ENTITY_TYPES.register("focus_ember", () -> EntityType.Builder
                     .<FocusEmberEntity>of(FocusEmberEntity::new, MobCategory.MISC)

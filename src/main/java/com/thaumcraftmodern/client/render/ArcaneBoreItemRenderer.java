@@ -18,14 +18,19 @@ final class ArcaneBoreItemRenderer extends BlockEntityWithoutLevelRenderer {
         super(Minecraft.getInstance().getBlockEntityRenderDispatcher(),
                 Minecraft.getInstance().getEntityModels());
         this.kind = kind;
-        model = new ArcaneBoreModel(Minecraft.getInstance().getEntityModels()
-                .bakeLayer(ArcaneBoreModel.LAYER));
+        var entityModels = Minecraft.getInstance().getEntityModels();
+        model = new ArcaneBoreModel(
+                entityModels.bakeLayer(ArcaneBoreModel.BORE_LAYER),
+                entityModels.bakeLayer(ArcaneBoreModel.EMITTER_LAYER),
+                entityModels.bakeLayer(ArcaneBoreModel.SUPPORT_LAYER)
+        );
     }
     @Override public void renderByItem(ItemStack stack, ItemDisplayContext context,
             PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
         var vertices = buffers.getBuffer(RenderType.entityCutoutNoCull(
                 ArcaneBoreBaseBlockEntityRenderer.TEXTURE));
-        pose.pushPose(); pose.translate(0.5D, 0, 0.5D);
+        pose.pushPose();
+        pose.translate(0.5D, 0, 0.5D);
         if (kind == ArcaneBoreItem.Kind.BASE) {
             model.renderSupport(pose, vertices, light, overlay);
             model.renderSupportNozzle(pose, vertices, light, overlay);

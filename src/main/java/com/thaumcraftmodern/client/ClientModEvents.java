@@ -22,7 +22,9 @@ import com.thaumcraftmodern.client.render.StrawGolemRenderer;
 import com.thaumcraftmodern.client.render.GolemFishingBobberRenderer;
 import com.thaumcraftmodern.client.render.TravelingTrunkModel;
 import com.thaumcraftmodern.client.render.TravelingTrunkRenderer;
+import com.thaumcraftmodern.client.render.PrimalArrowRenderer;
 import com.thaumcraftmodern.client.render.AdvancedGolemLayer;
+import com.thaumcraftmodern.client.render.GolemAccessoriesLayer;
 import com.thaumcraftmodern.client.render.ArcanePedestalBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.WandRechargePedestalBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ClientNodeRenderers;
@@ -114,6 +116,7 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import com.thaumcraftmodern.client.render.InfernalFurnaceBakedModel;
+import com.thaumcraftmodern.client.render.EldritchCrustBakedModel;
 import com.thaumcraftmodern.client.render.LegacyObjMesh;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -164,6 +167,8 @@ public final class ClientModEvents {
                     com.thaumcraftmodern.client.screen.FocalManipulatorScreen::new);
             MenuScreens.register(ModMenus.GOLEM.get(), GolemScreen::new);
             MenuScreens.register(ModMenus.TRAVELING_TRUNK.get(), TravelingTrunkScreen::new);
+            MenuScreens.register(ModMenus.FOCUS_POUCH.get(),
+                    com.thaumcraftmodern.client.screen.FocusPouchScreen::new);
             ItemProperties.register(
                     ModItems.ESSENTIA_PHIAL.get(),
                     new ResourceLocation(
@@ -196,6 +201,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void modifyBakedModels(ModelEvent.ModifyBakingResult event) {
         InfernalFurnaceBakedModel.wrapModels(event);
+        EldritchCrustBakedModel.wrapModels(event);
     }
 
     @SubscribeEvent
@@ -337,6 +343,7 @@ public final class ClientModEvents {
     ) {
         event.registerEntityRenderer(ModEntities.FROST_SHARD.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.PRIMAL_ORB.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ModEntities.PRIMAL_ARROW.get(), PrimalArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.FOCUS_EMBER.get(), NoopRenderer::new);
         event.registerEntityRenderer(ModEntities.GOLEM_FISHING_BOBBER.get(), GolemFishingBobberRenderer::new);
         event.registerEntityRenderer(ModEntities.STRAW_GOLEM.get(), StrawGolemRenderer::new);
@@ -519,8 +526,18 @@ public final class ClientModEvents {
                 ArcaneBellowsModel.LAYER,
                 ArcaneBellowsModel::createBodyLayer
         );
-        event.registerLayerDefinition(ArcaneBoreModel.LAYER,
-                ArcaneBoreModel::createBodyLayer);
+        event.registerLayerDefinition(
+                ArcaneBoreModel.BORE_LAYER,
+                ArcaneBoreModel::createBoreLayer
+        );
+        event.registerLayerDefinition(
+                ArcaneBoreModel.EMITTER_LAYER,
+                ArcaneBoreModel::createEmitterLayer
+        );
+        event.registerLayerDefinition(
+                ArcaneBoreModel.SUPPORT_LAYER,
+                ArcaneBoreModel::createSupportLayer
+        );
         event.registerLayerDefinition(ArcaneBoreJarCoreModel.LAYER,
                 ArcaneBoreJarCoreModel::createBodyLayer);
         event.registerLayerDefinition(ClassicBrainJarModel.LAYER,ClassicBrainJarModel::createBodyLayer);
@@ -528,6 +545,7 @@ public final class ClientModEvents {
         event.registerLayerDefinition(StrawGolemModel.LAYER,StrawGolemModel::createBodyLayer);
         event.registerLayerDefinition(TravelingTrunkModel.LAYER, TravelingTrunkModel::createBodyLayer);
         event.registerLayerDefinition(AdvancedGolemLayer.LAYER, AdvancedGolemLayer::createBodyLayer);
+        event.registerLayerDefinition(GolemAccessoriesLayer.LAYER, GolemAccessoriesLayer::createBodyLayer);
         event.registerLayerDefinition(
                 ClassicManaPodModel.LAYER,
                 ClassicManaPodModel::createBodyLayer

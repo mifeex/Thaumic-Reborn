@@ -307,60 +307,45 @@ final class OuterLandsStairTopology {
             BlockPos position,
             BlockState state
     ) {
-        StairsShape touchingCorner = touchingPerpendicularCorner(
-                level, position, state
-        );
-        if (touchingCorner != null) {
-            return state.setValue(StairBlock.SHAPE, touchingCorner);
-        }
-        StairPlacement joinedRuns = cornerAt(level, position);
-        if (joinedRuns != null
-                && joinedRuns.state().getValue(StairBlock.HALF)
-                == state.getValue(StairBlock.HALF)) {
-            return joinedRuns.state();
-        }
-        Direction facing = state.getValue(StairBlock.FACING);
-        boolean wallOnLeft = isAncientWall(level.getBlockState(
-                position.relative(facing.getCounterClockWise())
-        ));
-        boolean wallOnRight = isAncientWall(level.getBlockState(
-                position.relative(facing.getClockWise())
-        ));
-        if (wallOnLeft != wallOnRight) {
-            return state.setValue(
-                    StairBlock.SHAPE,
-                    wallOnLeft ? StairsShape.INNER_LEFT
-                            : StairsShape.INNER_RIGHT
-            );
-        }
-        return state.setValue(StairBlock.SHAPE, StairsShape.STRAIGHT);
-    }
-
-    private static StairsShape touchingPerpendicularCorner(
-            LevelAccessor level,
-            BlockPos position,
-            BlockState state
-    ) {
+        /*
+         * Mirror StairBlock#getStairsShape exactly. The old resolver looked
+         * sideways, so it left the real L-shaped join straight and turned an
+         * unrelated stair at the end of the run. Vanilla determines outer
+         * corners from the stair in front and inner corners from the stair
+         * behind.
+         */
         Direction facing = state.getValue(StairBlock.FACING);
         Half half = state.getValue(StairBlock.HALF);
-        Direction left = facing.getCounterClockWise();
-        Direction right = facing.getClockWise();
-        /*
-         * Only the stair at the end of its run owns the corner. A neighbour
-         * in front or behind belongs to the crossing run and stays straight;
-         * resolving both sides produced two adjacent corner stairs.
-         */
-        if (isPerpendicularStair(
-                level.getBlockState(position.relative(left)), facing, half
-        )) {
-            return StairsShape.INNER_LEFT;
+        BlockState front = level.getBlockState(position.relative(facing));
+        if (isPerpendicularStair(front, facing, half)) {
+            Direction frontFacing = front.getValue(StairBlock.FACING);
+            if (canTakeShape(
+                    level, position, state, frontFacing.getOpposite()
+            )) {
+                return state.setValue(
+                        StairBlock.SHAPE,
+                        frontFacing == facing.getCounterClockWise()
+                                ? StairsShape.OUTER_LEFT
+                                : StairsShape.OUTER_RIGHT
+                );
+            }
         }
-        if (isPerpendicularStair(
-                level.getBlockState(position.relative(right)), facing, half
-        )) {
-            return StairsShape.INNER_RIGHT;
+
+        BlockState behind = level.getBlockState(
+                position.relative(facing.getOpposite())
+        );
+        if (isPerpendicularStair(behind, facing, half)) {
+            Direction behindFacing = behind.getValue(StairBlock.FACING);
+            if (canTakeShape(level, position, state, behindFacing)) {
+                return state.setValue(
+                        StairBlock.SHAPE,
+                        behindFacing == facing.getCounterClockWise()
+                                ? StairsShape.INNER_LEFT
+                                : StairsShape.INNER_RIGHT
+                );
+            }
         }
-        return null;
+        return state.setValue(StairBlock.SHAPE, StairsShape.STRAIGHT);
     }
 
     private static boolean isPerpendicularStair(
@@ -372,6 +357,20 @@ final class OuterLandsStairTopology {
                 && neighbour.getValue(StairBlock.HALF) == half
                 && neighbour.getValue(StairBlock.FACING).getAxis()
                 != facing.getAxis();
+    }
+
+    private static boolean canTakeShape(
+            LevelAccessor level,
+            BlockPos position,
+            BlockState state,
+            Direction side
+    ) {
+        BlockState neighbour = level.getBlockState(position.relative(side));
+        return !neighbour.is(ModBlocks.ANCIENT_STAIRS.get())
+                || neighbour.getValue(StairBlock.FACING)
+                != state.getValue(StairBlock.FACING)
+                || neighbour.getValue(StairBlock.HALF)
+                != state.getValue(StairBlock.HALF);
     }
 
     static boolean isAncientWall(BlockState state) {

@@ -24,12 +24,33 @@
       "body": "tc.research_page.ARCANEBORE.1"
     },
     {
-      "type": "unavailable",
+      "type": "infusion",
       "title": "",
       "body": "",
       "legacy_type": "recipe",
       "legacy_content": "ArcaneBore",
-      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"ArcaneBore\"))"
+      "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"ArcaneBore\"))",
+      "recipe": "thaumic_reborn:arcane_bore",
+      "output": "thaumic_reborn:arcane_bore",
+      "central": "minecraft:diamond_block",
+      "components": [
+        {"item": "thaumic_reborn:greatwood_planks"},
+        {"item": "thaumic_reborn:greatwood_planks"},
+        {"item": "minecraft:gold_ingot"},
+        {"item": "minecraft:gold_ingot"},
+        {"item": "minecraft:iron_axe"},
+        {"item": "minecraft:iron_pickaxe"},
+        {"item": "thaumic_reborn:air_shard"},
+        {"item": "thaumic_reborn:earth_shard"}
+      ],
+      "aspect_costs": [
+        {"id": "potentia", "amount": 16},
+        {"id": "perfodio", "amount": 32},
+        {"id": "machina", "amount": 32},
+        {"id": "vacuos", "amount": 16},
+        {"id": "motus", "amount": 16}
+      ],
+      "instability": "high"
     },
     {
       "type": "text",

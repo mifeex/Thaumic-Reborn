@@ -7,6 +7,7 @@ import com.thaumcraftmodern.item.CrimsonRitesItem;
 import com.thaumcraftmodern.item.CultistArmorItem;
 import com.thaumcraftmodern.item.WingedMantleArmorItem;
 import com.thaumcraftmodern.item.CrystalClusterItem;
+import com.thaumcraftmodern.item.EldritchCrystalItem;
 import com.thaumcraftmodern.crystal.CrystalClusterVariant;
 import com.thaumcraftmodern.item.DiscoveryItem;
 import com.thaumcraftmodern.item.DeconstructionTableItem;
@@ -32,6 +33,9 @@ import com.thaumcraftmodern.item.SanityCheckerItem;
 import com.thaumcraftmodern.item.SanitySoapItem;
 import com.thaumcraftmodern.item.BathSaltsItem;
 import com.thaumcraftmodern.item.BottledTaintItem;
+import com.thaumcraftmodern.item.BoneBowItem;
+import com.thaumcraftmodern.item.PrimalArrowItem;
+import com.thaumcraftmodern.item.FocusPouchItem;
 import com.thaumcraftmodern.item.LiquidDeathBucketItem;
 import com.thaumcraftmodern.item.ThaumometerItem;
 import com.thaumcraftmodern.item.ThaumonomiconItem;
@@ -66,6 +70,7 @@ import com.thaumcraftmodern.item.StrawGolemItem;
 import com.thaumcraftmodern.item.ClassicGolemItem;
 import com.thaumcraftmodern.item.GolemCoreItem;
 import com.thaumcraftmodern.item.GolemUpgradeItem;
+import com.thaumcraftmodern.item.GolemDecorationItem;
 import com.thaumcraftmodern.item.HungryChestItem;
 import com.thaumcraftmodern.item.TravelingTrunkItem;
 import com.thaumcraftmodern.item.CurioAccessoryItem;
@@ -82,6 +87,8 @@ import com.thaumcraftmodern.entity.LegacyMobKind;
 import com.thaumcraftmodern.entity.GolemMaterial;
 import com.thaumcraftmodern.entity.GolemCoreType;
 import com.thaumcraftmodern.entity.GolemUpgradeType;
+import com.thaumcraftmodern.entity.GolemDecorationType;
+import com.thaumcraftmodern.entity.PrimalArrowType;
 import com.thaumcraftmodern.wand.WandForm;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import net.minecraft.world.item.BlockItem;
@@ -617,6 +624,14 @@ public final class ModItems {
                     ModBlocks.BALANCED_CRYSTAL_CLUSTER,
                     CrystalClusterVariant.BALANCED
             );
+    public static final RegistryObject<Item> ELDRITCH_CRYSTAL_CLUSTER =
+            ITEMS.register(
+                    "eldritch_crystal_cluster",
+                    () -> new EldritchCrystalItem(
+                            ModBlocks.ELDRITCH_CRYSTAL_CLUSTER.get(),
+                            new Item.Properties()
+                    )
+            );
     public static final RegistryObject<Item> ARCANE_STONE =
             ITEMS.register(
                     "arcane_stone",
@@ -810,6 +825,11 @@ public final class ModItems {
             blockItem("obsidian_tile", ModBlocks.OBSIDIAN_TILE);
     public static final RegistryObject<Item> ANCIENT_STONE =
             blockItem("ancient_stone", ModBlocks.ANCIENT_STONE);
+    public static final RegistryObject<Item> ELDRITCH_GLOWING_CRUST =
+            blockItem(
+                    "eldritch_glowing_crust",
+                    ModBlocks.ELDRITCH_GLOWING_CRUST
+            );
     public static final RegistryObject<Item> ANCIENT_ROCK =
             blockItem("ancient_rock", ModBlocks.ANCIENT_ROCK);
     public static final RegistryObject<Item> ANCIENT_STAIRS =
@@ -1033,6 +1053,23 @@ public final class ModItems {
         );
         Map<String, RegistryObject<Item>> registered = new LinkedHashMap<>();
         names.forEach(name -> registered.put(name, switch (name) {
+            case "aer_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.AER, new Item.Properties()));
+            case "ignis_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.IGNIS, new Item.Properties()));
+            case "aqua_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.AQUA, new Item.Properties()));
+            case "terra_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.TERRA, new Item.Properties()));
+            case "ordo_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.ORDO, new Item.Properties()));
+            case "perditio_primal_arrow" -> ITEMS.register(name,
+                    () -> new PrimalArrowItem(PrimalArrowType.PERDITIO, new Item.Properties()));
+            case "bone_bow" -> ITEMS.register(name,
+                    () -> new BoneBowItem(new Item.Properties()));
+            case "focus_pouch" -> ITEMS.register(name,
+                    () -> new FocusPouchItem(new Item.Properties().rarity(Rarity.RARE)));
+            case "arcane_pressure_plate" -> blockItem(name, ModBlocks.ARCANE_PRESSURE_PLATE);
             case "arcane_stone_slab" -> ARCANE_STONE_SLAB;
             case "deconstruction_table" -> DECONSTRUCTION_TABLE;
             case "hungry_chest" -> ITEMS.register(name, () -> new HungryChestItem(
@@ -1040,6 +1077,11 @@ public final class ModItems {
             case "golem_fetter" -> blockItem(name, ModBlocks.GOLEM_FETTER);
             case "golem_bell" -> ITEMS.register(name,
                     () -> new com.thaumcraftmodern.item.GolemBellItem(new Item.Properties().stacksTo(1)));
+            case "golem_decoration_armor", "golem_decoration_bow_tie",
+                    "golem_decoration_dart_launcher", "golem_decoration_fez",
+                    "golem_decoration_glasses", "golem_decoration_hammer",
+                    "golem_decoration_top_hat", "golem_decoration_visor" -> ITEMS.register(name,
+                            () -> new GolemDecorationItem(GolemDecorationType.byItemId(name)));
             case "golem_upgrade_aer" -> ITEMS.register(name,
                     () -> new GolemUpgradeItem(GolemUpgradeType.AER));
             case "golem_upgrade_terra" -> ITEMS.register(name,

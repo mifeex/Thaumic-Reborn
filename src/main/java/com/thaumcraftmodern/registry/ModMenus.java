@@ -13,6 +13,7 @@ import com.thaumcraftmodern.world.menu.HandMirrorMenu;
 import com.thaumcraftmodern.world.menu.FocalManipulatorMenu;
 import com.thaumcraftmodern.world.menu.GolemMenu;
 import com.thaumcraftmodern.world.menu.TravelingTrunkMenu;
+import com.thaumcraftmodern.world.menu.FocusPouchMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -69,6 +70,8 @@ public final class ModMenus {
             MENUS.register("golem", () -> IForgeMenuType.create(GolemMenu::fromNetwork));
     public static final RegistryObject<MenuType<TravelingTrunkMenu>> TRAVELING_TRUNK =
             MENUS.register("traveling_trunk", () -> IForgeMenuType.create(TravelingTrunkMenu::fromNetwork));
+    public static final RegistryObject<MenuType<FocusPouchMenu>> FOCUS_POUCH =
+            MENUS.register("focus_pouch", () -> IForgeMenuType.create(FocusPouchMenu::fromNetwork));
 
     private ModMenus() {
     }
