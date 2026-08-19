@@ -157,6 +157,8 @@ class OuterLandsResourceFidelityTest {
         assertTrue(generator.contains("{1,8,2,5,9,9,9,6,2,8,1}"));
         assertTrue(generator.contains("generateClassicPassage(level"));
         assertTrue(generator.contains("generateClassicPortalRoom(level"));
+        assertTrue(generator.contains("repairClassicPortalVoidWalls("));
+        assertTrue(generator.contains("isIncorrectPortalVoidMasonry("));
         assertTrue(generator.contains("generateClassicKeyRoom(level"));
         assertTrue(generator.contains("generateClassicNestRoom(level"));
         assertTrue(generator.contains("generateClassicLibraryRoom(level"));

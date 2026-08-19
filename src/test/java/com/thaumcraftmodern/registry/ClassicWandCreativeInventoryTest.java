@@ -40,7 +40,7 @@ final class ClassicWandCreativeInventoryTest {
     }
 
     @Test
-    void exposesAllBasicWandFociButNotTheFocusPouch() throws Exception {
+    void exposesAllBasicWandFociAndTheFocusPouch() throws Exception {
         String source = Files.readString(Path.of(
                 "src/main/java/com/thaumcraftmodern/registry/ModCreativeTabs.java"
         ));
@@ -52,7 +52,22 @@ final class ClassicWandCreativeInventoryTest {
                 ".get(\"focus_excavation\").get()"));
         assertEquals(1, occurrences(source, ".get(\"focus_trade\").get()"));
         assertEquals(1, occurrences(source, ".get(\"focus_primal\").get()"));
-        assertFalse(source.contains("focus_pouch"));
+        assertEquals(1, occurrences(source, ".get(\"focus_pouch\").get()"));
+    }
+
+    @Test
+    void exposesBoneBowAndEveryPrimalArrowSubtype() throws Exception {
+        String source = Files.readString(Path.of(
+                "src/main/java/com/thaumcraftmodern/registry/ModCreativeTabs.java"
+        ));
+
+        assertEquals(1, occurrences(source, ".get(\"bone_bow\").get()"));
+        for (String aspect : new String[] {
+                "aer", "ignis", "aqua", "terra", "ordo", "perditio"
+        }) {
+            assertEquals(1, occurrences(source,
+                    ".get(\"" + aspect + "_primal_arrow\").get()"));
+        }
     }
 
     private static int occurrences(String source, String needle) {

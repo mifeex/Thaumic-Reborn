@@ -91,15 +91,19 @@ public final class EldritchOrbEntity extends ThrowableProjectile {
                 );
         }
         int lifetime = isGolemOrb()
-                ? EldritchConstructBehavior.ORB_LIFETIME_TICKS
+                ? CrimsonCultBehavior.RED_ORB_LIFETIME_TICKS
                 : EldritchGuardianBehavior.ORB_LIFETIME_TICKS;
         if (tickCount > lifetime) {
             discard();
         }
     }
 
-    private boolean isGolemOrb() {
+    public boolean isCrimsonGolemOrb() {
         return entityData.get(GOLEM_ORB);
+    }
+
+    private boolean isGolemOrb() {
+        return isCrimsonGolemOrb();
     }
 
     private void tickGolemHoming() {
@@ -158,7 +162,7 @@ public final class EldritchOrbEntity extends ThrowableProjectile {
             if (result instanceof EntityHitResult entityHit) {
                 float damage = (float) owner.getAttributeValue(
                         Attributes.ATTACK_DAMAGE
-                ) * EldritchConstructBehavior.ORB_DAMAGE_MULTIPLIER;
+                ) * CrimsonCultBehavior.RED_ORB_DAMAGE_MULTIPLIER;
                 entityHit.getEntity().hurt(
                         damageSources().indirectMagic(this, owner),
                         damage

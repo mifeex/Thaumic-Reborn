@@ -6,6 +6,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
@@ -29,6 +31,8 @@ public final class ModFluids {
                     ThaumcraftModern.MOD_ID,
                     "block/flux_goo"
             );
+    private static final ResourceLocation PURIFYING_FLUID_TEXTURE =
+            new ResourceLocation(ThaumcraftModern.MOD_ID, "block/fluidpure");
 
     private static final DeferredRegister<FluidType> FLUID_TYPES =
             DeferredRegister.create(
@@ -87,6 +91,44 @@ public final class ModFluids {
                     () -> new StaticFlowing(properties())
             );
 
+    public static final RegistryObject<FluidType> PURIFYING_TYPE =
+            FLUID_TYPES.register(
+                    "purifying_fluid",
+                    () -> new FluidType(
+                            FluidType.Properties.create()
+                                    .lightLevel(8)
+                                    .viscosity(1500)
+                                    .rarity(Rarity.RARE)
+                    ) {
+                        @Override
+                        public void initializeClient(
+                                Consumer<IClientFluidTypeExtensions> consumer
+                        ) {
+                            consumer.accept(new IClientFluidTypeExtensions() {
+                                @Override
+                                public ResourceLocation getStillTexture() {
+                                    return PURIFYING_FLUID_TEXTURE;
+                                }
+
+                                @Override
+                                public ResourceLocation getFlowingTexture() {
+                                    return PURIFYING_FLUID_TEXTURE;
+                                }
+                            });
+                        }
+                    }
+            );
+    public static final RegistryObject<FlowingFluid> PURIFYING_SOURCE =
+            FLUIDS.register(
+                    "purifying_fluid",
+                    () -> new ForgeFlowingFluid.Source(purifyingProperties())
+            );
+    public static final RegistryObject<FlowingFluid> PURIFYING_FLOWING =
+            FLUIDS.register(
+                    "flowing_purifying_fluid",
+                    () -> new ForgeFlowingFluid.Flowing(purifyingProperties())
+            );
+
     private ModFluids() {
     }
 
@@ -96,6 +138,18 @@ public final class ModFluids {
                 FLUX_GOO_SOURCE,
                 FLUX_GOO_FLOWING
         ).tickRate(30);
+    }
+
+    private static ForgeFlowingFluid.Properties purifyingProperties() {
+        return new ForgeFlowingFluid.Properties(
+                PURIFYING_TYPE,
+                PURIFYING_SOURCE,
+                PURIFYING_FLOWING
+        ).block(() -> (LiquidBlock) ModBlocks.PURIFYING_FLUID.get())
+                .bucket(ModItems.PURIFYING_FLUID_BUCKET)
+                .tickRate(5)
+                .slopeFindDistance(4)
+                .levelDecreasePerBlock(1);
     }
 
     public static void register(IEventBus eventBus) {

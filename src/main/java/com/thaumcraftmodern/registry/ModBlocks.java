@@ -21,6 +21,7 @@ import com.thaumcraftmodern.world.block.FluxScrubberBlock;
 import com.thaumcraftmodern.world.block.FocalManipulatorBlock;
 import com.thaumcraftmodern.world.block.TemporaryHoleBlock;
 import com.thaumcraftmodern.world.block.WardedBlock;
+import com.thaumcraftmodern.world.block.WardedGlassBlock;
 import com.thaumcraftmodern.world.block.ArcanePedestalBlock;
 import com.thaumcraftmodern.world.block.WandRechargePedestalBlock;
 import com.thaumcraftmodern.world.block.CompoundRechargeFocusBlock;
@@ -147,7 +148,12 @@ public final class ModBlocks {
     public static final RegistryObject<Block> ARCANE_PRESSURE_PLATE = BLOCKS.register(
             "arcane_pressure_plate",
             () -> new ArcanePressurePlateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
-                    .strength(2.0F, 999.0F).noOcclusion())
+                    .strength(-1.0F, 999.0F).noOcclusion())
+    );
+    public static final RegistryObject<Block> WARDED_GLASS = BLOCKS.register(
+            "warded_glass",
+            () -> new WardedGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)
+                    .strength(-1.0F, 999.0F).noOcclusion())
     );
     public static final RegistryObject<Block> DECONSTRUCTION_TABLE =
             BLOCKS.register(
@@ -628,8 +634,11 @@ public final class ModBlocks {
     );
     public static final RegistryObject<Block> PURIFYING_FLUID = BLOCKS.register(
             "purifying_fluid",
-            () -> new PurifyingFluidBlock(BlockBehaviour.Properties.copy(Blocks.WATER)
-                    .noCollission().noLootTable().lightLevel(state -> 6))
+            () -> new PurifyingFluidBlock(
+                    ModFluids.PURIFYING_SOURCE,
+                    BlockBehaviour.Properties.copy(Blocks.WATER)
+                            .noCollission().noLootTable().lightLevel(state -> 8)
+            )
     );
     public static final RegistryObject<Block> LIQUID_DEATH = BLOCKS.register(
             "liquid_death",

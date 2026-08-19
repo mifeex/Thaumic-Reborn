@@ -2151,6 +2151,7 @@
   "item.thaumic_reborn.thaumaturge_boots": "Thaumaturge Boots",
   "item.thaumic_reborn.ordo_primal_arrow": "Order Primal Arrow",
   "item.thaumic_reborn.warded_glass": "Warded Glass",
+  "block.thaumic_reborn.warded_glass": "Warded Glass",
   "item.thaumic_reborn.iron_key": "Iron Key",
   "item.thaumic_reborn.arcane_ear": "Arcane Ear",
   "block.thaumic_reborn.arcane_ear": "Arcane Ear",
@@ -2286,7 +2287,14 @@
   "item.thaumic_reborn.gold_key": "Gold Arcane Door Key",
   "message.thaumic_reborn.key_linked": "The key has been linked to this arcane door.",
   "message.thaumic_reborn.key_wrong": "This key is linked elsewhere.",
-  "message.thaumic_reborn.key_granted": "The arcane door grants you access.",
+  "message.thaumic_reborn.key_granted": "You can now open this door.",
+  "message.thaumic_reborn.key_plate_linked": "The key has been linked to this arcane pressure plate.",
+  "message.thaumic_reborn.key_plate_granted_iron": "You will now trigger this pressure plate as if you were its owner.",
+  "message.thaumic_reborn.key_plate_granted_gold": "You will now trigger this pressure plate as if you were its owner. You can also grant others access and change its settings.",
+  "message.thaumic_reborn.key_already": "You already have access.",
+  "message.thaumic_reborn.key_target": "This key grants access to the",
+  "message.thaumic_reborn.key_target_door": "arcane door at",
+  "message.thaumic_reborn.key_target_plate": "arcane pressure plate at",
   "message.thaumic_reborn.door_refuses": "The door refuses to budge.",
   "block.thaumic_reborn.magic_mirror": "Magic Mirror",
   "block.thaumic_reborn.essentia_mirror": "Essentia Mirror",
@@ -2444,5 +2452,8 @@
   "block.thaumic_reborn.arcane_pressure_plate": "Arcane Pressure Plate",
   "message.thaumic_reborn.arcane_pressure_plate.mode_0": "It will now trigger on everything.",
   "message.thaumic_reborn.arcane_pressure_plate.mode_1": "It will now trigger on everything except you.",
-  "message.thaumic_reborn.arcane_pressure_plate.mode_2": "It will now trigger on just you."
+  "message.thaumic_reborn.arcane_pressure_plate.mode_2": "It will now trigger on just you.",
+  "item.thaumic_reborn.purifying_fluid_bucket": "Bucket of Purifying Fluid",
+  "item.thaumic_reborn.native_cinnabar_cluster": "Native Cinnabar Cluster",
+  "item.thaumic_reborn.triple_meat_treat": "Triple Meat Treat"
 }

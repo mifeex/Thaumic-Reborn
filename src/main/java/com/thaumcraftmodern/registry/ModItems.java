@@ -37,6 +37,7 @@ import com.thaumcraftmodern.item.BoneBowItem;
 import com.thaumcraftmodern.item.PrimalArrowItem;
 import com.thaumcraftmodern.item.FocusPouchItem;
 import com.thaumcraftmodern.item.LiquidDeathBucketItem;
+import com.thaumcraftmodern.item.TripleMeatTreatItem;
 import com.thaumcraftmodern.item.ThaumometerItem;
 import com.thaumcraftmodern.item.ThaumonomiconItem;
 import com.thaumcraftmodern.item.ThaumaturgeRobeItem;
@@ -99,6 +100,8 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -152,6 +155,15 @@ public final class ModItems {
     public static final RegistryObject<Item> LIQUID_DEATH_BUCKET =
             ITEMS.register("liquid_death_bucket", () -> new LiquidDeathBucketItem(
                     new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> PURIFYING_FLUID_BUCKET =
+            ITEMS.register(
+                    "purifying_fluid_bucket",
+                    () -> new BucketItem(
+                            ModFluids.PURIFYING_SOURCE,
+                            new Item.Properties().stacksTo(1)
+                                    .craftRemainder(Items.BUCKET)
+                    )
+            );
     public static final RegistryObject<Item> SCRIBING_TOOLS =
             ITEMS.register("scribing_tools", () -> new ScribingToolsItem(new Item.Properties().stacksTo(1).durability(100)));
     public static final RegistryObject<Item> RESEARCH_NOTES =
@@ -183,10 +195,23 @@ public final class ModItems {
     public static final RegistryObject<Item> LEAD_INGOT = simple("lead_ingot");
     public static final RegistryObject<Item> NATIVE_IRON_CLUSTER = simple("native_iron_cluster");
     public static final RegistryObject<Item> NATIVE_GOLD_CLUSTER = simple("native_gold_cluster");
+    public static final RegistryObject<Item> NATIVE_CINNABAR_CLUSTER = simple("native_cinnabar_cluster");
     public static final RegistryObject<Item> NATIVE_COPPER_CLUSTER = simple("native_copper_cluster");
     public static final RegistryObject<Item> NATIVE_TIN_CLUSTER = simple("native_tin_cluster");
     public static final RegistryObject<Item> NATIVE_SILVER_CLUSTER = simple("native_silver_cluster");
     public static final RegistryObject<Item> NATIVE_LEAD_CLUSTER = simple("native_lead_cluster");
+    public static final RegistryObject<Item> TRIPLE_MEAT_TREAT =
+            ITEMS.register(
+                    "triple_meat_treat",
+                    () -> new TripleMeatTreatItem(
+                            new Item.Properties().stacksTo(16)
+                                    .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                            .nutrition(6)
+                                            .saturationMod(0.8F)
+                                            .meat()
+                                            .build())
+                    )
+            );
     public static final RegistryObject<Item> THAUMIC_TALLOW = simple("thaumic_tallow");
     public static final RegistryObject<Item> TALLOW_CANDLE =
             blockItem("tallow_candle", ModBlocks.TALLOW_CANDLE);
@@ -1070,6 +1095,7 @@ public final class ModItems {
             case "focus_pouch" -> ITEMS.register(name,
                     () -> new FocusPouchItem(new Item.Properties().rarity(Rarity.RARE)));
             case "arcane_pressure_plate" -> blockItem(name, ModBlocks.ARCANE_PRESSURE_PLATE);
+            case "warded_glass" -> blockItem(name, ModBlocks.WARDED_GLASS);
             case "arcane_stone_slab" -> ARCANE_STONE_SLAB;
             case "deconstruction_table" -> DECONSTRUCTION_TABLE;
             case "hungry_chest" -> ITEMS.register(name, () -> new HungryChestItem(

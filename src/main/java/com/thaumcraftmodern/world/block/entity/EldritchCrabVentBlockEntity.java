@@ -5,10 +5,10 @@ import com.thaumcraftmodern.entity.LegacyThaumcraftMob;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModEntities;
 import com.thaumcraftmodern.registry.ModSounds;
+import com.thaumcraftmodern.particle.TubeVentParticleOptions;
 import com.thaumcraftmodern.world.block.EldritchCrabVentBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,6 +21,8 @@ import net.minecraft.world.phys.AABB;
 
 /** TC4 crab vent: warns, then throws an unhelmeted crab into the corridor. */
 public final class EldritchCrabVentBlockEntity extends BlockEntity {
+    private static final int VENT_COLOR = 10061994;
+    private static final float VENT_SCALE = 2.0F;
     private int countdown = 150;
     private int venting;
 
@@ -130,9 +132,17 @@ public final class EldritchCrabVentBlockEntity extends BlockEntity {
         double z = position.getZ() + 0.5D
                 + direction.getStepZ() / 2.1D
                 + (level.random.nextDouble() - 0.5D) * 0.3D;
-        level.addParticle(ParticleTypes.PORTAL, x, y, z,
-                direction.getStepX() / 3.0D,
-                direction.getStepY() / 3.0D,
-                direction.getStepZ() / 3.0D);
+        double xMotion = 0.1D - level.random.nextDouble() * 0.2D;
+        double yMotion = 0.1D - level.random.nextDouble() * 0.2D;
+        double zMotion = 0.1D - level.random.nextDouble() * 0.2D;
+        level.addParticle(
+                new TubeVentParticleOptions(VENT_COLOR, VENT_SCALE),
+                x,
+                y,
+                z,
+                direction.getStepX() / 3.0D + xMotion,
+                direction.getStepY() / 3.0D + yMotion,
+                direction.getStepZ() / 3.0D + zMotion
+        );
     }
 }

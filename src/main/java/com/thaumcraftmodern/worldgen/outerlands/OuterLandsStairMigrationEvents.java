@@ -62,6 +62,11 @@ public final class OuterLandsStairMigrationEvents {
                 chunk.getPos(),
                 located.cell()
         );
+        repaired += OuterLandsLabyrinthGenerator.repairClassicPortalVoidWalls(
+                level,
+                chunk.getPos(),
+                located.cell()
+        );
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
         int minX = chunk.getPos().getMinBlockX();
         int minZ = chunk.getPos().getMinBlockZ();
@@ -93,6 +98,10 @@ public final class OuterLandsStairMigrationEvents {
             }
         }
         repaired += OuterLandsStairTopology.refresh(level, chunk.getPos());
+        repaired += OuterLandsEldritchNothingExposure.refresh(
+                level,
+                chunk.getPos()
+        );
         if (repaired > 0) {
             chunk.setUnsaved(true);
         }

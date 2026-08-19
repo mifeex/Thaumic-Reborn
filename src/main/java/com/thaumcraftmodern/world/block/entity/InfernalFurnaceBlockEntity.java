@@ -340,7 +340,8 @@ public final class InfernalFurnaceBlockEntity extends BlockEntity
         if (source.is(ModItems.NATIVE_LEAD_CLUSTER.get())) {
             return new ItemStack(ModItems.LEAD_NUGGET.get());
         }
-        if (source.is(ModItems.CINNABAR_ORE.get())) {
+        if (source.is(ModItems.CINNABAR_ORE.get())
+                || source.is(ModItems.NATIVE_CINNABAR_CLUSTER.get())) {
             return new ItemStack(ModItems.QUICKSILVER_NUGGET.get());
         }
         if (source.is(Items.CHICKEN)) return edibleBonus("chicken_nugget");

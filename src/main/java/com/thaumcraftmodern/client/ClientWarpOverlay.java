@@ -10,7 +10,6 @@ import com.thaumcraftmodern.registry.ModSounds;
 import com.thaumcraftmodern.registry.ModEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
@@ -41,14 +40,18 @@ public final class ClientWarpOverlay {
         }
         if (packet.change() != 0) {
             String key = switch (packet.type()) {
-                case WarpFeedbackPacket.PERMANENT -> "tc.addwarp";
-                case WarpFeedbackPacket.NORMAL ->
+                case WarpFeedbackPacket.PERMANENT ->
+                        packet.change() < 0
+                                ? "tc.removewarp"
+                                : "tc.addwarp";
+                case WarpFeedbackPacket.NORMAL,
+                        WarpFeedbackPacket.TEMPORARY ->
                         packet.change() < 0
                                 ? "tc.removewarpsticky"
                                 : "tc.addwarpsticky";
-                default -> "tc.addwarptemp";
+                default -> "tc.addwarpsticky";
             };
-            minecraft.player.displayClientMessage(Component.translatable(key), true);
+            ClientScanOverlay.showWarp(key);
             if (packet.change() > 0
                     && packet.type() != WarpFeedbackPacket.TEMPORARY) {
                 minecraft.level.playLocalSound(

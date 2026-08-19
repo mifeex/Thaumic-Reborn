@@ -291,6 +291,7 @@ public final class ArcaneBoreBlockEntity extends BlockEntity
         String path = id.getPath();
         Item replacement = path.contains("iron") ? ModItems.NATIVE_IRON_CLUSTER.get()
                 : path.contains("gold") ? ModItems.NATIVE_GOLD_CLUSTER.get()
+                : path.contains("cinnabar") ? ModItems.NATIVE_CINNABAR_CLUSTER.get()
                 : path.contains("copper") ? ModItems.NATIVE_COPPER_CLUSTER.get()
                 : path.contains("tin") ? ModItems.NATIVE_TIN_CLUSTER.get()
                 : path.contains("silver") ? ModItems.NATIVE_SILVER_CLUSTER.get()

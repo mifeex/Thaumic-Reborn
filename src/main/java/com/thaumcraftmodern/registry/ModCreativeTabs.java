@@ -85,6 +85,7 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.IRON_KEY.get());
                         output.accept(ModItems.GOLD_KEY.get());
                         output.accept(ModItems.LIQUID_DEATH_BUCKET.get());
+                        output.accept(ModItems.PURIFYING_FLUID_BUCKET.get());
                         output.accept(ModItems.IRON_WAND_CAP.get());
                         output.accept(ModItems.GOLD_WAND_CAP.get());
                         output.accept(ModItems.COPPER_WAND_CAP.get());
@@ -128,6 +129,8 @@ public final class ModCreativeTabs {
                                     ModItems.CRAFTING_SCEPTRE.get())
                                     .createFilled("silverwood", "thaumium"));
                         });
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("focus_pouch").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
                                 .get("focus_fire").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
@@ -196,6 +199,8 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.ARCANE_STONE.get());
                         output.accept(ModItems.ARCANE_STONE_BRICK.get());
                         output.accept(ModItems.ARCANE_STONE_SLAB.get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("warded_glass").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
                                 .get("focal_manipulator").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
@@ -278,6 +283,20 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.SHOVEL_OF_THE_EARTHMOVER.get());
                         output.accept(ModItems.HOE_OF_GROWTH.get());
                         output.accept(ModItems.BOOTS_OF_THE_TRAVELLER.get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("bone_bow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("aer_primal_arrow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("ignis_primal_arrow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("aqua_primal_arrow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("terra_primal_arrow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("ordo_primal_arrow").get());
+                        output.accept(ModItems.ARCANE_RECIPE_COMPONENTS
+                                .get("perditio_primal_arrow").get());
                         for (PrimalAspect aspect : PrimalAspect.ordered()) {
                             output.accept(EtherealEssenceItem.create(
                                     ModItems.ETHEREAL_ESSENCE.get(),
@@ -297,10 +316,12 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.LEAD_INGOT.get());
                         output.accept(ModItems.NATIVE_IRON_CLUSTER.get());
                         output.accept(ModItems.NATIVE_GOLD_CLUSTER.get());
+                        output.accept(ModItems.NATIVE_CINNABAR_CLUSTER.get());
                         output.accept(ModItems.NATIVE_COPPER_CLUSTER.get());
                         output.accept(ModItems.NATIVE_TIN_CLUSTER.get());
                         output.accept(ModItems.NATIVE_SILVER_CLUSTER.get());
                         output.accept(ModItems.NATIVE_LEAD_CLUSTER.get());
+                        output.accept(ModItems.TRIPLE_MEAT_TREAT.get());
                         output.accept(ModItems.THAUMIC_TALLOW.get());
                         output.accept(ModItems.TALLOW_CANDLE.get());
                         output.accept(ModItems.AMBER.get());

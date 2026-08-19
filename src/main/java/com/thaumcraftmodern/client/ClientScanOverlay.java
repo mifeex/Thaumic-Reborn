@@ -947,6 +947,8 @@ public final class ClientScanOverlay {
     }
 
     private static boolean isWarpMessage(String messageKey) {
-        return messageKey.startsWith("warp.text.");
+        return messageKey.startsWith("warp.text.")
+                || messageKey.startsWith("tc.addwarp")
+                || messageKey.startsWith("tc.removewarp");
     }
 }

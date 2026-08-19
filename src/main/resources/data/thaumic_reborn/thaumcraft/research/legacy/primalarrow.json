@@ -25,32 +25,15 @@
     {
       "type": "recipe",
       "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_aer"
-    },
-    {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_ignis"
-    },
-    {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_aqua"
-    },
-    {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_terra"
-    },
-    {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_ordo"
-    },
-    {
-      "type": "recipe",
-      "title": "",
-      "recipe": "thaumic_reborn:primal_arrow_perditio"
+      "recipe": "thaumic_reborn:primal_arrow_aer",
+      "recipes": [
+        "thaumic_reborn:primal_arrow_aer",
+        "thaumic_reborn:primal_arrow_ignis",
+        "thaumic_reborn:primal_arrow_aqua",
+        "thaumic_reborn:primal_arrow_terra",
+        "thaumic_reborn:primal_arrow_ordo",
+        "thaumic_reborn:primal_arrow_perditio"
+      ]
     },
     {
       "type": "text",

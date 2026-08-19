@@ -202,6 +202,7 @@ public final class ClientModEvents {
     public static void modifyBakedModels(ModelEvent.ModifyBakingResult event) {
         InfernalFurnaceBakedModel.wrapModels(event);
         EldritchCrustBakedModel.wrapModels(event);
+        com.thaumcraftmodern.client.render.WardedGlassBakedModel.wrapModels(event);
     }
 
     @SubscribeEvent

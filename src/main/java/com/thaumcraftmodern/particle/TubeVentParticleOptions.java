@@ -12,12 +12,20 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import java.util.Locale;
 
-/** Carries TC4's aspect RGB value to the client vent particle. */
-public record TubeVentParticleOptions(int color) implements ParticleOptions {
+/** Carries TC4's RGB value and caller-selected scale to the vent particle. */
+public record TubeVentParticleOptions(int color, float scale)
+        implements ParticleOptions {
+    public TubeVentParticleOptions(int color) {
+        this(color, 1.0F);
+    }
+
     public static final Codec<TubeVentParticleOptions> CODEC =
             RecordCodecBuilder.create(instance -> instance.group(
                     Codec.INT.fieldOf("color").forGetter(
                             TubeVentParticleOptions::color
+                    ),
+                    Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(
+                            TubeVentParticleOptions::scale
                     )
             ).apply(instance, TubeVentParticleOptions::new));
 
@@ -29,7 +37,13 @@ public record TubeVentParticleOptions(int color) implements ParticleOptions {
                         StringReader reader
                 ) throws CommandSyntaxException {
                     reader.expect(' ');
-                    return new TubeVentParticleOptions(reader.readInt());
+                    int color = reader.readInt();
+                    float scale = 1.0F;
+                    if (reader.canRead()) {
+                        reader.expect(' ');
+                        scale = reader.readFloat();
+                    }
+                    return new TubeVentParticleOptions(color, scale);
                 }
 
                 @Override
@@ -37,7 +51,9 @@ public record TubeVentParticleOptions(int color) implements ParticleOptions {
                         ParticleType<TubeVentParticleOptions> type,
                         FriendlyByteBuf buffer
                 ) {
-                    return new TubeVentParticleOptions(buffer.readInt());
+                    return new TubeVentParticleOptions(
+                            buffer.readInt(), buffer.readFloat()
+                    );
                 }
             };
 
@@ -49,15 +65,17 @@ public record TubeVentParticleOptions(int color) implements ParticleOptions {
     @Override
     public void writeToNetwork(FriendlyByteBuf buffer) {
         buffer.writeInt(color);
+        buffer.writeFloat(scale);
     }
 
     @Override
     public String writeToString() {
         return String.format(
                 Locale.ROOT,
-                "%s %d",
+                "%s %d %.3f",
                 BuiltInRegistries.PARTICLE_TYPE.getKey(getType()),
-                color
+                color,
+                scale
         );
     }
 }

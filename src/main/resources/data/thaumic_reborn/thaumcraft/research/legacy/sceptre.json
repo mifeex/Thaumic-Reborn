@@ -25,7 +25,12 @@
     {
       "type": "recipe",
       "title": "",
-      "recipe": "thaumic_reborn:arcane_sceptre_assembly"
+      "recipe": "thaumic_reborn:sceptre_wood_iron",
+      "recipes": [
+        "thaumic_reborn:sceptre_wood_iron",
+        "thaumic_reborn:sceptre_greatwood_gold",
+        "thaumic_reborn:sceptre_silverwood_thaumium"
+      ]
     }
   ],
   "inactive": false,

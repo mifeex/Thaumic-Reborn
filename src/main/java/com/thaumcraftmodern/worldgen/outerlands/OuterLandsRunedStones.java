@@ -260,7 +260,9 @@ public final class OuterLandsRunedStones {
     ) {
         for (Direction direction : Direction.values()) {
             BlockPos crystalPosition = support.relative(direction);
-            if (!level.getBlockState(crystalPosition).isAir()) {
+            if (!OuterLandsTunnelDecorations.isInteriorAir(
+                    level, crystalPosition
+            )) {
                 continue;
             }
             BlockState crystal = ModBlocks.ELDRITCH_CRYSTAL_CLUSTER.get()

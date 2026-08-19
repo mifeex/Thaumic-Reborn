@@ -61,6 +61,9 @@ public final class ElementalPickaxeLootModifier extends LootModifier {
         if (stack.is(Items.RAW_IRON)) return new ItemStack(ModItems.NATIVE_IRON_CLUSTER.get());
         if (stack.is(Items.RAW_GOLD)) return new ItemStack(ModItems.NATIVE_GOLD_CLUSTER.get());
         if (stack.is(Items.RAW_COPPER)) return new ItemStack(ModItems.NATIVE_COPPER_CLUSTER.get());
+        if (stack.is(ModItems.CINNABAR_ORE.get())) {
+            return new ItemStack(ModItems.NATIVE_CINNABAR_CLUSTER.get());
+        }
         return ItemStack.EMPTY;
     }
 

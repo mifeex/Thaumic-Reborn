@@ -26,39 +26,39 @@ final class MobEffectIconResourceTest {
     private static final Map<String, String> CLASSIC_ICON_SHA256 = Map.ofEntries(
             Map.entry(
                     "vis_exhaust",
-                    "25a370ba7d72eec7c40603ede1036728600995d478e32f2307236c0b2b2b8671"
+                    "44eda129671afb76047e865863af2f63343eb237d80c1a82ecf4a14ad8e3a020"
             ),
             Map.entry(
                     "infectious_vis_exhaust",
-                    "88f1b70e94f6ca9ce726371a337bf3174e46dcda4a404539d464ca6a1085024e"
+                    "90ec1a08796377f3961f149047643bb8797493b650b4e663c36e2fc234c2e7aa"
             ),
             Map.entry(
                     "flux_taint",
-                    "3ef8c726f9f9e7c2acbe835713513e423edf40a983e4ad97ff0c15b56ebcf682"
+                    "a1cbacb7b147575c8943e31a07554fd23cc9945a9d7f58fd2b6b45b8bdef69c0"
             ),
             Map.entry(
                     "unnatural_hunger",
-                    "0b96f36d831335719ea64af0be62b314f3ae91d46dff42590a398de45999eb15"
+                    "c674b21ee5b5bfb40cc0babfa8c392aa29cfecc68f3376a7b3c3ebb17f1f198f"
             ),
             Map.entry(
                     "warp_ward",
-                    "8da2ae6a1eda0468e4bfae52fd6a3d731bce20adb300f106bdf83f6d4db1af82"
+                    "a025c74251a8c6a7c29e758d1a62734a7003a157f6115fbf9c9f29aa3397fe08"
             ),
             Map.entry(
                     "death_gaze",
-                    "65f0c01cd26cd7bc940cf2f76773c28b51895e3c31327872fa9782e3f2d9ac85"
+                    "f927894e8b7237c49d8bffb6f433666c9cce3edd200095bcdb579a5aad572d98"
             ),
             Map.entry(
                     "blurred_vision",
-                    "01e24e6b8f09b3ef23fed31491e41f7d3b3bce2b1c30b9b27b83ee2a2597c194"
+                    "9169d4a10ecd149969d931cdca9b4935f6d966f4f3ea874ab1c4c1506d2e5ea0"
             ),
             Map.entry(
                     "sun_scorned",
-                    "8e84468c665479e7cf0b2ec91bbef03622aa4b7a89741a98762ff4e358703d7d"
+                    "08d99c64f3acfe62d9a51de1704aaf342af8b11732cbf0d6922d90d46dc73b34"
             ),
             Map.entry(
                     "thaumarhia",
-                    "fe6cc2f46b8da57f947eb1329dd98c873194fa7f02e8b2899a03358ec51e545b"
+                    "10faccec4f7decfb78aa2b57ea3a66f6584b6f00aeb60db23d83ff1819ec1711"
             )
     );
 

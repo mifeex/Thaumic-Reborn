@@ -1,6 +1,7 @@
 package com.thaumcraftmodern.world.block;
 
 import com.thaumcraftmodern.world.block.entity.ArcanePressurePlateBlockEntity;
+import com.thaumcraftmodern.wand.WandInteractable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -37,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /** Owner-aware three-mode pressure plate from TC4 BlockWoodenDevice metadata 2/3. */
-public final class ArcanePressurePlateBlock extends BaseEntityBlock {
+public final class ArcanePressurePlateBlock extends BaseEntityBlock implements WandInteractable {
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final IntegerProperty MODE = IntegerProperty.create("mode", 0, 2);
     private static final VoxelShape UP = Block.box(1, 0, 1, 15, 1, 15);
@@ -81,7 +83,8 @@ public final class ArcanePressurePlateBlock extends BaseEntityBlock {
         if (level.getBlockEntity(pos) instanceof ArcanePressurePlateBlockEntity plate
                 && plate.canEdit(player.getGameProfile().getName())) {
             if (!level.isClientSide) {
-                int mode = (state.getValue(MODE) + 1) % 3;
+                int mode = (plate.setting() + 1) % 3;
+                plate.setSetting(mode);
                 level.setBlock(pos, state.setValue(MODE, mode), 3);
                 level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(),
                         SoundSource.BLOCKS, 0.1F, 0.9F);
@@ -103,7 +106,7 @@ public final class ArcanePressurePlateBlock extends BaseEntityBlock {
     private void checkPressed(Level level, BlockPos pos, BlockState state) {
         ArcanePressurePlateBlockEntity plate = level.getBlockEntity(pos)
                 instanceof ArcanePressurePlateBlockEntity found ? found : null;
-        int mode = state.getValue(MODE);
+        int mode = plate == null ? state.getValue(MODE) : plate.setting();
         AABB box = TOUCH.move(pos);
         List<? extends Entity> entities = mode == 2
                 ? level.getEntitiesOfClass(Player.class, box)
@@ -132,10 +135,34 @@ public final class ArcanePressurePlateBlock extends BaseEntityBlock {
 
     @Override public boolean isSignalSource(BlockState state) { return true; }
     @Override public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return state.getValue(POWERED) ? 15 : 0;
+        return direction == Direction.UP && state.getValue(POWERED) ? 15 : 0;
     }
     @Override public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos,
-            Direction direction) { return direction == Direction.UP && state.getValue(POWERED) ? 15 : 0; }
+            Direction direction) { return state.getValue(POWERED) ? 15 : 0; }
+
+    @Override public boolean canConnectRedstone(BlockState state, BlockGetter level,
+            BlockPos pos, @Nullable Direction direction) { return true; }
+
+    @Override public boolean canEntityDestroy(BlockState state, BlockGetter level,
+            BlockPos pos, Entity entity) { return false; }
+
+    @Override public void onBlockExploded(BlockState state, Level level, BlockPos pos,
+            Explosion explosion) { }
+
+    @Override public InteractionResult onWandRightClick(BlockState state, Level level,
+            BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!(level.getBlockEntity(pos) instanceof ArcanePressurePlateBlockEntity plate)
+                || !plate.owner().equals(player.getGameProfile().getName())) {
+            return InteractionResult.CONSUME;
+        }
+        if (!level.isClientSide) {
+            popResource(level, pos, new ItemStack(this));
+            level.levelEvent(2001, pos, Block.getId(state));
+            level.removeBlock(pos, false);
+        }
+        player.swing(hand);
+        return InteractionResult.sidedSuccess(level.isClientSide);
+    }
 
     @Override public void onRemove(BlockState state, Level level, BlockPos pos,
             BlockState replacement, boolean moving) {

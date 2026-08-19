@@ -42,6 +42,11 @@ public final class OuterLandsEldritchNothingMigrationEvents {
                 level,
                 chunk.getPos()
         );
+        repaired += OuterLandsTunnelDecorations.removeEscaped(
+                level,
+                chunk.getPos(),
+                located.cell()
+        );
         if (repaired > 0) {
             chunk.setUnsaved(true);
         }

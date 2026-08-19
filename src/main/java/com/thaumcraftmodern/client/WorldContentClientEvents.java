@@ -530,6 +530,7 @@ public final class WorldContentClientEvents {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FERTILITY_LAMP.get(), cutout);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ITEM_GRATE.get(), cutout);
             RenderType translucent = RenderType.translucent();
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARDED_GLASS.get(), translucent);
             ItemBlockRenderTypes.setRenderLayer(
                     ModBlocks.ESSENTIA_RESERVOIR.get(),
                     translucent

@@ -43,20 +43,30 @@ public final class EldritchOrbRenderer
         poseStack.pushPose();
         poseStack.mulPose(entityRenderDispatcher.cameraOrientation());
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-        poseStack.scale(1.0F, 1.0F, 1.0F);
+        boolean crimson = orb.isCrimsonGolemOrb();
+        float scale = crimson
+                ? 1.2F + (float) Math.sin(orb.tickCount / 5.0F) * 0.2F
+                : 1.0F;
+        poseStack.scale(scale, scale, scale);
 
-        float u0 = Math.floorMod(orb.tickCount, 13) / 16.0F;
-        float u1 = u0 + 0.0624375F;
-        float v0 = 0.1875F;
-        float v1 = v0 + 0.0624375F;
+        float u0 = crimson
+                ? (1.0F + Math.floorMod(orb.tickCount, 6)) / 8.0F
+                : Math.floorMod(orb.tickCount, 13) / 16.0F;
+        float tileSize = crimson ? 0.125F : 0.0624375F;
+        float u1 = u0 + tileSize;
+        float v0 = crimson ? 0.75F : 0.1875F;
+        float v1 = v0 + tileSize;
         PoseStack.Pose pose = poseStack.last();
         VertexConsumer consumer = buffers.getBuffer(
-                RenderType.entityTranslucentEmissive(TEXTURE)
+                crimson
+                        ? EldritchOrbRenderType.additive(TEXTURE)
+                        : RenderType.entityTranslucentEmissive(TEXTURE)
         );
-        vertex(consumer, pose, -0.5F, -0.5F, u0, v1);
-        vertex(consumer, pose, 0.5F, -0.5F, u1, v1);
-        vertex(consumer, pose, 0.5F, 0.5F, u1, v0);
-        vertex(consumer, pose, -0.5F, 0.5F, u0, v0);
+        int alpha = crimson ? 204 : 255;
+        vertex(consumer, pose, -0.5F, -0.5F, u0, v1, alpha);
+        vertex(consumer, pose, 0.5F, -0.5F, u1, v1, alpha);
+        vertex(consumer, pose, 0.5F, 0.5F, u1, v0, alpha);
+        vertex(consumer, pose, -0.5F, 0.5F, u0, v0, alpha);
         poseStack.popPose();
         super.render(
                 orb,
@@ -74,12 +84,13 @@ public final class EldritchOrbRenderer
             float x,
             float y,
             float u,
-            float v
+            float v,
+            int alpha
     ) {
         Matrix4f position = pose.pose();
         Matrix3f normal = pose.normal();
         consumer.vertex(position, x, y, 0.0F)
-                .color(255, 255, 255, 255)
+                .color(255, 255, 255, alpha)
                 .uv(u, v)
                 .overlayCoords(OverlayTexture.NO_OVERLAY)
                 .uv2(FULL_BRIGHT)

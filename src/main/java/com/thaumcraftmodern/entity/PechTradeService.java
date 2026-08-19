@@ -168,6 +168,13 @@ public final class PechTradeService {
         }
         return List.of(
                 entry(1, () -> new ItemStack(ModItems.MANA_BEAN.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_IRON_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_GOLD_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_CINNABAR_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_COPPER_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_TIN_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_SILVER_CLUSTER.get())),
+                entry(1, () -> new ItemStack(ModItems.NATIVE_LEAD_CLUSTER.get())),
                 entry(2, () -> new ItemStack(Items.BLAZE_ROD)),
                 entry(2, () -> new ItemStack(ModBlocks.CINDERPEARL.get())),
                 entry(3, () -> new ItemStack(Items.EXPERIENCE_BOTTLE)),

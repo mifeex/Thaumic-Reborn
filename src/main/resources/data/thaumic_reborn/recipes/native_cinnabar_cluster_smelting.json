@@ -1,0 +1,11 @@
+{
+  "type": "thaumic_reborn:double_smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "thaumic_reborn:native_cinnabar_cluster"
+  },
+  "result": "thaumic_reborn:quicksilver",
+  "count": 2,
+  "experience": 1.0,
+  "cookingtime": 200
+}

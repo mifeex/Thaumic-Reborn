@@ -16,6 +16,7 @@ public final class ArcaneDoorBlockEntity extends BlockEntity {
     public String owner(){return owner;} public void setOwner(String value){owner=value==null?"":value;sync();}
     public boolean canOpen(String name){return name.equals(owner)||access.contains("0"+name)||access.contains("1"+name);}
     public boolean canMintIron(String name){return name.equals(owner)||access.contains("1"+name);}
+    public boolean hasAccess(String name,boolean gold){return access.contains((gold?"1":"0")+name)||access.contains("1"+name);}
     public boolean grant(String name,boolean gold){boolean changed=access.add((gold?"1":"0")+name);if(changed)sync();return changed;}
     private void sync(){setChanged();if(level!=null)level.sendBlockUpdated(worldPosition,getBlockState(),getBlockState(),3);}
     @Override protected void saveAdditional(CompoundTag tag){super.saveAdditional(tag);tag.putString("owner",owner);tag.putString("access",String.join("\n",access));}

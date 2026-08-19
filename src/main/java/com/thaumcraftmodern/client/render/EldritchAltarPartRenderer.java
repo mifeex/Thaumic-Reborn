@@ -7,6 +7,7 @@ import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.EldritchAltarPartBlock;
 import com.thaumcraftmodern.world.block.entity.EldritchAltarPartBlockEntity;
+import com.thaumcraftmodern.worldgen.outerlands.OuterLandsDimensions;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -34,6 +35,10 @@ public final class EldritchAltarPartRenderer
             texture("textures/models/obelisk_cap_altar.png");
     private static final ResourceLocation SIDE =
             texture("textures/models/obelisk_side.png");
+    private static final ResourceLocation OUTER_CAP =
+            texture("textures/models/obelisk_cap_2.png");
+    private static final ResourceLocation OUTER_SIDE =
+            texture("textures/models/obelisk_side_2.png");
     private static final ResourceLocation FIELD_BACKING =
             texture("textures/misc/particlefield32.png");
     private static final int FULL_BRIGHT = 0x00F000F0;
@@ -145,6 +150,12 @@ public final class EldritchAltarPartRenderer
             MultiBufferSource buffers,
             int packedLight
     ) {
+        boolean outer = blockEntity.getLevel() != null
+                && blockEntity.getLevel().dimension().equals(
+                        OuterLandsDimensions.OUTER_LANDS
+                );
+        ResourceLocation sideTexture = outer ? OUTER_SIDE : SIDE;
+        ResourceLocation capTexture = outer ? OUTER_CAP : CAP;
         long gameTime = blockEntity.getLevel() == null
                 ? 0L
                 : blockEntity.getLevel().getGameTime();
@@ -157,7 +168,7 @@ public final class EldritchAltarPartRenderer
         renderSideField(ticks, poseStack, buffers);
         renderSides(
                 poseStack,
-                buffers.getBuffer(RenderType.entityTranslucent(SIDE)),
+                buffers.getBuffer(RenderType.entityTranslucent(sideTexture)),
                 packedLight
         );
 
@@ -166,7 +177,7 @@ public final class EldritchAltarPartRenderer
         CAP_MODEL.renderClosedShell(
                 poseStack,
                 buffers.getBuffer(
-                        EldritchRenderTypes.capTriangles(CAP)
+                        EldritchRenderTypes.capTriangles(capTexture)
                 ),
                 packedLight
         );
@@ -178,7 +189,7 @@ public final class EldritchAltarPartRenderer
         CAP_MODEL.renderClosedShell(
                 poseStack,
                 buffers.getBuffer(
-                        EldritchRenderTypes.capTriangles(CAP)
+                        EldritchRenderTypes.capTriangles(capTexture)
                 ),
                 packedLight
         );

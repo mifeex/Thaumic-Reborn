@@ -9,9 +9,9 @@ import javax.imageio.ImageIO;
 /**
  * Extracts the original TC4 status-effect icons from textures/misc/potions.png.
  *
- * <p>The legacy atlas is uploaded with its vertical origin at the bottom, so the
- * Y coordinate stored by Potion#setIconIndex must be inverted when reading the
- * PNG through ImageIO.</p>
+ * <p>Minecraft 1.7 draws potion status icons from the atlas band beginning at
+ * Y=198. {@code Potion#setIconIndex(x, y)} selects an 18x18 cell inside that
+ * band, so the PNG row is {@code 198 + y * 18}.</p>
  */
 public final class ExtractTc4EffectIcons {
     private static final int ICON_SIZE = 18;
@@ -44,7 +44,7 @@ public final class ExtractTc4EffectIcons {
         for (Map.Entry<String, Cell> entry : ICONS.entrySet()) {
             Cell cell = entry.getValue();
             int sourceX = cell.x() * ICON_SIZE;
-            int sourceY = atlas.getHeight() - ((cell.y() + 1) * ICON_SIZE);
+            int sourceY = 198 + cell.y() * ICON_SIZE;
             BufferedImage icon = atlas.getSubimage(sourceX, sourceY, ICON_SIZE, ICON_SIZE);
             Path output = outputDirectory.resolve(entry.getKey() + ".png");
             if (!ImageIO.write(icon, "png", output.toFile())) {

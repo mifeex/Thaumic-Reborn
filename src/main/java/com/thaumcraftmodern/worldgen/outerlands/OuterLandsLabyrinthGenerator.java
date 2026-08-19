@@ -6,6 +6,7 @@ import com.thaumcraftmodern.registry.ModEntities;
 import com.thaumcraftmodern.registry.ModItems;
 import com.thaumcraftmodern.world.block.AncientStoneBlock;
 import com.thaumcraftmodern.world.block.EldritchLockBlock;
+import com.thaumcraftmodern.world.block.EldritchNothingBlock;
 import com.thaumcraftmodern.world.block.entity.EldritchLockBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
 import java.util.Random;
@@ -770,7 +771,75 @@ public final class OuterLandsLabyrinthGenerator {
         placePortalCornerTrim(level, x, z, 11, 5, Direction.NORTH, Direction.EAST);
         placePortalCornerTrim(level, x, z, 5, 11, Direction.SOUTH, Direction.WEST);
         placePortalCornerTrim(level, x, z, 11, 11, Direction.SOUTH, Direction.EAST);
+        repairClassicPortalVoidWalls(level, chunk, cell);
         generatePortalRoom(level, chunk);
+    }
+
+    /**
+     * TC4 placed the inner VOID layer before the sloped floor. Its
+     * GenCommon.placeBlock refused to let stone overwrite Eldritch Nothing,
+     * so the corner star-field strips begin directly at the lower trim.
+     */
+    static int repairClassicPortalVoidWalls(
+            WorldGenLevel level,
+            ChunkPos chunk,
+            OuterLandsCell cell
+    ) {
+        if (cell.feature() != 1) {
+            return 0;
+        }
+        int minX = chunk.getMinBlockX();
+        int minZ = chunk.getMinBlockZ();
+        int changed = 0;
+        for (int a = 2; a <= 14; a++) {
+            for (int b = 2; b <= 14; b++) {
+                for (int c = 1; c < 12; c++) {
+                    if (!isClassicPortalVoidWall(cell, a, b, c)) {
+                        continue;
+                    }
+                    BlockPos position = new BlockPos(
+                            minX + a,
+                            BASE_Y + c,
+                            minZ + b
+                    );
+                    BlockState current = level.getBlockState(position);
+                    if (EldritchNothingBlock.isNothing(current)
+                            || !isIncorrectPortalVoidMasonry(current)) {
+                        continue;
+                    }
+                    set(
+                            level,
+                            position.getX(),
+                            position.getY(),
+                            position.getZ(),
+                            ModBlocks.ELDRITCH_NOTHING.get()
+                                    .defaultBlockState()
+                    );
+                    changed++;
+                }
+            }
+        }
+        return changed;
+    }
+
+    static boolean isClassicPortalVoidWall(
+            OuterLandsCell cell,
+            int a,
+            int b,
+            int c
+    ) {
+        return c >= 1 && c < 12
+                && (a == 2 || a == 14 || b == 2 || b == 14)
+                && !classicOpening(cell, a, b, c);
+    }
+
+    private static boolean isIncorrectPortalVoidMasonry(BlockState state) {
+        return state.is(ModBlocks.ANCIENT_STONE.get())
+                || state.is(ModBlocks.ANCIENT_ROCK.get())
+                || state.is(ModBlocks.ANCIENT_CRUST.get())
+                || state.is(ModBlocks.ELDRITCH_GLYPHED_STONE.get())
+                || state.is(ModBlocks.ELDRITCH_GLOWING_CRUST.get())
+                || state.is(ModBlocks.ELDRITCH_RUNED_STONE.get());
     }
 
     private static void placePortalCornerTrim(WorldGenLevel level, int x, int z,
@@ -979,7 +1048,10 @@ public final class OuterLandsLabyrinthGenerator {
         for (int a = -5; a <= 5; a++) {
             for (int b = -5; b <= 5; b++) {
                 BlockPos target = new BlockPos(startX + 8 + a, BASE_Y + 2, startZ + 8 + b);
-                if (random.nextFloat() < 0.15F && level.getBlockState(target).isAir()) {
+                if (random.nextFloat() < 0.15F
+                        && OuterLandsTunnelDecorations.isInteriorAir(
+                                level, target
+                        )) {
                     set(level, target.getX(), target.getY(), target.getZ(),
                             ModBlocks.LOOT_URN.get().defaultBlockState());
                 }
@@ -1100,16 +1172,52 @@ public final class OuterLandsLabyrinthGenerator {
     ) {
         int x = chunk.getMinBlockX();
         int z = chunk.getMinBlockZ();
+        for (int w = -3; w <= 3; w++) {
+            for (int j = -3; j <= 3; j++) {
+                BlockPos floor = new BlockPos(
+                        x + 8 + w, BASE_Y + 2, z + 8 + j
+                );
+                BlockState floorState = level.getBlockState(floor);
+                if (random.nextFloat() < 0.35F
+                        && (floorState.is(ModBlocks.ANCIENT_STONE.get())
+                        || floorState.is(ModBlocks.ANCIENT_ROCK.get())
+                        || floorState.is(ModBlocks.ANCIENT_CRUST.get()))) {
+                    set(level, floor.getX(), floor.getY(), floor.getZ(),
+                            ModBlocks.CRUSTED_TAINT.get()
+                                    .defaultBlockState());
+                }
+            }
+        }
         for (int w = -4; w <= 4; w++) {
             for (int h = -3; h <= 3; h++) {
                 for (int j = -4; j <= 4; j++) {
                     BlockPos target = new BlockPos(x + 8 + w, BASE_Y + 4 + h, z + 8 + j);
-                    if (level.getBlockState(target).isAir()
+                    if (OuterLandsTunnelDecorations.isInteriorAir(level, target)
                             && hasSolidNeighbor(level, target)
-                            && random.nextInt(3) != 0) {
+                            && random.nextInt(6) == 0) {
                         set(level, target.getX(), target.getY(), target.getZ(),
                                 ModBlocks.TAINT_FIBRES.get().defaultBlockState());
                     }
+                }
+            }
+        }
+        for (int w = -3; w <= 3; w++) {
+            for (int j = -3; j <= 3; j++) {
+                BlockPos plant = new BlockPos(
+                        x + 8 + w, BASE_Y + 3, z + 8 + j
+                );
+                if (!OuterLandsTunnelDecorations.isInteriorAir(level, plant)
+                        || !level.getBlockState(plant.below()).is(
+                                ModBlocks.CRUSTED_TAINT.get()
+                        ) || random.nextInt(5) != 0) {
+                    continue;
+                }
+                BlockState growth = random.nextInt(4) == 0
+                        ? ModBlocks.SPORE_STALK.get().defaultBlockState()
+                        : ModBlocks.SHORT_TAINTED_GRASS.get()
+                                .defaultBlockState();
+                if (growth.canSurvive(level, plant)) {
+                    set(level, plant.getX(), plant.getY(), plant.getZ(), growth);
                 }
             }
         }
@@ -1127,7 +1235,10 @@ public final class OuterLandsLabyrinthGenerator {
             for (int h = -3; h <= 3; h++) {
                 for (int j = -3; j <= 3; j++) {
                     BlockPos target = center.offset(w, h, j);
-                    if (!target.equals(center) && level.getBlockState(target).isAir()
+                    if (!target.equals(center)
+                            && OuterLandsTunnelDecorations.isInteriorAir(
+                                    level, target
+                            )
                             && random.nextFloat() < 0.35F) {
                         set(level, target.getX(), target.getY(), target.getZ(),
                                 Blocks.COBWEB.defaultBlockState());

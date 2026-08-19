@@ -10,9 +10,10 @@ import net.minecraft.util.Mth;
 
 /** Faithful 1.20 rendering adapter for TC4 {@code FXVent}. */
 public final class TubeVentParticle extends TextureSheetParticle {
-    private static final float TARGET_SCALE = 1.0F;
     private static final float RENDER_SCALE = 0.3F;
+    private static final float BASE_ALPHA = 0.4F;
     private final SpriteSet sprites;
+    private final float targetScale;
     private float growthScale;
 
     private TubeVentParticle(
@@ -24,16 +25,20 @@ public final class TubeVentParticle extends TextureSheetParticle {
             double ySpeed,
             double zSpeed,
             int color,
+            float scale,
             SpriteSet sprites
     ) {
         super(level, x, y, z);
         this.sprites = sprites;
         setSize(0.02F, 0.02F);
-        growthScale = random.nextFloat() * 0.1F + 0.05F;
+        targetScale = Math.max(0.01F, scale);
+        growthScale = (random.nextFloat() * 0.1F + 0.05F)
+                * targetScale;
         quadSize = RENDER_SCALE * growthScale;
         rCol = ((color >> 16) & 255) / 255.0F;
         gCol = ((color >> 8) & 255) / 255.0F;
         bCol = (color & 255) / 255.0F;
+        alpha = BASE_ALPHA;
         lifetime = 40;
         hasPhysics = false;
         setHeading(xSpeed, ySpeed, zSpeed, 0.125F, 5.0F);
@@ -71,7 +76,7 @@ public final class TubeVentParticle extends TextureSheetParticle {
         xo = x;
         yo = y;
         zo = z;
-        if (age++ >= lifetime || growthScale > TARGET_SCALE) {
+        if (age++ >= lifetime || growthScale > targetScale) {
             remove();
             return;
         }
@@ -80,7 +85,7 @@ public final class TubeVentParticle extends TextureSheetParticle {
         xd *= 0.85D;
         yd *= 0.85D;
         zd *= 0.85D;
-        if (growthScale < TARGET_SCALE) {
+        if (growthScale < targetScale) {
             growthScale *= 1.15F;
             quadSize = RENDER_SCALE * growthScale;
         }
@@ -88,12 +93,18 @@ public final class TubeVentParticle extends TextureSheetParticle {
             xd *= 0.7D;
             zd *= 0.7D;
         }
-        alpha = Mth.clamp(TARGET_SCALE - growthScale, 0.0F, 1.0F);
+        alpha = BASE_ALPHA * Mth.clamp(
+                (targetScale - growthScale) / targetScale,
+                0.0F,
+                1.0F
+        );
         updateSprite();
     }
 
     private void updateSprite() {
-        int frame = Mth.clamp((int) (growthScale * 4.0F), 0, 4);
+        int frame = Mth.clamp(
+                (int) (growthScale / targetScale * 4.0F), 0, 4
+        );
         setSprite(sprites.get(frame, 4));
     }
 
@@ -130,6 +141,7 @@ public final class TubeVentParticle extends TextureSheetParticle {
                     ySpeed,
                     zSpeed,
                     options.color(),
+                    options.scale(),
                     sprites
             );
         }

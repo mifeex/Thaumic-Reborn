@@ -66,6 +66,7 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
@@ -259,6 +260,32 @@ public final class LegacyThaumcraftMob extends Monster
 
     public LegacyMobKind kind() {
         return kind;
+    }
+
+    @Override
+    public boolean isAlliedTo(Entity other) {
+        if (other instanceof LegacyThaumcraftMob mob
+                && CrimsonCultBehavior.areCrimsonAllies(kind, mob.kind)) {
+            return true;
+        }
+        return super.isAlliedTo(other);
+    }
+
+    @Override
+    public boolean canAttack(LivingEntity target) {
+        return !(target instanceof LegacyThaumcraftMob mob
+                && CrimsonCultBehavior.areCrimsonAllies(kind, mob.kind))
+                && super.canAttack(target);
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity target) {
+        if (target instanceof LegacyThaumcraftMob mob
+                && CrimsonCultBehavior.areCrimsonAllies(kind, mob.kind)) {
+            super.setTarget(null);
+            return;
+        }
+        super.setTarget(target);
     }
 
     private static boolean isOuterLandsBossKind(LegacyMobKind kind) {
@@ -778,6 +805,10 @@ public final class LegacyThaumcraftMob extends Monster
             }
             if (kind == LegacyMobKind.CRIMSON_CLERIC) {
                 goalSelector.addGoal(1, new CrimsonAltarFocusGoal(this));
+                goalSelector.addGoal(2, new CrimsonCultistRangedGoal(this));
+            }
+            if (kind == LegacyMobKind.CRIMSON_PRAETOR) {
+                goalSelector.addGoal(2, new CrimsonCultistRangedGoal(this));
             }
             if (kind == LegacyMobKind.ELDRITCH_GUARDIAN) {
                 goalSelector.addGoal(
@@ -1725,6 +1756,14 @@ public final class LegacyThaumcraftMob extends Monster
             performConstructRangedAttack(target);
             return;
         }
+        if (kind == LegacyMobKind.CRIMSON_CLERIC) {
+            performCrimsonClericRangedAttack(target, distanceFactor);
+            return;
+        }
+        if (kind == LegacyMobKind.CRIMSON_PRAETOR) {
+            performCrimsonPraetorRangedAttack(target);
+            return;
+        }
         if (kind != LegacyMobKind.ELDRITCH_GUARDIAN) {
             return;
         }
@@ -1781,6 +1820,74 @@ public final class LegacyThaumcraftMob extends Monster
                 3.0F,
                 1.0F + getRandom().nextFloat() * 0.1F
         );
+    }
+
+    private void performCrimsonClericRangedAttack(
+            LivingEntity target,
+            float distanceFactor
+    ) {
+        swing(InteractionHand.MAIN_HAND);
+        if (getRandom().nextFloat()
+                > CrimsonCultBehavior.CLERIC_ORB_ROLL_THRESHOLD) {
+            launchCrimsonHomingOrb(target);
+            return;
+        }
+
+        double dx = target.getX() - getX();
+        double dy = target.getBoundingBox().minY
+                + target.getBbHeight() * 0.5D
+                - (getY() + getBbHeight() * 0.5D);
+        double dz = target.getZ() - getZ();
+        float spread = Mth.sqrt(distanceFactor) * 0.5F;
+        level().levelEvent(null, 1009, blockPosition(), 0);
+        for (int index = 0;
+                index < CrimsonCultBehavior.CLERIC_FIREBALL_COUNT;
+                index++) {
+            SmallFireball fireball = new SmallFireball(
+                    level(),
+                    this,
+                    dx + getRandom().nextGaussian() * spread,
+                    dy,
+                    dz + getRandom().nextGaussian() * spread
+            );
+            fireball.setPos(
+                    fireball.getX(),
+                    getY() + getBbHeight() * 0.5D + 0.5D,
+                    fireball.getZ()
+            );
+            level().addFreshEntity(fireball);
+        }
+    }
+
+    private void performCrimsonPraetorRangedAttack(LivingEntity target) {
+        if (!getSensing().hasLineOfSight(target)) {
+            return;
+        }
+        swing(InteractionHand.MAIN_HAND);
+        getLookControl().setLookAt(target, 30.0F, 30.0F);
+        launchCrimsonHomingOrb(target);
+    }
+
+    private void launchCrimsonHomingOrb(LivingEntity target) {
+        EldritchOrbEntity orb = new EldritchOrbEntity(this, target, level());
+        double dx = target.getX() - getX();
+        double dy = target.getBoundingBox().minY
+                + target.getBbHeight() * 0.5D
+                - (getY() + getBbHeight() * 0.5D);
+        double dz = target.getZ() - getZ();
+        orb.shoot(
+                dx,
+                dy + 2.0D,
+                dz,
+                CrimsonCultBehavior.ORB_VELOCITY,
+                CrimsonCultBehavior.ORB_INACCURACY
+        );
+        playSound(
+                ModSounds.EG_ATTACK.get(),
+                1.0F,
+                1.0F + getRandom().nextFloat() * 0.1F
+        );
+        level().addFreshEntity(orb);
     }
 
     private void performPechRangedAttack(
@@ -3464,6 +3571,55 @@ public final class LegacyThaumcraftMob extends Monster
                                     .RANGED_MAX_DISTANCE
                                     * EldritchGuardianBehavior
                                             .RANGED_MAX_DISTANCE;
+        }
+    }
+
+    private static final class CrimsonCultistRangedGoal
+            extends RangedAttackGoal {
+        private final LegacyThaumcraftMob cultist;
+        private final double minimumDistanceSquared;
+
+        private CrimsonCultistRangedGoal(LegacyThaumcraftMob cultist) {
+            super(
+                    cultist,
+                    CrimsonCultBehavior.RANGED_MOVE_SPEED,
+                    cultist.kind == LegacyMobKind.CRIMSON_PRAETOR
+                            ? CrimsonCultBehavior
+                                    .PRAETOR_RANGED_MIN_COOLDOWN_TICKS
+                            : CrimsonCultBehavior
+                                    .CLERIC_RANGED_MIN_COOLDOWN_TICKS,
+                    CrimsonCultBehavior.RANGED_MAX_COOLDOWN_TICKS,
+                    CrimsonCultBehavior.RANGED_MAX_DISTANCE
+            );
+            this.cultist = cultist;
+            double minimumDistance = cultist.kind
+                    == LegacyMobKind.CRIMSON_PRAETOR
+                            ? CrimsonCultBehavior
+                                    .PRAETOR_RANGED_MIN_DISTANCE
+                            : CrimsonCultBehavior.CLERIC_RANGED_MIN_DISTANCE;
+            minimumDistanceSquared = minimumDistance * minimumDistance;
+        }
+
+        @Override
+        public boolean canUse() {
+            return inRangedBand() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return inRangedBand() && super.canContinueToUse();
+        }
+
+        private boolean inRangedBand() {
+            LivingEntity target = cultist.getTarget();
+            if (target == null || !target.isAlive()) {
+                return false;
+            }
+            double distanceSquared = cultist.distanceToSqr(target);
+            return distanceSquared >= minimumDistanceSquared
+                    && distanceSquared
+                            <= CrimsonCultBehavior.RANGED_MAX_DISTANCE
+                                    * CrimsonCultBehavior.RANGED_MAX_DISTANCE;
         }
     }
 

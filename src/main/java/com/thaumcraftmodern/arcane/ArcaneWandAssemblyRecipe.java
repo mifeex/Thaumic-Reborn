@@ -253,7 +253,26 @@ public final class ArcaneWandAssemblyRecipe implements ArcaneRecipe {
 
     @Override
     public ArcaneVisCost visCost() {
-        return ArcaneVisCost.EMPTY;
+        if (lockedRodId == null || lockedCapId == null) {
+            return ArcaneVisCost.EMPTY;
+        }
+        WandCapDefinition cap = WandComponentRegistry.cap(lockedCapId)
+                .orElse(null);
+        WandRodDefinition rod = WandComponentRegistry.rod(lockedRodId)
+                .orElse(null);
+        if (cap == null || rod == null) {
+            return ArcaneVisCost.EMPTY;
+        }
+        int cost = classicCraftCost(
+                cap.craftCostVis(),
+                rod.craftCostVis(),
+                sceptre
+        );
+        LinkedHashMap<String, Integer> amounts = new LinkedHashMap<>();
+        for (String primal : ArcaneVisCost.PRIMALS) {
+            amounts.put(primal, cost);
+        }
+        return new ArcaneVisCost(amounts);
     }
 
     private record Components(WandCapDefinition cap, WandRodDefinition rod) {

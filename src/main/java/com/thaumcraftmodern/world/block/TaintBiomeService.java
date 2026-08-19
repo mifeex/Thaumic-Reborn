@@ -9,6 +9,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.chunk.LevelChunk;
+
+import java.util.List;
 
 /**
  * Server-owned biome-column mutation used by TC4 taint and Ethereal Blooms.
@@ -46,6 +50,46 @@ public final class TaintBiomeService {
                 position,
                 quartY -> tainted
         );
+    }
+
+    /** Converts one complete loaded labyrinth cell to the tainted biome. */
+    public static boolean taintChunk(ServerLevel level, ChunkPos position) {
+        LevelChunk chunk = level.getChunkSource().getChunkNow(
+                position.x, position.z
+        );
+        if (chunk == null) {
+            return false;
+        }
+        Holder<Biome> tainted = level.registryAccess()
+                .registryOrThrow(Registries.BIOME)
+                .getHolderOrThrow(ModWorldgenKeys.TAINTED_LANDS);
+        int quartX = QuartPos.fromBlock(position.getMinBlockX());
+        int quartZ = QuartPos.fromBlock(position.getMinBlockZ());
+        int minQuartY = QuartPos.fromBlock(level.getMinBuildHeight());
+        int maxQuartY = QuartPos.fromBlock(level.getMaxBuildHeight() - 1);
+        boolean changed = false;
+        for (int x = quartX; x < quartX + 4 && !changed; x++) {
+            for (int z = quartZ; z < quartZ + 4 && !changed; z++) {
+                for (int y = minQuartY; y <= maxQuartY; y++) {
+                    if (!chunk.getNoiseBiome(x, y, z).is(
+                            ModWorldgenKeys.TAINTED_LANDS
+                    )) {
+                        changed = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!changed) {
+            return false;
+        }
+        chunk.fillBiomesFromNoise(
+                (sampleX, sampleY, sampleZ, sampler) -> tainted,
+                level.getChunkSource().randomState().sampler()
+        );
+        chunk.setUnsaved(true);
+        level.getChunkSource().chunkMap.resendBiomesForChunks(List.of(chunk));
+        return true;
     }
 
     public static boolean purifyColumn(ServerLevel level, BlockPos position) {

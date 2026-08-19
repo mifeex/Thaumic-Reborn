@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "thaumic_reborn:item/knowledgefragment"
-  }
+  "parent": "thaumic_reborn:block/warded_glass"
 }

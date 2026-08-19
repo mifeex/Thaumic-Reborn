@@ -139,9 +139,15 @@ class WandClassicContentTest {
         JsonObject sceptre = json(
                 "/data/thaumic_reborn/thaumcraft/research/legacy/sceptre.json");
         assertFalse(sceptre.get("inactive").getAsBoolean());
-        assertEquals("thaumic_reborn:arcane_sceptre_assembly",
-                sceptre.getAsJsonArray("pages").get(1).getAsJsonObject()
-                        .get("recipe").getAsString());
+        JsonObject recipePage = sceptre.getAsJsonArray("pages")
+                .get(1).getAsJsonObject();
+        assertEquals("thaumic_reborn:sceptre_wood_iron",
+                recipePage.get("recipe").getAsString());
+        assertEquals(3, recipePage.getAsJsonArray("recipes").size());
+        assertEquals("thaumic_reborn:sceptre_greatwood_gold",
+                recipePage.getAsJsonArray("recipes").get(1).getAsString());
+        assertEquals("thaumic_reborn:sceptre_silverwood_thaumium",
+                recipePage.getAsJsonArray("recipes").get(2).getAsString());
     }
 
     @Test

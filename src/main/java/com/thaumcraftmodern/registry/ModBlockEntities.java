@@ -19,6 +19,7 @@ import com.thaumcraftmodern.world.block.entity.FluxScrubberBlockEntity;
 import com.thaumcraftmodern.world.block.entity.FocalManipulatorBlockEntity;
 import com.thaumcraftmodern.world.block.entity.TemporaryHoleBlockEntity;
 import com.thaumcraftmodern.world.block.entity.WardedBlockEntity;
+import com.thaumcraftmodern.world.block.entity.WardedGlassBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcaneDoorBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcanePressurePlateBlockEntity;
 import com.thaumcraftmodern.world.block.entity.ArcanePedestalBlockEntity;
@@ -107,6 +108,9 @@ public final class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ArcanePressurePlateBlockEntity>> ARCANE_PRESSURE_PLATE =
             BLOCK_ENTITIES.register("arcane_pressure_plate", () -> BlockEntityType.Builder.of(
                     ArcanePressurePlateBlockEntity::new, ModBlocks.ARCANE_PRESSURE_PLATE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WardedGlassBlockEntity>> WARDED_GLASS =
+            BLOCK_ENTITIES.register("warded_glass", () -> BlockEntityType.Builder.of(
+                    WardedGlassBlockEntity::new, ModBlocks.WARDED_GLASS.get()).build(null));
     public static final RegistryObject<BlockEntityType<MagicMirrorBlockEntity>>
             MAGIC_MIRROR = BLOCK_ENTITIES.register("magic_mirror",
                     () -> BlockEntityType.Builder.of(MagicMirrorBlockEntity::new,

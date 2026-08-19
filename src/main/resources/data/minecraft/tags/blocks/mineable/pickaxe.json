@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "thaumic_reborn:warded_glass",
     "thaumic_reborn:arcane_stone",
     "thaumic_reborn:eldritch_glyphed_stone",
     "thaumic_reborn:eldritch_glowing_crust",

@@ -58,9 +58,16 @@ final class FocusPouchAndArcanePressurePlateFidelityTest {
         assertTrue(block.contains("new AABB(0.125, 0, 0.125, 0.875, 0.25, 0.875)"));
         assertTrue(block.contains("entity.isIgnoringBlockTriggers()"));
         assertTrue(block.contains("level.scheduleTick(pos, this, 20)"));
-        assertTrue(block.contains("state.getValue(POWERED) ? 15 : 0"));
+        assertTrue(block.contains("direction == Direction.UP && state.getValue(POWERED) ? 15 : 0"));
+        assertTrue(block.contains("canConnectRedstone"));
+        assertTrue(block.contains("canEntityDestroy"));
+        assertTrue(block.contains("onBlockExploded"));
+        assertTrue(block.contains("implements WandInteractable"));
+        assertTrue(block.contains("popResource(level, pos, new ItemStack(this))"));
         assertTrue(entity.contains("access.contains(\"0\" + name)"));
         assertTrue(entity.contains("access.contains(\"1\" + name)"));
+        assertTrue(entity.contains("tag.putByte(\"setting\", setting)"));
+        assertTrue(entity.contains("ListTag entries = new ListTag()"));
 
         JsonObject variants = JsonParser.parseString(Files.readString(
                 ASSETS.resolve("blockstates/arcane_pressure_plate.json")))
@@ -72,5 +79,17 @@ final class FocusPouchAndArcanePressurePlateFidelityTest {
                 Files.readAllBytes(ASSETS.resolve("textures/block/arcane_pressure_plate_except_owner.png")));
         assertArrayEquals(Files.readAllBytes(ORIGINAL.resolve("textures/blocks/applate3.png")),
                 Files.readAllBytes(ASSETS.resolve("textures/block/arcane_pressure_plate_owner_only.png")));
+    }
+
+    @Test
+    void classicKeysLinkToThePlateAndGrantIronOrGoldAccess() throws Exception {
+        String key = Files.readString(JAVA.resolve("item/ArcaneDoorKeyItem.java"));
+        assertTrue(key.contains("onItemUseFirst(ItemStack stack, UseOnContext context)"));
+        assertTrue(key.contains("instanceof ArcanePressurePlateBlock"));
+        assertTrue(key.contains("putByte(\"type\", type)"));
+        assertTrue(key.contains("plate.grant(name, gold)"));
+        assertTrue(key.contains("plate.canEdit(name)"));
+        assertTrue(key.contains("ModSounds.KEY.get()"));
+        assertTrue(key.contains("key_target_plate"));
     }
 }

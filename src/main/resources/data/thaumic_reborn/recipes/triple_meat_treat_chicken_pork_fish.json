@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    { "item": "minecraft:sugar" },
+    { "item": "thaumic_reborn:chicken_nugget" },
+    { "item": "thaumic_reborn:pork_nugget" },
+    { "item": "thaumic_reborn:fish_nugget" }
+  ],
+  "result": {
+    "item": "thaumic_reborn:triple_meat_treat"
+  }
+}
