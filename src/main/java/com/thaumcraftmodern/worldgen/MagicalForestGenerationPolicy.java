@@ -4,7 +4,7 @@ package com.thaumcraftmodern.worldgen;
  * User-facing Magical Forest density and climate rules kept independent from
  * Minecraft registry bootstrap so they can be regression-tested directly.
  */
-final class MagicalForestGenerationPolicy {
+public final class MagicalForestGenerationPolicy {
     /*
      * Deliberate density adjustment from TC4's 10 / 14 / 10 profile.
      * Fewer total attempts leave breathing room between magic oaks, while
@@ -13,6 +13,9 @@ final class MagicalForestGenerationPolicy {
      */
     static final int TREE_ATTEMPTS = 9;
     static final int SILVERWOOD_CHANCE = 9;
+    static final int SILVERWOOD_SITE_ATTEMPTS = 12;
+    static final int SILVERWOOD_GROUND_RADIUS = 2;
+    static final int SILVERWOOD_MIN_GROUND_PERCENT = 80;
     static final int GREATWOOD_CHANCE_AFTER_SILVERWOOD = 7;
     static final int BOULDER_VARIANTS = 3;
     static final int GIANT_MUSHROOM_GRID_SIZE = 4;
@@ -29,12 +32,16 @@ final class MagicalForestGenerationPolicy {
     private MagicalForestGenerationPolicy() {
     }
 
-    static boolean supportsClimate(
+    public static boolean supportsClimate(
             float baseTemperature,
             boolean coldTagged
     ) {
         return !coldTagged
                 && baseTemperature >= 0.45F
                 && baseTemperature <= 1.20F;
+    }
+
+    static int silverwoodClearanceRadius(int y, int height) {
+        return y >= height - 1 ? 3 : 1;
     }
 }

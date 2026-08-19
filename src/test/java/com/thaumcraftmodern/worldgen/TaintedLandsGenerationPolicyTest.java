@@ -42,7 +42,7 @@ class TaintedLandsGenerationPolicyTest {
     }
 
     @Test
-    void defaultPatchIsLargerThanTheOldNegativeTail() {
+    void defaultPatchUsesTheRestoredNegativeTail() {
         assertEquals(
                 -0.91D,
                 TaintedLandsGenerationPolicy.patchThreshold(2),

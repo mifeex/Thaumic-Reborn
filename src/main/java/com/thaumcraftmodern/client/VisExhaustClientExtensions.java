@@ -19,7 +19,7 @@ public final class VisExhaustClientExtensions
      * Manual vertical tuning for the inventory effect icon, in GUI pixels.
      * Positive values move the icon down; negative values move it up.
      */
-    public static final int INVENTORY_ICON_Y_OFFSET = 14;
+    public static final int INVENTORY_ICON_Y_OFFSET = 4;
 
     private VisExhaustClientExtensions() {
     }

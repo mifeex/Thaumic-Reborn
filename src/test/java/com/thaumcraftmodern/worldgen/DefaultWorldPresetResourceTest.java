@@ -14,9 +14,26 @@ import java.nio.charset.StandardCharsets;
 
 class DefaultWorldPresetResourceTest {
     @Test
-    void normalWorldsUseTheThaumcraftBiomeOverlay() throws IOException {
+    void normalWorldPresetIsNotReplacedByThaumicReborn() throws IOException {
         JsonObject preset = read(
                 "/data/minecraft/worldgen/world_preset/normal.json"
+        );
+        JsonObject biomeSource = preset
+                .getAsJsonObject("dimensions")
+                .getAsJsonObject("minecraft:overworld")
+                .getAsJsonObject("generator")
+                .getAsJsonObject("biome_source");
+        assertEquals("minecraft:multi_noise",
+                biomeSource.get("type").getAsString());
+        assertEquals("minecraft:overworld",
+                biomeSource.get("preset").getAsString());
+    }
+
+    @Test
+    void optInThaumicPresetKeepsTheLegacyOverlay() throws IOException {
+        JsonObject preset = read(
+                "/data/thaumic_reborn/worldgen/world_preset/"
+                        + "thaumcraft_modern.json"
         );
         JsonObject biomeSource = preset
                 .getAsJsonObject("dimensions")

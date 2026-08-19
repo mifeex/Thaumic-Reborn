@@ -108,11 +108,12 @@ public final class LegacyVegetationFeature
             ) == 3 % ThaumcraftModernServerConfig.silverwoodRarity()
                     && biome.is(Tags.Biomes.IS_MAGICAL)) {
                 BlockPos origin = randomSurface(level, random, chunkMinX, chunkMinZ);
-                placed |= SilverwoodTreeFeature.placeTree(
+                placed |= placeWildSilverwood(
                         level,
-                        origin,
                         random,
-                        true
+                        chunkMinX,
+                        chunkMinZ,
+                        origin
                 );
             }
 
@@ -236,11 +237,12 @@ public final class LegacyVegetationFeature
             if (random.nextInt(
                     MagicalForestGenerationPolicy.SILVERWOOD_CHANCE
             ) == 0) {
-                placed |= SilverwoodTreeFeature.placeTree(
+                placed |= placeWildSilverwood(
                         level,
-                        origin,
                         random,
-                        true
+                        chunkMinX,
+                        chunkMinZ,
+                        origin
                 );
             } else if (random.nextInt(
                     MagicalForestGenerationPolicy
@@ -261,6 +263,43 @@ public final class LegacyVegetationFeature
             }
         }
         return placed;
+    }
+
+    private static boolean placeWildSilverwood(
+            WorldGenLevel level,
+            RandomSource random,
+            int chunkMinX,
+            int chunkMinZ,
+            BlockPos firstOrigin
+    ) {
+        if (SilverwoodTreeFeature.placeTree(
+                level,
+                firstOrigin,
+                random,
+                true
+        )) {
+            return true;
+        }
+        for (int attempt = 1;
+             attempt < MagicalForestGenerationPolicy
+                     .SILVERWOOD_SITE_ATTEMPTS;
+             attempt++) {
+            BlockPos origin = randomGroundSurface(
+                    level,
+                    random,
+                    chunkMinX,
+                    chunkMinZ
+            );
+            if (SilverwoodTreeFeature.placeTree(
+                    level,
+                    origin,
+                    random,
+                    true
+            )) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

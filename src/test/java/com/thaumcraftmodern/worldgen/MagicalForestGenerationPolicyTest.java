@@ -12,6 +12,18 @@ class MagicalForestGenerationPolicyTest {
         assertEquals(9, MagicalForestGenerationPolicy.TREE_ATTEMPTS);
         assertEquals(9, MagicalForestGenerationPolicy.SILVERWOOD_CHANCE);
         assertEquals(
+                12,
+                MagicalForestGenerationPolicy.SILVERWOOD_SITE_ATTEMPTS
+        );
+        assertEquals(
+                2,
+                MagicalForestGenerationPolicy.SILVERWOOD_GROUND_RADIUS
+        );
+        assertEquals(
+                80,
+                MagicalForestGenerationPolicy.SILVERWOOD_MIN_GROUND_PERCENT
+        );
+        assertEquals(
                 7,
                 MagicalForestGenerationPolicy
                         .GREATWOOD_CHANCE_AFTER_SILVERWOOD
@@ -50,5 +62,17 @@ class MagicalForestGenerationPolicyTest {
                 .supportsClimate(1.0F, false));
         assertFalse(MagicalForestGenerationPolicy
                 .supportsClimate(1.5F, false));
+    }
+
+    @Test
+    void silverwoodOnlyReservesItsTrunkAndInnerCrown() {
+        assertEquals(1, MagicalForestGenerationPolicy
+                .silverwoodClearanceRadius(1, 9));
+        assertEquals(1, MagicalForestGenerationPolicy
+                .silverwoodClearanceRadius(7, 9));
+        assertEquals(3, MagicalForestGenerationPolicy
+                .silverwoodClearanceRadius(8, 9));
+        assertEquals(3, MagicalForestGenerationPolicy
+                .silverwoodClearanceRadius(12, 9));
     }
 }

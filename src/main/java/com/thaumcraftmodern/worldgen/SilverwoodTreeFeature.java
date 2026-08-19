@@ -19,12 +19,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
  */
 public final class SilverwoodTreeFeature
         extends Feature<NoneFeatureConfiguration> {
-    private static final int[][] ROOT_SUPPORTS = {
+    private static final int[][] TRUNK_SUPPORT = {{0, 0}};
+    private static final int[][] NATURAL_ROOT_SUPPORTS = {
             {0, 0},
-            {-2, 0},
-            {2, 0},
-            {0, -2},
-            {0, 2}
+            {-1, 0}, {1, 0}, {0, -1}, {0, 1},
+            {-2, 0}, {2, 0}, {0, -2}, {0, 2}
     };
 
     public SilverwoodTreeFeature() {
@@ -45,19 +44,36 @@ public final class SilverwoodTreeFeature
             WorldGenLevel level,
             BlockPos origin,
             RandomSource random,
-        boolean wild
+            boolean wild
     ) {
         int height = 7 + random.nextInt(4);
+        int[][] supports = wild ? NATURAL_ROOT_SUPPORTS : TRUNK_SUPPORT;
         if (!TreeSitePolicy.hasDrySupportedSoil(
                     level,
                     origin,
-                    ROOT_SUPPORTS
+                    supports
                 )
+                || (wild && !hasDryReplaceableRoots(level, origin))
+                || (wild && !TreeSitePolicy.hasDryDirtCoverage(
+                        level,
+                        origin,
+                        MagicalForestGenerationPolicy
+                                .SILVERWOOD_GROUND_RADIUS,
+                        MagicalForestGenerationPolicy
+                                .SILVERWOOD_MIN_GROUND_PERCENT
+                ))
                 || level.isOutsideBuildHeight(origin.above(height + 4))) {
             return false;
         }
         for (int y = 1; y <= height + 3; y++) {
-            int radius = y >= height - 4 ? 5 : 2;
+            /*
+             * Match TC4's permissive site test: reserve the cross-shaped
+             * trunk and only the inner crown. Leaves already skip solid
+             * blocks while being painted, so requiring an empty 11x11 crown
+             * rejected almost every wild tree on slopes or in dense forest.
+             */
+            int radius = MagicalForestGenerationPolicy
+                    .silverwoodClearanceRadius(y, height);
             for (int x = -radius; x <= radius; x++) {
                 for (int z = -radius; z <= radius; z++) {
                     BlockState state = level.getBlockState(origin.offset(x, y, z));
@@ -179,4 +195,22 @@ public final class SilverwoodTreeFeature
         }
         return true;
     }
+
+    private static boolean hasDryReplaceableRoots(
+            WorldGenLevel level,
+            BlockPos origin
+    ) {
+        for (int[] offset : NATURAL_ROOT_SUPPORTS) {
+            BlockPos root = origin.offset(offset[0], 0, offset[1]);
+            BlockState state = level.getBlockState(root);
+            if (!level.getFluidState(root).isEmpty()
+                    || (!state.isAir()
+                    && !state.is(BlockTags.LEAVES)
+                    && !state.canBeReplaced())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

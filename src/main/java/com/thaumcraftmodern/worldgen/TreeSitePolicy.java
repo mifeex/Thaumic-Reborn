@@ -42,6 +42,36 @@ final class TreeSitePolicy {
         return hasDrySupportedBase(level, origin, footprint, true);
     }
 
+    static boolean hasDryDirtCoverage(
+            WorldGenLevel level,
+            BlockPos origin,
+            int radius,
+            int minimumPercent
+    ) {
+        int width = radius * 2 + 1;
+        int total = width * width;
+        int required = (total * minimumPercent + 99) / 100;
+        int supported = 0;
+        for (int x = -radius; x <= radius; x++) {
+            for (int z = -radius; z <= radius; z++) {
+                BlockPos plantingCell = origin.offset(x, 0, z);
+                BlockPos soil = plantingCell.below();
+                BlockState soilState = level.getBlockState(soil);
+                if (level.getFluidState(plantingCell).isEmpty()
+                        && level.getFluidState(soil).isEmpty()
+                        && soilState.is(BlockTags.DIRT)
+                        && soilState.isFaceSturdy(
+                                level,
+                                soil,
+                                Direction.UP
+                        )) {
+                    supported++;
+                }
+            }
+        }
+        return supported >= required;
+    }
+
     private static boolean hasDrySupportedBase(
             WorldGenLevel level,
             BlockPos origin,

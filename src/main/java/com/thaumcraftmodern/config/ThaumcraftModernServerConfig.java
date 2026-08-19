@@ -12,15 +12,12 @@ public final class ThaumcraftModernServerConfig {
     private static final ForgeConfigSpec.BooleanValue GENERATE_TREES;
     private static final ForgeConfigSpec.BooleanValue GENERATE_PLANTS;
     private static final ForgeConfigSpec.BooleanValue GENERATE_STRUCTURES;
-    private static final ForgeConfigSpec.BooleanValue GENERATE_TC4_BIOMES;
     private static final ForgeConfigSpec.IntValue CINNABAR_ATTEMPTS;
     private static final ForgeConfigSpec.IntValue AMBER_ATTEMPTS;
     private static final ForgeConfigSpec.IntValue INFUSED_STONE_ATTEMPTS;
     private static final ForgeConfigSpec.IntValue GREATWOOD_RARITY;
     private static final ForgeConfigSpec.IntValue SILVERWOOD_RARITY;
     private static final ForgeConfigSpec.IntValue STRUCTURE_RARITY_SCALE;
-    private static final ForgeConfigSpec.IntValue MAGICAL_FOREST_WEIGHT;
-    private static final ForgeConfigSpec.IntValue TAINTED_LANDS_WEIGHT;
     private static final ForgeConfigSpec.IntValue TAINT_SPREAD_RATE;
     private static final ForgeConfigSpec.BooleanValue TAINT_FROM_FLUX;
     private static final ForgeConfigSpec.BooleanValue HARD_NODES;
@@ -56,12 +53,6 @@ public final class ThaumcraftModernServerConfig {
         GENERATE_STRUCTURES = builder
                 .comment("Generate TC4 surface mounds, stone rings, hilltop stones and aura totems.")
                 .define("generateStructures", true);
-        GENERATE_TC4_BIOMES = builder
-                .comment(
-                        "Enable Magical Forest and Tainted Land surface patches in the Thaumcraft Modern world preset. Eerie is painted by sinister aura nodes.",
-                        "Modern cave biomes below Y=0 are deliberately preserved."
-                )
-                .define("generateBiomes", true);
         CINNABAR_ATTEMPTS = builder
                 .comment("Single-block Cinnabar attempts per chunk. TC4 default: 18.")
                 .defineInRange("cinnabarAttemptsPerChunk", 18, 0, 128);
@@ -89,12 +80,6 @@ public final class ThaumcraftModernServerConfig {
                         "Village building weights are not affected."
                 )
                 .defineInRange("structureRarityScale", 1, 1, 64);
-        MAGICAL_FOREST_WEIGHT = builder
-                .comment("Relative surface-patch weight. TC4 default biome weight: 5.")
-                .defineInRange("magicalForestWeight", 5, 0, 100);
-        TAINTED_LANDS_WEIGHT = builder
-                .comment("Relative surface-patch weight. TC4 default biome weight: 2.")
-                .defineInRange("taintedLandsWeight", 2, 0, 100);
         TAINT_SPREAD_RATE = builder
                 .comment(
                         "Taint biome spread divisor. TC4 default: 200; effective random-tick chance is 1/(value*5).",
@@ -155,7 +140,7 @@ public final class ThaumcraftModernServerConfig {
     }
 
     public static boolean generateTc4Biomes() {
-        return bool(GENERATE_TC4_BIOMES, true);
+        return ThaumicOverworldConfig.generateTc4Biomes();
     }
 
     public static int cinnabarAttempts() {
@@ -183,11 +168,11 @@ public final class ThaumcraftModernServerConfig {
     }
 
     public static int magicalForestWeight() {
-        return integer(MAGICAL_FOREST_WEIGHT, 5);
+        return ThaumicOverworldConfig.magicalForestWeight();
     }
 
     public static int taintedLandsWeight() {
-        return integer(TAINTED_LANDS_WEIGHT, 2);
+        return ThaumicOverworldConfig.taintedLandsWeight();
     }
 
     public static int taintSpreadRate() {

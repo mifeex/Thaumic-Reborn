@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.thaumcraftmodern.arcane.ModArcaneRecipes;
 import com.thaumcraftmodern.config.ThaumcraftModernClientConfig;
 import com.thaumcraftmodern.config.ThaumcraftModernServerConfig;
+import com.thaumcraftmodern.config.ThaumicOverworldConfig;
 import com.thaumcraftmodern.network.ModNetwork;
 import com.thaumcraftmodern.registry.ModBlockEntities;
 import com.thaumcraftmodern.registry.ModBiomeSources;
@@ -26,6 +27,7 @@ import com.thaumcraftmodern.enchantment.ThaumcraftEnchantmentEvents;
 import com.thaumcraftmodern.integration.api.ThaumicRebornApiServices;
 import com.thaumicreborn.api.ThaumicRebornApi;
 import com.thaumcraftmodern.worldgen.LegacyVillagePoolInjector;
+import com.thaumcraftmodern.worldgen.ThaumicOverworldBiomeHolders;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,6 +38,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import net.minecraft.core.registries.Registries;
 import net.minecraftforge.registries.MissingMappingsEvent;
+import net.minecraftforge.event.server.ServerAboutToStartEvent;
 
 @Mod(ThaumcraftModern.MOD_ID)
 public final class ThaumcraftModern {
@@ -50,6 +53,11 @@ public final class ThaumcraftModern {
                 ModConfig.Type.CLIENT,
                 ThaumcraftModernClientConfig.SPEC,
                 "thaumic_reborn-client.toml"
+        );
+        context.registerConfig(
+                ModConfig.Type.COMMON,
+                ThaumicOverworldConfig.SPEC,
+                "thaumic_reborn-worldgen.toml"
         );
         context.registerConfig(
                 ModConfig.Type.SERVER,
@@ -83,6 +91,14 @@ public final class ThaumcraftModern {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(ModNetwork::register);
+    }
+
+    @SubscribeEvent
+    public void captureOverworldBiomeHolders(ServerAboutToStartEvent event) {
+        ThaumicOverworldBiomeHolders.capture(
+                event.getServer().registryAccess(),
+                event.getServer().getWorldData().worldGenOptions().seed()
+        );
     }
 
     /** Migrates worlds that contained the removed standalone emergency vent. */
