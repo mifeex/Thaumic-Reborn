@@ -328,12 +328,28 @@ public final class WorldContentClientEvents {
                 CrimsonCultArmorModel::createPraetorLayer
         );
         event.registerLayerDefinition(
+                CrimsonCultArmorModel.KNIGHT_LEGGINGS_LAYER,
+                CrimsonCultArmorModel::createKnightLeggingsLayer
+        );
+        event.registerLayerDefinition(
+                CrimsonCultArmorModel.CLERIC_LEGGINGS_LAYER,
+                CrimsonCultArmorModel::createClericLeggingsLayer
+        );
+        event.registerLayerDefinition(
+                CrimsonCultArmorModel.PRAETOR_LEGGINGS_LAYER,
+                CrimsonCultArmorModel::createPraetorLeggingsLayer
+        );
+        event.registerLayerDefinition(
                 CrimsonCultArmorModel.BOOTS_LAYER,
                 CrimsonCultArmorModel::createBootsLayer
         );
         event.registerLayerDefinition(
                 WingedMantleArmorModel.LAYER,
                 WingedMantleArmorModel::createBodyLayer
+        );
+        event.registerLayerDefinition(
+                WingedMantleArmorModel.OPTIFINE_LAYER,
+                WingedMantleArmorModel::createOptiFineBodyLayer
         );
     }
 

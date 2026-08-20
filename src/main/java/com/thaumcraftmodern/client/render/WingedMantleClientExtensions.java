@@ -22,6 +22,9 @@ public final class WingedMantleClientExtensions {
             public HumanoidModel<?> getHumanoidArmorModel(
                     LivingEntity entity, ItemStack stack, EquipmentSlot slot,
                     HumanoidModel<?> defaultModel) {
+                if (OptiFineArmorCompatibility.active()) {
+                    return OptiFineArmorCompatibility.invisibleModel();
+                }
                 if (slot == EquipmentSlot.LEGS) {
                     if (leggings == null) {
                         leggings = new VoidRobeArmorModel(

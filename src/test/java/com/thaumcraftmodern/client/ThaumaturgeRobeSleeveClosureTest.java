@@ -29,7 +29,7 @@ class ThaumaturgeRobeSleeveClosureTest {
     }
 
     @Test
-    void bootsUseASeparateNarrowProfileInsteadOfMergedOuterLegs() throws Exception {
+    void bootsUseTheOriginalTc4VanillaOuterArmorModel() throws Exception {
         String extensions = Files.readString(ROOT.resolve(
                 "java/com/thaumcraftmodern/client/render/ThaumaturgeRobeClientExtensions.java"
         ));
@@ -39,15 +39,15 @@ class ThaumaturgeRobeSleeveClosureTest {
         String events = Files.readString(ROOT.resolve(
                 "java/com/thaumcraftmodern/client/ClientModEvents.java"
         ));
+        String optiFine = Files.readString(ROOT.resolve(
+                "java/com/thaumcraftmodern/client/render/OptiFineArmorCompatibility.java"
+        ));
 
         assertTrue(extensions.contains("slot == EquipmentSlot.FEET"));
-        assertTrue(extensions.contains("bakeLayer(ThaumaturgeRobeArmorModel.BOOTS_LAYER)"));
-        assertTrue(extensions.contains("boots.rightLeg.visible = true"));
-        assertTrue(extensions.contains("boots.leftLeg.visible = true"));
-        assertTrue(model.contains("createBootsLayer()"));
-        assertTrue(model.contains(
-                "new CubeDeformation(-0.1F, 0.5F, 0.5F)"
-        ));
-        assertTrue(events.contains("ThaumaturgeRobeArmorModel.BOOTS_LAYER"));
+        assertTrue(extensions.contains(": defaultModel"));
+        assertFalse(model.contains("BOOTS_LAYER"));
+        assertFalse(model.contains("createBootsLayer()"));
+        assertFalse(events.contains("ThaumaturgeRobeArmorModel.BOOTS_LAYER"));
+        assertTrue(optiFine.contains("bake(ModelLayers.PLAYER_OUTER_ARMOR)"));
     }
 }

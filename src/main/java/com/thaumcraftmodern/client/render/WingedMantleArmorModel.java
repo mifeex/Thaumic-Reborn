@@ -30,6 +30,14 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
             new ResourceLocation(ThaumcraftModern.MOD_ID, "winged_mantle_armor"),
             "main"
     );
+    public static final ModelLayerLocation OPTIFINE_LAYER =
+            new ModelLayerLocation(
+                    new ResourceLocation(
+                            ThaumcraftModern.MOD_ID,
+                            "winged_mantle_armor_optifine"
+                    ),
+                    "main"
+            );
 
     private final ModelPart leftWing;
     private final ModelPart rightWing;
@@ -49,6 +57,19 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
     }
 
     public static LayerDefinition createBodyLayer() {
+        return createBodyLayer(4096);
+    }
+
+    /**
+     * OptiFine 1.20.1 drops CubeDefinition's per-cube 1/16 UV scale while
+     * baking custom armor. A logical 256-pixel layer restores the normalized
+     * UVs without changing any cuboid, pivot or rotation.
+     */
+    public static LayerDefinition createOptiFineBodyLayer() {
+        return createBodyLayer(256);
+    }
+
+    private static LayerDefinition createBodyLayer(int textureSize) {
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
         PartDefinition head = empty(root, "head", PartPose.ZERO);
@@ -150,7 +171,7 @@ public final class WingedMantleArmorModel extends HumanoidModel<LivingEntity> {
         addWing(body, true);
         addWing(body, false);
 
-        return LayerDefinition.create(mesh, 4096, 4096);
+        return LayerDefinition.create(mesh, textureSize, textureSize);
     }
 
     private static void addWing(PartDefinition body, boolean left) {

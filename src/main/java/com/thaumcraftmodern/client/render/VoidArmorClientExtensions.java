@@ -26,6 +26,9 @@ public final class VoidArmorClientExtensions {
                 EquipmentSlot slot,
                 HumanoidModel<?> defaultModel
         ) {
+            if (OptiFineArmorCompatibility.active()) {
+                return OptiFineArmorCompatibility.invisibleModel();
+            }
             if (slot != EquipmentSlot.CHEST) {
                 return defaultModel;
             }

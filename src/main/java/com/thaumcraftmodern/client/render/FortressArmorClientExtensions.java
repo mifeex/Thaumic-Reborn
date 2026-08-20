@@ -17,36 +17,56 @@ public final class FortressArmorClientExtensions {
 
     private static final class Extensions implements IClientItemExtensions {
         private FortressArmorModel model;
+        private FortressArmorModel leggingsModel;
 
         @Override
         public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entity,
                 ItemStack stack, EquipmentSlot slot,
                 HumanoidModel<?> defaultModel) {
-            if (model == null) model = new FortressArmorModel(
-                    Minecraft.getInstance().getEntityModels()
-                            .bakeLayer(FortressArmorModel.LAYER));
-            copyPose(defaultModel, model);
-            model.setAllVisible(false);
+            // Fortress has no boot-specific accessory geometry. Reusing the
+            // model's leg panels here turns the feet item into leggings.
+            if (slot == EquipmentSlot.FEET) {
+                return defaultModel;
+            }
+            if (OptiFineArmorCompatibility.active()) {
+                return OptiFineArmorCompatibility.invisibleModel();
+            }
+            FortressArmorModel selected;
+            if (slot == EquipmentSlot.LEGS) {
+                if (leggingsModel == null) {
+                    leggingsModel = new FortressArmorModel(
+                            Minecraft.getInstance().getEntityModels()
+                                    .bakeLayer(FortressArmorModel.LEGGINGS_LAYER));
+                }
+                selected = leggingsModel;
+            } else {
+                if (model == null) model = new FortressArmorModel(
+                        Minecraft.getInstance().getEntityModels()
+                                .bakeLayer(FortressArmorModel.LAYER));
+                selected = model;
+            }
+            copyPose(defaultModel, selected);
+            selected.setAllVisible(false);
             switch (slot) {
-                case HEAD -> model.head.visible = true;
+                case HEAD -> selected.head.visible = true;
                 case CHEST -> {
-                    model.body.visible = true;
-                    model.rightArm.visible = true;
-                    model.leftArm.visible = true;
+                    selected.body.visible = true;
+                    selected.rightArm.visible = true;
+                    selected.leftArm.visible = true;
                 }
                 case LEGS -> {
-                    model.body.visible = true;
-                    model.rightLeg.visible = true;
-                    model.leftLeg.visible = true;
+                    selected.body.visible = true;
+                    selected.rightLeg.visible = true;
+                    selected.leftLeg.visible = true;
                 }
                 case FEET -> {
-                    model.rightLeg.visible = true;
-                    model.leftLeg.visible = true;
+                    selected.rightLeg.visible = true;
+                    selected.leftLeg.visible = true;
                 }
                 default -> { }
             }
-            model.prepare(entity, stack, slot);
-            return model;
+            selected.prepare(entity, stack, slot);
+            return selected;
         }
     }
 

@@ -57,6 +57,7 @@ import com.thaumcraftmodern.client.render.ThaumaturgeRobeArmorModel;
 import com.thaumcraftmodern.client.render.VoidRobeArmorModel;
 import com.thaumcraftmodern.client.render.VoidArmorChestModel;
 import com.thaumcraftmodern.client.render.FortressArmorModel;
+import com.thaumcraftmodern.client.render.OptiFineArmorCompatibility;
 import com.thaumcraftmodern.client.render.MagicMirrorBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.ManaPodBlockEntityRenderer;
 import com.thaumcraftmodern.client.render.EnergizedAuraNodeBlockEntityRenderer;
@@ -125,6 +126,13 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class ClientModEvents {
     private ClientModEvents() {
+    }
+
+    @SubscribeEvent
+    public static void addOptiFineArmorLayers(
+            EntityRenderersEvent.AddLayers event
+    ) {
+        OptiFineArmorCompatibility.addLayers(event);
     }
 
     @SubscribeEvent
@@ -576,10 +584,6 @@ public final class ClientModEvents {
                 ThaumaturgeRobeArmorModel::createOuterLayer
         );
         event.registerLayerDefinition(
-                ThaumaturgeRobeArmorModel.BOOTS_LAYER,
-                ThaumaturgeRobeArmorModel::createBootsLayer
-        );
-        event.registerLayerDefinition(
                 VoidRobeArmorModel.OUTER_LAYER,
                 VoidRobeArmorModel::createOuterLayer
         );
@@ -594,6 +598,10 @@ public final class ClientModEvents {
         event.registerLayerDefinition(
                 FortressArmorModel.LAYER,
                 FortressArmorModel::createLayer
+        );
+        event.registerLayerDefinition(
+                FortressArmorModel.LEGGINGS_LAYER,
+                FortressArmorModel::createLeggingsLayer
         );
     }
 

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.util.HexFormat;
 import java.util.List;
+import java.util.zip.ZipFile;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -100,6 +101,52 @@ final class VoidResearchVerticalFidelityTest {
             assertEquals(hash(original.resolve(entry.getValue() + ".png")),
                     hash(modern.resolve(entry.getKey() + ".png")), entry.getKey());
         }
+    }
+
+    @Test
+    void voidMetalBlockUsesExactTc6TextureAndAppearsInResearch()
+            throws Exception {
+        Path jar = Path.of(
+                "reference/Thaumcraft-4.2-FOREVA-master/"
+                        + "Thaumcraft-1.12.2-6.1.BETA26.jar"
+        );
+        byte[] original;
+        try (ZipFile zip = new ZipFile(jar.toFile())) {
+            original = zip.getInputStream(zip.getEntry(
+                    "assets/thaumcraft/textures/blocks/metal_void.png"
+            )).readAllBytes();
+        }
+        assertArrayEquals(
+                original,
+                Files.readAllBytes(ROOT.resolve(
+                        "assets/thaumic_reborn/textures/block/"
+                                + "void_metal_block.png"
+                ))
+        );
+
+        JsonObject model = json(ROOT.resolve(
+                "assets/thaumic_reborn/models/block/void_metal_block.json"
+        ));
+        assertEquals("minecraft:block/cube_all",
+                model.get("parent").getAsString());
+        assertEquals("thaumic_reborn:block/void_metal_block",
+                model.getAsJsonObject("textures").get("all").getAsString());
+
+        JsonObject blockRecipe = json(ROOT.resolve(
+                "data/thaumic_reborn/recipes/void_metal_block.json"
+        ));
+        assertEquals("forge:ingots/void", blockRecipe
+                .getAsJsonObject("key").getAsJsonObject("I")
+                .get("tag").getAsString());
+        assertEquals("thaumic_reborn:void_metal_block", blockRecipe
+                .getAsJsonObject("result").get("item").getAsString());
+        assertTrue(research("voidmetal").getAsJsonArray("pages").asList()
+                .stream()
+                .map(page -> page.getAsJsonObject())
+                .anyMatch(page -> page.get("type").getAsString()
+                        .equals("recipe")
+                        && page.get("recipe").getAsString()
+                        .equals("thaumic_reborn:void_metal_block")));
     }
 
     private static JsonObject research(String id) throws Exception {

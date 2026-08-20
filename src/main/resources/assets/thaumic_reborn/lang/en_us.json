@@ -2125,6 +2125,7 @@
   "tooltip.thaumic_reborn.straw_golem.stats": "Health: %s  Carry: %s  Upgrades: %s",
   "tooltip.thaumic_reborn.straw_golem.no_core": "Inert until fitted with an animation core",
   "item.thaumic_reborn.void_metal_ingot": "Void Metal Ingot",
+  "block.thaumic_reborn.void_metal_block": "Void Metal Block",
   "item.thaumic_reborn.focal_manipulator": "Focal Manipulator",
   "item.thaumic_reborn.arcane_stone_brick": "Arcane Stone Brick",
   "item.thaumic_reborn.vis_relay": "Vis Relay",

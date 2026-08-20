@@ -26,12 +26,27 @@ public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
             new ResourceLocation(ThaumcraftModern.MOD_ID,
                     "fortress_armor"), "main");
+    public static final ModelLayerLocation LEGGINGS_LAYER =
+            new ModelLayerLocation(
+                    new ResourceLocation(ThaumcraftModern.MOD_ID,
+                            "fortress_armor_leggings"), "main");
     private static final String DATA =
             "/assets/thaumic_reborn/models/entity/fortress_armor.csv";
 
     public FortressArmorModel(ModelPart root) { super(root); }
 
     public static LayerDefinition createLayer() {
+        return createLayer(false);
+    }
+
+    public static LayerDefinition createLeggingsLayer() {
+        return createLayer(true);
+    }
+
+    private static LayerDefinition createLayer(boolean leggingsOnly) {
+        // ModelFortressArmor calls super(f), then clears the inherited torso
+        // and leg cube lists. Its f=0.5 leggings variant differs only in which
+        // original child parts are attached.
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
         root.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.ZERO);
@@ -56,12 +71,22 @@ public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                     stream, StandardCharsets.UTF_8))) {
                 reader.lines().filter(line -> !line.isBlank() && !line.startsWith("#"))
+                        .filter(line -> !leggingsOnly || isLeggingsPart(line))
                         .forEach(line -> addPart(line, parents));
             }
         } catch (Exception exception) {
             throw new IllegalStateException("Unable to read " + DATA, exception);
         }
         return LayerDefinition.create(mesh, 128, 64);
+    }
+
+    private static boolean isLeggingsPart(String line) {
+        String[] value = line.split(",", 3);
+        return value[0].equals("rightLeg")
+                || value[0].equals("leftLeg")
+                || value[0].equals("body") && (value[1].equals("mbelt")
+                || value[1].equals("mbeltl")
+                || value[1].equals("mbeltr"));
     }
 
     private static void addPart(String line, Map<String, PartDefinition> parents) {
@@ -95,20 +120,6 @@ public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
         tieredArm(leftArm, "L", set);
         tieredLeg(rightLeg, "R", set);
         tieredLeg(leftLeg, "L", set);
-        suppressChestGeometryForLeggings(slot);
-    }
-
-    /**
-     * Minecraft deliberately makes a humanoid armor model's body visible for
-     * leggings. That is suitable for vanilla's small waistband, but this
-     * model's body contains the complete Fortress chest piece. Hide its child
-     * cuboids for the legs slot; the armor layer may re-enable the body root
-     * afterwards, but it does not re-enable these children.
-     */
-    private void suppressChestGeometryForLeggings(EquipmentSlot slot) {
-        if (slot == EquipmentSlot.LEGS) {
-            body.getAllParts().skip(1).forEach(part -> part.visible = false);
-        }
     }
 
     private static void tieredArm(ModelPart arm, String side, int set) {
@@ -124,7 +135,9 @@ public final class FortressArmorModel extends HumanoidModel<LivingEntity> {
     }
 
     private static void child(ModelPart parent, String name, boolean visible) {
-        parent.getChild(name).visible = visible;
+        if (parent.hasChild(name)) {
+            parent.getChild(name).visible = visible;
+        }
     }
     private static int i(String value) { return Integer.parseInt(value); }
     private static float f(String value) {

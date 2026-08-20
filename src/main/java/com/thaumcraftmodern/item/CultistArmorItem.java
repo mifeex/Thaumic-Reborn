@@ -4,6 +4,7 @@ import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.api.wand.VisDiscountGear;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.client.render.CultistArmorClientExtensions;
+import com.thaumcraftmodern.compat.OptiFinePresence;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -42,6 +43,10 @@ public final class CultistArmorItem extends ArmorItem
     public CultistArmorItem(Set set, Type type, Properties properties) {
         super(ThaumiumArmorMaterial.INSTANCE, type, properties);
         this.set = set;
+    }
+
+    public Set set() {
+        return set;
     }
 
     @Override
@@ -86,6 +91,10 @@ public final class CultistArmorItem extends ArmorItem
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity,
                                   EquipmentSlot slot, String type) {
+        if (OptiFinePresence.loaded()) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/entity/models/transparent_armor.png";
+        }
         return ThaumcraftModern.MOD_ID + ":textures/entity/models/"
                 + set.texture;
     }

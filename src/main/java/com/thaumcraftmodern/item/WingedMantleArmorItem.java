@@ -2,6 +2,7 @@ package com.thaumcraftmodern.item;
 
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.client.render.WingedMantleClientExtensions;
+import com.thaumcraftmodern.compat.OptiFinePresence;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +21,10 @@ public final class WingedMantleArmorItem extends ArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity,
                                   EquipmentSlot slot, String type) {
+        if (OptiFinePresence.loaded()) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/entity/models/transparent_armor.png";
+        }
         if (slot == EquipmentSlot.LEGS) {
             return ThaumcraftModern.MOD_ID
                     + ":textures/entity/models/winged_mantle_leggings.png";

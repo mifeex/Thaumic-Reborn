@@ -3,6 +3,7 @@ package com.thaumcraftmodern.item;
 import com.thaumcraftmodern.ThaumcraftModern;
 import com.thaumcraftmodern.api.enchantment.ThaumcraftRepairable;
 import com.thaumcraftmodern.client.render.FortressArmorClientExtensions;
+import com.thaumcraftmodern.compat.OptiFinePresence;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -87,6 +88,14 @@ public final class FortressArmorItem extends ArmorItem
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity,
             EquipmentSlot slot, String type) {
+        if (slot == EquipmentSlot.FEET) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/models/armor/thaumium_layer_1.png";
+        }
+        if (OptiFinePresence.loaded()) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/entity/models/transparent_armor.png";
+        }
         return ThaumcraftModern.MOD_ID
                 + ":textures/entity/models/fortress_armor.png";
     }

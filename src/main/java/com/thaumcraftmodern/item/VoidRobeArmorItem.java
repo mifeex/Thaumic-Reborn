@@ -5,6 +5,7 @@ import com.thaumcraftmodern.api.enchantment.ThaumcraftRepairable;
 import com.thaumcraftmodern.api.wand.VisDiscountGear;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.client.render.VoidRobeClientExtensions;
+import com.thaumcraftmodern.compat.OptiFinePresence;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -45,6 +46,8 @@ public final class VoidRobeArmorItem extends ArmorItem implements DyeableLeather
         tooltip.add(Component.translatable("tc.visdiscount").append(": 5%").withStyle(ChatFormatting.DARK_PURPLE));
     }
     @Override public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
+        if (OptiFinePresence.loaded()) return ThaumcraftModern.MOD_ID
+                + ":textures/entity/models/transparent_armor.png";
         return ThaumcraftModern.MOD_ID + ":textures/models/void_robe_armor"
                 + (type == null ? "_overlay" : "") + ".png";
     }

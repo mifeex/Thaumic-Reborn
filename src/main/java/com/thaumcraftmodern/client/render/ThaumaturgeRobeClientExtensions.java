@@ -17,8 +17,6 @@ public final class ThaumaturgeRobeClientExtensions {
 
     private static final class Extensions implements IClientItemExtensions {
         private ThaumaturgeRobeArmorModel model;
-        private ThaumaturgeRobeArmorModel boots;
-
         @Override
         public HumanoidModel<?> getHumanoidArmorModel(
                 LivingEntity entity,
@@ -27,17 +25,14 @@ public final class ThaumaturgeRobeClientExtensions {
                 HumanoidModel<?> defaultModel
         ) {
             if (slot == EquipmentSlot.FEET) {
-                if (boots == null) {
-                    boots = new ThaumaturgeRobeArmorModel(
-                            Minecraft.getInstance().getEntityModels()
-                                    .bakeLayer(ThaumaturgeRobeArmorModel.BOOTS_LAYER)
-                    );
-                }
-                copyPose(defaultModel, boots);
-                boots.setAllVisible(false);
-                boots.rightLeg.visible = true;
-                boots.leftLeg.visible = true;
-                return boots;
+                // TC4 ItemRobeArmor never replaces the boot model. Its exact
+                // robes_1 texture is rendered on Minecraft's outer armor legs.
+                return OptiFineArmorCompatibility.active()
+                        ? OptiFineArmorCompatibility.invisibleModel()
+                        : defaultModel;
+            }
+            if (OptiFineArmorCompatibility.active()) {
+                return OptiFineArmorCompatibility.invisibleModel();
             }
             if (slot != EquipmentSlot.CHEST) {
                 return defaultModel;

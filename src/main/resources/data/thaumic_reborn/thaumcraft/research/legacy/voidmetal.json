@@ -33,6 +33,12 @@
       "source_expression": "new ResearchPage((CrucibleRecipe)recipes.get(\"VoidMetal\"))"
     },
     {
+      "type": "recipe",
+      "title": "",
+      "body": "",
+      "recipe": "thaumic_reborn:void_metal_block"
+    },
+    {
       "type": "text",
       "title": "",
       "body": "tc.research_page.VOIDMETAL.2"

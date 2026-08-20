@@ -333,6 +333,7 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.VOID_SEED.get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("void_metal_ingot").get());
                         output.accept(ModItems.ARCANE_RECIPE_COMPONENTS.get("void_nugget").get());
+                        output.accept(ModItems.VOID_METAL_BLOCK.get());
                         output.accept(ModItems.VOID_SWORD.get());
                         output.accept(ModItems.VOID_PICKAXE.get());
                         output.accept(ModItems.VOID_AXE.get());

@@ -19,7 +19,8 @@ public final class CultistArmorClientExtensions {
 
     private static final class Extensions implements IClientItemExtensions {
         private final Supplier<CultistArmorItem.Set> set;
-        private CrimsonCultArmorModel model;
+        private CrimsonCultArmorModel outerModel;
+        private CrimsonCultArmorModel leggingsModel;
 
         private Extensions(Supplier<CultistArmorItem.Set> set) {
             this.set = set;
@@ -29,12 +30,15 @@ public final class CultistArmorClientExtensions {
         public HumanoidModel<?> getHumanoidArmorModel(
                 LivingEntity entity, ItemStack stack, EquipmentSlot slot,
                 HumanoidModel<?> defaultModel) {
-            if (model == null) {
+            if (OptiFineArmorCompatibility.active()) {
+                return OptiFineArmorCompatibility.invisibleModel();
+            }
+            if (outerModel == null || leggingsModel == null) {
                 // Item's base constructor invokes initializeClient before the
                 // completed CultistArmorItem has assigned its set field.
                 CultistArmorItem.Set armorSet = set.get();
                 if (armorSet == null) return defaultModel;
-                model = new CrimsonCultArmorModel(
+                outerModel = new CrimsonCultArmorModel(
                         Minecraft.getInstance().getEntityModels()
                                 .bakeLayer(switch (armorSet) {
                                     case KNIGHT -> CrimsonCultArmorModel.KNIGHT_LAYER;
@@ -42,27 +46,19 @@ public final class CultistArmorClientExtensions {
                                     case PRAETOR -> CrimsonCultArmorModel.PRAETOR_LAYER;
                                     case BOOTS -> CrimsonCultArmorModel.BOOTS_LAYER;
                                 }));
+                leggingsModel = new CrimsonCultArmorModel(
+                        Minecraft.getInstance().getEntityModels()
+                                .bakeLayer(switch (armorSet) {
+                                    case KNIGHT -> CrimsonCultArmorModel.KNIGHT_LEGGINGS_LAYER;
+                                    case CLERIC -> CrimsonCultArmorModel.CLERIC_LEGGINGS_LAYER;
+                                    case PRAETOR -> CrimsonCultArmorModel.PRAETOR_LEGGINGS_LAYER;
+                                    case BOOTS -> CrimsonCultArmorModel.BOOTS_LAYER;
+                                }));
             }
+            CrimsonCultArmorModel model = slot == EquipmentSlot.LEGS
+                    ? leggingsModel : outerModel;
             copyPose(defaultModel, model);
-            model.setAllVisible(false);
-            switch (slot) {
-                case HEAD -> model.head.visible = true;
-                case CHEST -> {
-                    model.body.visible = true;
-                    model.rightArm.visible = true;
-                    model.leftArm.visible = true;
-                }
-                case LEGS -> {
-                    model.rightLeg.visible = true;
-                    model.leftLeg.visible = true;
-                }
-                case FEET -> {
-                    model.rightLeg.visible = true;
-                    model.leftLeg.visible = true;
-                }
-                default -> { }
-            }
-            model.suppressChestGeometryForLeggings(slot);
+            model.configureForSlot(slot);
             return model;
         }
     }

@@ -42,7 +42,9 @@ class WingedMantleArmorFidelityTest {
                 "left_wing", "right_wing", "glyph", "upper_stud", "middle_stud"}) {
             assertTrue(model.contains("\"" + part + "\""), part);
         }
-        assertTrue(model.contains("LayerDefinition.create(mesh, 4096, 4096)"));
+        assertTrue(model.contains("createBodyLayer(4096)"));
+        assertTrue(model.contains("createBodyLayer(256)"));
+        assertTrue(model.contains("OPTIFINE_LAYER"));
         assertTrue(model.contains("-4.5F, -9.0F, -4.6F, 9.0F, 9.0F, 9.0F"));
         assertTrue(model.contains("-0.2268928F"));
         assertTrue(model.contains("-0.3490659F"));
@@ -131,6 +133,10 @@ class WingedMantleArmorFidelityTest {
         var armor = ImageIO.read(Path.of("src/main/resources/assets/thaumic_reborn/textures/entity/models/winged_mantle_armor.png").toFile());
         assertEquals(4096, armor.getWidth());
         assertEquals(4096, armor.getHeight());
+        var optiFineArmor = ImageIO.read(Path.of(
+                "src/main/resources/assets/thaumic_reborn/textures/entity/models/winged_mantle_armor_optifine.png").toFile());
+        assertEquals(256, optiFineArmor.getWidth());
+        assertEquals(256, optiFineArmor.getHeight());
         for (int u : new int[] {0, 64}) {
             int faceY = (192 + 5) * ARMOR_ATLAS_SCALE;
             int frontX = (u + 5) * ARMOR_ATLAS_SCALE;

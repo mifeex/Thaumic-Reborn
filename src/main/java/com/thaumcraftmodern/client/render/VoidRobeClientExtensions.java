@@ -27,6 +27,9 @@ public final class VoidRobeClientExtensions {
                 EquipmentSlot slot,
                 HumanoidModel<?> defaultModel
         ) {
+            if (OptiFineArmorCompatibility.active()) {
+                return OptiFineArmorCompatibility.invisibleModel();
+            }
             boolean innerLayer = slot == EquipmentSlot.HEAD
                     || slot == EquipmentSlot.LEGS;
             VoidRobeArmorModel model = innerLayer ? inner() : outer();

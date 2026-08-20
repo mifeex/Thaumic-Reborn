@@ -242,6 +242,14 @@ public final class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE))
     );
+    public static final RegistryObject<Block> VOID_METAL_BLOCK = BLOCKS.register(
+            "void_metal_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(4.0F, 10.0F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL))
+    );
     public static final RegistryObject<Block> ARCANE_STONE_BRICK =
             BLOCKS.register(
                     "arcane_stone_brick",

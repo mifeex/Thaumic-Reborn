@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Exact modern ModelPart conversion of TC4's ModelKnightArmor, ModelRobe and
@@ -32,37 +33,92 @@ public final class CrimsonCultArmorModel
     public static final ModelLayerLocation KNIGHT_LAYER = layer("crimson_knight");
     public static final ModelLayerLocation CLERIC_LAYER = layer("crimson_cleric");
     public static final ModelLayerLocation PRAETOR_LAYER = layer("crimson_praetor");
+    public static final ModelLayerLocation KNIGHT_LEGGINGS_LAYER =
+            layer("crimson_knight_leggings");
+    public static final ModelLayerLocation CLERIC_LEGGINGS_LAYER =
+            layer("crimson_cleric_leggings");
+    public static final ModelLayerLocation PRAETOR_LEGGINGS_LAYER =
+            layer("crimson_praetor_leggings");
     public static final ModelLayerLocation BOOTS_LAYER = layer("crimson_boots");
 
     private static final String MODEL_RESOURCE_ROOT =
             "/assets/thaumic_reborn/models/entity/";
+    private static final Set<String> BASIC_BELT_PARTS = Set.of(
+            "mbelt", "mbeltb", "mbeltl", "mbeltr"
+    );
+    private static final Set<String> CLERIC_INNER_BODY_PARTS = Set.of(
+            "frontclothr1", "frontclothr2", "frontclothl1", "frontclothl2",
+            "clothbackr1", "clothbackr2", "clothbackr3",
+            "clothbackl1", "clothbackl2", "clothbackl3"
+    );
 
     public CrimsonCultArmorModel(ModelPart root) {
         super(root);
     }
 
     /**
-     * Vanilla enables the body root for leggings so its texture can provide a
-     * waistband. The restored cult models instead attach the full robe or
-     * breastplate geometry to that root, so allowing the vanilla visibility
-     * pass to expose it makes every pair of leggings repeat the chest piece.
+     * Mirrors the slot visibility used by TC4's three cultist armor items.
+     * Visibility is applied to every descendant so a previously rendered
+     * outer model cannot leave jacket leg panels enabled for another slot.
      */
-    public void suppressChestGeometryForLeggings(EquipmentSlot slot) {
-        if (slot == EquipmentSlot.LEGS) {
-            body.getAllParts().skip(1).forEach(part -> part.visible = false);
+    public void configureForSlot(EquipmentSlot slot) {
+        setTreeVisible(head, false);
+        setTreeVisible(hat, false);
+        setTreeVisible(body, false);
+        setTreeVisible(rightArm, false);
+        setTreeVisible(leftArm, false);
+        setTreeVisible(rightLeg, false);
+        setTreeVisible(leftLeg, false);
+        switch (slot) {
+            case HEAD -> {
+                setTreeVisible(head, true);
+                setTreeVisible(hat, true);
+            }
+            case CHEST -> {
+                setTreeVisible(body, true);
+                setTreeVisible(rightArm, true);
+                setTreeVisible(leftArm, true);
+            }
+            case LEGS -> {
+                setTreeVisible(body, true);
+                setTreeVisible(rightLeg, true);
+                setTreeVisible(leftLeg, true);
+            }
+            case FEET -> {
+                setTreeVisible(rightLeg, true);
+                setTreeVisible(leftLeg, true);
+            }
+            default -> {
+            }
         }
     }
 
+    private static void setTreeVisible(ModelPart root, boolean visible) {
+        root.getAllParts().forEach(part -> part.visible = visible);
+    }
+
     public static LayerDefinition createKnightLayer() {
-        return createLegacyLayer("crimson_knight_armor.csv");
+        return createLegacyLayer("crimson_knight_armor.csv", false);
     }
 
     public static LayerDefinition createClericLayer() {
-        return createLegacyLayer("crimson_cleric_armor.csv");
+        return createLegacyLayer("crimson_cleric_armor.csv", false);
     }
 
     public static LayerDefinition createPraetorLayer() {
-        return createLegacyLayer("crimson_praetor_armor.csv");
+        return createLegacyLayer("crimson_praetor_armor.csv", false);
+    }
+
+    public static LayerDefinition createKnightLeggingsLayer() {
+        return createLegacyLayer("crimson_knight_armor.csv", true);
+    }
+
+    public static LayerDefinition createClericLeggingsLayer() {
+        return createLegacyLayer("crimson_cleric_armor.csv", true);
+    }
+
+    public static LayerDefinition createPraetorLeggingsLayer() {
+        return createLegacyLayer("crimson_praetor_armor.csv", true);
     }
 
     public static LayerDefinition createBootsLayer() {
@@ -89,7 +145,12 @@ public final class CrimsonCultArmorModel
         return LayerDefinition.create(mesh, 64, 32);
     }
 
-    private static LayerDefinition createLegacyLayer(String resourceName) {
+    private static LayerDefinition createLegacyLayer(
+            String resourceName,
+            boolean leggingsOnly
+    ) {
+        // All three TC4 constructors clear the inherited torso and leg cube
+        // lists. Their f=0.5 variants select attached cloth/belt parts only.
         MeshDefinition mesh = emptyHumanoidMesh();
         PartDefinition root = mesh.getRoot();
         Map<String, PartDefinition> parents = Map.of(
@@ -100,7 +161,7 @@ public final class CrimsonCultArmorModel
                 "rightLeg", root.getChild("right_leg"),
                 "leftLeg", root.getChild("left_leg")
         );
-        loadOriginalParts(resourceName, parents);
+        loadOriginalParts(resourceName, parents, leggingsOnly);
         return LayerDefinition.create(mesh, 128, 64);
     }
 
@@ -147,7 +208,8 @@ public final class CrimsonCultArmorModel
 
     private static void loadOriginalParts(
             String resourceName,
-            Map<String, PartDefinition> parents
+            Map<String, PartDefinition> parents,
+            boolean leggingsOnly
     ) {
         String path = MODEL_RESOURCE_ROOT + resourceName;
         try (InputStream stream =
@@ -159,6 +221,8 @@ public final class CrimsonCultArmorModel
                     new InputStreamReader(stream, StandardCharsets.UTF_8))) {
                 reader.lines()
                         .filter(line -> !line.isBlank() && !line.startsWith("#"))
+                        .filter(line -> isAttachedInOriginal(
+                                resourceName, leggingsOnly, line))
                         .forEach(line -> addOriginalPart(line, parents, path));
             }
         } catch (IOException exception) {
@@ -167,6 +231,30 @@ public final class CrimsonCultArmorModel
                     exception
             );
         }
+    }
+
+    private static boolean isAttachedInOriginal(
+            String resourceName,
+            boolean leggingsOnly,
+            String line
+    ) {
+        String[] value = line.split(",", 3);
+        String parent = value[0];
+        String name = value[1];
+        boolean cleric = resourceName.contains("cleric");
+        if (parent.equals("rightLeg") || parent.equals("leftLeg")) {
+            return !cleric || !name.equals("focipouch") || leggingsOnly;
+        }
+        if (!parent.equals("body")) {
+            return !leggingsOnly;
+        }
+        if (BASIC_BELT_PARTS.contains(name)) {
+            return true;
+        }
+        if (cleric && CLERIC_INNER_BODY_PARTS.contains(name)) {
+            return leggingsOnly;
+        }
+        return !leggingsOnly;
     }
 
     private static void addOriginalPart(

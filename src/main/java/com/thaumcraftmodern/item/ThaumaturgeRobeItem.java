@@ -5,6 +5,7 @@ import com.thaumcraftmodern.api.enchantment.ThaumcraftRepairable;
 import com.thaumcraftmodern.api.wand.VisDiscountGear;
 import com.thaumcraftmodern.aura.PrimalAspect;
 import com.thaumcraftmodern.client.render.ThaumaturgeRobeClientExtensions;
+import com.thaumcraftmodern.compat.OptiFinePresence;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -89,6 +90,10 @@ public final class ThaumaturgeRobeItem extends ArmorItem
             EquipmentSlot slot,
             String type
     ) {
+        if (OptiFinePresence.loaded()) {
+            return ThaumcraftModern.MOD_ID
+                    + ":textures/entity/models/transparent_armor.png";
+        }
         String layer = slot == EquipmentSlot.LEGS ? "robes_2" : "robes_1";
         String suffix = type == null ? "" : "_overlay";
         return ThaumcraftModern.MOD_ID

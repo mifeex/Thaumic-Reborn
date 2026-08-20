@@ -685,6 +685,8 @@ public final class ModItems {
             blockItem("arcane_stone_slab", ModBlocks.ARCANE_STONE_SLAB);
     public static final RegistryObject<Item> THAUMIUM_BLOCK =
             blockItem("thaumium_block", ModBlocks.THAUMIUM_BLOCK);
+    public static final RegistryObject<Item> VOID_METAL_BLOCK =
+            blockItem("void_metal_block", ModBlocks.VOID_METAL_BLOCK);
     public static final RegistryObject<Item> LOOT_URN =
             blockItem("loot_urn", ModBlocks.LOOT_URN);
     public static final RegistryObject<Item> LOOT_CRATE =
