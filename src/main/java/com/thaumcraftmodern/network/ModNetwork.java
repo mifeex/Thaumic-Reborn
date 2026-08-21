@@ -20,6 +20,7 @@ import com.thaumcraftmodern.network.packet.RunicShieldSyncPacket;
 import com.thaumcraftmodern.network.packet.RunicShieldFxPacket;
 import com.thaumcraftmodern.network.packet.InventoryScanPacket;
 import com.thaumcraftmodern.network.packet.AuraNodeStateSyncPacket;
+import com.thaumcraftmodern.network.packet.ToggleZephyrDefensePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +32,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-    private static final String PROTOCOL = "22";
+    private static final String PROTOCOL = "23";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(ThaumcraftModern.MOD_ID, "main"),
             () -> PROTOCOL,
@@ -163,11 +164,16 @@ public final class ModNetwork {
                 .encoder(AuraNodeStateSyncPacket::encode)
                 .decoder(AuraNodeStateSyncPacket::decode)
                 .consumerMainThread(AuraNodeStateSyncPacket::handle).add();
-        CHANNEL.messageBuilder(ResearchTableFeedbackPacket.class, id,
+        CHANNEL.messageBuilder(ResearchTableFeedbackPacket.class, id++,
                         NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(ResearchTableFeedbackPacket::encode)
                 .decoder(ResearchTableFeedbackPacket::decode)
                 .consumerMainThread(ResearchTableFeedbackPacket::handle).add();
+        CHANNEL.messageBuilder(ToggleZephyrDefensePacket.class, id,
+                        NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ToggleZephyrDefensePacket::encode)
+                .decoder(ToggleZephyrDefensePacket::decode)
+                .consumerMainThread(ToggleZephyrDefensePacket::handle).add();
     }
 
     public static void sendTo(ServerPlayer player, Object packet) {

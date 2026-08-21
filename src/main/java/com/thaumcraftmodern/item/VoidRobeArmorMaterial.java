@@ -9,11 +9,11 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
-/** Exact TC4 VOIDFORTRESS material: durability 18, defense 4/8/7/4, enchantability 10. */
+/** Void thaumaturge armor: diamond durability plus 100 for every piece. */
 public enum VoidRobeArmorMaterial implements ArmorMaterial {
     INSTANCE;
     @Override public int getDurabilityForType(ArmorItem.Type type) {
-        return switch (type) { case BOOTS -> 234; case LEGGINGS -> 270; case CHESTPLATE -> 288; case HELMET -> 198; };
+        return baseDurability(type) * 33 + 100;
     }
     @Override public int getDefenseForType(ArmorItem.Type type) {
         return switch (type) { case BOOTS, HELMET -> 4; case LEGGINGS -> 7; case CHESTPLATE -> 8; };
@@ -24,6 +24,15 @@ public enum VoidRobeArmorMaterial implements ArmorMaterial {
         return Ingredient.of(ItemTags.create(new ResourceLocation("forge", "ingots/void")));
     }
     @Override public String getName() { return ThaumcraftModern.MOD_ID + ":void_robe"; }
-    @Override public float getToughness() { return 0; }
+    @Override public float getToughness() { return 2.0F; }
     @Override public float getKnockbackResistance() { return 0; }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
+    }
 }

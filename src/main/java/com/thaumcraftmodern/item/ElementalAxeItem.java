@@ -32,7 +32,7 @@ public final class ElementalAxeItem extends AxeItem {
     static final int CHOPPED_DROP_ATTRACTION_TICKS = 200;
 
     public ElementalAxeItem(Properties properties) {
-        super(ElementalTier.INSTANCE, 3.0F, -3.0F, properties);
+        super(ElementalTier.INSTANCE, 5.0F, -3.0F, properties);
     }
 
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.BOW; }

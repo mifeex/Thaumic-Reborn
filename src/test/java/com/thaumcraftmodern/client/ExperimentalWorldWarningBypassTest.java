@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class ExperimentalWorldWarningBypassTest {
     @Test
-    void recognizesOnlyExperimentalWorldCreationWarning() {
+    void recognizesOnlyExperimentalWorldWarnings() {
         ConfirmScreen experimental = new ConfirmScreen(ignored -> {},
                 Component.translatable(
                         ExperimentalWorldWarningBypass.EXPERIMENTAL_WARNING_TITLE),
@@ -23,6 +23,8 @@ class ExperimentalWorldWarningBypassTest {
 
         assertTrue(ExperimentalWorldWarningBypass
                 .isExperimentalWorldWarning(experimental));
+        assertTrue(ExperimentalWorldWarningBypass.EXPERIMENTAL_FEATURES_TITLE
+                .equals("selectWorld.experimental.title"));
         assertFalse(ExperimentalWorldWarningBypass
                 .isExperimentalWorldWarning(deprecated));
         assertFalse(ExperimentalWorldWarningBypass

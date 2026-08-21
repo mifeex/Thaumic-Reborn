@@ -27,6 +27,13 @@ public final class InfusionInstability {
         return instability > 0 && rollOutOf500 <= instability;
     }
 
+    public static boolean triggers(float instability, float rollOutOf500) {
+        if (rollOutOf500 < 0.0F || rollOutOf500 >= 500.0F) {
+            throw new IllegalArgumentException("Instability roll must be in [0, 500)");
+        }
+        return instability > 0.0F && rollOutOf500 <= instability;
+    }
+
     public static Event eventForRoll(int rollOutOf21) {
         return switch (rollOutOf21) {
             case 0, 2, 10, 13 -> Event.EJECT;
@@ -49,5 +56,9 @@ public final class InfusionInstability {
 
     public static int increaseCapped(int instability) {
         return Math.min(25, instability + 1);
+    }
+
+    public static float increaseCapped(float instability) {
+        return Math.min(25.0F, instability + 1.0F);
     }
 }

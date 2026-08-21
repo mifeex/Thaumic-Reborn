@@ -8,6 +8,7 @@ import com.thaumcraftmodern.infusion.InfusionRecipeDefinition;
 import com.thaumcraftmodern.infusion.InfusionRecipeRegistry;
 import com.thaumcraftmodern.infusion.InfusionInstability;
 import com.thaumcraftmodern.infusion.InfusionStability;
+import com.thaumcraftmodern.infusion.TallowCandleStability;
 import com.thaumcraftmodern.item.PrimordialPearlItem;
 import com.thaumcraftmodern.knowledge.KnowledgeAccess;
 import com.thaumcraftmodern.knowledge.WarpType;
@@ -21,6 +22,7 @@ import com.thaumcraftmodern.research.ResearchProgressService;
 import com.thaumcraftmodern.world.block.CrystalClusterBlock;
 import com.thaumcraftmodern.world.block.EldritchCrystalBlock;
 import com.thaumcraftmodern.world.block.RunicMatrixBlock;
+import com.thaumcraftmodern.world.block.TallowCandleBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -39,6 +41,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractSkullBlock;
@@ -79,8 +82,9 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
     private boolean crafting;
     private int counter;
     private int componentCharge;
-    private int symmetry;
-    private int instability;
+    private float symmetry;
+    private float candleHarmony;
+    private float instability;
     private int recipeInstability;
     private int remainingExperienceLevels;
     private @Nullable ResourceLocation recipeId;
@@ -197,7 +201,7 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
         remainingExperienceLevels = recipe.experienceLevels(centralSnapshot);
         componentCharge = 0;
         refreshSymmetry();
-        instability = symmetry + recipeInstability;
+        instability = symmetry + recipeInstability + candleHarmony;
         crafting = true;
         server.playSound(null, worldPosition, ModSounds.CRAFT_SUCCESS.get(),
                 SoundSource.BLOCKS, 0.5F, 1.0F);
@@ -211,7 +215,7 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
                 && ItemStack.isSameItemSameTags(center.item(), centralSnapshot);
         if (!validInput || InfusionInstability.triggers(
                 instability,
-                level.random.nextInt(500)
+                level.random.nextFloat() * 500.0F
         )) {
             runInstabilityEvent(level);
             if (validInput) {
@@ -613,6 +617,7 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
         }
         List<InfusionStability.Pedestal> pedestals = new ArrayList<>();
         List<BlockPos> stabilizers = new ArrayList<>();
+        Map<BlockPos, DyeColor> tallowCandles = new LinkedHashMap<>();
         for (int x = -12; x <= 12; x++) {
             for (int z = -12; z <= 12; z++) {
                 boolean foundPedestal = false;
@@ -626,6 +631,12 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
                         foundPedestal = true;
                     }
                     if (isStabilizer(scan)) stabilizers.add(scan.immutable());
+                    BlockState state = level.getBlockState(scan);
+                    if (state.getBlock() instanceof TallowCandleBlock
+                            && state.hasProperty(TallowCandleBlock.COLOR)) {
+                        tallowCandles.put(scan.immutable(),
+                                state.getValue(TallowCandleBlock.COLOR));
+                    }
                 }
             }
         }
@@ -634,6 +645,7 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
                 pos -> level.getBlockEntity(pos) instanceof ArcanePedestalBlockEntity pedestal
                         && !pedestal.item().isEmpty(),
                 this::isStabilizer);
+        candleHarmony = TallowCandleStability.bonus(worldPosition, tallowCandles);
     }
 
     private boolean isStabilizer(BlockPos position) {
@@ -692,8 +704,8 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
     }
 
     public boolean crafting() { return crafting; }
-    public int symmetry() { return symmetry; }
-    public int instability() { return Mth.clamp(instability, 0, 25); }
+    public float symmetry() { return symmetry; }
+    public float instability() { return Mth.clamp(instability, 0.0F, 25.0F); }
     public @Nullable UUID ownerId() { return ownerId; }
     public Map<String, Integer> remainingEssentia() { return Map.copyOf(remainingEssentia); }
     public int remainingComponentCount() { return remainingComponents.size(); }
@@ -710,8 +722,8 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
         tag.putBoolean("Crafting", crafting);
         tag.putInt("Counter", counter);
         tag.putInt("ComponentCharge", componentCharge);
-        tag.putInt("Symmetry", symmetry);
-        tag.putInt("Instability", instability);
+        tag.putFloat("Symmetry", symmetry);
+        tag.putFloat("Instability", instability);
         tag.putInt("RecipeInstability", recipeInstability);
         tag.putInt("RecipeExperience", remainingExperienceLevels);
         if (recipeId != null) tag.putString("Recipe", recipeId.toString());
@@ -738,12 +750,12 @@ public final class RunicMatrixBlockEntity extends BlockEntity {
         crafting = tag.getBoolean("Crafting");
         counter = tag.getInt("Counter");
         componentCharge = Math.max(0, tag.getInt("ComponentCharge"));
-        symmetry = tag.getInt("Symmetry");
+        symmetry = tag.getFloat("Symmetry");
         recipeInstability = Math.max(0, tag.getInt("RecipeInstability"));
         remainingExperienceLevels = Math.max(0, tag.getInt("RecipeExperience"));
-        instability = tag.contains("Instability", Tag.TAG_INT)
-                ? tag.getInt("Instability")
-                : symmetry + recipeInstability;
+        instability = tag.contains("Instability", Tag.TAG_ANY_NUMERIC)
+                ? tag.getFloat("Instability")
+                : symmetry + recipeInstability + candleHarmony;
         recipeId = tag.contains("Recipe", Tag.TAG_STRING)
                 ? ResourceLocation.tryParse(tag.getString("Recipe")) : null;
         ownerId = tag.hasUUID("Owner") ? tag.getUUID("Owner") : null;

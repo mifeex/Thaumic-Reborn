@@ -110,6 +110,7 @@ import com.thaumcraftmodern.aspect.AspectRegistryRuntime;
 import com.thaumcraftmodern.world.block.entity.AdvancedEssentiaBufferBlockEntity;
 import com.thaumcraftmodern.world.block.entity.EssentiaTubeBlockEntity;
 import com.thaumcraftmodern.world.block.CrystalClusterBlock;
+import com.thaumcraftmodern.world.block.TallowCandleBlock;
 import com.thaumcraftmodern.crystal.CrystalClusterVariant;
 import java.util.concurrent.ThreadLocalRandom;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -216,6 +217,12 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         event.register(
+                (stack, tintIndex) -> tintIndex == 0
+                        ? TallowCandleBlock.tintColor(TallowCandleBlock.color(stack))
+                        : 0xFFFFFF,
+                ModItems.TALLOW_CANDLE.get()
+        );
+        event.register(
                 (stack, tintIndex) -> stack.getItem()
                         instanceof com.thaumcraftmodern.item.AspectRingItem ring
                         ? 0xFF000000 | ring.color()
@@ -287,6 +294,13 @@ public final class ClientModEvents {
     public static void registerBlockColors(
             RegisterColorHandlersEvent.Block event
     ) {
+        event.register(
+                (state, level, position, tintIndex) -> tintIndex == 0
+                        && state.hasProperty(TallowCandleBlock.COLOR)
+                        ? TallowCandleBlock.tintColor(state.getValue(TallowCandleBlock.COLOR))
+                        : 0xFFFFFF,
+                ModBlocks.TALLOW_CANDLE.get()
+        );
         event.register(
                 (state, level, position, tintIndex) -> {
                     if (!(state.getBlock()

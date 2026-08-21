@@ -43,7 +43,7 @@ final class ClassicMetallurgyAndTallowFidelityTest {
     }
 
     @Test
-    void tallowAndThreeCandleRecipeMatchTc4() throws IOException {
+    void tallowCandleRecipesWrapMatchingVanillaCandleColors() throws IOException {
         JsonObject tallow = crucible("tallow");
         assertEquals("minecraft:rotten_flesh",
                 tallow.getAsJsonObject("catalyst").get("item").getAsString());
@@ -51,10 +51,24 @@ final class ClassicMetallurgyAndTallowFidelityTest {
         assertFalse(tallow.has("inactive"));
 
         JsonObject candle = recipe("tallow_candle");
-        assertEquals(" S ", candle.getAsJsonArray("pattern").get(0).getAsString());
-        assertEquals(" T ", candle.getAsJsonArray("pattern").get(1).getAsString());
-        assertEquals(" T ", candle.getAsJsonArray("pattern").get(2).getAsString());
-        assertEquals(3, candle.getAsJsonObject("result").get("count").getAsInt());
+        assertEquals("T", candle.getAsJsonArray("pattern").get(0).getAsString());
+        assertEquals("C", candle.getAsJsonArray("pattern").get(1).getAsString());
+        assertEquals("T", candle.getAsJsonArray("pattern").get(2).getAsString());
+        assertEquals("minecraft:white_candle", candle.getAsJsonObject("key")
+                .getAsJsonObject("C").get("item").getAsString());
+        assertEquals(1, candle.getAsJsonObject("result").get("count").getAsInt());
+
+        for (String color : new String[]{"orange", "magenta", "light_blue", "yellow",
+                "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue",
+                "brown", "green", "red", "black"}) {
+            JsonObject colored = recipe(color + "_tallow_candle");
+            assertEquals("minecraft:" + color + "_candle", colored.getAsJsonObject("key")
+                    .getAsJsonObject("C").get("item").getAsString());
+            assertEquals("thaumic_reborn:tallow_candle",
+                    colored.getAsJsonObject("result").get("item").getAsString());
+            assertTrue(colored.getAsJsonObject("result").get("nbt").getAsString()
+                    .contains("color:\"" + color + "\""));
+        }
     }
 
     @Test

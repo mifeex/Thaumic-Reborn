@@ -21,7 +21,7 @@ public final class PrimalCrusherItem extends DiggerItem
 
     public PrimalCrusherItem(Properties properties) {
         super(
-                3.5F,
+                5.0F,
                 -2.8F,
                 PrimalCrusherTier.INSTANCE,
                 PrimalCrusherTier.INSTANCE.getTag(),

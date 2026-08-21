@@ -109,6 +109,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+
 public final class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, ThaumcraftModern.MOD_ID);
@@ -1274,6 +1275,7 @@ public final class ModBlocks {
                 )
         );
     }
+
 
     private static BlockBehaviour.Properties flowerProperties(int light) {
         return BlockBehaviour.Properties.copy(Blocks.DANDELION)

@@ -38,7 +38,7 @@
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicRing\"))",
       "recipe": "thaumic_reborn:runic_ring",
       "output": "thaumic_reborn:runic_ring", "central": "thaumic_reborn:mundane_ring",
-      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:scribing_tools"}],
       "aspect_costs": [{"id":"tutamen","amount":10},{"id":"praecantatio","amount":25},{"id":"potentia","amount":25}], "instability": "minor"
     },
     {
@@ -50,7 +50,7 @@
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicAmulet\"))",
       "recipe": "thaumic_reborn:runic_amulet",
       "output": "thaumic_reborn:runic_amulet", "central": "thaumic_reborn:mundane_amulet",
-      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:scribing_tools"}],
       "aspect_costs": [{"id":"tutamen","amount":20},{"id":"praecantatio","amount":35},{"id":"potentia","amount":35}], "instability": "moderate"
     },
     {
@@ -62,7 +62,7 @@
       "source_expression": "new ResearchPage((InfusionRecipe)recipes.get(\"RunicGirdle\"))",
       "recipe": "thaumic_reborn:runic_girdle",
       "output": "thaumic_reborn:runic_girdle", "central": "thaumic_reborn:blank_belt",
-      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:quicksilver"},{"item":"thaumic_reborn:scribing_tools"}],
+      "components": [{"item":"thaumic_reborn:salis_mundus"},{"item":"thaumic_reborn:thaumium_ingot"},{"item":"thaumic_reborn:enchanted_fabric"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:amber"},{"item":"thaumic_reborn:scribing_tools"}],
       "aspect_costs": [{"id":"tutamen","amount":30},{"id":"praecantatio","amount":50},{"id":"potentia","amount":50}], "instability": "moderate"
     }
   ],

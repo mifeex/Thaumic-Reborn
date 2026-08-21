@@ -13,7 +13,7 @@ public final class InfusionStability {
     public record Pedestal(BlockPos position, boolean occupied) {
     }
 
-    public static int symmetry(
+    public static float symmetry(
             BlockPos matrix,
             List<Pedestal> pedestals,
             List<BlockPos> stabilizers,
@@ -45,7 +45,7 @@ public final class InfusionStability {
                 stabilizerSymmetry -= 0.2F;
             }
         }
-        return (int) (symmetry + stabilizerSymmetry);
+        return symmetry + stabilizerSymmetry;
     }
 
     public static BlockPos mirror(BlockPos matrix, BlockPos position) {

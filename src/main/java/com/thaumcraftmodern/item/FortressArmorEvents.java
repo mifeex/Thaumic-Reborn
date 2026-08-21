@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.Mod;
 /** Original special-armor ratios plus the Angry Ghost and Sipping Fiend procs. */
 @Mod.EventBusSubscriber(modid = ThaumcraftModern.MOD_ID)
 public final class FortressArmorEvents {
+    static final float MAX_SPECIAL_PROTECTION = 0.80F;
+
     private FortressArmorEvents() { }
 
     @SubscribeEvent
@@ -74,7 +76,7 @@ public final class FortressArmorEvents {
                 : event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO)
                         || event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)
                         ? 20.0F : 25.0F;
-        return Math.min(1.0F, defense / denominator * set);
+        return Math.min(MAX_SPECIAL_PROTECTION, defense / denominator * set);
     }
 
     private static float beforeVanillaArmor(float wanted, float armor,

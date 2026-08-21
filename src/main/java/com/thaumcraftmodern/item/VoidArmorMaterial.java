@@ -9,14 +9,14 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
-/** Exact TC4 VOID armor material: durability 10, defense 3/7/6/3, enchantability 10. */
+/** Void armor: diamond durability, defense 3/8/7/3 and 2 toughness. */
 public enum VoidArmorMaterial implements ArmorMaterial {
     INSTANCE;
     @Override public int getDurabilityForType(ArmorItem.Type type) {
-        return switch (type) { case BOOTS -> 130; case LEGGINGS -> 150; case CHESTPLATE -> 160; case HELMET -> 110; };
+        return baseDurability(type) * 33;
     }
     @Override public int getDefenseForType(ArmorItem.Type type) {
-        return switch (type) { case BOOTS, HELMET -> 3; case LEGGINGS -> 6; case CHESTPLATE -> 7; };
+        return switch (type) { case BOOTS, HELMET -> 3; case LEGGINGS -> 7; case CHESTPLATE -> 8; };
     }
     @Override public int getEnchantmentValue() { return 10; }
     @Override public SoundEvent getEquipSound() { return SoundEvents.ARMOR_EQUIP_IRON; }
@@ -24,6 +24,15 @@ public enum VoidArmorMaterial implements ArmorMaterial {
         return Ingredient.of(ItemTags.create(new ResourceLocation("forge", "ingots/void")));
     }
     @Override public String getName() { return ThaumcraftModern.MOD_ID + ":void"; }
-    @Override public float getToughness() { return 0; }
+    @Override public float getToughness() { return 2.0F; }
     @Override public float getKnockbackResistance() { return 0; }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
+    }
 }

@@ -8,6 +8,10 @@
     "OverworldBiomeBuilderMixin",
     "TerraBlenderParameterListMixin"
   ],
+  "client": [
+    "client.ConfirmScreenAccessor",
+    "client.ConfirmExperimentalFeaturesScreenAccessor"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

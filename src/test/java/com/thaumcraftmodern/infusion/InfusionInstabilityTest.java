@@ -50,6 +50,12 @@ class InfusionInstabilityTest {
     }
 
     @Test
+    void fractionalCandleHarmonyAffectsTheRoll() {
+        assertTrue(InfusionInstability.triggers(1.25F, 1.20F));
+        assertFalse(InfusionInstability.triggers(1.25F, 1.30F));
+    }
+
+    @Test
     void matrixExplosionCannotDestroyTheMatrixOrCentralPedestal()
             throws Exception {
         String source = Files.readString(Path.of(

@@ -20,10 +20,13 @@ import net.minecraft.world.phys.Vec3;
 
 public final class ElementalSwordItem extends SwordItem {
     private static final String DEFENDING = "tc4ZephyrDefending";
+    public static final float DEFENSIVE_ATTACK_WEAR_MULTIPLIER = 1.3F;
+    private static final float EXTRA_DEFENSIVE_ATTACK_WEAR_CHANCE =
+            DEFENSIVE_ATTACK_WEAR_MULTIPLIER - 1.0F;
     private static final ThreadLocal<Boolean> SWEEPING = ThreadLocal.withInitial(() -> false);
 
     public ElementalSwordItem(Properties properties) {
-        super(ElementalTier.INSTANCE, 3, -2.4F, properties);
+        super(ElementalTier.INSTANCE, 4, -2.4F, properties);
     }
 
     @Override
@@ -35,19 +38,35 @@ public final class ElementalSwordItem extends SwordItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        stack.getOrCreateTag().putBoolean(DEFENDING, player.isShiftKeyDown());
+        if (player.isShiftKeyDown()) {
+            setDefending(stack, !isDefending(stack));
+            if (!isDefending(stack)) {
+                player.stopUsingItem();
+                return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+            }
+        } else {
+            setDefending(stack, false);
+        }
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(stack, level, entity, slot, selected);
+        if (!isDefending(stack) || !(entity instanceof Player player)) return;
+        if (!selected || player.getMainHandItem() != stack) {
+            setDefending(stack, false);
+            if (player.getUseItem() == stack) player.stopUsingItem();
+            return;
+        }
+        if (!player.isUsingItem()) player.startUsingItem(InteractionHand.MAIN_HAND);
     }
 
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int remaining) {
         if (!(living instanceof Player player)) return;
         if (isDefending(stack)) {
-            if (!player.isShiftKeyDown()) {
-                player.stopUsingItem();
-                return;
-            }
             renderDefensiveStance(level, player, remaining);
             return;
         }
@@ -82,14 +101,22 @@ public final class ElementalSwordItem extends SwordItem {
         }
     }
 
-    @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int remaining) {
-        stack.getOrCreateTag().remove(DEFENDING);
-        super.releaseUsing(stack, level, living, remaining);
+    public static boolean isDefending(ItemStack stack) {
+        return stack.hasTag() && stack.getTag().getBoolean(DEFENDING);
     }
 
-    static boolean isDefending(ItemStack stack) {
-        return stack.hasTag() && stack.getTag().getBoolean(DEFENDING);
+    public static void setDefending(ItemStack stack, boolean defending) {
+        if (defending) {
+            stack.getOrCreateTag().putBoolean(DEFENDING, true);
+        } else if (stack.hasTag()) {
+            stack.getTag().remove(DEFENDING);
+        }
+    }
+
+    public static boolean toggleDefending(ItemStack stack) {
+        boolean defending = !isDefending(stack);
+        setDefending(stack, defending);
+        return defending;
     }
 
     private void renderDefensiveStance(Level level, Player player, int remaining) {
@@ -108,7 +135,13 @@ public final class ElementalSwordItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        boolean defending = isDefending(stack);
         boolean result = super.hurtEnemy(stack, target, attacker);
+        if (defending && !attacker.level().isClientSide && !stack.isEmpty()
+                && attacker.getRandom().nextFloat() < EXTRA_DEFENSIVE_ATTACK_WEAR_CHANCE) {
+            stack.hurtAndBreak(1, attacker,
+                    broken -> broken.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+        }
         if (!(attacker instanceof Player player) || attacker.level().isClientSide || SWEEPING.get()) return result;
         int hits = 0;
         SWEEPING.set(true);

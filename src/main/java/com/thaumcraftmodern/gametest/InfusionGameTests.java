@@ -188,7 +188,7 @@ public final class InfusionGameTests {
     public static void stabilizationUsesExactMirrorArithmetic(GameTestHelper helper) {
         Rig rig = rig(helper, false);
         rig.matrix().refreshSymmetry();
-        int neutralBaseline = rig.matrix().symmetry();
+        float neutralBaseline = rig.matrix().symmetry();
 
         rig.air().clearContent();
         helper.setBlock(AIR, Blocks.AIR);
@@ -211,8 +211,8 @@ public final class InfusionGameTests {
                     ModBlocks.AIR_CRYSTAL_CLUSTER.get());
         }
         rig.matrix().refreshSymmetry();
-        helper.assertTrue(rig.matrix().symmetry() == neutralBaseline - 1,
-                "Six mirrored stabilizer pairs must improve the TC4 symmetry by exactly 1; baseline="
+        helper.assertTrue(Math.abs(rig.matrix().symmetry() - (neutralBaseline - 1.2F)) < 0.0001F,
+                "Six mirrored stabilizer pairs must improve symmetry by exactly 1.2; baseline="
                         + neutralBaseline + ", got " + rig.matrix().symmetry());
         helper.succeed();
     }

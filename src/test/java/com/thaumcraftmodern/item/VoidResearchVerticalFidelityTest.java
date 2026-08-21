@@ -25,11 +25,28 @@ final class VoidResearchVerticalFidelityTest {
         assertEquals(3.0F, VoidTier.INSTANCE.getAttackDamageBonus());
         assertEquals(20, VoidTier.INSTANCE.getEnchantmentValue());
         assertEquals(3, VoidArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.HELMET));
-        assertEquals(7, VoidArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.CHESTPLATE));
-        assertEquals(6, VoidArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.LEGGINGS));
+        assertEquals(8, VoidArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.CHESTPLATE));
+        assertEquals(7, VoidArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.LEGGINGS));
+        assertEquals(2.0F, VoidArmorMaterial.INSTANCE.getToughness());
         assertEquals(4, VoidRobeArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.HELMET));
         assertEquals(8, VoidRobeArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.CHESTPLATE));
         assertEquals(7, VoidRobeArmorMaterial.INSTANCE.getDefenseForType(ArmorItem.Type.LEGGINGS));
+        assertEquals(2.0F, VoidRobeArmorMaterial.INSTANCE.getToughness());
+        for (ArmorItem.Type type : ArmorItem.Type.values()) {
+            assertEquals(baseDurability(type) * 33,
+                    VoidArmorMaterial.INSTANCE.getDurabilityForType(type));
+            assertEquals(baseDurability(type) * 33 + 100,
+                    VoidRobeArmorMaterial.INSTANCE.getDurabilityForType(type));
+        }
+    }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
     }
 
     @Test

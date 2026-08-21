@@ -1,10 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "decorations",
-  "pattern": [" S ", " T ", " T "],
+  "pattern": ["T", "C", "T"],
   "key": {
-    "S": { "item": "minecraft:string" },
-    "T": { "item": "thaumic_reborn:thaumic_tallow" }
+    "T": { "item": "thaumic_reborn:thaumic_tallow" },
+    "C": { "item": "minecraft:white_candle" }
   },
-  "result": { "item": "thaumic_reborn:tallow_candle", "count": 3 }
+  "result": {
+    "item": "thaumic_reborn:tallow_candle",
+    "count": 1,
+    "nbt": "{BlockStateTag:{color:\"white\"}}"
+  }
 }

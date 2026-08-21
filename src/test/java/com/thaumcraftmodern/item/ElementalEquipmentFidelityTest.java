@@ -25,6 +25,7 @@ class ElementalEquipmentFidelityTest {
         assertEquals(8, ElementalPickaxeItem.DOWSING_RADIUS);
         assertEquals(5_000L, ElementalPickaxeItem.DOWSING_MILLIS);
         assertEquals(200, ElementalAxeItem.CHOPPED_DROP_ATTRACTION_TICKS);
+        assertEquals(1.3F, ElementalSwordItem.DEFENSIVE_ATTACK_WEAR_MULTIPLIER);
     }
 
     @Test
@@ -36,8 +37,11 @@ class ElementalEquipmentFidelityTest {
         String axe = russian.get("tc.research_page.ELEMENTALAXE.2").getAsString();
 
         assertTrue(sword.contains("Shift + ПКМ"));
+        assertTrue(sword.contains("удерживать клавиши не требуется"));
+        assertTrue(sword.contains("повторите комбинацию или смените предмет в основной руке"));
+        assertTrue(sword.contains("прочность на 30% быстрее"));
         assertTrue(sword.contains("атаки блокируются"));
-        assertTrue(sword.contains("подъём при этом не действует"));
+        assertTrue(sword.contains("подъём в защитной стойке не действуют"));
         assertTrue(pickaxe.contains("оранжевыми частицами"));
         assertTrue(pickaxe.contains("сквозь камень"));
         assertTrue(axe.contains("пока Вы не подберёте"));

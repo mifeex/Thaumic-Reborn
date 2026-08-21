@@ -18,24 +18,35 @@ final class MirrorFortressFidelityTest {
             "src/main/resources/assets/thaumic_reborn");
 
     @Test
-    void fortressMaterialRetainsTc4Values() {
+    void fortressMaterialUsesRequestedCombatValues() {
         assertEquals(25, FortressArmorMaterial.INSTANCE.getEnchantmentValue());
         assertEquals(3, FortressArmorMaterial.INSTANCE
                 .getDefenseForType(ArmorItem.Type.HELMET));
-        assertEquals(7, FortressArmorMaterial.INSTANCE
+        assertEquals(8, FortressArmorMaterial.INSTANCE
                 .getDefenseForType(ArmorItem.Type.CHESTPLATE));
-        assertEquals(6, FortressArmorMaterial.INSTANCE
+        assertEquals(7, FortressArmorMaterial.INSTANCE
                 .getDefenseForType(ArmorItem.Type.LEGGINGS));
         assertEquals(3, FortressArmorMaterial.INSTANCE
                 .getDefenseForType(ArmorItem.Type.BOOTS));
-        assertEquals(11 * 40, FortressArmorMaterial.INSTANCE
-                .getDurabilityForType(ArmorItem.Type.HELMET));
-        assertEquals(16 * 40, FortressArmorMaterial.INSTANCE
-                .getDurabilityForType(ArmorItem.Type.CHESTPLATE));
-        assertEquals(15 * 40, FortressArmorMaterial.INSTANCE
-                .getDurabilityForType(ArmorItem.Type.LEGGINGS));
-        assertEquals(13 * 40, FortressArmorMaterial.INSTANCE
-                .getDurabilityForType(ArmorItem.Type.BOOTS));
+        assertEquals(3.0F, FortressArmorMaterial.INSTANCE.getToughness());
+        for (ArmorItem.Type type : ArmorItem.Type.values()) {
+            assertEquals(baseDurability(type) * 37,
+                    FortressArmorMaterial.INSTANCE.getDurabilityForType(type));
+        }
+    }
+
+    @Test
+    void fortressSpecialProtectionCannotMakeThePlayerInvulnerable() {
+        assertEquals(0.80F, FortressArmorEvents.MAX_SPECIAL_PROTECTION);
+    }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
     }
 
     @Test

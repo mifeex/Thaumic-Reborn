@@ -38,6 +38,7 @@ import com.thaumcraftmodern.item.PrimalArrowItem;
 import com.thaumcraftmodern.item.FocusPouchItem;
 import com.thaumcraftmodern.item.LiquidDeathBucketItem;
 import com.thaumcraftmodern.item.TripleMeatTreatItem;
+import com.thaumcraftmodern.item.TallowCandleItem;
 import com.thaumcraftmodern.item.ThaumometerItem;
 import com.thaumcraftmodern.item.ThaumonomiconItem;
 import com.thaumcraftmodern.item.ThaumaturgeRobeItem;
@@ -214,7 +215,8 @@ public final class ModItems {
             );
     public static final RegistryObject<Item> THAUMIC_TALLOW = simple("thaumic_tallow");
     public static final RegistryObject<Item> TALLOW_CANDLE =
-            blockItem("tallow_candle", ModBlocks.TALLOW_CANDLE);
+            ITEMS.register("tallow_candle", () -> new TallowCandleItem(
+                    ModBlocks.TALLOW_CANDLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMBER =
             ITEMS.register("amber", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MANA_BEAN =
@@ -314,7 +316,7 @@ public final class ModItems {
             "thaumium_pickaxe", () -> new PickaxeItem(ThaumiumTier.INSTANCE, 1, -2.8F,
                     new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> THAUMIUM_AXE = ITEMS.register(
-            "thaumium_axe", () -> new AxeItem(ThaumiumTier.INSTANCE, 5.5F, -3.2F,
+            "thaumium_axe", () -> new AxeItem(ThaumiumTier.INSTANCE, 4.5F, -3.0F,
                     new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> THAUMIUM_SHOVEL = ITEMS.register(
             "thaumium_shovel", () -> new ShovelItem(ThaumiumTier.INSTANCE, 1.5F, -3.0F,
@@ -1335,6 +1337,7 @@ public final class ModItems {
                 () -> new BlockItem(block.get(), new Item.Properties())
         );
     }
+
 
     private static Map<PrimalAspect, RegistryObject<Item>> registerAspectRings() {
         EnumMap<PrimalAspect, RegistryObject<Item>> rings =

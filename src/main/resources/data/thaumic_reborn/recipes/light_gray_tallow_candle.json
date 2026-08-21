@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"decorations","pattern":["T","C","T"],"key":{"T":{"item":"thaumic_reborn:thaumic_tallow"},"C":{"item":"minecraft:light_gray_candle"}},"result":{"item":"thaumic_reborn:tallow_candle","count":1,"nbt":"{BlockStateTag:{color:\"light_gray\"}}"}}

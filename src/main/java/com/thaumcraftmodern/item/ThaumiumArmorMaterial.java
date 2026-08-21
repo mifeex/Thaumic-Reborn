@@ -9,17 +9,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 
-/** TC4 thaumium armor material (25 durability multiplier, 2/6/5/2 defense, enchantability 25). */
+/** Thaumium armor: iron durability, defense 2/6/5/2 and 1 toughness. */
 public enum ThaumiumArmorMaterial implements ArmorMaterial {
     INSTANCE;
 
     @Override public int getDurabilityForType(ArmorItem.Type type) {
-        return switch (type) {
-            case BOOTS -> 13 * 25;
-            case LEGGINGS -> 15 * 25;
-            case CHESTPLATE -> 16 * 25;
-            case HELMET -> 11 * 25;
-        };
+        return baseDurability(type) * 15;
     }
 
     @Override public int getDefenseForType(ArmorItem.Type type) {
@@ -36,6 +31,15 @@ public enum ThaumiumArmorMaterial implements ArmorMaterial {
         return Ingredient.of(ItemTags.create(new ResourceLocation("forge", "ingots/thaumium")));
     }
     @Override public String getName() { return ThaumcraftModern.MOD_ID + ":thaumium"; }
-    @Override public float getToughness() { return 0.0F; }
+    @Override public float getToughness() { return 1.0F; }
     @Override public float getKnockbackResistance() { return 0.0F; }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
+    }
 }

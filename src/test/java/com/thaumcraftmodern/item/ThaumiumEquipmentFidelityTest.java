@@ -33,6 +33,20 @@ final class ThaumiumEquipmentFidelityTest {
                 .getDefenseForType(ArmorItem.Type.LEGGINGS));
         assertEquals(2, ThaumiumArmorMaterial.INSTANCE
                 .getDefenseForType(ArmorItem.Type.BOOTS));
+        assertEquals(1.0F, ThaumiumArmorMaterial.INSTANCE.getToughness());
+        for (ArmorItem.Type type : ArmorItem.Type.values()) {
+            assertEquals(baseDurability(type) * 15,
+                    ThaumiumArmorMaterial.INSTANCE.getDurabilityForType(type));
+        }
+    }
+
+    private static int baseDurability(ArmorItem.Type type) {
+        return switch (type) {
+            case BOOTS -> 13;
+            case LEGGINGS -> 15;
+            case CHESTPLATE -> 16;
+            case HELMET -> 11;
+        };
     }
 
     @Test

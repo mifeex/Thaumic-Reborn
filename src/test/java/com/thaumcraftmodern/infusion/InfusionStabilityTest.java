@@ -17,24 +17,24 @@ class InfusionStabilityTest {
     void mirroredPedestalsAndItemsAreNeutralButOneOccupiedPedestalCostsThree() {
         BlockPos west = new BlockPos(-3, 2, 0);
         BlockPos east = new BlockPos(3, 2, 0);
-        assertEquals(0, symmetry(
+        assertEquals(0.0F, symmetry(
                 List.of(new InfusionStability.Pedestal(west, true),
-                        new InfusionStability.Pedestal(east, true)), Set.of()));
-        assertEquals(3, symmetry(
-                List.of(new InfusionStability.Pedestal(west, true)), Set.of()));
+                        new InfusionStability.Pedestal(east, true)), Set.of()), 0.0001F);
+        assertEquals(3.0F, symmetry(
+                List.of(new InfusionStability.Pedestal(west, true)), Set.of()), 0.0001F);
     }
 
     @Test
-    void sixMirroredStabilizerPairsReachMinusOneAfterTc4FloatTruncation() {
+    void sixMirroredStabilizerPairsPreserveFractionalHarmony() {
         Set<BlockPos> stabilizers = new HashSet<>();
         for (int z : new int[]{-3, -2, -1, 1, 2, 3}) {
             stabilizers.add(new BlockPos(-5, 2, z));
             stabilizers.add(new BlockPos(5, 2, z));
         }
-        assertEquals(-1, symmetry(List.of(), stabilizers));
+        assertEquals(-1.2F, symmetry(List.of(), stabilizers), 0.0001F);
     }
 
-    private static int symmetry(List<InfusionStability.Pedestal> pedestals,
+    private static float symmetry(List<InfusionStability.Pedestal> pedestals,
             Set<BlockPos> stabilizers) {
         Set<BlockPos> pedestalPositions = new HashSet<>();
         Set<BlockPos> occupied = new HashSet<>();

@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -41,8 +42,14 @@ public final class CultistArmorItem extends ArmorItem
     private final Set set;
 
     public CultistArmorItem(Set set, Type type, Properties properties) {
-        super(ThaumiumArmorMaterial.INSTANCE, type, properties);
+        super(materialFor(set), type, properties);
         this.set = set;
+    }
+
+    private static ArmorMaterial materialFor(Set set) {
+        return set == Set.PRAETOR
+                ? PraetorArmorMaterial.INSTANCE
+                : CultistArmorMaterial.INSTANCE;
     }
 
     public Set set() {
