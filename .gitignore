@@ -13,6 +13,7 @@ run-data/
 bin/
 logs/
 crash-reports/
+tools/
 *.log
 .DS_Store
 
